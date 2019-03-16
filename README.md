@@ -1,8 +1,6 @@
 # RoutesToSwaggerDocs
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/routes_to_swagger_docs`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Generate swagger docs (side only) from rails routing.
 
 ## Installation
 
@@ -22,22 +20,41 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
 
-## Development
+require 'routes_to_swagger_docs
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+RoutesToSwaggerDocs.configure do |config|
+   # default setting        
+   config.root_dir_path = "./swagger_docs"
+   config.schema_save_dir_path = "./swagger_docs/shemas"
+   config.doc_save_file_path = "./swagger_docs/swagger_doc.yml"
+end
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## Support Rails Version
 
-## Contributing
+- Rails 4.2.5.1
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/routes_to_swagger_docs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+## Configure
+
+we explain the options that can be set.
+
+|option|description|default|
+|------|-----------|---|
+|root_dir_path|Root directory for storing products.|"./swagger_docs"
+|schema_save_dir_path|Directory for storing swagger schemas|"./swagger_docs/shcemas"|
+|doc_save_file_path|Directory for storing swagger doc|"./swagger_docs/swagger_doc.yml"|
+
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-## Code of Conduct
+## Contributing
 
-Everyone interacting in the RoutesToSwaggerDocs project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/routes_to_swagger_docs/blob/master/CODE_OF_CONDUCT.md).
+1. Fork it ( http://github.com/yukihirop/routes_to_swagger_docs/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
