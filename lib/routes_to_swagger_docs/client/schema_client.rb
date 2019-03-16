@@ -1,5 +1,6 @@
 require 'fileutils'
 require_relative 'base_client'
+require_relative 'path_client'
 
 module RoutesToSwaggerDocs
   class SchemaClient < BaseClient
@@ -15,7 +16,12 @@ module RoutesToSwaggerDocs
       FileUtils.mkdir_p(schema_save_dir_path) unless FileTest.exists?(schema_save_dir_path)
       docs.each do |field_name, data|
         result = { "#{field_name}" => data }
-        File.write("#{schema_save_dir_path}/#{field_name}.yml", result.to_yaml)
+
+        if field_name == "paths"
+          PathClient.new(result).generate_paths
+        else
+          File.write("#{schema_save_dir_path}/#{field_name}.yml", result.to_yaml)
+        end
       end
     end
   end

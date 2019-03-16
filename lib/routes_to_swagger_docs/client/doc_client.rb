@@ -19,7 +19,7 @@ module RoutesToSwaggerDocs
     def generate_docs_from_schema_files
       result = Dir.glob(schema_paths).each_with_object({}) do |path, data|
         yaml = YAML.load_file(path)
-        data.merge!(yaml)
+        data.deep_merge!(yaml)
       end
       File.write(doc_save_file_path, result.to_yaml)
     end

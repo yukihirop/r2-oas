@@ -16,6 +16,7 @@ module RoutesToSwaggerDocs
     private
 
     attr_accessor :all_routes
+    attr_accessor *Configuration::VALID_OPTIONS_KEYS, :merged_options
 
     def set_all_routes
       ::Rails.application.reload_routes!
@@ -40,7 +41,5 @@ module RoutesToSwaggerDocs
     def schema_paths
       File.expand_path("#{schema_save_dir_path}/**/**.yml")
     end
-
-    attr_accessor *Configuration::VALID_OPTIONS_KEYS, :merged_options
   end
 end
