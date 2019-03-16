@@ -10,16 +10,32 @@ module RoutesToSwaggerDocs
     end
 
     def generate_paths
-      generate_paths_from_routes_data
+      if paths_file_do_not_exists?
+        generate_paths_from_routes_data
+      else
+        generate_paths_from_schema_fiels        
+      end
     end
 
     private
 
     attr_accessor :paths
 
+    def generate_paths_from_schema_fiels
+      paths_from_schema_files = Dir.glob(paths_paths).each_with_object({}) do |path, data|
+        yaml = YAML.load_file(path)
+        data.deep_merge!(yaml)
+      end
+      paths.deep_merge!(paths_from_schema_files["paths"])
+      process_when_generate_paths
+    end
+
     def generate_paths_from_routes_data
       FileUtils.mkdir_p(paths_path) unless FileTest.exists?(paths_path)
+      process_when_generate_paths
+    end
 
+    def process_when_generate_paths
       normalized_paths.each do |tag_name, data|
         result = { "paths" => data }
 

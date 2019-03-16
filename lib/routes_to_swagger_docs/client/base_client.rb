@@ -15,7 +15,7 @@ module RoutesToSwaggerDocs
 
     private
 
-    attr_accessor :all_routes
+    attr_accessor :all_routes, :docs
     attr_accessor *Configuration::VALID_OPTIONS_KEYS, :merged_options
 
     def set_all_routes
@@ -27,7 +27,7 @@ module RoutesToSwaggerDocs
     def docs
       routes_data = parser.routes_data
       tags_data = parser.tags_data
-      Schema::V3::OpenapiObject.new(routes_data, tags_data).to_doc
+      @docs ||= Schema::V3::OpenapiObject.new(routes_data, tags_data).to_doc
     end
 
     def parser

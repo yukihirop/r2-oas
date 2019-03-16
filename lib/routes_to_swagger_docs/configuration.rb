@@ -21,6 +21,7 @@ module RoutesToSwaggerDocs
 
     def configure
        yield self
+       send :update_property
     end
 
     def options
@@ -30,6 +31,11 @@ module RoutesToSwaggerDocs
     end
 
     private
+
+    def update_property
+      self.schema_save_dir_path = "#{self.root_dir_path}/schema"
+      self.doc_save_file_path = "#{self.root_dir_path}/swagger_doc.yml"
+    end
 
     def set_default
       self.root_dir_path = DEFAULT_ROOT_DIR_PATH
