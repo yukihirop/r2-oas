@@ -42,10 +42,15 @@ module RoutesToSwaggerDocs
           path = route_data[:path].gsub(/\(.+\)/,"") 
           # e.x.) "tasks#index" => "task"
           tag_name = route_data[:reqs].split("#").first.singularize
+          # e.x.) "tasks#index { :format => ":json" }"
+          format_name = ""
+          route_data[:reqs].match(/{\:format=>:(?<format_name>.*)}/) do |md|
+            format_name = md[:format_name] if md[:format_name]
+          end
 
           route_el = {}
           route_el[:path] = path
-          route_el[:data]= { verb: verb, path: path, tag_name: tag_name }
+          route_el[:data]= { verb: verb, path: path, tag_name: tag_name, format_name: format_name }
 
           block.call(route_el) if block_given?
         end
