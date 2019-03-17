@@ -12,6 +12,7 @@ module RoutesToSwaggerDocs
         attr_accessor :verb, :tag_name, :format_name
   
         def initialize(route_data)
+          @route_data = route_data
           @verb = route_data[:verb]
           @tag_name = route_data[:tag_name]
           @format_name = attach_application route_data[:format_name]
