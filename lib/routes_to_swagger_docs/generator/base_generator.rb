@@ -18,6 +18,10 @@ module RoutesToSwaggerDocs
     attr_accessor :all_routes, :docs
     attr_accessor *Configuration::VALID_OPTIONS_KEYS, :merged_options
 
+    def logger
+      ::Rails.logger
+    end
+
     def set_all_routes
       ::Rails.application.reload_routes!
       @all_routes = ::Rails.application.routes.routes
