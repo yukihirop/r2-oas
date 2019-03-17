@@ -10,7 +10,7 @@ namespace :routes do
     private
 
     def client
-      RoutesToSwaggerDocs::Client.new
+      RoutesToSwaggerDocs::Generator.new
     end
   end
 end

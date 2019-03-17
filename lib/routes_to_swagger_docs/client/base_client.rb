@@ -2,7 +2,7 @@ require_relative '../routing/parser'
 require_relative '../schema/v3/openapi_object'
 
 module RoutesToSwaggerDocs
-  class BaseClient
+  class BaseGenerator
     def initialize(options={})
       self.merged_options = RoutesToSwaggerDocs.options.merge(options)
       

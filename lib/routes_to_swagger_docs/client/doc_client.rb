@@ -4,7 +4,7 @@ require_relative 'base_client'
 require_relative 'schema_client'
 
 module RoutesToSwaggerDocs
-  class DocClient < BaseClient
+  class DocGenerator < BaseGenerator
     def generate_docs
       generate_schemas
       generate_docs_from_schema_files
@@ -13,7 +13,7 @@ module RoutesToSwaggerDocs
     private
 
     def generate_schemas
-      SchemaClient.new.generate_schemas
+      SchemaGenerator.new.generate_schemas
     end
 
     def generate_docs_from_schema_files

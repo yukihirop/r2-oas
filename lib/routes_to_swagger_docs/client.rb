@@ -5,9 +5,9 @@ require_relative 'client/base_client'
 require_relative 'client/doc_client'
 
 module RoutesToSwaggerDocs
-  class Client < BaseClient
+  class Generator < BaseGenerator
     def generate_docs
-      DocClient.new.generate_docs
+      DocGenerator.new.generate_docs
     end
   end
 end

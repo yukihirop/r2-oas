@@ -3,7 +3,7 @@ require_relative 'base_client'
 require_relative 'path_client'
 
 module RoutesToSwaggerDocs
-  class SchemaClient < BaseClient
+  class SchemaGenerator < BaseGenerator
     def generate_schemas
       if force_update_schema || schema_file_do_not_exists?
         generate_schemas_from_routes_data
@@ -33,7 +33,7 @@ module RoutesToSwaggerDocs
         result = { "#{field_name}" => data }
 
         if field_name == "paths"
-          PathClient.new(result).generate_paths
+          PathGenerator.new(result).generate_paths
         else
           File.write("#{schema_save_dir_path}/#{field_name}.yml", result.to_yaml)
         end

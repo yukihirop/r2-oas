@@ -3,7 +3,7 @@ require 'fileutils'
 require_relative 'base_client'
 
 module RoutesToSwaggerDocs
-  class PathClient < BaseClient
+  class PathGenerator < BaseGenerator
     def initialize(options)
       super(options)
       @paths = options["paths"] || options[:paths]
