@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ```ruby
 
-require 'routes_to_swagger_docs
+require 'routes_to_swagger_docs'
 
 RoutesToSwaggerDocs.configure do |config|
    # default setting        
@@ -234,6 +234,12 @@ swagger_docs
 
 - Rails Engine Routing
 - Rails Normal Routing
+
+## Support OpenAPI Schema
+
+|version|document|
+|-------|--------|
+|v3|[versions/v3.md](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/versions/v3.md)|
 
 ## Configure
 
