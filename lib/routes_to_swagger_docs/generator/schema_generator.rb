@@ -1,6 +1,6 @@
 require 'fileutils'
-require_relative 'base_client'
-require_relative 'path_client'
+require_relative 'base_generator'
+require_relative 'path_generator'
 
 module RoutesToSwaggerDocs
   class SchemaGenerator < BaseGenerator

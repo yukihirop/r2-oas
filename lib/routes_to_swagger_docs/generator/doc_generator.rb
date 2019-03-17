@@ -1,7 +1,7 @@
 require 'yaml'
 require 'fileutils'
-require_relative 'base_client'
-require_relative 'schema_client'
+require_relative 'base_generator'
+require_relative 'schema_generator'
 
 module RoutesToSwaggerDocs
   class DocGenerator < BaseGenerator

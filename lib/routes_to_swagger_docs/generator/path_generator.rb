@@ -1,6 +1,6 @@
 require 'forwardable'
 require 'fileutils'
-require_relative 'base_client'
+require_relative 'base_generator'
 
 module RoutesToSwaggerDocs
   class PathGenerator < BaseGenerator
@@ -84,10 +84,10 @@ module RoutesToSwaggerDocs
 
     class Utility
       extend Forwardable
-      def_delegators :@path_client, :paths_path
+      def_delegators :@path_generator, :paths_path
 
-      def initialize(path_client, tag_name)
-        @path_client = path_client
+      def initialize(path_generator, tag_name)
+        @path_generator = path_generator
         @tag_name = tag_name
       end
 

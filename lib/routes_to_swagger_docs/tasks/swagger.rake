@@ -1,15 +1,15 @@
-require_relative '../client'
+require_relative '../generator'
 
 namespace :routes do
   namespace :swagger do
     desc "Generate Swagger documentation files"
     task :docs => [:environment] do
-      client.generate_docs
+      generator.generate_docs
     end
 
     private
 
-    def client
+    def generator
       RoutesToSwaggerDocs::Generator.new
     end
   end
