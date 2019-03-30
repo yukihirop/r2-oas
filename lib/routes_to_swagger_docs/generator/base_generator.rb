@@ -45,5 +45,13 @@ module RoutesToSwaggerDocs
     def schema_paths
       File.expand_path("#{schema_save_dir_path}/**/**.yml")
     end
+
+    def schema_save_dir_path
+      "#{root_dir_path}/#{schema_save_dir_name}"
+    end
+
+    def doc_save_file_path
+      "#{root_dir_path}/#{doc_save_file_name}"
+    end
   end
 end

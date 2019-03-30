@@ -27,8 +27,8 @@ require 'routes_to_swagger_docs'
 RoutesToSwaggerDocs.configure do |config|
    # default setting        
    config.root_dir_path = "./swagger_docs"
-   config.schema_save_dir_path = "./swagger_docs/shemas"
-   config.doc_save_file_path = "./swagger_docs/swagger_doc.yml"
+   config.schema_save_dir_name = "shemas"
+   config.doc_save_file_name = "swagger_doc.yml"
 end
 ```
 
@@ -248,8 +248,8 @@ we explain the options that can be set.
 |option|description|default|
 |------|-----------|---|
 |root_dir_path|Root directory for storing products.|"./swagger_docs"
-|schema_save_dir_path|Directory for storing swagger schemas|"./swagger_docs/shcemas"|
-|doc_save_file_path|Directory for storing swagger doc|"./swagger_docs/swagger_doc.yml"|
+|schema_save_dir_name|Directory name for storing swagger schemas|"shcemas"|
+|doc_save_file_name|File name for storing swagger doc|"swagger_doc.yml"|
 
 
 ## License
