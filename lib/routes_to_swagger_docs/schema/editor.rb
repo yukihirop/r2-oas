@@ -6,7 +6,7 @@ require 'fileutils'
 require 'shell'
 
 require_relative 'analyzer'
-require_relative '../generator'
+require_relative 'generator'
 
 # Scope Rails
 module RoutesToSwaggerDocs

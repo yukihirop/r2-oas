@@ -1,5 +1,5 @@
-require_relative '../routing/parser'
-require_relative '../schema/v3/openapi_object'
+require_relative '../../routing/parser'
+require_relative '../v3/openapi_object'
 
 module RoutesToSwaggerDocs
   class BaseGenerator

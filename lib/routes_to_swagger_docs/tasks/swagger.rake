@@ -1,4 +1,4 @@
-require_relative '../generator'
+require_relative '../schema/generator'
 require_relative '../schema/editor'
 require_relative '../task_logging'
 load  File.expand_path('../common.rake', __FILE__)
