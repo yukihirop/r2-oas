@@ -8,7 +8,7 @@ namespace :routes do
     desc "Generate Swagger documentation files"
     task :docs => [:common] do
       logger.info "[Routes to Swagger docs] start"
-      generator = RoutesToSwaggerDocs::Schema::Generator.new(unit_paths_file_path: unit_paths_file_path)
+      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, options)
       generator.generate_docs
       logger.info "[Routes to Swagger docs] end"
     end
@@ -17,7 +17,7 @@ namespace :routes do
     task :editor => [:common] do
       logger.info "[Routes to Swagger docs] start"
       Rake::Task["routes:swagger:docs"].invoke
-      editor = RoutesToSwaggerDocs::Schema::Editor.new(unit_paths_file_path: unit_paths_file_path)
+      editor = RoutesToSwaggerDocs::Schema::Editor.new({}, options)
       editor.start
       logger.info "[Routes to Swagger docs] end"
     end
@@ -26,6 +26,10 @@ namespace :routes do
 
     def unit_paths_file_path
       ENV.fetch("UNIT_PATHS_FILE_PATH","")
+    end
+
+    def options
+      { unit_paths_file_path: unit_paths_file_path }
     end
   end
 end

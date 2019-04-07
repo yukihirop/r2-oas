@@ -36,11 +36,11 @@ module RoutesToSwaggerDocs
         logger.info "<Update schema files>"
         @docs.each do |field_name, data|
           result = { "#{field_name}" => data }
-          options = result.deep_merge({unit_paths_file_path: unit_paths_file_path})
+          options = { unit_paths_file_path: unit_paths_file_path }
           
           if field_name == "paths"
             logger.info " [Generate Swagger schema files (paths)] start"
-            PathGenerator.new(options).generate_paths
+            PathGenerator.new(result, options).generate_paths
             logger.info " [Generate Swagger schema files (paths)] end"
           else
             write_path = File.expand_path("#{schema_save_dir_path}/#{field_name}.yml", "./")

@@ -6,9 +6,9 @@ require_relative 'generator/base_generator'
 module RoutesToSwaggerDocs
   module Schema
     class Generator < BaseGenerator
-      def initialize(options = {})
-        super(options)
-        @doc_generator = DocGenerator.new(unit_paths_file_path: unit_paths_file_path)
+      def initialize(schema_data = {}, options = {})
+        super(schema_data, options)
+        @doc_generator = DocGenerator.new(schema_data, unit_paths_file_path: unit_paths_file_path)
       end
       
       def generate_docs

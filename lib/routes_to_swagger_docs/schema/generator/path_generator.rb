@@ -5,9 +5,9 @@ require_relative 'base_generator'
 module RoutesToSwaggerDocs
   module Schema
     class PathGenerator < BaseGenerator
-      def initialize(options)
-        super(options)
-        @paths = options["paths"] || options[:paths]
+      def initialize(schema_data = {}, options = {})
+        super(schema_data, options)
+        @paths = schema_data["paths"] || scehma_data[:paths]
         @glob_schema_paths = create_glob_paths_paths
       end
       
@@ -23,8 +23,8 @@ module RoutesToSwaggerDocs
       
       private
       
-      attr_accessor :paths
       alias :paths_files_paths :schema_files_paths
+      alias :paths_file_do_not_exists? :schema_file_do_not_exists?
       
       def generate_paths_from_schema_fiels
         paths_from_schema_files = paths_files_paths.each_with_object({}) do |path, data|
@@ -84,10 +84,6 @@ module RoutesToSwaggerDocs
       
       def tag_name(data)
         data.values.first["tags"].first
-      end
-      
-      def paths_file_do_not_exists?
-        paths_files_paths.count == 0
       end
       
       def paths_path

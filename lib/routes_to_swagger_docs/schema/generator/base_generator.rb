@@ -5,8 +5,8 @@ require_relative '../base'
 module RoutesToSwaggerDocs
   module Schema
     class BaseGenerator < Base
-      def initialize(options={})
-        super(options)
+      def initialize(schema_data = {}, options = {})
+        super(schema_data, options)
         
         @all_routes = create_all_routes
         @docs = create_docs

@@ -2,7 +2,7 @@
 module RoutesToSwaggerDocs
   module Schema
     class Base
-      def initialize(options = {})
+      def initialize(schema_data = {}, options = {})
         merged_options = RoutesToSwaggerDocs.options.merge(options)
       
         (Configuration::VALID_OPTIONS_KEYS + options.keys).each do |key|

@@ -22,12 +22,7 @@ module RoutesToSwaggerDocs
       SWAGGER_EDITOR_URL         = "http://localhost:81"
       TMP_FILE_NAME              = "edited_schema"
 
-      
       attr_accessor :edited_schema
-      
-      def initialize(options = {})
-        super(options)
-      end
 
       def start
         EM.run do
@@ -48,7 +43,7 @@ module RoutesToSwaggerDocs
           if @browser.exists?
             fetch_edited_schema_from_browser
             puts "\nsave updated schema in tempfile path: #{@tempfile_path}"
-            analyzer = Analyzer.new(edited_schema_file_path: @tempfile_path)
+            analyzer = Analyzer.new({}, edited_schema_file_path: @tempfile_path)
             analyzer.update_schema
           end
 

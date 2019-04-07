@@ -5,8 +5,8 @@ require_relative '../base'
 module RoutesToSwaggerDocs
   module Schema
     class BaseAnalyzer < Base
-      def initialize(options = {})
-        super(options)
+      def initialize(schema_data = {}, options = {})
+        super(schema_data, options)
         @edited_schema = YAML.load_file(edited_schema_file_path) 
       end
 
