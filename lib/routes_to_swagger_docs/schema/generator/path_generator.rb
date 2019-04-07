@@ -7,6 +7,7 @@ module RoutesToSwaggerDocs
     def initialize(options)
       super(options)
       @paths = options["paths"] || options[:paths]
+      @glob_schema_paths = create_glob_paths_paths
     end
 
     def generate_paths
@@ -22,15 +23,16 @@ module RoutesToSwaggerDocs
     private
 
     attr_accessor :paths
+    alias :paths_files_paths :schema_files_paths
 
     def generate_paths_from_schema_fiels
-      paths_from_schema_files = Dir.glob(paths_paths).each_with_object({}) do |path, data|
+      paths_from_schema_files = paths_files_paths.each_with_object({}) do |path, data|
         yaml = YAML.load_file(path)
         data.deep_merge!(yaml)
         full_path = File.expand_path(path, "./")
         logger.info "  Fetch schema file: \t#{full_path}"
       end
-      paths.deep_merge!(paths_from_schema_files["paths"])
+      @paths.deep_merge!(paths_from_schema_files["paths"])
       process_when_generate_paths(paths_override: true)
     end
 
@@ -67,7 +69,7 @@ module RoutesToSwaggerDocs
     end
 
     def normalized_paths
-      paths.each_with_object({}) do |(path_name, data), result|
+      @paths.each_with_object({}) do |(path_name, data), result|
         tag_name = tag_name(data)
         merge_data = { "#{path_name}" => data }
 
@@ -84,15 +86,19 @@ module RoutesToSwaggerDocs
     end
 
     def paths_file_do_not_exists?
-      Dir.glob(paths_paths).count == 0
+      paths_files_paths.count == 0
     end
 
     def paths_path
       "#{schema_save_dir_path}/paths"
     end
 
-    def paths_paths
-      "#{schema_save_dir_path}/paths/**/**.yml"
+    def create_glob_paths_paths
+      if unit_paths_file_path.present?
+        [unit_paths_file_path]
+      else
+        ["#{schema_save_dir_path}/paths/**/**.yml"]
+      end
     end
 
     class Utility

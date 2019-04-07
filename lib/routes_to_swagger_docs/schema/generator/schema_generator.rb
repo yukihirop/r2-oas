@@ -17,12 +17,12 @@ module RoutesToSwaggerDocs
     private
 
     def generate_schemas_from_schema_fiels
-      schemas_from_schema_fiels = Dir.glob(schema_paths).each_with_object({}) do |path, data|
+      schemas_from_schema_fiels = schema_files_paths.each_with_object({}) do |path, data|
         yaml = YAML.load_file(path)
         data.deep_merge!(yaml)
         logger.info " Fetch schema file: \t#{path}"
       end
-      docs.deep_merge!(schemas_from_schema_fiels)
+      @docs.deep_merge!(schemas_from_schema_fiels)
       process_when_generate_schemas(schema_override: true)
     end
 
@@ -33,12 +33,13 @@ module RoutesToSwaggerDocs
 
     def process_when_generate_schemas(schema_override: false)
       logger.info "<Update schema files>"
-      docs.each do |field_name, data|
+      @docs.each do |field_name, data|
         result = { "#{field_name}" => data }
+        options = result.deep_merge({unit_paths_file_path: unit_paths_file_path})
 
         if field_name == "paths"
           logger.info " [Generate Swagger schema files (paths)] start"
-          PathGenerator.new(result).generate_paths
+          PathGenerator.new(options).generate_paths
           logger.info " [Generate Swagger schema files (paths)] end"
         else
           write_path = File.expand_path("#{schema_save_dir_path}/#{field_name}.yml", "./")

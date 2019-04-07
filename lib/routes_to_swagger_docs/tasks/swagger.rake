@@ -8,6 +8,7 @@ namespace :routes do
     desc "Generate Swagger documentation files"
     task :docs => [:common] do
       logger.info "[Routes to Swagger docs] start"
+      generator = RoutesToSwaggerDocs::Generator.new(unit_paths_file_path: unit_paths_file_path)
       generator.generate_docs
       logger.info "[Routes to Swagger docs] end"
     end
@@ -22,8 +23,8 @@ namespace :routes do
 
     private
 
-    def generator
-      RoutesToSwaggerDocs::Generator.new
+    def unit_paths_file_path
+      ENV.fetch("UNIT_PATHS_FILE_PATH","")
     end
   end
 end
