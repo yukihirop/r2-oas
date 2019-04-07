@@ -1,6 +1,7 @@
 require_relative '../../routing/parser'
 require_relative '../v3/openapi_object'
 require_relative '../base'
+require_relative '../squeezer'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -31,14 +32,7 @@ module RoutesToSwaggerDocs
         routes_data = parser.routes_data
         tags_data = parser.tags_data
         
-        docs = Schema::V3::OpenapiObject.new(routes_data, tags_data).to_doc
-        
-        if unit_paths_file_path.present?
-          squeezer = Squeezer.new(docs, unit_paths_file_path)
-          docs = squeezer.only_specify_paths
-        end
-        
-        docs
+        Schema::V3::OpenapiObject.new(routes_data, tags_data).to_doc
       end
       
       def parser
@@ -68,32 +62,6 @@ module RoutesToSwaggerDocs
       
       def doc_save_file_path
         File.expand_path("#{root_dir_path}/#{doc_save_file_name}")
-      end
-      
-      
-      class Squeezer
-        def initialize(docs, unit_paths_file_path)
-          @docs = docs
-          @unit_paths_file_path = unit_paths_file_path
-          @tag_name = create_tag_name
-        end
-        
-        def only_specify_paths
-          except_paths_schema = @docs.except("paths")
-          slice_paths_schema = @docs["paths"].each_with_object({}) do |(path, data_when_path), result|
-            data_when_path.values.each do |data_when_verb|
-              include_tag_name = data_when_verb["tags"].include?(@tag_name)
-              result.deep_merge!({ "#{path}" => data_when_path }) if include_tag_name
-            end
-          end
-          
-          except_paths_schema.deep_merge({ "paths" => slice_paths_schema })
-        end
-        
-        def create_tag_name
-          paths_from_local = YAML.load_file(@unit_paths_file_path)
-          paths_from_local["paths"].values[0].values[0]["tags"][0]
-        end
       end
     end
   end
