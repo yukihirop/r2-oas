@@ -1,3 +1,5 @@
+#frozen_string_literal:true
+
 require 'docker'
 require 'eventmachine'
 require 'watir'
@@ -22,9 +24,9 @@ module RoutesToSwaggerDocs
       attr_accessor :edited_schema
       
       def initialize(options = {})
-        self.merged_options = RoutesToSwaggerDocs.options.merge(options)
+        merged_options = RoutesToSwaggerDocs.options.merge(options)
       
-        Configuration::VALID_OPTIONS_KEYS.each do |key|
+        (Configuration::VALID_OPTIONS_KEYS + options.keys).each do |key|
           send("#{key}=", merged_options[key])
         end
       end
@@ -42,14 +44,14 @@ module RoutesToSwaggerDocs
       private
 
       attr_accessor :container
-      attr_accessor *Configuration::VALID_OPTIONS_KEYS, :merged_options
+      attr_accessor *Configuration::VALID_OPTIONS_KEYS, :unit_paths_file_path
 
       def signal_trap(command)
         Signal.trap(command) do
           if @browser.exists?
             fetch_edited_schema_from_browser
             puts "\nsave updated schema in tempfile path: #{@tempfile_path}"
-            analyzer = Analyzer.new(@tempfile_path)
+            analyzer = Analyzer.new(edited_schema_file_path: @tempfile_path)
             analyzer.update_schema
           end
 
@@ -78,6 +80,7 @@ module RoutesToSwaggerDocs
         @browser ||= Watir::Browser.new
         @browser.goto(SWAGGER_EDITOR_URL)
         if wait_for_loaded
+          schema_doc_from_local = YAML.load_file(doc_save_file_path)
           @browser.driver.local_storage[SWAGGER_EDITOR_STORAGE_KEY] = schema_doc_from_local.to_yaml
           @browser.refresh
         end
@@ -85,15 +88,6 @@ module RoutesToSwaggerDocs
 
       def wait_for_loaded
         Watir::Wait.until { @browser.body.present? }
-      end
-
-      def schema_doc_from_local
-        shell = Shell.new
-        shell.pushd(root_dir_path) do
-          generator = RoutesToSwaggerDocs::Generator.new
-          generator.generate_docs
-        end
-        YAML.load_file(doc_save_file_path)
       end
 
       def container

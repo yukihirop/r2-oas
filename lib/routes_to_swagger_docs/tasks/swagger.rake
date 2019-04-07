@@ -16,7 +16,8 @@ namespace :routes do
     desc "Open Swagger Editor"
     task :editor => [:common] do
       logger.info "[Routes to Swagger docs] start"
-      editor = RoutesToSwaggerDocs::Schema::Editor.new
+      Rake::Task["routes:swagger:docs"].invoke
+      editor = RoutesToSwaggerDocs::Schema::Editor.new(unit_paths_file_path: unit_paths_file_path)
       editor.start
       logger.info "[Routes to Swagger docs] end"
     end

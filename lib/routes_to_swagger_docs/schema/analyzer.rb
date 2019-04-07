@@ -4,9 +4,9 @@ require_relative 'analyzer/path_analyzer'
 module RoutesToSwaggerDocs
   module Schema
     class Analyzer < BaseAnalyzer
-      def initialize(edited_schema_file_path, options = {})
-        super(edited_schema_file_path, options)
-        @path_analyzer = PathAnalyzer.new(edited_schema_file_path, options)
+      def initialize(options = {})
+        super(options)
+        @path_analyzer = PathAnalyzer.new(options)
       end
 
       def update_schema
