@@ -55,14 +55,6 @@ module RoutesToSwaggerDocs
       def schema_files_paths
         Dir.glob(@glob_schema_paths)
       end
-      
-      def schema_save_dir_path
-        File.expand_path("#{root_dir_path}/#{schema_save_dir_name}")
-      end
-      
-      def doc_save_file_path
-        File.expand_path("#{root_dir_path}/#{doc_save_file_name}")
-      end
     end
   end
 end

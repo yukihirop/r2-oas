@@ -17,10 +17,6 @@ module RoutesToSwaggerDocs
       private
 
       attr_accessor :edited_schema_file_path
-
-      def schema_save_dir_path
-        File.expand_path("#{root_dir_path}/#{schema_save_dir_name}")
-      end
     end
   end
 end

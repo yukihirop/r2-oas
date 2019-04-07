@@ -93,10 +93,6 @@ module RoutesToSwaggerDocs
           }
         )
       end
-
-      def doc_save_file_path
-        "#{root_dir_path}/#{doc_save_file_name}"
-      end
     end
   end
 end
