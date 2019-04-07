@@ -1,16 +1,12 @@
 require_relative '../../errors'
+require_relative '../base'
 
 # Scope Rails
 module RoutesToSwaggerDocs
   module Schema
-    class BaseAnalyzer
+    class BaseAnalyzer < Base
       def initialize(options = {})
-        merged_options = RoutesToSwaggerDocs.options.merge(options)
-      
-        (Configuration::VALID_OPTIONS_KEYS + options.keys).each do |key|
-          send("#{key}=", merged_options[key])
-        end
-        
+        super(options)
         @edited_schema = YAML.load_file(edited_schema_file_path) 
       end
 
@@ -20,7 +16,7 @@ module RoutesToSwaggerDocs
 
       private
 
-      attr_accessor *Configuration::VALID_OPTIONS_KEYS, :edited_schema_file_path
+      attr_accessor :edited_schema_file_path
 
       def schema_save_dir_path
         File.expand_path("#{root_dir_path}/#{schema_save_dir_name}")

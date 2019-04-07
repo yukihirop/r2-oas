@@ -9,11 +9,13 @@ require 'shell'
 
 require_relative 'analyzer'
 require_relative 'generator'
+require_relative 'base'
+
 
 # Scope Rails
 module RoutesToSwaggerDocs
   module Schema
-    class Editor
+    class Editor < Base
       SWAGGER_EDITOR_STORAGE_KEY = "swagger-editor-content"
       SWAGGER_EDITOR_IMAGE       = "swaggerapi/swagger-editor"
       SWAGGER_EDITOR_PORT        = "81"
@@ -24,11 +26,7 @@ module RoutesToSwaggerDocs
       attr_accessor :edited_schema
       
       def initialize(options = {})
-        merged_options = RoutesToSwaggerDocs.options.merge(options)
-      
-        (Configuration::VALID_OPTIONS_KEYS + options.keys).each do |key|
-          send("#{key}=", merged_options[key])
-        end
+        super(options)
       end
 
       def start
@@ -43,8 +41,7 @@ module RoutesToSwaggerDocs
 
       private
 
-      attr_accessor :container
-      attr_accessor *Configuration::VALID_OPTIONS_KEYS, :unit_paths_file_path
+      attr_accessor :container, :unit_paths_file_path
 
       def signal_trap(command)
         Signal.trap(command) do
