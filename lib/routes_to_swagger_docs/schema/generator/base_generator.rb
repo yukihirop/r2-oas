@@ -31,8 +31,9 @@ module RoutesToSwaggerDocs
       def create_docs
         routes_data = parser.routes_data
         tags_data = parser.tags_data
+        schemas_data = parser.schemas_data
         
-        Schema::V3::OpenapiObject.new(routes_data, tags_data).to_doc
+        Schema::V3::OpenapiObject.new(routes_data, tags_data, schemas_data).to_doc
       end
       
       def parser
