@@ -48,17 +48,7 @@ module RoutesToSwaggerDocs
           result = { "paths" => data }
           
           util = Utility.new(self, tag_name)
-          tag_name_path = util.tag_name_path
-          tag_name_only = util.tag_name_only
-          namespace_path = util.namespace_path
-          
-          save_path = ""
-          if util.do_not_exist_namespace?
-            save_path = File.expand_path("#{tag_name_path}.yml", "./")
-          else
-            save_path = File.expand_path("#{namespace_path}/#{tag_name_only}.yml", "./")
-            FileUtils.mkdir_p(namespace_path) unless FileTest.exists?(namespace_path)
-          end
+          save_path = util.save_path
           File.write(save_path, result.to_yaml)
           
           if paths_override
@@ -71,7 +61,7 @@ module RoutesToSwaggerDocs
       
       def normalized_paths
         @paths.each_with_object({}) do |(path_name, data), result|
-          tag_name = tag_name(data)
+          tag_name = data.values.first["tags"].first
           merge_data = { "#{path_name}" => data }
           
           if result.has_key?(tag_name)
@@ -80,10 +70,6 @@ module RoutesToSwaggerDocs
             result[tag_name] = merge_data
           end
         end
-      end
-      
-      def tag_name(data)
-        data.values.first["tags"].first
       end
       
       def paths_path
@@ -106,13 +92,25 @@ module RoutesToSwaggerDocs
           @path_generator = path_generator
           @tag_name = tag_name
         end
-        
+
+        def save_path
+          FileUtils.mkdir_p(namespace_path) unless FileTest.exists?(namespace_path)
+
+          if do_not_exist_namespace?
+            File.expand_path("#{tag_name_path}.yml", "./")
+          else
+            File.expand_path("#{namespace_path}/#{tag_name_only}.yml", "./")
+          end
+        end
+
+        private
+
         def tag_name_only
-          tag_name.split("/").last
+          @tag_name.split("/").last
         end
         
         def tag_name_path
-          "#{paths_path}/#{tag_name}"
+          "#{paths_path}/#{@tag_name}"
         end
         
         def namespace_path
@@ -120,18 +118,14 @@ module RoutesToSwaggerDocs
         end
         
         def do_not_exist_namespace?
-          tag_name.split("/").count == 1
+          @tag_name.split("/").count == 1
         end
         
         def namespace
-          tag_arr = tag_name.split("/").reverse
+          tag_arr = @tag_name.split("/").reverse
           tag_arr.shift
           tag_arr.reverse.join("/")
         end
-        
-        private
-        
-        attr_accessor :tag_name
       end
     end
   end
