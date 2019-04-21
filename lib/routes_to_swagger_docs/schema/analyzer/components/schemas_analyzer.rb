@@ -12,12 +12,8 @@ module RoutesToSwaggerDocs
           edited_schema_names.each do |schema_name|
             schema_schema = SchemaSchema.new(edited_components_schemas_schema, schema_name, schema_save_dir_path)
             full_save_file_path = schema_schema.full_file_path
-
-            unit_schemas_from_local = YAML.load_file(full_save_file_path)
             unit_schemas_only_specify_schema_names = schema_schema.only_specify_schema_names
-            result = unit_schemas_from_local.deep_merge(unit_schemas_only_specify_schema_names)
-
-            File.write(full_save_file_path, result.to_yaml)
+            File.write(full_save_file_path, unit_schemas_only_specify_schema_names.to_yaml)
           end
         end
 
