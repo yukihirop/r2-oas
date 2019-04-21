@@ -47,7 +47,7 @@ module RoutesToSwaggerDocs
       def create_glob_schema_paths
         if unit_paths_file_path.present?
           exclude_paths_regexp_paths = "#{schema_save_dir_path}/**.yml"
-          [unit_paths_file_path, exclude_paths_regexp_paths]
+          [unit_paths_file_path, unit_components_schemas_file_path, exclude_paths_regexp_paths]
         else
           ["#{schema_save_dir_path}/**/**.yml"]
         end
@@ -55,6 +55,13 @@ module RoutesToSwaggerDocs
       
       def schema_files_paths
         Dir.glob(@glob_schema_paths)
+      end
+
+      def unit_components_schemas_file_path
+        paths_path = "#{schema_save_dir_path}/paths"
+        components_schemas_path = "#{schema_save_dir_path}/components/schemas"
+        abs_unit_paths_file_path = File.expand_path(unit_paths_file_path)
+        abs_unit_paths_file_path.gsub(paths_path, components_schemas_path)
       end
     end
   end

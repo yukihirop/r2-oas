@@ -1,6 +1,7 @@
 require_relative 'analyzer/base_analyzer'
 require_relative 'analyzer/path_analyzer'
 require_relative 'analyzer/tag_analyzer'
+require_relative 'analyzer/components_analyzer'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -9,15 +10,18 @@ module RoutesToSwaggerDocs
         super(schema_data, options)
         @path_analyzer = PathAnalyzer.new(schema_data, options)
         @tag_analyzer = TagAnalyzer.new(schema_data, options)
+        @components_analyzer = ComponentsAnalyzer.new(schema_data, options)
       end
 
       def update_schema
-        @edited_schema.each do |schema_name, value|
+        @edited_schema.each do |schema_name, _|
           case schema_name
           when "paths"
             @path_analyzer.update_schema
           when "tags"
             @tag_analyzer.update_schema
+          when "components"
+            @components_analyzer.update_schema
           else
             full_save_file_path = "#{schema_save_dir_path}/#{schema_name}.yml"
             schema_from_local = YAML.load_file(full_save_file_path)
