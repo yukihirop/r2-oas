@@ -1,6 +1,7 @@
 require 'fileutils'
 require_relative 'base_generator'
 require_relative 'path_generator'
+require_relative 'components_generator'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -37,11 +38,16 @@ module RoutesToSwaggerDocs
         @docs.each do |field_name, data|
           result = { "#{field_name}" => data }
           options = { unit_paths_file_path: unit_paths_file_path }
-          
-          if field_name == "paths"
+
+          case field_name
+          when "paths"
             logger.info " [Generate Swagger schema files (paths)] start"
             PathGenerator.new(result, options).generate_paths
             logger.info " [Generate Swagger schema files (paths)] end"
+          when "components"
+            logger.info " [Generate Swagger schema files (components)] start"
+            ComponentsGenerator.new(result, options).generate_components
+            logger.info " [Generate Swagger schema files (components)] end"
           else
             write_path = File.expand_path("#{schema_save_dir_path}/#{field_name}.yml", "./")
             File.write(write_path, result.to_yaml)

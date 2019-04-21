@@ -30,6 +30,16 @@ module RoutesToSwaggerDocs
               "responses" => {
                 "default" => {
                   "description" => ""
+                },
+                "200" => {
+                  "description" => "#{tag_name} description",
+                  "content" => {
+                    "application/json" => {
+                      "schema" => {
+                        "$ref" => "#/components/schemas/#{schema_name}"
+                      }
+                    }
+                  }
                 }
               },
               "deprecated" => false
@@ -39,6 +49,10 @@ module RoutesToSwaggerDocs
         end
   
         private
+
+        def schema_name
+          @tag_name.split("/").map(&:camelcase).join("_")
+        end
 
         def attach_application(format_name)
           if format_name.blank?

@@ -31,6 +31,12 @@ module RoutesToSwaggerDocs
         end
         data
       end
+
+      def schemas_data
+        tags_data.map do |tag_data|
+           tag_data.split("/").map(&:camelcase).join("_")
+        end
+      end
   
       private
 
