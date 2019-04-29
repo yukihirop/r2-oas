@@ -60,8 +60,12 @@ module RoutesToSwaggerDocs
       def unit_components_schemas_file_path
         paths_path = "#{schema_save_dir_path}/paths"
         components_schemas_path = "#{schema_save_dir_path}/components/schemas"
-        abs_unit_paths_file_path = File.expand_path(unit_paths_file_path)
-        abs_unit_paths_file_path.gsub(paths_path, components_schemas_path)
+        if unit_paths_file_path.blank?
+          nil
+        else
+          abs_unit_paths_file_path = File.expand_path(unit_paths_file_path)
+          abs_unit_paths_file_path.gsub(paths_path, components_schemas_path)
+        end
       end
     end
   end
