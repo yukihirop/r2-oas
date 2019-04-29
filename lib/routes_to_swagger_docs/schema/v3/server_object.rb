@@ -6,8 +6,8 @@ module RoutesToSwaggerDocs
       class ServerObject < BaseObject
         def to_doc
           {
-            "url" => "https://example.com",
-            "description" => "example",
+            "url" => "http://localhost:3000",
+            "description" => "localhost",
             # Do not Server Variable Object
           }
         end
