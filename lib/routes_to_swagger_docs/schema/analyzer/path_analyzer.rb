@@ -20,7 +20,7 @@ module RoutesToSwaggerDocs
 
           dirs = "paths"
           filename_with_namespace = tag_name
-          save_path = save_path_for(dirs, filename_with_namespace)
+          save_path = save_path_for(filename_with_namespace, dirs)
           File.write(save_path, unit_paths_only_specify_tags.to_yaml)
         end
       end

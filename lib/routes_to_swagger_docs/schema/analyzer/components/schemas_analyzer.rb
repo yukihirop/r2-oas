@@ -15,7 +15,7 @@ module RoutesToSwaggerDocs
 
             dirs = "components/schemas"
             filename_with_namespace = schema_name.split('_').map(&:underscore).join('/')
-            save_path = save_path_for(dirs, filename_with_namespace)
+            save_path = save_path_for(filename_with_namespace, dirs)
             File.write(save_path, unit_schemas_only_specify_schema_names.to_yaml)
           end
         end
