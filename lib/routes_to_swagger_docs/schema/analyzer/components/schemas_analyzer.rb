@@ -36,16 +36,6 @@ module RoutesToSwaggerDocs
             end
             { "components" => { "schemas" => unit_components_schemas } }
           end
-
-          def full_file_path
-            File.expand_path("#{@schema_save_dir_path}/components/schemas/#{schema_name_with_namespace}.yml")
-          end
-
-          private
-
-          def schema_name_with_namespace
-            @schema_name.split('_').map(&:underscore).join('/')
-          end
         end
       end
     end

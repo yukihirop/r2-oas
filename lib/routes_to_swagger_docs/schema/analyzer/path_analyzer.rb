@@ -25,10 +25,6 @@ module RoutesToSwaggerDocs
         end
       end
 
-      def paths_paths
-        "#{schema_save_dir_path}/paths/**/**.yml"
-      end
-
       private
 
       class PathSchema
@@ -46,10 +42,6 @@ module RoutesToSwaggerDocs
             end
           end
           { "paths" => unit_paths }
-        end
-
-        def full_file_path
-          File.expand_path("#{@schema_save_dir_path}/paths/#{@tag_name}.yml")
         end
       end
     end

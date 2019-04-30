@@ -40,7 +40,6 @@ module RoutesToSwaggerDocs
         end
 
         def generate_components_schemas_from_routes_data
-          FileUtils.mkdir_p(components_schemas_path) unless FileTest.exists?(components_schemas_path)
           process_when_generate_components_schemas
         end
 
@@ -70,59 +69,11 @@ module RoutesToSwaggerDocs
           @components_schemas
         end
       
-        def components_schemas_path
-          "#{schema_save_dir_path}/components/schemas"
-        end
-      
         def create_glob_components_schemas_paths
           if unit_components_schemas_file_path.present?
             [unit_components_schemas_file_path]
           else
             ["#{schema_save_dir_path}/components/schemas/**/**.yml"]
-          end
-        end
-
-        class Utility
-          extend Forwardable
-          def_delegators :@components_schema_generator, :components_schemas_path
-          
-          def initialize(components_schema_generator, schema_name)
-            @components_schema_generator = components_schema_generator
-            @schema_name = schema_name
-          end
-
-          def save_path
-            FileUtils.mkdir_p(namespace_path) unless FileTest.exists?(namespace_path)
-            
-            if do_not_exist_namespace?
-              File.expand_path("#{components_schema_path}.yml", "./")
-            else
-              File.expand_path("#{namespace_path}/#{schema_name_without_namespace}.yml", "./")
-            end
-          end
-
-          private
-          
-          def components_schema_path
-            "#{components_schemas_path}/#{schema_name_without_namespace}"
-          end
-          
-          def namespace_path
-            "#{components_schemas_path}/#{namespace}"
-          end
-          
-          def do_not_exist_namespace?
-            @schema_name.split("_").count == 1
-          end
-
-          def schema_name_without_namespace
-            @schema_name.split("_").last.downcase
-          end
-          
-          def namespace
-            data = @schema_name.split("_").reverse.map(&:underscore)
-            data.shift
-            data.reverse.join("/")
           end
         end
       end

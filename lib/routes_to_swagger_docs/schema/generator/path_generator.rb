@@ -38,7 +38,6 @@ module RoutesToSwaggerDocs
       end
       
       def generate_paths_from_routes_data
-        FileUtils.mkdir_p(paths_path) unless FileTest.exists?(paths_path)
         process_when_generate_paths
       end
       
@@ -73,59 +72,11 @@ module RoutesToSwaggerDocs
         end
       end
       
-      def paths_path
-        "#{schema_save_dir_path}/paths"
-      end
-      
       def create_glob_paths_paths
         if unit_paths_file_path.present?
           [unit_paths_file_path]
         else
           ["#{schema_save_dir_path}/paths/**/**.yml"]
-        end
-      end
-      
-      class Utility
-        extend Forwardable
-        def_delegators :@path_generator, :paths_path
-        
-        def initialize(path_generator, tag_name)
-          @path_generator = path_generator
-          @tag_name = tag_name
-        end
-
-        def save_path
-          FileUtils.mkdir_p(namespace_path) unless FileTest.exists?(namespace_path)
-
-          if do_not_exist_namespace?
-            File.expand_path("#{tag_name_path}.yml", "./")
-          else
-            File.expand_path("#{namespace_path}/#{tag_name_only}.yml", "./")
-          end
-        end
-
-        private
-
-        def tag_name_only
-          @tag_name.split("/").last
-        end
-        
-        def tag_name_path
-          "#{paths_path}/#{@tag_name}"
-        end
-        
-        def namespace_path
-          "#{paths_path}/#{namespace}"
-        end
-        
-        def do_not_exist_namespace?
-          @tag_name.split("/").count == 1
-        end
-        
-        def namespace
-          tag_arr = @tag_name.split("/").reverse
-          tag_arr.shift
-          tag_arr.reverse.join("/")
         end
       end
     end
