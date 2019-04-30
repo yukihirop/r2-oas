@@ -41,7 +41,7 @@ module RoutesToSwaggerDocs
           private
 
           def schema_name_with_namespace
-            @schema_name.split('_').map(&:downcase).join('/')
+            @schema_name.split('_').map(&:underscore).join('/')
           end
         end
       end
