@@ -29,7 +29,6 @@ module RoutesToSwaggerDocs
       end
       
       def generate_schemas_from_routes_data
-        FileUtils.mkdir_p(schema_save_dir_path) unless FileTest.exists?(schema_save_dir_path)
         process_when_generate_schemas
       end
       
@@ -49,12 +48,14 @@ module RoutesToSwaggerDocs
             ComponentsGenerator.new(result, options).generate_components
             logger.info " [Generate Swagger schema files (components)] end"
           else
-            write_path = File.expand_path("#{schema_save_dir_path}/#{field_name}.yml", "./")
-            File.write(write_path, result.to_yaml)
+            filename_with_namespace = field_name
+            save_path = save_path_for(filename_with_namespace)
+            File.write(save_path, result.to_yaml)
+
             if schema_override
-              logger.info " Merge schema file: \t#{write_path}"
+              logger.info " Merge schema file: \t#{save_path}"
             else
-              logger.info " Write schema file: \t#{write_path}"
+              logger.info " Write schema file: \t#{save_path}"
             end
           end
         end

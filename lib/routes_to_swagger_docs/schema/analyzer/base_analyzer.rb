@@ -7,7 +7,7 @@ module RoutesToSwaggerDocs
     class BaseAnalyzer < Base
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
-        @edited_schema = YAML.load_file(edited_schema_file_path) 
+        @edited_schema = YAML.load_file(edited_schema_file_path)
       end
 
       def update_schema

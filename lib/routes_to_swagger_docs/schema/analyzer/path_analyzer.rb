@@ -16,14 +16,13 @@ module RoutesToSwaggerDocs
 
         edited_schema_tag_names.each do |tag_name|
           path_schema = PathSchema.new(edited_paths_schema, tag_name, schema_save_dir_path)
-          full_save_file_path = path_schema.full_file_path
           unit_paths_only_specify_tags = path_schema.only_specify_tags
-          File.write(full_save_file_path, unit_paths_only_specify_tags.to_yaml)
-        end
-      end
 
-      def paths_paths
-        "#{schema_save_dir_path}/paths/**/**.yml"
+          dirs = "paths"
+          filename_with_namespace = tag_name
+          save_path = save_path_for(filename_with_namespace, dirs)
+          File.write(save_path, unit_paths_only_specify_tags.to_yaml)
+        end
       end
 
       private
@@ -43,10 +42,6 @@ module RoutesToSwaggerDocs
             end
           end
           { "paths" => unit_paths }
-        end
-
-        def full_file_path
-          File.expand_path("#{@schema_save_dir_path}/paths/#{@tag_name}.yml")
         end
       end
     end
