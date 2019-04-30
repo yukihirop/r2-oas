@@ -1,9 +1,12 @@
+require_relative 'base'
+
 module RoutesToSwaggerDocs
   module Routing
-    class Adjustor
+    class Adjustor < Base
       VALID_KEYS = %i(route name verb path reqs regexp)
 
       def initialize(route_data)
+        super
         valid_route_data?(route_data)
         @route_data = route_data
         @route = route_data[:route]
@@ -45,11 +48,19 @@ module RoutesToSwaggerDocs
       # e.x.) "tasks#index" => "task"
       # e.x.) "RailsAdmin::Engine" => "rails_amin/engine"
       def create_tag_name
+        tag_name = nil
+
         if route.engine?
-          route_data[:reqs].gsub("::","/").underscore
+          tag_name = route_data[:reqs].gsub("::","/").underscore
         else
-          route_data[:reqs].split("#").first.singularize
+          tag_name = route_data[:reqs].split("#").first.singularize
         end
+
+        unless use_tag_namespace
+          tag_name = tag_name.split("/").last
+        end
+
+        tag_name
       end
 
       # e.x.) "tasks#index { :format => ":json" }"

@@ -10,6 +10,7 @@ module RoutesToSwaggerDocs
         SUPPORT_FIELD_NAME = %w(get put post delete patch)
     
         def initialize(route_data)
+          super
           @route_data  = route_data
           @verb        = route_data[:verb]
           @tag_name    = create_tag_name
@@ -54,7 +55,11 @@ module RoutesToSwaggerDocs
         end
 
         def create_schema_name
-          create_tag_name.split("/").map(&:camelcase).join("_")
+          if use_tag_namespace
+            @route_data[:tag_name].split("/").map(&:camelcase).join("_")            
+          else
+            @route_data[:tag_name].split("/").last.camelcase
+          end
         end
 
         def create_format_name

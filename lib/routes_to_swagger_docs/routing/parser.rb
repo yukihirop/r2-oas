@@ -1,4 +1,5 @@
 require_relative 'adjustor'
+require_relative 'base'
 
 module RoutesToSwaggerDocs
   module Routing
