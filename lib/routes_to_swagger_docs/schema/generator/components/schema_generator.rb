@@ -51,10 +51,11 @@ module RoutesToSwaggerDocs
               "components" => {
                 "schemas" => { "#{schema_name}" => data }
               }
-            } 
-            
-            util = Utility.new(self, schema_name)
-            save_path = util.save_path
+            }
+
+            dirs = "components/schemas"
+            filename_with_namespace = schema_name.split('_').map(&:underscore).join('/')
+            save_path = save_path_for(dirs, filename_with_namespace)
             File.write(save_path, result.to_yaml)
             
             if components_schemas_override

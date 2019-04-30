@@ -46,9 +46,10 @@ module RoutesToSwaggerDocs
         logger.info " <Update schema files (paths)>"
         normalized_paths.each do |tag_name, data|
           result = { "paths" => data }
-          
-          util = Utility.new(self, tag_name)
-          save_path = util.save_path
+
+          dirs = "paths"
+          filename_with_namespace = tag_name
+          save_path = save_path_for(dirs, filename_with_namespace)
           File.write(save_path, result.to_yaml)
           
           if paths_override
