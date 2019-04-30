@@ -8,9 +8,6 @@ module RoutesToSwaggerDocs
     class BaseGenerator < Base
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
-        
-        @all_routes = create_all_routes
-        @docs = create_docs
         @glob_schema_paths = create_glob_schema_paths
       end
       
@@ -22,22 +19,21 @@ module RoutesToSwaggerDocs
         ::Rails.logger
       end
       
-      def create_all_routes
-        ::Rails.application.reload_routes!
-        ::Rails.application.routes.routes
-      end
-      
       # Scope Rails
       def create_docs
+        all_routes = create_all_routes
+        parser = Routing::Parser.new(all_routes)
+
         routes_data = parser.routes_data
         tags_data = parser.tags_data
         schemas_data = parser.schemas_data
         
         Schema::V3::OpenapiObject.new(routes_data, tags_data, schemas_data).to_doc
       end
-      
-      def parser
-        @parser ||= Routing::Parser.new(@all_routes)
+
+      def create_all_routes
+        ::Rails.application.reload_routes!
+        ::Rails.application.routes.routes
       end
       
       def schema_file_do_not_exists?

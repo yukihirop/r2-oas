@@ -6,6 +6,11 @@ require_relative 'components_generator'
 module RoutesToSwaggerDocs
   module Schema
     class SchemaGenerator < BaseGenerator
+      def initialize(schema_data = {}, options = {})
+        super(schema_data, options)
+        @docs = create_docs
+      end
+
       def generate_schemas
         if force_update_schema || schema_file_do_not_exists?
           logger.info "<From routes data>"
