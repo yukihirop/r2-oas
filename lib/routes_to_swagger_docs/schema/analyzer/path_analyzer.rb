@@ -15,8 +15,8 @@ module RoutesToSwaggerDocs
         end.uniq
 
         edited_schema_tag_names.each do |tag_name|
-          path_schema = PathSchema.new(edited_paths_schema, tag_name, schema_save_dir_path)
-          unit_paths_only_specify_tags = path_schema.only_specify_tags
+          filter = Filter.new(edited_paths_schema, tag_name)
+          unit_paths_only_specify_tags = filter.only_specify_tags
 
           dirs = "paths"
           filename_with_namespace = tag_name
@@ -27,11 +27,10 @@ module RoutesToSwaggerDocs
 
       private
 
-      class PathSchema
-        def initialize(paths_schema, tag_name, schema_save_dir_path)
+      class Filter
+        def initialize(paths_schema, tag_name)
           @paths_schema = paths_schema
           @tag_name = tag_name
-          @schema_save_dir_path = schema_save_dir_path
         end
 
         def only_specify_tags

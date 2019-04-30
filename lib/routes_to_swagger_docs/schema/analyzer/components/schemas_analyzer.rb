@@ -10,8 +10,8 @@ module RoutesToSwaggerDocs
           edited_schema_names = edited_components_schemas_schema.keys.uniq
 
           edited_schema_names.each do |schema_name|
-            schema_schema = SchemaSchema.new(edited_components_schemas_schema, schema_name, schema_save_dir_path)
-            unit_schemas_only_specify_schema_names = schema_schema.only_specify_schema_names
+            filter = Filter.new(edited_components_schemas_schema, schema_name)
+            unit_schemas_only_specify_schema_names = filter.only_specify_schema_names
 
             dirs = "components/schemas"
             filename_with_namespace = schema_name.split('_').map(&:underscore).join('/')
@@ -22,11 +22,10 @@ module RoutesToSwaggerDocs
 
         private
 
-        class SchemaSchema
-          def initialize(components_schemas_schema, schema_name, schema_save_dir_path)
+        class Filter
+          def initialize(components_schemas_schema, schema_name)
             @components_schemas_schema = components_schemas_schema
             @schema_name = schema_name
-            @schema_save_dir_path = schema_save_dir_path
           end
 
           def only_specify_schema_names
