@@ -11,8 +11,8 @@ module RoutesToSwaggerDocs
     module V3
       class OpenapiObject < BaseObject
         def initialize(routes_data, tags_data, schemas_data)
-          @routes_data = routes_data
-          @tags_data = tags_data
+          @routes_data  = routes_data
+          @tags_data    = tags_data
           @schemas_data = schemas_data
         end
 
@@ -30,20 +30,18 @@ module RoutesToSwaggerDocs
 
         private
 
-        attr_accessor :routes_data, :tags_data
-
         def info_doc
           InfoObject.new.to_doc
         end
 
         def tags_doc
-          tags_data.each_with_object([]) do |tag_name, result|
+          @tags_data.each_with_object([]) do |tag_name, result|
             result.push TagObject.new(tag_name).to_doc
           end
         end
 
         def paths_doc
-          PathsObject.new(routes_data).to_doc
+          PathsObject.new(@routes_data).to_doc
         end
 
         def external_docs_doc

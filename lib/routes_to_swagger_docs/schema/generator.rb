@@ -8,7 +8,7 @@ module RoutesToSwaggerDocs
     class Generator < BaseGenerator
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
-        @doc_generator = DocGenerator.new(schema_data, unit_paths_file_path: unit_paths_file_path)
+        @doc_generator = DocGenerator.new(schema_data, options)
       end
       
       def generate_docs

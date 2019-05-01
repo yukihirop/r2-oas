@@ -37,6 +37,8 @@ $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exe
 - [How to generate docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
 - [How to start swagger editor](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
 - [How to start swagger ui](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
+- [How to use tag namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
+- [How to use schema namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
 
 ## Support Rails Version
 
@@ -59,16 +61,19 @@ we explain the options that can be set.
 
 |option|description|default|
 |------|-----------|---|
-|root_dir_path|Root directory for storing products.|"./swagger_docs"
-|schema_save_dir_name|Directory name for storing swagger schemas|"shcemas"|
-|doc_save_file_name|File name for storing swagger doc|"swagger_doc.yml"|
+|root_dir_path|Root directory for storing products.| `"./swagger_docs"`
+|schema_save_dir_name|Directory name for storing swagger schemas|`"shcemas"`|
+|doc_save_file_name|File name for storing swagger doc|`"swagger_doc.yml"`|
+|force_update_schema|Force update schema from routes data|`false`|
+|use_tag_namespace|Use namespace for tag name|`true`|
+|use_schema_namespace|Use namespace for schema name|`true`|
 
 ## Environment variables
 
 We explain the environment variables that can be set.
 
-
-
+|variable|description|default|
+|UNIT_PATHS_FILE_PATH|Specify one schema path|`""`|
 
 ## License
 

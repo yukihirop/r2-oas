@@ -8,35 +8,35 @@ module RoutesToSwaggerDocs
     module V3
       class PathItemObject < BaseObject
         SUPPORT_FIELD_NAME = %w(get put post delete patch)
-  
-        attr_accessor :verb, :tag_name, :format_name
-  
+    
         def initialize(route_data)
-          @route_data = route_data
-          @verb = route_data[:verb]
-          @tag_name = route_data[:tag_name]
-          @format_name = attach_application route_data[:format_name]
-          support_field_name?(verb)
+          super
+          @route_data  = route_data
+          @verb        = route_data[:verb]
+          @tag_name    = route_data[:tag_name]
+          @schema_name = route_data[:schema_name]
+          @format_name = create_format_name
+          support_field_name?
         end
   
         def to_doc
           schema = {
             # Operation Object (Support Filed Type is String)
-            "#{verb}" => {
-              "tags" => ["#{tag_name}"],
-              "summary" => "#{verb} summary",
-              "description" => "#{verb} description",
+            "#{@verb}" => {
+              "tags" => ["#{@tag_name}"],
+              "summary" => "#{@verb} summary",
+              "description" => "#{@verb} description",
               # Response Object
               "responses" => {
                 "default" => {
                   "description" => ""
                 },
                 "200" => {
-                  "description" => "#{tag_name} description",
+                  "description" => "#{@tag_name} description",
                   "content" => {
                     "application/json" => {
                       "schema" => {
-                        "$ref" => "#/components/schemas/#{schema_name}"
+                        "$ref" => "#/components/schemas/#{@schema_name}"
                       }
                     }
                   }
@@ -50,11 +50,8 @@ module RoutesToSwaggerDocs
   
         private
 
-        def schema_name
-          @tag_name.split("/").map(&:camelcase).join("_")
-        end
-
-        def attach_application(format_name)
+        def create_format_name
+          format_name = @route_data[:format_name]
           if format_name.blank?
             ""
           else
@@ -63,21 +60,21 @@ module RoutesToSwaggerDocs
         end
 
         def attach_media_type(schema)
-          return schema if format_name.blank?
+          return schema if @format_name.blank?
           merge_schema = {
             "200" => {
               "description" => "responses description",
               "content" => {
-                "#{format_name}" => {}
+                "#{@format_name}" => {}
               }
             }
           }
-          schema["#{verb}"]["responses"].deep_merge!(merge_schema)
+          schema["#{@verb}"]["responses"].deep_merge!(merge_schema)
           schema
         end
         
-        def support_field_name?(field_name)
-          raise RuntimeError,  "Invalid filed name #{field_name}" unless SUPPORT_FIELD_NAME.include?(field_name)
+        def support_field_name?
+          raise RuntimeError,  "Invalid filed name #{field_name}" unless SUPPORT_FIELD_NAME.include?(@verb)
         end
       end
     end
