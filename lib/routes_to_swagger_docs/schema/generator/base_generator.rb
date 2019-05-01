@@ -46,7 +46,7 @@ module RoutesToSwaggerDocs
       def create_glob_schema_paths
         if unit_paths_file_path.present?
           exclude_paths_regexp_paths = "#{schema_save_dir_path}/**.yml"
-          [unit_paths_file_path, unit_components_schemas_file_path, exclude_paths_regexp_paths]
+          [unit_paths_file_path, exclude_paths_regexp_paths] + components_schemas_file_paths
         else
           ["#{schema_save_dir_path}/**/**.yml"]
         end
@@ -56,7 +56,7 @@ module RoutesToSwaggerDocs
         Dir.glob(@glob_schema_paths)
       end
 
-      def unit_components_schemas_file_path
+      def components_schemas_file_paths
         return nil if unit_paths_file_path.blank?
         yaml = YAML.load_file(unit_paths_file_path)
         
@@ -65,11 +65,12 @@ module RoutesToSwaggerDocs
           schema_paths.push(result)
         end
 
-        schema_data = schema_paths.uniq.last.split("/").last
-        schema_name_with_namespace = schema_data.gsub("_","/").downcase
-        unit_schema_path = "#{schema_save_dir_path}/components/schemas/#{schema_name_with_namespace}.yml"
-
-        File.expand_path(unit_schema_path)
+        schema_data = schema_paths.uniq.map{ |schema_path| schema_path.split("/").last }
+        schema_data.each_with_object([]) do |schema_datum, result|
+          schema_name_with_namespace = schema_datum.gsub("_", "/").downcase
+          unit_schema_path = "#{schema_save_dir_path}/components/schemas/#{schema_name_with_namespace}.yml"
+          result.push(File.expand_path(unit_schema_path))
+        end
       end
     end
   end
