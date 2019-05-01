@@ -1,4 +1,4 @@
-## Use Tag Namespace (default)
+## Use Schema Namespace (default)
 
 ```ruby
 
@@ -10,8 +10,8 @@ RoutesToSwaggerDocs.configure do |config|
    config.schema_save_dir_name = "shemas"
    config.doc_save_file_name = "swagger_doc.yml"
    # default
-   config.use_tag_namespace = true   # write here
-   config.use_schema_namespace = true
+   config.use_tag_namespace = true
+   config.use_schema_namespace = true # write here
  end
 ```
 
@@ -132,8 +132,8 @@ RoutesToSwaggerDocs.configure do |config|
    config.root_dir_path = "./swagger_docs"
    config.schema_save_dir_name = "shemas"
    config.doc_save_file_name = "swagger_doc.yml"
-   config.use_tag_namespace = false # write here
-   config.use_schema_namespace = true
+   config.use_tag_namespace = true
+   config.use_schema_namespace = false # write here
 end
 ```
 
@@ -141,7 +141,7 @@ end
 $ bundle exec rake routes:swagger:docs
 ```
 
-<img alt="swagger_ui" src="https://user-images.githubusercontent.com/11146767/57007590-bdc5f380-6c24-11e9-9aa4-85f2fe97e463.png" width="546">
+<img alt="swagger_ui" src="https://user-images.githubusercontent.com/11146767/57007768-134ed000-6c26-11e9-9b4e-60f58c78221e.png" width="546">
 
 Generate like this:
 
@@ -150,24 +150,24 @@ swagger_docs
 ├── schema
 │   ├── components
 │   │   └── schemas
-│   │       ├── api
-│   │       │   ├── v1
-│   │       │   │   ├── post.yml
-│   │       │   │   └── task.yml
-│   │       │   └── v2
-│   │       │       └── post.yml
-│   │       ├── rails_admin
-│   │       │   ├── engine.yml
-│   │       │   └── main.yml
+│   │       ├── engine.yml
+│   │       ├── main.yml
+│   │       ├── post.yml
 │   │       ├── task.yml
 │   │       └── user.yml
 │   ├── externalDocs.yml
 │   ├── info.yml
 │   ├── openapi.yml
 │   ├── paths
-│   │   ├── engine.yml
-│   │   ├── main.yml
-│   │   ├── post.yml
+│   │   ├── api
+│   │   │   ├── v1
+│   │   │   │   ├── post.yml
+│   │   │   │   └── task.yml
+│   │   │   └── v2
+│   │   │       └── post.yml
+│   │   ├── rails_admin
+│   │   │   ├── engine.yml
+│   │   │   └── main.yml
 │   │   ├── task.yml
 │   │   └── user.yml
 │   ├── servers.yml

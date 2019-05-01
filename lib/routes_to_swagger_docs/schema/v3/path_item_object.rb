@@ -13,8 +13,8 @@ module RoutesToSwaggerDocs
           super
           @route_data  = route_data
           @verb        = route_data[:verb]
-          @tag_name    = create_tag_name
-          @schema_name = create_schema_name
+          @tag_name    = route_data[:tag_name]
+          @schema_name = route_data[:schema_name]
           @format_name = create_format_name
           support_field_name?
         end
@@ -49,18 +49,6 @@ module RoutesToSwaggerDocs
         end
   
         private
-
-        def create_tag_name
-          @route_data[:tag_name]
-        end
-
-        def create_schema_name
-          if use_tag_namespace
-            @route_data[:tag_name].split("/").map(&:camelcase).join("_")            
-          else
-            @route_data[:tag_name].split("/").last.camelcase
-          end
-        end
 
         def create_format_name
           format_name = @route_data[:format_name]

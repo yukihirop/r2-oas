@@ -8,13 +8,15 @@ module RoutesToSwaggerDocs
     DEFAULT_DOC_SAVE_FILE_NAME = "swagger_doc.yml"
     DEFAULT_FORCE_UPDATE_SCHEMA = false
     DEFAULT_USE_TAG_NAMESPACE = true
+    DEFAULT_USE_SCHEMA_NAMESPACE = true
 
     VALID_OPTIONS_KEYS = [
       :root_dir_path,
       :schema_save_dir_name,
       :doc_save_file_name,
       :force_update_schema,
-      :use_tag_namespace
+      :use_tag_namespace,
+      :use_schema_namespace
     ]
 
     attr_accessor *VALID_OPTIONS_KEYS
@@ -41,6 +43,7 @@ module RoutesToSwaggerDocs
       self.doc_save_file_name   = DEFAULT_DOC_SAVE_FILE_NAME
       self.force_update_schema  = DEFAULT_FORCE_UPDATE_SCHEMA
       self.use_tag_namespace    = DEFAULT_USE_TAG_NAMESPACE
+      self.use_schema_namespace = DEFAULT_USE_SCHEMA_NAMESPACE
     end
   end
 end

@@ -4,8 +4,6 @@ require_relative 'base'
 module RoutesToSwaggerDocs
   module Routing
     class Parser
-      attr_accessor :routes_data, :tags_data
-
       # routes should be Rails.application.routes.routes
       def initialize(routes)
         @_routes = routes
@@ -34,9 +32,16 @@ module RoutesToSwaggerDocs
       end
 
       def schemas_data
-        tags_data.map do |tag_data|
-           tag_data.split("/").map(&:camelcase).join("_")
+        data = []
+        normalized_routes do |route_els|
+          route_els.each do |route_el|
+            schema_name = route_el[:data][:schema_name]
+            unless data.include?(schema_name)
+              data.push schema_name
+            end
+          end
         end
+        data
       end
   
       private

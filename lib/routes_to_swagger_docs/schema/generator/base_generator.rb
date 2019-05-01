@@ -2,10 +2,13 @@ require_relative '../../routing/parser'
 require_relative '../v3/openapi_object'
 require_relative '../base'
 require_relative '../squeezer'
+require_relative '../../shared/searchable'
 
 module RoutesToSwaggerDocs
   module Schema
     class BaseGenerator < Base
+      include RoutesToSwaggerDocs::Searchable
+
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
         @glob_schema_paths = create_glob_schema_paths
@@ -54,14 +57,19 @@ module RoutesToSwaggerDocs
       end
 
       def unit_components_schemas_file_path
-        paths_path = "#{schema_save_dir_path}/paths"
-        components_schemas_path = "#{schema_save_dir_path}/components/schemas"
-        if unit_paths_file_path.blank?
-          nil
-        else
-          abs_unit_paths_file_path = File.expand_path(unit_paths_file_path)
-          abs_unit_paths_file_path.gsub(paths_path, components_schemas_path)
+        return nil if unit_paths_file_path.blank?
+        yaml = YAML.load_file(unit_paths_file_path)
+        
+        schema_paths = []
+        deep_search(yaml, "$ref") do |result|
+          schema_paths.push(result)
         end
+
+        schema_data = schema_paths.uniq.last.split("/").last
+        schema_name_with_namespace = schema_data.gsub("_","/").downcase
+        unit_schema_path = "#{schema_save_dir_path}/components/schemas/#{schema_name_with_namespace}.yml"
+
+        File.expand_path(unit_schema_path)
       end
     end
   end
