@@ -46,6 +46,7 @@ module RoutesToSwaggerDocs
             }
           }
           attach_media_type(schema)
+          attach_parameters(schema)
         end
   
         private
@@ -71,6 +72,42 @@ module RoutesToSwaggerDocs
           }
           schema["#{@verb}"]["responses"].deep_merge!(merge_schema)
           schema
+        end
+
+        def attach_parameters(schema)
+          parameters_in_path = @route_data[:path].split("/").select{|a| a.start_with?(":") }
+          return schema if parameters_in_path.blank?
+          
+          content = parameters_in_path.each_with_object([]) do |parameter_in_path, result|
+            name = parameter_in_path.gsub(":","")
+            result.push(
+              {
+                "name" => "#{name}",
+                "in" => "path",
+                "description" => "#{name}",
+                "required" => true,
+                "schema" => {
+                  "type" => type_from(name)
+                }
+              }
+            )
+          end
+
+          merge_schema = {
+            "parameters" => content
+          }
+
+          schema["#{@verb}"].deep_merge!(merge_schema)
+          schema
+        end
+
+        def type_from(name)
+          case name
+          when /id/
+            "integer"
+          else
+            "string"
+          end
         end
         
         def support_field_name?
