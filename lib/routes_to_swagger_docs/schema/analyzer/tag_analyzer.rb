@@ -7,7 +7,7 @@ module RoutesToSwaggerDocs
       def update_from_edited_schema
         tags_schma_path = "#{schema_save_dir_path}/tags.yml"
         
-        edited_tags_schema = @edited_schema["tags"].first
+        edited_tags_schema = @schema["tags"].first
         tags_schema_from_local = YAML.load_file(tags_schma_path)["tags"]
 
         result = tags_schema_from_local.each_with_object([]) do |tag,result|

@@ -11,7 +11,7 @@ module RoutesToSwaggerDocs
       end
 
       def update_from_edited_schema
-        edited_components_schema = @edited_schema["components"]
+        edited_components_schema = @schema["components"]
         edited_components_schema.each do |component_type, _|
           case component_type
           when "schemas"

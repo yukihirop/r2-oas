@@ -5,7 +5,7 @@ module RoutesToSwaggerDocs
   module Schema
     class PathAnalyzer < BaseAnalyzer
       def update_from_edited_schema
-        edited_paths_schema = @edited_schema["paths"]
+        edited_paths_schema = @schema["paths"]
 
         edited_schema_tag_names = edited_paths_schema.values.map do |data_when_path|
           first_data_when_verb = data_when_path.values.first

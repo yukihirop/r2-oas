@@ -14,7 +14,7 @@ module RoutesToSwaggerDocs
       end
 
       def update_from_edited_schema
-        @edited_schema.each do |schema_name, _|
+        @schema.each do |schema_name, _|
           case schema_name
           when "paths"
             @path_analyzer.update_from_edited_schema
@@ -25,7 +25,7 @@ module RoutesToSwaggerDocs
           else
             full_save_file_path = "#{schema_save_dir_path}/#{schema_name}.yml"
             schema_from_local = YAML.load_file(full_save_file_path)
-            result = schema_from_local.deep_merge @edited_schema.slice(schema_name)
+            result = schema_from_local.deep_merge @schema.slice(schema_name)
             File.write(full_save_file_path, result.to_yaml)
           end
         end
