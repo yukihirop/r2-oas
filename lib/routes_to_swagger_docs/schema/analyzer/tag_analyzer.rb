@@ -4,7 +4,7 @@ require_relative 'base_analyzer'
 module RoutesToSwaggerDocs
   module Schema
     class TagAnalyzer < BaseAnalyzer
-      def update_schema
+      def update_from_edited_schema
         tags_schma_path = "#{schema_save_dir_path}/tags.yml"
         
         edited_tags_schema = @edited_schema["tags"].first

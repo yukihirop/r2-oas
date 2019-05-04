@@ -10,7 +10,7 @@ module RoutesToSwaggerDocs
         @edited_schema = YAML.load_file(edited_schema_file_path)
       end
 
-      def update_schema
+      def update_from_edited_schema
         raise NoImplementError
       end
 

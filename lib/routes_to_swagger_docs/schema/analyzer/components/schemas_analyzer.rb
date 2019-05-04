@@ -5,7 +5,7 @@ module RoutesToSwaggerDocs
   module Schema
     module Components
       class SchemasAnalyzer < BaseAnalyzer
-        def update_schema
+        def update_from_edited_schema
           edited_components_schemas_schema = @edited_schema["components"]["schemas"]
           edited_schema_names = edited_components_schemas_schema.keys.uniq
 

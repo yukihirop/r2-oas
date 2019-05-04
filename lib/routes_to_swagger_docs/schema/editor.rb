@@ -44,7 +44,7 @@ module RoutesToSwaggerDocs
             fetch_edited_schema_from_browser
             puts "\nsave updated schema in tempfile path: #{@tempfile_path}"
             analyzer = Analyzer.new({}, edited_schema_file_path: @tempfile_path)
-            analyzer.update_schema
+            analyzer.update_from_edited_schema
           end
 
           container.stop
