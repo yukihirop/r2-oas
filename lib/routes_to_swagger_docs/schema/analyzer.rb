@@ -13,15 +13,15 @@ module RoutesToSwaggerDocs
         @components_analyzer = ComponentsAnalyzer.new(schema_data, options)
       end
 
-      def update_from_edited_schema
+      def update_from_schema
         @schema.each do |schema_name, _|
           case schema_name
           when "paths"
-            @path_analyzer.update_from_edited_schema
+            @path_analyzer.update_from_schema
           when "tags"
-            @tag_analyzer.update_from_edited_schema
+            @tag_analyzer.update_from_schema
           when "components"
-            @components_analyzer.update_from_edited_schema
+            @components_analyzer.update_from_schema
           else
             full_save_file_path = "#{schema_save_dir_path}/#{schema_name}.yml"
             schema_from_local = YAML.load_file(full_save_file_path)

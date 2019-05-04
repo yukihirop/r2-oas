@@ -10,12 +10,12 @@ module RoutesToSwaggerDocs
         @components_schemas_analyzer = Components::SchemasAnalyzer.new(schema_data, options)
       end
 
-      def update_from_edited_schema
+      def update_from_schema
         edited_components_schema = @schema["components"]
         edited_components_schema.each do |component_type, _|
           case component_type
           when "schemas"
-            @components_schemas_analyzer.update_from_edited_schema
+            @components_schemas_analyzer.update_from_schema
           end
         end
       end
