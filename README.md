@@ -21,15 +21,17 @@ Or install it yourself as:
 ## Command
 
 ```bash
-# Generate docs
+$ # Generate docs
 $ bundle exec rake routes:swagger:docs                                                                        # Generate docs
 $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs    # Generate docs by specify unit paths
-# Start swagger editor
+$ # Start swagger editor
 $ bundle exec rake routes:swagger:editor                                                                      # Start swagger editor
 $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor  # Start swagger editor by specify unit paths
-# Start swagger ui
+$ # Start swagger ui
 $ bundle exec rake routes:swagger:ui                                                                          # Start swagger ui
 $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # Start swagger ui by specify unit paths
+$ # Analyze docs
+$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
 ```
 
 ## Usage
@@ -37,6 +39,7 @@ $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exe
 - [How to generate docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
 - [How to start swagger editor](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
 - [How to start swagger ui](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
+- [How to analyze docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
 - [How to use tag namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
 - [How to use schema namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
 
@@ -74,6 +77,7 @@ We explain the environment variables that can be set.
 
 |variable|description|default|
 |UNIT_PATHS_FILE_PATH|Specify one schema path|`""`|
+|SWAGGER_FILE|Specify swagger file to analyze|`""`|
 
 ## License
 
