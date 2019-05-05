@@ -17,6 +17,7 @@ module RoutesToSwaggerDocs
       private
       
       attr_accessor :unit_paths_file_path
+      attr_accessor :skip_generate_schemas
       
       def logger
         ::Rails.logger

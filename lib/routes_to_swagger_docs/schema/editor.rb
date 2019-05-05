@@ -43,7 +43,8 @@ module RoutesToSwaggerDocs
           if @browser.exists?
             fetch_edited_schema_from_browser
             puts "\nsave updated schema in tempfile path: #{@tempfile_path}"
-            analyzer = Analyzer.new({}, edited_schema_file_path: @tempfile_path)
+            options = { type: :edited, edited_schema_file_path: @tempfile_path }
+            analyzer = Analyzer.new({}, options)
             analyzer.update_from_schema
           end
 
