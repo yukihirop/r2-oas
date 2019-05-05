@@ -17,6 +17,7 @@ module RoutesToSwaggerDocs
             filename_with_namespace = schema_name.split('_').map(&:underscore).join('/')
             save_path = save_path_for(filename_with_namespace, dirs)
             File.write(save_path, unit_schemas_only_specify_schema_names.to_yaml)
+            logger.info "  Write schema file: \t#{save_path}"
           end
         end
 

@@ -8,6 +8,7 @@ module RoutesToSwaggerDocs
         save_path = save_path_for("tags")
         result = create_save_schema
         File.write(save_path, result.to_yaml)
+        logger.info "  Write schema file: \t#{save_path}"
       end
 
       private

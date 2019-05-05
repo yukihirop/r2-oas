@@ -14,18 +14,26 @@ module RoutesToSwaggerDocs
       end
 
       def update_from_schema
+        logger.info "[Analyze Swagger file] start"
         @schema.each do |schema_name, _|
           case schema_name
           when "paths"
+            logger.info "[Analyze Swagger file (paths)] start"
             @path_analyzer.update_from_schema
+            logger.info "[Analyze Swagger file (paths)] end"
           when "tags"
+            logger.info "[Analyze Swagger file (tags)] start"
             @tag_analyzer.update_from_schema
+            logger.info "[Analyze Swagger file (tags)] end"
           when "components"
+            logger.info "[Analyze Swagger file (components)] start"
             @components_analyzer.update_from_schema
+            logger.info "[Analyze Swagger file (components)] end"
           else
             save_schema_from(schema_name)
           end
         end
+        logger.info "[Analyze Swagger file] end"
       end
 
       private

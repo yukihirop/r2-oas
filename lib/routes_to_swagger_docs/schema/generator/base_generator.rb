@@ -19,10 +19,6 @@ module RoutesToSwaggerDocs
       attr_accessor :unit_paths_file_path
       attr_accessor :skip_generate_schemas
       
-      def logger
-        ::Rails.logger
-      end
-      
       # Scope Rails
       def create_docs
         all_routes = create_all_routes
