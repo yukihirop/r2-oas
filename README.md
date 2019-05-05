@@ -76,6 +76,7 @@ we explain the options that can be set.
 We explain the environment variables that can be set.
 
 |variable|description|default|
+|--------|-----------|-------|
 |UNIT_PATHS_FILE_PATH|Specify one schema path|`""`|
 |SWAGGER_FILE|Specify swagger file to analyze|`""`|
 
