@@ -14,6 +14,10 @@ module RoutesToSwaggerDocs
 
       attr_accessor *Configuration::VALID_OPTIONS_KEYS
 
+      def logger
+        ::Rails.logger
+      end
+
       def schema_save_dir_path
         File.expand_path("#{root_dir_path}/#{schema_save_dir_name}")
       end

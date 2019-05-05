@@ -43,8 +43,9 @@ module RoutesToSwaggerDocs
           if @browser.exists?
             fetch_edited_schema_from_browser
             puts "\nsave updated schema in tempfile path: #{@tempfile_path}"
-            analyzer = Analyzer.new({}, edited_schema_file_path: @tempfile_path)
-            analyzer.update_schema
+            options = { type: :edited, edited_schema_file_path: @tempfile_path }
+            analyzer = Analyzer.new({}, options)
+            analyzer.update_from_schema
           end
 
           container.stop
@@ -57,10 +58,10 @@ module RoutesToSwaggerDocs
 
       def fetch_edited_schema_from_browser
         @tempfile_path = nil
-        @edited_schema = @browser.driver.local_storage[SWAGGER_EDITOR_STORAGE_KEY]
+        @schema = @browser.driver.local_storage[SWAGGER_EDITOR_STORAGE_KEY]
         FileUtils.mkdir_p("tmp") unless FileTest.exists?("tmp")
         file = Tempfile.open([TMP_FILE_NAME, '.yaml'], 'tmp') do |f|
-          f.write @edited_schema
+          f.write @schema
           f
         end
 

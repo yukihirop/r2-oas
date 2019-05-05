@@ -4,8 +4,8 @@ require_relative 'base_analyzer'
 module RoutesToSwaggerDocs
   module Schema
     class PathAnalyzer < BaseAnalyzer
-      def update_schema
-        edited_paths_schema = @edited_schema["paths"]
+      def update_from_schema
+        edited_paths_schema = @schema["paths"]
 
         edited_schema_tag_names = edited_paths_schema.values.map do |data_when_path|
           first_data_when_verb = data_when_path.values.first
@@ -22,6 +22,7 @@ module RoutesToSwaggerDocs
           filename_with_namespace = tag_name
           save_path = save_path_for(filename_with_namespace, dirs)
           File.write(save_path, unit_paths_only_specify_tags.to_yaml)
+          logger.info "  Write schema file: \t#{save_path}"
         end
       end
 

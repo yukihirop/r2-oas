@@ -10,12 +10,14 @@ module RoutesToSwaggerDocs
         @components_schemas_analyzer = Components::SchemasAnalyzer.new(schema_data, options)
       end
 
-      def update_schema
-        edited_components_schema = @edited_schema["components"]
+      def update_from_schema
+        edited_components_schema = @schema["components"]
         edited_components_schema.each do |component_type, _|
           case component_type
           when "schemas"
-            @components_schemas_analyzer.update_schema
+            logger.info "[Analyze Swagger file (components/schemas)] start"
+            @components_schemas_analyzer.update_from_schema
+            logger.info "[Analyze Swagger file (components/schemas)] end"
           end
         end
       end

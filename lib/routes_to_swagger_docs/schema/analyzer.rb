@@ -13,21 +13,42 @@ module RoutesToSwaggerDocs
         @components_analyzer = ComponentsAnalyzer.new(schema_data, options)
       end
 
-      def update_schema
-        @edited_schema.each do |schema_name, _|
+      def update_from_schema
+        logger.info "[Analyze Swagger file] start"
+        @schema.each do |schema_name, _|
           case schema_name
           when "paths"
-            @path_analyzer.update_schema
+            logger.info "[Analyze Swagger file (paths)] start"
+            @path_analyzer.update_from_schema
+            logger.info "[Analyze Swagger file (paths)] end"
           when "tags"
-            @tag_analyzer.update_schema
+            logger.info "[Analyze Swagger file (tags)] start"
+            @tag_analyzer.update_from_schema
+            logger.info "[Analyze Swagger file (tags)] end"
           when "components"
-            @components_analyzer.update_schema
+            logger.info "[Analyze Swagger file (components)] start"
+            @components_analyzer.update_from_schema
+            logger.info "[Analyze Swagger file (components)] end"
           else
-            full_save_file_path = "#{schema_save_dir_path}/#{schema_name}.yml"
-            schema_from_local = YAML.load_file(full_save_file_path)
-            result = schema_from_local.deep_merge @edited_schema.slice(schema_name)
-            File.write(full_save_file_path, result.to_yaml)
+            save_schema_from(schema_name)
           end
+        end
+        logger.info "[Analyze Swagger file] end"
+      end
+
+      private
+
+      def save_schema_from(schema_name)
+        case @type
+        when :edited
+          save_path = save_path_for(schema_name)
+          schema_from_local = YAML.load_file(save_path)
+          result = schema_from_local.deep_merge @schema.slice(schema_name)
+          File.write(save_path, result.to_yaml)
+        when :existing
+          save_path = save_path_for(schema_name)
+          result = @schema.slice(schema_name)
+          File.write(save_path, result.to_yaml)
         end
       end
     end
