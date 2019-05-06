@@ -32,6 +32,8 @@ $ bundle exec rake routes:swagger:ui                                            
 $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # Start swagger ui by specify unit paths
 $ # Analyze docs
 $ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
+$ # Deploy docs
+$ bundle exec rake routes:swagger:deploy
 ```
 
 ## Usage
