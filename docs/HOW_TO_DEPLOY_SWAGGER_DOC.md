@@ -18,7 +18,7 @@ $ bundle exec rake routes:swagger:deploy
 
 ## Example
 
-if there is `swagger_file.yml` like this:
+if there is `swagger_doc.yml` like this:
 
 <details>
 
