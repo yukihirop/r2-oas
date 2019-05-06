@@ -13,7 +13,7 @@ end
 ```
 
 ```bash
-$ SWAGGER_FILE="~/Desktop/swagger_file.yml" bundle exec rake routes:swagger:analyze
+$ bundle exec rake routes:swagger:deploy
 ```
 
 ## Example
