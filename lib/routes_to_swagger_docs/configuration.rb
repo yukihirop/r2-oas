@@ -1,5 +1,7 @@
 #frozen_string_literal: true
 
+require_relative './configuration/server'
+
 module RoutesToSwaggerDocs
   module Configuration
 
@@ -9,6 +11,7 @@ module RoutesToSwaggerDocs
     DEFAULT_FORCE_UPDATE_SCHEMA = false
     DEFAULT_USE_TAG_NAMESPACE = true
     DEFAULT_USE_SCHEMA_NAMESPACE = true
+    DEFAULT_SERVER = Server.new
 
     VALID_OPTIONS_KEYS = [
       :root_dir_path,
@@ -16,7 +19,8 @@ module RoutesToSwaggerDocs
       :doc_save_file_name,
       :force_update_schema,
       :use_tag_namespace,
-      :use_schema_namespace
+      :use_schema_namespace,
+      :server
     ]
 
     attr_accessor *VALID_OPTIONS_KEYS
@@ -44,6 +48,7 @@ module RoutesToSwaggerDocs
       self.force_update_schema  = DEFAULT_FORCE_UPDATE_SCHEMA
       self.use_tag_namespace    = DEFAULT_USE_TAG_NAMESPACE
       self.use_schema_namespace = DEFAULT_USE_SCHEMA_NAMESPACE
+      self.server               = DEFAULT_SERVER
     end
   end
 end
