@@ -73,6 +73,8 @@ we explain the options that can be set.
 |force_update_schema|Force update schema from routes data|`false`|
 |use_tag_namespace|Use namespace for tag name|`true`|
 |use_schema_namespace|Use namespace for schema name|`true`|
+|server.url| Server url | `http://localhost:3000` |
+|server.description| Server description | `localhost` |
 
 ## Environment variables
 
