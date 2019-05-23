@@ -49,7 +49,7 @@ module RoutesToSwaggerDocs
         end
 
         def servers_doc
-          [ServerObject.new.to_doc]
+          ServerObject.new.to_doc
         end
 
         def components_doc

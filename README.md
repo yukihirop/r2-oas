@@ -47,8 +47,12 @@ RoutesToSwaggerDocs.configure do |config|
   config.force_update_schema = false
   config.use_tag_namespace = true
   config.use_schema_namespace = false
-  config.server.url = "http://localhost:3000"
-  config.server.description = "localhost"
+  config.server.data = [
+    {
+      url: "http://localhost:3000",
+      description: "localhost"
+    }
+  ]
 end
 ```
 
@@ -107,8 +111,7 @@ we explain the options that can be set.
 |force_update_schema|Force update schema from routes data|`false`|
 |use_tag_namespace|Use namespace for tag name|`true`|
 |use_schema_namespace|Use namespace for schema name|`true`|
-|server.url| Server url | `http://localhost:3000` |
-|server.description| Server description | `localhost` |
+|server.data| Server data(url, description) | { url: `http://localhost:3000`, description: `localhost` } |
 
 ## Environment variables
 
