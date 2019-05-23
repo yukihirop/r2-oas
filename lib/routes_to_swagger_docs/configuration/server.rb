@@ -7,8 +7,7 @@ module RoutesToSwaggerDocs
       DEFAULT_DESCRIPTION = "localhost"
 
       VALID_OPTIONS_KEYS = [
-        :url,
-        :description
+        :data
       ]
 
       attr_accessor *VALID_OPTIONS_KEYS
@@ -24,8 +23,12 @@ module RoutesToSwaggerDocs
       private
 
       def set_default
-        self.url         = DEFAULT_URL
-        self.description = DEFAULT_DESCRIPTION
+        self.data = [
+          {
+            url: DEFAULT_URL,
+            description: DEFAULT_DESCRIPTION
+          }
+        ]
       end
     end
   end
