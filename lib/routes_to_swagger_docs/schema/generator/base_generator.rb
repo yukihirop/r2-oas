@@ -57,14 +57,14 @@ module RoutesToSwaggerDocs
         return nil if unit_paths_file_path.blank?
         yaml = YAML.load_file(unit_paths_file_path)
         
-        schema_paths = []
+        components_paths = []
         deep_search(yaml, "$ref") do |result|
-          schema_paths.push(result)
+          components_paths.push(result)
         end
 
-        schema_data = schema_paths.uniq.map{ |schema_path| schema_path.split("/").last }
+        schema_data = components_paths.uniq.map{ |schema_path| schema_path.split("/").last }
         schema_data.each_with_object([]) do |schema_datum, result|
-          schema_name_with_namespace = schema_datum.gsub("_", "/").downcase
+          schema_name_with_namespace = schema_datum.gsub("_", "/").underscore
           unit_schema_path = "#{schema_save_dir_path}/components/schemas/#{schema_name_with_namespace}.yml"
           result.push(File.expand_path(unit_schema_path))
         end
