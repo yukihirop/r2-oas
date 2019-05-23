@@ -18,7 +18,41 @@ Or install it yourself as:
 
     $ gem install routes_to_swagger_docs
 
-## Command
+## Requirements
+
+This gem needs the following:
+
+- [`swaggerapi/swagger-ui:latest` docker image](https://hub.docker.com/r/swaggerapi/swagger-ui/)
+- [`swaggerapi/swagger-editor:latest` docker image](https://hub.docker.com/r/swaggerapi/swagger-editor/)
+- [`chromedriver`](http://chromedriver.chromium.org/downloads)
+
+If you do not have it download as below.
+
+```
+$ docker pull swaggerapi/swagger-editor:latest
+$ docker pull swaggerapi/swagger-ui:latest
+$ brew cask install chromedriver
+```
+
+## Usage
+
+In your rails project, Write `config/environments/development.rb` like that:
+
+```ruby
+# default setting
+RoutesToSwaggerDocs.configure do |config|
+  config.root_dir_path = "./swagger_docs"
+  config.schema_save_dir_name = "schema"
+  config.doc_save_file_name = "swagger_doc.yml"
+  config.force_update_schema = false
+  config.use_tag_namespace = true
+  config.use_schema_namespace = false
+  config.server.url = "http://localhost:3000"
+  config.server.description = "localhost"
+end
+```
+
+You can execute the following command in the root directory of rails.
 
 ```bash
 $ # Generate docs
@@ -36,7 +70,7 @@ $ # Deploy docs
 $ bundle exec rake routes:swagger:deploy
 ```
 
-## Usage
+## More Usage
 
 - [How to generate docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
 - [How to start swagger editor](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
