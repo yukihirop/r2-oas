@@ -62,11 +62,10 @@ module RoutesToSwaggerDocs
           components_paths.push(result)
         end
 
-        schema_data = components_paths.uniq.map{ |schema_path| schema_path.split("/").last }
-        schema_data.each_with_object([]) do |schema_datum, result|
-          schema_name_with_namespace = schema_datum.gsub("_", "/").underscore
-          unit_schema_path = "#{schema_save_dir_path}/components/schemas/#{schema_name_with_namespace}.yml"
-          result.push(File.expand_path(unit_schema_path))
+        relative_components_paths = components_paths.uniq.map{ |component_path| component_path.gsub("#/","") }
+        relative_components_paths.each_with_object([]) do |relative_component_path, result|
+          component_path = "#{schema_save_dir_path}/#{relative_component_path}.yml"
+          result.push(File.expand_path(component_path))
         end
       end
     end
