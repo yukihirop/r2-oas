@@ -111,7 +111,7 @@ we explain the options that can be set.
 |force_update_schema|Force update schema from routes data|`false`|
 |use_tag_namespace|Use namespace for tag name|`true`|
 |use_schema_namespace|Use namespace for schema name|`true`|
-|server.data| Server data(url, description) | { url: `http://localhost:3000`, description: `localhost` } |
+|server.data| Server data(url, description) | [{ url: `http://localhost:3000`, description: `localhost` }] |
 
 ## Environment variables
 
@@ -121,6 +121,29 @@ We explain the environment variables that can be set.
 |--------|-----------|-------|
 |UNIT_PATHS_FILE_PATH|Specify one schema path|`""`|
 |SWAGGER_FILE|Specify swagger file to analyze|`""`|
+
+## CORS
+
+If you use the online demo, make sure your API supports foreign requests by enabling CORS in Grape, otherwise you'll see the API description, but requests on the API won't return. Use [rack-cors](https://github.com/cyu/rack-cors) to enable CORS.
+
+```ruby
+require 'rack/cors'
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', headers: :any, methods: [ :get, :post, :put, :delete, :options ]
+  end
+end
+```
+
+Alternatively you can set CORS headers in a Grape `before` block.
+
+```ruby
+before do
+  header['Access-Control-Allow-Origin'] = '*'
+  header['Access-Control-Request-Method'] = '*'
+end
+```
 
 ## License
 
