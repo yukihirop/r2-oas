@@ -12,7 +12,7 @@ module RoutesToSwaggerDocs
       def generate_components
         @components.each do |key, value|
           if key == "schemas"
-            options = { components_schemas_file_paths: components_schemas_file_paths }
+            options = { components_file_paths: components_file_paths }
             Components::SchemaGenerator.new(@components, options).generate_components_schemas
           end
         end
