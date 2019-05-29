@@ -58,14 +58,36 @@ module RoutesToSwaggerDocs
         yaml = YAML.load_file(unit_paths_file_path)
         
         components_paths = []
-        deep_search(yaml, "$ref") do |result|
-          components_paths.push(result)
+        deep_search_component_file_recursive(yaml, "$ref") do |component_paths|
+          components_paths.push(*component_paths)
         end
 
-        relative_components_paths = components_paths.uniq.map{ |component_path| component_path.gsub("#/","") }
-        relative_components_paths.each_with_object([]) do |relative_component_path, result|
-          component_path = "#{schema_save_dir_path}/#{relative_component_path}.yml"
+        components_paths = components_paths.uniq
+        components_paths.each_with_object([]) do |component_path, result|
           result.push(File.expand_path(component_path))
+        end
+      end
+
+      def deep_search_component_file_recursive(yaml, target, &block)
+        if yaml.is_a?(Hash)
+          yaml.keys.each do |key|
+            if key.eql? target
+              component_info = yaml[key]
+              relative_component_path = component_info.gsub("#/","")
+              component_path = "#{schema_save_dir_path}/#{relative_component_path}.yml"
+              component_data = YAML.load_file(component_path)
+
+              children_components_paths = []
+              deep_search_component_file_recursive(component_data, target) do |children_components_path|
+                children_components_paths.push(*children_components_path)
+              end
+
+              components_paths = [ component_path ] + children_components_paths
+              yield components_paths if block_given?
+            else
+              deep_search_component_file_recursive(yaml[key], target, &block)
+            end
+          end
         end
       end
     end
