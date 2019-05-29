@@ -1,5 +1,6 @@
 require_relative 'base_squeezer'
 require_relative 'components/schema_squeezer'
+require_relative 'components/request_body_squeezer'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -9,6 +10,10 @@ module RoutesToSwaggerDocs
           if key == "schemas"
             options = { unit_paths_file_path: unit_paths_file_path }
             data = Components::SchemaSqueezer.new(@schema_data, options).remake_components_schemas
+            result.deep_merge!(data)
+          elsif key == "requestBodies"
+            options = { unit_paths_file_path: unit_paths_file_path }
+            data = Components::RequestBodySqueezer.new(@schema_data, options).remake_components_request_bodies
             result.deep_merge!(data)
           end
         end
