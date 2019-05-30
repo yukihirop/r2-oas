@@ -35,9 +35,7 @@ module RoutesToSwaggerDocs
         end
 
         def tags_doc
-          @tags_data.each_with_object([]) do |tag_name, result|
-            result.push TagObject.new(tag_name).to_doc
-          end
+          TagObject.new(@tags_data).to_doc
         end
 
         def paths_doc

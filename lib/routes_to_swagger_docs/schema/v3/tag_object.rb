@@ -5,14 +5,22 @@ module RoutesToSwaggerDocs
   module Schema
     module V3
       class TagObject < BaseObject
-        def initialize(tag_name)
-          @name = tag_name
+        def initialize(tags_data)
+          @tags_data = tags_data
         end
   
         def to_doc
+          @tags_data.each_with_object([]) do |tag_name, result|
+            result.push(build_doc(tag_name))
+          end
+        end
+  
+        private
+
+        def build_doc(tag_name)
           {
-            "name" => name,
-            "description" => "#{name} description",
+            "name" => tag_name,
+            "description" => "#{tag_name} description",
             # External Docs Object
             "externalDocs" => {
               "description" => "description",
@@ -20,10 +28,6 @@ module RoutesToSwaggerDocs
             }
           }
         end
-  
-        private
-        
-        attr_accessor :name
       end
     end
   end
