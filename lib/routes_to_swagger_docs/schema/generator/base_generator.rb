@@ -73,8 +73,16 @@ module RoutesToSwaggerDocs
           yaml.keys.each do |key|
             if key.eql? target
               component_info = yaml[key]
-              relative_component_path = component_info.gsub("#/","")
-              component_path = "#{schema_save_dir_path}/#{relative_component_path}.yml"
+              
+              relative_component_path_data = component_info.gsub("#/","").split("/")
+              relative_component_path = relative_component_path_data.each.with_index.inject("") do |base,(value, index)|
+                if index == relative_component_path_data.size - 1
+                  value = value.to_s.underscore
+                end
+                "#{base}/#{value}"
+              end
+
+              component_path = "#{schema_save_dir_path}#{relative_component_path}.yml"
               component_data = YAML.load_file(component_path)
 
               children_components_paths = []
