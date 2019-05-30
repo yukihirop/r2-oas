@@ -77,7 +77,7 @@ module RoutesToSwaggerDocs
               relative_component_path_data = component_info.gsub("#/","").split("/")
               relative_component_path = relative_component_path_data.each.with_index.inject("") do |base,(value, index)|
                 if index == relative_component_path_data.size - 1
-                  value = value.to_s.underscore
+                  value = value.to_s.gsub("_", "/").underscore
                 end
                 "#{base}/#{value}"
               end
