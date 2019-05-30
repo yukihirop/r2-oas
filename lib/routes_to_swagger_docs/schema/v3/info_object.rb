@@ -1,11 +1,11 @@
-require_relative 'base_object'
+require_relative '../../plugins/schema/v3/hookable_base_object'
 
 module RoutesToSwaggerDocs
   module Schema
     module V3
-      class InfoObject < BaseObject
-        def to_doc
-          {
+      class InfoObject <  RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
+        def create_doc
+          result = {
             "title" => "Swagger API Document Title",
             "description" => "This is a sample server Petstore server.  You can find out more about
             Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net,
@@ -24,6 +24,7 @@ module RoutesToSwaggerDocs
             },
             "version" => "1.0.0"
           }
+          doc.merge!(result)
         end
       end
     end

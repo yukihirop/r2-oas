@@ -1,4 +1,4 @@
-require_relative 'base_object'
+require_relative '../../plugins/schema/v3/hookable_base_object'
 require_relative 'info_object'
 require_relative 'tag_object'
 require_relative 'paths_object'
@@ -9,15 +9,16 @@ require_relative 'components_object'
 module RoutesToSwaggerDocs
   module Schema
     module V3
-      class OpenapiObject < BaseObject
+      class OpenapiObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
         def initialize(routes_data, tags_data, schemas_data)
+          super(schemas_data)
           @routes_data  = routes_data
           @tags_data    = tags_data
           @schemas_data = schemas_data
         end
 
-        def to_doc
-          {
+        def create_doc
+          result = {
             "openapi" => "3.0.0",
             "info" => info_doc,
             "tags" => tags_doc,
@@ -26,6 +27,7 @@ module RoutesToSwaggerDocs
             "servers" => servers_doc,
             "components" => components_doc 
           }
+          doc.merge!(result)
         end
 
         private

@@ -1,22 +1,24 @@
-require_relative 'base_object'
+require_relative '../../plugins/schema/v3/hookable_base_object'
 require_relative 'path_item_object'
 
 module RoutesToSwaggerDocs
   module Schema
     module V3
-      class PathsObject < BaseObject
+      class PathsObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
         def initialize(routes_data)
+          super(routes_data)
           @routes_data = routes_data
         end
   
-        def to_doc
+        def create_doc
           if unit_paths_file_path.present?
-            YAML.load_file(unit_paths_file_path)["paths"]
+            result = YAML.load_file(unit_paths_file_path)["paths"]
           else
-            path_item_docs.each_with_object({}) do |(path, path_item_doc), docs|
+            result = path_item_docs.each_with_object({}) do |(path, path_item_doc), docs|
               docs[path] = path_item_doc
             end
           end
+          doc.merge!(result)
         end
   
         private
