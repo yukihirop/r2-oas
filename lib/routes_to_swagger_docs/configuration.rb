@@ -12,6 +12,7 @@ module RoutesToSwaggerDocs
     DEFAULT_USE_TAG_NAMESPACE = true
     DEFAULT_USE_SCHEMA_NAMESPACE = true
     DEFAULT_SERVER = Server.new
+    DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA = 1
 
     VALID_OPTIONS_KEYS = [
       :root_dir_path,
@@ -20,7 +21,8 @@ module RoutesToSwaggerDocs
       :force_update_schema,
       :use_tag_namespace,
       :use_schema_namespace,
-      :server
+      :server,
+      :interval_to_save_edited_tmp_schema
     ]
 
     attr_accessor *VALID_OPTIONS_KEYS
@@ -42,13 +44,14 @@ module RoutesToSwaggerDocs
     private
 
     def set_default
-      self.root_dir_path        = DEFAULT_ROOT_DIR_PATH
-      self.schema_save_dir_name = DEFAULT_SCHEMA_SAVE_DIR_NAME
-      self.doc_save_file_name   = DEFAULT_DOC_SAVE_FILE_NAME
-      self.force_update_schema  = DEFAULT_FORCE_UPDATE_SCHEMA
-      self.use_tag_namespace    = DEFAULT_USE_TAG_NAMESPACE
-      self.use_schema_namespace = DEFAULT_USE_SCHEMA_NAMESPACE
-      self.server               = DEFAULT_SERVER
+      self.root_dir_path                      = DEFAULT_ROOT_DIR_PATH
+      self.schema_save_dir_name               = DEFAULT_SCHEMA_SAVE_DIR_NAME
+      self.doc_save_file_name                 = DEFAULT_DOC_SAVE_FILE_NAME
+      self.force_update_schema                = DEFAULT_FORCE_UPDATE_SCHEMA
+      self.use_tag_namespace                  = DEFAULT_USE_TAG_NAMESPACE
+      self.use_schema_namespace               = DEFAULT_USE_SCHEMA_NAMESPACE
+      self.server                             = DEFAULT_SERVER
+      self.interval_to_save_edited_tmp_schema = DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA
     end
   end
 end

@@ -28,7 +28,7 @@ module RoutesToSwaggerDocs
         EM.run do
           container.start
           open_browser_and_set_schema
-          puts "\nwait for single trap ..."
+          ensure_save_tmp_schema_file
           signal_trap("INT")
           signal_trap("TERM")
         end
@@ -41,24 +41,44 @@ module RoutesToSwaggerDocs
       def signal_trap(command)
         Signal.trap(command) do
           if @browser.exists?
-            fetch_edited_schema_from_browser
-            puts "\nsave updated schema in tempfile path: #{@tempfile_path}"
-            options = { type: :edited, edited_schema_file_path: @tempfile_path }
-            analyzer = Analyzer.new({}, options)
-            analyzer.update_from_schema
+            process_after_close_browser
+            container.stop
+            container.remove
+            puts "container id: #{container.id} removed"
+          else
+            process_after_close_browser
+            container.remove
+            puts "container id: #{container.id} removed"
           end
-
-          container.stop
-          container.remove
-          puts "container id: #{container.id} removed"
           
           EM.stop
         end
       end
 
+      def process_after_close_browser
+        fetch_edited_schema_from_browser
+        puts "\nsave updated schema in tempfile path: #{@tempfile_path}"
+        options = { type: :edited, edited_schema_file_path: @tempfile_path }
+        analyzer = Analyzer.new({}, options)
+        analyzer.update_from_schema
+      end
+
+      def ensure_save_tmp_schema_file
+        EM.add_periodic_timer(interval_to_save_edited_tmp_schema) do
+          if @browser.exists?
+            @schema = @browser.driver.local_storage[SWAGGER_EDITOR_STORAGE_KEY] || @schema
+            puts "\nwait for single trap ..."
+          end
+        end
+      end
+
       def fetch_edited_schema_from_browser
         @tempfile_path = nil
-        @schema = @browser.driver.local_storage[SWAGGER_EDITOR_STORAGE_KEY]
+        
+        if @browser.exists?
+          @schema = @browser.driver.local_storage[SWAGGER_EDITOR_STORAGE_KEY] 
+        end
+        
         FileUtils.mkdir_p("tmp") unless FileTest.exists?("tmp")
         file = Tempfile.open([TMP_FILE_NAME, '.yaml'], 'tmp') do |f|
           f.write @schema
