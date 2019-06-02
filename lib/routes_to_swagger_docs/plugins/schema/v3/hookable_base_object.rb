@@ -7,13 +7,6 @@ module RoutesToSwaggerDocs
     module Schema
       module V3
         class HookableBaseObject < RoutesToSwaggerDocs::Schema::V3::BaseObject
-
-          def self.inherited(base)
-            base.extend ClassMethods
-            self.hook = Hooks::Hook.register(base)
-            self.hooks = base.hook.repository[base].global_hooks_data
-          end
-
           module ClassMethods
             def before_create(&block)
               proc = (block_given? ? block : Proc.new {})
@@ -26,10 +19,17 @@ module RoutesToSwaggerDocs
             end
           end
 
+          def self.inherited(base)
+            base.extend ClassMethods
+            self.hook = Hooks::Hook.register(base)
+          end
+
+          def self.hooks
+            superclass.hook.repository[self].global_hooks_data
+          end
+
           def self.hook=(value); @@hook = value; end
           def self.hook; @@hook; end
-          def self.hooks=(value); @@hooks = value; end
-          def self.hooks; @@hooks; end
 
           class << self
             def on(on, callback, once = false)
