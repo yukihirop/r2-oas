@@ -41,8 +41,8 @@ module RoutesToSwaggerDocs
               hook.off(on, callback, self, once)
             end
 
-            def execute_hook(on, doc)
-              hook.execute_hook(on, doc, self)
+            def execute_hook(on, *data)
+              hook.execute_hook(on, *data, self)
             end
 
             def has_hook?(name)
@@ -57,6 +57,7 @@ module RoutesToSwaggerDocs
             self.doc = {}
           end
 
+          # MEMO: Please overwrite when passing arguments other than `doc`
           def to_doc
             execute_before_create
             create_doc
@@ -70,12 +71,17 @@ module RoutesToSwaggerDocs
             raise NoImplementError
           end
 
-          def execute_before_create
-            self.class.execute_hook(:before_create, doc) if self.class.has_hook?(:before_create)
+          def execute_before_create(*data)
+            execute_hook_method(:before_create, *data)
           end
 
-          def execute_after_create
-            self.class.execute_hook(:after_create, doc) if self.class.has_hook?(:after_create)
+          def execute_after_create(*data)
+            execute_hook_method(:after_create, *data)
+          end
+
+          def execute_hook_method(method_name, *data)
+            args = [doc].push(*data)
+            self.class.execute_hook(method_name.to_sym, *args) if self.class.has_hook?(method_name.to_sym)
           end
         end
       end

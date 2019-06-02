@@ -10,8 +10,8 @@ module RoutesToSwaggerDocs
         self.target = target
       end
 
-      def call(data)
-        callback.call(data)
+      def call(*data)
+        callback.call(*data)
       end
     end
   end

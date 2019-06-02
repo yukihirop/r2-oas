@@ -49,9 +49,9 @@ module RoutesToSwaggerDocs
           result
         end
 
-        def execute_hook(on, doc, target_class)
-          return doc unless has_hook?(on, target_class)
-          execute_global_hook(on, doc, target_class)
+        def execute_hook(on, *data, target_class)
+          return data unless has_hook?(on, target_class)
+          execute_global_hook(on, *data, target_class)
         end
 
         def has_hook?(name, target_class)
@@ -60,9 +60,9 @@ module RoutesToSwaggerDocs
 
         private
 
-        def execute_global_hook(on, data, target_class)
+        def execute_global_hook(on, *data, target_class)
           global_hook = get_hook(on, target_class)
-          global_hook.present? ? global_hook.call(data) : data
+          global_hook.present? ? global_hook.call(*data) : data
         end
 
         def get_hook(name, target_class)
