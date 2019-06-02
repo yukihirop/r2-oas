@@ -10,14 +10,14 @@ module RoutesToSwaggerDocs
         end
   
         def to_doc
-          path_item_objects.each_with_object({}) do |(path, path_item_object), docs|
-            docs[path] = path_item_object.to_doc
+          path_item_docs.each_with_object({}) do |(path, path_item_doc), docs|
+            docs[path] = path_item_doc
           end
         end
   
         private
   
-        def path_item_objects
+        def path_item_docs
           # e.x.) 
           # [
           #  { path: "/tasks", data: {:verb=>"get", :path=>"/tasks", :tag_name=>"task" } },
@@ -25,7 +25,13 @@ module RoutesToSwaggerDocs
           @routes_data.each_with_object({}) do |(route_el), data|
             path = route_el[:path]
             route_data = route_el[:data]
-            data[path] = PathItemObject.new(route_data)
+
+            path_item_doc = PathItemObject.new(route_data).to_doc
+            if data[path].present?
+              data[path].merge!(path_item_doc)
+            else
+              data[path] = path_item_doc
+            end
           end
         end
       end
