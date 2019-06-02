@@ -11,7 +11,7 @@ module RoutesToSwaggerDocs
 
         def create_doc
           result = @schemas_data.each_with_object({}) do |schema_name, docs|
-            docs[schema_name] = schema_object_class.new.to_doc
+            docs[schema_name] = schema_object_class.new(schema_name).to_doc
           end.tap { |schema| break { "schemas" => schema } }
           doc.merge!(result)
         end

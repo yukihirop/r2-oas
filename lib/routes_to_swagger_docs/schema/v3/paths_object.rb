@@ -31,7 +31,7 @@ module RoutesToSwaggerDocs
             path = route_el[:path]
             route_data = route_el[:data]
 
-            path_item_doc = path_item_object_class.new(route_data).to_doc
+            path_item_doc = path_item_object_class.new(route_data, path).to_doc
             if data[path].present?
               data[path].merge!(path_item_doc)
             else

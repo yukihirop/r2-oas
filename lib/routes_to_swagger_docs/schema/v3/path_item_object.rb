@@ -9,8 +9,9 @@ module RoutesToSwaggerDocs
         # Support Field Name: get, put, post, delete, patch
         SUPPORT_FIELD_NAME = %w(get put post delete patch)
     
-        def initialize(route_data)
+        def initialize(route_data, path)
           super(route_data)
+          @path        = path
           @route_data  = route_data
           @verb        = route_data[:verb]
           @tag_name    = route_data[:tag_name]
@@ -18,6 +19,13 @@ module RoutesToSwaggerDocs
           @format_name = create_format_name
           @required_parameters = route_data[:required_parameters]
           support_field_name?
+        end
+
+        def to_doc
+          execute_before_create(@path)
+          create_doc
+          execute_after_create(@path)
+          doc
         end
   
         def create_doc
