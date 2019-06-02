@@ -215,7 +215,7 @@ class CustomInfoObject < RoutesToSwaggerDocs::Schema::V3::InfoObject
     })
   end
 
-  after_create do |doc|
+  after_create do |doc, path|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
     doc.merge!({
@@ -251,7 +251,7 @@ end
 
 ```ruby
 class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
-  before_create do |doc|
+  before_create do |doc, path|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
     doc.merge!({
@@ -259,7 +259,7 @@ class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
     })
   end
 
-  after_create do |doc|
+  after_create do |doc, schema_name|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
     doc.merge!({
@@ -317,7 +317,7 @@ end
 
 ```ruby
 class CustomSchemaObject < RoutesToSwaggerDocs::Schema::V3::SchemaObject
-  before_create do |doc|
+  before_create do |doc, schema_name|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
     doc.merge!({

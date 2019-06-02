@@ -6,7 +6,7 @@
 class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
 
   # [Important] Please change doc destructively.
-  before_create do |doc|
+  before_create do |doc, path|
     # [Important] To be able to use methods in Rails !
     #
     # doc is {}.
@@ -15,7 +15,7 @@ class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
   end
 
   # [Important] Please change doc destructively.
-  after_create do |doc|
+  after_create do |doc, path|
     # [Important] To be able to use methods in Rails !
     
     # For example, doc (style is yaml) is like that:
@@ -37,7 +37,7 @@ class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
     #
 
     # If you want to merge `sort` query parameters when request is GET api/v1/post.
-    if doc['get'].present? && doc['get']['tags'] == ['api/v1/post']
+    if doc['get'].present? && path == 'api/v1/post'
       doc['get'].merge!({
         'parameters' => {
           'name' => 'sort',
