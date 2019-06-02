@@ -65,6 +65,15 @@ RoutesToSwaggerDocs.configure do |config|
     swagger.editor.port         = "81"
     swagger.editor.exposed_port = "8080/tcp" 
   end
+
+  config.use_object_classes = {
+    info_object:              RoutesToSwaggerDocs::Schema::V3::InfoObject,
+    paths_object:             RoutesToSwaggerDocs::Schema::V3::PathsObject,
+    path_item_object:         RoutesToSwaggerDocs::Schema::V3::PathItemObject,
+    external_document_object: RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
+    components_object:        RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
+    schema_object:            RoutesToSwaggerDocs::Schema::V3::SchemaObject
+  }
 end
 ```
 
@@ -95,6 +104,7 @@ $ bundle exec rake routes:swagger:deploy
 - [How to deploy swagger doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
 - [How to use tag namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
 - [How to use schema namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
+- [How to use hook when generate doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
 
 ## Support Rails Version
 
@@ -145,6 +155,11 @@ we explain the options that can be set.
 |swagger|editor|port|Swagger Editor Port|`"8080"`|
 |swagger|editor|exposed_port|Swagger Editor Exposed Port|`"8080/tcp"`|
 
+#### hook
+
+|option|description|default|
+|------|-----------|-------|
+|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> schema_object: `RoutesToSwaggerDocs::Schema::V3::SchemaObject` }|
 
 ## Environment variables
 
@@ -154,6 +169,7 @@ We explain the environment variables that can be set.
 |--------|-----------|-------|
 |UNIT_PATHS_FILE_PATH|Specify one schema path|`""`|
 |SWAGGER_FILE|Specify swagger file to analyze|`""`|
+
 
 ## .paths
 
@@ -169,6 +185,172 @@ account.yml               # ignore
 account.yml               # ignore
 ```
 
+## Life Cycle Methods (Hook Metohds)
+
+Supported hook(life cycle methods) is like this:
+
+- `before_create`
+- `after_create`
+
+Supported Hook class is like this:
+
+- `RoutesToSwaggerDocs::Schema::V3::InfoObject`
+- `RoutesToSwaggerDocs::Schema::V3::PathsObject`
+- `RoutesToSwaggerDocs::Schema::V3::PathItemObject`
+- `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`
+- `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`
+- `RoutesToSwaggerDocs::Schema::V3::SchemaObject`
+
+By inheriting these classes, you can hook them at the time of document generation by writing like this:
+
+#### case: InfoObject
+
+```ruby
+class CustomInfoObject < RoutesToSwaggerDocs::Schema::V3::InfoObject
+  before_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something .... 
+    })
+  end
+
+  after_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something ....
+    })
+  end
+end
+```
+
+#### case: PathsObject
+
+```ruby
+class CustomPathsObject < RoutesToSwaggerDocs::Schema::V3::PathsObject
+  before_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something .... 
+    })
+  end
+
+  after_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something ....
+    })
+  end
+end
+```
+
+#### case: PathItemObject
+
+```ruby
+class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
+  before_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something .... 
+    })
+  end
+
+  after_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something ....
+    })
+  end
+end
+```
+
+#### case: ExternalDocumentObject
+
+```ruby
+class CustomExternalDocumentObject < RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject
+  before_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something .... 
+    })
+  end
+
+  after_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something ....
+    })
+  end
+end
+```
+
+#### case: ComponentsObject
+
+```ruby
+class CustomComponentsObject < RoutesToSwaggerDocs::Schema::V3::ComponentsObject
+  before_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something .... 
+    })
+  end
+
+  after_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something ....
+    })
+  end
+end
+```
+
+#### case: SchemaObject
+
+```ruby
+class CustomSchemaObject < RoutesToSwaggerDocs::Schema::V3::SchemaObject
+  before_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something .... 
+    })
+  end
+
+  after_create do |doc|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something ....
+    })
+  end
+end
+```
+
+And write this to the configuration.
+
+```ruby
+# If only InfoObject and PathItemObject, use a custom class
+RoutesToSwaggerDocs.configure do |config|
+  # 
+  # omission ...
+  # 
+  config.use_object_classes.merge!({
+    info_object:      CustomInfoObject,
+    path_item_object: CustomPathItemObject
+  })
+end
+```
+
+This is the end.
 
 ## CORS
 
