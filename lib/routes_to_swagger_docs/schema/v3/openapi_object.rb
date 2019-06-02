@@ -1,15 +1,11 @@
-require_relative '../../plugins/schema/v3/hookable_base_object'
-require_relative 'info_object'
+require_relative 'base_object'
 require_relative 'tag_object'
-require_relative 'paths_object'
-require_relative 'external_document_object'
 require_relative 'server_object'
-require_relative 'components_object'
 
 module RoutesToSwaggerDocs
   module Schema
     module V3
-      class OpenapiObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
+      class OpenapiObject < BaseObject
         def initialize(routes_data, tags_data, schemas_data)
           super(schemas_data)
           @routes_data  = routes_data
@@ -17,8 +13,8 @@ module RoutesToSwaggerDocs
           @schemas_data = schemas_data
         end
 
-        def create_doc
-          result = {
+        def to_doc
+          {
             "openapi" => "3.0.0",
             "info" => info_doc,
             "tags" => tags_doc,
@@ -27,13 +23,12 @@ module RoutesToSwaggerDocs
             "servers" => servers_doc,
             "components" => components_doc 
           }
-          doc.merge!(result)
         end
 
         private
 
         def info_doc
-          InfoObject.new.to_doc
+          info_object_class.new.to_doc
         end
 
         def tags_doc
@@ -41,11 +36,11 @@ module RoutesToSwaggerDocs
         end
 
         def paths_doc
-          PathsObject.new(@routes_data).to_doc
+          paths_object_class.new(@routes_data).to_doc
         end
 
         def external_docs_doc
-          ExternalDocumentObject.new.to_doc
+          external_document_object_class.new.to_doc
         end
 
         def servers_doc
@@ -53,7 +48,7 @@ module RoutesToSwaggerDocs
         end
 
         def components_doc
-          ComponentsObject.new(@schemas_data).to_doc
+          components_object_class.new(@schemas_data).to_doc
         end
       end
     end

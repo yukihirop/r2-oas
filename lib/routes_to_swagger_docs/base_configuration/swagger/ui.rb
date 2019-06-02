@@ -1,7 +1,7 @@
 #frozen_string_literal: true
 
 module RoutesToSwaggerDocs
-  module Configuration
+  module BaseConfiguration
     class Swagger
       class UI
         DEFAULT_IMAGE        = "swaggerapi/swagger-ui"

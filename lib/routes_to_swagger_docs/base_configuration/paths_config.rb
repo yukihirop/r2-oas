@@ -1,5 +1,5 @@
 module RoutesToSwaggerDocs
-  module Configuration
+  module BaseConfiguration
     class PathsConfig
       def initialize(root_dir_path, schema_save_dir_name)
         @root_dir_path = root_dir_path
