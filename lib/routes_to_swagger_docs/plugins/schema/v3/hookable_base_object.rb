@@ -65,6 +65,10 @@ module RoutesToSwaggerDocs
             doc
           end
 
+          def use_superclass_hook
+            self.class.hook.repository[self.class] = self.class.hook.repository[self.class.superclass]
+          end
+
           private
 
           def create_doc

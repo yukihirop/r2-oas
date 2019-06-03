@@ -18,7 +18,7 @@ module RoutesToSwaggerDocs
           @schema_name = route_data[:schema_name]
           @format_name = create_format_name
           @required_parameters = route_data[:required_parameters]
-          support_field_name?
+          support_field_name? if route_data.has_key?(:verb)
         end
 
         def to_doc
