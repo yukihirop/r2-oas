@@ -47,13 +47,24 @@ RoutesToSwaggerDocs.configure do |config|
   config.force_update_schema = false
   config.use_tag_namespace = true
   config.use_schema_namespace = false
+  config.interval_to_save_edited_tmp_schema = 15
+
   config.server.data = [
     {
       url: "http://localhost:3000",
       description: "localhost"
     }
   ]
-  config.interval_to_save_edited_tmp_schema = 15
+
+  config.swagger.configure do |swagger|
+    swagger.ui.image            = "swaggerapi/swagger-ui"
+    swagger.ui.port             = "8080"
+    swagger.ui.exposed_port     = "8080/tcp"
+    swagger.ui.volume           = "/app/swagger.json"
+    swagger.editor.image        = "swaggerapi/swagger-editor"
+    swagger.editor.port         = "81"
+    swagger.editor.exposed_port = "8080/tcp" 
+  end
 end
 ```
 
@@ -104,6 +115,8 @@ $ bundle exec rake routes:swagger:deploy
 
 we explain the options that can be set.
 
+#### basic
+
 |option|description|default|
 |------|-----------|---|
 |root_dir_path|Root directory for storing products.| `"./swagger_docs"`
@@ -112,8 +125,26 @@ we explain the options that can be set.
 |force_update_schema|Force update schema from routes data|`false`|
 |use_tag_namespace|Use namespace for tag name|`true`|
 |use_schema_namespace|Use namespace for schema name|`true`|
-|server.data| Server data(url, description) | [{ url: `http://localhost:3000`, description: `localhost` }] |
 |interval_to_save_edited_tmp_schema|Interval(sec) to save edited tmp schema|`15`|
+
+#### server
+
+|option|children option|description|default|
+|------|---------------|-----------|-------|
+|server|data|Server data (url, description) |[{ url: `http://localhost:3000`, description: `localhost` }] |
+
+#### swagger
+
+|option|children option|grandchild option|description|default|
+|------|---------------|-----------------|-----------|-------|
+|swagger|ui|image|Swagger UI Docker Image|`"swaggerapi/swagger-ui"`|
+|swagger|ui|port|Swagger UI Port|`"8080"`|
+|swagger|ui|exposed_port|Swagger UI Exposed Port|`"8080/tcp"`|
+|swagger|ui|volume|Swagger UI Volume|`"/app/swagger.json"`|
+|swagger|editor|image|Swagger Editor Docker Image|`"swaggerapi/swagger-editor"`|
+|swagger|editor|port|Swagger Editor Port|`"8080"`|
+|swagger|editor|exposed_port|Swagger Editor Exposed Port|`"8080/tcp"`|
+
 
 ## Environment variables
 
