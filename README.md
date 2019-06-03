@@ -53,7 +53,7 @@ RoutesToSwaggerDocs.configure do |config|
       description: "localhost"
     }
   ]
-  config.interval_to_save_edited_tmp_schema = 1
+  config.interval_to_save_edited_tmp_schema = 15
 end
 ```
 
@@ -113,7 +113,7 @@ we explain the options that can be set.
 |use_tag_namespace|Use namespace for tag name|`true`|
 |use_schema_namespace|Use namespace for schema name|`true`|
 |server.data| Server data(url, description) | [{ url: `http://localhost:3000`, description: `localhost` }] |
-|interval_to_save_edited_tmp_schema|Interval(sec) to save edited tmp schema|`1`|
+|interval_to_save_edited_tmp_schema|Interval(sec) to save edited tmp schema|`15`|
 
 ## Environment variables
 
