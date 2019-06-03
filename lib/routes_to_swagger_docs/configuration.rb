@@ -1,6 +1,7 @@
 #frozen_string_literal: true
 
-require_relative './configuration/server'
+require_relative 'configuration/server'
+require_relative 'configuration/swagger'
 
 module RoutesToSwaggerDocs
   module Configuration
@@ -13,6 +14,7 @@ module RoutesToSwaggerDocs
     DEFAULT_USE_SCHEMA_NAMESPACE = true
     DEFAULT_SERVER = Server.new
     DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA = 15
+    DEFAULT_SWAGGER = Swagger.new
 
     VALID_OPTIONS_KEYS = [
       :root_dir_path,
@@ -22,7 +24,8 @@ module RoutesToSwaggerDocs
       :use_tag_namespace,
       :use_schema_namespace,
       :server,
-      :interval_to_save_edited_tmp_schema
+      :interval_to_save_edited_tmp_schema,
+      :swagger
     ]
 
     attr_accessor *VALID_OPTIONS_KEYS
@@ -52,6 +55,7 @@ module RoutesToSwaggerDocs
       self.use_schema_namespace               = DEFAULT_USE_SCHEMA_NAMESPACE
       self.server                             = DEFAULT_SERVER
       self.interval_to_save_edited_tmp_schema = DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA
+      self.swagger                            = DEFAULT_SWAGGER
     end
   end
 end

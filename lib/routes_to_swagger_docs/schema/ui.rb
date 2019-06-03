@@ -4,6 +4,7 @@ require 'docker'
 require 'eventmachine'
 require 'watir'
 require 'shell'
+require 'forwardable'
 
 require_relative 'analyzer'
 require_relative 'base'
@@ -13,11 +14,14 @@ require_relative 'base'
 module RoutesToSwaggerDocs
   module Schema
     class UI < Base
-      SWAGGER_UI_IMAGE = "swaggerapi/swagger-ui"
-      SWAGGER_UI_PORT  = "8080"
-      SWAGGER_UI_URL   = "http://localhost:#{SWAGGER_UI_PORT}"
+      extend Forwardable
 
       alias :swagger_json :doc_save_file_path
+
+      def initialize(*args)
+        super
+        @ui = swagger.ui
+      end
 
       def start
         EM.run do
@@ -32,6 +36,7 @@ module RoutesToSwaggerDocs
       private
 
       attr_accessor :unit_paths_file_path
+      def_delegators :@ui, :image, :port, :url, :exposed_port, :volume
 
       def signal_trap(command)
         Signal.trap(command) do
@@ -45,7 +50,7 @@ module RoutesToSwaggerDocs
 
       def open_browser
         @browser ||= Watir::Browser.new
-        @browser.goto(SWAGGER_UI_URL)
+        @browser.goto(url)
         wait_for_loaded
       end
 
@@ -57,15 +62,15 @@ module RoutesToSwaggerDocs
       # https://www.tomduffield.com/files/presentations/the-nitty-gritty-of-the-docker-api.pdf
       def container
         @container ||= Docker::Container.create(
-          'Image' => SWAGGER_UI_IMAGE,
-          'ExposedPorts' => { '8080/tcp' => {} },
+          'Image' => image,
+          'ExposedPorts' => { exposed_port => {} },
           'HostConfig' => {
             'PortBindings' => {
-              '8080/tcp' => [{ 'HostPort' => SWAGGER_UI_PORT }]
+              exposed_port => [{ 'HostPort' => port }]
             },
-            'Binds' => [ "#{swagger_json}:/app/swagger.json" ] 
+            'Binds' => [ "#{swagger_json}:#{volume}" ] 
           },
-          'Volumes' => { "/app/swagger.json" =>  { } }
+          'Volumes' => { volume =>  { } }
         )
       end
     end

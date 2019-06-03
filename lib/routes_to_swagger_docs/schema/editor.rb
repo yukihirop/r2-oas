@@ -6,6 +6,7 @@ require 'watir'
 require 'tempfile'
 require 'fileutils'
 require 'shell'
+require 'forwardable'
 
 require_relative 'analyzer'
 require_relative 'generator'
@@ -16,13 +17,16 @@ require_relative 'base'
 module RoutesToSwaggerDocs
   module Schema
     class Editor < Base
-      SWAGGER_EDITOR_STORAGE_KEY = "swagger-editor-content"
-      SWAGGER_EDITOR_IMAGE       = "swaggerapi/swagger-editor"
-      SWAGGER_EDITOR_PORT        = "81"
-      SWAGGER_EDITOR_URL         = "http://localhost:81"
-      TMP_FILE_NAME              = "edited_schema"
+      extend Forwardable
+
+      TMP_FILE_NAME = "edited_schema"
 
       attr_accessor :edited_schema
+
+      def initialize(*args)
+        super
+        @editor = swagger.editor
+      end
 
       def start
         EM.run do
@@ -37,6 +41,7 @@ module RoutesToSwaggerDocs
       private
 
       attr_accessor :container, :unit_paths_file_path
+      def_delegators :@editor, :storage_key, :image, :port, :url, :exposed_port
 
       def signal_trap(command)
         Signal.trap(command) do
@@ -66,7 +71,7 @@ module RoutesToSwaggerDocs
       def ensure_save_tmp_schema_file
         EM.add_periodic_timer(interval_to_save_edited_tmp_schema) do
           if @browser.exists?
-            @schema = @browser.driver.local_storage[SWAGGER_EDITOR_STORAGE_KEY] || @schema
+            @schema = @browser.driver.local_storage[storage_key] || @schema
             puts "\nwait for single trap ..."
           end
         end
@@ -76,7 +81,7 @@ module RoutesToSwaggerDocs
         @tempfile_path = nil
         
         if @browser.exists?
-          @schema = @browser.driver.local_storage[SWAGGER_EDITOR_STORAGE_KEY] 
+          @schema = @browser.driver.local_storage[storage_key] 
         end
         
         FileUtils.mkdir_p("tmp") unless FileTest.exists?("tmp")
@@ -91,10 +96,10 @@ module RoutesToSwaggerDocs
 
       def open_browser_and_set_schema
         @browser ||= Watir::Browser.new
-        @browser.goto(SWAGGER_EDITOR_URL)
+        @browser.goto(url)
         if wait_for_loaded
           schema_doc_from_local = YAML.load_file(doc_save_file_path)
-          @browser.driver.local_storage[SWAGGER_EDITOR_STORAGE_KEY] = schema_doc_from_local.to_yaml
+          @browser.driver.local_storage[storage_key] = schema_doc_from_local.to_yaml
           @browser.refresh
         end
       end
@@ -105,11 +110,11 @@ module RoutesToSwaggerDocs
 
       def container
         @container ||= Docker::Container.create(
-          'Image' => SWAGGER_EDITOR_IMAGE,
-          'ExposedPorts' => { '8080/tcp' => {} },
+          'Image' => image,
+          'ExposedPorts' => { exposed_port => {} },
           'HostConfig' => {
             'PortBindings' => {
-              '8080/tcp' => [{ 'HostPort' => SWAGGER_EDITOR_PORT }]
+              exposed_port => [{ 'HostPort' => port }]
             }
           }
         )
