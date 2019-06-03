@@ -10,8 +10,12 @@ module RoutesToSwaggerDocs
         end
   
         def to_doc
-          path_item_docs.each_with_object({}) do |(path, path_item_doc), docs|
-            docs[path] = path_item_doc
+          if unit_paths_file_path.present?
+            YAML.load_file(unit_paths_file_path)["paths"]
+          else
+            path_item_docs.each_with_object({}) do |(path, path_item_doc), docs|
+              docs[path] = path_item_doc
+            end
           end
         end
   
