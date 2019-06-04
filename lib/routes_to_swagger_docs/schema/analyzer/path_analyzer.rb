@@ -36,9 +36,9 @@ module RoutesToSwaggerDocs
 
         def only_specify_tags
           unit_paths = @paths_schema.each_with_object({}) do |(path, data_when_path), result|
-            data_when_path.values.each do |data_when_verb|
+            data_when_path.each do |verb, data_when_verb|
               include_tag_name = data_when_verb["tags"].include?(@tag_name)
-              result.deep_merge!({ "#{path}" => data_when_path }) if include_tag_name
+              result.deep_merge!({ "#{path}" => { verb => data_when_verb } }) if include_tag_name
             end
           end
           { "paths" => unit_paths }
