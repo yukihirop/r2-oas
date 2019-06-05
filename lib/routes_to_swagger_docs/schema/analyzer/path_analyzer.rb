@@ -5,43 +5,39 @@ module RoutesToSwaggerDocs
   module Schema
     class PathAnalyzer < BaseAnalyzer
       def update_from_schema
-        edited_paths_schema = @schema["paths"]
+        sorted_schema = deep_sort(@schema, "paths")
+        edited_paths_schema = sorted_schema["paths"]
 
-        edited_schema_tag_names = edited_paths_schema.values.map do |data_when_path|
-          first_data_when_verb = data_when_path.values.first
-          # Support single tag.
-          # tag_name is path for schema yaml file.
-          tag_name = first_data_when_verb["tags"].first
-        end.uniq
-
-        edited_schema_tag_names.each do |tag_name|
-          filter = Filter.new(edited_paths_schema, tag_name)
-          unit_paths_only_specify_tags = filter.only_specify_tags
-
+        save_each_tags(edited_paths_schema) do |tag_name, result|
           dirs = "paths"
           filename_with_namespace = tag_name
           save_path = save_path_for(filename_with_namespace, dirs)
-          File.write(save_path, unit_paths_only_specify_tags.to_yaml)
+          write_after_deep_merge(save_path, result)
           logger.info "  Write schema file: \t#{save_path}"
         end
       end
 
       private
 
-      class Filter
-        def initialize(paths_schema, tag_name)
-          @paths_schema = paths_schema
-          @tag_name = tag_name
-        end
-
-        def only_specify_tags
-          unit_paths = @paths_schema.each_with_object({}) do |(path, data_when_path), result|
-            data_when_path.each do |verb, data_when_verb|
-              include_tag_name = data_when_verb["tags"].include?(@tag_name)
-              result.deep_merge!({ "#{path}" => { verb => data_when_verb } }) if include_tag_name
-            end
+      def unit_paths_data_group_by_tags(unit_paths_data)
+        unit_paths_data.each_with_object({}) do |(path, data_when_path), result|
+          data_when_path.each do |verb, data_when_verb|
+            tag_name = data_when_verb["tags"].first
+            result[tag_name] ||= {}
+            result[tag_name].deep_merge!({
+              "paths" => {
+                path => {
+                  verb => data_when_verb
+                }
+              }
+            })
           end
-          { "paths" => unit_paths }
+        end
+      end
+
+      def save_each_tags(unit_paths_data, &block)
+        unit_paths_data_group_by_tags(unit_paths_data).each do |tag_name, result|
+          yield *[tag_name, result] if block_given?
         end
       end
     end

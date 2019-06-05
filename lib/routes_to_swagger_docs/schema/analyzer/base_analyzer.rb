@@ -1,10 +1,15 @@
 require_relative '../../errors'
 require_relative '../base'
+require_relative '../../shared/all'
 
 # Scope Rails
 module RoutesToSwaggerDocs
   module Schema
     class BaseAnalyzer < Base
+      include Searchable
+      include Sortable
+      include Writable
+
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
         @type = options[:type].presence
