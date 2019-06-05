@@ -35,7 +35,6 @@ module RoutesToSwaggerDocs
         else
           result = result_before_squeeze
         end
-        result = deep_sort(result, "paths")
         File.write(doc_save_file_path, result.to_yaml)
       end
     end
