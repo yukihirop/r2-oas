@@ -8,7 +8,8 @@ module RoutesToSwaggerDocs
       class SchemaGenerator < BaseGenerator
         def initialize(schema_data = {}, options = {})
           super(schema_data, options)
-          @components_schemas = schema_data["schemas"] || scehma_data[:schemas]
+          sorted_schema_data = deep_sort(schema_data, "schemas")
+          @components_schemas = sorted_schema_data["schemas"]
           @glob_schema_paths = create_glob_components_schemas_paths
         end
       
@@ -45,7 +46,7 @@ module RoutesToSwaggerDocs
 
         def process_when_generate_components_schemas(components_schemas_override: false)
           logger.info " <Update Components schema files (components/schemas)>"
-          normalized_components_schemas.each do |schema_name, data|
+          @components_schemas.each do |schema_name, data|
             result = {
               "components" => {
                 "schemas" => { "#{schema_name}" => data }
@@ -63,10 +64,6 @@ module RoutesToSwaggerDocs
               logger.info "  Write schema file: \t#{save_path}"
             end
           end
-        end
-
-        def normalized_components_schemas
-          @components_schemas
         end
       
         def create_glob_components_schemas_paths

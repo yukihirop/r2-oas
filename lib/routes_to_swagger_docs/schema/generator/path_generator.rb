@@ -1,16 +1,14 @@
 require 'forwardable'
 require 'fileutils'
 require_relative 'base_generator'
-require_relative '../../shared/writable'
 
 module RoutesToSwaggerDocs
   module Schema
     class PathGenerator < BaseGenerator
-      include Writable
-
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
-        @paths = schema_data["paths"] || scehma_data[:paths]
+        sorted_schema_data = deep_sort(schema_data, "paths")
+        @paths = sorted_schema_data["paths"]
         @glob_schema_paths = create_glob_paths_paths
       end
       
@@ -46,31 +44,16 @@ module RoutesToSwaggerDocs
       
       def process_when_generate_paths(paths_override: false)
         logger.info " <Update schema files (paths)>"
-        normalized_paths.values.each do |unit_paths_data|          
-          save_each_tags(unit_paths_data) do |tag_name, result|
-            dirs = "paths"
-            filename_with_namespace = tag_name
-            save_path = save_path_for(filename_with_namespace, dirs)
-            write_after_deep_merge(save_path, result)
-            
-            if paths_override
-              logger.info "  Merge schema file: \t#{save_path}"
-            else
-              logger.info "  Write schema file: \t#{save_path}"
-            end
-          end
-        end
-      end
-      
-      def normalized_paths
-        @paths.each_with_object({}) do |(path_name, data), result|
-          tag_name = data.values.first["tags"].first
-          merge_data = { "#{path_name}" => data }
+        save_each_tags(@paths) do |tag_name, result|
+          dirs = "paths"
+          filename_with_namespace = tag_name
+          save_path = save_path_for(filename_with_namespace, dirs)
+          write_after_deep_merge(save_path, result)
           
-          if result.has_key?(tag_name)
-            result[tag_name].deep_merge!(merge_data)
+          if paths_override
+            logger.info "  Merge schema file: \t#{save_path}"
           else
-            result[tag_name] = merge_data
+            logger.info "  Write schema file: \t#{save_path}"
           end
         end
       end

@@ -6,7 +6,8 @@ module RoutesToSwaggerDocs
     module Components
       class RequestBodiesAnalyzer < BaseAnalyzer
         def update_from_schema
-          edited_components_request_bodies_schema = @schema["components"]["requestBodies"]
+          sorted_components_schema = deep_sort(@schema["components"], "requestBodies")
+          edited_components_request_bodies_schema = sorted_components_schema["requestBodies"]
           edited_request_body_names = edited_components_request_bodies_schema.keys.uniq
 
           edited_request_body_names.each do |request_body|

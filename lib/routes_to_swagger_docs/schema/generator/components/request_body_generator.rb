@@ -8,7 +8,8 @@ module RoutesToSwaggerDocs
       class RequestBodyGenerator < BaseGenerator
         def initialize(schema_data = {}, options = {})
           super(schema_data, options)
-          @components_request_bodies = schema_data["requestBodies"] || scehma_data[:requestBodies]
+          sorted_schema_data = deep_sort(schema_data, "requestBodies")
+          @components_request_bodies = sorted_schema_data["requestBodies"]
           @glob_schema_paths = create_glob_components_request_bodies_paths
         end
       
@@ -45,7 +46,7 @@ module RoutesToSwaggerDocs
 
         def process_when_generate_components_request_bodies(components_request_bodies_override: false)
           logger.info " <Update Components schema files (components/schemas)>"
-          normalized_components_request_bodies.each do |schema_name, data|
+          @components_request_bodies.each do |schema_name, data|
             result = {
               "components" => {
                 "requestBodies" => { "#{schema_name}" => data }
@@ -63,10 +64,6 @@ module RoutesToSwaggerDocs
               logger.info "  Write schema file: \t#{save_path}"
             end
           end
-        end
-
-        def normalized_components_request_bodies
-          @components_request_bodies
         end
       
         def create_glob_components_request_bodies_paths

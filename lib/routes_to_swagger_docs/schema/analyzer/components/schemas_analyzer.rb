@@ -6,7 +6,8 @@ module RoutesToSwaggerDocs
     module Components
       class SchemasAnalyzer < BaseAnalyzer
         def update_from_schema
-          edited_components_schemas_schema = @schema["components"]["schemas"]
+          sorted_components_schema = deep_sort(@schema["components"], "schemas")
+          edited_components_schemas_schema = sorted_components_schema["schemas"]
           edited_schema_names = edited_components_schemas_schema.keys.uniq
 
           edited_schema_names.each do |schema_name|

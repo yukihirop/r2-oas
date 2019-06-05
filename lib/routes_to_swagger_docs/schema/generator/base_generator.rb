@@ -2,12 +2,14 @@ require_relative '../../routing/parser'
 require_relative '../v3/openapi_object'
 require_relative '../base'
 require_relative '../squeezer'
-require_relative '../../shared/searchable'
+require_relative '../../shared/all'
 
 module RoutesToSwaggerDocs
   module Schema
     class BaseGenerator < Base
-      include RoutesToSwaggerDocs::Searchable
+      include Searchable
+      include Sortable
+      include Writable
 
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
