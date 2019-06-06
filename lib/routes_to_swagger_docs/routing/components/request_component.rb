@@ -23,6 +23,23 @@ module RoutesToSwaggerDocs
 
         tag_name
       end
+
+      def to_schema_name
+        if @is_route_engine
+          schema_name = @request.split("::").map(&:camelcase).join("_")
+        else
+          # e.x.) @request = "api/v2/posts#index {:format=>:json}"
+          # e.x.) path = "api/v2/post"
+          path = @request.split("#").first.singularize
+          schema_name = path.split("/").map(&:camelcase).join("_")
+        end
+
+        unless use_schema_namespace
+          schema_name = schema_name.split("_").last
+        end
+
+        schema_name
+      end
     end
   end
 end

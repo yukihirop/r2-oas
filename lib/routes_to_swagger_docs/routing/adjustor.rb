@@ -14,7 +14,6 @@ module RoutesToSwaggerDocs
         @verbs = create_verbs
         @path_comp = PathComponent.new(route_data[:path])
         @request_comp = RequestComponent.new(route_data[:reqs], @route.engine?)
-        @schema_name = create_schema_name
         @format_name = create_format_name
       end
 
@@ -26,7 +25,7 @@ module RoutesToSwaggerDocs
             verb: verb,
             path: @path_comp.symbol_to_brace,
             tag_name: @request_comp.to_tag_name,
-            schema_name: @schema_name,
+            schema_name: @request_comp.to_schema_name,
             format_name: @format_name,
             required_parameters: @path_comp.path_parameters_data
           }
@@ -45,25 +44,6 @@ module RoutesToSwaggerDocs
       # e.x.) "GET|POST" => ["get","post"]
       def create_verbs
         (@route_data[:verb].downcase.presence || "get").split("|")
-      end
-
-      def create_schema_name
-        schema_name = nil
-
-        if @route.engine?
-          schema_name = @route_data[:reqs].split("::").map(&:camelcase).join("_")
-        else
-          # e.x.) @route_data[:reqs] = "api/v2/posts#index {:format=>:json}"
-          # e.x.) path = "api/v2/post"
-          path = @route_data[:reqs].split("#").first.singularize
-          schema_name = path.split("/").map(&:camelcase).join("_")
-        end
-
-        unless use_schema_namespace
-          schema_name = schema_name.split("_").last
-        end
-
-        schema_name
       end
 
       # e.x.) "tasks#index { :format => ":json" }"
