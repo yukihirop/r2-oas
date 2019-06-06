@@ -40,6 +40,15 @@ module RoutesToSwaggerDocs
 
         schema_name
       end
+
+      # e.x.) "tasks#index { :format => ":json" }"
+      def to_format_name
+        result = ""
+        @request.match(/{\:format=>:(?<format_name>.*)}/) do |md|
+          result = md[:format_name] if md[:format_name]
+        end
+        result
+      end
     end
   end
 end

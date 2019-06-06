@@ -14,7 +14,6 @@ module RoutesToSwaggerDocs
         @verbs = create_verbs
         @path_comp = PathComponent.new(route_data[:path])
         @request_comp = RequestComponent.new(route_data[:reqs], @route.engine?)
-        @format_name = create_format_name
       end
 
       def routes_els
@@ -26,7 +25,7 @@ module RoutesToSwaggerDocs
             path: @path_comp.symbol_to_brace,
             tag_name: @request_comp.to_tag_name,
             schema_name: @request_comp.to_schema_name,
-            format_name: @format_name,
+            format_name: @request_comp.to_format_name,
             required_parameters: @path_comp.path_parameters_data
           }
           result.push route_el
@@ -44,15 +43,6 @@ module RoutesToSwaggerDocs
       # e.x.) "GET|POST" => ["get","post"]
       def create_verbs
         (@route_data[:verb].downcase.presence || "get").split("|")
-      end
-
-      # e.x.) "tasks#index { :format => ":json" }"
-      def create_format_name
-        result = ""
-        @route_data[:reqs].match(/{\:format=>:(?<format_name>.*)}/) do |md|
-          result = md[:format_name] if md[:format_name]
-        end
-        result
       end
     end
   end
