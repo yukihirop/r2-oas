@@ -1,4 +1,5 @@
 require_relative 'base'
+require_relative 'components/path_component'
 
 module RoutesToSwaggerDocs
   module Routing
@@ -11,24 +12,23 @@ module RoutesToSwaggerDocs
         @route_data = route_data
         @route = route_data[:route]
         @verbs = create_verbs
-        @path = create_path
+        @path_comp = PathComponent.new(route_data[:path])
         @tag_name = create_tag_name
         @schema_name = create_schema_name
         @format_name = create_format_name
-        @required_parameters = create_required_parameters
       end
 
       def routes_els
         @verbs.each_with_object([]) do  |verb, result|
           route_el = {}
-          route_el[:path] = @path
+          route_el[:path] = @path_comp.symbol_to_brace
           route_el[:data]= {
             verb: verb,
-            path: @path,
+            path: @path_comp.symbol_to_brace,
             tag_name: @tag_name,
             schema_name: @schema_name,
             format_name: @format_name,
-            required_parameters: @required_parameters
+            required_parameters: @path_comp.path_parameters_data
           }
           result.push route_el
         end
@@ -45,26 +45,6 @@ module RoutesToSwaggerDocs
       # e.x.) "GET|POST" => ["get","post"]
       def create_verbs
         (@route_data[:verb].downcase.presence || "get").split("|")
-      end
-
-      # e.x.) "/tasks(.:format)" => "/tasks"
-      # e.x.) "/:model_name/:id/show_in_app" => "/{model_name}/{id}/show_in_app"
-      def create_path
-        without_format = @route_data[:path].gsub(/\(.+\)/,"")
-        exist_params = without_format.match(/:(.\w+)/).presence
-        if exist_params
-          create_path_with_parameters(without_format)
-        else
-          without_format
-        end
-      end
-
-      def create_path_with_parameters(without_format)
-        match_parameters = without_format.scan(/:(.\w+)/).flatten
-        match_parameters.each do |target|
-          without_format.gsub!(":#{target}", "{#{target}}")
-        end
-        without_format
       end
 
       # e.x.) "tasks#index" => "task"
@@ -111,25 +91,6 @@ module RoutesToSwaggerDocs
           result = md[:format_name] if md[:format_name]
         end
         result
-      end
-
-      # FIXME: Implement Simplify
-      def create_required_parameters
-        without_format = @route_data[:path].gsub(/\(.+\)/,"")
-        exist_params = without_format.match(/:(.\w+)/).present?
-        if exist_params
-          match_parameters = without_format.scan(/:(.\w+)/).flatten
-          match_parameters.each_with_object({}) do |target, data|
-            type = (target =~ /id/ ? "integer" : "string")
-            data.merge!({
-              "#{target}": {
-                type: type
-              }
-            })
-          end
-        else
-          {}
-        end
       end
     end
   end
