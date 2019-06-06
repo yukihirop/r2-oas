@@ -1,5 +1,5 @@
 require_relative 'base'
-require_relative 'components/path_component'
+require_relative 'components/all'
 
 module RoutesToSwaggerDocs
   module Routing
@@ -13,7 +13,7 @@ module RoutesToSwaggerDocs
         @route = route_data[:route]
         @verbs = create_verbs
         @path_comp = PathComponent.new(route_data[:path])
-        @tag_name = create_tag_name
+        @request_comp = RequestComponent.new(route_data[:reqs], @route.engine?)
         @schema_name = create_schema_name
         @format_name = create_format_name
       end
@@ -25,7 +25,7 @@ module RoutesToSwaggerDocs
           route_el[:data]= {
             verb: verb,
             path: @path_comp.symbol_to_brace,
-            tag_name: @tag_name,
+            tag_name: @request_comp.to_tag_name,
             schema_name: @schema_name,
             format_name: @format_name,
             required_parameters: @path_comp.path_parameters_data
@@ -45,24 +45,6 @@ module RoutesToSwaggerDocs
       # e.x.) "GET|POST" => ["get","post"]
       def create_verbs
         (@route_data[:verb].downcase.presence || "get").split("|")
-      end
-
-      # e.x.) "tasks#index" => "task"
-      # e.x.) "RailsAdmin::Engine" => "rails_amin/engine"
-      def create_tag_name
-        tag_name = nil
-
-        if @route.engine?
-          tag_name = @route_data[:reqs].gsub("::","/").underscore
-        else
-          tag_name = @route_data[:reqs].split("#").first.singularize
-        end
-
-        unless use_tag_namespace
-          tag_name = tag_name.split("/").last
-        end
-
-        tag_name
       end
 
       def create_schema_name
