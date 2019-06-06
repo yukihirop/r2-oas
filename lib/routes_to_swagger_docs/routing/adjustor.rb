@@ -11,9 +11,10 @@ module RoutesToSwaggerDocs
         valid_route_data?(route_data)
         @route_data = route_data
         @route = route_data[:route]
-        @verbs = create_verbs
         @path_comp = PathComponent.new(route_data[:path])
         @request_comp = RequestComponent.new(route_data[:reqs], @route.engine?)
+        @verb_comp = VerbComponent.new(route_data[:verb])
+        @verbs = @verb_comp.verbs
       end
 
       def routes_els
@@ -36,13 +37,6 @@ module RoutesToSwaggerDocs
 
       def valid_route_data?(route_data)
         raise RuntimeError,  "Invalid params" unless route_data.keys.eql?(VALID_KEYS)
-      end
-
-      # e.x.) "" => ["get"]
-      # e.x.) "POST" => ["post"]
-      # e.x.) "GET|POST" => ["get","post"]
-      def create_verbs
-        (@route_data[:verb].downcase.presence || "get").split("|")
       end
     end
   end
