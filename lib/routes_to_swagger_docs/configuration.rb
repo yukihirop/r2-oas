@@ -2,6 +2,7 @@
 
 require_relative 'configuration/server'
 require_relative 'configuration/swagger'
+require_relative 'logger/stdout_logger'
 
 module RoutesToSwaggerDocs
   module Configuration
@@ -42,6 +43,10 @@ module RoutesToSwaggerDocs
       VALID_OPTIONS_KEYS.inject({}) do |option, key|
         option.merge!(key => send(key))
       end
+    end
+
+    def logger
+      @stdout_logger ||= StdoutLogger.new
     end
 
     private
