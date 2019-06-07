@@ -42,7 +42,7 @@ module RoutesToSwaggerDocs
         Signal.trap(command) do
           container.stop
           container.remove
-          puts "container id: #{container.id} removed"
+          logger.info "container id: #{container.id} removed"
           
           EM.stop
         end
