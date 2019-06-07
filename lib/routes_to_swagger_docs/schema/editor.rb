@@ -49,11 +49,11 @@ module RoutesToSwaggerDocs
             process_after_close_browser
             container.stop
             container.remove
-            puts "container id: #{container.id} removed"
+            logger.info "container id: #{container.id} removed"
           else
             process_after_close_browser
             container.remove
-            puts "container id: #{container.id} removed"
+            logger.info "container id: #{container.id} removed"
           end
           
           EM.stop
@@ -62,7 +62,7 @@ module RoutesToSwaggerDocs
 
       def process_after_close_browser
         fetch_edited_schema_from_browser
-        puts "\nsave updated schema in tempfile path: #{@tempfile_path}"
+        logger.info "\nsave updated schema in tempfile path: #{@tempfile_path}"
         options = { type: :edited, edited_schema_file_path: @tempfile_path }
         analyzer = Analyzer.new({}, options)
         analyzer.update_from_schema

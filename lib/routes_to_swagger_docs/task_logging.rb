@@ -19,21 +19,20 @@ module RoutesToSwaggerDocs
     private
 
     def logger
-      ::Rails.logger
+      RoutesToSwaggerDocs.logger
     end
 
     def set_info_level
-      ::Rails.logger = Logger.new(STDOUT)
-      ::Rails.logger.level = Logger::INFO
+      RoutesToSwaggerDocs.logger.level = StdoutLogger::INFO
     end
 
     def set_debug_level
-      ::Rails.logger.level = Logger::DEBUG
+      RoutesToSwaggerDocs.logger.level = StdoutLogger::DEBUG
     end
 
     def debug_log(task, message)
       unless task.name == "routes:swagger:debug"
-        ::Rails.logger.debug "#{message}"
+        RoutesToSwaggerDocs.logger.debug "#{message}"
       end
     end
   end

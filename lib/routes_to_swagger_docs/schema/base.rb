@@ -15,7 +15,7 @@ module RoutesToSwaggerDocs
       attr_accessor *Configuration::VALID_OPTIONS_KEYS
 
       def logger
-        ::Rails.logger
+        RoutesToSwaggerDocs.logger
       end
 
       def schema_save_dir_path
