@@ -12,7 +12,7 @@ module RoutesToSwaggerDocs
           dirs = "paths"
           filename_with_namespace = tag_name
           save_path = save_path_for(filename_with_namespace, dirs)
-          write_after_deep_merge(save_path, result)
+          File.write(save_path, result.to_yaml)
           logger.info "  Write schema file: \t#{save_path}"
         end
       end
