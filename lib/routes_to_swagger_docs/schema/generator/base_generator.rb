@@ -43,9 +43,9 @@ module RoutesToSwaggerDocs
       end
       
       def create_glob_schema_paths
-        if unit_paths_file_path.present?
+        if many_paths_file_paths.present?
           exclude_paths_regexp_paths = "#{schema_save_dir_path}/**.yml"
-          [unit_paths_file_path, exclude_paths_regexp_paths] + components_file_paths
+          [exclude_paths_regexp_paths] + many_paths_file_paths + components_file_paths
         else
           ["#{schema_save_dir_path}/**/**.yml"]
         end
@@ -55,9 +55,23 @@ module RoutesToSwaggerDocs
         Dir.glob(@glob_schema_paths)
       end
 
+      def many_paths_file_paths
+        if unit_paths_file_path.present?
+          [unit_paths_file_path]
+        else
+          paths_config.manay_paths_file_paths
+        end
+      end
+
       def components_file_paths
-        return nil if unit_paths_file_path.blank?
-        yaml = YAML.load_file(unit_paths_file_path)
+        many_paths_file_paths.each_with_object([]) do |unit_paths_path, result|
+          components_file_paths_at_path = components_file_paths_for_path(unit_paths_path)
+          result.push(*components_file_paths_at_path)
+        end.uniq
+      end
+
+      def components_file_paths_for_path(path)
+        yaml = YAML.load_file(path)
         
         components_paths = []
         deep_search_component_file_recursive(yaml, "$ref") do |component_paths|

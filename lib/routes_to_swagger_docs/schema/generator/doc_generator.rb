@@ -30,8 +30,8 @@ module RoutesToSwaggerDocs
           logger.info " Use schema file: \t#{path}"
         end
 
-        if unit_paths_file_path.present?
-          result = Squeezer.new(result_before_squeeze, unit_paths_file_path: unit_paths_file_path).remake_docs
+        if many_paths_file_paths.present?
+          result = Squeezer.new(result_before_squeeze, many_paths_file_paths: many_paths_file_paths).remake_docs
         else
           result = result_before_squeeze
         end
