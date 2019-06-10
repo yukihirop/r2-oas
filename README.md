@@ -155,6 +155,19 @@ We explain the environment variables that can be set.
 |UNIT_PATHS_FILE_PATH|Specify one schema path|`""`|
 |SWAGGER_FILE|Specify swagger file to analyze|`""`|
 
+## .paths
+
+Writing file paths in .paths will only read them.
+You can comment out with `#`
+
+`swagger_docs/.paths`
+
+```
+#schema/paths/account_user_role.yml
+schema/paths/account.yml
+```
+
+
 ## CORS
 
 If you use the online demo, make sure your API supports foreign requests by enabling CORS in Grape, otherwise you'll see the API description, but requests on the API won't return. Use [rack-cors](https://github.com/cyu/rack-cors) to enable CORS.
