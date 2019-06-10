@@ -9,9 +9,9 @@ module RoutesToSwaggerDocs
       def remake_docs
         except_paths_schema = @schema_data.except("paths", "tags", "components")
         
-        path_squeezer = PathSqueezer.new(@schema_data, unit_paths_file_path: unit_paths_file_path)
-        tag_squeezer = TagSqueezer.new(@schema_data, unit_paths_file_path: unit_paths_file_path)
-        components_squeezer = ComponentsSqueezer.new(@schema_data, unit_paths_file_path: unit_paths_file_path)
+        path_squeezer = PathSqueezer.new(@schema_data, many_paths_file_paths: many_paths_file_paths)
+        tag_squeezer = TagSqueezer.new(@schema_data, many_paths_file_paths: many_paths_file_paths)
+        components_squeezer = ComponentsSqueezer.new(@schema_data, many_paths_file_paths: many_paths_file_paths)
         
         slice_schemas = [
           tag_squeezer.remake_tags,

@@ -2,6 +2,7 @@
 
 require_relative 'configuration/server'
 require_relative 'configuration/swagger'
+require_relative 'configuration/paths_config'
 require_relative 'logger/stdout_logger'
 
 module RoutesToSwaggerDocs
@@ -17,7 +18,7 @@ module RoutesToSwaggerDocs
     DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA = 15
     DEFAULT_SWAGGER = Swagger.new
 
-    VALID_OPTIONS_KEYS = [
+    PUBLIC_VALID_OPTIONS_KEYS = [
       :root_dir_path,
       :schema_save_dir_name,
       :doc_save_file_name,
@@ -29,7 +30,13 @@ module RoutesToSwaggerDocs
       :swagger
     ]
 
-    attr_accessor *VALID_OPTIONS_KEYS
+    UNPUBLIC_VALID_OPTIONS_KEYS = [
+      :paths_config
+    ]
+
+    VALID_OPTIONS_KEYS = PUBLIC_VALID_OPTIONS_KEYS + UNPUBLIC_VALID_OPTIONS_KEYS
+
+    attr_accessor *PUBLIC_VALID_OPTIONS_KEYS
 
     def self.extended(base)
       base.send :set_default
@@ -47,6 +54,10 @@ module RoutesToSwaggerDocs
 
     def logger
       @stdout_logger ||= StdoutLogger.new
+    end
+
+    def paths_config
+      @_paths_config ||= PathsConfig.new(root_dir_path)
     end
 
     private

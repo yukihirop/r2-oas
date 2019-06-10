@@ -6,16 +6,19 @@ module RoutesToSwaggerDocs
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
         @schema_data = schema_data
-        @tag_name = create_tag_name
+        @tag_names = create_tag_names
       end
 
       private
 
-      attr_accessor :unit_paths_file_path
+      attr_accessor :many_paths_file_paths
 
-      def create_tag_name
-        paths_from_local = YAML.load_file(@unit_paths_file_path)
-        paths_from_local["paths"].values[0].values[0]["tags"][0]
+      def create_tag_names
+        many_paths_file_paths.each_with_object([]) do |unit_paths_path, result|
+          paths_from_local = YAML.load_file(unit_paths_path)
+          tag_name_from_path = paths_from_local["paths"].values[0].values[0]["tags"][0]
+          result.push(tag_name_from_path)
+        end
       end
     end
   end
