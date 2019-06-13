@@ -9,6 +9,7 @@ module RoutesToSwaggerDocs
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
         @docs = create_docs
+        @options = options
       end
 
       def generate_schemas
@@ -41,16 +42,15 @@ module RoutesToSwaggerDocs
         logger.info "<Update schema files>"
         @docs.each do |field_name, data|
           result = { "#{field_name}" => data }
-          options = { unit_paths_file_path: unit_paths_file_path }
 
           case field_name
           when "paths"
             logger.info " [Generate Swagger schema files (paths)] start"
-            PathGenerator.new(result, options).generate_paths
+            PathGenerator.new(result, @options).generate_paths
             logger.info " [Generate Swagger schema files (paths)] end"
           when "components"
             logger.info " [Generate Swagger schema files (components)] start"
-            ComponentsGenerator.new(result, options).generate_components
+            ComponentsGenerator.new(result, @options).generate_components
             logger.info " [Generate Swagger schema files (components)] end"
           else
             filename_with_namespace = field_name
