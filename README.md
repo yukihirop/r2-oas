@@ -106,6 +106,7 @@ You can execute the following command in the root directory of rails.
 $ # Generate docs
 $ bundle exec rake routes:swagger:docs                                                                        # Generate docs
 $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs    # Generate docs by specify unit paths
+
 $ # Start swagger editor
 $ bundle exec rake routes:swagger:editor                                                                      # Start swagger editor
 $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor  # Start swagger editor by specify unit paths
@@ -115,10 +116,14 @@ $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exe
 $ # Monitor swagger document
 $ bundle exec rake routes:swagger:monitor                                                                     # Monitor swagger document
 $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # Monitor swagger by specify unit paths
+
 $ # Analyze docs
 $ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
 $ # Deploy docs
 $ bundle exec rake routes:swagger:deploy
+
+# Display paths list
+$ bundle exec rake routes:swagger:paths_ls
 ```
 
 ## More Usage
@@ -132,6 +137,7 @@ $ bundle exec rake routes:swagger:deploy
 - [How to use tag namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
 - [How to use schema namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
 - [How to use hook when generate doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
+- [How to display paths list](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
 
 ## Support Rails Version
 
