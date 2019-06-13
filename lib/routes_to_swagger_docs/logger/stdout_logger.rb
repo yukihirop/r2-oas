@@ -7,8 +7,9 @@ module RoutesToSwaggerDocs
     ERROR = 3
     FATAL = 4
     UNKNOWN = 5
+    NULL = 6
     # Severity label for logging (max 5 chars).
-    SEV_LABEL = %w(DEBUG INFO WARN ERROR FATAL ANY).each(&:freeze).freeze
+    SEV_LABEL = %w(DEBUG INFO WARN ERROR FATAL NULL ANY).each(&:freeze).freeze
 
     # Logging severity threshold (e.g. <tt>Logger::INFO</tt>).
     attr_reader :level
@@ -41,6 +42,8 @@ module RoutesToSwaggerDocs
           @level = FATAL
         when 'unknown'.freeze
           @level = UNKNOWN
+        when 'null'.freeze
+          @level = NULL
         else
           raise ArgumentError, "invalid log level: #{severity}"
         end
@@ -68,7 +71,7 @@ module RoutesToSwaggerDocs
     end
 
     def unknown(progname = nil)
-      add(FATAL, nil, progname)
+      add(UNKNOWN, nil, progname)
     end
 
     private
