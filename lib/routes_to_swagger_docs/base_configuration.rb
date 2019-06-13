@@ -2,8 +2,6 @@
 
 require_relative 'base_configuration/server'
 require_relative 'base_configuration/swagger'
-require_relative 'base_configuration/paths_config'
-require_relative 'logger/stdout_logger'
 
 module RoutesToSwaggerDocs
   module BaseConfiguration
@@ -30,12 +28,14 @@ module RoutesToSwaggerDocs
     ]
 
     UNPUBLIC_VALID_OPTIONS_KEYS = [
-      :paths_config
+      :paths_config,
+      :logger
     ]
 
     VALID_OPTIONS_KEYS = PUBLIC_VALID_OPTIONS_KEYS + UNPUBLIC_VALID_OPTIONS_KEYS
 
-    attr_accessor *VALID_OPTIONS_KEYS
+    attr_accessor *PUBLIC_VALID_OPTIONS_KEYS
+    # attr_reader *UNPUBLIC_VALID_OPTIONS_KEYS
 
     def options
       VALID_OPTIONS_KEYS.inject({}) do |option, key|
@@ -43,19 +43,9 @@ module RoutesToSwaggerDocs
       end
     end
 
-    def logger
-      @stdout_logger ||= StdoutLogger.new
-    end
-
-    def paths_config
-      @_paths_config ||= PathsConfig.new(root_dir_path, schema_save_dir_name)
-    end
-
     private
 
-    module_function
-
-    def set_default(target)
+     module_function def set_default(target)
       target.root_dir_path                      = DEFAULT_ROOT_DIR_PATH
       target.schema_save_dir_name               = DEFAULT_SCHEMA_SAVE_DIR_NAME
       target.doc_save_file_name                 = DEFAULT_DOC_SAVE_FILE_NAME
