@@ -11,7 +11,7 @@ namespace :routes do
     desc "Generate Swagger documentation files"
     task :docs => [:common] do
       logger.info "[Routes to Swagger docs] start"
-      options = { unit_paths_file_path: unit_paths_file_path }
+      options = { unit_paths_file_path: unit_paths_file_path, skip_load_dot_paths: true }
       generator = RoutesToSwaggerDocs::Schema::Generator.new({}, options)
       generator.generate_docs
       logger.info "[Routes to Swagger docs] end"

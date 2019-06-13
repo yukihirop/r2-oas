@@ -59,7 +59,7 @@ module RoutesToSwaggerDocs
       end
       
       def create_glob_paths_paths
-        if many_paths_file_paths.present?
+        if many_paths_file_paths.present? && !skip_load_dot_paths
           many_paths_file_paths
         else
           ["#{schema_save_dir_path}/paths/**/**.yml"]

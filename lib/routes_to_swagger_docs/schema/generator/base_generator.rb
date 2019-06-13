@@ -20,6 +20,7 @@ module RoutesToSwaggerDocs
       
       attr_accessor :unit_paths_file_path
       attr_accessor :skip_generate_schemas
+      attr_accessor :skip_load_dot_paths
       
       # Scope Rails
       def create_docs
@@ -43,7 +44,7 @@ module RoutesToSwaggerDocs
       end
       
       def create_glob_schema_paths
-        if many_paths_file_paths.present?
+        if many_paths_file_paths.present? && !skip_load_dot_paths
           exclude_paths_regexp_paths = "#{schema_save_dir_path}/**.yml"
           [exclude_paths_regexp_paths] + many_paths_file_paths + components_file_paths
         else
@@ -56,8 +57,11 @@ module RoutesToSwaggerDocs
       end
 
       def many_paths_file_paths
-        if unit_paths_file_path.present?
+        case
+        when unit_paths_file_path.present? && !skip_load_dot_paths
           [unit_paths_file_path]
+        when skip_load_dot_paths
+          Dir.glob("#{schema_save_dir_path}/paths/**/**.yml")
         else
           paths_config.manay_paths_file_paths
         end
