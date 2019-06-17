@@ -57,7 +57,7 @@ module RoutesToSwaggerDocs
     end
 
     def paths_config
-      @_paths_config ||= PathsConfig.new(root_dir_path)
+      @_paths_config ||= PathsConfig.new(root_dir_path, schema_save_dir_name)
     end
 
     private

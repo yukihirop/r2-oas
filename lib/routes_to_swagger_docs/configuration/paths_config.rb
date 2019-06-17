@@ -1,8 +1,9 @@
 module RoutesToSwaggerDocs
   module Configuration
     class PathsConfig
-      def initialize(root_dir_path)
+      def initialize(root_dir_path, schema_save_dir_name)
         @root_dir_path = root_dir_path
+        @schema_save_dir_path = "#{root_dir_path}/#{schema_save_dir_name}"
       end
 
       def abs_paths_path
@@ -11,9 +12,9 @@ module RoutesToSwaggerDocs
 
       def manay_paths_file_paths
         File.read(abs_paths_path).split("\n").each_with_object([]) do |relative_path, result|
-          abs_path = File.expand_path("#{@root_dir_path}/#{relative_path}")
-          result.push(abs_path) if FileTest.exists?(abs_path)
-        end
+          abs_path = File.expand_path("#{@schema_save_dir_path}/paths/#{relative_path}")
+          result.push(abs_path) if FileTest.exists?(abs_path) && FileTest.file?(abs_path)
+        end.uniq.compact.reject(&:empty?)
       end
 
       def create_dot_paths
