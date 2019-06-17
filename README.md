@@ -163,8 +163,10 @@ You can comment out with `#`
 `swagger_docs/.paths`
 
 ```
-#schema/paths/account_user_role.yml
-schema/paths/account.yml
+#account_user_role.yml    # ignore
+account.yml
+account.yml               # ignore
+account.yml               # ignore
 ```
 
 
