@@ -61,11 +61,12 @@ module RoutesToSwaggerDocs
       end
 
       def process_after_close_browser
-        fetch_edited_schema_from_browser
-        logger.info "\nsave updated schema in tempfile path: #{@tempfile_path}"
-        options = { type: :edited, edited_schema_file_path: @tempfile_path }
-        analyzer = Analyzer.new({}, options)
-        analyzer.update_from_schema
+        fetch_edited_schema_from_browser do |path|
+          logger.info "\nsave updated schema in tempfile path: #{path}"
+          options = { type: :edited, edited_schema_file_path: path }
+          analyzer = Analyzer.new({}, options)
+          analyzer.update_from_schema
+        end
       end
 
       def ensure_save_tmp_schema_file
@@ -77,21 +78,16 @@ module RoutesToSwaggerDocs
         end
       end
 
-      def fetch_edited_schema_from_browser
-        @tempfile_path = nil
-        
+      def fetch_edited_schema_from_browser(&block)
         if @browser.exists?
           @schema = @browser.driver.local_storage[storage_key] 
         end
         
         FileUtils.mkdir_p("tmp") unless FileTest.exists?("tmp")
-        file = Tempfile.open([TMP_FILE_NAME, '.yaml'], 'tmp') do |f|
+        Tempfile.create([TMP_FILE_NAME, '.yaml'], 'tmp') do |f|
           f.write @schema
-          f
+          yield f.path if block_given?
         end
-
-        @tempfile_path = file.path
-        self
       end
 
       def open_browser_and_set_schema
