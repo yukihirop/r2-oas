@@ -10,7 +10,7 @@ module RoutesToSwaggerDocs
         File.expand_path("#{@root_dir_path}/.paths")
       end
 
-      def manay_paths_file_paths
+      def many_paths_file_paths
         File.read(abs_paths_path).split("\n").each_with_object([]) do |relative_path, result|
           abs_path = File.expand_path("#{@schema_save_dir_path}/paths/#{relative_path}")
           result.push(abs_path) if FileTest.exists?(abs_path) && FileTest.file?(abs_path)

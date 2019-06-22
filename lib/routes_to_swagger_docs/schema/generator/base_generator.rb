@@ -63,7 +63,7 @@ module RoutesToSwaggerDocs
         when skip_load_dot_paths
           Dir.glob("#{schema_save_dir_path}/paths/**/**.yml")
         else
-          paths_config.manay_paths_file_paths
+          paths_config.many_paths_file_paths
         end
       end
 
