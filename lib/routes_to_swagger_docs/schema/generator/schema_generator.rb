@@ -25,17 +25,11 @@ module RoutesToSwaggerDocs
       private
       
       def generate_schemas_from_schema_fiels
-        schemas_from_schema_fiels = schema_files_paths.each_with_object({}) do |path, data|
-          yaml = YAML.load_file(path)
-          data.deep_merge!(yaml)
-          logger.info " Fetch schema file: \t#{path}"
-        end
-        @docs.deep_merge!(schemas_from_schema_fiels)
         process_when_generate_schemas(schema_override: true)
       end
       
       def generate_schemas_from_routes_data
-        process_when_generate_schemas
+        process_when_generate_schemas(schema_override: false)
       end
       
       def process_when_generate_schemas(schema_override: false)
