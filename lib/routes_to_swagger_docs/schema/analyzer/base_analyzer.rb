@@ -1,3 +1,5 @@
+require 'easy_diff'
+
 require_relative '../../errors'
 require_relative '../base'
 require_relative '../../shared/all'
@@ -10,10 +12,11 @@ module RoutesToSwaggerDocs
       include Sortable
       include Writable
 
-      def initialize(schema_data = {}, options = {})
-        super(schema_data, options)
+      def initialize(before_schema_data, after_schema_data = {}, options = {})
+        super({}, options)
         @type = options[:type].presence
-        @schema = create_schema
+        @before_schema_data = before_schema_data
+        @after_schema_data  = after_schema_data || create_after_schema_data
       end
 
       def update_from_schema
@@ -30,7 +33,7 @@ module RoutesToSwaggerDocs
       attr_accessor :existing_schema_file_path
       attr_accessor :type
 
-      def create_schema
+      def create_after_schema_data
         case @type
         when :edited
           YAML.load_file(edited_schema_file_path)

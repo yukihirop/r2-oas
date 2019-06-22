@@ -5,7 +5,7 @@ module RoutesToSwaggerDocs
   module Schema
     class PathAnalyzer < BaseAnalyzer
       def update_from_schema
-        sorted_schema = deep_sort(@schema, "paths")
+        sorted_schema = deep_sort(@after_schema_data, "paths")
         edited_paths_schema = sorted_schema["paths"]
 
         save_each_tags(edited_paths_schema) do |tag_name, result|
