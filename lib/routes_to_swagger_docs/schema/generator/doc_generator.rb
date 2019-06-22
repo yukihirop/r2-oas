@@ -7,6 +7,8 @@ require_relative '../squeezer'
 module RoutesToSwaggerDocs
   module Schema
     class DocGenerator < BaseGenerator
+      attr_accessor :swagger_doc
+
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
         @schema_generator = SchemaGenerator.new(schema_data, options)
@@ -35,6 +37,8 @@ module RoutesToSwaggerDocs
         else
           result = result_before_squeeze
         end
+
+        @swagger_doc = result
         File.write(doc_save_file_path, result.to_yaml)
       end
     end
