@@ -1,4 +1,5 @@
 require_relative '../../plugins/schema/v3/hookable_base_object'
+require_relative '../../routing/components/path_component'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -8,16 +9,18 @@ module RoutesToSwaggerDocs
         # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object
         # Support Field Name: get, put, post, delete, patch
         SUPPORT_FIELD_NAME = %w(get put post delete patch)
+        SUPPORT_HTTP_STATUS = %w(200 204 404 422).freeze
     
         def initialize(route_data, path)
           super(route_data)
-          @path        = path
-          @route_data  = route_data
-          @verb        = route_data[:verb]
-          @tag_name    = route_data[:tag_name]
-          @schema_name = route_data[:schema_name]
-          @format_name = create_format_name
-          @required_parameters = route_data[:required_parameters]
+          @path_comp                    = Routing::PathComponent.new(path)
+          @path                         = @path_comp.symbol_to_brace
+          @route_data                   = route_data
+          @verb                         = route_data[:verb]
+          @tag_name                     = route_data[:tag_name]
+          @schema_name                  = route_data[:schema_name]
+          @required_parameters          = route_data[:required_parameters]
+          @format_name                  = create_format_name
           support_field_name? if route_data.has_key?(:verb)
         end
 
@@ -29,37 +32,53 @@ module RoutesToSwaggerDocs
         end
   
         def create_doc
-          result = {
-            # Operation Object (Support Filed Type is String)
-            "#{@verb}" => {
-              "tags" => ["#{@tag_name}"],
-              "summary" => "#{@verb} summary",
-              "description" => "#{@verb} description",
-              # Response Object
-              "responses" => {
-                "default" => {
-                  "description" => ""
-                },
-                "200" => {
-                  "description" => "#{@tag_name} description",
-                  "content" => {
-                    "application/json" => {
-                      "schema" => {
-                        "$ref" => "#/components/schemas/#{@schema_name}"
-                      }
-                    }
-                  }
-                }
-              },
-              "deprecated" => false
-            }
-          }
+          result = { "#{@verb}" => data_when_verb }
           attach_media_type!(result)
           attach_parameters!(result)
           doc.merge!(result)
         end
+
+        # MEMO:
+        # hook methods
+        def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
+          schema_name
+        end
   
         private
+
+        def data_when_verb
+          result = {
+            "tags" => ["#{@tag_name}"],
+            "summary" => "#{@verb} summary",
+            "description" => "#{@verb} description",
+            # Response Object
+            "responses" => {},
+            "deprecated" => false
+          }
+          result["responses"].deep_merge!(responses_when_http_status)
+          result
+        end
+
+        def responses_when_http_status
+          SUPPORT_HTTP_STATUS.each_with_object({}) do |http_status, result|
+            result.deep_merge!({
+              http_status => {
+                "description" => "#{@tag_name} description",
+                "content" => {
+                  "application/json" => {
+                    "schema" => {
+                      "$ref" => "#/components/schemas/#{_components_schema_name(http_status)}"
+                    }
+                  }
+                }
+              }
+            })
+          end
+        end
+
+        def _components_schema_name(http_status)
+          components_schema_name(doc, @path_comp, @tag_name, @verb, http_status, @schema_name)
+        end
 
         def create_format_name
           format_name = @route_data[:format_name]

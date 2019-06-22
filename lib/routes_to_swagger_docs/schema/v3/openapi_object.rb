@@ -48,7 +48,7 @@ module RoutesToSwaggerDocs
         end
 
         def components_doc
-          components_object_class.new(@schemas_data).to_doc
+          components_object_class.new(@routes_data).to_doc
         end
       end
     end
