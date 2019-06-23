@@ -8,6 +8,7 @@ module RoutesToSwaggerDocs
       BRACE_PATH_PARAMETER_REGEXP  = /\{(.\w+)\}/
 
       def initialize(path)
+        super()
         @path = path
       end
 

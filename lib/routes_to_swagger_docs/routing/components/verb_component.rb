@@ -4,6 +4,7 @@ module RoutesToSwaggerDocs
   module Routing
     class VerbComponent < BaseComponent
       def initialize(verb)
+        super()
         @verb = verb
       end
 
