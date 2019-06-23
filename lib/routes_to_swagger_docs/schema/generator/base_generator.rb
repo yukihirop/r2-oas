@@ -90,32 +90,45 @@ module RoutesToSwaggerDocs
 
       def deep_search_component_file_recursive(yaml, target, &block)
         if yaml.is_a?(Hash)
-          yaml.keys.each do |key|
-            if key.eql? target
-              component_info = yaml[key]
-              
-              relative_component_path_data = component_info.gsub("#/","").split("/")
-              relative_component_path = relative_component_path_data.each.with_index.inject("") do |base,(value, index)|
-                if index == relative_component_path_data.size - 1
-                  value = value.to_s.gsub("_", "/").underscore
-                end
-                "#{base}/#{value}"
+          yaml.each do |key, value|
+            process_deep_search_component_file_recursive(key, value, target, &block)
+          end
+        # Support allOf/oneOf/anyOf 
+        elsif yaml.is_a?(Array)
+          yaml.each do |el|
+            if el.is_a?(Hash)
+              el.each do |key, value|
+                process_deep_search_component_file_recursive(key, value, target, &block)
               end
-
-              component_path = "#{schema_save_dir_path}#{relative_component_path}.yml"
-              component_data = YAML.load_file(component_path)
-
-              children_components_paths = []
-              deep_search_component_file_recursive(component_data, target) do |children_components_path|
-                children_components_paths.push(*children_components_path)
-              end
-
-              components_paths = [ component_path ] + children_components_paths
-              yield components_paths if block_given?
-            else
-              deep_search_component_file_recursive(yaml[key], target, &block)
             end
           end
+        end
+      end
+
+      def process_deep_search_component_file_recursive(key, value, target, &block)
+        component_info = value
+
+        if key.eql? target
+          relative_component_path_data = component_info.gsub("#/","").split("/")
+          relative_component_path = relative_component_path_data.each.with_index.inject("") do |base,(value, index)|
+            if index == relative_component_path_data.size - 1
+              value = value.to_s.gsub("_", "/").underscore
+            end
+            "#{base}/#{value}"
+          end
+
+          component_path = "#{schema_save_dir_path}#{relative_component_path}.yml"
+          component_data = YAML.load_file(component_path)
+
+          children_components_paths = []
+          deep_search_component_file_recursive(component_data, target) do |children_components_path|
+            children_components_paths.push(*children_components_path)
+          end
+
+          components_paths = [ component_path ] + children_components_paths
+          yield components_paths if block_given?
+        else
+          deep_search_component_file_recursive(component_info, target, &block)
         end
       end
     end
