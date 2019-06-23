@@ -42,9 +42,7 @@ module RoutesToSwaggerDocs
           filename_with_namespace = tag_name
           save_path = save_path_for(filename_with_namespace, dirs)
 
-          if use_deep_merge?(save_path)
-            write_after_deep_merge(save_path, result)
-          else
+          unless skip_merge?(save_path)
             File.write(save_path, result.to_yaml)
           end
           
@@ -56,7 +54,7 @@ module RoutesToSwaggerDocs
         end
       end
 
-      def use_deep_merge?(path)
+      def skip_merge?(path)
         path.in? paths_config.many_paths_file_paths
       end
       
