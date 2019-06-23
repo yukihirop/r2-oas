@@ -1,3 +1,4 @@
+require 'forwardable'
 require_relative '../../plugins/schema/v3/hookable_base_object'
 require_relative '../../routing/components/path_component'
 
@@ -5,11 +6,14 @@ module RoutesToSwaggerDocs
   module Schema
     module V3
       class PathItemObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
+        extend Forwardable
         # reference
         # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object
         # Support Field Name: get, put, post, delete, patch
         SUPPORT_FIELD_NAME = %w(get put post delete patch)
         SUPPORT_HTTP_STATUS = %w(200 204 404 422).freeze
+
+        def_delegators :@http_status_manager, :http_statuses
     
         def initialize(route_data, path)
           super(route_data)
@@ -21,6 +25,7 @@ module RoutesToSwaggerDocs
           @schema_name                  = route_data[:schema_name]
           @required_parameters          = route_data[:required_parameters]
           @format_name                  = create_format_name
+          @http_status_manager          = HttpStatusManager.new(@path, @verb, http_statuses_when_http_method)
           support_field_name? if route_data.has_key?(:verb)
         end
 
@@ -60,7 +65,7 @@ module RoutesToSwaggerDocs
         end
 
         def responses_when_http_status
-          SUPPORT_HTTP_STATUS.each_with_object({}) do |http_status, result|
+          http_statuses.each_with_object({}) do |http_status, result|
             result.deep_merge!({
               http_status => {
                 "description" => "#{@tag_name} description",
@@ -129,6 +134,19 @@ module RoutesToSwaggerDocs
         
         def support_field_name?
           raise RuntimeError,  "Invalid filed name #{field_name}" unless SUPPORT_FIELD_NAME.include?(@verb)
+        end
+
+        class HttpStatusManager
+          def initialize(path, verb, http_statuses_when_http_method)
+            @path_comp                    = Routing::PathComponent.new(path)
+            @verb                         = verb
+            @http_statuses_when_http_method = http_statuses_when_http_method
+          end
+
+          def http_statuses
+            key = @path_comp.exist_path_parameters? ? :path_parameter : :default
+            @http_statuses_when_http_method[@verb.to_sym][key]
+          end
         end
       end
     end

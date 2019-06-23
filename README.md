@@ -74,6 +74,29 @@ RoutesToSwaggerDocs.configure do |config|
     components_object:        RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
     schema_object:            RoutesToSwaggerDocs::Schema::V3::SchemaObject
   }
+
+  config.http_statuses_when_http_method = {
+    get: {
+      default: %w(200 422),
+      path_parameter: %w(200 404 422)
+    },
+    post: {
+      default: %w(204 422),
+      path_parameter: %w(204 404 422)
+    },
+    patch: {
+      default: %w(204 422),
+      path_parameter: %w(204 404 422)
+    },
+    put: {
+      default: %w(204 422),
+      path_parameter: %w(204 404 422)
+    },
+    delete: {
+      default: %w(200 422),
+      path_parameter: %w(200 404 422)
+    }
+  }
 end
 ```
 
@@ -136,6 +159,7 @@ we explain the options that can be set.
 |use_tag_namespace|Use namespace for tag name|`true`|
 |use_schema_namespace|Use namespace for schema name|`true`|
 |interval_to_save_edited_tmp_schema|Interval(sec) to save edited tmp schema|`15`|
+|http_statuses_when_http_method|Determine the response to support for each HTTP method|omission...|
 
 #### server
 

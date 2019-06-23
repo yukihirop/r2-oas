@@ -28,8 +28,8 @@ module RoutesToSwaggerDocs
             path        = route_el[:path]
             route_data  = route_el[:data]
 
-            path_item_object_class::SUPPORT_HTTP_STATUS.each do |http_status|
-              path_item_object = path_item_object_class.new(route_data, path)
+            path_item_object = path_item_object_class.new(route_data, path)
+            path_item_object.http_statuses.each do |http_status|
               schema_name = path_item_object.send(:_components_schema_name, http_status)
 
               components_schema_doc = Components::SchemaObject.new(schema_name).to_doc
