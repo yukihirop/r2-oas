@@ -23,9 +23,10 @@ module RoutesToSwaggerDocs
 
       attr_accessor :edited_schema
 
-      def initialize(*args)
+      def initialize(before_schema_data, options)
         super
         @editor = swagger.editor
+        @before_schema_data = before_schema_data
       end
 
       def start
@@ -62,36 +63,26 @@ module RoutesToSwaggerDocs
 
       def process_after_close_browser
         fetch_edited_schema_from_browser
-        logger.info "\nsave updated schema in tempfile path: #{@tempfile_path}"
-        options = { type: :edited, edited_schema_file_path: @tempfile_path }
-        analyzer = Analyzer.new({}, options)
+        
+        options = { type: :edited }
+        conv_after_schema_data = YAML.load(@after_schema_data)
+        analyzer = Analyzer.new(@before_schema_data, conv_after_schema_data , options)
         analyzer.update_from_schema
       end
 
       def ensure_save_tmp_schema_file
         EM.add_periodic_timer(interval_to_save_edited_tmp_schema) do
           if @browser.exists?
-            @schema = @browser.driver.local_storage[storage_key] || @schema
-            puts "\nwait for single trap ..."
+            @after_schema_data = @browser.driver.local_storage[storage_key] || @after_schema_data
+            puts "\nwait for signal trap ..."
           end
         end
       end
 
-      def fetch_edited_schema_from_browser
-        @tempfile_path = nil
-        
+      def fetch_edited_schema_from_browser(&block)
         if @browser.exists?
-          @schema = @browser.driver.local_storage[storage_key] 
+          @after_schema_data = @browser.driver.local_storage[storage_key] 
         end
-        
-        FileUtils.mkdir_p("tmp") unless FileTest.exists?("tmp")
-        file = Tempfile.open([TMP_FILE_NAME, '.yaml'], 'tmp') do |f|
-          f.write @schema
-          f
-        end
-
-        @tempfile_path = file.path
-        self
       end
 
       def open_browser_and_set_schema

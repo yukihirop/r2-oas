@@ -1,16 +1,13 @@
 require_relative 'base_object'
-require_relative 'info_object'
 require_relative 'tag_object'
-require_relative 'paths_object'
-require_relative 'external_document_object'
 require_relative 'server_object'
-require_relative 'components_object'
 
 module RoutesToSwaggerDocs
   module Schema
     module V3
       class OpenapiObject < BaseObject
         def initialize(routes_data, tags_data, schemas_data)
+          super(schemas_data)
           @routes_data  = routes_data
           @tags_data    = tags_data
           @schemas_data = schemas_data
@@ -31,21 +28,19 @@ module RoutesToSwaggerDocs
         private
 
         def info_doc
-          InfoObject.new.to_doc
+          info_object_class.new.to_doc
         end
 
         def tags_doc
-          @tags_data.each_with_object([]) do |tag_name, result|
-            result.push TagObject.new(tag_name).to_doc
-          end
+          TagObject.new(@tags_data).to_doc
         end
 
         def paths_doc
-          PathsObject.new(@routes_data).to_doc
+          paths_object_class.new(@routes_data).to_doc
         end
 
         def external_docs_doc
-          ExternalDocumentObject.new.to_doc
+          external_document_object_class.new.to_doc
         end
 
         def servers_doc
@@ -53,7 +48,7 @@ module RoutesToSwaggerDocs
         end
 
         def components_doc
-          ComponentsObject.new(@schemas_data).to_doc
+          components_object_class.new(@routes_data).to_doc
         end
       end
     end

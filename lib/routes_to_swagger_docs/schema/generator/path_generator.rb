@@ -28,18 +28,11 @@ module RoutesToSwaggerDocs
       alias :paths_file_do_not_exists? :schema_file_do_not_exists?
       
       def generate_paths_from_schema_fiels
-        paths_from_schema_files = paths_files_paths.each_with_object({}) do |path, data|
-          yaml = YAML.load_file(path)
-          data.deep_merge!(yaml)
-          full_path = File.expand_path(path, "./")
-          logger.info "  Fetch schema file: \t#{full_path}"
-        end
-        @paths.deep_merge!(paths_from_schema_files["paths"])
         process_when_generate_paths(paths_override: true)
       end
       
       def generate_paths_from_routes_data
-        process_when_generate_paths
+        process_when_generate_paths(paths_override: false)
       end
       
       def process_when_generate_paths(paths_override: false)
@@ -48,7 +41,10 @@ module RoutesToSwaggerDocs
           dirs = "paths"
           filename_with_namespace = tag_name
           save_path = save_path_for(filename_with_namespace, dirs)
-          write_after_deep_merge(save_path, result)
+
+          unless skip_merge?(save_path)
+            File.write(save_path, result.to_yaml)
+          end
           
           if paths_override
             logger.info "  Merge schema file: \t#{save_path}"
@@ -56,6 +52,10 @@ module RoutesToSwaggerDocs
             logger.info "  Write schema file: \t#{save_path}"
           end
         end
+      end
+
+      def skip_merge?(path)
+        path.in? paths_config.many_paths_file_paths
       end
       
       def create_glob_paths_paths

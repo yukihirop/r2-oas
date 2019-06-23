@@ -22,7 +22,7 @@ namespace :routes do
       logger.info "[Routes to Swagger docs] start"
 
       analyzer_options = { type: :existing, existing_schema_file_path: existing_schema_file_path }
-      analyzer = RoutesToSwaggerDocs::Schema::Analyzer.new({}, analyzer_options)
+      analyzer = RoutesToSwaggerDocs::Schema::Analyzer.new({}, {}, analyzer_options)
       analyzer.update_from_schema
 
       generator_options = { skip_generate_schemas: true }
@@ -39,9 +39,10 @@ namespace :routes do
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_schemas: true }
       generator = RoutesToSwaggerDocs::Schema::Generator.new({}, generator_options)
       generator.generate_docs
-
+      
+      before_schema_data = generator.swagger_doc
       editor_options = { unit_paths_file_path: unit_paths_file_path }
-      editor = RoutesToSwaggerDocs::Schema::Editor.new({}, editor_options)
+      editor = RoutesToSwaggerDocs::Schema::Editor.new(before_schema_data, editor_options)
       editor.start
 
       logger.info "[Routes to Swagger docs] end"

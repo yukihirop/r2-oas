@@ -4,6 +4,7 @@ module RoutesToSwaggerDocs
   module Routing
     class RequestComponent < BaseComponent
       def initialize(request, is_route_engine)
+        super()
         @request = request
         @is_route_engine = is_route_engine
       end

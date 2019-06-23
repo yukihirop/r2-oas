@@ -56,7 +56,10 @@ module RoutesToSwaggerDocs
             dirs = "components/schemas"
             filename_with_namespace = schema_name.split('_').map(&:underscore).join('/')
             save_path = save_path_for(filename_with_namespace, dirs)
-            File.write(save_path, result.to_yaml)
+
+            unless skip_merge?(save_path)
+              File.write(save_path, result.to_yaml)
+            end
             
             if components_schemas_override
               logger.info "  Merge schema file: \t#{save_path}"
@@ -64,6 +67,10 @@ module RoutesToSwaggerDocs
               logger.info "  Write schema file: \t#{save_path}"
             end
           end
+        end
+
+        def skip_merge?(path)
+          path.in? paths_config.many_components_file_paths
         end
       
         def create_glob_components_schemas_paths

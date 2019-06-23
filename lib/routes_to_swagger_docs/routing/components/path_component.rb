@@ -5,8 +5,10 @@ module RoutesToSwaggerDocs
     class PathComponent < BaseComponent
       FORMAT_PATH_PARAMETER_REGEXP = /\(.+\)/
       SYMBOL_PATH_PARAMETER_REGEXP = /:(.\w+)/
+      BRACE_PATH_PARAMETER_REGEXP  = /\{(.\w+)\}/
 
       def initialize(path)
+        super()
         @path = path
       end
 
@@ -33,12 +35,20 @@ module RoutesToSwaggerDocs
         end
       end
 
+      def path_excluded_path_parameters
+        excluded_path_parameters = path_parameters.each_with_object(symbol_to_brace) do |path_parameter, result|
+          result.gsub!("{#{path_parameter}}", "")
+        end
+        excluded_path_parameters.split("/").delete_if(&:empty?).join("/")
+      end
+
       def exist_path_parameters?
         path_parameters.present?
       end
 
       def path_parameters
-        without_format.scan(SYMBOL_PATH_PARAMETER_REGEXP).flatten
+        result = without_format.scan(SYMBOL_PATH_PARAMETER_REGEXP) + without_format.scan(BRACE_PATH_PARAMETER_REGEXP)
+        result.flatten
       end
 
       private

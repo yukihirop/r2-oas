@@ -6,14 +6,14 @@ require_relative 'components/request_bodies_analyzer'
 module RoutesToSwaggerDocs
   module Schema
     class ComponentsAnalyzer < BaseAnalyzer
-      def initialize(schema_data = {}, options = {})
-        super(schema_data, options)
-        @components_schemas_analyzer = Components::SchemasAnalyzer.new(schema_data, options)
-        @components_request_bodies_analyzer = Components::RequestBodiesAnalyzer.new(schema_data, options)
+      def initialize(before_schema_data, after_schema_data, options = {})
+        super
+        @components_schemas_analyzer        = Components::SchemasAnalyzer.new(before_schema_data, after_schema_data, options)
+        @components_request_bodies_analyzer = Components::RequestBodiesAnalyzer.new(before_schema_data, after_schema_data, options)
       end
 
       def update_from_schema
-        edited_components_schema = @schema["components"]
+        edited_components_schema = @after_schema_data["components"]
         edited_components_schema.each do |component_type, _|
           case component_type
           when "schemas"

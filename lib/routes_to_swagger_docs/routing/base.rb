@@ -1,17 +1,17 @@
 module RoutesToSwaggerDocs
   module Routing
     class Base
-      def initialize(*_args)
-          options = RoutesToSwaggerDocs.options
-        
-          (Configuration::VALID_OPTIONS_KEYS).each do |key|
-            send("#{key}=", options[key])
-          end
+      def initialize(schema_data = {}, options = {})
+        merged_options = RoutesToSwaggerDocs.options.merge(options)
+      
+        (BaseConfiguration::VALID_OPTIONS_KEYS + options.keys).each do |key|
+          send("#{key}=", merged_options[key])
         end
+      end
 
-        private
+      private
 
-        attr_accessor *Configuration::VALID_OPTIONS_KEYS
+      attr_accessor *BaseConfiguration::VALID_OPTIONS_KEYS
     end
   end
 end

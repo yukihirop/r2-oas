@@ -1,13 +1,17 @@
 #frozen_string_literal: true
 
+require_relative 'swagger/ui'
+require_relative 'swagger/editor'
+
 module RoutesToSwaggerDocs
-  module Configuration
-    class Server
-      DEFAULT_URL = "http://localhost:3000"
-      DEFAULT_DESCRIPTION = "localhost"
+  module BaseConfiguration
+    class Swagger
+      DEFAULT_EDITOR = Editor.new
+      DEFAULT_UI     = UI.new
 
       VALID_OPTIONS_KEYS = [
-        :data
+        :editor,
+        :ui
       ]
 
       attr_accessor *VALID_OPTIONS_KEYS
@@ -23,12 +27,8 @@ module RoutesToSwaggerDocs
       private
 
       def set_default
-        self.data = [
-          {
-            url: DEFAULT_URL,
-            description: DEFAULT_DESCRIPTION
-          }
-        ]
+        self.editor = DEFAULT_EDITOR
+        self.ui     = DEFAULT_UI
       end
     end
   end

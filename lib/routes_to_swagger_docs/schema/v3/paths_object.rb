@@ -1,25 +1,53 @@
-require_relative 'base_object'
-require_relative 'path_item_object'
+require_relative '../../plugins/schema/v3/hookable_base_object'
 
 module RoutesToSwaggerDocs
   module Schema
     module V3
-      class PathsObject < BaseObject
+      class PathsObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
         def initialize(routes_data)
+          super(routes_data)
           @routes_data = routes_data
+          define_hookable_tmp_object_class
         end
   
-        def to_doc
+        def create_doc
           if unit_paths_file_path.present?
-            YAML.load_file(unit_paths_file_path)["paths"]
+            unit_paths_data = YAML.load_file(unit_paths_file_path)["paths"]
+            result = unit_paths_data.each_with_object({}) do |(path, path_item_doc), docs|
+              docs[path] = HookableTmpObjectClass.new(path_item_doc, path).to_doc
+            end
           else
-            path_item_docs.each_with_object({}) do |(path, path_item_doc), docs|
+            result = path_item_docs.each_with_object({}) do |(path, path_item_doc), docs|
               docs[path] = path_item_doc
             end
           end
+          doc.merge!(result)
         end
   
         private
+
+        def define_hookable_tmp_object_class
+          klass = Class.new(path_item_object_class) do |c|
+            def initialize(data, path)
+              super
+              @data = data
+              @path = path
+              use_superclass_hook
+            end
+
+            def create_doc
+              doc.merge!(@data)
+            end
+
+            def to_doc
+              execute_before_create(@path)
+              create_doc
+              execute_after_create(@path)
+              doc
+            end
+          end
+          Object.const_set(:HookableTmpObjectClass, klass)
+        end
   
         def path_item_docs
           # e.x.) 
@@ -30,7 +58,7 @@ module RoutesToSwaggerDocs
             path = route_el[:path]
             route_data = route_el[:data]
 
-            path_item_doc = PathItemObject.new(route_data).to_doc
+            path_item_doc = path_item_object_class.new(route_data, path).to_doc
             if data[path].present?
               data[path].merge!(path_item_doc)
             else
