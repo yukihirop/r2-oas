@@ -293,6 +293,35 @@ class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
 end
 ```
 
+If you want to determine the component schema name at runtime, like this:
+
+```ruby
+class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
+  def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
+    # [Inportant] Please return string.
+    # default
+    schema_name
+  end
+end
+```
+
+`path_component` is `RoutesToSwaggerDocs::Routing::PathComponent` instance.
+
+```ruby
+module RoutesToSwaggerDocs
+  module Routing
+    class PathComponent < BaseComponent
+      def initialize(path)
+      def to_s
+      def symbol_to_brace
+      def path_parameters_data
+      def path_excluded_path_parameters
+      def exist_path_parameters?
+      def path_parameters
+      private
+      def without_format
+```
+
 #### case: ExternalDocumentObject
 
 ```ruby
