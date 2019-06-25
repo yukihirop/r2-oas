@@ -35,11 +35,11 @@ module RoutesToSwaggerDocs
 
           def process_by_using_diff_data(&block)
             before_sorted_components_schema  = deep_sort(@before_schema_data["components"], "schemas")
-            before_components_schemas_schema = before_sorted_components_schema["schemas"]
+            before_components_schemas_schema = ensure_presence_or_blank(before_sorted_components_schema["schemas"])
             before_schema_names              = before_components_schemas_schema.keys.uniq
 
             after_sorted_components_schema   = deep_sort(@after_schema_data["components"], "schemas")
-            after_components_schemas_schema  = after_sorted_components_schema["schemas"]
+            after_components_schemas_schema  = ensure_presence_or_blank(after_sorted_components_schema["schemas"])
             after_schema_names               = after_components_schemas_schema.keys.uniq
 
             edited_schema_names = (before_schema_names + after_schema_names).uniq
@@ -57,6 +57,12 @@ module RoutesToSwaggerDocs
 
               yield(schema_name, is_removed, is_added, after_data) if block_given?
             end
+          end
+
+          private
+
+          def ensure_presence_or_blank(data)
+            data.present? ? data : {}
           end
 
           def to_boolean(diff)

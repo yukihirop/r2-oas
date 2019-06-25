@@ -34,13 +34,13 @@ module RoutesToSwaggerDocs
           end
 
           def process_by_using_diff_data(&block)
-            before_sorted_components_schema = deep_sort(@before_schema_data["components"], "requestBodies")
-            before_components_request_bodies_schema = before_sorted_components_schema["requestBodies"]
-            before_request_body_names = before_components_request_bodies_schema.keys.uniq
+            before_sorted_components_schema         = deep_sort(@before_schema_data["components"], "requestBodies")
+            before_components_request_bodies_schema = ensure_presence_or_blank(before_sorted_components_schema["requestBodies"])
+            before_request_body_names               = before_components_request_bodies_schema.keys.uniq
 
-            after_sorted_components_schema = deep_sort(@after_schema_data["components"], "requestBodies")
-            after_components_request_bodies_schema = after_sorted_components_schema["requestBodies"]
-            after_request_body_names = after_components_request_bodies_schema.keys.uniq
+            after_sorted_components_schema          = deep_sort(@after_schema_data["components"], "requestBodies")
+            after_components_request_bodies_schema  = ensure_presence_or_blank(after_sorted_components_schema["requestBodies"])
+            after_request_body_names                = after_components_request_bodies_schema.keys.uniq
 
             request_body_names = (before_request_body_names + after_request_body_names).uniq
 
@@ -57,6 +57,12 @@ module RoutesToSwaggerDocs
 
               yield(request_body_name, is_removed, is_added, after_data) if block_given?
             end
+          end
+
+          private
+
+          def ensure_presence_or_blank(data)
+            data.present? ? data : {}
           end
 
           def to_boolean(diff)
