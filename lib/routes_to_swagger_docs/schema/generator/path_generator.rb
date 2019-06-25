@@ -1,6 +1,7 @@
 require 'forwardable'
 require 'fileutils'
 require_relative 'base_generator'
+require_relative '../manager/file/path_item_file_manager'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -28,34 +29,29 @@ module RoutesToSwaggerDocs
       alias :paths_file_do_not_exists? :schema_file_do_not_exists?
       
       def generate_paths_from_schema_fiels
-        process_when_generate_paths(paths_override: true)
+        process_when_generate_paths do |save_file_path|
+          logger.info "  Merge schema file: \t#{save_file_path}"
+        end
       end
       
       def generate_paths_from_routes_data
-        process_when_generate_paths(paths_override: false)
-      end
-      
-      def process_when_generate_paths(paths_override: false)
-        logger.info " <Update schema files (paths)>"
-        save_each_tags(@paths) do |tag_name, result|
-          dirs = "paths"
-          filename_with_namespace = tag_name
-          save_path = save_path_for(filename_with_namespace, dirs)
-
-          unless skip_merge?(save_path)
-            File.write(save_path, result.to_yaml)
-          end
-          
-          if paths_override
-            logger.info "  Merge schema file: \t#{save_path}"
-          else
-            logger.info "  Write schema file: \t#{save_path}"
-          end
+        process_when_generate_paths do |save_file_path|
+          logger.info "  Write schema file: \t#{save_file_path}"
         end
       end
+      
+      def process_when_generate_paths(&block)
+        logger.info " <Update schema files (paths)>"
+        save_each_tags(@paths) do |tag_name, result|
+          relative_path = "paths/#{tag_name}"
+          path_item_file_manager = PathItemFileManager.new(relative_path, :relative) 
 
-      def skip_merge?(path)
-        path.in? paths_config.many_paths_file_paths
+          unless path_item_file_manager.skip_save?
+            path_item_file_manager.save(result.to_yaml)
+          end
+
+          yield path_item_file_manager.save_file_path if block_given?
+        end
       end
       
       def create_glob_paths_paths

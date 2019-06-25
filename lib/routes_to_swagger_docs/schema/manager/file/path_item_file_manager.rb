@@ -8,6 +8,10 @@ module RoutesToSwaggerDocs
         super
       end
 
+      def skip_save?
+        save_file_path.in? paths_config.many_paths_file_paths
+      end
+
       private
 
       def process_deep_search_ref_recursive(ref_key_or_not, ref_value_or_not, &block)
