@@ -1,6 +1,7 @@
 require 'forwardable'
 require 'fileutils'
 require_relative '../base_generator'
+require_relative '../../manager/file/components/schema_file_manager'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -37,14 +38,19 @@ module RoutesToSwaggerDocs
             logger.info "  Fetch Components schema file: \t#{full_path}"
           end
           @components_schemas.deep_merge!(components_schemas_from_schema_files["components"]["schemas"])
-          process_when_generate_components_schemas(components_schemas_override: true)
+
+          process_when_generate_components_schemas do |save_file_path|
+            logger.info "  Merge schema file: \t#{save_file_path}"
+          end
         end
 
         def generate_components_schemas_from_routes_data
-          process_when_generate_components_schemas
+          process_when_generate_components_schemas do |save_file_path|
+            logger.info "  Write schema file: \t#{save_file_path}"
+          end
         end
 
-        def process_when_generate_components_schemas(components_schemas_override: false)
+        def process_when_generate_components_schemas(&block)
           logger.info " <Update Components schema files (components/schemas)>"
           @components_schemas.each do |schema_name, data|
             result = {
@@ -53,24 +59,15 @@ module RoutesToSwaggerDocs
               }
             }
 
-            dirs = "components/schemas"
-            filename_with_namespace = schema_name.split('_').map(&:underscore).join('/')
-            save_path = save_path_for(filename_with_namespace, dirs)
+            relative_path = "components/schemas/#{schema_name}"
+            file_manager = Components::SchemaFileManager.new(relative_path, :relative)
 
-            unless skip_merge?(save_path)
-              File.write(save_path, result.to_yaml)
+            unless file_manager.skip_save?
+              file_manager.save(result.to_yaml)
             end
-            
-            if components_schemas_override
-              logger.info "  Merge schema file: \t#{save_path}"
-            else
-              logger.info "  Write schema file: \t#{save_path}"
-            end
+
+            yield file_manager.save_file_path if block_given?
           end
-        end
-
-        def skip_merge?(path)
-          path.in? paths_config.many_components_file_paths
         end
       
         def create_glob_components_schemas_paths
