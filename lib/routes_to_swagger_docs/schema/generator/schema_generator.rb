@@ -2,6 +2,7 @@ require 'fileutils'
 require_relative 'base_generator'
 require_relative 'path_generator'
 require_relative 'components_generator'
+require_relative '../manager/file_manager'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -25,11 +26,15 @@ module RoutesToSwaggerDocs
       private
       
       def generate_schemas_from_schema_fiels
-        process_when_generate_schemas(schema_override: true)
+        process_when_generate_schemas do |save_file_path|
+          logger.info " Merge schema file: \t#{save_file_path}"
+        end
       end
       
       def generate_schemas_from_routes_data
-        process_when_generate_schemas(schema_override: false)
+        process_when_generate_schemas do |save_file_path|
+          logger.info " Write schema file: \t#{save_file_path}"
+        end
       end
       
       def process_when_generate_schemas(schema_override: false)
@@ -47,15 +52,10 @@ module RoutesToSwaggerDocs
             ComponentsGenerator.new(result, @options).generate_components
             logger.info " [Generate Swagger schema files (components)] end"
           else
-            filename_with_namespace = field_name
-            save_path = save_path_for(filename_with_namespace)
-            File.write(save_path, result.to_yaml)
+            file_manager = FileManager.new(field_name, :relative)
+            file_manager.save(result.to_yaml)
 
-            if schema_override
-              logger.info " Merge schema file: \t#{save_path}"
-            else
-              logger.info " Write schema file: \t#{save_path}"
-            end
+            yield file_manager.save_file_path if block_given?
           end
         end
       end
