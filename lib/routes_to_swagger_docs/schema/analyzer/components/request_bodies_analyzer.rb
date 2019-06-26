@@ -1,4 +1,5 @@
 require_relative '../base_analyzer'
+require_relative '../../manager/file/components/request_body_file_manager'
 
 # Scope Rails
 module RoutesToSwaggerDocs
@@ -9,16 +10,15 @@ module RoutesToSwaggerDocs
           diff_manager = DiffManager.new(@before_schema_data, @after_schema_data)
           diff_manager.process_by_using_diff_data do |request_body_name, is_removed, is_added, after_edited_data|
 
-            dirs = "components/requestBodies"
-            filename_with_namespace = request_body_name.split('_').map(&:underscore).join('/')
-            save_path = save_path_for(filename_with_namespace, dirs)
+            file_manager = Components::RequestBodyFileManager.new("components/requestBodies/#{request_body_name}", :relative)
+            save_file_path = file_manager.save_file_path
 
             if is_removed && !is_added
-              File.delete(save_path) if FileTest.exists?(save_path)
-              logger.info "  Delete schema file: \t#{save_path}"
+              file_manager.delete
+              logger.info "  Delete schema file: \t#{save_file_path}"
             else
-              File.write(save_path, after_edited_data.to_yaml)
-              logger.info "  Write schema file: \t#{save_path}"
+              file_manager.save(after_edited_data.to_yaml)
+              logger.info "  Write schema file: \t#{save_file_path}"
             end
           end
         end

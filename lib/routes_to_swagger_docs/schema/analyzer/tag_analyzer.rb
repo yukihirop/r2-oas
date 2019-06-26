@@ -1,31 +1,40 @@
 require_relative 'base_analyzer'
+require_relative '../manager/file_manager'
 
 # Scope Rails
 module RoutesToSwaggerDocs
   module Schema
     class TagAnalyzer < BaseAnalyzer
+      def initialize(before_schema_data, after_schema_data = {}, options = {})
+        super
+        @file_manager = FileManager.new("tags", :relative)
+      end
+
       def update_from_schema
-        save_path = save_path_for("tags")
-        result = create_save_schema
-        File.write(save_path, result.to_yaml)
-        logger.info "  Write schema file: \t#{save_path}"
+        @file_manager.save(filtered_tags.to_yaml)
+        logger.info "  Write schema file: \t#{@file_manager.save_file_path}"
       end
 
       private
 
-      def create_save_schema
+      def filtered_tags
         case @type
         when :edited
-          save_path = save_path_for("tags")
-          edited_tags_schema = @after_schema_data["tags"].first
-          tags_schema_from_local = YAML.load_file(save_path)["tags"]
+          edited_tags_schema_data = @after_schema_data["tags"].each_with_object({}) do |data, result|
+            result.deep_merge!({data["name"] => data })
+          end
+          tags_schema_from_local = @file_manager.load_data["tags"]
 
-          result = tags_schema_from_local.each_with_object([]) do |tag,result|
-            if tag["name"].eql? edited_tags_schema["name"]
-              tag = edited_tags_schema
+          result = tags_schema_from_local.map do |data|
+            tag_name = data["name"]
+            if tag_name.in? edited_tags_schema_data.keys
+              edited_tags_schema_data[tag_name]
+            else
+              data
             end
-            result.push(tag)
-          end.tap { |tag_schema| break { "tags" => tag_schema } }
+          end
+
+          { "tags" => result }
         when :existing
           { "tags" => @after_schema_data["tags"] }
         else

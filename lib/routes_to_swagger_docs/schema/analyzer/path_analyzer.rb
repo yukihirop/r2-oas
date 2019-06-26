@@ -1,4 +1,5 @@
 require_relative 'base_analyzer'
+require_relative '../manager/file/path_item_file_manager'
 
 # Scope Rails
 module RoutesToSwaggerDocs
@@ -9,11 +10,9 @@ module RoutesToSwaggerDocs
         edited_paths_schema = sorted_schema["paths"]
 
         save_each_tags(edited_paths_schema) do |tag_name, result|
-          dirs = "paths"
-          filename_with_namespace = tag_name
-          save_path = save_path_for(filename_with_namespace, dirs)
-          File.write(save_path, result.to_yaml)
-          logger.info "  Write schema file: \t#{save_path}"
+          file_manager = PathItemFileManager.new("paths/#{tag_name}", :relative)
+          file_manager.save(result.to_yaml)
+          logger.info "  Write schema file: \t#{file_manager.save_file_path}"
         end
       end
 
