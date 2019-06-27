@@ -8,9 +8,7 @@ require_relative '../manager/file/path_item_file_manager'
 module RoutesToSwaggerDocs
   module Schema
     class BaseGenerator < Base
-      include Searchable
       include Sortable
-      include Writable
 
       def initialize(schema_data = {}, options = {})
         super(schema_data, options)
