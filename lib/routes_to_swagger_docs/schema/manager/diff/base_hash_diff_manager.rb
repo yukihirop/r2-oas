@@ -20,8 +20,6 @@ module RoutesToSwaggerDocs
         after_target_data_names  = after_target_data.keys.uniq
         target_names             = (before_target_data_names + after_target_data_names).uniq
         
-        binding.pry if @middle_category.eql?("requestBodies")
-        
         target_names.each do |target_name|
           before_schema_data = schema_data_at(before_target_data, target_name)
           after_schema_data = schema_data_at(after_target_data, target_name)
