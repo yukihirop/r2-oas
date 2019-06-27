@@ -2,6 +2,7 @@ require_relative 'analyzer/base_analyzer'
 require_relative 'analyzer/path_analyzer'
 require_relative 'analyzer/tag_analyzer'
 require_relative 'analyzer/components_analyzer'
+require_relative 'manager/file_manager'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -30,7 +31,7 @@ module RoutesToSwaggerDocs
             @components_analyzer.update_from_schema
             logger.info "[Analyze Swagger file (components)] end"
           else
-            save_schema_from(schema_name)
+            save_schema_when(schema_name)
           end
         end
         logger.info "[Analyze Swagger file] end"
@@ -38,17 +39,14 @@ module RoutesToSwaggerDocs
 
       private
 
-      def save_schema_from(schema_name)
+      def save_schema_when(schema_name)
+        file_manager = FileManager.new(schema_name, :relative)
+        data = @after_schema_data.slice(schema_name)
         case @type
         when :edited
-          save_path = save_path_for(schema_name)
-          schema_from_local = YAML.load_file(save_path)
-          result = schema_from_local.deep_merge @after_schema_data.slice(schema_name)
-          File.write(save_path, result.to_yaml)
+          file_manager.save_after_deep_merge(data)
         when :existing
-          save_path = save_path_for(schema_name)
-          result = @after_schema_data.slice(schema_name)
-          File.write(save_path, result.to_yaml)
+          file_manager.save(data)
         end
       end
     end

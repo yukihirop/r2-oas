@@ -1,35 +1,31 @@
 require_relative 'base_analyzer'
+require_relative '../manager/file_manager'
+require_relative '../manager/diff/tag_diff_manager'
+require_relative '../../errors'
 
 # Scope Rails
 module RoutesToSwaggerDocs
   module Schema
     class TagAnalyzer < BaseAnalyzer
-      def update_from_schema
-        save_path = save_path_for("tags")
-        result = create_save_schema
-        File.write(save_path, result.to_yaml)
-        logger.info "  Write schema file: \t#{save_path}"
+      def initialize(before_schema_data, after_schema_data = {}, options = {})
+        super
+        @file_manager = FileManager.new("tags", :relative)
+        @diff_manager = TagDiffManager.new(@file_manager.load_data, after_schema_data)
       end
 
-      private
-
-      def create_save_schema
+      def update_from_schema
+        save_file_path = @file_manager.save_file_path
         case @type
         when :edited
-          save_path = save_path_for("tags")
-          edited_tags_schema = @after_schema_data["tags"].first
-          tags_schema_from_local = YAML.load_file(save_path)["tags"]
-
-          result = tags_schema_from_local.each_with_object([]) do |tag,result|
-            if tag["name"].eql? edited_tags_schema["name"]
-              tag = edited_tags_schema
-            end
-            result.push(tag)
-          end.tap { |tag_schema| break { "tags" => tag_schema } }
+          @diff_manager.process_by_using_diff_data do |after_edited_data|
+            @file_manager.save(after_edited_data.to_yaml)
+            logger.info "  Write schema file: \t#{save_file_path}"
+          end
         when :existing
-          { "tags" => @after_schema_data["tags"] }
+          result = @diff_manager.after_target_data
+          logger.info "  Write schema file: \t#{save_file_path}"
         else
-          raise 'Do not support type'
+          raise NoImplementError
         end
       end
     end

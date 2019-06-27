@@ -1,5 +1,3 @@
-require 'easy_diff'
-
 require_relative '../../errors'
 require_relative '../base'
 require_relative '../../shared/all'
@@ -8,9 +6,7 @@ require_relative '../../shared/all'
 module RoutesToSwaggerDocs
   module Schema
     class BaseAnalyzer < Base
-      include Searchable
       include Sortable
-      include Writable
 
       def initialize(before_schema_data, after_schema_data = {}, options = {})
         super({}, options)
