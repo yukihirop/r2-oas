@@ -12,7 +12,7 @@ module RoutesToSwaggerDocs
         super({}, options)
         @type = options[:type].presence
         @before_schema_data = before_schema_data
-        @after_schema_data  = after_schema_data || create_after_schema_data
+        @after_schema_data  = after_schema_data.presence || create_after_schema_data
       end
 
       def update_from_schema
@@ -32,21 +32,37 @@ module RoutesToSwaggerDocs
       def create_after_schema_data
         case @type
         when :edited
-          YAML.load_file(edited_schema_file_path)
+          create_after_schema_data_when_edited
         when :existing
-          extname = File.extname(existing_schema_file_path)
-          case extname
-          when /json/
-            File.open(existing_schema_file_path) do |file|
-              JSON.load(file)
-            end
-          when /yaml/
-            YAML.load_file(existing_schema_file_path)
-          when /yml/
-            YAML.load_file(existing_schema_file_path)
+          if existing_schema_file_path.present?
+            create_after_schema_data_when_specify_path
           else
-            raise 'Do not support extension'
+            create_after_schema_data_when_not_specify_path
           end
+        end
+      end
+
+      def create_after_schema_data_when_edited
+        YAML.load_file(edited_schema_file_path)
+      end
+
+      def create_after_schema_data_when_not_specify_path
+        YAML.load_file(doc_save_file_path)
+      end
+
+      def create_after_schema_data_when_specify_path
+        extname = File.extname(existing_schema_file_path)
+        case extname
+        when /json/
+          File.open(existing_schema_file_path) do |file|
+            JSON.load(file)
+          end
+        when /yaml/
+          YAML.load_file(existing_schema_file_path)
+        when /yml/
+          YAML.load_file(existing_schema_file_path)
+        else
+          raise 'Do not support extension'
         end
       end
     end

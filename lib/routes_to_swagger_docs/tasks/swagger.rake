@@ -17,7 +17,7 @@ namespace :routes do
       logger.info "[Routes to Swagger docs] end"
     end
 
-    desc "Analyze existing Swagger documentation"
+    desc "Analyze Swagger documentation"
     task :analyze => [:common] do
       logger.info "[Routes to Swagger docs] start"
 
