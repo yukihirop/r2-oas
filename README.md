@@ -112,6 +112,9 @@ $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exe
 $ # Start swagger ui
 $ bundle exec rake routes:swagger:ui                                                                          # Start swagger ui
 $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # Start swagger ui by specify unit paths
+$ # Monitor swagger document
+$ bundle exec rake routes:swagger:monitor                                                                     # Monitor swagger document
+$ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # Monitor swagger by specify unit paths
 $ # Analyze docs
 $ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
 $ # Deploy docs
@@ -123,6 +126,7 @@ $ bundle exec rake routes:swagger:deploy
 - [How to generate docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
 - [How to start swagger editor](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
 - [How to start swagger ui](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
+- [How to monitor swagger document](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_MONITOR_SWAGGER_DOC.md)
 - [How to analyze docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
 - [How to deploy swagger doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
 - [How to use tag namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
@@ -143,6 +147,15 @@ $ bundle exec rake routes:swagger:deploy
 |version|document|
 |-------|--------|
 |v3|[versions/v3.md](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/versions/v3.md)|
+
+## Convention over Configuration (CoC)
+
+- `tag name` represents `controller name` and determine `paths file name`.
+  - For example, If `controller name` is `Api::V1::UsersController`, `tag_name` is `api/v1/user`. and `paths file name` is `api/v1/user.yml`
+
+- `_` of `components/{schemas,requestBodies} name` convert `/` when save file.
+  - For example, If `components/schemas name` is `Api_V1_User`, `components/schemas file name` is `api/v1/user.yml`.
+  - `_` is supposed to be used to express `namespace`.
 
 ## Configure
 
