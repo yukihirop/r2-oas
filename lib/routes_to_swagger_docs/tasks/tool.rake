@@ -1,6 +1,7 @@
 require_relative '../schema/generator'
 require_relative "../deploy/client"
 require_relative "../tool/paths/ls"
+require_relative "../tool/paths/stats"
 require_relative '../task_logging'
 load  File.expand_path('../common.rake', __FILE__)
 
@@ -37,6 +38,30 @@ namespace :routes do
       paths_ls_options = {}
       paths_ls = RoutesToSwaggerDocs::Tool::Paths::Ls.new(paths_ls_options)
       paths_ls.print
+
+      logger.info "[Routes to Swagger docs] end"
+      
+      result = $stdout.string
+      $stdout = STDOUT
+      puts result
+    end
+
+    desc "Display paths stats"
+    task :paths_stats => [:common] do
+      fd = IO.sysopen('/dev/null', 'w+')
+      $stdout = IO.new(fd)
+      logger.level = :null
+
+      logger.info "[Routes to Swagger docs] start"
+      generator_options = { skip_generate_schemas: true, skip_load_dot_paths: true }
+      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, generator_options)
+      generator.generate_docs
+
+      $stdout = StringIO.new
+
+      paths_log_options = {}
+      paths_log = RoutesToSwaggerDocs::Tool::Paths::Stats.new(paths_log_options)
+      paths_log.print
 
       logger.info "[Routes to Swagger docs] end"
       

@@ -2,6 +2,7 @@
 
 require_relative 'base_configuration/server'
 require_relative 'base_configuration/swagger'
+require_relative 'base_configuration/tool'
 
 module RoutesToSwaggerDocs
   module BaseConfiguration
@@ -36,6 +37,7 @@ module RoutesToSwaggerDocs
         path_parameter: %w(200 404 422)
       }
     }
+    DEFAULT_TOOL = Tool.new
 
     PUBLIC_VALID_OPTIONS_KEYS = [
       :root_dir_path,
@@ -47,7 +49,8 @@ module RoutesToSwaggerDocs
       :server,
       :interval_to_save_edited_tmp_schema,
       :swagger,
-      :http_statuses_when_http_method
+      :http_statuses_when_http_method,
+      :tool
     ]
 
     UNPUBLIC_VALID_OPTIONS_KEYS = [
@@ -78,6 +81,7 @@ module RoutesToSwaggerDocs
       target.interval_to_save_edited_tmp_schema = DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA
       target.swagger                            = DEFAULT_SWAGGER
       target.http_statuses_when_http_method     = DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD
+      target.tool                               = DEFAULT_TOOL
     end
   end
 end

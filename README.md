@@ -41,12 +41,12 @@ In your rails project, Write `config/environments/development.rb` like that:
 ```ruby
 # default setting
 RoutesToSwaggerDocs.configure do |config|
-  config.root_dir_path = "./swagger_docs"
-  config.schema_save_dir_name = "schema"
-  config.doc_save_file_name = "swagger_doc.yml"
-  config.force_update_schema = false
-  config.use_tag_namespace = true
-  config.use_schema_namespace = false
+  config.root_dir_path                      = "./swagger_docs"
+  config.schema_save_dir_name               = "schema"
+  config.doc_save_file_name                 = "swagger_doc.yml"
+  config.force_update_schema                = false
+  config.use_tag_namespace                  = true
+  config.use_schema_namespace               = false
   config.interval_to_save_edited_tmp_schema = 15
 
   config.server.data = [
@@ -97,6 +97,13 @@ RoutesToSwaggerDocs.configure do |config|
       path_parameter: %w(200 404 422)
     }
   }
+
+  config.tool.paths_stats.configure do |paths_stats|
+    paths_stats.month_to_turn_to_warning_color = 3
+    paths_stats.warning_color                  = :red
+    paths_stats.table_title_color              = :yellow
+    paths_stats.heading_color                  = :yellow
+  end
 end
 ```
 
@@ -124,6 +131,8 @@ $ bundle exec rake routes:swagger:deploy
 
 # Display paths list
 $ bundle exec rake routes:swagger:paths_ls
+# Display paths stats
+$ bundle exec rake routes:swagger:paths_stats
 ```
 
 ## More Usage
@@ -138,6 +147,7 @@ $ bundle exec rake routes:swagger:paths_ls
 - [How to use schema namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
 - [How to use hook when generate doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
 - [How to display paths list](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
+- [How to display paths stats](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_STATS.md)
 
 ## Support Rails Version
 
@@ -203,6 +213,17 @@ we explain the options that can be set.
 |option|description|default|
 |------|-----------|-------|
 |use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> schema_object: `RoutesToSwaggerDocs::Schema::V3::SchemaObject` }|
+
+#### tool
+
+|option|children option|grandchild option|description|default|
+|------|---------------|-----------------|-----------|-------|
+|tool|paths_stats|month_to_turn_to_warning_color|Elapsed month to issue a warning|`3`|
+|tool|paths_stats|warning_color|Warning Color|`:red`|
+|tool|paths_stats|table_title_color|Table Title Color|`:yellow`|
+|tool|paths_stats|heading_color|Heading Color|`:yellow`|
+
+Please refer to [here](https://github.com/janlelis/paint) for the color.
 
 ## Environment variables
 
