@@ -2,6 +2,7 @@ require_relative '../schema/generator'
 require_relative '../schema/editor'
 require_relative '../schema/ui'
 require_relative '../schema/analyzer'
+require_relative '../schema/monitor'
 require_relative "../deploy/client"
 require_relative '../task_logging'
 load  File.expand_path('../common.rake', __FILE__)
@@ -60,6 +61,22 @@ namespace :routes do
       ui = RoutesToSwaggerDocs::Schema::UI.new({}, ui_options)
       ui.start
       
+      logger.info "[Routes to Swagger docs] end"
+    end
+
+    desc "Monitor Swagger Document"
+    task :monitor => [:common] do
+      logger.info "[Routes to Swagger docs] start"
+
+      generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_schemas: true }
+      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, generator_options)
+      generator.generate_docs
+      
+      before_schema_data = generator.swagger_doc
+      monitor_options = { unit_paths_file_path: unit_paths_file_path }
+      monitor = RoutesToSwaggerDocs::Schema::Monitor.new(before_schema_data, monitor_options)
+      monitor.start
+
       logger.info "[Routes to Swagger docs] end"
     end
 
