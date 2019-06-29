@@ -84,6 +84,6 @@ module RoutesToSwaggerDocs
       target.swagger                            = DEFAULT_SWAGGER
       target.http_statuses_when_http_method     = DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD
       target.tool                               = DEFAULT_TOOL
-   end
+    end
   end
 end
