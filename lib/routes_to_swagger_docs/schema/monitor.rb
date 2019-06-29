@@ -44,7 +44,7 @@ module RoutesToSwaggerDocs
           @after_schema_data = fetch_after_schema_data
           puts "\nwait for signal trap ..."
         end
-     end
+      end
 
       def fetch_after_schema_data
         YAML.load_file(doc_save_file_path) || @after_schema_data
