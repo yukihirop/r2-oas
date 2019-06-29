@@ -4,6 +4,7 @@ require_relative 'schema/v3/public'
 
 module RoutesToSwaggerDocs
   module PluggableConfiguration
+    # rubocop:disable Style/MutableConstant
     DEFAULT_USE_OBJECT_CLASSES = {
       info_object: RoutesToSwaggerDocs::Schema::V3::InfoObject,
       paths_object: RoutesToSwaggerDocs::Schema::V3::PathsObject,
@@ -12,6 +13,7 @@ module RoutesToSwaggerDocs
       components_object: RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
       schema_object: RoutesToSwaggerDocs::Schema::V3::SchemaObject
     }
+    # rubocop:enable Style/MutableConstant
 
     VALID_OPTIONS_KEYS = [
       :use_object_classes

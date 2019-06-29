@@ -15,6 +15,7 @@ module RoutesToSwaggerDocs
     DEFAULT_SERVER = Server.new
     DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA = 15
     DEFAULT_SWAGGER = Swagger.new
+    # rubocop:disable Style/MutableConstant
     DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD = {
       get: {
         default: %w[200 422],
@@ -37,6 +38,7 @@ module RoutesToSwaggerDocs
         path_parameter: %w[200 404 422]
       }
     }
+    # rubocop:enable Style/MutableConstant
     DEFAULT_TOOL = Tool.new
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
