@@ -39,12 +39,10 @@ module RoutesToSwaggerDocs
       def normalized(data)
         if data.present?
           data
+        elsif @middle_category.present?
+          { @major_category => { @middle_category => {} } }
         else
-          if @middle_category.present?
-            { @major_category => { @middle_category => {} } }
-          else
-            { @major_category => {} }
-          end
+          { @major_category => {} }
         end
       end
 
