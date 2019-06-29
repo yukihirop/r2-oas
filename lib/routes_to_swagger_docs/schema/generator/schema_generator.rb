@@ -39,7 +39,7 @@ module RoutesToSwaggerDocs
         end
       end
 
-      def process_when_generate_schemas(schema_override: false)
+      def process_when_generate_schemas
         logger.info '<Update schema files>'
         @docs.each do |field_name, data|
           result = { field_name.to_s => data }
