@@ -19,7 +19,7 @@ module RoutesToSwaggerDocs
           results.push(*relative_paths)
         end
 
-        results.uniq!
+        results.uniq
       end
       alias descendants_ref_paths descendants_paths
 
