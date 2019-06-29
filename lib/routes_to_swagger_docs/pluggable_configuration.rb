@@ -11,7 +11,7 @@ module RoutesToSwaggerDocs
       external_document_object: RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
       components_object: RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
       schema_object: RoutesToSwaggerDocs::Schema::V3::SchemaObject
-    }.freeze
+    }
 
     VALID_OPTIONS_KEYS = [
       :use_object_classes

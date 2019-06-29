@@ -36,7 +36,7 @@ module RoutesToSwaggerDocs
         default: %w[200 422],
         path_parameter: %w[200 404 422]
       }
-    }.freeze
+    }
     DEFAULT_TOOL = Tool.new
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
