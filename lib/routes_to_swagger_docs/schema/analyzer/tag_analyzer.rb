@@ -24,7 +24,6 @@ module RoutesToSwaggerDocs
             logger.info "  Write schema file: \t#{save_file_path}"
           end
         when :existing
-          result = @diff_manager.after_target_data
           logger.info "  Write schema file: \t#{save_file_path}"
         else
           raise NoImplementError
