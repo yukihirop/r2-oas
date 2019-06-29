@@ -1,10 +1,8 @@
-#frozen_string_literal:true
-
+# frozen_string_literal:true
 
 require 'eventmachine'
 require_relative 'analyzer'
 require_relative 'base'
-
 
 # Scope Rails
 module RoutesToSwaggerDocs
@@ -18,8 +16,8 @@ module RoutesToSwaggerDocs
       def start
         EM.run do
           ensure_save_tmp_schema_file
-          signal_trap("INT")
-          signal_trap("TERM")
+          signal_trap('INT')
+          signal_trap('TERM')
         end
       end
 
@@ -37,16 +35,16 @@ module RoutesToSwaggerDocs
       def process_after_close_monitor
         options = { type: :edited }
         @after_schema_data = fetch_after_schema_data
-        analyzer = Analyzer.new(@before_schema_data, @after_schema_data , options)
+        analyzer = Analyzer.new(@before_schema_data, @after_schema_data, options)
         analyzer.update_from_schema
       end
 
-       def ensure_save_tmp_schema_file
+      def ensure_save_tmp_schema_file
         EM.add_periodic_timer(interval_to_save_edited_tmp_schema) do
           @after_schema_data = fetch_after_schema_data
           puts "\nwait for signal trap ..."
         end
-      end
+     end
 
       def fetch_after_schema_data
         YAML.load_file(doc_save_file_path) || @after_schema_data

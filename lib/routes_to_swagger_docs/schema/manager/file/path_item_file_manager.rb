@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'include_ref_base_file_manager'
 require_relative 'components_file_manager'
 
@@ -24,7 +26,7 @@ module RoutesToSwaggerDocs
             children_paths.push(*children_path)
           end
 
-          results = [ child_file_manager.save_file_path ] + children_paths
+          results = [child_file_manager.save_file_path] + children_paths
           yield results if block_given?
         else
           deep_search_ref_recursive(ref_value_or_not, &block)

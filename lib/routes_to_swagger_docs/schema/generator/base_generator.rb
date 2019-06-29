@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../routing/parser'
 require_relative '../v3/openapi_object'
 require_relative '../base'
@@ -14,13 +16,13 @@ module RoutesToSwaggerDocs
         super(schema_data, options)
         @glob_schema_paths = create_glob_schema_paths
       end
-      
+
       private
-      
+
       attr_accessor :unit_paths_file_path
       attr_accessor :skip_generate_schemas
       attr_accessor :skip_load_dot_paths
-      
+
       # Scope Rails
       def create_docs
         all_routes = create_all_routes
@@ -29,7 +31,7 @@ module RoutesToSwaggerDocs
         routes_data = parser.routes_data
         tags_data = parser.tags_data
         schemas_data = parser.schemas_data
-        
+
         Schema::V3::OpenapiObject.new(routes_data, tags_data, schemas_data).to_doc
       end
 
@@ -37,11 +39,11 @@ module RoutesToSwaggerDocs
         ::Rails.application.reload_routes!
         ::Rails.application.routes.routes
       end
-      
+
       def schema_file_do_not_exists?
         schema_files_paths.count == 0
       end
-      
+
       def create_glob_schema_paths
         if many_paths_file_paths.present? && !skip_load_dot_paths
           exclude_paths_regexp_paths = "#{schema_save_dir_path}/**.yml"
@@ -50,16 +52,15 @@ module RoutesToSwaggerDocs
           ["#{schema_save_dir_path}/**/**.yml"]
         end
       end
-      
+
       def schema_files_paths
         Dir.glob(@glob_schema_paths)
       end
 
       def many_paths_file_paths
-        case
-        when unit_paths_file_path.present? && !skip_load_dot_paths
+        if unit_paths_file_path.present? && !skip_load_dot_paths
           [unit_paths_file_path]
-        when skip_load_dot_paths
+        elsif skip_load_dot_paths
           Dir.glob("#{schema_save_dir_path}/paths/**/**.yml")
         else
           paths_config.many_paths_file_paths

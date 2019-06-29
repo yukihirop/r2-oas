@@ -1,4 +1,4 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 require_relative '../../base'
 require 'terminal-table'
@@ -11,8 +11,8 @@ module RoutesToSwaggerDocs
       class Stats < Base
         extend Forwardable
 
-        TIMESTAMPS = [ "Created At", "Updated At" ]
-        TABLE_TITLE = "Paths Stats"
+        TIMESTAMPS = ['Created At', 'Updated At'].freeze
+        TABLE_TITLE = 'Paths Stats'
 
         def initialize(options)
           super
@@ -34,9 +34,9 @@ module RoutesToSwaggerDocs
         def table
           @table ||= Terminal::Table.new do |t|
             @paths_list.each_with_index do |file_path, index|
-              t.headings = ['No', 'File Path', *TIMESTAMPS].map{ |head| Paint[head, heading_color] }
-              t << [ "#{index+1}", relative_file_path(file_path), *timestamps(file_path) ]
-              t.style = {:all_separators => true}
+              t.headings = ['No', 'File Path', *TIMESTAMPS].map { |head| Paint[head, heading_color] }
+              t << [(index + 1).to_s, relative_file_path(file_path), *timestamps(file_path)]
+              t.style = { all_separators: true }
             end
           end
         end
@@ -49,9 +49,9 @@ module RoutesToSwaggerDocs
         def timestamps(file_path)
           timestamps_data(file_path) do |result, stat|
             mtime = stat.mtime
-            result.deep_merge!({
+            result.deep_merge!(
               mtime: expired?(mtime) ? Paint[mtime, warning_color] : mtime
-            })
+            )
           end.values
         end
 
@@ -59,7 +59,7 @@ module RoutesToSwaggerDocs
           stat = File::Stat.new(file_path)
           result = {
             birthtime: stat.birthtime,
-            mtime:     stat.mtime
+            mtime: stat.mtime
           }
           yield result, stat if block_given?
           result

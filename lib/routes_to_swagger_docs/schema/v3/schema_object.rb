@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../plugins/schema/v3/hookable_base_object'
 
 module RoutesToSwaggerDocs
@@ -18,13 +20,13 @@ module RoutesToSwaggerDocs
 
         def create_doc
           result = {
-            "type" => "object",
-            "properties" => {
-              "id" => {
-                "type" => "integer",
-                "format" => "int64"
+            'type' => 'object',
+            'properties' => {
+              'id' => {
+                'type' => 'integer',
+                'format' => 'int64'
               }
-            } 
+            }
           }
           doc.merge!(result)
         end

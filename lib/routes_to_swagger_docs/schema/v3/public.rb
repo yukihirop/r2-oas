@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'info_object'
 require_relative 'paths_object'
 require_relative 'path_item_object'

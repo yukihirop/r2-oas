@@ -1,21 +1,21 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 module RoutesToSwaggerDocs
   module BaseConfiguration
     class Swagger
       class UI
-        DEFAULT_IMAGE        = "swaggerapi/swagger-ui"
-        DEFAULT_PORT         = "8080"
-        DEFAULT_EXPOSED_PORT = "8080/tcp"
-        DEFAULT_VOLUME       = "/app/swagger.json"
-        DEFAULT_HOST         = "http://localhost" # Fixed
+        DEFAULT_IMAGE        = 'swaggerapi/swagger-ui'
+        DEFAULT_PORT         = '8080'
+        DEFAULT_EXPOSED_PORT = '8080/tcp'
+        DEFAULT_VOLUME       = '/app/swagger.json'
+        DEFAULT_HOST         = 'http://localhost' # Fixed
 
-        VALID_OPTIONS_KEYS = [
-          :image,
-          :port,
-          :exposed_port,
-          :volume
-        ]
+        VALID_OPTIONS_KEYS = %i[
+          image
+          port
+          exposed_port
+          volume
+        ].freeze
 
         attr_accessor *VALID_OPTIONS_KEYS
 

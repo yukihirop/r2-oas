@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Scope Rails
 module RoutesToSwaggerDocs
   module TaskLogging
@@ -8,9 +10,9 @@ module RoutesToSwaggerDocs
           begin
             block.call(task)
             debug_log task, "[#{task.name}] finished"
-          rescue => exception
+          rescue StandardError => e
             debug_log task, "[#{task.name}] failed"
-            raise exception
+            raise e
           end
         end
       end
@@ -31,9 +33,7 @@ module RoutesToSwaggerDocs
     end
 
     def debug_log(task, message)
-      unless task.name == "routes:swagger:debug"
-        RoutesToSwaggerDocs.logger.debug "#{message}"
-      end
+      RoutesToSwaggerDocs.logger.debug message.to_s unless task.name == 'routes:swagger:debug'
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './base_analyzer'
 require_relative 'components/schemas_analyzer'
 require_relative 'components/request_bodies_analyzer'
@@ -13,13 +15,13 @@ module RoutesToSwaggerDocs
       end
 
       def update_from_schema
-        logger.info "[Analyze Swagger file (components/schemas)] start"
+        logger.info '[Analyze Swagger file (components/schemas)] start'
         @components_schemas_analyzer.update_from_schema
-        logger.info "[Analyze Swagger file (components/schemas)] end"
+        logger.info '[Analyze Swagger file (components/schemas)] end'
 
-        logger.info "[Analyze Swagger file (components/requestBodies)] start"
+        logger.info '[Analyze Swagger file (components/requestBodies)] start'
         @components_request_bodies_analyzer.update_from_schema
-        logger.info "[Analyze Swagger file (components/requestBodies)] end"
+        logger.info '[Analyze Swagger file (components/requestBodies)] end'
       end
     end
   end

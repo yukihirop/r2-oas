@@ -1,4 +1,4 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 require_relative 'base_configuration/server'
 require_relative 'base_configuration/swagger'
@@ -6,9 +6,9 @@ require_relative 'base_configuration/tool'
 
 module RoutesToSwaggerDocs
   module BaseConfiguration
-    DEFAULT_ROOT_DIR_PATH = "./swagger_docs"
-    DEFAULT_SCHEMA_SAVE_DIR_NAME = "src"
-    DEFAULT_DOC_SAVE_FILE_NAME = "swagger_doc.yml"
+    DEFAULT_ROOT_DIR_PATH = './swagger_docs'
+    DEFAULT_SCHEMA_SAVE_DIR_NAME = 'src'
+    DEFAULT_DOC_SAVE_FILE_NAME = 'swagger_doc.yml'
     DEFAULT_FORCE_UPDATE_SCHEMA = false
     DEFAULT_USE_TAG_NAMESPACE = true
     DEFAULT_USE_SCHEMA_NAMESPACE = true
@@ -17,46 +17,46 @@ module RoutesToSwaggerDocs
     DEFAULT_SWAGGER = Swagger.new
     DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD = {
       get: {
-        default: %w(200 422),
-        path_parameter: %w(200 404 422)
+        default: %w[200 422],
+        path_parameter: %w[200 404 422]
       },
       post: {
-        default: %w(204 422),
-        path_parameter: %w(204 404 422)
+        default: %w[204 422],
+        path_parameter: %w[204 404 422]
       },
       patch: {
-        default: %w(204 422),
-        path_parameter: %w(204 404 422)
+        default: %w[204 422],
+        path_parameter: %w[204 404 422]
       },
       put: {
-        default: %w(204 422),
-        path_parameter: %w(204 404 422)
+        default: %w[204 422],
+        path_parameter: %w[204 404 422]
       },
       delete: {
-        default: %w(200 422),
-        path_parameter: %w(200 404 422)
+        default: %w[200 422],
+        path_parameter: %w[200 404 422]
       }
-    }
+    }.freeze
     DEFAULT_TOOL = Tool.new
 
-    PUBLIC_VALID_OPTIONS_KEYS = [
-      :root_dir_path,
-      :schema_save_dir_name,
-      :doc_save_file_name,
-      :force_update_schema,
-      :use_tag_namespace,
-      :use_schema_namespace,
-      :server,
-      :interval_to_save_edited_tmp_schema,
-      :swagger,
-      :http_statuses_when_http_method,
-      :tool
-    ]
+    PUBLIC_VALID_OPTIONS_KEYS = %i[
+      root_dir_path
+      schema_save_dir_name
+      doc_save_file_name
+      force_update_schema
+      use_tag_namespace
+      use_schema_namespace
+      server
+      interval_to_save_edited_tmp_schema
+      swagger
+      http_statuses_when_http_method
+      tool
+    ].freeze
 
-    UNPUBLIC_VALID_OPTIONS_KEYS = [
-      :paths_config,
-      :logger
-    ]
+    UNPUBLIC_VALID_OPTIONS_KEYS = %i[
+      paths_config
+      logger
+    ].freeze
 
     VALID_OPTIONS_KEYS = PUBLIC_VALID_OPTIONS_KEYS + UNPUBLIC_VALID_OPTIONS_KEYS
 
@@ -70,8 +70,8 @@ module RoutesToSwaggerDocs
 
     private
 
-     module_function def set_default(target)
-      target.root_dir_path                      = DEFAULT_ROOT_DIR_PATH
+    module_function def set_default(target)
+      target.root_dir_path = DEFAULT_ROOT_DIR_PATH
       target.schema_save_dir_name               = DEFAULT_SCHEMA_SAVE_DIR_NAME
       target.doc_save_file_name                 = DEFAULT_DOC_SAVE_FILE_NAME
       target.force_update_schema                = DEFAULT_FORCE_UPDATE_SCHEMA
@@ -82,6 +82,6 @@ module RoutesToSwaggerDocs
       target.swagger                            = DEFAULT_SWAGGER
       target.http_statuses_when_http_method     = DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD
       target.tool                               = DEFAULT_TOOL
-    end
+   end
   end
 end

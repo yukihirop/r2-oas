@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../schema_object'
 
 module RoutesToSwaggerDocs
@@ -5,7 +7,6 @@ module RoutesToSwaggerDocs
     module V3
       module Components
         class SchemaObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
-
           def initialize(schema_name)
             super()
             @schema_name = schema_name

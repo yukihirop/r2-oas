@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require_relative 'base'
 require_relative 'components/all'
 
 module RoutesToSwaggerDocs
   module Routing
     class Adjustor < Base
-      VALID_KEYS = %i(route name verb path reqs regexp)
+      VALID_KEYS = %i[route name verb path reqs regexp].freeze
 
       def initialize(route_data)
         super
@@ -18,10 +20,10 @@ module RoutesToSwaggerDocs
       end
 
       def routes_els
-        @verbs.each_with_object([]) do  |verb, result|
+        @verbs.each_with_object([]) do |verb, result|
           route_el = {}
           route_el[:path] = @path_comp.symbol_to_brace
-          route_el[:data]= {
+          route_el[:data] = {
             verb: verb,
             path: @path_comp.symbol_to_brace,
             tag_name: @request_comp.to_tag_name,
@@ -36,7 +38,7 @@ module RoutesToSwaggerDocs
       private
 
       def valid_route_data?(route_data)
-        raise RuntimeError,  "Invalid params" unless route_data.keys.eql?(VALID_KEYS)
+        raise 'Invalid params' unless route_data.keys.eql?(VALID_KEYS)
       end
     end
   end

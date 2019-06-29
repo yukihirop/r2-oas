@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../plugins/schema/v3/hookable_base_object'
 require_relative 'components/schema_object'
 
@@ -14,12 +16,12 @@ module RoutesToSwaggerDocs
           result = components_schema_docs.each_with_object({}) do |(schema_name, components_schema_doc), docs|
             docs[schema_name] = components_schema_doc
           end
-          doc.merge!({ "schemas" => result })
+          doc.merge!('schemas' => result)
         end
 
         private
 
-        # e.x.) 
+        # e.x.)
         # [
         #  { path: "/tasks", data: {:verb=>"get", :path=>"/tasks", :tag_name=>"task" } },
         # ]

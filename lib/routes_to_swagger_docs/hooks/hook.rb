@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'singleton'
 require_relative './global_hook'
 require_relative './repository'
@@ -40,7 +42,7 @@ module RoutesToSwaggerDocs
             index = global_hooks.find_index { |hook| hook.uid == uid }
 
             if index
-              global_hooks.delete_if{ |hook| hook.uid == uid }
+              global_hooks.delete_if { |hook| hook.uid == uid }
             else
               result = nil
             end
@@ -51,6 +53,7 @@ module RoutesToSwaggerDocs
 
         def execute_hook(on, *data, target_class)
           return data unless has_hook?(on, target_class)
+
           execute_global_hook(on, *data, target_class)
         end
 

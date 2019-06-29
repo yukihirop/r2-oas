@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module RoutesToSwaggerDocs
   module Schema
     module V3
       class BaseObject
         def initialize(*_args)
-          (BaseConfiguration::VALID_OPTIONS_KEYS).each do |key|
+          BaseConfiguration::VALID_OPTIONS_KEYS.each do |key|
             send("#{key}=", base_configuration_options[key])
           end
 
-          (PluggableConfiguration::VALID_OPTIONS_KEYS).each do |key|
+          PluggableConfiguration::VALID_OPTIONS_KEYS.each do |key|
             instance_variable_set(:"@#{key}", pluggable_configuration_options[key])
           end
         end

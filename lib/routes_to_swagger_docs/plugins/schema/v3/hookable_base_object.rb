@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../../schema/v3/base_object'
 require_relative '../../../hooks/hook'
 require_relative '../../../errors'
@@ -9,12 +11,12 @@ module RoutesToSwaggerDocs
         class HookableBaseObject < RoutesToSwaggerDocs::Schema::V3::BaseObject
           module ClassMethods
             def before_create(&block)
-              proc = (block_given? ? block : Proc.new {})
+              proc = (block_given? ? block : proc {})
               on(:before_create, proc)
             end
 
             def after_create(&block)
-              proc = (block_given? ? block : Proc.new {})
+              proc = (block_given? ? block : proc {})
               on(:after_create, proc)
             end
           end
@@ -28,8 +30,13 @@ module RoutesToSwaggerDocs
             superclass.hook.repository[self].global_hooks_data
           end
 
-          def self.hook=(value); @@hook = value; end
-          def self.hook; @@hook; end
+          def self.hook=(value)
+            @@hook = value
+          end
+
+          def self.hook
+            @@hook
+          end
 
           class << self
             def on(on, callback, once = false)

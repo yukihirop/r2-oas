@@ -1,4 +1,4 @@
-#frozen_string_literal:true
+# frozen_string_literal:true
 
 require 'docker'
 require 'eventmachine'
@@ -12,14 +12,13 @@ require_relative 'analyzer'
 require_relative 'generator'
 require_relative 'base'
 
-
 # Scope Rails
 module RoutesToSwaggerDocs
   module Schema
     class Editor < Base
       extend Forwardable
 
-      TMP_FILE_NAME = "edited_schema"
+      TMP_FILE_NAME = 'edited_schema'
 
       attr_accessor :edited_schema
 
@@ -34,8 +33,8 @@ module RoutesToSwaggerDocs
           container.start
           open_browser_and_set_schema
           ensure_save_tmp_schema_file
-          signal_trap("INT")
-          signal_trap("TERM")
+          signal_trap('INT')
+          signal_trap('TERM')
         end
       end
 
@@ -56,17 +55,17 @@ module RoutesToSwaggerDocs
             container.remove
             logger.info "container id: #{container.id} removed"
           end
-          
+
           EM.stop
         end
       end
 
       def process_after_close_browser
         fetch_edited_schema_from_browser
-        
+
         options = { type: :edited }
-        conv_after_schema_data = YAML.load(@after_schema_data)
-        analyzer = Analyzer.new(@before_schema_data, conv_after_schema_data , options)
+        conv_after_schema_data = YAML.safe_load(@after_schema_data)
+        analyzer = Analyzer.new(@before_schema_data, conv_after_schema_data, options)
         analyzer.update_from_schema
       end
 
@@ -79,10 +78,8 @@ module RoutesToSwaggerDocs
         end
       end
 
-      def fetch_edited_schema_from_browser(&block)
-        if @browser.exists?
-          @after_schema_data = @browser.driver.local_storage[storage_key] 
-        end
+      def fetch_edited_schema_from_browser
+        @after_schema_data = @browser.driver.local_storage[storage_key] if @browser.exists?
       end
 
       def open_browser_and_set_schema
