@@ -82,7 +82,6 @@ module RoutesToSwaggerDocs
       severity ||= UNKNOWN
       return true if severity < @level
 
-      message = progname
       puts format_message(format_severity(severity), Time.now, nil, progname)
     end
 
