@@ -42,7 +42,7 @@ In your rails project, Write `config/environments/development.rb` like that:
 # default setting
 RoutesToSwaggerDocs.configure do |config|
   config.root_dir_path                      = "./swagger_docs"
-  config.schema_save_dir_name               = "schema"
+  config.schema_save_dir_name               = "src"
   config.doc_save_file_name                 = "swagger_doc.yml"
   config.force_update_schema                = false
   config.use_tag_namespace                  = true

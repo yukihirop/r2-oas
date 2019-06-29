@@ -7,7 +7,7 @@ require_relative 'base_configuration/tool'
 module RoutesToSwaggerDocs
   module BaseConfiguration
     DEFAULT_ROOT_DIR_PATH = "./swagger_docs"
-    DEFAULT_SCHEMA_SAVE_DIR_NAME = "schema"
+    DEFAULT_SCHEMA_SAVE_DIR_NAME = "src"
     DEFAULT_DOC_SAVE_FILE_NAME = "swagger_doc.yml"
     DEFAULT_FORCE_UPDATE_SCHEMA = false
     DEFAULT_USE_TAG_NAMESPACE = true
