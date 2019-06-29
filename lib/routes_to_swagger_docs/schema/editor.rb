@@ -40,7 +40,7 @@ module RoutesToSwaggerDocs
 
       private
 
-      attr_accessor :container, :unit_paths_file_path
+      attr_accessor :unit_paths_file_path
       def_delegators :@editor, :storage_key, :image, :port, :url, :exposed_port
 
       def signal_trap(command)
