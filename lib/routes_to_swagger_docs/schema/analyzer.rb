@@ -10,10 +10,10 @@ module RoutesToSwaggerDocs
   module Schema
     class Analyzer < BaseAnalyzer
       def initialize(before_schema_data, after_schema_data = {}, options = {})
-        super(before_schema_data, after_schema_data, options)
-        @path_analyzer       = PathAnalyzer.new(before_schema_data, after_schema_data, options)
-        @tag_analyzer        = TagAnalyzer.new(before_schema_data, after_schema_data, options)
-        @components_analyzer = ComponentsAnalyzer.new(before_schema_data, after_schema_data, options)
+        super
+        @path_analyzer       = PathAnalyzer.new(@before_schema_data, @after_schema_data, options)
+        @tag_analyzer        = TagAnalyzer.new(@before_schema_data, @after_schema_data, options)
+        @components_analyzer = ComponentsAnalyzer.new(@before_schema_data, @after_schema_data, options)
       end
 
       def update_from_schema
@@ -48,7 +48,7 @@ module RoutesToSwaggerDocs
         when :edited
           file_manager.save_after_deep_merge(data)
         when :existing
-          file_manager.save(data)
+          file_manager.save(data.to_yaml)
         end
       end
     end

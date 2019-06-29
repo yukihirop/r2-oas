@@ -8,8 +8,10 @@ module RoutesToSwaggerDocs
       class RequestBodyDiffManager < BaseHashDiffManager
         def initialize(before_schema_data, after_schema_data)
           super
-          @major_category  = 'components'
-          @middle_category = 'requestBodies'
+          @major_category     = 'components'
+          @middle_category    = 'requestBodies'
+          @before_schema_data = normalized(before_schema_data)
+          @after_schema_data  = normalized(after_schema_data)
         end
       end
     end
