@@ -147,3 +147,9 @@ Metrics/ClassLength:
 Metrics/ParameterLists:
   Exclude:
     - 'lib/routes_to_swagger_docs/schema/v3/path_item_object.rb'
+
+Layout/EndAlignment:
+  Exclude:
+    - 'lib/routes_to_swagger_docs/shared/sortable.rb'
+
+
