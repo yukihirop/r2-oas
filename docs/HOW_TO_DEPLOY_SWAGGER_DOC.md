@@ -6,9 +6,9 @@ require 'routes_to_swagger_docs'
 
 RoutesToSwaggerDocs.configure do |config|
    # default setting        
-   config.root_dir_path = "./swagger_docs"
-   config.schema_save_dir_name = "shemas"
-   config.doc_save_file_name = "swagger_doc.yml"
+   config.root_dir_path        = "./swagger_docs"
+   config.schema_save_dir_name = "src"
+   config.doc_save_file_name   = "swagger_doc.yml"
 end
 ```
 
@@ -794,23 +794,23 @@ I, [2019-05-06T19:32:52.014417 #22431]  INFO -- : [Routes to Swagger docs] start
 I, [2019-05-06T19:32:52.075691 #22431]  INFO -- : [Generate Swagger schema files] start
 I, [2019-05-06T19:32:52.075731 #22431]  INFO -- : [Generate Swagger schema files] end
 I, [2019-05-06T19:32:52.075743 #22431]  INFO -- : [Generate Swagger docs from schema files] start
-I, [2019-05-06T19:32:52.079267 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/openapi.yml
-I, [2019-05-06T19:32:52.080334 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/paths/user.yml
-I, [2019-05-06T19:32:52.081189 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/paths/api/v1/task.yml
-I, [2019-05-06T19:32:52.081944 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/paths/api/v1/post.yml
-I, [2019-05-06T19:32:52.082838 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/paths/api/v2/post.yml
-I, [2019-05-06T19:32:52.083719 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/paths/task.yml
-I, [2019-05-06T19:32:52.084185 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/paths/rails_admin/engine.yml
-I, [2019-05-06T19:32:52.085796 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/paths/rails_admin/main.yml
-I, [2019-05-06T19:32:52.086063 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/externalDocs.yml
-I, [2019-05-06T19:32:52.086555 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/tags.yml
-I, [2019-05-06T19:32:52.087145 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/components/schemas/user.yml
-I, [2019-05-06T19:32:52.087667 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/components/schemas/task.yml
-I, [2019-05-06T19:32:52.087955 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/components/schemas/engine.yml
-I, [2019-05-06T19:32:52.088281 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/components/schemas/main.yml
-I, [2019-05-06T19:32:52.088567 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/components/schemas/post.yml
-I, [2019-05-06T19:32:52.088867 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/info.yml
-I, [2019-05-06T19:32:52.089136 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/example/swagger_docs/schema/servers.yml
+I, [2019-05-06T19:32:52.079267 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/openapi.yml
+I, [2019-05-06T19:32:52.080334 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/paths/user.yml
+I, [2019-05-06T19:32:52.081189 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/paths/api/v1/task.yml
+I, [2019-05-06T19:32:52.081944 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/paths/api/v1/post.yml
+I, [2019-05-06T19:32:52.082838 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/paths/api/v2/post.yml
+I, [2019-05-06T19:32:52.083719 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/paths/task.yml
+I, [2019-05-06T19:32:52.084185 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/paths/rails_admin/engine.yml
+I, [2019-05-06T19:32:52.085796 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/paths/rails_admin/main.yml
+I, [2019-05-06T19:32:52.086063 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/externalDocs.yml
+I, [2019-05-06T19:32:52.086555 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/tags.yml
+I, [2019-05-06T19:32:52.087145 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/components/schemas/user.yml
+I, [2019-05-06T19:32:52.087667 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/components/schemas/task.yml
+I, [2019-05-06T19:32:52.087955 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/components/schemas/engine.yml
+I, [2019-05-06T19:32:52.088281 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/components/schemas/main.yml
+I, [2019-05-06T19:32:52.088567 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/components/schemas/post.yml
+I, [2019-05-06T19:32:52.088867 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/info.yml
+I, [2019-05-06T19:32:52.089136 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/routes_to_swagger_docs/swagger_docs/src/servers.yml
 I, [2019-05-06T19:32:52.100673 #22431]  INFO -- : [Generate Swagger docs from schema files] end
 I, [2019-05-06T19:32:52.133732 #22431]  INFO -- : [Routes to Swagger docs] end
 ```

@@ -7,13 +7,13 @@ require_relative 'base_configuration/tool'
 module RoutesToSwaggerDocs
   module BaseConfiguration
     DEFAULT_ROOT_DIR_PATH = "./swagger_docs"
-    DEFAULT_SCHEMA_SAVE_DIR_NAME = "schema"
+    DEFAULT_SCHEMA_SAVE_DIR_NAME = "src"
     DEFAULT_DOC_SAVE_FILE_NAME = "swagger_doc.yml"
     DEFAULT_FORCE_UPDATE_SCHEMA = false
     DEFAULT_USE_TAG_NAMESPACE = true
     DEFAULT_USE_SCHEMA_NAMESPACE = true
     DEFAULT_SERVER = Server.new
-    DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA = 1
+    DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA = 15
     DEFAULT_SWAGGER = Swagger.new
     DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD = {
       get: {
