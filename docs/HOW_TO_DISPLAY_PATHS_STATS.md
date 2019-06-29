@@ -6,9 +6,9 @@ require 'routes_to_swagger_docs'
 
 RoutesToSwaggerDocs.configure do |config|
    # default setting        
-   config.root_dir_path = "./swagger_docs"
-   config.schema_save_dir_name = "shemas"
-   config.doc_save_file_name = "swagger_doc.yml"
+   config.root_dir_path        = "./swagger_docs"
+   config.schema_save_dir_name = "src"
+   config.doc_save_file_name   = "swagger_doc.yml"
 
    config.tool.paths_stats.configure do |paths_stats|
     paths_stats.month_to_turn_to_warning_color = 3

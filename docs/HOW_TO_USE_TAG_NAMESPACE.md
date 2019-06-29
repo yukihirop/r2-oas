@@ -6,11 +6,11 @@ require 'routes_to_swagger_docs'
 
 RoutesToSwaggerDocs.configure do |config|
    # default setting        
-   config.root_dir_path = "./swagger_docs"
-   config.schema_save_dir_name = "shemas"
-   config.doc_save_file_name = "swagger_doc.yml"
+   config.root_dir_path        = "./swagger_docs"
+   config.schema_save_dir_name = "src"
+   config.doc_save_file_name   = "swagger_doc.yml"
    # default
-   config.use_tag_namespace = true   # write here
+   config.use_tag_namespace    = true   # write here
    config.use_schema_namespace = true
  end
 ```
@@ -129,10 +129,10 @@ require 'routes_to_swagger_docs'
 
 RoutesToSwaggerDocs.configure do |config|
    # default setting        
-   config.root_dir_path = "./swagger_docs"
-   config.schema_save_dir_name = "shemas"
-   config.doc_save_file_name = "swagger_doc.yml"
-   config.use_tag_namespace = false # write here
+   config.root_dir_path        = "./swagger_docs"
+   config.schema_save_dir_name = "src"
+   config.doc_save_file_name   = "swagger_doc.yml"
+   config.use_tag_namespace    = false # write here
    config.use_schema_namespace = true
 end
 ```

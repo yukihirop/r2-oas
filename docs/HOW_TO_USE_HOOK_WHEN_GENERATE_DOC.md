@@ -56,11 +56,11 @@ end
 require_relative 'custom_path_item_object'
 
 RoutesToSwaggerDocs.configure do |config|
-  config.root_dir_path = "./swagger_docs"
-  config.schema_save_dir_name = "schema"
-  config.doc_save_file_name = "swagger_doc.yml"
-  config.force_update_schema = false
-  config.use_tag_namespace = true
+  config.root_dir_path        = "./swagger_docs"
+  config.schema_save_dir_name = "src"
+  config.doc_save_file_name   = "swagger_doc.yml"
+  config.force_update_schema  = false
+  config.use_tag_namespace    = true
   config.use_schema_namespace = false
   config.server.data = [
     {
@@ -68,7 +68,7 @@ RoutesToSwaggerDocs.configure do |config|
       description: "localhost"
     }
   ]
-  config.interval_to_save_edited_tmp_schema = 1
+  config.interval_to_save_edited_tmp_schema = 15
   config.use_object_classes.merge!({
     path_item_object:  CustomPathItemObject
   })
