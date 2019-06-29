@@ -27,12 +27,12 @@ module RoutesToSwaggerDocs
 
       def relative_save_file_path
         result = normalized_about_path_type
-        if @path_type.eql?(:ref) && (object_type.in? %i[schema request_body])
+        if (@path_type.in? %i[ref relative]) && (object_type.in? %i[schema request_body])
           dirname = File.dirname(result)
           basename = File.basename(result)
           basename = basename.gsub('_', '/').underscore
           "#{schema_save_dir_path}/#{dirname}/#{basename}"
-        elsif @path_type.eql?(:relative) && (object_type.in? %i[schema request_body])
+        elsif @path_type.eql?(:relative) && !(object_type.in? %i[schema request_body])
           "#{schema_save_dir_path}/#{result.underscore}"
         elsif @path_type.eql?(:full)
           result
