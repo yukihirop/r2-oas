@@ -51,7 +51,7 @@ module RoutesToSwaggerDocs
           end
         end
 
-        def process_when_generate_components_request_bodies(components_request_bodies_override: false)
+        def process_when_generate_components_request_bodies
           logger.info ' <Update Components schema files (components/schemas)>'
           @components_request_bodies.each do |schema_name, data|
             result = {
