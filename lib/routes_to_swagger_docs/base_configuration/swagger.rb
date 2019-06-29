@@ -1,4 +1,4 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 require_relative 'swagger/ui'
 require_relative 'swagger/editor'
@@ -9,10 +9,10 @@ module RoutesToSwaggerDocs
       DEFAULT_EDITOR = Editor.new
       DEFAULT_UI     = UI.new
 
-      VALID_OPTIONS_KEYS = [
-        :editor,
-        :ui
-      ]
+      VALID_OPTIONS_KEYS = %i[
+        editor
+        ui
+      ].freeze
 
       attr_accessor *VALID_OPTIONS_KEYS
 

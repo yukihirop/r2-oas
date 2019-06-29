@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../base_hash_diff_manager'
 
 module RoutesToSwaggerDocs

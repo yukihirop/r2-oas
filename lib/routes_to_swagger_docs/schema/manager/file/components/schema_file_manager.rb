@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../include_ref_base_file_manager'
 
 module RoutesToSwaggerDocs

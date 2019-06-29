@@ -1,14 +1,14 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 module RoutesToSwaggerDocs
   module BaseConfiguration
     class Server
-      DEFAULT_URL = "http://localhost:3000"
-      DEFAULT_DESCRIPTION = "localhost"
+      DEFAULT_URL = 'http://localhost:3000'
+      DEFAULT_DESCRIPTION = 'localhost'
 
       VALID_OPTIONS_KEYS = [
         :data
-      ]
+      ].freeze
 
       attr_accessor *VALID_OPTIONS_KEYS
 

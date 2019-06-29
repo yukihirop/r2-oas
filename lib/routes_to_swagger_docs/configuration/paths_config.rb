@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../schema/manager/file/path_item_file_manager'
 
 module RoutesToSwaggerDocs
@@ -23,7 +25,7 @@ module RoutesToSwaggerDocs
         abs_root_path = File.expand_path(@root_dir_path)
 
         FileUtils.mkdir_p(abs_root_path) unless FileTest.exists?(abs_root_path)
-        File.write(abs_paths_path, "") unless FileTest.exists?(abs_paths_path)
+        File.write(abs_paths_path, '') unless FileTest.exists?(abs_paths_path)
       end
 
       def many_components_file_paths

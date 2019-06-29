@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../errors'
 require_relative '../base'
 require_relative '../../shared/all'
@@ -55,7 +57,7 @@ module RoutesToSwaggerDocs
         case extname
         when /json/
           File.open(existing_schema_file_path) do |file|
-            JSON.load(file)
+            JSON.parse(file)
           end
         when /yaml/
           YAML.load_file(existing_schema_file_path)

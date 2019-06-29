@@ -1,4 +1,4 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 require_relative 'components/schema_file_manager'
 require_relative 'components/request_body_file_manager'

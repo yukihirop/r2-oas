@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../plugins/schema/v3/hookable_base_object'
 
 module RoutesToSwaggerDocs
@@ -6,8 +8,8 @@ module RoutesToSwaggerDocs
       class ExternalDocumentObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
         def create_doc
           result = {
-            "description" => "",
-            "url" => ""
+            'description' => '',
+            'url' => ''
           }
           doc.merge!(result)
         end

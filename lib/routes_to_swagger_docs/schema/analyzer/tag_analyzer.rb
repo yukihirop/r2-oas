@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'base_analyzer'
 require_relative '../manager/file_manager'
 require_relative '../manager/diff/tag_diff_manager'
@@ -9,7 +11,7 @@ module RoutesToSwaggerDocs
     class TagAnalyzer < BaseAnalyzer
       def initialize(before_schema_data, after_schema_data = {}, options = {})
         super
-        @file_manager = FileManager.new("tags", :relative)
+        @file_manager = FileManager.new('tags', :relative)
         @diff_manager = TagDiffManager.new(@file_manager.load_data, after_schema_data)
       end
 
@@ -22,7 +24,6 @@ module RoutesToSwaggerDocs
             logger.info "  Write schema file: \t#{save_file_path}"
           end
         when :existing
-          result = @diff_manager.after_target_data
           logger.info "  Write schema file: \t#{save_file_path}"
         else
           raise NoImplementError

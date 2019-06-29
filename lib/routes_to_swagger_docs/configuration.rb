@@ -1,4 +1,4 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 require_relative 'base_configuration'
 require_relative 'pluggable_configuration'
@@ -12,10 +12,10 @@ module RoutesToSwaggerDocs
 
     PUBLIC_VALID_OPTIONS_KEYS = BaseConfiguration::VALID_OPTIONS_KEYS + PluggableConfiguration::VALID_OPTIONS_KEYS
 
-    UNPUBLIC_VALID_OPTIONS_KEYS = [
-      :paths_config,
-      :logger
-    ]
+    UNPUBLIC_VALID_OPTIONS_KEYS = %i[
+      paths_config
+      logger
+    ].freeze
 
     VALID_OPTIONS_KEYS = PUBLIC_VALID_OPTIONS_KEYS + UNPUBLIC_VALID_OPTIONS_KEYS
 
@@ -26,7 +26,7 @@ module RoutesToSwaggerDocs
       base.send :set_default_for_pluggable, base
     end
 
-    def configure(&block)
+    def configure
       yield self if block_given?
     end
 

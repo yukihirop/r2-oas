@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RoutesToSwaggerDocs
   module Hooks
     class Repository

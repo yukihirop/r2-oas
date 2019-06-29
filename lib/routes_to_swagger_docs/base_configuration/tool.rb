@@ -1,4 +1,4 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 require_relative 'tool/paths/stats'
 
@@ -9,7 +9,7 @@ module RoutesToSwaggerDocs
 
       VALID_OPTIONS_KEYS = [
         :paths_stats
-      ]
+      ].freeze
 
       attr_accessor *VALID_OPTIONS_KEYS
 

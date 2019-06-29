@@ -1,20 +1,20 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 module RoutesToSwaggerDocs
   module BaseConfiguration
     class Swagger
       class Editor
-        DEFAULT_IMAGE         = "swaggerapi/swagger-editor"
-        DEFAULT_PORT          = "81"
-        DEFAULT_EXPOSED_PORT  = "8080/tcp"
-        DEFAULT_STORAGE_KEY   = "swagger-editor-content" # Fixed
-        DEFAULT_HOST          = "http://localhost"       # Fixed
+        DEFAULT_IMAGE         = 'swaggerapi/swagger-editor'
+        DEFAULT_PORT          = '81'
+        DEFAULT_EXPOSED_PORT  = '8080/tcp'
+        DEFAULT_STORAGE_KEY   = 'swagger-editor-content' # Fixed
+        DEFAULT_HOST          = 'http://localhost'       # Fixed
 
-        VALID_OPTIONS_KEYS = [
-          :image,
-          :port,
-          :exposed_port
-        ]
+        VALID_OPTIONS_KEYS = %i[
+          image
+          port
+          exposed_port
+        ].freeze
 
         attr_accessor *VALID_OPTIONS_KEYS
 

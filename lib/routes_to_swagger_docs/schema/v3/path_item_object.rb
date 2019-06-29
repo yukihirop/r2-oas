@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'forwardable'
 require_relative '../../plugins/schema/v3/hookable_base_object'
 require_relative '../../routing/components/path_component'
@@ -10,11 +12,11 @@ module RoutesToSwaggerDocs
         # reference
         # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object
         # Support Field Name: get, put, post, delete, patch
-        SUPPORT_FIELD_NAME = %w(get put post delete patch)
-        SUPPORT_HTTP_STATUS = %w(200 204 404 422).freeze
+        SUPPORT_FIELD_NAME = %w[get put post delete patch].freeze
+        SUPPORT_HTTP_STATUS = %w[200 204 404 422].freeze
 
         def_delegators :@http_status_manager, :http_statuses
-    
+
         def initialize(route_data, path)
           super(route_data)
           @path_comp                    = Routing::PathComponent.new(path)
@@ -26,7 +28,7 @@ module RoutesToSwaggerDocs
           @required_parameters          = route_data[:required_parameters]
           @format_name                  = create_format_name
           @http_status_manager          = HttpStatusManager.new(@path, @verb, http_statuses_when_http_method)
-          support_field_name? if route_data.has_key?(:verb)
+          support_field_name? if route_data.key?(:verb)
         end
 
         def to_doc
@@ -35,9 +37,9 @@ module RoutesToSwaggerDocs
           execute_after_create(@path)
           doc
         end
-  
+
         def create_doc
-          result = { "#{@verb}" => data_when_verb }
+          result = { @verb.to_s => data_when_verb }
           attach_media_type!(result)
           attach_parameters!(result)
           doc.merge!(result)
@@ -45,39 +47,39 @@ module RoutesToSwaggerDocs
 
         # MEMO:
         # hook methods
-        def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
+        def components_schema_name(_doc, _path_component, _tag_name, _verb, _http_status, schema_name)
           schema_name
         end
-  
+
         private
 
         def data_when_verb
           result = {
-            "tags" => ["#{@tag_name}"],
-            "summary" => "#{@verb} summary",
-            "description" => "#{@verb} description",
+            'tags' => [@tag_name.to_s],
+            'summary' => "#{@verb} summary",
+            'description' => "#{@verb} description",
             # Response Object
-            "responses" => {},
-            "deprecated" => false
+            'responses' => {},
+            'deprecated' => false
           }
-          result["responses"].deep_merge!(responses_when_http_status)
+          result['responses'].deep_merge!(responses_when_http_status)
           result
         end
 
         def responses_when_http_status
           http_statuses.each_with_object({}) do |http_status, result|
-            result.deep_merge!({
+            result.deep_merge!(
               http_status => {
-                "description" => "#{@tag_name} description",
-                "content" => {
-                  "application/json" => {
-                    "schema" => {
-                      "$ref" => "#/components/schemas/#{_components_schema_name(http_status)}"
+                'description' => "#{@tag_name} description",
+                'content' => {
+                  'application/json' => {
+                    'schema' => {
+                      '$ref' => "#/components/schemas/#{_components_schema_name(http_status)}"
                     }
                   }
                 }
               }
-            })
+            )
           end
         end
 
@@ -88,7 +90,7 @@ module RoutesToSwaggerDocs
         def create_format_name
           format_name = @route_data[:format_name]
           if format_name.blank?
-            ""
+            ''
           else
             "application/#{format_name}"
           end
@@ -96,44 +98,44 @@ module RoutesToSwaggerDocs
 
         def attach_media_type!(schema)
           return schema if @format_name.blank?
+
           merge_schema = {
-            "200" => {
-              "description" => "responses description",
-              "content" => {
-                "#{@format_name}" => {}
+            '200' => {
+              'description' => 'responses description',
+              'content' => {
+                @format_name.to_s => {}
               }
             }
           }
-          schema["#{@verb}"]["responses"].deep_merge!(merge_schema)
+          schema[@verb.to_s]['responses'].deep_merge!(merge_schema)
           schema
         end
 
         def attach_parameters!(schema)
           return schema if @required_parameters.blank?
+
           content = @required_parameters.each_with_object([]) do |(parameter_name, parameter_data), result|
             result.push(
-              {
-                "name" => "#{parameter_name}",
-                "in" => "path",
-                "description" => "#{parameter_name}",
-                "required" => true,
-                "schema" => {
-                  "type" => parameter_data[:type]
-                }
+              'name' => parameter_name.to_s,
+              'in' => 'path',
+              'description' => parameter_name.to_s,
+              'required' => true,
+              'schema' => {
+                'type' => parameter_data[:type]
               }
             )
           end
 
           merge_schema = {
-            "parameters" => content
+            'parameters' => content
           }
 
-          schema["#{@verb}"].deep_merge!(merge_schema)
+          schema[@verb.to_s].deep_merge!(merge_schema)
           schema
         end
-        
+
         def support_field_name?
-          raise RuntimeError,  "Invalid filed name #{field_name}" unless SUPPORT_FIELD_NAME.include?(@verb)
+          raise "Invalid filed name #{field_name}" unless SUPPORT_FIELD_NAME.include?(@verb)
         end
 
         class HttpStatusManager

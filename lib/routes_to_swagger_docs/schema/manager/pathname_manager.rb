@@ -1,12 +1,12 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 require_relative '../base'
 
 module RoutesToSwaggerDocs
   module Schema
     class PathnameManager < Base
-      SCHEMA       = "schemas"
-      REQUEST_BODY = "requestBodies"
+      SCHEMA       = 'schemas'
+      REQUEST_BODY = 'requestBodies'
 
       # e.x.) path = "#/components/schemas/Account" (when path_type = :ref)
       def initialize(path, path_type = :full)
@@ -27,15 +27,14 @@ module RoutesToSwaggerDocs
 
       def relative_save_file_path
         result = normalized_about_path_type
-        case
-        when @path_type.eql?(:ref) && (object_type.in? %i(schema request_body))
+        if @path_type.eql?(:ref) && (object_type.in? %i[schema request_body])
           dirname = File.dirname(result)
           basename = File.basename(result)
-          basename = basename.gsub("_", "/").underscore
+          basename = basename.gsub('_', '/').underscore
           "#{schema_save_dir_path}/#{dirname}/#{basename}"
-        when @path_type.eql?(:relative) && (object_type.in? %i(schema request_body))
+        elsif @path_type.eql?(:relative) && (object_type.in? %i[schema request_body])
           "#{schema_save_dir_path}/#{result.underscore}"
-        when @path_type.eql?(:full)
+        elsif @path_type.eql?(:full)
           result
         else
           "#{schema_save_dir_path}/#{result}"
@@ -47,7 +46,7 @@ module RoutesToSwaggerDocs
       def normalized_about_path_type
         case @path_type
         when :ref
-          "#{@path.gsub("#/","")}.#{@ext_name}"
+          "#{@path.gsub('#/', '')}.#{@ext_name}"
         when :relative
           "#{@path}.#{@ext_name}"
         when :full

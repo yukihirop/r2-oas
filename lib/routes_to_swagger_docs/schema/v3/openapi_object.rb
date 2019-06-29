@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'base_object'
 require_relative 'tag_object'
 require_relative 'server_object'
@@ -15,13 +17,13 @@ module RoutesToSwaggerDocs
 
         def to_doc
           {
-            "openapi" => "3.0.0",
-            "info" => info_doc,
-            "tags" => tags_doc,
-            "paths" => paths_doc,
-            "externalDocs" => external_docs_doc,
-            "servers" => servers_doc,
-            "components" => components_doc 
+            'openapi' => '3.0.0',
+            'info' => info_doc,
+            'tags' => tags_doc,
+            'paths' => paths_doc,
+            'externalDocs' => external_docs_doc,
+            'servers' => servers_doc,
+            'components' => components_doc
           }
         end
 

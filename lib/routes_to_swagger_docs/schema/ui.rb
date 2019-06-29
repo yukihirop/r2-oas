@@ -1,4 +1,4 @@
-#frozen_string_literal:true
+# frozen_string_literal:true
 
 require 'docker'
 require 'eventmachine'
@@ -9,14 +9,13 @@ require 'forwardable'
 require_relative 'analyzer'
 require_relative 'base'
 
-
 # Scope Rails
 module RoutesToSwaggerDocs
   module Schema
     class UI < Base
       extend Forwardable
 
-      alias :swagger_json :doc_save_file_path
+      alias swagger_json doc_save_file_path
 
       def initialize(*args)
         super
@@ -28,8 +27,8 @@ module RoutesToSwaggerDocs
           container.start
           open_browser
           puts "\nwait for single trap ..."
-          signal_trap("INT")
-          signal_trap("TERM")
+          signal_trap('INT')
+          signal_trap('TERM')
         end
       end
 
@@ -43,7 +42,7 @@ module RoutesToSwaggerDocs
           container.stop
           container.remove
           logger.info "container id: #{container.id} removed"
-          
+
           EM.stop
         end
       end
@@ -68,9 +67,9 @@ module RoutesToSwaggerDocs
             'PortBindings' => {
               exposed_port => [{ 'HostPort' => port }]
             },
-            'Binds' => [ "#{swagger_json}:#{volume}" ] 
+            'Binds' => ["#{swagger_json}:#{volume}"]
           },
-          'Volumes' => { volume =>  { } }
+          'Volumes' => { volume => {} }
         )
       end
     end

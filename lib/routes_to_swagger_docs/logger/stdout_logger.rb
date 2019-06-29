@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Referred to　lib/ruby/2.3.0/logger.rb
 module RoutesToSwaggerDocs
   class StdoutLogger
@@ -9,7 +11,7 @@ module RoutesToSwaggerDocs
     UNKNOWN = 5
     NULL = 6
     # Severity label for logging (max 5 chars).
-    SEV_LABEL = %w(DEBUG INFO WARN ERROR FATAL NULL ANY).each(&:freeze).freeze
+    SEV_LABEL = %w[DEBUG INFO WARN ERROR FATAL NULL ANY].each(&:freeze).freeze
 
     # Logging severity threshold (e.g. <tt>Logger::INFO</tt>).
     attr_reader :level
@@ -30,19 +32,19 @@ module RoutesToSwaggerDocs
       else
         _severity = severity.to_s.downcase
         case _severity
-        when 'debug'.freeze
+        when 'debug'
           @level = DEBUG
-        when 'info'.freeze
+        when 'info'
           @level = INFO
-        when 'warn'.freeze
+        when 'warn'
           @level = WARN
-        when 'error'.freeze
+        when 'error'
           @level = ERROR
-        when 'fatal'.freeze
+        when 'fatal'
           @level = FATAL
-        when 'unknown'.freeze
+        when 'unknown'
           @level = UNKNOWN
-        when 'null'.freeze
+        when 'null'
           @level = NULL
         else
           raise ArgumentError, "invalid log level: #{severity}"
@@ -76,12 +78,10 @@ module RoutesToSwaggerDocs
 
     private
 
-    def add(severity, message = nil, progname = nil)
+    def add(severity, _message = nil, progname = nil)
       severity ||= UNKNOWN
-      if severity < @level
-        return true
-      end
-      message = progname
+      return true if severity < @level
+
       puts format_message(format_severity(severity), Time.now, nil, progname)
     end
 
@@ -92,10 +92,10 @@ module RoutesToSwaggerDocs
     def format_severity(severity)
       SEV_LABEL[severity] || 'ANY'
     end
-    
+
     # Default formatter for log messages.
     class Formatter
-      Format = "%s, [%s#%d] %5s -- %s: %s\n".freeze
+      Format = "%s, [%s#%d] %5s -- %s: %s\n"
 
       attr_accessor :datetime_format
 
@@ -104,14 +104,13 @@ module RoutesToSwaggerDocs
       end
 
       def call(severity, time, progname, msg)
-        Format % [severity[0..0], format_datetime(time), $$, severity, progname,
-          msg2str(msg)]
+        format(Format, severity[0..0], format_datetime(time), $PROCESS_ID, severity, progname, msg2str(msg))
       end
 
       private
 
       def format_datetime(time)
-        time.strftime(@datetime_format || "%Y-%m-%dT%H:%M:%S.%6N ".freeze)
+        time.strftime(@datetime_format || '%Y-%m-%dT%H:%M:%S.%6N ')
       end
 
       def msg2str(msg)
@@ -119,7 +118,7 @@ module RoutesToSwaggerDocs
         when ::String
           msg
         when ::Exception
-          "#{ msg.message } (#{ msg.class })\n" <<
+          "#{msg.message} (#{msg.class})\n" <<
             (msg.backtrace || []).join("\n")
         else
           msg.inspect

@@ -1,4 +1,4 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 module RoutesToSwaggerDocs
   module BaseConfiguration
@@ -9,12 +9,12 @@ module RoutesToSwaggerDocs
         DEFAULT_TABLE_TITLE_COLOR = :yellow
         DEFAULT_HEADING_COLOR = :yellow
 
-        VALID_OPTIONS_KEYS = [
-          :month_to_turn_to_warning_color,
-          :warning_color,
-          :table_title_color,
-          :heading_color
-        ]
+        VALID_OPTIONS_KEYS = %i[
+          month_to_turn_to_warning_color
+          warning_color
+          table_title_color
+          heading_color
+        ].freeze
 
         attr_accessor *VALID_OPTIONS_KEYS
 
