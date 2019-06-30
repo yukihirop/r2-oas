@@ -8,12 +8,14 @@ module RoutesToSwaggerDocs
         DEFAULT_WARNING_COLOR = :red
         DEFAULT_TABLE_TITLE_COLOR = :yellow
         DEFAULT_HEADING_COLOR = :yellow
+        DEFAULT_HIGHLIGHT_COLOR = :magenta
 
         VALID_OPTIONS_KEYS = %i[
           month_to_turn_to_warning_color
           warning_color
           table_title_color
           heading_color
+          highlight_color
         ].freeze
 
         attr_accessor *VALID_OPTIONS_KEYS
@@ -33,6 +35,7 @@ module RoutesToSwaggerDocs
           self.warning_color                  = DEFAULT_WARNING_COLOR
           self.table_title_color              = DEFAULT_TABLE_TITLE_COLOR
           self.heading_color                  = DEFAULT_HEADING_COLOR
+          self.highlight_color                = DEFAULT_HIGHLIGHT_COLOR
         end
       end
     end
