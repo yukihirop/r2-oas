@@ -7,6 +7,8 @@ require_relative '../pathname_manager'
 module RoutesToSwaggerDocs
   module Schema
     class BaseFileManager < Base
+      attr_accessor :original_path
+
       # e.x.) openapi_path = "#/components/schemas/Account"
       def initialize(path, path_type = :full)
         super({})
