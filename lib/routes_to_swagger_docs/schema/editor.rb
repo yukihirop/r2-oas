@@ -92,7 +92,7 @@ module RoutesToSwaggerDocs
         @browser ||= Watir::Browser.new
         @browser.goto(url)
         if wait_for_loaded
-          schema_doc_from_local = YAML.load_file(doc_save_file_path)
+          schema_doc_from_local = YAML.load(doc_save_file_path)
           @browser.driver.local_storage[storage_key] = schema_doc_from_local.to_yaml
           @browser.refresh
         end
