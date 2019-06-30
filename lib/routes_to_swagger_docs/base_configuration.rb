@@ -38,6 +38,7 @@ module RoutesToSwaggerDocs
         path_parameter: %w[200 404 422]
       }
     }
+    DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY = %w[post patch put]
     # rubocop:enable Style/MutableConstant
     DEFAULT_TOOL = Tool.new
 
@@ -52,6 +53,7 @@ module RoutesToSwaggerDocs
       interval_to_save_edited_tmp_schema
       swagger
       http_statuses_when_http_method
+      http_methods_when_generate_request_body
       tool
     ].freeze
 
@@ -74,16 +76,17 @@ module RoutesToSwaggerDocs
 
     module_function def set_default(target)
       target.root_dir_path = DEFAULT_ROOT_DIR_PATH
-      target.schema_save_dir_name               = DEFAULT_SCHEMA_SAVE_DIR_NAME
-      target.doc_save_file_name                 = DEFAULT_DOC_SAVE_FILE_NAME
-      target.force_update_schema                = DEFAULT_FORCE_UPDATE_SCHEMA
-      target.use_tag_namespace                  = DEFAULT_USE_TAG_NAMESPACE
-      target.use_schema_namespace               = DEFAULT_USE_SCHEMA_NAMESPACE
-      target.server                             = DEFAULT_SERVER
-      target.interval_to_save_edited_tmp_schema = DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA
-      target.swagger                            = DEFAULT_SWAGGER
-      target.http_statuses_when_http_method     = DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD
-      target.tool                               = DEFAULT_TOOL
+      target.schema_save_dir_name                    = DEFAULT_SCHEMA_SAVE_DIR_NAME
+      target.doc_save_file_name                      = DEFAULT_DOC_SAVE_FILE_NAME
+      target.force_update_schema                     = DEFAULT_FORCE_UPDATE_SCHEMA
+      target.use_tag_namespace                       = DEFAULT_USE_TAG_NAMESPACE
+      target.use_schema_namespace                    = DEFAULT_USE_SCHEMA_NAMESPACE
+      target.server                                  = DEFAULT_SERVER
+      target.interval_to_save_edited_tmp_schema      = DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA
+      target.swagger                                 = DEFAULT_SWAGGER
+      target.http_statuses_when_http_method          = DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD
+      target.tool                                    = DEFAULT_TOOL
+      target.http_methods_when_generate_request_body = DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY
     end
   end
 end

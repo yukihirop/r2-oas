@@ -13,21 +13,21 @@ module RoutesToSwaggerDocs
         # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object
         # Support Field Name: get, put, post, delete, patch
         SUPPORT_FIELD_NAME = %w[get put post delete patch].freeze
-        SUPPORT_HTTP_STATUS = %w[200 204 404 422].freeze
 
         def_delegators :@http_status_manager, :http_statuses
 
         def initialize(route_data, path)
           super(route_data)
-          @path_comp                    = Routing::PathComponent.new(path)
-          @path                         = @path_comp.symbol_to_brace
-          @route_data                   = route_data
-          @verb                         = route_data[:verb]
-          @tag_name                     = route_data[:tag_name]
-          @schema_name                  = route_data[:schema_name]
-          @required_parameters          = route_data[:required_parameters]
-          @format_name                  = create_format_name
-          @http_status_manager          = HttpStatusManager.new(@path, @verb, http_statuses_when_http_method)
+          @path_comp                      = Routing::PathComponent.new(path)
+          @path                           = @path_comp.symbol_to_brace
+          @route_data                     = route_data
+          @verb                           = route_data[:verb]
+          @tag_name                       = route_data[:tag_name]
+          @schema_name                    = route_data[:schema_name]
+          @required_parameters            = route_data[:required_parameters]
+          @format_name                    = create_format_name
+          @http_status_manager            = HttpStatusManager.new(@path, @verb, http_statuses_when_http_method)
+          @components_request_body_object = components_request_body_object_class.new(route_data, path)
           support_field_name? if route_data.key?(:verb)
         end
 
@@ -40,14 +40,21 @@ module RoutesToSwaggerDocs
 
         def create_doc
           result = { @verb.to_s => data_when_verb }
+          attach_request_body!(result)
           attach_media_type!(result)
           attach_parameters!(result)
           doc.merge!(result)
         end
 
         # MEMO:
-        # hook methods
+        # please override in inherited class.
         def components_schema_name(_doc, _path_component, _tag_name, _verb, _http_status, schema_name)
+          schema_name
+        end
+
+        # MEMO:
+        # please override in inherited class.
+        def components_request_body_name(_doc, _path_component, _tag_name, _verb, schema_name)
           schema_name
         end
 
@@ -87,6 +94,10 @@ module RoutesToSwaggerDocs
           components_schema_name(doc, @path_comp, @tag_name, @verb, http_status, @schema_name)
         end
 
+        def _components_request_body_name
+          @components_request_body_object.send(:_components_request_body_name)
+        end
+
         def create_format_name
           format_name = @route_data[:format_name]
           if format_name.blank?
@@ -94,6 +105,17 @@ module RoutesToSwaggerDocs
           else
             "application/#{format_name}"
           end
+        end
+
+        def attach_request_body!(schema)
+          return schema unless @components_request_body_object.generate?
+
+          merge_schema = {
+            '$ref' => "#/components/requestBodies/#{_components_request_body_name}"
+          }
+          schema[@verb.to_s]['requestBody'] = {}
+          schema[@verb.to_s]['requestBody'].deep_merge!(merge_schema)
+          schema
         end
 
         def attach_media_type!(schema)
@@ -140,8 +162,8 @@ module RoutesToSwaggerDocs
 
         class HttpStatusManager
           def initialize(path, verb, http_statuses_when_http_method)
-            @path_comp                    = Routing::PathComponent.new(path)
-            @verb                         = verb
+            @path_comp                      = Routing::PathComponent.new(path)
+            @verb                           = verb
             @http_statuses_when_http_method = http_statuses_when_http_method
           end
 

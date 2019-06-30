@@ -67,12 +67,13 @@ RoutesToSwaggerDocs.configure do |config|
   end
 
   config.use_object_classes = {
-    info_object:              RoutesToSwaggerDocs::Schema::V3::InfoObject,
-    paths_object:             RoutesToSwaggerDocs::Schema::V3::PathsObject,
-    path_item_object:         RoutesToSwaggerDocs::Schema::V3::PathItemObject,
-    external_document_object: RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
-    components_object:        RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
-    schema_object:            RoutesToSwaggerDocs::Schema::V3::SchemaObject
+    info_object:                    RoutesToSwaggerDocs::Schema::V3::InfoObject,
+    paths_object:                   RoutesToSwaggerDocs::Schema::V3::PathsObject,
+    path_item_object:               RoutesToSwaggerDocs::Schema::V3::PathItemObject,
+    external_document_object:       RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
+    components_object:              RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
+    schema_object:                  RoutesToSwaggerDocs::Schema::V3::SchemaObject,
+    components_request_body_object: RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
   }
 
   config.http_statuses_when_http_method = {
@@ -97,6 +98,8 @@ RoutesToSwaggerDocs.configure do |config|
       path_parameter: %w(200 404 422)
     }
   }
+
+  config.http_methods_when_generate_request_body = %w[post patch put]
 
   config.tool.paths_stats.configure do |paths_stats|
     paths_stats.month_to_turn_to_warning_color = 3
@@ -190,6 +193,7 @@ we explain the options that can be set.
 |use_schema_namespace|Use namespace for schema name|`true`|
 |interval_to_save_edited_tmp_schema|Interval(sec) to save edited tmp schema|`15`|
 |http_statuses_when_http_method|Determine the response to support for each HTTP method|omission...|
+|http_methods_when_generate_request_body|HTTP methods when generate requestBody|`[post put patch]`|
 
 #### server
 
@@ -213,7 +217,7 @@ we explain the options that can be set.
 
 |option|description|default|
 |------|-----------|-------|
-|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> schema_object: `RoutesToSwaggerDocs::Schema::V3::SchemaObject` }|
+|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> schema_object: `RoutesToSwaggerDocs::Schema::V3::SchemaObject`, <br> components_request_body_object:`RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject` }|
 
 #### tool
 
@@ -266,6 +270,7 @@ Supported Hook class is like this:
 - `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`
 - `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`
 - `RoutesToSwaggerDocs::Schema::V3::SchemaObject`
+- `RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject`
 
 By inheriting these classes, you can hook them at the time of document generation by writing like this:
 
@@ -426,6 +431,46 @@ class CustomSchemaObject < RoutesToSwaggerDocs::Schema::V3::SchemaObject
     doc.merge!({
       # Something ....
     })
+  end
+end
+```
+
+#### case: Components::RequestBodyObject
+
+```ruby
+class CustomSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+  before_create do |doc, schema_name|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something .... 
+    })
+  end
+
+  after_create do |doc, schema_name|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something ....
+    })
+  end
+end
+```
+
+If you want to determine the component schema name at runtime, like this:
+
+```ruby
+class CustomSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+  def components_schema_name(doc, path_component, tag_name, verb, schema_name)
+    # [Important] Please return string.
+    # default
+    schema_name
+  end
+
+  def components_schema_name(doc, path_component, tag_name, verb, schema_name)
+    # [Important] Please return string.
+    # default
+    schema_name
   end
 end
 ```
