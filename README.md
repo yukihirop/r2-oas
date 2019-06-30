@@ -73,6 +73,7 @@ RoutesToSwaggerDocs.configure do |config|
     external_document_object:       RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
     components_object:              RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
     schema_object:                  RoutesToSwaggerDocs::Schema::V3::SchemaObject,
+    components_schema_object:       RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject,
     components_request_body_object: RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
   }
 
@@ -217,7 +218,7 @@ we explain the options that can be set.
 
 |option|description|default|
 |------|-----------|-------|
-|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> schema_object: `RoutesToSwaggerDocs::Schema::V3::SchemaObject`, <br> components_request_body_object:`RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject` }|
+|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> schema_object: `RoutesToSwaggerDocs::Schema::V3::SchemaObject`, <br> components_schema_object: `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject` }|
 
 #### tool
 
@@ -270,6 +271,7 @@ Supported Hook class is like this:
 - `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`
 - `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`
 - `RoutesToSwaggerDocs::Schema::V3::SchemaObject`
+- `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`
 - `RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject`
 
 By inheriting these classes, you can hook them at the time of document generation by writing like this:
@@ -352,23 +354,6 @@ class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
 end
 ```
 
-`path_component` is `RoutesToSwaggerDocs::Routing::PathComponent` instance.
-
-```ruby
-module RoutesToSwaggerDocs
-  module Routing
-    class PathComponent < BaseComponent
-      def initialize(path)
-      def to_s
-      def symbol_to_brace
-      def path_parameters_data
-      def path_excluded_path_parameters
-      def exist_path_parameters?
-      def path_parameters
-      private
-      def without_format
-```
-
 #### case: ExternalDocumentObject
 
 ```ruby
@@ -435,10 +420,10 @@ class CustomSchemaObject < RoutesToSwaggerDocs::Schema::V3::SchemaObject
 end
 ```
 
-#### case: Components::RequestBodyObject
+#### case: Components::SchemaObject
 
 ```ruby
-class CustomSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
   before_create do |doc, schema_name|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -460,8 +445,59 @@ end
 If you want to determine the component schema name at runtime, like this:
 
 ```ruby
-class CustomSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
-  def components_schema_name(doc, path_component, tag_name, verb, schema_name)
+class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+  def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
+    # [Important] Please return string.
+    # default
+    schema_name
+  end
+end
+```
+
+`path_component` is `RoutesToSwaggerDocs::Routing::PathComponent` instance.
+
+```ruby
+module RoutesToSwaggerDocs
+  module Routing
+    class PathComponent < BaseComponent
+      def initialize(path)
+      def to_s
+      def symbol_to_brace
+      def path_parameters_data
+      def path_excluded_path_parameters
+      def exist_path_parameters?
+      def path_parameters
+      private
+      def without_format
+```
+
+#### case: Components::RequestBodyObject
+
+```ruby
+class CustomComponentsRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+  before_create do |doc, schema_name|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something .... 
+    })
+  end
+
+  after_create do |doc, schema_name|
+    # [Important] Please change doc destructively.
+    # [Important] To be able to use methods in Rails !
+    doc.merge!({
+      # Something ....
+    })
+  end
+end
+```
+
+If you want to determine the component schema name at runtime, like this:
+
+```ruby
+class CustomComponentsRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+  def components_request_body_name(doc, path_component, tag_name, verb, schema_name)
     # [Important] Please return string.
     # default
     schema_name

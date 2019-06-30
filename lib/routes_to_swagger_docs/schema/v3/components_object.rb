@@ -45,9 +45,10 @@ module RoutesToSwaggerDocs
 
             path_item_object = path_item_object_class.new(route_data, path)
             path_item_object.http_statuses.each do |http_status|
-              schema_name = path_item_object.send(:_components_schema_name, http_status)
+              components_schema_object = components_schema_object_class.new(route_data, path)
+              components_schema_doc = components_schema_object.to_doc
+              schema_name = components_schema_object.send(:_components_schema_name, http_status)
 
-              components_schema_doc = Components::SchemaObject.new(schema_name).to_doc
               if data[schema_name].present?
                 data[schema_name].merge!(components_schema_doc)
               else
