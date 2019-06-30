@@ -29,15 +29,24 @@ module RoutesToSwaggerDocs
 
         private
 
-        def_delegators :@paths_stats, :month_to_turn_to_warning_color, :warning_color, :table_title_color, :heading_color
+        def_delegators :@paths_stats, :month_to_turn_to_warning_color, :warning_color, :table_title_color, :heading_color, :highlight_color
 
         def table
           @table ||= Terminal::Table.new do |t|
             @paths_list.each_with_index do |file_path, index|
               t.headings = ['No', 'File Path', *TIMESTAMPS].map { |head| Paint[head, heading_color] }
-              t << [(index + 1).to_s, relative_file_path(file_path), *timestamps(file_path)]
+              t << table_content(index, file_path)
               t.style = { all_separators: true }
             end
+          end
+        end
+
+        def table_content(index, file_path)
+          content = [(index + 1).to_s, relative_file_path(file_path), *timestamps(file_path)]
+          if file_path.in? paths_config.many_paths_file_paths
+            content.map { |c| Paint[c, highlight_color] }
+          else
+            content
           end
         end
 

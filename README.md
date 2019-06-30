@@ -103,6 +103,7 @@ RoutesToSwaggerDocs.configure do |config|
     paths_stats.warning_color                  = :red
     paths_stats.table_title_color              = :yellow
     paths_stats.heading_color                  = :yellow
+    paths_stats.highlight_color                = :magenta
   end
 end
 ```
@@ -222,6 +223,7 @@ we explain the options that can be set.
 |tool|paths_stats|warning_color|Warning Color|`:red`|
 |tool|paths_stats|table_title_color|Table Title Color|`:yellow`|
 |tool|paths_stats|heading_color|Heading Color|`:yellow`|
+|tool|paths_stats|highlight_color|Highlight Color|`:magenta`|
 
 Please refer to [here](https://github.com/janlelis/paint) for the color.
 
