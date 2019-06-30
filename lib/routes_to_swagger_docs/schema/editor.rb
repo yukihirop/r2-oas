@@ -64,6 +64,7 @@ module RoutesToSwaggerDocs
         fetch_edited_schema_from_browser
 
         options = { type: :edited }
+        save_edited_schema
         conv_after_schema_data = YAML.safe_load(@after_schema_data)
         analyzer = Analyzer.new(@before_schema_data, conv_after_schema_data, options)
         analyzer.update_from_schema
@@ -73,6 +74,7 @@ module RoutesToSwaggerDocs
         EM.add_periodic_timer(interval_to_save_edited_tmp_schema) do
           if @browser.exists?
             @after_schema_data = @browser.driver.local_storage[storage_key] || @after_schema_data
+            save_edited_schema
             puts "\nwait for signal trap ..."
           end
         end
@@ -80,6 +82,10 @@ module RoutesToSwaggerDocs
 
       def fetch_edited_schema_from_browser
         @after_schema_data = @browser.driver.local_storage[storage_key] if @browser.exists?
+      end
+
+      def save_edited_schema
+        File.write(doc_save_file_path, @after_schema_data)
       end
 
       def open_browser_and_set_schema
