@@ -27,6 +27,7 @@ module RoutesToSwaggerDocs
           @required_parameters            = route_data[:required_parameters]
           @format_name                    = create_format_name
           @http_status_manager            = HttpStatusManager.new(@path, @verb, http_statuses_when_http_method)
+          @components_schema_object       = components_schema_object_class.new(route_data, path)
           @components_request_body_object = components_request_body_object_class.new(route_data, path)
           support_field_name? if route_data.key?(:verb)
         end
@@ -44,18 +45,6 @@ module RoutesToSwaggerDocs
           attach_media_type!(result)
           attach_parameters!(result)
           doc.merge!(result)
-        end
-
-        # MEMO:
-        # please override in inherited class.
-        def components_schema_name(_doc, _path_component, _tag_name, _verb, _http_status, schema_name)
-          schema_name
-        end
-
-        # MEMO:
-        # please override in inherited class.
-        def components_request_body_name(_doc, _path_component, _tag_name, _verb, schema_name)
-          schema_name
         end
 
         private
@@ -91,7 +80,7 @@ module RoutesToSwaggerDocs
         end
 
         def _components_schema_name(http_status)
-          components_schema_name(doc, @path_comp, @tag_name, @verb, http_status, @schema_name)
+          @components_schema_object.send(:_components_schema_name, http_status)
         end
 
         def _components_request_body_name

@@ -22,7 +22,7 @@ module RoutesToSwaggerDocs
             execute_before_create(@schema_name)
             create_doc do
               components_schema_file_manager = RoutesToSwaggerDocs::Schema::Components::SchemaFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
-              components_schema_object       = Components::SchemaObject.new(_components_schema_name)
+              components_schema_object       = components_schema_object_class.new(@route_data, @path)
 
               result = {
                 'components' => {

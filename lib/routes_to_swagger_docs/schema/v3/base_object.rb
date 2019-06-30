@@ -34,8 +34,8 @@ module RoutesToSwaggerDocs
           @use_object_classes[:components_object]
         end
 
-        def schema_object_class
-          @use_object_classes[:schema_object]
+        def components_schema_object_class
+          @use_object_classes[:components_schema_object]
         end
 
         def components_request_body_object_class
