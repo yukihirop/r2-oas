@@ -72,7 +72,6 @@ RoutesToSwaggerDocs.configure do |config|
     path_item_object:               RoutesToSwaggerDocs::Schema::V3::PathItemObject,
     external_document_object:       RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
     components_object:              RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
-    schema_object:                  RoutesToSwaggerDocs::Schema::V3::SchemaObject,
     components_schema_object:       RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject,
     components_request_body_object: RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
   }
@@ -218,7 +217,7 @@ we explain the options that can be set.
 
 |option|description|default|
 |------|-----------|-------|
-|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> schema_object: `RoutesToSwaggerDocs::Schema::V3::SchemaObject`, <br> components_schema_object: `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject` }|
+|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> components_schema_object: `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject` }|
 
 #### tool
 
@@ -381,28 +380,6 @@ end
 ```ruby
 class CustomComponentsObject < RoutesToSwaggerDocs::Schema::V3::ComponentsObject
   before_create do |doc|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: SchemaObject
-
-```ruby
-class CustomSchemaObject < RoutesToSwaggerDocs::Schema::V3::SchemaObject
-  before_create do |doc, schema_name|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
     doc.merge!({

@@ -11,7 +11,6 @@ module RoutesToSwaggerDocs
       path_item_object: RoutesToSwaggerDocs::Schema::V3::PathItemObject,
       external_document_object: RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
       components_object: RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
-      schema_object: RoutesToSwaggerDocs::Schema::V3::SchemaObject,
       components_schema_object: RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject,
       components_request_body_object: RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
     }
