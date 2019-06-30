@@ -152,4 +152,6 @@ Layout/EndAlignment:
   Exclude:
     - 'lib/routes_to_swagger_docs/shared/sortable.rb'
 
-
+Security/YAMLLoad:
+  Exclude:
+    - 'lib/routes_to_swagger_docs/schema/editor.rb'
