@@ -65,7 +65,7 @@ module RoutesToSwaggerDocs
 
         options = { type: :edited }
         save_edited_schema
-        conv_after_schema_data = YAML.safe_load(@after_schema_data)
+        conv_after_schema_data = YAML.load(@after_schema_data)
         analyzer = Analyzer.new(@before_schema_data, conv_after_schema_data, options)
         analyzer.update_from_schema
       end
@@ -92,7 +92,7 @@ module RoutesToSwaggerDocs
         @browser ||= Watir::Browser.new
         @browser.goto(url)
         if wait_for_loaded
-          schema_doc_from_local = YAML.load(doc_save_file_path)
+          schema_doc_from_local = YAML.load_file(doc_save_file_path)
           @browser.driver.local_storage[storage_key] = schema_doc_from_local.to_yaml
           @browser.refresh
         end
