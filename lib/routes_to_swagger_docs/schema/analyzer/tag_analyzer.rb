@@ -12,6 +12,7 @@ module RoutesToSwaggerDocs
       def initialize(before_schema_data, after_schema_data = {}, options = {})
         super
         @file_manager = FileManager.new('tags', :relative)
+        # Can not use before_schema_data
         @diff_manager = TagDiffManager.new(@file_manager.load_data, after_schema_data)
       end
 
@@ -24,6 +25,8 @@ module RoutesToSwaggerDocs
             logger.info "  Write schema file: \t#{save_file_path}"
           end
         when :existing
+          result = @diff_manager.after_target_data
+          @file_manager.save(result.to_yaml)
           logger.info "  Write schema file: \t#{save_file_path}"
         else
           raise NoImplementError

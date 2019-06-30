@@ -29,12 +29,7 @@ namespace :routes do
       fd = IO.sysopen('/dev/null', 'w+')
       $stdout = IO.new(fd)
       logger.level = :null
-
       logger.info '[Routes to Swagger docs] start'
-      generator_options = { skip_generate_schemas: true, skip_load_dot_paths: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, generator_options)
-      generator.generate_docs
-
       $stdout = StringIO.new
 
       paths_ls_options = {}

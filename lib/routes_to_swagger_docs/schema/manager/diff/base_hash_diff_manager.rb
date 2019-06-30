@@ -36,6 +36,16 @@ module RoutesToSwaggerDocs
 
       private
 
+      def normalized(data)
+        if data.present?
+          data
+        elsif @middle_category.present?
+          { @major_category => { @middle_category => {} } }
+        else
+          { @major_category => {} }
+        end
+      end
+
       def schema_data_at(data, key)
         if @middle_category.present?
           {
