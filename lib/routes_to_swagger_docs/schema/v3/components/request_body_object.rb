@@ -24,14 +24,16 @@ module RoutesToSwaggerDocs
               components_schema_file_manager = RoutesToSwaggerDocs::Schema::Components::SchemaFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
               components_schema_object       = components_schema_object_class.new(@route_data, @path)
 
-              result = {
-                'components' => {
-                  'schemas' => {
-                    _components_schema_name => components_schema_object.to_doc
+              unless components_schema_file_manager.skip_save?
+                result = {
+                  'components' => {
+                    'schemas' => {
+                      _components_schema_name => components_schema_object.to_doc
+                    }
                   }
                 }
-              }
-              components_schema_file_manager.save(result.to_yaml)
+                components_schema_file_manager.save(result.to_yaml)
+              end
             end
             execute_after_create(@schema_name)
             doc
