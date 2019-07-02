@@ -9,10 +9,10 @@ require_relative 'manager/file_manager'
 module RoutesToSwaggerDocs
   module Schema
     class Analyzer < BaseAnalyzer
-      def initialize(before_schema_data, after_schema_data = {}, options = {})
+      def initialize(before_schema_data, after_schema_data, options = {})
         super
         @path_analyzer       = PathAnalyzer.new(@before_schema_data, @after_schema_data, options)
-        @tag_analyzer        = TagAnalyzer.new(@before_schema_data, @after_schema_data, options)
+        @tag_analyzer        = TagAnalyzer.new(@after_schema_data, options)
         @components_analyzer = ComponentsAnalyzer.new(@before_schema_data, @after_schema_data, options)
       end
 
