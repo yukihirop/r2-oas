@@ -11,6 +11,10 @@ module RoutesToSwaggerDocs
         @tag_names = create_tag_names
       end
 
+      def remake_docs
+        raise 'Please inplement in inherited class.'
+      end
+
       private
 
       attr_accessor :many_paths_file_paths

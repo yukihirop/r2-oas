@@ -13,13 +13,13 @@ module RoutesToSwaggerDocs
         @request_body_squeezer = Components::RequestBodySqueezer.new(schema_data, options)
       end
 
-      def remake_components
+      def remake_docs
         slice_components_schema = @schema_data['components'].keys.each_with_object({}) do |key, result|
           if key == 'schemas'
-            data = @schema_squeezer.remake_components_schemas
+            data = @schema_squeezer.remake_docs
             result.deep_merge!(data)
           elsif key == 'requestBodies'
-            data = @request_body_squeezer.remake_components_request_bodies
+            data = @request_body_squeezer.remake_docs
             result.deep_merge!(data)
           end
         end

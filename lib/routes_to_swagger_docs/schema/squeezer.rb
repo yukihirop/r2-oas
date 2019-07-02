@@ -16,9 +16,9 @@ module RoutesToSwaggerDocs
         components_squeezer = ComponentsSqueezer.new(@schema_data, many_paths_file_paths: many_paths_file_paths)
 
         slice_schemas = [
-          tag_squeezer.remake_tags,
-          path_squeezer.remake_paths,
-          components_squeezer.remake_components
+          tag_squeezer.remake_docs,
+          path_squeezer.remake_docs,
+          components_squeezer.remake_docs
         ]
         slice_schemas.each_with_object(except_paths_schema) { |slice_schema, result| result.deep_merge!(slice_schema) }
       end
