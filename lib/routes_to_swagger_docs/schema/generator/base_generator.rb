@@ -12,8 +12,8 @@ module RoutesToSwaggerDocs
     class BaseGenerator < Base
       include Sortable
 
-      def initialize(schema_data = {}, options = {})
-        super(schema_data, options)
+      def initialize(options = {})
+        super
         @glob_schema_paths = create_glob_schema_paths
       end
 

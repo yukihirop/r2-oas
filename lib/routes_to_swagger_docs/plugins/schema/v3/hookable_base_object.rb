@@ -59,7 +59,7 @@ module RoutesToSwaggerDocs
 
           attr_accessor :doc
 
-          def initialize(schema_data = {}, options = {})
+          def initialize
             super
             self.doc = {}
           end

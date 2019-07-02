@@ -9,7 +9,7 @@ module RoutesToSwaggerDocs
   module Schema
     class PathGenerator < BaseGenerator
       def initialize(schema_data = {}, options = {})
-        super(schema_data, options)
+        super(options)
         sorted_schema_data = deep_sort(schema_data, 'paths')
         @paths = sorted_schema_data['paths']
         @glob_schema_paths = create_glob_paths_paths

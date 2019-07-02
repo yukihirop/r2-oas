@@ -13,9 +13,9 @@ module RoutesToSwaggerDocs
 
       def_delegators :@doc_generator, :swagger_doc
 
-      def initialize(schema_data = {}, options = {})
-        super(schema_data, options)
-        @doc_generator = DocGenerator.new(schema_data, options)
+      def initialize(options = {})
+        super
+        @doc_generator = DocGenerator.new(options)
       end
 
       def generate_docs

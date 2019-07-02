@@ -10,7 +10,7 @@ module RoutesToSwaggerDocs
 
       # e.x.) path = "#/components/schemas/Account" (when path_type = :ref)
       def initialize(path, path_type = :full)
-        super({})
+        super()
         @ext_name = :yml
         @path_type = path_type
         @path = path

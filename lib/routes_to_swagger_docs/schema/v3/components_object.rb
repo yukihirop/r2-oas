@@ -9,7 +9,7 @@ module RoutesToSwaggerDocs
     module V3
       class ComponentsObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
         def initialize(routes_data)
-          super(routes_data)
+          super()
           @routes_data = routes_data
         end
 

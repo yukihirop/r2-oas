@@ -11,7 +11,7 @@ module RoutesToSwaggerDocs
 
       # e.x.) openapi_path = "#/components/schemas/Account"
       def initialize(path, path_type = :full)
-        super({})
+        super()
         @ext_name = :yml
         @path_type = path_type
         @original_path = path

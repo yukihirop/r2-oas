@@ -9,7 +9,7 @@ module RoutesToSwaggerDocs
       module Components
         class RequestBodyObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
           def initialize(route_data, path)
-            super(route_data)
+            super()
             @path_comp                      = Routing::PathComponent.new(path)
             @path                           = @path_comp.symbol_to_brace
             @route_data                     = route_data
