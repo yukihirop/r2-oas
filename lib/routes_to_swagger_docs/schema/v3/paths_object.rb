@@ -7,7 +7,7 @@ module RoutesToSwaggerDocs
     module V3
       class PathsObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
         def initialize(routes_data)
-          super(routes_data)
+          super()
           @routes_data = routes_data
           define_hookable_tmp_object_class
         end

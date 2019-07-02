@@ -17,7 +17,7 @@ module RoutesToSwaggerDocs
         def_delegators :@http_status_manager, :http_statuses
 
         def initialize(route_data, path)
-          super(route_data)
+          super()
           @path_comp                      = Routing::PathComponent.new(path)
           @path                           = @path_comp.symbol_to_brace
           @route_data                     = route_data

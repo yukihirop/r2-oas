@@ -9,7 +9,7 @@ module RoutesToSwaggerDocs
     module V3
       class OpenapiObject < BaseObject
         def initialize(routes_data, tags_data, schemas_data)
-          super(schemas_data)
+          super()
           @routes_data  = routes_data
           @tags_data    = tags_data
           @schemas_data = schemas_data

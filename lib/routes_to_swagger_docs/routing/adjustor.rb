@@ -9,7 +9,6 @@ module RoutesToSwaggerDocs
       VALID_KEYS = %i[route name verb path reqs regexp].freeze
 
       def initialize(route_data)
-        super
         valid_route_data?(route_data)
         @route_data = route_data
         @route = route_data[:route]

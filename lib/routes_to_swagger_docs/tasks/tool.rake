@@ -14,11 +14,11 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_schemas: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, generator_options)
+      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       client_options = {}
-      client = RoutesToSwaggerDocs::Deploy::Client.new({}, client_options)
+      client = RoutesToSwaggerDocs::Deploy::Client.new(client_options)
       client.deploy
 
       logger.info '[Routes to Swagger docs] end'
@@ -51,7 +51,7 @@ namespace :routes do
 
       logger.info '[Routes to Swagger docs] start'
       generator_options = { skip_generate_schemas: true, skip_load_dot_paths: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, generator_options)
+      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       $stdout = StringIO.new

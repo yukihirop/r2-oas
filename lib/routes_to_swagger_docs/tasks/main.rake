@@ -14,7 +14,7 @@ namespace :routes do
     task docs: [:common] do
       logger.info '[Routes to Swagger docs] start'
       options = { unit_paths_file_path: unit_paths_file_path, skip_load_dot_paths: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, options)
+      generator = RoutesToSwaggerDocs::Schema::Generator.new(options)
       generator.generate_docs
       logger.info '[Routes to Swagger docs] end'
     end
@@ -28,7 +28,7 @@ namespace :routes do
       analyzer.update_from_schema
 
       generator_options = { skip_generate_schemas: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, generator_options)
+      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       logger.info '[Routes to Swagger docs] end'
@@ -39,7 +39,7 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_schemas: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, generator_options)
+      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       before_schema_data = generator.swagger_doc
@@ -55,11 +55,11 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_schemas: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, generator_options)
+      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       ui_options = { unit_paths_file_path: unit_paths_file_path }
-      ui = RoutesToSwaggerDocs::Schema::UI.new({}, ui_options)
+      ui = RoutesToSwaggerDocs::Schema::UI.new(ui_options)
       ui.start
 
       logger.info '[Routes to Swagger docs] end'
@@ -70,7 +70,7 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_schemas: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new({}, generator_options)
+      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       before_schema_data = generator.swagger_doc

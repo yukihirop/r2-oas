@@ -8,13 +8,13 @@ module RoutesToSwaggerDocs
       module Components
         class SchemaObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
           def initialize(route_data, path)
-            super(route_data)
-            @path_comp   = Routing::PathComponent.new(path)
-            @path        = @path_comp.symbol_to_brace
-            @route_data  = route_data
-            @verb        = route_data[:verb]
-            @tag_name    = route_data[:tag_name]
-            @schema_nam  = route_data[:schema_name]
+            super()
+            @path_comp    = Routing::PathComponent.new(path)
+            @path         = @path_comp.symbol_to_brace
+            @route_data   = route_data
+            @verb         = route_data[:verb]
+            @tag_name     = route_data[:tag_name]
+            @schema_name  = route_data[:schema_name]
           end
 
           def to_doc

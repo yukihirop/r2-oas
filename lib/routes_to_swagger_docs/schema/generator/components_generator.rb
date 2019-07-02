@@ -8,7 +8,7 @@ module RoutesToSwaggerDocs
   module Schema
     class ComponentsGenerator < BaseGenerator
       def initialize(schema_data = {}, options = {})
-        super(schema_data, options)
+        super(options)
         @components = schema_data['components'] || scehma_data[:components]
         @options = options
       end

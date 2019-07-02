@@ -9,11 +9,11 @@ require_relative '../../errors'
 module RoutesToSwaggerDocs
   module Schema
     class TagAnalyzer < BaseAnalyzer
-      def initialize(before_schema_data, after_schema_data = {}, options = {})
-        super
+      def initialize(after_schema_data, options = {})
+        super({}, after_schema_data, options)
         @file_manager = FileManager.new('tags', :relative)
-        # Can not use before_schema_data
-        @diff_manager = TagDiffManager.new(@file_manager.load_data, after_schema_data)
+        before_schema_data = @file_manager.load_data
+        @diff_manager = TagDiffManager.new(before_schema_data, after_schema_data)
       end
 
       def update_from_schema

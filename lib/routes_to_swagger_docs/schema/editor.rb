@@ -23,7 +23,7 @@ module RoutesToSwaggerDocs
       attr_accessor :edited_schema
 
       def initialize(before_schema_data, options)
-        super
+        super(options)
         @editor = swagger.editor
         @before_schema_data = before_schema_data
       end

@@ -9,8 +9,8 @@ require_relative '../manager/file_manager'
 module RoutesToSwaggerDocs
   module Schema
     class SchemaGenerator < BaseGenerator
-      def initialize(schema_data = {}, options = {})
-        super(schema_data, options)
+      def initialize(options = {})
+        super(options)
         @docs = create_docs
         @options = options
       end

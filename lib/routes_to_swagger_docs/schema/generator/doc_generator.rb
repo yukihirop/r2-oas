@@ -11,9 +11,9 @@ module RoutesToSwaggerDocs
     class DocGenerator < BaseGenerator
       attr_accessor :swagger_doc
 
-      def initialize(schema_data = {}, options = {})
-        super(schema_data, options)
-        @schema_generator = SchemaGenerator.new(schema_data, options)
+      def initialize(options = {})
+        super
+        @schema_generator = SchemaGenerator.new(options)
       end
 
       def generate_docs

@@ -10,8 +10,8 @@ module RoutesToSwaggerDocs
     class BaseAnalyzer < Base
       include Sortable
 
-      def initialize(before_schema_data, after_schema_data = {}, options = {})
-        super({}, options)
+      def initialize(before_schema_data, after_schema_data, options = {})
+        super(options)
         @type = options[:type].presence
         @before_schema_data = before_schema_data
         @after_schema_data  = after_schema_data.presence || create_after_schema_data

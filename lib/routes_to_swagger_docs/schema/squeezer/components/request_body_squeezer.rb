@@ -6,11 +6,7 @@ module RoutesToSwaggerDocs
   module Schema
     module Components
       class RequestBodySqueezer < BaseSqueezer
-        def initialize(schema_data = {}, _options = {})
-          @schema_data = schema_data
-        end
-
-        def remake_components_request_bodies
+        def remake_docs
           { 'requestBodies' => @schema_data['components']['requestBodies'] }
         end
       end

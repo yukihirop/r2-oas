@@ -5,10 +5,14 @@ require_relative '../base'
 module RoutesToSwaggerDocs
   module Schema
     class BaseSqueezer < Base
-      def initialize(schema_data = {}, options = {})
-        super(schema_data, options)
+      def initialize(schema_data, options = {})
+        super(options)
         @schema_data = schema_data
         @tag_names = create_tag_names
+      end
+
+      def remake_docs
+        raise 'Please inplement in inherited class.'
       end
 
       private

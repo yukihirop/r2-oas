@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './base_analyzer'
+require_relative 'base_analyzer'
 require_relative 'components/schemas_analyzer'
 require_relative 'components/request_bodies_analyzer'
 

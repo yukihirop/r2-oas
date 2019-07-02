@@ -7,13 +7,19 @@ require_relative 'components/request_body_squeezer'
 module RoutesToSwaggerDocs
   module Schema
     class ComponentsSqueezer < BaseSqueezer
-      def remake_components
+      def initialize(schema_data, options = {})
+        super
+        @schema_squeezer       = Components::SchemaSqueezer.new(schema_data, options)
+        @request_body_squeezer = Components::RequestBodySqueezer.new(schema_data, options)
+      end
+
+      def remake_docs
         slice_components_schema = @schema_data['components'].keys.each_with_object({}) do |key, result|
           if key == 'schemas'
-            data = Components::SchemaSqueezer.new(@schema_data).remake_components_schemas
+            data = @schema_squeezer.remake_docs
             result.deep_merge!(data)
           elsif key == 'requestBodies'
-            data = Components::RequestBodySqueezer.new(@schema_data).remake_components_request_bodies
+            data = @request_body_squeezer.remake_docs
             result.deep_merge!(data)
           end
         end

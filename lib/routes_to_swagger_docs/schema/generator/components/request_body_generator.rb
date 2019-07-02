@@ -10,7 +10,7 @@ module RoutesToSwaggerDocs
     module Components
       class RequestBodyGenerator < BaseGenerator
         def initialize(schema_data = {}, options = {})
-          super(schema_data, options)
+          super(options)
           sorted_schema_data = deep_sort(schema_data, 'requestBodies')
           @components_request_bodies = sorted_schema_data['requestBodies']
           @glob_schema_paths = create_glob_components_request_bodies_paths
