@@ -4,6 +4,7 @@ require 'forwardable'
 require 'fileutils'
 require_relative '../base_generator'
 require_relative '../../manager/file/components/request_body_file_manager'
+require_relative '../../manager/file/components/schema_file_manager'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -54,16 +55,24 @@ module RoutesToSwaggerDocs
         def process_when_generate_components_request_bodies
           logger.info ' <Update Components schema files (components/schemas)>'
           @components_request_bodies.each do |schema_name, data|
-            result = {
+            result_content = {
               'components' => {
-                'requestBodies' => { schema_name.to_s => data }
+                'requestBodies' => { schema_name.to_s => data.slice('content') }
               }
             }
 
             relative_path = "components/requestBodies/#{schema_name}"
             file_manager = Components::RequestBodyFileManager.new(relative_path, :relative)
+            file_manager.save(result_content.to_yaml) unless file_manager.skip_save?
 
-            file_manager.save(result.to_yaml) unless file_manager.skip_save?
+            if data.key?('has_one') && data['has_one']['type'].eql?('schema')
+              original_path = data['has_one']['original_path']
+              file_manager = Components::SchemaFileManager.new(original_path, :ref)
+              unless file_manager.skip_save?
+                result = data['has_one']['data']
+                file_manager.save(result.to_yaml)
+              end
+            end
 
             yield file_manager.save_file_path if block_given?
           end
