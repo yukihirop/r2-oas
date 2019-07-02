@@ -17,7 +17,7 @@ module RoutesToSwaggerDocs
 
       alias swagger_json doc_save_file_path
 
-      def initialize(*args)
+      def initialize(options = {})
         super
         @ui = swagger.ui
       end

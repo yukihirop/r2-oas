@@ -59,7 +59,7 @@ namespace :routes do
       generator.generate_docs
 
       ui_options = { unit_paths_file_path: unit_paths_file_path }
-      ui = RoutesToSwaggerDocs::Schema::UI.new({}, ui_options)
+      ui = RoutesToSwaggerDocs::Schema::UI.new(ui_options)
       ui.start
 
       logger.info '[Routes to Swagger docs] end'
