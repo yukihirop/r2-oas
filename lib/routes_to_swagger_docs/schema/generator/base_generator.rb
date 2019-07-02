@@ -60,7 +60,7 @@ module RoutesToSwaggerDocs
       def many_paths_file_paths
         if unit_paths_file_path.present? && !skip_load_dot_paths
           [unit_paths_file_path]
-        elsif !unit_paths_file_path.present? && !skip_load_dot_paths
+        elsif !unit_paths_file_path.present? && !skip_load_dot_paths && !paths_config.all_load_paths?
           paths_config.many_paths_file_paths
         else
           Dir.glob("#{schema_save_dir_path}/paths/**/**.yml")
