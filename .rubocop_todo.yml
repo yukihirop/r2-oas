@@ -20,6 +20,7 @@ Metrics/AbcSize:
   Exclude:
     - 'lib/routes_to_swagger_docs/schema/generator/schema_generator.rb'
     - 'lib/routes_to_swagger_docs/schema/analyzer.rb'
+    - 'lib/routes_to_swagger_docs/schema/generator/components/request_body_generator.rb'
 
 Style/Documentation:
   Enabled: false

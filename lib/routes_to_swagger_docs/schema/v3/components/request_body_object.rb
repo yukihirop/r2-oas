@@ -21,18 +21,24 @@ module RoutesToSwaggerDocs
           def to_doc
             execute_before_create(@schema_name)
             create_doc do
-              components_schema_file_manager = RoutesToSwaggerDocs::Schema::Components::SchemaFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
-              components_schema_object       = components_schema_object_class.new(@route_data, @path)
+              child_file_manager = RoutesToSwaggerDocs::Schema::Components::SchemaFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
+              schema_object = components_schema_object_class.new(@route_data, @path)
 
-              unless components_schema_file_manager.skip_save?
+              unless child_file_manager.skip_save?
                 result = {
                   'components' => {
                     'schemas' => {
-                      _components_schema_name => components_schema_object.to_doc
+                      _components_schema_name => schema_object.to_doc
                     }
                   }
                 }
-                components_schema_file_manager.save(result.to_yaml)
+                doc.deep_merge!(
+                  'has_one' => {
+                    'type' => 'schema',
+                    'original_path' => child_file_manager.original_path,
+                    'data' => result
+                  }
+                )
               end
             end
             execute_after_create(@schema_name)
@@ -40,12 +46,12 @@ module RoutesToSwaggerDocs
           end
 
           def create_doc
-            components_schema_file_manager = RoutesToSwaggerDocs::Schema::Components::SchemaFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
+            file_manager = RoutesToSwaggerDocs::Schema::Components::SchemaFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
             doc.deep_merge!(
               'content' => {
                 'application/json' => {
                   'schema' => {
-                    '$ref' => components_schema_file_manager.original_path
+                    '$ref' => file_manager.original_path
                   }
                 }
               }
@@ -66,7 +72,8 @@ module RoutesToSwaggerDocs
           end
 
           def generate?
-            @verb.in? http_methods_when_generate_request_body
+            file_manager = RoutesToSwaggerDocs::Schema::Components::SchemaFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
+            (@verb.in? http_methods_when_generate_request_body) && !file_manager.skip_save?
           end
 
           private
