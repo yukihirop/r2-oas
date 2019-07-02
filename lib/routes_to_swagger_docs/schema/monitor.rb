@@ -9,7 +9,7 @@ module RoutesToSwaggerDocs
   module Schema
     class Monitor < Base
       def initialize(before_schema_data, options)
-        super
+        super(options)
         @before_schema_data = before_schema_data
       end
 
