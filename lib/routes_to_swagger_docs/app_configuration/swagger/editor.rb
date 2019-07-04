@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RoutesToSwaggerDocs
-  module BaseConfiguration
+  module AppConfiguration
     class Swagger
       class Editor
         DEFAULT_IMAGE         = 'swaggerapi/swagger-editor'

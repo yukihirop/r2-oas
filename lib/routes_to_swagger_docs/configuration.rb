@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_relative 'base_configuration'
+require_relative 'app_configuration'
 require_relative 'pluggable_configuration'
 require_relative 'configuration/paths_config'
 require_relative 'logger/stdout_logger'
 
 module RoutesToSwaggerDocs
   module Configuration
-    extend BaseConfiguration
+    extend AppConfiguration
     extend PluggableConfiguration
 
-    PUBLIC_VALID_OPTIONS_KEYS = BaseConfiguration::VALID_OPTIONS_KEYS + PluggableConfiguration::VALID_OPTIONS_KEYS
+    PUBLIC_VALID_OPTIONS_KEYS = AppConfiguration::VALID_OPTIONS_KEYS + PluggableConfiguration::VALID_OPTIONS_KEYS
 
     UNPUBLIC_VALID_OPTIONS_KEYS = %i[
       paths_config
@@ -44,8 +44,8 @@ module RoutesToSwaggerDocs
       @_paths_config ||= PathsConfig.new(root_dir_path, schema_save_dir_name)
     end
 
-    def base_configuration_options
-      BaseConfiguration::VALID_OPTIONS_KEYS.inject({}) do |option, key|
+    def app_configuration_options
+      AppConfiguration::VALID_OPTIONS_KEYS.inject({}) do |option, key|
         option.merge!(key => send(key))
       end
     end
@@ -59,7 +59,7 @@ module RoutesToSwaggerDocs
     private
 
     def set_default_for_configuration(target)
-      BaseConfiguration.set_default(target)
+      AppConfiguration.set_default(target)
     end
 
     def set_default_for_pluggable(target)

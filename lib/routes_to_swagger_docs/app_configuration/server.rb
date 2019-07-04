@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RoutesToSwaggerDocs
-  module BaseConfiguration
+  module AppConfiguration
     class Server
       DEFAULT_URL = 'http://localhost:3000'
       DEFAULT_DESCRIPTION = 'localhost'

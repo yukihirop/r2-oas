@@ -36,17 +36,17 @@ Metrics/BlockLength:
 
 Lint/AmbiguousOperator:
   Exclude:
-    - 'lib/routes_to_swagger_docs/base_configuration/swagger.rb'
-    - 'lib/routes_to_swagger_docs/base_configuration/tool/paths/stats.rb'
-    - 'lib/routes_to_swagger_docs/base_configuration/swagger/ui.rb'
-    - 'lib/routes_to_swagger_docs/base_configuration/swagger/editor.rb'
-    - 'lib/routes_to_swagger_docs/base_configuration/tool.rb'
+    - 'lib/routes_to_swagger_docs/app_configuration/swagger.rb'
+    - 'lib/routes_to_swagger_docs/app_configuration/tool/paths/stats.rb'
+    - 'lib/routes_to_swagger_docs/app_configuration/swagger/ui.rb'
+    - 'lib/routes_to_swagger_docs/app_configuration/swagger/editor.rb'
+    - 'lib/routes_to_swagger_docs/app_configuration/tool.rb'
     - 'lib/routes_to_swagger_docs/configuration.rb'
-    - 'lib/routes_to_swagger_docs/base_configuration/server.rb'
+    - 'lib/routes_to_swagger_docs/app_configuration/server.rb'
     - 'lib/routes_to_swagger_docs/schema/v3/base_object.rb'
     - 'lib/routes_to_swagger_docs/base.rb'
     - 'lib/routes_to_swagger_docs/routing/parser.rb'
-    - 'lib/routes_to_swagger_docs/base_configuration.rb'
+    - 'lib/routes_to_swagger_docs/app_configuration.rb'
     - 'lib/routes_to_swagger_docs/pluggable_configuration.rb'
 
 Metrics/MethodLength:
@@ -59,7 +59,7 @@ Metrics/MethodLength:
     - 'lib/routes_to_swagger_docs/schema/ui.rb'
     - 'lib/routes_to_swagger_docs/schema/editor.rb'
     - 'lib/routes_to_swagger_docs/shared/sortable.rb'
-    - 'lib/routes_to_swagger_docs/base_configuration.rb'
+    - 'lib/routes_to_swagger_docs/app_configuration.rb'
     - 'lib/routes_to_swagger_docs/schema/analyzer/path_analyzer.rb'
     - 'lib/routes_to_swagger_docs/schema/analyzer/base_analyzer.rb'
     - 'lib/routes_to_swagger_docs/schema/analyzer/components/request_bodies_analyzer.rb'
@@ -111,7 +111,7 @@ Naming/MemoizedInstanceVariableName:
 Naming/AccessorMethodName:
   Exclude:
     - 'lib/routes_to_swagger_docs/configuration.rb'
-    - 'lib/routes_to_swagger_docs/base_configuration.rb'
+    - 'lib/routes_to_swagger_docs/app_configuration.rb'
     - 'lib/routes_to_swagger_docs/pluggable_configuration.rb'
 
 Style/AsciiComments:
@@ -137,7 +137,7 @@ Style/ClassVars:
 
 Style/AccessModifierDeclarations:
   Exclude:
-    - 'lib/routes_to_swagger_docs/base_configuration.rb'
+    - 'lib/routes_to_swagger_docs/app_configuration.rb'
 
 Style/NumericPredicate:
   Exclude:

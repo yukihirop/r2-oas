@@ -3,7 +3,7 @@
 require_relative 'tool/paths/stats'
 
 module RoutesToSwaggerDocs
-  module BaseConfiguration
+  module AppConfiguration
     class Tool
       DEFAULT_PATHS_STATS = PathsStats.new
 

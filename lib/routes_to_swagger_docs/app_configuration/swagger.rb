@@ -4,7 +4,7 @@ require_relative 'swagger/ui'
 require_relative 'swagger/editor'
 
 module RoutesToSwaggerDocs
-  module BaseConfiguration
+  module AppConfiguration
     class Swagger
       DEFAULT_EDITOR = Editor.new
       DEFAULT_UI     = UI.new
