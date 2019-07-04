@@ -5,8 +5,8 @@ module RoutesToSwaggerDocs
     module V3
       class BaseObject
         def initialize(*_args)
-          BaseConfiguration::VALID_OPTIONS_KEYS.each do |key|
-            send("#{key}=", base_configuration_options[key])
+          AppConfiguration::VALID_OPTIONS_KEYS.each do |key|
+            send("#{key}=", app_configuration_options[key])
           end
 
           PluggableConfiguration::VALID_OPTIONS_KEYS.each do |key|
@@ -44,8 +44,8 @@ module RoutesToSwaggerDocs
 
         private
 
-        def base_configuration_options
-          RoutesToSwaggerDocs.base_configuration_options
+        def app_configuration_options
+          RoutesToSwaggerDocs.app_configuration_options
         end
 
         def pluggable_configuration_options
@@ -54,7 +54,7 @@ module RoutesToSwaggerDocs
 
         # Can not define attr_accessor for PluggableConfiguration::VALID_OPTIONS_KEYS.
         # Because, PuggableConfiguration module is not loaded when this class is loaded.
-        attr_accessor *BaseConfiguration::VALID_OPTIONS_KEYS
+        attr_accessor *AppConfiguration::VALID_OPTIONS_KEYS
 
         def to_doc
           raise 'Implement Inherit Class'

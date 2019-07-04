@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative 'base_configuration/server'
-require_relative 'base_configuration/swagger'
-require_relative 'base_configuration/tool'
+require_relative 'app_configuration/server'
+require_relative 'app_configuration/swagger'
+require_relative 'app_configuration/tool'
 
 module RoutesToSwaggerDocs
-  module BaseConfiguration
+  module AppConfiguration
     DEFAULT_ROOT_DIR_PATH = './swagger_docs'
     DEFAULT_SCHEMA_SAVE_DIR_NAME = 'src'
     DEFAULT_DOC_SAVE_FILE_NAME = 'swagger_doc.yml'

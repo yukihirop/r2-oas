@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module RoutesToSwaggerDocs
-  module BaseConfiguration
+  module AppConfiguration
     class Tool
       class PathsStats
         DEFAULT_MONTH_TO_TURN_TO_WARNING_COLOR = 3
