@@ -13,12 +13,12 @@ module RoutesToSwaggerDocs
         @options = options
       end
 
-      def generate_components
+      def generate_docs
         @components.each do |key, _value|
           if key == 'schemas'
-            Components::SchemaGenerator.new(@components, @options).generate_components_schemas
+            Components::SchemaGenerator.new(@components, @options).generate_docs
           elsif key == 'requestBodies'
-            Components::RequestBodyGenerator.new(@components, @options).generate_components_request_bodies
+            Components::RequestBodyGenerator.new(@components, @options).generate_docs
           end
         end
       end

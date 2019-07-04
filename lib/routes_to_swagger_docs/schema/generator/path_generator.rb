@@ -15,13 +15,13 @@ module RoutesToSwaggerDocs
         @glob_schema_paths = create_glob_paths_paths
       end
 
-      def generate_paths
+      def generate_docs
         if paths_file_do_not_exists?
           logger.info ' <From routes data>'
-          generate_paths_from_routes_data
+          generate_docs_from_routes_data
         else
           logger.info ' <From schema files>'
-          generate_paths_from_schema_fiels
+          generate_docs_from_schema_fiels
         end
       end
 
@@ -30,19 +30,19 @@ module RoutesToSwaggerDocs
       alias paths_files_paths schema_files_paths
       alias paths_file_do_not_exists? schema_file_do_not_exists?
 
-      def generate_paths_from_schema_fiels
-        process_when_generate_paths do |save_file_path|
+      def generate_docs_from_schema_fiels
+        process_when_generate_docs do |save_file_path|
           logger.info "  Merge schema file: \t#{save_file_path}"
         end
       end
 
-      def generate_paths_from_routes_data
-        process_when_generate_paths do |save_file_path|
+      def generate_docs_from_routes_data
+        process_when_generate_docs do |save_file_path|
           logger.info "  Write schema file: \t#{save_file_path}"
         end
       end
 
-      def process_when_generate_paths
+      def process_when_generate_docs
         logger.info ' <Update schema files (paths)>'
         save_each_tags(@paths) do |tag_name, result|
           relative_path = "paths/#{tag_name}"
