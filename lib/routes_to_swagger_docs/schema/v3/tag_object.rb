@@ -13,13 +13,13 @@ module RoutesToSwaggerDocs
 
         def to_doc
           @tags_data.each_with_object([]) do |tag_name, result|
-            result.push(build_doc(tag_name))
+            result.push(create_doc(tag_name))
           end
         end
 
         private
 
-        def build_doc(tag_name)
+        def create_doc(tag_name)
           {
             'name' => tag_name,
             'description' => "#{tag_name} description",
