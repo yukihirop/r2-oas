@@ -130,6 +130,8 @@ $ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exe
 
 $ # Analyze docs
 $ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
+$ # Clean docs
+$ bundle exec rake routes:swagger:clean
 $ # Deploy docs
 $ bundle exec rake routes:swagger:deploy
 
@@ -146,6 +148,7 @@ $ bundle exec rake routes:swagger:paths_stats
 - [How to start swagger ui](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
 - [How to monitor swagger document](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_MONITOR_SWAGGER_DOC.md)
 - [How to analyze docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
+- [How to clean docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_CLEAN_DOCS.md)
 - [How to deploy swagger doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
 - [How to use tag namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
 - [How to use schema namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)

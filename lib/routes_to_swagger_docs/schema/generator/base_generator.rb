@@ -45,12 +45,8 @@ module RoutesToSwaggerDocs
       end
 
       def create_glob_schema_paths
-        if !skip_load_dot_paths
-          exclude_paths_regexp_paths = "#{schema_save_dir_path}/**.yml"
-          [exclude_paths_regexp_paths] + many_paths_file_paths + components_file_paths
-        else
-          ["#{schema_save_dir_path}/**/**.yml"]
-        end
+        exclude_paths_regexp_paths = "#{schema_save_dir_path}/**.yml"
+        [exclude_paths_regexp_paths] + many_paths_file_paths + many_components_file_paths
       end
 
       def schema_files_paths
@@ -67,8 +63,8 @@ module RoutesToSwaggerDocs
         end
       end
 
-      def components_file_paths
-        many_paths_file_paths.each_with_object([]) do |unit_paths_path, result|
+      def many_components_file_paths
+        @many_components_file_paths ||= many_paths_file_paths.each_with_object([]) do |unit_paths_path, result|
           file_manager = PathItemFileManager.new(unit_paths_path, :full)
           components_file_paths_at_path = file_manager.descendants_ref_paths
           result.push(*components_file_paths_at_path)

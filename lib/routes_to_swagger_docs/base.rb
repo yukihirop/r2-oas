@@ -3,7 +3,7 @@
 module RoutesToSwaggerDocs
   class Base
     def initialize(options = {})
-      merged_options = RoutesToSwaggerDocs.options.merge(options)
+      @options = options
 
       (AppConfiguration::VALID_OPTIONS_KEYS + options.keys).each do |key|
         send("#{key}=", merged_options[key])
@@ -13,6 +13,14 @@ module RoutesToSwaggerDocs
     private
 
     attr_accessor *AppConfiguration::VALID_OPTIONS_KEYS
+
+    def merged_options
+      if @options.present?
+        RoutesToSwaggerDocs.options.merge(@options)
+      else
+        RoutesToSwaggerDocs.options
+      end
+    end
 
     def logger
       RoutesToSwaggerDocs.logger
