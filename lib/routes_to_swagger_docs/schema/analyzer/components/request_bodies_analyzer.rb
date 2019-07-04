@@ -9,7 +9,7 @@ module RoutesToSwaggerDocs
   module Schema
     module Components
       class RequestBodiesAnalyzer < BaseAnalyzer
-        def update_from_schema
+        def analyze_docs
           diff_manager = RequestBodyDiffManager.new(@before_schema_data, @after_schema_data)
           diff_manager.process_by_using_diff_data do |request_body_name, is_removed, is_added, after_edited_data|
             file_manager = Components::RequestBodyFileManager.new("#/components/requestBodies/#{request_body_name}", :ref)

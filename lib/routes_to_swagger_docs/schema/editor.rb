@@ -67,7 +67,7 @@ module RoutesToSwaggerDocs
         save_edited_schema
         conv_after_schema_data = YAML.load(@after_schema_data)
         analyzer = Analyzer.new(@before_schema_data, conv_after_schema_data, options)
-        analyzer.update_from_schema
+        analyzer.analyze_docs
       end
 
       def ensure_save_tmp_schema_file

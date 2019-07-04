@@ -14,13 +14,13 @@ module RoutesToSwaggerDocs
         @components_request_bodies_analyzer = Components::RequestBodiesAnalyzer.new(before_schema_data, after_schema_data, options)
       end
 
-      def update_from_schema
+      def analyze_docs
         logger.info '[Analyze Swagger file (components/schemas)] start'
-        @components_schemas_analyzer.update_from_schema
+        @components_schemas_analyzer.analyze_docs
         logger.info '[Analyze Swagger file (components/schemas)] end'
 
         logger.info '[Analyze Swagger file (components/requestBodies)] start'
-        @components_request_bodies_analyzer.update_from_schema
+        @components_request_bodies_analyzer.analyze_docs
         logger.info '[Analyze Swagger file (components/requestBodies)] end'
       end
     end

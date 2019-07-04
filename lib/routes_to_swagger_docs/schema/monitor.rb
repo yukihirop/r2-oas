@@ -36,7 +36,7 @@ module RoutesToSwaggerDocs
         options = { type: :edited }
         @after_schema_data = fetch_after_schema_data
         analyzer = Analyzer.new(@before_schema_data, @after_schema_data, options)
-        analyzer.update_from_schema
+        analyzer.analyze_docs
       end
 
       def ensure_save_tmp_schema_file

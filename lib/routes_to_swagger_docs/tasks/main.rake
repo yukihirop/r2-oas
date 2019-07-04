@@ -25,7 +25,7 @@ namespace :routes do
 
       analyzer_options = { type: :existing, existing_schema_file_path: existing_schema_file_path }
       analyzer = RoutesToSwaggerDocs::Schema::Analyzer.new({}, {}, analyzer_options)
-      analyzer.update_from_schema
+      analyzer.analyze_docs
 
       generator_options = { skip_generate_schemas: true }
       generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)

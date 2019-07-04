@@ -17,7 +17,7 @@ module RoutesToSwaggerDocs
         @after_schema_data  = after_schema_data.presence || create_after_schema_data
       end
 
-      def update_from_schema
+      def analyze_docs
         raise NoImplementError
       end
 
