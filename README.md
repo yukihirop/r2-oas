@@ -2,7 +2,15 @@
 
 Generate swagger docs (side only) from rails routing.
 
-## Installation
+Provides rake commands to help `generate`, `edit`, `view` and `manage`.
+
+```bash
+bundle exec rake routes:swagger:docs    # generate
+bundle exec rake routes:swagger:ui      # view
+bundle exec rake routes:swagger:editor  # edit
+```
+
+## 💎 Installation
 
 Add this line to your application's Gemfile:
 
@@ -18,9 +26,9 @@ Or install it yourself as:
 
     $ gem install routes_to_swagger_docs
 
-## Requirements
+## 🔦 Requirements
 
-This gem needs the following:
+If you want to view with `Swagger UI` or edit with `Swagger Editor`, This gem needs the following:
 
 - [`swaggerapi/swagger-ui:latest` docker image](https://hub.docker.com/r/swaggerapi/swagger-ui/)
 - [`swaggerapi/swagger-editor:latest` docker image](https://hub.docker.com/r/swaggerapi/swagger-editor/)
@@ -34,7 +42,18 @@ $ docker pull swaggerapi/swagger-ui:latest
 $ brew cask install chromedriver
 ```
 
-## Usage
+## 🚀 Tutorial
+
+After requiring a gem,
+
+```bash
+bundle exec routes:swagger:docs
+bundle exec routes:swagger:editor
+```
+
+## 📖 Usage
+
+All settings are optional. The initial value is as follows.
 
 In your rails project, Write `config/environments/development.rb` like that:
 
@@ -141,7 +160,7 @@ $ bundle exec rake routes:swagger:paths_ls
 $ bundle exec rake routes:swagger:paths_stats
 ```
 
-## More Usage
+## 📚 More Usage
 
 - [How to generate docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
 - [How to start swagger editor](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
@@ -156,22 +175,22 @@ $ bundle exec rake routes:swagger:paths_stats
 - [How to display paths list](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
 - [How to display paths stats](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_STATS.md)
 
-## Support Rails Version
+## ❤️ Support Rails Version
 
 - Rails 4.2.5.1
 
-## Support Rouging
+## ❤️ Support Rouging
 
 - Rails Engine Routing
 - Rails Normal Routing
 
-## Support OpenAPI Schema
+## ❤️ Support OpenAPI Schema
 
 |version|document|
 |-------|--------|
 |v3|[versions/v3.md](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/versions/v3.md)|
 
-## Convention over Configuration (CoC)
+## ❗️ Convention over Configuration (CoC)
 
 - `tag name` represents `controller name` and determine `paths file name`.
   - For example, If `controller name` is `Api::V1::UsersController`, `tag_name` is `api/v1/user`. and `paths file name` is `api/v1/user.yml`
@@ -180,7 +199,7 @@ $ bundle exec rake routes:swagger:paths_stats
   - For example, If `components/schemas name` is `Api_V1_User`, `components/schemas file name` is `api/v1/user.yml`.
   - `_` is supposed to be used to express `namespace`.
 
-## Configure
+## ⚙ Configure
 
 we explain the options that can be set.
 
@@ -189,7 +208,7 @@ we explain the options that can be set.
 |option|description|default|
 |------|-----------|---|
 |root_dir_path|Root directory for storing products.| `"./swagger_docs"`
-|schema_save_dir_name|Directory name for storing swagger schemas|`"shcemas"`|
+|schema_save_dir_name|Directory name for storing swagger schemas|`"src"`|
 |doc_save_file_name|File name for storing swagger doc|`"swagger_doc.yml"`|
 |force_update_schema|Force update schema from routes data|`false`|
 |use_tag_namespace|Use namespace for tag name|`true`|
@@ -258,7 +277,7 @@ account.yml               # ignore
 account.yml               # ignore
 ```
 
-## Life Cycle Methods (Hook Metohds)
+## 💊 Life Cycle Methods (Hook Metohds)
 
 Supported hook(life cycle methods) is like this:
 
@@ -272,7 +291,6 @@ Supported Hook class is like this:
 - `RoutesToSwaggerDocs::Schema::V3::PathItemObject`
 - `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`
 - `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`
-- `RoutesToSwaggerDocs::Schema::V3::SchemaObject`
 - `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`
 - `RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject`
 
@@ -508,7 +526,7 @@ end
 
 This is the end.
 
-## CORS
+## 🔩 CORS
 
 If you use the online demo, make sure your API supports foreign requests by enabling CORS in Grape, otherwise you'll see the API description, but requests on the API won't return. Use [rack-cors](https://github.com/cyu/rack-cors) to enable CORS.
 
@@ -531,11 +549,11 @@ before do
 end
 ```
 
-## License
+## 📝 License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-## Contributing
+## 🤝 Contributing
 
 1. Fork it ( http://github.com/yukihirop/routes_to_swagger_docs/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
