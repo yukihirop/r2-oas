@@ -35,7 +35,7 @@ module RoutesToSwaggerDocs
         end
 
         result = if many_paths_file_paths.present?
-                   Squeezer.new(result_before_squeeze, many_paths_file_paths: many_paths_file_paths).remake_docs
+                   Squeezer.new(result_before_squeeze, many_paths_file_paths: many_paths_file_paths).squeeze_docs
                  else
                    result_before_squeeze
                  end

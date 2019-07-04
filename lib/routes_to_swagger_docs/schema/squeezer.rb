@@ -8,7 +8,7 @@ require_relative 'squeezer/components_squeezer'
 module RoutesToSwaggerDocs
   module Schema
     class Squeezer < BaseSqueezer
-      def remake_docs
+      def squeeze_docs
         except_paths_schema = @schema_data.except('paths', 'tags', 'components')
 
         path_squeezer = PathSqueezer.new(@schema_data, many_paths_file_paths: many_paths_file_paths)
@@ -16,9 +16,9 @@ module RoutesToSwaggerDocs
         components_squeezer = ComponentsSqueezer.new(@schema_data, many_paths_file_paths: many_paths_file_paths)
 
         slice_schemas = [
-          tag_squeezer.remake_docs,
-          path_squeezer.remake_docs,
-          components_squeezer.remake_docs
+          tag_squeezer.squeeze_docs,
+          path_squeezer.squeeze_docs,
+          components_squeezer.squeeze_docs
         ]
         slice_schemas.each_with_object(except_paths_schema) { |slice_schema, result| result.deep_merge!(slice_schema) }
       end

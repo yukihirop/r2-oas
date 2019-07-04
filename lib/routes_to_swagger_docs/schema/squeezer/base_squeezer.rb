@@ -11,7 +11,7 @@ module RoutesToSwaggerDocs
         @tag_names = create_tag_names
       end
 
-      def remake_docs
+      def squeeze_docs
         raise 'Please inplement in inherited class.'
       end
 
