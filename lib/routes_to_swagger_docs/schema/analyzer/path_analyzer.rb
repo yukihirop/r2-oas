@@ -7,7 +7,7 @@ require_relative '../manager/file/path_item_file_manager'
 module RoutesToSwaggerDocs
   module Schema
     class PathAnalyzer < BaseAnalyzer
-      def update_from_schema
+      def analyze_docs
         sorted_schema = deep_sort(@after_schema_data, 'paths')
         edited_paths_schema = sorted_schema['paths']
 

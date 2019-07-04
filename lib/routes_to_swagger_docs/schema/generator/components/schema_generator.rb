@@ -16,13 +16,13 @@ module RoutesToSwaggerDocs
           @glob_schema_paths = create_glob_components_schemas_paths
         end
 
-        def generate_components_schemas
+        def generate_docs
           if components_schemas_file_do_not_exists?
             logger.info ' <From routes data>'
-            generate_components_schemas_from_routes_data
+            generate_docs_from_routes_data
           else
             logger.info ' <From schema files>'
-            generate_components_schemas_from_schema_fiels
+            generate_docs_from_schema_fiels
           end
         end
 
@@ -32,7 +32,7 @@ module RoutesToSwaggerDocs
         alias components_schemas_files_paths schema_files_paths
         alias components_schemas_file_do_not_exists? schema_file_do_not_exists?
 
-        def generate_components_schemas_from_schema_fiels
+        def generate_docs_from_schema_fiels
           components_schemas_from_schema_files = components_schemas_files_paths.each_with_object({}) do |path, data|
             yaml = YAML.load_file(path)
             data.deep_merge!(yaml)
@@ -41,18 +41,18 @@ module RoutesToSwaggerDocs
           end
           @components_schemas.deep_merge!(components_schemas_from_schema_files['components']['schemas'])
 
-          process_when_generate_components_schemas do |save_file_path|
+          process_when_generate_docs do |save_file_path|
             logger.info "  Merge schema file: \t#{save_file_path}"
           end
         end
 
-        def generate_components_schemas_from_routes_data
-          process_when_generate_components_schemas do |save_file_path|
+        def generate_docs_from_routes_data
+          process_when_generate_docs do |save_file_path|
             logger.info "  Write schema file: \t#{save_file_path}"
           end
         end
 
-        def process_when_generate_components_schemas
+        def process_when_generate_docs
           logger.info ' <Update Components schema files (components/schemas)>'
           @components_schemas.each do |schema_name, data|
             result = {

@@ -18,7 +18,7 @@ module RoutesToSwaggerDocs
 
       def generate_docs
         logger.info '[Generate Swagger schema files] start'
-        @schema_generator.generate_schemas unless skip_generate_schemas
+        @schema_generator.generate_docs unless skip_generate_docs
         logger.info '[Generate Swagger schema files] end'
         logger.info '[Generate Swagger docs from schema files] start'
         generate_docs_from_schema_files
@@ -35,7 +35,7 @@ module RoutesToSwaggerDocs
         end
 
         result = if many_paths_file_paths.present?
-                   Squeezer.new(result_before_squeeze, many_paths_file_paths: many_paths_file_paths).remake_docs
+                   Squeezer.new(result_before_squeeze, many_paths_file_paths: many_paths_file_paths).squeeze_docs
                  else
                    result_before_squeeze
                  end

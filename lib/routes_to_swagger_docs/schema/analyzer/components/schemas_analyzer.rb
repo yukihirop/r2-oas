@@ -9,7 +9,7 @@ module RoutesToSwaggerDocs
   module Schema
     module Components
       class SchemasAnalyzer < BaseAnalyzer
-        def update_from_schema
+        def analyze_docs
           diff_manager = SchemaDiffManager.new(@before_schema_data, @after_schema_data)
           diff_manager.process_by_using_diff_data do |schema_name, is_removed, is_added, after_edited_data|
             file_manager = Components::SchemaFileManager.new("#/components/schemas/#{schema_name}", :ref)

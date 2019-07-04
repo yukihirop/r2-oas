@@ -16,7 +16,7 @@ module RoutesToSwaggerDocs
         @diff_manager = TagDiffManager.new(before_schema_data, after_schema_data)
       end
 
-      def update_from_schema
+      def analyze_docs
         save_file_path = @file_manager.save_file_path
         case @type
         when :edited

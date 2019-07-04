@@ -13,7 +13,7 @@ namespace :routes do
     task deploy: [:common] do
       logger.info '[Routes to Swagger docs] start'
 
-      generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_schemas: true }
+      generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
       generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
       generator.generate_docs
 
@@ -50,7 +50,7 @@ namespace :routes do
       logger.level = :null
 
       logger.info '[Routes to Swagger docs] start'
-      generator_options = { skip_generate_schemas: true, skip_load_dot_paths: true }
+      generator_options = { skip_generate_docs: true, skip_load_dot_paths: true }
       generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
       generator.generate_docs
 
