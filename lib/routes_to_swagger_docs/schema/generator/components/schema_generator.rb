@@ -28,7 +28,6 @@ module RoutesToSwaggerDocs
 
         private
 
-        attr_accessor :components_file_paths
         alias components_schemas_files_paths schema_files_paths
         alias components_schemas_file_do_not_exists? schema_file_do_not_exists?
 
@@ -71,10 +70,8 @@ module RoutesToSwaggerDocs
         end
 
         def create_glob_components_schemas_paths
-          if components_file_paths.present?
-            components_file_paths
-          else
-            ["#{schema_save_dir_path}/components/schemas/**/**.yml"]
+          many_components_file_paths.select do |file_path|
+            file_path.include? "#{schema_save_dir_path}/components/schemas"
           end
         end
       end

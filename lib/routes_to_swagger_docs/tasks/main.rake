@@ -5,6 +5,7 @@ require_relative '../schema/editor'
 require_relative '../schema/ui'
 require_relative '../schema/analyzer'
 require_relative '../schema/monitor'
+require_relative '../schema/cleaner'
 require_relative '../task_logging'
 load File.expand_path('common.rake', __dir__)
 
@@ -77,6 +78,20 @@ namespace :routes do
       monitor_options = { unit_paths_file_path: unit_paths_file_path }
       monitor = RoutesToSwaggerDocs::Schema::Monitor.new(before_schema_data, monitor_options)
       monitor.start
+
+      logger.info '[Routes to Swagger docs] end'
+    end
+
+    desc 'Clean Swagger Document'
+    task clean: [:common] do
+      logger.info '[Routes to Swagger docs] start'
+
+      generator_options = { skip_generate_docs: true, skip_load_dot_paths: true }
+      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
+      generator.generate_docs
+
+      cleaner = RoutesToSwaggerDocs::Schema::Cleaner.new
+      cleaner.clean_docs
 
       logger.info '[Routes to Swagger docs] end'
     end
