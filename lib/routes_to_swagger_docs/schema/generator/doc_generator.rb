@@ -18,7 +18,7 @@ module RoutesToSwaggerDocs
 
       def generate_docs
         logger.info '[Generate Swagger schema files] start'
-        @schema_generator.generate_docs unless skip_generate_schemas
+        @schema_generator.generate_docs unless skip_generate_docs
         logger.info '[Generate Swagger schema files] end'
         logger.info '[Generate Swagger docs from schema files] start'
         generate_docs_from_schema_files
