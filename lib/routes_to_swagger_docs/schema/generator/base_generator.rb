@@ -45,8 +45,15 @@ module RoutesToSwaggerDocs
       end
 
       def create_glob_schema_paths
-        exclude_paths_regexp_paths = "#{schema_save_dir_path}/**.yml"
-        [exclude_paths_regexp_paths] + many_paths_file_paths + many_components_file_paths
+        exclude_paths_regexp_paths      = ["#{schema_save_dir_path}/**.yml"]
+        paths_regexp_paths              = ["#{schema_save_dir_path}/paths/**/**.yml"]
+        components_schemas_regexp_paths = ["#{schema_save_dir_path}/components/**/**.yml"]
+
+        if exists_paths_files?
+          exclude_paths_regexp_paths + many_paths_file_paths + many_components_file_paths
+        else
+          exclude_paths_regexp_paths + paths_regexp_paths + components_schemas_regexp_paths
+        end
       end
 
       def schema_files_paths
@@ -69,6 +76,10 @@ module RoutesToSwaggerDocs
           components_file_paths_at_path = file_manager.descendants_ref_paths
           result.push(*components_file_paths_at_path)
         end.uniq
+      end
+
+      def exists_paths_files?
+        Dir.glob("#{schema_save_dir_path}/paths/**/**.yml").present?
       end
     end
   end
