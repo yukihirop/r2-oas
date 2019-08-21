@@ -89,7 +89,8 @@ module RoutesToSwaggerDocs
       end
 
       def open_browser_and_set_schema
-        @browser ||= Watir::Browser.new
+        capabilities = { "chromeOptions" => {'w3c' => false } }
+        @browser ||= Watir::Browser.new(:chrome, capabilities)
         @browser.goto(url)
         if wait_for_loaded
           schema_doc_from_local = YAML.load_file(doc_save_file_path)
