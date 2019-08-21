@@ -11,11 +11,11 @@ module RoutesToSwaggerDocs
       class SchemasAnalyzer < BaseAnalyzer
         def analyze_docs
           diff_manager = SchemaDiffManager.new(@before_schema_data, @after_schema_data)
-          diff_manager.process_by_using_diff_data do |schema_name, is_removed, is_added, after_edited_data|
+          diff_manager.process_by_using_diff_data do |schema_name, is_removed, is_added, is_leftovers, after_edited_data|
             file_manager = Components::SchemaFileManager.new("#/components/schemas/#{schema_name}", :ref)
             save_file_path = file_manager.save_file_path
 
-            if is_removed && !is_added
+            if is_removed && !is_added && !is_leftovers
               file_manager.delete
               logger.info "  Delete schema file: \t#{save_file_path}"
             else
