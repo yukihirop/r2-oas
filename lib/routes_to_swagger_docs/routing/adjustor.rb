@@ -6,7 +6,7 @@ require_relative 'components/all'
 module RoutesToSwaggerDocs
   module Routing
     class Adjustor < Base
-      VALID_KEYS = %i[route name verb path reqs regexp].freeze
+      VALID_KEYS = %i[route name verb path reqs].freeze
 
       def initialize(route_data)
         valid_route_data?(route_data)

@@ -9,7 +9,7 @@ module RoutesToSwaggerDocs
   if !defined?(::Rails)
     raise NoImplementError, 'Can not load Rails'
   # support Rails version
-  elsif ::Rails::VERSION::STRING == '4.2.5.1'
+  elsif ::Rails::VERSION::STRING >= '4.2.5.1'
     extend Configuration
     require_relative 'routes_to_swagger_docs/task'
   else
