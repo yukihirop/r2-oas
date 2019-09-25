@@ -57,7 +57,7 @@ module RoutesToSwaggerDocs
         case extname
         when /json/
           File.open(existing_schema_file_path) do |file|
-            JSON.parse(file)
+            JSON.parse(file.read)
           end
         when /yaml/
           YAML.load_file(existing_schema_file_path)
