@@ -127,6 +127,9 @@ RoutesToSwaggerDocs.configure do |config|
     paths_stats.heading_color                  = :yellow
     paths_stats.highlight_color                = :magenta
   end
+
+  # :dot or :underbar
+  config.namespace_type = :underbar
 end
 ```
 
@@ -216,6 +219,7 @@ we explain the options that can be set.
 |interval_to_save_edited_tmp_schema|Interval(sec) to save edited tmp schema|`15`|
 |http_statuses_when_http_method|Determine the response to support for each HTTP method|omission...|
 |http_methods_when_generate_request_body|HTTP methods when generate requestBody|`[post put patch]`|
+|namespace_type|namespace for components(schemas/requestBodies) name| `underbar` |
 
 #### server
 
