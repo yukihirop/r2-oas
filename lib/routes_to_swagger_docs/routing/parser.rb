@@ -55,18 +55,20 @@ module RoutesToSwaggerDocs
 
       # copy from:
       # https://github.com/rails/rails/blob/v4.2.1/actionpack/lib/action_dispatch/routing/inspector.rb#L114-L140
+      # https://github.com/rails/rails/blob/v5.2.3/actionpack/lib/action_dispatch/routing/inspector.rb
       def collect_routes(routes)
         result = routes.collect do |route|
           ActionDispatch::Routing::RouteWrapper.new(route)
         end.reject(&:internal?).collect do |route|
           collect_engine_routes(route)
 
-          { route: route, # Add After Copy
+          # delete json_regexp after copy
+          { route: route,
             name: route.name,
             verb: route.verb,
             path: route.path,
-            reqs: route.reqs,
-            regexp: route.json_regexp }
+            reqs: route.reqs
+          }
         end
 
         # Push Rails Engine Routes Data
