@@ -27,17 +27,26 @@ module RoutesToSwaggerDocs
 
       def to_schema_name
         if @is_route_engine
-          schema_name = @request.split('::').map(&:camelcase).join('_')
+          schema_name = @request.split('::').map(&:camelcase).join(ns_div)
         else
           # e.x.) @request = "api/v2/posts#index {:format=>:json}"
           # e.x.) path = "api/v2/post"
           path = @request.split('#').first.singularize
-          schema_name = path.split('/').map(&:camelcase).join('_')
+          schema_name = path.split('/').map(&:camelcase).join(ns_div)
         end
 
-        schema_name = schema_name.split('_').last unless use_schema_namespace
+        if use_schema_namespace
+          schema_name_only = schema_name.split(ns_div).last
+          namespace = adjust_namespace(schema_name.split(ns_div)[0..-2].join(ns_div))
 
-        schema_name
+          if namespace.present?
+            [namespace, schema_name_only].join(ns_div)
+          else
+            schema_name_only
+          end
+        else
+          schema_name.split(ns_div).last 
+        end
       end
 
       # e.x.) "tasks#index { :format => ":json" }"
@@ -47,6 +56,19 @@ module RoutesToSwaggerDocs
           result = md[:format_name] if md[:format_name]
         end
         result
+      end
+
+      private
+
+      def adjust_namespace(namespace)
+        case namespace_type
+        when :dot
+          namespace.downcase
+        when :underbar
+          namespace
+        else
+          raise "Do not support #{namespace_type}"
+        end
       end
     end
   end

@@ -33,5 +33,16 @@ module RoutesToSwaggerDocs
     def doc_save_file_path
       File.expand_path("#{root_dir_path}/#{doc_save_file_name}")
     end
+
+    def ns_div
+      case namespace_type
+      when :dot
+        '.'
+      when :underbar
+        '_'
+      else
+        raise "Do not support #{namespace_type}"
+      end
+    end
   end
 end

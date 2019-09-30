@@ -41,6 +41,8 @@ module RoutesToSwaggerDocs
     DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY = %w[post patch put]
     # rubocop:enable Style/MutableConstant
     DEFAULT_TOOL = Tool.new
+    # :dot or :underbar
+    DEFAULT_NAMESPACE_TYPE = :underbar
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
       root_dir_path
@@ -55,6 +57,7 @@ module RoutesToSwaggerDocs
       http_statuses_when_http_method
       http_methods_when_generate_request_body
       tool
+      namespace_type
     ].freeze
 
     UNPUBLIC_VALID_OPTIONS_KEYS = %i[
@@ -87,6 +90,7 @@ module RoutesToSwaggerDocs
       target.http_statuses_when_http_method          = DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD
       target.tool                                    = DEFAULT_TOOL
       target.http_methods_when_generate_request_body = DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY
+      target.namespace_type                          = DEFAULT_NAMESPACE_TYPE
     end
   end
 end
