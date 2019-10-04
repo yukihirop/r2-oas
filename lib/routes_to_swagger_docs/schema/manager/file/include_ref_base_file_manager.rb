@@ -43,7 +43,10 @@ module RoutesToSwaggerDocs
       end
 
       def process_deep_search_ref_recursive(ref_key_or_not, ref_value_or_not, &block)
-        if ref_key_or_not.eql? REF
+        # Don't pick up JSON Schema $ref
+        # e.x.)
+        #  $ref: { "type" => "string" }
+        if (ref_key_or_not.eql? REF) && (ref_value_or_not.to_s.start_with?("#/"))
           child_file_manager = new(ref_value_or_not, :ref)
           child_load_data = child_file_manager.load_data
 
