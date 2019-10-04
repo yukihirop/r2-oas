@@ -2,13 +2,24 @@
 
 require_relative 'base_analyzer'
 require_relative '../manager/file/path_item_file_manager'
+require_relative '../manager/file_manager'
+require_relative '../v3/tag_object'
+
 
 # Scope Rails
+
+# TODO:
+# Change from RoutesToSwaggerDocs::Schema::PathAnalyzer to RoutesToSwaggerDocs::V3::Schema::PathAnalyzer
 module RoutesToSwaggerDocs
   module Schema
     class PathAnalyzer < BaseAnalyzer
       VERB = %w(get put post delete options head patch trace)
       NOT_VERB = %w($ref summary description servers parameters)
+
+      def initialize(before_schema_data, after_schema_data, options = {})
+        super
+        @tags = []
+      end
 
       def analyze_docs
         sorted_schema = deep_sort(@after_schema_data, 'paths')
@@ -19,9 +30,24 @@ module RoutesToSwaggerDocs
           file_manager.save(result.to_yaml)
           logger.info "  Write schema file: \t#{file_manager.save_file_path}"
         end
+
+        # Automatically generated when there is no tag object in the read schema file
+        if generate_tag_file?
+          result = { 'tags' => V3::TagObject.new(@tags).to_doc }
+          file_manager = FileManager.new('tags', :relative)
+          file_manager.save(result.to_yaml)
+        end
       end
 
       private
+
+      def generate_tag_file?
+        !@after_schema_data.keys.include?('tags')
+      end
+
+      def push_tags(tag_name)
+        @tags.push(tag_name) unless @tags.include?(tag_name)
+      end
 
       def unit_paths_data_group_by_tags(unit_paths_data)
         unit_paths_data.each_with_object({}) do |(path, data_when_path), result|
@@ -47,6 +73,8 @@ module RoutesToSwaggerDocs
           })
         end
 
+        push_tags(tag_name)
+
         result[tag_name] ||= {}
         result[tag_name].deep_merge!(
           'paths' => {
@@ -66,6 +94,9 @@ module RoutesToSwaggerDocs
       # ・parameters
       def group_by_tags_when_not_verb(not_verb, data_when_not_verb, path, result)
         tag_name = not_verb
+
+        push_tags(tag_name)
+
         result[tag_name] ||= {}
         result[tag_name].deep_merge!(
           'paths' => {
