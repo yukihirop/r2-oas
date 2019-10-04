@@ -23,7 +23,16 @@ module RoutesToSwaggerDocs
       def unit_paths_data_group_by_tags(unit_paths_data)
         unit_paths_data.each_with_object({}) do |(path, data_when_path), result|
           data_when_path.each do |verb, data_when_verb|
-            tag_name = data_when_verb['tags'].first
+
+            if !data_when_verb.is_a?(Array) && data_when_verb.has_key?('tags')
+              tag_name = data_when_verb['tags'].first
+            else
+              tag_name = 'unknown'
+              data_when_verb.deep_merge!({
+                'tags' => [ tag_name ]
+              })
+            end
+
             result[tag_name] ||= {}
             result[tag_name].deep_merge!(
               'paths' => {
