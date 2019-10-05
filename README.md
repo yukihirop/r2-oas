@@ -1,6 +1,6 @@
 # RoutesToSwaggerDocs
 
-Generate swagger docs (side only) from rails routing.
+Generate api docment(OpenAPI) side only from `rails` routing.
 
 Provides rake commands to help `generate`, `edit`, `view` and `manage`.
 
