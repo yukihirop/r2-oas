@@ -3,6 +3,7 @@
 require_relative 'base_analyzer'
 require_relative 'components/schemas_analyzer'
 require_relative 'components/request_bodies_analyzer'
+require_relative 'components/security_schemes_analyzer'
 
 # Scope Rails
 module RoutesToSwaggerDocs
@@ -10,8 +11,9 @@ module RoutesToSwaggerDocs
     class ComponentsAnalyzer < BaseAnalyzer
       def initialize(before_schema_data, after_schema_data, options = {})
         super
-        @components_schemas_analyzer        = Components::SchemasAnalyzer.new(before_schema_data, after_schema_data, options)
-        @components_request_bodies_analyzer = Components::RequestBodiesAnalyzer.new(before_schema_data, after_schema_data, options)
+        @components_schemas_analyzer          = Components::SchemasAnalyzer.new(before_schema_data, after_schema_data, options)
+        @components_request_bodies_analyzer   = Components::RequestBodiesAnalyzer.new(before_schema_data, after_schema_data, options)
+        @components_security_schemas_analyzer = Components::SecuritySchemesAnalyzer.new(before_schema_data, after_schema_data, options)
       end
 
       def analyze_docs
@@ -22,6 +24,10 @@ module RoutesToSwaggerDocs
         logger.info '[Analyze Swagger file (components/requestBodies)] start'
         @components_request_bodies_analyzer.analyze_docs
         logger.info '[Analyze Swagger file (components/requestBodies)] end'
+
+        logger.info '[Analyze Swagger file (components/securitySchemas)] start'
+        @components_security_schemas_analyzer.analyze_docs
+        logger.info '[Analyze Swagger file (components/securitySchemas)] end'
       end
     end
   end
