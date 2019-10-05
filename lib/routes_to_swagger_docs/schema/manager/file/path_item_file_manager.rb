@@ -2,14 +2,11 @@
 
 require_relative 'include_ref_base_file_manager'
 require_relative 'components_file_manager'
+require_relative '../pathname_manager'
 
 module RoutesToSwaggerDocs
   module Schema
     class PathItemFileManager < IncludeRefBaseFileManager
-      def initalize(path, path_type = :relative)
-        super
-      end
-
       def skip_save?
         save_file_path.in? paths_config.many_paths_file_paths
       end
@@ -21,9 +18,20 @@ module RoutesToSwaggerDocs
         # e.x.)
         #  $ref: { "type" => "string" }
         if (ref_key_or_not.eql? REF) && (ref_value_or_not.to_s.start_with?("#/"))
+          
+          # Avoid $ ref circular references
+          pm = RoutesToSwaggerDocs::Schema::PathnameManager.new(ref_value_or_not, :ref)
+          relative_save_file_path = pm.relative_save_file_path
+          
+          if @parent_save_file_paths.include?(relative_save_file_path)
+            return
+          else
+            @parent_save_file_paths.push(relative_save_file_path)
+          end
+
           child_file_manager = ComponentsFileManager.build(ref_value_or_not, :ref)
           child_load_data = child_file_manager.load_data
-
+          
           children_paths = []
           deep_search_ref_recursive(child_load_data) do |children_path|
             children_paths.push(*children_path)

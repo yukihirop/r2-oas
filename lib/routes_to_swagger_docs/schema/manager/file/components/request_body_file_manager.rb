@@ -18,6 +18,17 @@ module RoutesToSwaggerDocs
           # e.x.)
           #  $ref: { "type" => "string" }
           if (ref_key_or_not.eql? REF) && (ref_value_or_not.to_s.start_with?("#/"))
+            
+            # Avoid $ ref circular references
+            pm = RoutesToSwaggerDocs::Schema::PathnameManager.new(ref_value_or_not, :ref)
+            relative_save_file_path = pm.relative_save_file_path
+          
+            if @parent_save_file_paths.include?(relative_save_file_path)
+              return
+            else
+              @parent_save_file_paths.push(relative_save_file_path)
+            end
+
             child_file_manager = ComponentsFileManager.build(ref_value_or_not, :ref)
             child_load_data = child_file_manager.load_data
 
