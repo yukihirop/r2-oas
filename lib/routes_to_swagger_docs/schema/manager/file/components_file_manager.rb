@@ -1,36 +1,19 @@
 # frozen_string_literal: true
 
-require_relative 'components/schema_file_manager'
-require_relative 'components/request_body_file_manager'
-require_relative 'components/security_scheme_file_manager'
-require_relative 'components/parameter_file_manager'
+require_relative 'include_ref_base_file_manager'
 
 module RoutesToSwaggerDocs
   module Schema
-    class ComponentsFileManager
-      class << self
-        def build(path, path_type)
-          new(path, path_type).builder
-        end
-      end
-
+    class ComponentsFileManager < IncludeRefBaseFileManager
       def initialize(path, path_type = :ref)
+        super
         @path_type = path_type
         @original_path = path
-        @pathname_manager = PathnameManager.new(path, path_type)
+        @recursive_search_class = self.class
       end
 
-      def builder
-        case @pathname_manager.object_type
-        when :schemas
-          Components::SchemaFileManager.new(@original_path, @path_type)
-        when :requestBodies
-          Components::RequestBodyFileManager.new(@original_path, @path_type)
-        when :securitySchemes
-          Components::SecuritySchemeFileManager.new(@original_path, @path_type)
-        when :parameters
-          Components::ParameterFileManager.new(@original_path, @path_type)
-        end
+      def skip_save?
+        save_file_path.in? paths_config.many_components_file_paths
       end
     end
   end
