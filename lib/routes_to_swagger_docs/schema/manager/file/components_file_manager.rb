@@ -22,13 +22,13 @@ module RoutesToSwaggerDocs
 
       def builder
         case @pathname_manager.object_type
-        when :schema
+        when :schemas
           Components::SchemaFileManager.new(@original_path, @path_type)
-        when :request_body
+        when :requestBodies
           Components::RequestBodyFileManager.new(@original_path, @path_type)
-        when :security_scheme
+        when :securitySchemes
           Components::SecuritySchemeFileManager.new(@original_path, @path_type)
-        when :parameter
+        when :parameters
           Components::ParameterFileManager.new(@original_path, @path_type)
         end
       end
