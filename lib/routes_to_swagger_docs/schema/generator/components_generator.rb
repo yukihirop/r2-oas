@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 require_relative 'base_generator'
-require_relative 'components/schema_generator'
+require_relative 'components/object_generator'
 require_relative 'components/request_body_generator'
-require_relative 'components/security_scheme_generator'
-require_relative 'components/parameter_generator'
 
 module RoutesToSwaggerDocs
   module Schema
     class ComponentsGenerator < BaseGenerator
+      COMPONENTS_OBJECTS = %i(schemas requestBodies securitySchemes parameters)
+
       def initialize(schema_data = {}, options = {})
         super(options)
         @components = schema_data['components'] || scehma_data[:components]
@@ -16,19 +16,21 @@ module RoutesToSwaggerDocs
       end
 
       def generate_docs
-        @components.each do |key, _value|
-          case key
-          when 'schemas'
-            Components::SchemaGenerator.new(@components, @options).generate_docs
-          when 'requestBodies'
-            Components::RequestBodyGenerator.new(@components, @options).generate_docs
-          when 'securitySchemes'
-            Components::SecuritySchemeGenerator.new(@components, @options).generate_docs
-          when 'parameters'
-            Components::ParameterGenerator.new(@components, @options).generate_docs
-          else
-            raise "Do not support components object: #{key}"
-          end
+        COMPONENTS_OBJECTS.each do |object_name|
+          generator_class(object_name).new(@components, @options.merge({
+            middle_category: object_name.to_s
+          })).generate_docs
+        end
+      end
+
+      private
+
+      def generator_class(object_name)
+        case object_name
+        when :requestBodies
+          Components::RequestBodyGenerator
+        else
+          Components::ObjectGenerator
         end
       end
     end
