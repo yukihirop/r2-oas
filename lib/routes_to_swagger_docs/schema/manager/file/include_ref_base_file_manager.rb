@@ -12,6 +12,11 @@ module RoutesToSwaggerDocs
         super
         @convert_underscore_to_slash = true
         @parent_save_file_paths = []
+        @recursive_search_class = self.class
+      end
+
+      class << self
+        alias :build :new
       end
 
       def descendants_paths
@@ -27,7 +32,7 @@ module RoutesToSwaggerDocs
 
       private
 
-      attr_accessor :parent_save_file_paths
+      attr_accessor :parent_save_file_paths, :recursive_search_class
 
       def deep_search_ref_recursive(yaml, &block)
         if yaml.is_a?(Hash)
@@ -62,7 +67,7 @@ module RoutesToSwaggerDocs
             @parent_save_file_paths.push(relative_save_file_path)
           end
 
-          child_file_manager = new(ref_value_or_not, :ref)
+          child_file_manager = @recursive_search_class.build(ref_value_or_not, :ref)
           child_load_data = child_file_manager.load_data
 
           children_paths = []
