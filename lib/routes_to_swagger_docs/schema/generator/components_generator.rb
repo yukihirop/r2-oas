@@ -3,6 +3,8 @@
 require_relative 'base_generator'
 require_relative 'components/schema_generator'
 require_relative 'components/request_body_generator'
+require_relative 'components/security_scheme_generator'
+require_relative 'components/parameter_generator'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -15,10 +17,17 @@ module RoutesToSwaggerDocs
 
       def generate_docs
         @components.each do |key, _value|
-          if key == 'schemas'
+          case key
+          when 'schemas'
             Components::SchemaGenerator.new(@components, @options).generate_docs
-          elsif key == 'requestBodies'
+          when 'requestBodies'
             Components::RequestBodyGenerator.new(@components, @options).generate_docs
+          when 'securitySchemes'
+            Components::SecuritySchemeGenerator.new(@components, @options).generate_docs
+          when 'parameters'
+            Components::ParameterGenerator.new(@components, @options).generate_docs
+          else
+            raise "Do not support components object: #{key}"
           end
         end
       end
