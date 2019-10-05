@@ -2,6 +2,7 @@
 
 require_relative 'components/schema_file_manager'
 require_relative 'components/request_body_file_manager'
+require_relative 'components/security_scheme_file_manager'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -24,6 +25,8 @@ module RoutesToSwaggerDocs
           Components::SchemaFileManager.new(@original_path, @path_type)
         when :request_body
           Components::RequestBodyFileManager.new(@original_path, @path_type)
+        when :security_scheme
+          Components::SecuritySchemeFileManager.new(@original_path, @path_type)
         end
       end
     end

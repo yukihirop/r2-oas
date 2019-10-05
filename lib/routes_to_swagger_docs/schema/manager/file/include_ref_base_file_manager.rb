@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'base_file_manager'
+require_relative '../pathname_manager'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -10,6 +11,12 @@ module RoutesToSwaggerDocs
       def initialize(path, path_type = :ref)
         super
         @convert_underscore_to_slash = true
+        @parent_save_file_paths = []
+        @recursive_search_class = self.class
+      end
+
+      class << self
+        alias :build :new
       end
 
       def descendants_paths
@@ -24,6 +31,8 @@ module RoutesToSwaggerDocs
       alias descendants_ref_paths descendants_paths
 
       private
+
+      attr_accessor :parent_save_file_paths, :recursive_search_class
 
       def deep_search_ref_recursive(yaml, &block)
         if yaml.is_a?(Hash)
@@ -43,8 +52,22 @@ module RoutesToSwaggerDocs
       end
 
       def process_deep_search_ref_recursive(ref_key_or_not, ref_value_or_not, &block)
-        if ref_key_or_not.eql? REF
-          child_file_manager = new(ref_value_or_not, :ref)
+        # Don't pick up JSON Schema $ref
+        # e.x.)
+        #  $ref: { "type" => "string" }
+        if (ref_key_or_not.eql? REF) && (ref_value_or_not.to_s.start_with?("#/"))
+          
+          # Avoid $ ref circular references
+          pm = RoutesToSwaggerDocs::Schema::PathnameManager.new(ref_value_or_not, :ref)
+          relative_save_file_path = pm.relative_save_file_path
+          
+          if @parent_save_file_paths.include?(relative_save_file_path)
+            return
+          else
+            @parent_save_file_paths.push(relative_save_file_path)
+          end
+
+          child_file_manager = @recursive_search_class.build(ref_value_or_not, :ref)
           child_load_data = child_file_manager.load_data
 
           children_paths = []

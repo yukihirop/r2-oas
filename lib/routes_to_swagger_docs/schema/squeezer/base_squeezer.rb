@@ -22,7 +22,13 @@ module RoutesToSwaggerDocs
       def create_tag_names
         many_paths_file_paths.each_with_object([]) do |unit_paths_path, result|
           paths_from_local = YAML.load_file(unit_paths_path)
-          tag_name_from_path = paths_from_local['paths'].values[0].values[0]['tags'][0]
+
+          if paths_from_local['paths'].values[0].values[0].is_a?(Array)
+            tag_name_from_path = 'unknown'
+          else
+            tag_name_from_path = paths_from_local['paths'].values[0].values[0]['tags'][0]
+          end
+
           result.push(tag_name_from_path)
         end
       end
