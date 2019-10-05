@@ -11,6 +11,7 @@ module RoutesToSwaggerDocs
         @schemas_file_paths          = Dir.glob("#{schema_save_dir_path}/components/schemas/**/**.yml")
         @request_bodies_file_paths   = Dir.glob("#{schema_save_dir_path}/components/requestBodies/**/**.yml")
         @security_schemes_file_paths = Dir.glob("#{schema_save_dir_path}/components/securitySchemes/**/**.yml")
+        @parameters_file_paths       = Dir.glob("#{schema_save_dir_path}/components/parameters/**/**.yml")
       end
 
       def clean_docs
@@ -34,7 +35,12 @@ module RoutesToSwaggerDocs
       end
 
       def all_file_paths
-        (@schemas_file_paths + @request_bodies_file_paths + @security_schemes_file_paths).uniq
+        (
+          @schemas_file_paths + 
+          @request_bodies_file_paths + 
+          @security_schemes_file_paths + 
+          @parameters_file_paths
+        ).uniq
       end
     end
   end
