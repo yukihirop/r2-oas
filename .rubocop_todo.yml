@@ -19,7 +19,7 @@ Metrics/AbcSize:
   Max: 20
   Exclude:
     - 'lib/routes_to_swagger_docs/schema/v3/generator/schema_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/analyzer.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/analyzer.rb'
     - 'lib/routes_to_swagger_docs/schema/v3/generator/components/request_body_generator.rb'
 
 Style/Documentation:
@@ -60,12 +60,12 @@ Metrics/MethodLength:
     - 'lib/routes_to_swagger_docs/schema/editor.rb'
     - 'lib/routes_to_swagger_docs/shared/sortable.rb'
     - 'lib/routes_to_swagger_docs/app_configuration.rb'
-    - 'lib/routes_to_swagger_docs/schema/analyzer/path_analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/analyzer/base_analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/analyzer/components/request_bodies_analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/analyzer/components/schemas_analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/analyzer/tag_analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/analyzer.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/analyzer/path_analyzer.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/analyzer/base_analyzer.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/analyzer/components/request_bodies_analyzer.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/analyzer/components/schemas_analyzer.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/analyzer/tag_analyzer.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/analyzer.rb'
     - 'lib/routes_to_swagger_docs/schema/v3/object/paths_object.rb'
     - 'lib/routes_to_swagger_docs/schema/v3/object/components_object.rb'
     - 'lib/routes_to_swagger_docs/schema/v3/object/path_item_object.rb'
