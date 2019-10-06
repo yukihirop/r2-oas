@@ -6,14 +6,16 @@ require_relative '../pathname_manager'
 
 module RoutesToSwaggerDocs
   module Schema
-    class PathItemFileManager < IncludeRefBaseFileManager
-      def initialize(path, path_type = :ref)
-        super
-        @recursive_search_class = ComponentsFileManager
-      end
+    module V3
+      class PathItemFileManager < IncludeRefBaseFileManager
+        def initialize(path, path_type = :ref)
+          super
+          @recursive_search_class = ComponentsFileManager
+        end
 
-      def skip_save?
-        save_file_path.in? paths_config.many_paths_file_paths
+        def skip_save?
+          save_file_path.in? paths_config.many_paths_file_paths
+        end
       end
     end
   end
