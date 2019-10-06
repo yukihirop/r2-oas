@@ -263,8 +263,8 @@ We explain the environment variables that can be set.
 
 |variable|description|default|
 |--------|-----------|-------|
-|PATHS_FILE|Specify one schema path|`""`|
-|SWAGGER_FILE|Specify swagger file to analyze|`""`|
+|PATHS_FILE|Specify one paths file path|`""`|
+|SWAGGER_FILE|Specify swagger file path to analyze|`""`|
 
 
 ## .paths
