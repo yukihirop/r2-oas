@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 require_relative 'base_analyzer'
-require_relative '../manager/file_manager'
-require_relative '../manager/diff/tag_diff_manager'
-require_relative '../../errors'
+require 'routes_to_swagger_docs/schema/manager/file_manager'
+require 'routes_to_swagger_docs/schema/manager/diff/tag_diff_manager'
+require 'routes_to_swagger_docs/errors'
 
 # Scope Rails
 module RoutesToSwaggerDocs

@@ -1,6 +1,6 @@
 require_relative '../base_analyzer'
-require_relative '../../manager/file/components_file_manager'
-require_relative '../../manager/diff/components_diff_manager'
+require 'routes_to_swagger_docs/schema/manager/file/components_file_manager'
+require 'routes_to_swagger_docs/schema/manager/diff/components_diff_manager'
 
 # Scope Rails
 module RoutesToSwaggerDocs

@@ -8,7 +8,7 @@ require 'fileutils'
 require 'shell'
 require 'forwardable'
 
-require_relative 'analyzer'
+require 'routes_to_swagger_docs/schema/v3/analyzer'
 require 'routes_to_swagger_docs/schema/v3/generator'
 require_relative 'base'
 

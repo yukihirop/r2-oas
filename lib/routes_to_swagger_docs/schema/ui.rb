@@ -6,7 +6,7 @@ require 'watir'
 require 'shell'
 require 'forwardable'
 
-require_relative 'analyzer'
+require 'routes_to_swagger_docs/schema/v3/analyzer'
 require_relative 'base'
 
 # Scope Rails

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../errors'
-require_relative '../base'
-require_relative '../../shared/all'
+require 'routes_to_swagger_docs/errors'
+require 'routes_to_swagger_docs/schema/base'
+require 'routes_to_swagger_docs/shared/all'
 
 # Scope Rails
 module RoutesToSwaggerDocs
