@@ -22,7 +22,7 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       analyzer_options = { type: :existing, existing_schema_file_path: existing_schema_file_path }
-      analyzer = RoutesToSwaggerDocs::Schema::V3::Analyzer.new({}, {}, analyzer_options)
+      analyzer = RoutesToSwaggerDocs::Schema::Analyzer.new({}, {}, analyzer_options)
       analyzer.analyze_docs
 
       generator_options = { skip_generate_docs: true }
