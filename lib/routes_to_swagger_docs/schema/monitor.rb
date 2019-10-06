@@ -33,7 +33,7 @@ module RoutesToSwaggerDocs
       def process_after_close_monitor
         options = { type: :edited }
         @after_schema_data = fetch_after_schema_data
-        analyzer = Analyzer.new(@before_schema_data, @after_schema_data, options)
+        analyzer = V3::Analyzer.new(@before_schema_data, @after_schema_data, options)
         analyzer.analyze_docs
       end
 

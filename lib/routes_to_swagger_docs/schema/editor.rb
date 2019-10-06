@@ -68,7 +68,7 @@ module RoutesToSwaggerDocs
         options = { type: :edited }
         save_edited_schema
         conv_after_schema_data = YAML.load(@after_schema_data)
-        analyzer = Analyzer.new(@before_schema_data, conv_after_schema_data, options)
+        analyzer = V3::Analyzer.new(@before_schema_data, conv_after_schema_data, options)
         analyzer.analyze_docs
       end
 
