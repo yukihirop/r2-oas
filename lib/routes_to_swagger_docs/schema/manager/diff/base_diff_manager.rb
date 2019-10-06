@@ -2,8 +2,6 @@
 
 require 'easy_diff'
 
-require 'routes_to_swagger_docs/shared/all'
-
 module RoutesToSwaggerDocs
   module Schema
     class BaseDiffManager < Base

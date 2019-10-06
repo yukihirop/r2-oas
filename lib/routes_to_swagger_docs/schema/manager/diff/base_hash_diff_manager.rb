@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'routes_to_swagger_docs/shared/all'
-
 module RoutesToSwaggerDocs
   module Schema
     class BaseHashDiffManager < BaseDiffManager

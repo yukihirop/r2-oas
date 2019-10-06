@@ -16,6 +16,7 @@ module RoutesToSwaggerDocs
     require 'routes_to_swagger_docs/task'
 
     autoload :NotImplementError, 'routes_to_swagger_docs/errors'
+    autoload :Sortable, 'routes_to_swagger_docs/shared/all'
 
     module Schema
       extend ActiveSupport::Autoload
