@@ -8,10 +8,8 @@ module RoutesToSwaggerDocs
     class ComponentsCleaner < BaseCleaner
       def initialize(options = {})
         super
-        @schemas_file_paths          = Dir.glob("#{schema_save_dir_path}/components/schemas/**/**.yml")
-        @request_bodies_file_paths   = Dir.glob("#{schema_save_dir_path}/components/requestBodies/**/**.yml")
-        @security_schemes_file_paths = Dir.glob("#{schema_save_dir_path}/components/securitySchemes/**/**.yml")
-        @parameters_file_paths       = Dir.glob("#{schema_save_dir_path}/components/parameters/**/**.yml")
+        @components_file_paths = Dir.glob("#{schema_save_dir_path}/components/**/**.yml")
+        @security_schemes_paths = Dir.glob("#{schema_save_dir_path}/components/securitySchemes/**/**.yml")
       end
 
       def clean_docs
@@ -35,12 +33,7 @@ module RoutesToSwaggerDocs
       end
 
       def all_file_paths
-        (
-          @schemas_file_paths + 
-          @request_bodies_file_paths + 
-          @security_schemes_file_paths + 
-          @parameters_file_paths
-        ).uniq
+        (@components_file_paths - @security_schemes_paths).uniq
       end
     end
   end
