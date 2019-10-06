@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'routes_to_swagger_docs/schema/v3/base'
+
 module RoutesToSwaggerDocs
   module Schema
     module V3
@@ -22,6 +24,16 @@ module RoutesToSwaggerDocs
             'securitySchemes'
           when /parameters/
             'parameters'
+          when /responses/
+            'responses'
+          when /examples/
+            'examples'
+          when /headers/
+            'headers'
+          when /links/
+            'links'
+          when /callbacks/
+            'callbacks'
           end
         end
 

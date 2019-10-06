@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'routes_to_swagger_docs/schema/v3/base'
 require 'routes_to_swagger_docs/routing/parser'
 require 'routes_to_swagger_docs/schema/v3/object/openapi_object'
 require 'routes_to_swagger_docs/schema/v3/manager/file/path_item_file_manager'
