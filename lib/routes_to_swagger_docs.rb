@@ -15,6 +15,7 @@ module RoutesToSwaggerDocs
     extend Configuration
     require 'routes_to_swagger_docs/task'
 
+    autoload :Base, 'routes_to_swagger_docs/base'
     autoload :NotImplementError, 'routes_to_swagger_docs/errors'
     autoload :Sortable, 'routes_to_swagger_docs/shared/all'
 

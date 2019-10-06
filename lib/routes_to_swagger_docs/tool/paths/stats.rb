@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'routes_to_swagger_docs/base'
 require 'terminal-table'
 require 'paint'
 require 'forwardable'
