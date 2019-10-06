@@ -10,8 +10,7 @@ require 'forwardable'
 
 # Can't use ActiveSupport::Autroload
 # ThreadError: can't be called from trap context
-require 'routes_to_swagger_docs/schema/v3/analyzer'
-require 'routes_to_swagger_docs/schema/v3/generator'
+require 'routes_to_swagger_docs/schema/analyzer'
 require_relative 'base'
 
 # Scope Rails
@@ -68,7 +67,7 @@ module RoutesToSwaggerDocs
         options = { type: :edited }
         save_edited_schema
         conv_after_schema_data = YAML.load(@after_schema_data)
-        analyzer = V3::Analyzer.new(@before_schema_data, conv_after_schema_data, options)
+        analyzer = Analyzer.new(@before_schema_data, conv_after_schema_data, options)
         analyzer.analyze_docs
       end
 
