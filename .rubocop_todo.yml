@@ -43,7 +43,7 @@ Lint/AmbiguousOperator:
     - 'lib/routes_to_swagger_docs/app_configuration/tool.rb'
     - 'lib/routes_to_swagger_docs/configuration.rb'
     - 'lib/routes_to_swagger_docs/app_configuration/server.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/base_object.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/object/base_object.rb'
     - 'lib/routes_to_swagger_docs/base.rb'
     - 'lib/routes_to_swagger_docs/routing/parser.rb'
     - 'lib/routes_to_swagger_docs/app_configuration.rb'
@@ -66,10 +66,10 @@ Metrics/MethodLength:
     - 'lib/routes_to_swagger_docs/schema/analyzer/components/schemas_analyzer.rb'
     - 'lib/routes_to_swagger_docs/schema/analyzer/tag_analyzer.rb'
     - 'lib/routes_to_swagger_docs/schema/analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/paths_object.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/components_object.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/path_item_object.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/info_object.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/object/paths_object.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/object/components_object.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/object/path_item_object.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/object/info_object.rb'
     - 'lib/routes_to_swagger_docs/schema/manager/diff/base_array_diff_manager.rb'
     - 'lib/routes_to_swagger_docs/schema/manager/diff/base_hash_diff_manager.rb'
     - 'lib/routes_to_swagger_docs/schema/manager/file/components/request_body_file_manager.rb'
@@ -81,7 +81,7 @@ Metrics/MethodLength:
     - 'lib/routes_to_swagger_docs/schema/generator/schema_generator.rb'
     - 'lib/routes_to_swagger_docs/schema/generator/components/schema_generator.rb'
     - 'lib/routes_to_swagger_docs/schema/generator/doc_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/components/request_body_object.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/object/components/request_body_object.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -121,7 +121,7 @@ Style/AsciiComments:
 Lint/UnderscorePrefixedVariableName:
   Exclude:
     - 'lib/routes_to_swagger_docs/logger/stdout_logger.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/components/request_body_object.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/object/components/request_body_object.rb'
 
 Lint/UselessAccessModifier:
   Exclude:
@@ -145,12 +145,12 @@ Style/NumericPredicate:
 
 Metrics/ClassLength:
   Exclude:
-    - 'lib/routes_to_swagger_docs/schema/v3/path_item_object.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/object/path_item_object.rb'
 
 Metrics/ParameterLists:
   Exclude:
-    - 'lib/routes_to_swagger_docs/schema/v3/path_item_object.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/components/schema_object.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/object/path_item_object.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/object/components/schema_object.rb'
 
 Layout/EndAlignment:
   Exclude:

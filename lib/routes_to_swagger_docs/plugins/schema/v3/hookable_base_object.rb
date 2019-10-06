@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../schema/v3/base_object'
+require_relative '../../../schema/v3/object/base_object'
 require_relative '../../../hooks/hook'
 require_relative '../../../errors'
 

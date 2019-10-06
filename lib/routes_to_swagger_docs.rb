@@ -3,7 +3,7 @@
 require_relative 'routes_to_swagger_docs/version'
 require_relative 'routes_to_swagger_docs/configuration'
 require_relative 'routes_to_swagger_docs/errors'
-require_relative 'routes_to_swagger_docs/schema/v3/public'
+require_relative 'routes_to_swagger_docs/schema/v3/object/public'
 
 module RoutesToSwaggerDocs
   if !defined?(::Rails)
