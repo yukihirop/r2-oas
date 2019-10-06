@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../base'
-require_relative '../manager/file_manager'
+require 'routes_to_swagger_docs/schema/base'
+require 'routes_to_swagger_docs/schema/manager/file_manager'
 
 module RoutesToSwaggerDocs
   module Schema
