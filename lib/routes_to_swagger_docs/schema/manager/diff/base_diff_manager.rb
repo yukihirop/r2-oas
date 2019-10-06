@@ -2,7 +2,7 @@
 
 require 'easy_diff'
 
-require_relative '../../../shared/all'
+require 'routes_to_swagger_docs/shared/all'
 
 module RoutesToSwaggerDocs
   module Schema

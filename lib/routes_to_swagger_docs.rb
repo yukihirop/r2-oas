@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'routes_to_swagger_docs/version'
-require_relative 'routes_to_swagger_docs/configuration'
-require_relative 'routes_to_swagger_docs/errors'
-require_relative 'routes_to_swagger_docs/schema/v3/object/public'
+require 'routes_to_swagger_docs/version'
+require 'routes_to_swagger_docs/configuration'
+require 'routes_to_swagger_docs/errors'
+require 'routes_to_swagger_docs/schema/v3/object/public'
 
 module RoutesToSwaggerDocs
   extend ActiveSupport::Autoload
@@ -13,7 +13,7 @@ module RoutesToSwaggerDocs
   # support Rails version
   elsif ::Rails::VERSION::STRING >= '4.2.5.1'
     extend Configuration
-    require_relative 'routes_to_swagger_docs/task'
+    require 'routes_to_swagger_docs/task'
 
     autoload :NotImplementError, 'routes_to_swagger_docs/errors'
 

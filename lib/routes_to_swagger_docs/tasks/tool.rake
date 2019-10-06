@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative '../deploy/client'
-require_relative '../tool/paths/ls'
-require_relative '../tool/paths/stats'
-require_relative '../task_logging'
+require 'routes_to_swagger_docs/deploy/client'
+require 'routes_to_swagger_docs/tool/paths/ls'
+require 'routes_to_swagger_docs/tool/paths/stats'
+require 'routes_to_swagger_docs/task_logging'
 load File.expand_path('common.rake', __dir__)
 
 namespace :routes do

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../../../schema/v3/object/base_object'
-require_relative '../../../hooks/hook'
+require 'routes_to_swagger_docs/schema/v3/object/base_object'
+require 'routes_to_swagger_docs/hooks/hook'
 
 module RoutesToSwaggerDocs
   module Plugins
