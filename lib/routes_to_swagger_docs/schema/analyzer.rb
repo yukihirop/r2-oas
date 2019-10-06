@@ -15,7 +15,7 @@ module RoutesToSwaggerDocs
         when :v3
           @analyzer = V3::Analyzer.new(before_schema_data, after_schema_data, options)
         else
-          raise "Do not support version: #{version}"
+          raise "Do not support version: #{::RoutesToSwaggerDocs.version}"
         end
       end
     end
