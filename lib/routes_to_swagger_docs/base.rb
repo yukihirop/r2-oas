@@ -2,6 +2,8 @@
 
 module RoutesToSwaggerDocs
   class Base
+    SUPPORT_COMPONENTS_OBJECTS = %w(schemas requestBodies securitySchemes parameters)
+
     def initialize(options = {})
       @options = options
 
@@ -13,6 +15,10 @@ module RoutesToSwaggerDocs
     private
 
     attr_accessor *AppConfiguration::VALID_OPTIONS_KEYS
+
+    def support_components_objects
+      SUPPORT_COMPONENTS_OBJECTS
+    end
 
     def merged_options
       if @options.present?

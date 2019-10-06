@@ -5,8 +5,6 @@ require_relative '../base'
 module RoutesToSwaggerDocs
   module Schema
     class PathnameManager < Base
-      COMPONENTS_OBJECTS = %i(schemas requestBodies securitySchemes parameters)
-
       # e.x.) path = "#/components/schemas/Account" (when path_type = :ref)
       def initialize(path, path_type = :full)
         super()
@@ -18,24 +16,24 @@ module RoutesToSwaggerDocs
       def object_type
         case @path
         when /schemas/
-          :schemas
+          'schemas'
         when /requestBodies/
-          :requestBodies
+          'requestBodies'
         when /securitySchemes/
-          :securitySchemes
+          'securitySchemes'
         when /parameters/
-          :parameters
+          'parameters'
         end
       end
 
       def relative_save_file_path
         result = normalized_about_path_type
-        if (@path_type.in? %i[ref relative]) && (COMPONENTS_OBJECTS.include?(object_type))
+        if (@path_type.in? %i[ref relative]) && (support_components_objects.include?(object_type))
           dirname = File.dirname(result)
           basename = File.basename(result, '.yml')
           basename = basename.gsub(ns_div, '/').underscore
           "#{schema_save_dir_path}/#{dirname}/#{basename}.yml"
-        elsif @path_type.eql?(:relative) && !(COMPONENTS_OBJECTS.include?(object_type))
+        elsif @path_type.eql?(:relative) && !(support_components_objects.include?(object_type))
           "#{schema_save_dir_path}/#{result.underscore}"
         elsif @path_type.eql?(:full)
           result

@@ -7,20 +7,18 @@ require_relative 'components/object_analyzer'
 module RoutesToSwaggerDocs
   module Schema
     class ComponentsAnalyzer < BaseAnalyzer
-      COMPONENTS_OBJECTS = %i(schemas requestBodies securitySchemes parameters)
-
       def initialize(before_schema_data, after_schema_data, options = {})
         super
         @options = options
       end      
 
       def analyze_docs
-        COMPONENTS_OBJECTS.each do |object_name|
+        support_components_objects.each do |object_name|
           logger.info "[Analyze Swagger file (components/#{object_name})] start"
           Components::ObjectAnalyzer.new(
             @before_schema_data, 
             @after_schema_data, 
-            @options.merge({ middle_category: object_name.to_s })
+            @options.merge({ middle_category: object_name })
           ).analyze_docs
           logger.info "[Analyze Swagger file (components/#{object_name})] end"
         end
