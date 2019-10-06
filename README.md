@@ -60,6 +60,7 @@ In your rails project, Write `config/environments/development.rb` like that:
 ```ruby
 # default setting
 RoutesToSwaggerDocs.configure do |config|
+  config.version                            = :v3
   config.root_dir_path                      = "./swagger_docs"
   config.schema_save_dir_name               = "src"
   config.doc_save_file_name                 = "swagger_doc.yml"
@@ -210,7 +211,8 @@ we explain the options that can be set.
 
 |option|description|default|
 |------|-----------|---|
-|root_dir_path|Root directory for storing products.| `"./swagger_docs"`
+|version|OpenAPI schema version| `:v3` |
+|root_dir_path|Root directory for storing products.| `"./swagger_docs"` |
 |schema_save_dir_name|Directory name for storing swagger schemas|`"src"`|
 |doc_save_file_name|File name for storing swagger doc|`"swagger_doc.yml"`|
 |force_update_schema|Force update schema from routes data|`false`|
