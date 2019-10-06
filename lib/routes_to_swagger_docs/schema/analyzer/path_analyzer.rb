@@ -3,7 +3,7 @@
 require_relative 'base_analyzer'
 require_relative '../manager/file/path_item_file_manager'
 require_relative '../manager/file_manager'
-require_relative '../v3/tag_object'
+require 'routes_to_swagger_docs/schema/v3/object/tag_object'
 
 
 # Scope Rails

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../routing/parser'
-require_relative '../v3/openapi_object'
+require 'routes_to_swagger_docs/schema/v3/object/openapi_object'
 require_relative '../base'
 require_relative '../squeezer'
 require_relative '../../shared/all'

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../plugins/schema/object/hookable_base_object'
+require 'routes_to_swagger_docs/plugins/schema/object/hookable_base_object'
 require_relative 'components/schema_object'
 require_relative 'components/request_body_object'
 
