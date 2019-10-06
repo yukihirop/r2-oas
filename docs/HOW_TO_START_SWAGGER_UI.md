@@ -188,10 +188,10 @@ I, [2019-04-29T12:54:14.333082 #10516]  INFO -- : [Routes to Swagger docs] end
 ## Advanced Usage
 
 If you want to generate docs by squeezing unit paths (For example, `api/v1/task.yml`), 
-you set UNIT_PATHS_FILE_PATH environment like this:
+you set PATHS_FILE environment like this:
 
 ```bash
-$ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor
+$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor
 ```
 
 <img alt="swagger_ui_by_specify_schemas" src="https://user-images.githubusercontent.com/11146767/56875847-38084380-6a7e-11e9-90db-9710459da44c.png" width="546">

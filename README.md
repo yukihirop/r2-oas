@@ -138,17 +138,17 @@ You can execute the following command in the root directory of rails.
 ```bash
 $ # Generate docs
 $ bundle exec rake routes:swagger:docs                                                                        # Generate docs
-$ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs    # Generate docs by specify unit paths
+$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs    # Generate docs by specify unit paths
 
 $ # Start swagger editor
 $ bundle exec rake routes:swagger:editor                                                                      # Start swagger editor
-$ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor  # Start swagger editor by specify unit paths
+$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor  # Start swagger editor by specify unit paths
 $ # Start swagger ui
 $ bundle exec rake routes:swagger:ui                                                                          # Start swagger ui
-$ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # Start swagger ui by specify unit paths
+$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # Start swagger ui by specify unit paths
 $ # Monitor swagger document
 $ bundle exec rake routes:swagger:monitor                                                                     # Monitor swagger document
-$ UNIT_PATHS_FILE_PATH="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # Monitor swagger by specify unit paths
+$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # Monitor swagger by specify unit paths
 
 $ # Analyze docs
 $ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
@@ -263,8 +263,8 @@ We explain the environment variables that can be set.
 
 |variable|description|default|
 |--------|-----------|-------|
-|UNIT_PATHS_FILE_PATH|Specify one schema path|`""`|
-|SWAGGER_FILE|Specify swagger file to analyze|`""`|
+|PATHS_FILE|Specify one paths file path|`""`|
+|SWAGGER_FILE|Specify swagger file path to analyze|`""`|
 
 
 ## .paths

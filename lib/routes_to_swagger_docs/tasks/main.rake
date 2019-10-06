@@ -99,7 +99,7 @@ namespace :routes do
     private
 
     def unit_paths_file_path
-      ENV.fetch('UNIT_PATHS_FILE_PATH', '')
+      ENV.fetch('PATHS_FILE', '')
     end
 
     def existing_schema_file_path

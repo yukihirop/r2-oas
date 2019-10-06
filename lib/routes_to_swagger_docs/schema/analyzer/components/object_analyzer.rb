@@ -1,16 +1,22 @@
 require_relative '../base_analyzer'
-require_relative '../../manager/file/components/parameter_file_manager'
-require_relative '../../manager/diff/components/parameter_diff_manager'
+require_relative '../../manager/file/components_file_manager'
+require_relative '../../manager/diff/components_diff_manager'
 
 # Scope Rails
 module RoutesToSwaggerDocs
   module Schema
     module Components
-      class ParametersAnalyzer < BaseAnalyzer
+      class ObjectAnalyzer < BaseAnalyzer
+        def initialize(before_schema_data, after_schema_data, options = {})
+          super(before_schema_data, after_schema_data, options.except(:middle_category))
+          @major_category = 'components'
+          @middle_category = options[:middle_category]
+        end
+
         def analyze_docs
-          diff_manager = ParameterDiffManager.new(@before_schema_data, @after_schema_data)
+          diff_manager = ComponentsDiffManager.new(@before_schema_data, @after_schema_data, { middle_category: @middle_category })
           diff_manager.process_by_using_diff_data do |schema_name, is_removed, is_added, is_leftovers, after_edited_data|
-            file_manager = Components::ParameterFileManager.new("#/components/parameters/#{schema_name}", :ref)
+            file_manager = ComponentsFileManager.build("#/#{@major_category}/#{@middle_category}/#{schema_name}", :ref)
             save_file_path = file_manager.save_file_path
 
             if is_removed && !is_added && !is_leftovers

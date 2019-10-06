@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../../plugins/schema/v3/hookable_base_object'
-require_relative '../../manager/file/components/schema_file_manager'
+require_relative '../../manager/file/components_file_manager'
 
 module RoutesToSwaggerDocs
   module Schema
@@ -21,7 +21,7 @@ module RoutesToSwaggerDocs
           def to_doc
             execute_before_create(@schema_name)
             create_doc do
-              child_file_manager = RoutesToSwaggerDocs::Schema::Components::SchemaFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
+              child_file_manager = RoutesToSwaggerDocs::Schema::ComponentsFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
               schema_object = components_schema_object_class.new(@route_data, @path)
 
               unless child_file_manager.skip_save?
@@ -46,7 +46,7 @@ module RoutesToSwaggerDocs
           end
 
           def create_doc
-            file_manager = RoutesToSwaggerDocs::Schema::Components::SchemaFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
+            file_manager = RoutesToSwaggerDocs::Schema::ComponentsFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
             doc.deep_merge!(
               'content' => {
                 'application/json' => {
@@ -72,7 +72,7 @@ module RoutesToSwaggerDocs
           end
 
           def generate?
-            file_manager = RoutesToSwaggerDocs::Schema::Components::SchemaFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
+            file_manager = RoutesToSwaggerDocs::Schema::ComponentsFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
             (@verb.in? http_methods_when_generate_request_body) && !file_manager.skip_save?
           end
 
