@@ -2,7 +2,7 @@
 
 require 'routes_to_swagger_docs/routing/parser'
 require 'routes_to_swagger_docs/schema/v3/object/openapi_object'
-require 'routes_to_swagger_docs/schema/manager/file/path_item_file_manager'
+require 'routes_to_swagger_docs/schema/v3/manager/file/path_item_file_manager'
 
 module RoutesToSwaggerDocs
   module Schema
