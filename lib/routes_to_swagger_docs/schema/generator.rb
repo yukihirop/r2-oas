@@ -1,25 +1,22 @@
 # frozen_string_literal: true
 
-require 'fileutils'
 require 'forwardable'
-require_relative '../routing/parser'
-require_relative 'generator/doc_generator'
-require_relative 'generator/base_generator'
+require 'routes_to_swagger_docs/schema/v3/generator'
 
 module RoutesToSwaggerDocs
   module Schema
-    class Generator < BaseGenerator
+    class Generator
       extend Forwardable
 
-      def_delegators :@doc_generator, :swagger_doc
+      def_delegators :@generator, :generate_docs, :swagger_doc
 
       def initialize(options = {})
-        super
-        @doc_generator = DocGenerator.new(options)
-      end
-
-      def generate_docs
-        @doc_generator.generate_docs
+        case ::RoutesToSwaggerDocs.version
+        when :v3
+          @generator = V3::Generator.new(options)
+        else
+          raise "Do not support version: #{::RoutesToSwaggerDocs.version}"
+        end
       end
     end
   end

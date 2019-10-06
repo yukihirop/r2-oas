@@ -1,8 +1,6 @@
 # frozen_string_literal:true
 
 require 'eventmachine'
-require_relative 'analyzer'
-require_relative 'base'
 
 # Scope Rails
 module RoutesToSwaggerDocs

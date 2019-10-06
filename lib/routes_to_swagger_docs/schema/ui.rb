@@ -6,9 +6,6 @@ require 'watir'
 require 'shell'
 require 'forwardable'
 
-require_relative 'analyzer'
-require_relative 'base'
-
 # Scope Rails
 module RoutesToSwaggerDocs
   module Schema

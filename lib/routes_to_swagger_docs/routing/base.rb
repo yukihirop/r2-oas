@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../base'
+# MEMO
+# load this file before autoload ::RoutesToSwaggerDocs::Base
+require 'routes_to_swagger_docs/base'
 
 module RoutesToSwaggerDocs
   module Routing

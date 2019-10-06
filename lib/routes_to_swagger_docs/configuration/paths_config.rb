@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../schema/manager/file/path_item_file_manager'
+require 'routes_to_swagger_docs/schema/manager/file/path_item_file_manager'
 
 module RoutesToSwaggerDocs
   module Configuration

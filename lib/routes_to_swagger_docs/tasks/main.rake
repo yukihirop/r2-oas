@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
-require_relative '../schema/generator'
-require_relative '../schema/editor'
-require_relative '../schema/ui'
-require_relative '../schema/analyzer'
-require_relative '../schema/monitor'
-require_relative '../schema/cleaner'
-require_relative '../task_logging'
+require 'routes_to_swagger_docs/schema/editor'
+require 'routes_to_swagger_docs/schema/ui'
+require 'routes_to_swagger_docs/schema/monitor'
+require 'routes_to_swagger_docs/task_logging'
 load File.expand_path('common.rake', __dir__)
 
 namespace :routes do

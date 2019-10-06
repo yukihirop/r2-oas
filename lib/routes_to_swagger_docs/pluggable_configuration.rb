@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'schema/v3/public'
+require_relative 'schema/v3/object/public'
 
 module RoutesToSwaggerDocs
   module PluggableConfiguration

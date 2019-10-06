@@ -8,8 +8,9 @@ require 'fileutils'
 require 'shell'
 require 'forwardable'
 
-require_relative 'analyzer'
-require_relative 'generator'
+# Can't use ActiveSupport::Autroload
+# ThreadError: can't be called from trap context
+require 'routes_to_swagger_docs/schema/analyzer'
 require_relative 'base'
 
 # Scope Rails

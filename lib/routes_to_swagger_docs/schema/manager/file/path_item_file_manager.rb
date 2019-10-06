@@ -1,19 +1,21 @@
-# frozen_string_literal: true
-
-require_relative 'include_ref_base_file_manager'
-require_relative 'components_file_manager'
-require_relative '../pathname_manager'
-
 module RoutesToSwaggerDocs
   module Schema
-    class PathItemFileManager < IncludeRefBaseFileManager
+    class PathItemFileManager
+      extend Forwardable
+        
+      def_delegators :@manager, :skip_save?, :descendants_paths, :descendants_ref_paths
+
       def initialize(path, path_type = :ref)
-        super
-        @recursive_search_class = ComponentsFileManager
+        case ::RoutesToSwaggerDocs.version
+        when :v3
+          @manager = V3::PathItemFileManager.new(path, path_type)
+        else
+          raise "Do not support version: #{::RoutesToSwaggerDocs.version}"
+        end
       end
 
-      def skip_save?
-        save_file_path.in? paths_config.many_paths_file_paths
+      class << self
+        alias :build :new
       end
     end
   end
