@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../schema/v3/generator'
 require_relative '../deploy/client'
 require_relative '../tool/paths/ls'
 require_relative '../tool/paths/stats'

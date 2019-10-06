@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../schema/v3/generator'
 require_relative '../schema/editor'
 require_relative '../schema/ui'
-require_relative '../schema/v3/analyzer'
 require_relative '../schema/monitor'
-require_relative '../schema/v3/cleaner'
 require_relative '../task_logging'
 load File.expand_path('common.rake', __dir__)
 

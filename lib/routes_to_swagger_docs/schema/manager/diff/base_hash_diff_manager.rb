@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../base'
 require_relative '../../../shared/all'
-require_relative '../../../errors'
 
 module RoutesToSwaggerDocs
   module Schema

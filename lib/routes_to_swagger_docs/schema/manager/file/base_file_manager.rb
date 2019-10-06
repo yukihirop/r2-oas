@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../base'
-require_relative '../../../errors'
 require_relative '../pathname_manager'
 
 module RoutesToSwaggerDocs

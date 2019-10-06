@@ -8,6 +8,8 @@ require 'fileutils'
 require 'shell'
 require 'forwardable'
 
+# Can't use ActiveSupport::Autroload
+# ThreadError: can't be called from trap context
 require 'routes_to_swagger_docs/schema/v3/analyzer'
 require 'routes_to_swagger_docs/schema/v3/generator'
 require_relative 'base'

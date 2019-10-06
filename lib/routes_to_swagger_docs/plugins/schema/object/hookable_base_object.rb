@@ -2,7 +2,6 @@
 
 require_relative '../../../schema/v3/object/base_object'
 require_relative '../../../hooks/hook'
-require_relative '../../../errors'
 
 module RoutesToSwaggerDocs
   module Plugins
