@@ -8,18 +8,20 @@ require_relative 'generator/base_generator'
 
 module RoutesToSwaggerDocs
   module Schema
-    class Generator < BaseGenerator
-      extend Forwardable
+    module V3
+      class Generator < BaseGenerator
+        extend Forwardable
 
-      def_delegators :@doc_generator, :swagger_doc
+        def_delegators :@doc_generator, :swagger_doc
 
-      def initialize(options = {})
-        super
-        @doc_generator = DocGenerator.new(options)
-      end
+        def initialize(options = {})
+          super
+          @doc_generator = DocGenerator.new(options)
+        end
 
-      def generate_docs
-        @doc_generator.generate_docs
+        def generate_docs
+          @doc_generator.generate_docs
+        end
       end
     end
   end

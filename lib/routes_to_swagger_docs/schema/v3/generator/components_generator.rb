@@ -6,29 +6,31 @@ require_relative 'components/request_body_generator'
 
 module RoutesToSwaggerDocs
   module Schema
-    class ComponentsGenerator < BaseGenerator
-      def initialize(schema_data = {}, options = {})
-        super(options)
-        @components = schema_data['components'] || scehma_data[:components]
-        @options = options
-      end
-
-      def generate_docs
-        support_components_objects.each do |object_name|
-          generator_class(object_name).new(@components, @options.merge({
-            middle_category: object_name
-          })).generate_docs
+    module V3
+      class ComponentsGenerator < BaseGenerator
+        def initialize(schema_data = {}, options = {})
+          super(options)
+          @components = schema_data['components'] || scehma_data[:components]
+          @options = options
         end
-      end
 
-      private
+        def generate_docs
+          support_components_objects.each do |object_name|
+            generator_class(object_name).new(@components, @options.merge({
+              middle_category: object_name
+            })).generate_docs
+          end
+        end
 
-      def generator_class(object_name)
-        case object_name
-        when 'requestBodies'
-          Components::RequestBodyGenerator
-        else
-          Components::ObjectGenerator
+        private
+
+        def generator_class(object_name)
+          case object_name
+          when 'requestBodies'
+            Components::RequestBodyGenerator
+          else
+            Components::ObjectGenerator
+          end
         end
       end
     end
