@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'routes_to_swagger_docs/schema/v3/base'
+
 module RoutesToSwaggerDocs
   module Schema
     module V3
