@@ -87,7 +87,7 @@ namespace :routes do
       generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
       generator.generate_docs
 
-      cleaner = RoutesToSwaggerDocs::Schema::V3::Cleaner.new
+      cleaner = RoutesToSwaggerDocs::Schema::Cleaner.new
       cleaner.clean_docs
 
       logger.info '[Routes to Swagger docs] end'
