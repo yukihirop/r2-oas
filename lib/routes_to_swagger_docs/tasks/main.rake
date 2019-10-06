@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../schema/generator'
+require_relative '../schema/v3/generator'
 require_relative '../schema/editor'
 require_relative '../schema/ui'
 require_relative '../schema/analyzer'

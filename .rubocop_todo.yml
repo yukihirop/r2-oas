@@ -18,9 +18,9 @@ Metrics/AbcSize:
   # a Float.
   Max: 20
   Exclude:
-    - 'lib/routes_to_swagger_docs/schema/generator/schema_generator.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/generator/schema_generator.rb'
     - 'lib/routes_to_swagger_docs/schema/analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/generator/components/request_body_generator.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/generator/components/request_body_generator.rb'
 
 Style/Documentation:
   Enabled: false
@@ -76,11 +76,11 @@ Metrics/MethodLength:
     - 'lib/routes_to_swagger_docs/schema/manager/file/path_item_file_manager.rb'
     - 'lib/routes_to_swagger_docs/schema/manager/file/include_ref_base_file_manager.rb'
     - 'lib/routes_to_swagger_docs/schema/manager/pathname_manager.rb'
-    - 'lib/routes_to_swagger_docs/schema/generator/path_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/generator/components/request_body_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/generator/schema_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/generator/components/schema_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/generator/doc_generator.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/generator/path_generator.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/generator/components/request_body_generator.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/generator/schema_generator.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/generator/components/schema_generator.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/generator/doc_generator.rb'
     - 'lib/routes_to_swagger_docs/schema/v3/object/components/request_body_object.rb'
 
 Metrics/CyclomaticComplexity:
@@ -141,7 +141,7 @@ Style/AccessModifierDeclarations:
 
 Style/NumericPredicate:
   Exclude:
-    - 'lib/routes_to_swagger_docs/schema/generator/base_generator.rb'
+    - 'lib/routes_to_swagger_docs/schema/v3/generator/base_generator.rb'
 
 Metrics/ClassLength:
   Exclude:
