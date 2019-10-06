@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../base'
+require 'routes_to_swagger_docs/schema/base'
 
 module RoutesToSwaggerDocs
   module Schema
