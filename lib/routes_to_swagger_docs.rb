@@ -23,7 +23,6 @@ module RoutesToSwaggerDocs
       extend ActiveSupport::Autoload
 
       autoload :Base, 'routes_to_swagger_docs/schema/base'
-      autoload :Squeezer, 'routes_to_swagger_docs/schema/v3/squeezer'
       
       module V3
         extend ActiveSupport::Autoload
@@ -31,6 +30,7 @@ module RoutesToSwaggerDocs
         autoload :Generator, 'routes_to_swagger_docs/schema/v3/generator'
         autoload :Analyzer, 'routes_to_swagger_docs/schema/v3/analyzer'
         autoload :Cleaner, 'routes_to_swagger_docs/schema/v3/cleaner'
+        autoload :Squeezer, 'routes_to_swagger_docs/schema/v3/squeezer'
       end
     end
   else
