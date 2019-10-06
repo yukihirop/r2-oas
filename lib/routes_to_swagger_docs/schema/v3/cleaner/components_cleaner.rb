@@ -25,7 +25,7 @@ module RoutesToSwaggerDocs
 
         def clean_target_files
           used_file_paths = many_paths_file_paths.each_with_object([]) do |unit_paths_path, result|
-            file_manager = Schema::PathItemFileManager.new(unit_paths_path, :full)
+            file_manager = PathItemFileManager.new(unit_paths_path, :full)
             components_file_paths_at_path = file_manager.descendants_ref_paths
             result.push(*components_file_paths_at_path)
           end.uniq
