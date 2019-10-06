@@ -94,7 +94,7 @@ Naming/ConstantName:
 Naming/PredicateName:
   Exclude:
     - 'lib/routes_to_swagger_docs/hooks/hook.rb'
-    - 'lib/routes_to_swagger_docs/plugins/schema/v3/hookable_base_object.rb'
+    - 'lib/routes_to_swagger_docs/plugins/schema/object/hookable_base_object.rb'
 
 Style/DoubleNegation:
   Exclude:
@@ -133,7 +133,7 @@ Style/IdenticalConditionalBranches:
 
 Style/ClassVars:
   Exclude:
-    - 'lib/routes_to_swagger_docs/plugins/schema/v3/hookable_base_object.rb'
+    - 'lib/routes_to_swagger_docs/plugins/schema/object/hookable_base_object.rb'
 
 Style/AccessModifierDeclarations:
   Exclude:
