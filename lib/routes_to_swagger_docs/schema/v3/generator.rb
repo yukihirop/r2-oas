@@ -2,7 +2,7 @@
 
 require 'fileutils'
 require 'forwardable'
-require_relative '../routing/parser'
+require 'routes_to_swagger_docs/routing/parser'
 require_relative 'generator/doc_generator'
 require_relative 'generator/base_generator'
 

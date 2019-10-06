@@ -9,7 +9,7 @@ require 'shell'
 require 'forwardable'
 
 require_relative 'analyzer'
-require_relative 'generator'
+require 'routes_to_swagger_docs/schema/v3/generator'
 require_relative 'base'
 
 # Scope Rails

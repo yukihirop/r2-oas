@@ -4,7 +4,7 @@ require 'yaml'
 require 'fileutils'
 require_relative 'base_generator'
 require_relative 'schema_generator'
-require_relative '../squeezer'
+require 'routes_to_swagger_docs/schema/squeezer'
 
 module RoutesToSwaggerDocs
   module Schema
