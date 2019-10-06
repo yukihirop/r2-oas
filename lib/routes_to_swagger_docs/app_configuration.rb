@@ -6,6 +6,7 @@ require_relative 'app_configuration/tool'
 
 module RoutesToSwaggerDocs
   module AppConfiguration
+    DEFAULT_VERSION = :v3
     DEFAULT_ROOT_DIR_PATH = './swagger_docs'
     DEFAULT_SCHEMA_SAVE_DIR_NAME = 'src'
     DEFAULT_DOC_SAVE_FILE_NAME = 'swagger_doc.yml'
@@ -45,6 +46,7 @@ module RoutesToSwaggerDocs
     DEFAULT_NAMESPACE_TYPE = :underbar
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
+      version
       root_dir_path
       schema_save_dir_name
       doc_save_file_name
@@ -78,7 +80,8 @@ module RoutesToSwaggerDocs
     private
 
     module_function def set_default(target)
-      target.root_dir_path = DEFAULT_ROOT_DIR_PATH
+      target.version                                 = DEFAULT_VERSION
+      target.root_dir_path                           = DEFAULT_ROOT_DIR_PATH
       target.schema_save_dir_name                    = DEFAULT_SCHEMA_SAVE_DIR_NAME
       target.doc_save_file_name                      = DEFAULT_DOC_SAVE_FILE_NAME
       target.force_update_schema                     = DEFAULT_FORCE_UPDATE_SCHEMA
