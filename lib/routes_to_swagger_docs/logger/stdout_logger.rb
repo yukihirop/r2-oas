@@ -104,7 +104,7 @@ module RoutesToSwaggerDocs
       end
 
       def call(severity, time, progname, msg)
-        format(Format, severity[0..0], format_datetime(time), $PROCESS_ID, severity, progname, msg2str(msg))
+        format(Format, severity[0..0], format_datetime(time), $PROCESS_ID.to_i, severity, progname, msg2str(msg))
       end
 
       private
