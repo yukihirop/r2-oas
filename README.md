@@ -187,6 +187,10 @@ $ bundle exec rake routes:swagger:paths_stats
 
 - Rails (>= 4.2.5.1)
 
+## ❤️ Support Ruby Version
+
+- Ruby (>= 2.3.3p222 (2016-11-21 revision 56859) [x86_64-darwin18])
+
 ## ❤️ Support Rouging
 
 - Rails Engine Routing
