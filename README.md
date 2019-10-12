@@ -8,6 +8,7 @@ Provides rake commands to help `generate`, `edit`, `view` and `manage`.
 bundle exec rake routes:swagger:docs    # generate
 bundle exec rake routes:swagger:ui      # view
 bundle exec rake routes:swagger:editor  # edit
+bundle exec rake routes:swagger:dist    # distribute
 ```
 
 ## 💎 Installation
@@ -139,17 +140,16 @@ You can execute the following command in the root directory of rails.
 ```bash
 $ # Generate docs
 $ bundle exec rake routes:swagger:docs                                                                        # Generate docs
-$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs    # Generate docs by specify unit paths
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs    # Generate docs by specify unit paths
 
 $ # Start swagger editor
 $ bundle exec rake routes:swagger:editor                                                                      # Start swagger editor
-$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor  # Start swagger editor by specify unit paths
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor  # Start swagger editor by specify unit paths
 $ # Start swagger ui
 $ bundle exec rake routes:swagger:ui                                                                          # Start swagger ui
-$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # Start swagger ui by specify unit paths
-$ # Monitor swagger document
-$ bundle exec rake routes:swagger:monitor                                                                     # Monitor swagger document
-$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # Monitor swagger by specify unit paths
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # Start swagger ui by specify unit paths
+$ # Monitor swagger document$ bundle exec rake routes:swagger:monitor                                                                     # Monitor swagger document
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # Monitor swagger by specify unit paths
 
 $ # Analyze docs
 $ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
@@ -157,7 +157,11 @@ $ # Clean docs
 $ bundle exec rake routes:swagger:clean
 $ # Deploy docs
 $ bundle exec rake routes:swagger:deploy
-
+$ # Distribute swagger document
+$ bundle exec rake routes:swagger:dist
+$ # Distribute swagger document
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:dist # Distribute swagger document by specify unit paths
+ 
 # Display paths list
 $ bundle exec rake routes:swagger:paths_ls
 # Display paths stats
