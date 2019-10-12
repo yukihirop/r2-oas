@@ -32,6 +32,17 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] end'
     end
 
+    desc 'Distribute Swagger documentation'
+    task dist: [:common] do
+      logger.info '[Routes to Swagger docs] start'
+      
+      generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
+      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
+      generator.generate_docs
+      
+      logger.info '[Routes to Swagger docs] end'
+    end
+
     desc 'Open Swagger Editor'
     task editor: [:common] do
       logger.info '[Routes to Swagger docs] start'
