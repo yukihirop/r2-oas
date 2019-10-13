@@ -23,8 +23,8 @@ module RoutesToSwaggerDocs
         path_parameter: %w[200 404 422]
       },
       post: {
-        default: %w[204 422],
-        path_parameter: %w[204 404 422]
+        default: %w[201 422],
+        path_parameter: %w[201 404 422]
       },
       patch: {
         default: %w[204 422],
