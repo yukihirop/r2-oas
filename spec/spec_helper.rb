@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
+# workaround  uninitialized constant RoutesToSwaggerDocs::ActiveSupport
+require 'action_controller/railtie'
 require 'routes_to_swagger_docs'
+require 'pry'
+
+Dir["./spec/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
