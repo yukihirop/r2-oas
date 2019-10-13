@@ -2,7 +2,7 @@
 
 Generate api docment(OpenAPI) side only from `rails` routing.
 
-Provides rake commands to help `generate`, `edit`, `view` and so on.
+Provides rake commands to help `docs`, `edit`, `view` and so on.
 
 ```bash
 bundle exec rake routes:swagger:docs    # generate
@@ -68,6 +68,7 @@ In your rails project, Write `config/environments/development.rb` like that:
 # default setting
 RoutesToSwaggerDocs.configure do |config|
   config.version                            = :v3
+  #「docs」is not used. 「docs」is reserved word
   config.root_dir_path                      = "./swagger_docs"
   config.schema_save_dir_name               = "src"
   config.doc_save_file_name                 = "swagger_doc.yml"

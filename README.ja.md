@@ -60,6 +60,7 @@ bundle exec routes:swagger:editor
 # default setting
 RoutesToSwaggerDocs.configure do |config|
   config.version                            = :v3
+  #「docs」という名前は使えません。予約語です。
   config.root_dir_path                      = "./swagger_docs"
   config.schema_save_dir_name               = "src"
   config.doc_save_file_name                 = "swagger_doc.yml"
