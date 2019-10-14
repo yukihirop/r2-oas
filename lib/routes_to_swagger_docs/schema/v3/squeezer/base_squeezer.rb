@@ -11,7 +11,7 @@ module RoutesToSwaggerDocs
         end
 
         def squeeze_docs
-          raise 'Please inplement in inherited class.'
+          raise NoImplementError.new 'Please implement in inherited class.'
         end
 
         private
