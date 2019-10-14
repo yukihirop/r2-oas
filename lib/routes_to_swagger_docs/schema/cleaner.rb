@@ -15,7 +15,7 @@ module RoutesToSwaggerDocs
         when :v3
           @cleaner = V3::Cleaner.new(options)
         else
-          raise "Do not support version: #{::RoutesToSwaggerDocs.version}"
+          raise NoImplementError.new "Do not support version: #{::RoutesToSwaggerDocs.version}"
         end
       end
     end
