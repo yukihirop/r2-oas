@@ -13,7 +13,7 @@ module RoutesToSwaggerDocs
         TIMESTAMPS = ['Created At', 'Updated At'].freeze
         TABLE_TITLE = 'Paths Stats'
 
-        def initialize(options)
+        def initialize(options = {})
           super
           @paths_list = Dir.glob("#{schema_save_dir_path}/paths/**/**.yml")
           @path_from = Pathname(File.dirname(File.expand_path(root_dir_path)))
