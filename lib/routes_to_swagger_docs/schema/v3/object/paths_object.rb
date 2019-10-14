@@ -48,7 +48,7 @@ module RoutesToSwaggerDocs
               doc
             end
           end
-          Object.const_set(:HookableTmpObjectClass, klass)
+          Object.const_set(:HookableTmpObjectClass, klass) unless defined?(HookableTmpObjectClass)
         end
 
         def path_item_docs

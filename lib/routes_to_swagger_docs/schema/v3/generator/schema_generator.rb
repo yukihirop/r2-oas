@@ -26,6 +26,16 @@ module RoutesToSwaggerDocs
           end
         end
 
+        def create_docs
+          if !skip_generate_docs
+            super
+          elsif skip_generate_docs && FileTest.exists?(doc_save_file_path)
+            YAML.load_file(doc_save_file_path)
+          else
+            raise NoImplementError.new
+          end
+        end
+
         private
 
         def generate_docs_from_schema_fiels

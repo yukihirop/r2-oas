@@ -19,6 +19,14 @@ module PathHelper
     "#{root_dir_path}/#{doc_save_file_name}"
   end
 
+  def src_path
+    "#{root_dir_path}/#{schema_save_dir_name}"
+  end
+
+  def components_path
+    "#{root_dir_path}/#{schema_save_dir_name}/components"
+  end
+
   def components_schemas_path
     "#{root_dir_path}/#{schema_save_dir_name}/components/schemas"
   end
