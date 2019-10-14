@@ -28,7 +28,7 @@ module RoutesToSwaggerDocs
       autoload :Generator, 'routes_to_swagger_docs/schema/generator'
       autoload :Analyzer, 'routes_to_swagger_docs/schema/analyzer'
       autoload :Squeezer, 'routes_to_swagger_docs/schema/squeezer'
-      autoload :Cleaner, 'routes_to_swagger_docs/schema/v3/cleaner'
+      autoload :Cleaner, 'routes_to_swagger_docs/schema/cleaner'
     end
   else
     raise NoImplementError, "Do not support Rails Version: #{::Rails::VERSION::STRING}"
