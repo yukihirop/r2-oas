@@ -63,6 +63,8 @@ module RoutesToSwaggerDocs
             "#{@path}.#{@ext_name}"
           when :full
             @path
+          else
+            raise NoSupportError.new "Do not support path_type: #{@path_type}"
           end
         end
       end
