@@ -30,4 +30,5 @@ RSpec.configure do |config|
   config.include CreateHelper
   config.include FixtureHelper
   config.include TaskHelper
+  config.include ConfigHelper
 end
