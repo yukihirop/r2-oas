@@ -2,7 +2,6 @@
 
 require 'forwardable'
 require 'r2-oas/schema/v3/generator'
-require 'pry'
 
 module R2OAS
   module Schema
