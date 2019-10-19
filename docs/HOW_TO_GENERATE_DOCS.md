@@ -82,7 +82,7 @@ show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#
 
 ```
 $ bundle exec rake routes:oas:docs
-I, [2019-03-17T16:54:22.141619 #46769]  INFO -- : [Routes to Swagger docs] start
+I, [2019-03-17T16:54:22.141619 #46769]  INFO -- : [R2-OAS] start
 I, [2019-03-17T16:54:22.180295 #46769]  INFO -- : [Generate Swagger schema files] start
 I, [2019-03-17T16:54:22.201397 #46769]  INFO -- : <From routes data>
 I, [2019-03-17T16:54:22.202094 #46769]  INFO -- : <Update schema files>
@@ -117,14 +117,14 @@ I, [2019-03-17T16:54:22.273414 #46769]  INFO -- :  Use schema file: 	/Users/yuki
 I, [2019-03-17T16:54:22.273598 #46769]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
 I, [2019-03-17T16:54:22.273724 #46769]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-03-17T16:54:22.279880 #46769]  INFO -- : [Generate Swagger docs from schema files] end
-I, [2019-03-17T16:54:22.279916 #46769]  INFO -- : [Routes to Swagger docs] end
+I, [2019-03-17T16:54:22.279916 #46769]  INFO -- : [R2-OAS] end
 ```
 
 #### Second try
 
 ```
 $ bundle exec rake routes:oas:docs
-I, [2019-03-17T16:54:49.460842 #46856]  INFO -- : [Routes to Swagger docs] start
+I, [2019-03-17T16:54:49.460842 #46856]  INFO -- : [R2-OAS] start
 I, [2019-03-17T16:54:49.500295 #46856]  INFO -- : [Generate Swagger schema files] start
 I, [2019-03-17T16:54:49.523519 #46856]  INFO -- : <From schema files>
 I, [2019-03-17T16:54:49.524119 #46856]  INFO -- :  Fetch schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/openapi.yml
@@ -178,7 +178,7 @@ I, [2019-03-17T16:54:49.604653 #46856]  INFO -- :  Use schema file: 	/Users/yuki
 I, [2019-03-17T16:54:49.604875 #46856]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
 I, [2019-03-17T16:54:49.604996 #46856]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-03-17T16:54:49.611405 #46856]  INFO -- : [Generate Swagger docs from schema files] end
-I, [2019-03-17T16:54:49.611451 #46856]  INFO -- : [Routes to Swagger docs] end
+I, [2019-03-17T16:54:49.611451 #46856]  INFO -- : [R2-OAS] end
 ```
 
 Generate like this:
@@ -216,7 +216,7 @@ $ PATHS_FILE="../oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:
 ```
 
 ```
-I, [2019-04-07T19:18:37.478650 #32978]  INFO -- : [Routes to Swagger docs] start
+I, [2019-04-07T19:18:37.478650 #32978]  INFO -- : [R2-OAS] start
 I, [2019-04-07T19:18:37.585622 #32978]  INFO -- : [Generate Swagger schema files] start
 I, [2019-04-07T19:18:37.585786 #32978]  INFO -- : <From schema files>
 I, [2019-04-07T19:18:37.587302 #32978]  INFO -- :  Fetch schema file: 	../oas_docs/schema/paths/api/v1/task.yml
@@ -252,5 +252,5 @@ I, [2019-04-07T19:18:37.631828 #32978]  INFO -- :  Use schema file: 	/Users/yuki
 I, [2019-04-07T19:18:37.632022 #32978]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
 I, [2019-04-07T19:18:37.632137 #32978]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-04-07T19:18:37.634667 #32978]  INFO -- : [Generate Swagger docs from schema files] end
-I, [2019-04-07T19:18:37.634690 #32978]  INFO -- : [Routes to Swagger docs] end
+I, [2019-04-07T19:18:37.634690 #32978]  INFO -- : [R2-OAS] end
 ```

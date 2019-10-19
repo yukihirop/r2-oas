@@ -85,8 +85,8 @@ The ui starts up with the schema set.
 <img alt="swagger_ui" src="https://user-images.githubusercontent.com/11146767/56875699-6d606180-6a7d-11e9-9947-4edae2fd48cb.png" width="546">
 
 ```
-I, [2019-04-29T12:53:03.010443 #10516]  INFO -- : [Routes to Swagger docs] start
-I, [2019-04-29T12:53:03.010557 #10516]  INFO -- : [Routes to Swagger docs] start
+I, [2019-04-29T12:53:03.010443 #10516]  INFO -- : [R2-OAS] start
+I, [2019-04-29T12:53:03.010557 #10516]  INFO -- : [R2-OAS] start
 I, [2019-04-29T12:53:03.133380 #10516]  INFO -- : [Generate Swagger schema files] start
 I, [2019-04-29T12:53:03.133776 #10516]  INFO -- : <From schema files>
 I, [2019-04-29T12:53:03.135212 #10516]  INFO -- :  Fetch schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/openapi.yml
@@ -172,7 +172,7 @@ I, [2019-04-29T12:53:03.279935 #10516]  INFO -- :  Use schema file: 	/Users/yuki
 I, [2019-04-29T12:53:03.280107 #10516]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
 I, [2019-04-29T12:53:03.280223 #10516]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-04-29T12:53:03.301656 #10516]  INFO -- : [Generate Swagger docs from schema files] end
-I, [2019-04-29T12:53:03.301698 #10516]  INFO -- : [Routes to Swagger docs] end
+I, [2019-04-29T12:53:03.301698 #10516]  INFO -- : [R2-OAS] end
 
 wait for single trap ...
 
@@ -182,7 +182,7 @@ When you press `Ctrl + C` , the ui closes and the following message appears.
 
 ```
 ^Ccontainer id: edd950ec30507b1138af1b714f0101ef0452d32d08b66e23eb6e22740c830576 removed
-I, [2019-04-29T12:54:14.333082 #10516]  INFO -- : [Routes to Swagger docs] end
+I, [2019-04-29T12:54:14.333082 #10516]  INFO -- : [R2-OAS] end
 ```
 
 ## Advanced Usage
@@ -197,8 +197,8 @@ $ PATHS_FILE="../oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:
 <img alt="swagger_ui_by_specify_schemas" src="https://user-images.githubusercontent.com/11146767/56875847-38084380-6a7e-11e9-90db-9710459da44c.png" width="546">
 
 ```
-I, [2019-04-29T12:55:15.434226 #10698]  INFO -- : [Routes to Swagger docs] start
-I, [2019-04-29T12:55:15.434334 #10698]  INFO -- : [Routes to Swagger docs] start
+I, [2019-04-29T12:55:15.434226 #10698]  INFO -- : [R2-OAS] start
+I, [2019-04-29T12:55:15.434334 #10698]  INFO -- : [R2-OAS] start
 I, [2019-04-29T12:55:15.550674 #10698]  INFO -- : [Generate Swagger schema files] start
 I, [2019-04-29T12:55:15.551016 #10698]  INFO -- : <From schema files>
 I, [2019-04-29T12:55:15.551724 #10698]  INFO -- :  Fetch schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/paths/api/v1/task.yml
@@ -248,7 +248,7 @@ I, [2019-04-29T12:55:15.675523 #10698]  INFO -- :  Use schema file: 	/Users/yuki
 I, [2019-04-29T12:55:15.675700 #10698]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
 I, [2019-04-29T12:55:15.675817 #10698]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-04-29T12:55:15.679925 #10698]  INFO -- : [Generate Swagger docs from schema files] end
-I, [2019-04-29T12:55:15.679950 #10698]  INFO -- : [Routes to Swagger docs] end
+I, [2019-04-29T12:55:15.679950 #10698]  INFO -- : [R2-OAS] end
 
 wait for single trap ...
 
@@ -258,5 +258,5 @@ When you press `Ctrl + C` , the ui closes and the following message appears.
 
 ```
 ^Ccontainer id: dfb4752353f17dd8c1eb60ea53049575ce9e0cf04d928499441dc06754955875 removed
-I, [2019-04-29T12:58:02.840740 #10698]  INFO -- : [Routes to Swagger docs] end
+I, [2019-04-29T12:58:02.840740 #10698]  INFO -- : [R2-OAS] end
 ```

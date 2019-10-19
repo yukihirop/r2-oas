@@ -145,7 +145,7 @@ show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#
 
 ```
 $ bundle exec rake routes:oas:docs
-I, [2019-06-02T22:12:41.530676 #61323]  INFO -- : [Routes to Swagger docs] start
+I, [2019-06-02T22:12:41.530676 #61323]  INFO -- : [R2-OAS] start
 I, [2019-06-02T22:12:41.609492 #61323]  INFO -- : [Generate Swagger schema files] start
 I, [2019-06-02T22:12:41.609574 #61323]  INFO -- : <From routes data>
 I, [2019-06-02T22:12:41.609591 #61323]  INFO -- : <Update schema files>
@@ -194,7 +194,7 @@ I, [2019-06-02T22:12:41.661004 #61323]  INFO -- :  Use schema file: 	/Users/yuki
 I, [2019-06-02T22:12:41.661261 #61323]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
 I, [2019-06-02T22:12:41.661520 #61323]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-06-02T22:12:41.686435 #61323]  INFO -- : [Generate Swagger docs from schema files] end
-I, [2019-06-02T22:12:41.686477 #61323]  INFO -- : [Routes to Swagger docs] end
+I, [2019-06-02T22:12:41.686477 #61323]  INFO -- : [R2-OAS] end
 ```
 
 `oas_docs/schema/paths/api/v1/post` is generated like that:

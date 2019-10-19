@@ -144,7 +144,7 @@ If you use [Swagger Viewer](https://marketplace.visualstudio.com/items?itemName=
 <img alt="swagger_editor" src="https://user-images.githubusercontent.com/11146767/60355006-75e70100-9a08-11e9-9f52-dfacb681791e.png" width="546">
 
 ```
-I, [2019-06-29T00:52:29.568306 #16277]  INFO -- : [Routes to Swagger docs] start
+I, [2019-06-29T00:52:29.568306 #16277]  INFO -- : [R2-OAS] start
 I, [2019-06-29T00:52:29.857556 #16277]  INFO -- : [Generate Swagger schema files] start
 I, [2019-06-29T00:52:29.857599 #16277]  INFO -- : [Generate Swagger schema files] end
 I, [2019-06-29T00:52:29.857609 #16277]  INFO -- : [Generate Swagger docs from schema files] start
@@ -215,5 +215,5 @@ I, [2019-06-29T00:55:38.576535 #16277]  INFO -- : [Analyze Swagger file (compone
 I, [2019-06-29T00:55:38.576852 #16277]  INFO -- : [Analyze Swagger file (components/requestBodies)] end
 I, [2019-06-29T00:55:38.576867 #16277]  INFO -- : [Analyze Swagger file (components)] end
 I, [2019-06-29T00:55:38.580873 #16277]  INFO -- : [Analyze Swagger file] end
-I, [2019-06-29T00:55:38.587586 #16277]  INFO -- : [Routes to Swagger docs] end
+I, [2019-06-29T00:55:38.587586 #16277]  INFO -- : [R2-OAS] end
 ```

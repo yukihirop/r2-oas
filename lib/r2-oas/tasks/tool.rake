@@ -10,7 +10,7 @@ namespace :routes do
   namespace :oas do
     desc 'Deploy Swagger UI'
     task deploy: [:common] do
-      logger.info '[Routes to Swagger docs] start'
+      logger.info '[R2-OAS] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
       generator = R2OAS::Schema::Generator.new(generator_options)
@@ -20,7 +20,7 @@ namespace :routes do
       client = R2OAS::Deploy::Client.new(client_options)
       client.deploy
 
-      logger.info '[Routes to Swagger docs] end'
+      logger.info '[R2-OAS] end'
     end
 
     desc 'Display paths list'
@@ -28,14 +28,14 @@ namespace :routes do
       fd = IO.sysopen('/dev/null', 'w+')
       $stdout = IO.new(fd)
       logger.level = :null
-      logger.info '[Routes to Swagger docs] start'
+      logger.info '[R2-OAS] start'
       $stdout = StringIO.new
 
       paths_ls_options = {}
       paths_ls = R2OAS::Tool::Paths::Ls.new(paths_ls_options)
       paths_ls.print
 
-      logger.info '[Routes to Swagger docs] end'
+      logger.info '[R2-OAS] end'
 
       result = $stdout.string
       $stdout = STDOUT
@@ -48,7 +48,7 @@ namespace :routes do
       $stdout = IO.new(fd)
       logger.level = :null
 
-      logger.info '[Routes to Swagger docs] start'
+      logger.info '[R2-OAS] start'
       generator_options = { skip_generate_docs: true, skip_load_dot_paths: true }
       generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
@@ -59,7 +59,7 @@ namespace :routes do
       paths_log = R2OAS::Tool::Paths::Stats.new(paths_log_options)
       paths_log.print
 
-      logger.info '[Routes to Swagger docs] end'
+      logger.info '[R2-OAS] end'
 
       result = $stdout.string
       $stdout = STDOUT

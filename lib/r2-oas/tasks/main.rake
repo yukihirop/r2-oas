@@ -10,16 +10,16 @@ namespace :routes do
   namespace :oas do
     desc 'Generate Swagger documentation files'
     task docs: [:common] do
-      logger.info '[Routes to Swagger docs] start'
+      logger.info '[R2-OAS] start'
       options = { unit_paths_file_path: unit_paths_file_path, skip_load_dot_paths: true }
       generator = R2OAS::Schema::Generator.new(options)
       generator.generate_docs
-      logger.info '[Routes to Swagger docs] end'
+      logger.info '[R2-OAS] end'
     end
 
     desc 'Analyze Swagger documentation'
     task analyze: [:common] do
-      logger.info '[Routes to Swagger docs] start'
+      logger.info '[R2-OAS] start'
 
       analyzer_options = { type: :existing, existing_schema_file_path: existing_schema_file_path }
       analyzer = R2OAS::Schema::Analyzer.new({}, {}, analyzer_options)
@@ -29,23 +29,23 @@ namespace :routes do
       generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
-      logger.info '[Routes to Swagger docs] end'
+      logger.info '[R2-OAS] end'
     end
 
     desc 'Distribute Swagger documentation'
     task dist: [:common] do
-      logger.info '[Routes to Swagger docs] start'
+      logger.info '[R2-OAS] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
       generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
-      logger.info '[Routes to Swagger docs] end'
+      logger.info '[R2-OAS] end'
     end
 
     desc 'Open Swagger Editor'
     task editor: [:common] do
-      logger.info '[Routes to Swagger docs] start'
+      logger.info '[R2-OAS] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
       generator = R2OAS::Schema::Generator.new(generator_options)
@@ -56,12 +56,12 @@ namespace :routes do
       editor = R2OAS::Schema::Editor.new(before_schema_data, editor_options)
       editor.start
 
-      logger.info '[Routes to Swagger docs] end'
+      logger.info '[R2-OAS] end'
     end
 
     desc 'Open Swagger UI'
     task ui: [:common] do
-      logger.info '[Routes to Swagger docs] start'
+      logger.info '[R2-OAS] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
       generator = R2OAS::Schema::Generator.new(generator_options)
@@ -71,12 +71,12 @@ namespace :routes do
       ui = R2OAS::Schema::UI.new(ui_options)
       ui.start
 
-      logger.info '[Routes to Swagger docs] end'
+      logger.info '[R2-OAS] end'
     end
 
     desc 'Monitor Swagger Document'
     task monitor: [:common] do
-      logger.info '[Routes to Swagger docs] start'
+      logger.info '[R2-OAS] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
       generator = R2OAS::Schema::Generator.new(generator_options)
@@ -87,12 +87,12 @@ namespace :routes do
       monitor = R2OAS::Schema::Monitor.new(before_schema_data, monitor_options)
       monitor.start
 
-      logger.info '[Routes to Swagger docs] end'
+      logger.info '[R2-OAS] end'
     end
 
     desc 'Clean Swagger Document'
     task clean: [:common] do
-      logger.info '[Routes to Swagger docs] start'
+      logger.info '[R2-OAS] start'
 
       generator_options = { skip_generate_docs: true, skip_load_dot_paths: true }
       generator = R2OAS::Schema::Generator.new(generator_options)
@@ -101,7 +101,7 @@ namespace :routes do
       cleaner = R2OAS::Schema::Cleaner.new
       cleaner.clean_docs
 
-      logger.info '[Routes to Swagger docs] end'
+      logger.info '[R2-OAS] end'
     end
 
     private

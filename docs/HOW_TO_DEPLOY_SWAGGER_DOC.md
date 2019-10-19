@@ -790,7 +790,7 @@ servers:
 
 ```
 $ be rake routes:oas:deploy
-I, [2019-05-06T19:32:52.014417 #22431]  INFO -- : [Routes to Swagger docs] start
+I, [2019-05-06T19:32:52.014417 #22431]  INFO -- : [R2-OAS] start
 I, [2019-05-06T19:32:52.075691 #22431]  INFO -- : [Generate Swagger schema files] start
 I, [2019-05-06T19:32:52.075731 #22431]  INFO -- : [Generate Swagger schema files] end
 I, [2019-05-06T19:32:52.075743 #22431]  INFO -- : [Generate Swagger docs from schema files] start
@@ -812,7 +812,7 @@ I, [2019-05-06T19:32:52.088567 #22431]  INFO -- :  Use schema file: 	/Users/yuki
 I, [2019-05-06T19:32:52.088867 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
 I, [2019-05-06T19:32:52.089136 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-05-06T19:32:52.100673 #22431]  INFO -- : [Generate Swagger docs from schema files] end
-I, [2019-05-06T19:32:52.133732 #22431]  INFO -- : [Routes to Swagger docs] end
+I, [2019-05-06T19:32:52.133732 #22431]  INFO -- : [R2-OAS] end
 ```
 
 Generate docs like this:

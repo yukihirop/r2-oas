@@ -791,7 +791,7 @@ servers:
 
 ```
 $ SWAGGER_FILE=~/Desktop/swagger_file.yml be rake routes:oas:analyze
-I, [2019-05-05T15:00:40.716815 #18669]  INFO -- : [Routes to Swagger docs] start
+I, [2019-05-05T15:00:40.716815 #18669]  INFO -- : [R2-OAS] start
 I, [2019-05-05T15:00:40.756046 #18669]  INFO -- : [Analyze Swagger file] start
 I, [2019-05-05T15:00:40.758453 #18669]  INFO -- : [Analyze Swagger file (paths)] start
 I, [2019-05-05T15:00:40.763028 #18669]  INFO -- :   Write schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/paths/user.yml
@@ -836,7 +836,7 @@ I, [2019-05-05T15:00:40.855185 #18669]  INFO -- :  Use schema file: 	/Users/yuki
 I, [2019-05-05T15:00:40.855543 #18669]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
 I, [2019-05-05T15:00:40.855888 #18669]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-05-05T15:00:40.872235 #18669]  INFO -- : [Generate Swagger docs from schema files] end
-I, [2019-05-05T15:00:40.872286 #18669]  INFO -- : [Routes to Swagger docs] end
+I, [2019-05-05T15:00:40.872286 #18669]  INFO -- : [R2-OAS] end
 ```
 
 Generate like this:

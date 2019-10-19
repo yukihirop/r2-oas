@@ -85,8 +85,8 @@ The editor starts up with the schema set.
 <img alt="swagger_editor" src="https://user-images.githubusercontent.com/11146767/55682235-a8361480-596b-11e9-8c0c-718c8eed1393.png" width="546">
 
 ```
-I, [2019-04-07T19:24:44.832837 #33139]  INFO -- : [Routes to Swagger docs] start
-I, [2019-04-07T19:24:44.832980 #33139]  INFO -- : [Routes to Swagger docs] start
+I, [2019-04-07T19:24:44.832837 #33139]  INFO -- : [R2-OAS] start
+I, [2019-04-07T19:24:44.832980 #33139]  INFO -- : [R2-OAS] start
 I, [2019-04-07T19:24:44.941617 #33139]  INFO -- : [Generate Swagger schema files] start
 I, [2019-04-07T19:24:44.941859 #33139]  INFO -- : <From schema files>
 I, [2019-04-07T19:24:44.943345 #33139]  INFO -- :  Fetch schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/openapi.yml
@@ -140,7 +140,7 @@ I, [2019-04-07T19:24:44.997187 #33139]  INFO -- :  Use schema file: 	/Users/yuki
 I, [2019-04-07T19:24:44.997401 #33139]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
 I, [2019-04-07T19:24:44.997522 #33139]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-04-07T19:24:45.003195 #33139]  INFO -- : [Generate Swagger docs from schema files] end
-I, [2019-04-07T19:24:45.003223 #33139]  INFO -- : [Routes to Swagger docs] end
+I, [2019-04-07T19:24:45.003223 #33139]  INFO -- : [R2-OAS] end
 
 wait for single trap ...
 
@@ -152,7 +152,7 @@ When you press `Ctrl + C` after edit schema , the editor closes and the followin
 ^C
 save updated schema in tempfile path: tmp/edited_schema20190407-33493-mxw638.yaml
 container id: 1a9752d2702045b2fde587dda3ce064233a735165f9b70bc6f86e603abfe3a39 removed
-I, [2019-04-07T19:43:53.666565 #33493]  INFO -- : [Routes to Swagger docs] end
+I, [2019-04-07T19:43:53.666565 #33493]  INFO -- : [R2-OAS] end
 ```
 
 ## Advanced Usage
@@ -165,8 +165,8 @@ $ PATHS_FILE="../oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:
 ```
 
 ```
-I, [2019-04-07T19:48:40.140872 #34907]  INFO -- : [Routes to Swagger docs] start
-I, [2019-04-07T19:48:40.140990 #34907]  INFO -- : [Routes to Swagger docs] start
+I, [2019-04-07T19:48:40.140872 #34907]  INFO -- : [R2-OAS] start
+I, [2019-04-07T19:48:40.140990 #34907]  INFO -- : [R2-OAS] start
 I, [2019-04-07T19:48:40.252636 #34907]  INFO -- : [Generate Swagger schema files] start
 I, [2019-04-07T19:48:40.252835 #34907]  INFO -- : <From schema files>
 I, [2019-04-07T19:48:40.253463 #34907]  INFO -- :  Fetch schema file: 	../oas_docs/schema/paths/api/v1/task.yml
@@ -202,7 +202,7 @@ I, [2019-04-07T19:48:40.298421 #34907]  INFO -- :  Use schema file: 	/Users/yuki
 I, [2019-04-07T19:48:40.298720 #34907]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
 I, [2019-04-07T19:48:40.298994 #34907]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-04-07T19:48:40.302896 #34907]  INFO -- : [Generate Swagger docs from schema files] end
-I, [2019-04-07T19:48:40.302938 #34907]  INFO -- : [Routes to Swagger docs] end
+I, [2019-04-07T19:48:40.302938 #34907]  INFO -- : [R2-OAS] end
 
 wait for single trap ...
 
@@ -214,5 +214,5 @@ When you press `Ctrl + C` after edit schema , the editor closes and the followin
 ^C
 save updated schema in tempfile path: tmp/edited_schema20190407-34907-1iv0ao0.yaml
 container id: 7b58246777eabb9206d852e587a491e0815444982779985dbd2e27c30cbfff59 removed
-I, [2019-04-07T19:50:26.402777 #34907]  INFO -- : [Routes to Swagger docs] end
+I, [2019-04-07T19:50:26.402777 #34907]  INFO -- : [R2-OAS] end
 ```
