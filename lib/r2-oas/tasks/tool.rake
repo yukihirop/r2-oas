@@ -7,7 +7,7 @@ require 'r2-oas/task_logging'
 load File.expand_path('common.rake', __dir__)
 
 namespace :routes do
-  namespace :swagger do
+  namespace :oas do
     desc 'Deploy Swagger UI'
     task deploy: [:common] do
       logger.info '[Routes to Swagger docs] start'

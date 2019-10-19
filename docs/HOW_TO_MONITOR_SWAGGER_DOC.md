@@ -13,7 +13,7 @@ end
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:monitor
+$ bundle exec rake routes:oas:monitor
 ```
 
 ## Example

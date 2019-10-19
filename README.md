@@ -5,14 +5,14 @@ Generate api docment(OpenAPI) side only from `rails` routing.
 Provides rake commands to help `docs`, `edit`, `view` and so on.
 
 ```bash
-bundle exec rake routes:swagger:docs    # generate
-bundle exec rake routes:swagger:ui      # view
-bundle exec rake routes:swagger:editor  # edit
-bundle exec rake routes:swagger:monitor # monitor
-bundle exec rake routes:swagger:dist    # distribute
-bundle exec rake routes:swagger:clean   # clean
-bundle exec rake routes:swagger:analyze # analyze
-bundle exec rake routes:swagger:deploy  # deploy
+bundle exec rake routes:oas:docs    # generate
+bundle exec rake routes:oas:ui      # view
+bundle exec rake routes:oas:editor  # edit
+bundle exec rake routes:oas:monitor # monitor
+bundle exec rake routes:oas:dist    # distribute
+bundle exec rake routes:oas:clean   # clean
+bundle exec rake routes:oas:analyze # analyze
+bundle exec rake routes:oas:deploy  # deploy
 ```
 
 ## 💎 Installation
@@ -54,8 +54,8 @@ $ brew cask install chromedriver
 After requiring a gem,
 
 ```bash
-bundle exec routes:swagger:docs
-bundle exec routes:swagger:editor
+bundle exec routes:oas:docs
+bundle exec routes:oas:editor
 ```
 
 ## 📖 Usage
@@ -146,34 +146,34 @@ You can execute the following command in the root directory of rails.
 
 ```bash
 $ # Generate docs
-$ bundle exec rake routes:swagger:docs                                                                        # Generate docs
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs    # Generate docs by specify unit paths
+$ bundle exec rake routes:oas:docs                                                                        # Generate docs
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # Generate docs by specify unit paths
 
 $ # Start swagger editor
-$ bundle exec rake routes:swagger:editor                                                                      # Start swagger editor
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor  # Start swagger editor by specify unit paths
+$ bundle exec rake routes:oas:editor                                                                      # Start swagger editor
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # Start swagger editor by specify unit paths
 $ # Start swagger ui
-$ bundle exec rake routes:swagger:ui                                                                          # Start swagger ui
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # Start swagger ui by specify unit paths
+$ bundle exec rake routes:oas:ui                                                                          # Start swagger ui
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # Start swagger ui by specify unit paths
 $ # Monitor swagger document
-$ bundle exec rake routes:swagger:monitor                                                                     # Monitor swagger document
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # Monitor swagger by specify unit paths
+$ bundle exec rake routes:oas:monitor                                                                     # Monitor swagger document
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # Monitor swagger by specify unit paths
 
 $ # Analyze docs
-$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
+$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
 $ # Clean docs
-$ bundle exec rake routes:swagger:clean
+$ bundle exec rake routes:oas:clean
 $ # Deploy docs
-$ bundle exec rake routes:swagger:deploy
+$ bundle exec rake routes:oas:deploy
 $ # Distribute swagger document
-$ bundle exec rake routes:swagger:dist
+$ bundle exec rake routes:oas:dist
 $ # Distribute swagger document
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:dist # Distribute swagger document by specify unit paths
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:dist # Distribute swagger document by specify unit paths
  
 # Display paths list
-$ bundle exec rake routes:swagger:paths_ls
+$ bundle exec rake routes:oas:paths_ls
 # Display paths stats
-$ bundle exec rake routes:swagger:paths_stats
+$ bundle exec rake routes:oas:paths_stats
 ```
 
 ## 📚 More Usage

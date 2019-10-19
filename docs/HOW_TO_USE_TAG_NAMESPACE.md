@@ -16,7 +16,7 @@ R2OAS.configure do |config|
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:docs
+$ bundle exec rake routes:oas:docs
 ```
 
 ## Example
@@ -138,7 +138,7 @@ end
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:docs
+$ bundle exec rake routes:oas:docs
 ```
 
 <img alt="swagger_ui" src="https://user-images.githubusercontent.com/11146767/57007590-bdc5f380-6c24-11e9-9aa4-85f2fe97e463.png" width="546">

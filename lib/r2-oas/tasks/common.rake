@@ -3,7 +3,7 @@
 require_relative '../task_logging'
 
 namespace :routes do
-  namespace :swagger do
+  namespace :oas do
     extend R2OAS::TaskLogging
 
     # private

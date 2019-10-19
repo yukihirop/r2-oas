@@ -11,8 +11,8 @@ RSpec.describe 'tool_rake' do
     delete_docs_for_deploy
   end
 
-  describe 'routes:swagger:deploy' do
-    let(:task_name) { 'routes:swagger:deploy' }
+  describe 'routes:oas:deploy' do
+    let(:task_name) { 'routes:oas:deploy' }
 
     before do
       create_dot_paths
@@ -26,8 +26,8 @@ RSpec.describe 'tool_rake' do
     end
   end
 
-  describe 'routes:swagger:paths_ls' do
-    let(:task_name) { 'routes:swagger:paths_ls' }
+  describe 'routes:oas:paths_ls' do
+    let(:task_name) { 'routes:oas:paths_ls' }
 
     before do
       create_dot_paths
@@ -37,8 +37,8 @@ RSpec.describe 'tool_rake' do
     it { expect { task.invoke }.not_to raise_error }
   end
 
-  describe 'routes:swagger:paths_stats' do
-    let(:task_name) { 'routes:swagger:paths_stats' }
+  describe 'routes:oas:paths_stats' do
+    let(:task_name) { 'routes:oas:paths_stats' }
 
     before do
       create_dot_paths

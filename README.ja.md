@@ -3,14 +3,14 @@
 railsのルーティング情報からOpenAPI(V3)形式のドキュメントを生成し、閲覧・編集・管理するためのrakeタスクの提供をします。
 
 ```bash
-bundle exec rake routes:swagger:docs    # ドキュメント生成
-bundle exec rake routes:swagger:ui      # ドキュメント閲覧
-bundle exec rake routes:swagger:editor  # ドキュメント編集
-bundle exec rake routes:swagger:monitor # ドキュメント監視
-bundle exec rake routes:swagger:dist    # ドキュメント配布
-bundle exec rake routes:swagger:clean   # ドキュメント清掃
-bundle exec rake routes:swagger:analyze # ドキュメント分解・分析
-bundle exec rake routes:swagger:deploy  # ドキュメントデプロイ
+bundle exec rake routes:oas:docs    # ドキュメント生成
+bundle exec rake routes:oas:ui      # ドキュメント閲覧
+bundle exec rake routes:oas:editor  # ドキュメント編集
+bundle exec rake routes:oas:monitor # ドキュメント監視
+bundle exec rake routes:oas:dist    # ドキュメント配布
+bundle exec rake routes:oas:clean   # ドキュメント清掃
+bundle exec rake routes:oas:analyze # ドキュメント分解・分析
+bundle exec rake routes:oas:deploy  # ドキュメントデプロイ
 ```
 
 ## 💎 Installation
@@ -44,8 +44,8 @@ $ brew cask install chromedriver
 gemをrequire後、以下のrakeタスクを実行するだけです。
 
 ```bash
-bundle exec routes:swagger:docs
-bundle exec routes:swagger:editor
+bundle exec routes:oas:docs
+bundle exec routes:oas:editor
 ```
 
 ## 📖 Usage
@@ -138,33 +138,33 @@ railsプロジェクトのルートディレクトリで以下のコマンドが
 
 ```bash
 $ # ドキュメント生成
-$ bundle exec rake routes:swagger:docs
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs    # pathsファイルを指定してドキュメント生成
+$ bundle exec rake routes:oas:docs
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # pathsファイルを指定してドキュメント生成
 
 $ # SwaggerEditorでドキュメント編集
-$ bundle exec rake routes:swagger:editor
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor  # pathsファイルを指定してドキュメント編集
+$ bundle exec rake routes:oas:editor
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # pathsファイルを指定してドキュメント編集
 $ # SwaggerUIでドキュメント閲覧
-$ bundle exec rake routes:swagger:ui
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # pathsファイルを指定してドキュメント閲覧
+$ bundle exec rake routes:oas:ui
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # pathsファイルを指定してドキュメント閲覧
 $ # テキストエディタでドキュメント編集(初期設定時、git管理しないswagger_docs/swagger_doc.ymlを監視)
-$ bundle exec rake routes:swagger:monitor
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # pathsファイルを指定してドキュメント監視
+$ bundle exec rake routes:oas:monitor
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # pathsファイルを指定してドキュメント監視
 
 $ # ドキュメントを分解・分析
-$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
+$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
 $ # どこからも参照されてないcomponents/schemas(requestBodies, ...)を削除
-$ bundle exec rake routes:swagger:clean
+$ bundle exec rake routes:oas:clean
 $ # githubにホスティング
-$ bundle exec rake routes:swagger:deploy
+$ bundle exec rake routes:oas:deploy
 $ # ドキュメントを配布(初期設定時、配布ファイルは、swagger_docs/swagger_doc.yml)
-$ bundle exec rake routes:swagger:dist
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:dist    # pathsファイルを指定してドキュメント配布
+$ bundle exec rake routes:oas:dist
+$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:dist    # pathsファイルを指定してドキュメント配布
  
 # pathsファイルのリスト取得
-$ bundle exec rake routes:swagger:paths_ls
+$ bundle exec rake routes:oas:paths_ls
 # pathsファイルの編集履歴表示
-$ bundle exec rake routes:swagger:paths_stats
+$ bundle exec rake routes:oas:paths_stats
 ```
 
 ## 📚 More Usage

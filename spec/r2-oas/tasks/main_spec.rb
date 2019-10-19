@@ -23,8 +23,8 @@ RSpec.describe 'main_rake' do
     end
   end
 
-  describe 'routes:swagger:docs' do
-    let(:task_name) { 'routes:swagger:docs' }
+  describe 'routes:oas:docs' do
+    let(:task_name) { 'routes:oas:docs' }
 
     before do
       task.invoke
@@ -34,8 +34,8 @@ RSpec.describe 'main_rake' do
     it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
   end
 
-  describe 'routes:swagger:analyze' do
-    let(:task_name) { 'routes:swagger:analyze' }
+  describe 'routes:oas:analyze' do
+    let(:task_name) { 'routes:oas:analyze' }
     let(:ext_name) { '' }
 
     before do
@@ -66,8 +66,8 @@ RSpec.describe 'main_rake' do
     end
   end
 
-  describe 'routes:swagger:dist' do
-    let(:task_name) { 'routes:swagger:dist' }
+  describe 'routes:oas:dist' do
+    let(:task_name) { 'routes:oas:dist' }
 
     before do
       generate_docs
@@ -76,8 +76,8 @@ RSpec.describe 'main_rake' do
     it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
   end
 
-  describe 'routes:swagger:clean' do
-    let(:task_name) { 'routes:swagger:clean' }
+  describe 'routes:oas:clean' do
+    let(:task_name) { 'routes:oas:clean' }
 
     before do
       create_dot_paths

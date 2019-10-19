@@ -13,7 +13,7 @@ end
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:docs
+$ bundle exec rake routes:oas:docs
 ```
 
 ## Example
@@ -81,7 +81,7 @@ show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#
 #### First try
 
 ```
-$ bundle exec rake routes:swagger:docs
+$ bundle exec rake routes:oas:docs
 I, [2019-03-17T16:54:22.141619 #46769]  INFO -- : [Routes to Swagger docs] start
 I, [2019-03-17T16:54:22.180295 #46769]  INFO -- : [Generate Swagger schema files] start
 I, [2019-03-17T16:54:22.201397 #46769]  INFO -- : <From routes data>
@@ -123,7 +123,7 @@ I, [2019-03-17T16:54:22.279916 #46769]  INFO -- : [Routes to Swagger docs] end
 #### Second try
 
 ```
-$ bundle exec rake routes:swagger:docs
+$ bundle exec rake routes:oas:docs
 I, [2019-03-17T16:54:49.460842 #46856]  INFO -- : [Routes to Swagger docs] start
 I, [2019-03-17T16:54:49.500295 #46856]  INFO -- : [Generate Swagger schema files] start
 I, [2019-03-17T16:54:49.523519 #46856]  INFO -- : <From schema files>
@@ -212,7 +212,7 @@ If you want to generate docs by squeezing unit paths (For example, `api/v1/task.
 you set PATHS_FILE environment like this:
 
 ```bash
-$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs
+$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs
 ```
 
 ```

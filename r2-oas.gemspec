@@ -16,14 +16,14 @@ Gem::Specification.new do |spec|
     Provides rake commands to help `docs`, `edit`, `view` and so on.
 
     ```
-    bundle exec rake routes:swagger:docs    # generate
-    bundle exec rake routes:swagger:ui      # view
-    bundle exec rake routes:swagger:editor  # edit
-    bundle exec rake routes:swagger:monitor # monitor
-    bundle exec rake routes:swagger:dist    # distribute
-    bundle exec rake routes:swagger:clean   # clean
-    bundle exec rake routes:swagger:analyze # analyze
-    bundle exec rake routes:swagger:deploy  # deploy
+    bundle exec rake routes:oas:docs    # generate
+    bundle exec rake routes:oas:ui      # view
+    bundle exec rake routes:oas:editor  # edit
+    bundle exec rake routes:oas:monitor # monitor
+    bundle exec rake routes:oas:dist    # distribute
+    bundle exec rake routes:oas:clean   # clean
+    bundle exec rake routes:oas:analyze # analyze
+    bundle exec rake routes:oas:deploy  # deploy
     ```
   EOF
   

@@ -13,7 +13,7 @@ end
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:deploy
+$ bundle exec rake routes:oas:deploy
 ```
 
 ## Example
@@ -789,7 +789,7 @@ servers:
 </details>
 
 ```
-$ be rake routes:swagger:deploy
+$ be rake routes:oas:deploy
 I, [2019-05-06T19:32:52.014417 #22431]  INFO -- : [Routes to Swagger docs] start
 I, [2019-05-06T19:32:52.075691 #22431]  INFO -- : [Generate Swagger schema files] start
 I, [2019-05-06T19:32:52.075731 #22431]  INFO -- : [Generate Swagger schema files] end

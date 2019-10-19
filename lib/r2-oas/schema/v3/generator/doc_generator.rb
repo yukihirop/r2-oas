@@ -9,7 +9,7 @@ module R2OAS
   module Schema
     module V3
       class DocGenerator < BaseGenerator
-        attr_accessor :swagger_doc
+        attr_accessor :oas_doc
 
         def initialize(options = {})
           super

@@ -13,7 +13,7 @@ end
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:paths_ls
+$ bundle exec rake routes:oas:paths_ls
 /Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/paths/user.yml
 /Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/paths/api/v1/account_user_role.yml
 /Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/paths/api/v1/user.yml

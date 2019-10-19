@@ -13,7 +13,7 @@ end
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:editor
+$ bundle exec rake routes:oas:editor
 ```
 
 ## Example
@@ -161,7 +161,7 @@ If you want to generate docs by squeezing unit paths (For example, `api/v1/task.
 you set PATHS_FILE environment like this:
 
 ```bash
-$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor
+$ PATHS_FILE="../swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor
 ```
 
 ```

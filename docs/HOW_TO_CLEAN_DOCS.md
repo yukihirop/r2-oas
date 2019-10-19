@@ -15,5 +15,5 @@ end
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:clean
+$ bundle exec rake routes:oas:clean
 ```

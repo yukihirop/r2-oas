@@ -12,7 +12,7 @@ module R2OAS
       class Generator < BaseGenerator
         extend Forwardable
 
-        def_delegators :@doc_generator, :swagger_doc
+        def_delegators :@doc_generator, :oas_doc
 
         def initialize(options = {})
           super

@@ -33,7 +33,7 @@ module R2OAS
     end
 
     def debug_log(task, message)
-      R2OAS.logger.debug message.to_s unless task.name == 'routes:swagger:debug'
+      R2OAS.logger.debug message.to_s unless task.name == 'routes:oas:debug'
     end
   end
 end

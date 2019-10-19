@@ -76,7 +76,7 @@ end
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:docs
+$ bundle exec rake routes:oas:docs
 ```
 
 ## Example
@@ -144,7 +144,7 @@ show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#
 #### First try
 
 ```
-$ bundle exec rake routes:swagger:docs
+$ bundle exec rake routes:oas:docs
 I, [2019-06-02T22:12:41.530676 #61323]  INFO -- : [Routes to Swagger docs] start
 I, [2019-06-02T22:12:41.609492 #61323]  INFO -- : [Generate Swagger schema files] start
 I, [2019-06-02T22:12:41.609574 #61323]  INFO -- : <From routes data>
