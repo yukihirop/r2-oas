@@ -27,9 +27,9 @@ RSpec.describe R2OAS::Configuration do
 
       it 'should set correctly' do
         expect(subject[:version]).to eq :v3
-        expect(subject[:root_dir_path]).to eq './swagger_docs'
+        expect(subject[:root_dir_path]).to eq './oas_docs'
         expect(subject[:schema_save_dir_name]).to eq 'src'
-        expect(subject[:doc_save_file_name]).to eq 'swagger_doc.yml'
+        expect(subject[:doc_save_file_name]).to eq 'oas_doc.yml'
         expect(subject[:force_update_schema]).to eq false
         expect(subject[:use_tag_namespace]).to eq true
         expect(subject[:use_schema_namespace]).to eq true
@@ -124,7 +124,7 @@ RSpec.describe R2OAS::Configuration do
               swagger.ui.image            = 'original/swagger-ui'
               swagger.ui.port             = '9090'
               swagger.ui.exposed_port     = '9090/tcp'
-              swagger.ui.volume           = '/app/swagger_doc.json'
+              swagger.ui.volume           = '/app/oas_doc.json'
               swagger.editor.image        = 'original/swagger-editor'
               swagger.editor.port         = '91'
               swagger.editor.exposed_port = '9090/tcp'
@@ -181,7 +181,7 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:swagger].ui.image).to eq 'original/swagger-ui'
         expect(subject[:swagger].ui.port).to eq '9090'
         expect(subject[:swagger].ui.exposed_port).to eq '9090/tcp'
-        expect(subject[:swagger].ui.volume).to eq '/app/swagger_doc.json'
+        expect(subject[:swagger].ui.volume).to eq '/app/oas_doc.json'
         expect(subject[:swagger].editor.image).to eq 'original/swagger-editor'
         expect(subject[:swagger].editor.port).to eq '91'
         expect(subject[:swagger].editor.exposed_port).to eq '9090/tcp'

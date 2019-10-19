@@ -40,7 +40,7 @@ module R2OAS
                      result_before_squeeze
                   end
 
-          @swagger_doc = result
+          @oas_doc = result
           File.write(doc_save_file_path, result.to_yaml)
         end
       end

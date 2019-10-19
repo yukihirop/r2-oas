@@ -61,9 +61,9 @@ bundle exec routes:oas:editor
 R2OAS.configure do |config|
   config.version                            = :v3
   #「docs」という名前は使えません。予約語です。
-  config.root_dir_path                      = "./swagger_docs"
+  config.root_dir_path                      = "./oas_docs"
   config.schema_save_dir_name               = "src"
-  config.doc_save_file_name                 = "swagger_doc.yml"
+  config.doc_save_file_name                 = "oas_doc.yml"
   config.force_update_schema                = false
   config.use_tag_namespace                  = true
   config.use_schema_namespace               = false
@@ -139,17 +139,17 @@ railsプロジェクトのルートディレクトリで以下のコマンドが
 ```bash
 $ # ドキュメント生成
 $ bundle exec rake routes:oas:docs
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # pathsファイルを指定してドキュメント生成
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # pathsファイルを指定してドキュメント生成
 
 $ # SwaggerEditorでドキュメント編集
 $ bundle exec rake routes:oas:editor
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # pathsファイルを指定してドキュメント編集
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # pathsファイルを指定してドキュメント編集
 $ # SwaggerUIでドキュメント閲覧
 $ bundle exec rake routes:oas:ui
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # pathsファイルを指定してドキュメント閲覧
-$ # テキストエディタでドキュメント編集(初期設定時、git管理しないswagger_docs/swagger_doc.ymlを監視)
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # pathsファイルを指定してドキュメント閲覧
+$ # テキストエディタでドキュメント編集(初期設定時、git管理しないoas_docs/oas_doc.ymlを監視)
 $ bundle exec rake routes:oas:monitor
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # pathsファイルを指定してドキュメント監視
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # pathsファイルを指定してドキュメント監視
 
 $ # ドキュメントを分解・分析
 $ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
@@ -157,9 +157,9 @@ $ # どこからも参照されてないcomponents/schemas(requestBodies, ...)�
 $ bundle exec rake routes:oas:clean
 $ # githubにホスティング
 $ bundle exec rake routes:oas:deploy
-$ # ドキュメントを配布(初期設定時、配布ファイルは、swagger_docs/swagger_doc.yml)
+$ # ドキュメントを配布(初期設定時、配布ファイルは、oas_docs/oas_doc.yml)
 $ bundle exec rake routes:oas:dist
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:dist    # pathsファイルを指定してドキュメント配布
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:dist    # pathsファイルを指定してドキュメント配布
  
 # pathsファイルのリスト取得
 $ bundle exec rake routes:oas:paths_ls
@@ -235,9 +235,9 @@ $ bundle exec rake routes:oas:paths_stats
 |option|description|default|
 |------|-----------|---|
 |version|OpenAPIのバージョン| `:v3` |
-|root_dir_path|ドキュメントの保存パス| `"./swagger_docs"` |
+|root_dir_path|ドキュメントの保存パス| `"./oas_docs"` |
 |schema_save_dir_name|分解したスキーマの保存ディレクトリ名|`"src"`|
-|doc_save_file_name|生成したドキュメントのファイル名|`"swagger_doc.yml"`|
+|doc_save_file_name|生成したドキュメントのファイル名|`"oas_doc.yml"`|
 |force_update_schema|既生のドキュメントをルーティング情報から生成されたデータで更新するか否か|`false`|
 |use_tag_namespace|タグ名にネームスペースを使うか否か|`true`|
 |use_schema_namespace|components/{schemas,requestBodies}名に擬似ネームスペースを利用するか否か|`true`|
@@ -300,7 +300,7 @@ Please refer to [here](https://github.com/janlelis/paint) for the color.
 
 `paths` ディレクトリ以下のパスを書きます。
 
-`swagger_docs/.paths`
+`oas_docs/.paths`
 ```
 #account_user_role.yml    # ignore
 account.yml

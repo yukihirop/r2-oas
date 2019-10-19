@@ -7,9 +7,9 @@ require_relative 'app_configuration/tool'
 module R2OAS
   module AppConfiguration
     DEFAULT_VERSION = :v3
-    DEFAULT_ROOT_DIR_PATH = './swagger_docs'
+    DEFAULT_ROOT_DIR_PATH = './oas_docs'
     DEFAULT_SCHEMA_SAVE_DIR_NAME = 'src'
-    DEFAULT_DOC_SAVE_FILE_NAME = 'swagger_doc.yml'
+    DEFAULT_DOC_SAVE_FILE_NAME = 'oas_doc.yml'
     DEFAULT_FORCE_UPDATE_SCHEMA = false
     DEFAULT_USE_TAG_NAMESPACE = true
     DEFAULT_USE_SCHEMA_NAMESPACE = true

@@ -6,9 +6,9 @@ require 'r2-oas'
 
 R2OAS.configure do |config|
    # default setting        
-   config.root_dir_path        = "./swagger_docs"
+   config.root_dir_path        = "./oas_docs"
    config.schema_save_dir_name = "src"
-   config.doc_save_file_name   = "swagger_doc.yml"
+   config.doc_save_file_name   = "oas_doc.yml"
 end
 ```
 
@@ -18,7 +18,7 @@ $ bundle exec rake routes:oas:deploy
 
 ## Example
 
-if there is `swagger_doc.yml` like this:
+if there is `oas_doc.yml` like this:
 
 <details>
 
@@ -794,23 +794,23 @@ I, [2019-05-06T19:32:52.014417 #22431]  INFO -- : [Routes to Swagger docs] start
 I, [2019-05-06T19:32:52.075691 #22431]  INFO -- : [Generate Swagger schema files] start
 I, [2019-05-06T19:32:52.075731 #22431]  INFO -- : [Generate Swagger schema files] end
 I, [2019-05-06T19:32:52.075743 #22431]  INFO -- : [Generate Swagger docs from schema files] start
-I, [2019-05-06T19:32:52.079267 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/openapi.yml
-I, [2019-05-06T19:32:52.080334 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/paths/user.yml
-I, [2019-05-06T19:32:52.081189 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/paths/api/v1/task.yml
-I, [2019-05-06T19:32:52.081944 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/paths/api/v1/post.yml
-I, [2019-05-06T19:32:52.082838 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/paths/api/v2/post.yml
-I, [2019-05-06T19:32:52.083719 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/paths/task.yml
-I, [2019-05-06T19:32:52.084185 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/paths/rails_admin/engine.yml
-I, [2019-05-06T19:32:52.085796 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/paths/rails_admin/main.yml
-I, [2019-05-06T19:32:52.086063 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/externalDocs.yml
-I, [2019-05-06T19:32:52.086555 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/tags.yml
-I, [2019-05-06T19:32:52.087145 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/components/schemas/user.yml
-I, [2019-05-06T19:32:52.087667 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/components/schemas/task.yml
-I, [2019-05-06T19:32:52.087955 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/components/schemas/engine.yml
-I, [2019-05-06T19:32:52.088281 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/components/schemas/main.yml
-I, [2019-05-06T19:32:52.088567 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/components/schemas/post.yml
-I, [2019-05-06T19:32:52.088867 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/info.yml
-I, [2019-05-06T19:32:52.089136 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/swagger_docs/src/servers.yml
+I, [2019-05-06T19:32:52.079267 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/openapi.yml
+I, [2019-05-06T19:32:52.080334 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/paths/user.yml
+I, [2019-05-06T19:32:52.081189 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/paths/api/v1/task.yml
+I, [2019-05-06T19:32:52.081944 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/paths/api/v1/post.yml
+I, [2019-05-06T19:32:52.082838 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/paths/api/v2/post.yml
+I, [2019-05-06T19:32:52.083719 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/paths/task.yml
+I, [2019-05-06T19:32:52.084185 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/paths/rails_admin/engine.yml
+I, [2019-05-06T19:32:52.085796 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/paths/rails_admin/main.yml
+I, [2019-05-06T19:32:52.086063 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/externalDocs.yml
+I, [2019-05-06T19:32:52.086555 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/tags.yml
+I, [2019-05-06T19:32:52.087145 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/components/schemas/user.yml
+I, [2019-05-06T19:32:52.087667 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/components/schemas/task.yml
+I, [2019-05-06T19:32:52.087955 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/components/schemas/engine.yml
+I, [2019-05-06T19:32:52.088281 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/components/schemas/main.yml
+I, [2019-05-06T19:32:52.088567 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/components/schemas/post.yml
+I, [2019-05-06T19:32:52.088867 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/info.yml
+I, [2019-05-06T19:32:52.089136 #22431]  INFO -- :  Use schema file: 	/Users/yukihirop/RubyProjects/r2-oas/oas_docs/src/servers.yml
 I, [2019-05-06T19:32:52.100673 #22431]  INFO -- : [Generate Swagger docs from schema files] end
 I, [2019-05-06T19:32:52.133732 #22431]  INFO -- : [Routes to Swagger docs] end
 ```
@@ -833,7 +833,7 @@ docs
 │   ├── swagger-ui.js
 │   └── swagger-ui.js.map
 ├── index.html
-└── swagger_doc.yml
+└── oas_doc.yml
 
 1 directory, 13 files
 ```

@@ -57,7 +57,7 @@ RSpec.describe R2OAS::Schema::V3::Generator do
     end
   end
 
-  describe '#swagger_doc' do
+  describe '#oas_doc' do
     context 'when skip_load_dot_paths is true' do
       let(:generator_options) { { skip_load_dot_paths: true } }
 
@@ -66,7 +66,7 @@ RSpec.describe R2OAS::Schema::V3::Generator do
       end
 
       it 'should be present' do
-        expect(generator.swagger_doc).not_to be_blank
+        expect(generator.oas_doc).not_to be_blank
       end
     end
 
@@ -78,11 +78,11 @@ RSpec.describe R2OAS::Schema::V3::Generator do
           # Strike the docs command in advance
           generate_docs
           generator.generate_docs
-          @swagger_doc = generator.swagger_doc
+          @oas_doc = generator.oas_doc
         end
 
         it 'should be present' do
-          expect(generator.swagger_doc).not_to be_blank
+          expect(generator.oas_doc).not_to be_blank
         end
 
         context 'when PATHS_FILE is present' do
@@ -90,8 +90,8 @@ RSpec.describe R2OAS::Schema::V3::Generator do
           let(:generator_options) { { skip_generate_docs: true, unit_paths_file_path: unit_paths_file_path } }
 
           it 'should squeeze paths' do
-            expect(@swagger_doc['paths']['/tasks']).not_to be_blank
-            expect(@swagger_doc['paths']['/api/v1/tasks']).to be_blank
+            expect(@oas_doc['paths']['/tasks']).not_to be_blank
+            expect(@oas_doc['paths']['/api/v1/tasks']).to be_blank
           end
         end
       end

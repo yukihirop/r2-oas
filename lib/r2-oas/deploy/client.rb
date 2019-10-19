@@ -9,7 +9,7 @@ module R2OAS
       def deploy
         copy_swagger_ui_dist
         copy_swagger_ui_index
-        copy_swagger_doc_file
+        copy_oas_doc_file
       end
 
       private
@@ -35,10 +35,10 @@ module R2OAS
         File.write(index_path, index)
       end
 
-      def copy_swagger_doc_file
+      def copy_oas_doc_file
         swagger_file_path = File.expand_path(Rails.root.join('docs', doc_save_file_name), __FILE__)
-        swagger_doc_file_path = File.expand_path("#{root_dir_path}/#{doc_save_file_name}")
-        FileUtils.cp_r(swagger_doc_file_path, swagger_file_path)
+        oas_doc_file_path = File.expand_path("#{root_dir_path}/#{doc_save_file_name}")
+        FileUtils.cp_r(oas_doc_file_path, swagger_file_path)
       end
     end
   end

@@ -16,9 +16,9 @@ RSpec.describe R2OAS::Schema::V3::BaseObject do
   describe '.initialize' do
     context 'when default' do
       it { expect(object.send(:version)).to eq :v3 }
-      it { expect(object.send(:root_dir_path)).to eq Rails.root.join('swagger_docs').to_s }
+      it { expect(object.send(:root_dir_path)).to eq Rails.root.join('oas_docs').to_s }
       it { expect(object.send(:schema_save_dir_name)).to eq 'src' }
-      it { expect(object.send(:doc_save_file_name)).to eq 'swagger_doc.yml' }
+      it { expect(object.send(:doc_save_file_name)).to eq 'oas_doc.yml' }
       it { expect(object.send(:force_update_schema)).to eq false }
       it { expect(object.send(:use_tag_namespace)).to eq true }
       it { expect(object.send(:use_schema_namespace)).to eq false }

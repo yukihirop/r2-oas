@@ -69,9 +69,9 @@ In your rails project, Write `config/environments/development.rb` like that:
 R2OAS.configure do |config|
   config.version                            = :v3
   #「docs」is not used. 「docs」is reserved word
-  config.root_dir_path                      = "./swagger_docs"
+  config.root_dir_path                      = "./oas_docs"
   config.schema_save_dir_name               = "src"
-  config.doc_save_file_name                 = "swagger_doc.yml"
+  config.doc_save_file_name                 = "oas_doc.yml"
   config.force_update_schema                = false
   config.use_tag_namespace                  = true
   config.use_schema_namespace               = false
@@ -147,17 +147,17 @@ You can execute the following command in the root directory of rails.
 ```bash
 $ # Generate docs
 $ bundle exec rake routes:oas:docs                                                                        # Generate docs
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # Generate docs by specify unit paths
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # Generate docs by specify unit paths
 
 $ # Start swagger editor
 $ bundle exec rake routes:oas:editor                                                                      # Start swagger editor
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # Start swagger editor by specify unit paths
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # Start swagger editor by specify unit paths
 $ # Start swagger ui
 $ bundle exec rake routes:oas:ui                                                                          # Start swagger ui
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # Start swagger ui by specify unit paths
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # Start swagger ui by specify unit paths
 $ # Monitor swagger document
 $ bundle exec rake routes:oas:monitor                                                                     # Monitor swagger document
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # Monitor swagger by specify unit paths
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # Monitor swagger by specify unit paths
 
 $ # Analyze docs
 $ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
@@ -168,7 +168,7 @@ $ bundle exec rake routes:oas:deploy
 $ # Distribute swagger document
 $ bundle exec rake routes:oas:dist
 $ # Distribute swagger document
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:dist # Distribute swagger document by specify unit paths
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:dist # Distribute swagger document by specify unit paths
  
 # Display paths list
 $ bundle exec rake routes:oas:paths_ls
@@ -234,9 +234,9 @@ we explain the options that can be set.
 |option|description|default|
 |------|-----------|---|
 |version|OpenAPI schema version| `:v3` |
-|root_dir_path|Root directory for storing products.| `"./swagger_docs"` |
+|root_dir_path|Root directory for storing products.| `"./oas_docs"` |
 |schema_save_dir_name|Directory name for storing swagger schemas|`"src"`|
-|doc_save_file_name|File name for storing swagger doc|`"swagger_doc.yml"`|
+|doc_save_file_name|File name for storing swagger doc|`"oas_doc.yml"`|
 |force_update_schema|Force update schema from routes data|`false`|
 |use_tag_namespace|Use namespace for tag name|`true`|
 |use_schema_namespace|Use namespace for schema name|`true`|
@@ -296,7 +296,7 @@ We explain the environment variables that can be set.
 Writing file paths in .paths will only read them.
 You can comment out with `#`
 
-`swagger_docs/.paths`
+`oas_docs/.paths`
 
 ```
 #account_user_role.yml    # ignore

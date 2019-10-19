@@ -51,7 +51,7 @@ namespace :routes do
       generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
-      before_schema_data = generator.swagger_doc
+      before_schema_data = generator.oas_doc
       editor_options = { unit_paths_file_path: unit_paths_file_path }
       editor = R2OAS::Schema::Editor.new(before_schema_data, editor_options)
       editor.start
@@ -82,7 +82,7 @@ namespace :routes do
       generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
-      before_schema_data = generator.swagger_doc
+      before_schema_data = generator.oas_doc
       monitor_options = { unit_paths_file_path: unit_paths_file_path }
       monitor = R2OAS::Schema::Monitor.new(before_schema_data, monitor_options)
       monitor.start
