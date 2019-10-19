@@ -42,9 +42,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Generator do
       let(:generator_options) { { skip_generate_docs: true } }
 
       context 'when file do not exists at doc_save_file_path' do
-        it 'should raise error' do
-          expect { generator.generate_docs }.to raise_error(RoutesToSwaggerDocs::NoImplementError)
-        end
+        it { expect(generator.generate_docs).to eq true }
       end
 
       context 'when file exists at doc_save_file_path' do

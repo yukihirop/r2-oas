@@ -32,7 +32,7 @@ module RoutesToSwaggerDocs
           elsif skip_generate_docs && FileTest.exists?(doc_save_file_path)
             YAML.load_file(doc_save_file_path)
           else
-            raise NoImplementError.new
+            {}
           end
         end
 
