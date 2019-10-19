@@ -1,4 +1,4 @@
-# R2OAS
+# R2-OAS
 
 Generate api docment(OpenAPI) side only from `rails` routing.
 
