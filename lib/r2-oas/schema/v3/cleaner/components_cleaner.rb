@@ -14,11 +14,11 @@ module R2OAS
         end
 
         def clean_docs
-          logger.info '[Clean Swagger file (components)] start'
+          logger.info '[Clean OAS file (components)] start'
           super do |file_path|
             logger.info "  Delete schema file: \t#{file_path}"
           end
-          logger.info '[Clean Swagger file (components)] end'
+          logger.info '[Clean OAS file (components)] end'
         end
 
         private

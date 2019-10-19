@@ -8,10 +8,10 @@ module R2OAS
     module V3
       class Cleaner < BaseCleaner
         def clean_docs
-          logger.info '[Clean Swagger file] start'
+          logger.info '[Clean OAS file] start'
           components_cleaner = ComponentsCleaner.new(@options)
           components_cleaner.clean_docs
-          logger.info '[Clean Swagger file] end'
+          logger.info '[Clean OAS file] end'
         end
       end
     end

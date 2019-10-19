@@ -8,7 +8,7 @@ module R2OAS
       class InfoObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
         def create_doc
           result = {
-            'title' => 'Swagger API Document Title',
+            'title' => 'OAS API Document Title',
             'description' => "This is a sample server Petstore server.  You can find out more about
             Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net,
             #swagger](http://swagger.io/irc/).  For this sample, you can use the api key

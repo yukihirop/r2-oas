@@ -17,12 +17,12 @@ module R2OAS
         end
 
         def generate_docs
-          logger.info '[Generate Swagger schema files] start'
+          logger.info '[Generate OAS schema files] start'
           @schema_generator.generate_docs unless skip_generate_docs
-          logger.info '[Generate Swagger schema files] end'
-          logger.info '[Generate Swagger docs from schema files] start'
+          logger.info '[Generate OAS schema files] end'
+          logger.info '[Generate OAS docs from schema files] start'
           generate_docs_from_schema_files
-          logger.info '[Generate Swagger docs from schema files] end'
+          logger.info '[Generate OAS docs from schema files] end'
         end
 
         private

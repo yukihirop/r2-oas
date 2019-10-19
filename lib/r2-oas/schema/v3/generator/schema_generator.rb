@@ -57,13 +57,13 @@ module R2OAS
 
             case field_name
             when 'paths'
-              logger.info ' [Generate Swagger schema files (paths)] start'
+              logger.info ' [Generate OAS schema files (paths)] start'
               PathGenerator.new(result, @options).generate_docs
-              logger.info ' [Generate Swagger schema files (paths)] end'
+              logger.info ' [Generate OAS schema files (paths)] end'
             when 'components'
-              logger.info ' [Generate Swagger schema files (components)] start'
+              logger.info ' [Generate OAS schema files (components)] start'
               ComponentsGenerator.new(result, @options).generate_docs
-              logger.info ' [Generate Swagger schema files (components)] end'
+              logger.info ' [Generate OAS schema files (components)] end'
             else
               file_manager = FileManager.new(field_name, :relative)
               file_manager.save(result.to_yaml)

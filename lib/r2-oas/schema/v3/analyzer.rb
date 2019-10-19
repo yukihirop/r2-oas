@@ -18,26 +18,26 @@ module R2OAS
         end
 
         def analyze_docs
-          logger.info '[Analyze Swagger file] start'
+          logger.info '[Analyze OAS file] start'
           @after_schema_data.keys.each do |schema_name|
             case schema_name
             when 'paths'
-              logger.info '[Analyze Swagger file (paths)] start'
+              logger.info '[Analyze OAS file (paths)] start'
               @path_analyzer.analyze_docs
-              logger.info '[Analyze Swagger file (paths)] end'
+              logger.info '[Analyze OAS file (paths)] end'
             when 'tags'
-              logger.info '[Analyze Swagger file (tags)] start'
+              logger.info '[Analyze OAS file (tags)] start'
               @tag_analyzer.analyze_docs
-              logger.info '[Analyze Swagger file (tags)] end'
+              logger.info '[Analyze OAS file (tags)] end'
             when 'components'
-              logger.info '[Analyze Swagger file (components)] start'
+              logger.info '[Analyze OAS file (components)] start'
               @components_analyzer.analyze_docs
-              logger.info '[Analyze Swagger file (components)] end'
+              logger.info '[Analyze OAS file (components)] end'
             else
               save_schema_when(schema_name)
             end
           end
-          logger.info '[Analyze Swagger file] end'
+          logger.info '[Analyze OAS file] end'
         end
 
         private

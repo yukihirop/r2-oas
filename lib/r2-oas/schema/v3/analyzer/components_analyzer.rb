@@ -15,13 +15,13 @@ module R2OAS
 
         def analyze_docs
           support_components_objects.each do |object_name|
-            logger.info "[Analyze Swagger file (components/#{object_name})] start"
+            logger.info "[Analyze OAS file (components/#{object_name})] start"
             Components::ObjectAnalyzer.new(
               @before_schema_data,
               @after_schema_data,
               @options.merge(middle_category: object_name)
             ).analyze_docs
-            logger.info "[Analyze Swagger file (components/#{object_name})] end"
+            logger.info "[Analyze OAS file (components/#{object_name})] end"
           end
         end
       end
