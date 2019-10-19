@@ -189,10 +189,10 @@ $ bundle exec rake routes:oas:paths_stats
 
 実際の使用例を見るにはこちらのリポジトリを参考にしてください。
 
-- [yukihirop/rtsd-k8s-example](https://github.com/yukihirop/rtsd-k8s-example)
-- [yukihirop/rtsd-moneyforward-example](https://github.com/yukihirop/rtsd-moneyforward-example)
-- [yukihirop/rtsd-leaddesk-example](https://github.com/yukihirop/rtsd-leaddesk-example)
-- [yukihirop/rtsd-advanced-example](https://github.com/yukihirop/rtsd-advanced-example)
+- [yukihirop/r2oas-k8s-example](https://github.com/yukihirop/r2oas-k8s-example)
+- [yukihirop/r2oas-moneyforward-example](https://github.com/yukihirop/r2oas-moneyforward-example)
+- [yukihirop/r2oas-leaddesk-example](https://github.com/yukihirop/r2oas-leaddesk-example)
+- [yukihirop/r2oas-advanced-example](https://github.com/yukihirop/r2oas-advanced-example)
 
 ## ❤️ Support Rails Version
 
