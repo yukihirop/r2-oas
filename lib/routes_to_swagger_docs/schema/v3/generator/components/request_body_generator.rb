@@ -3,7 +3,7 @@
 require 'forwardable'
 require 'fileutils'
 require_relative 'object_generator'
-require 'routes_to_swagger_docs/schema/v3/manager/file/components_file_manager'
+require 'r2-oas/schema/v3/manager/file/components_file_manager'
 
 module RoutesToSwaggerDocs
   module Schema

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative '../base_analyzer'
-require 'routes_to_swagger_docs/schema/v3/manager/file/components_file_manager'
-require 'routes_to_swagger_docs/schema/v3/manager/diff/components_diff_manager'
+require 'r2-oas/schema/v3/manager/file/components_file_manager'
+require 'r2-oas/schema/v3/manager/diff/components_diff_manager'
 
 # Scope Rails
 module RoutesToSwaggerDocs

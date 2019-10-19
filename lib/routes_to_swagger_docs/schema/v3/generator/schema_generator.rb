@@ -4,7 +4,7 @@ require 'fileutils'
 require_relative 'base_generator'
 require_relative 'path_generator'
 require_relative 'components_generator'
-require 'routes_to_swagger_docs/schema/v3/manager/file_manager'
+require 'r2-oas/schema/v3/manager/file_manager'
 
 module RoutesToSwaggerDocs
   module Schema

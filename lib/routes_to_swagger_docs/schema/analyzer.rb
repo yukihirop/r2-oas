@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'forwardable'
-require 'routes_to_swagger_docs/schema/v3/analyzer'
+require 'r2-oas/schema/v3/analyzer'
 
 module RoutesToSwaggerDocs
   module Schema

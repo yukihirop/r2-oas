@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'routes_to_swagger_docs/routing/components/verb_component'
+require 'r2-oas/routing/components/verb_component'
 
 RSpec.describe RoutesToSwaggerDocs::Routing::VerbComponent do
   let(:verb) { '' }

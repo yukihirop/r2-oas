@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'routes_to_swagger_docs/plugins/schema/v3/object/hookable_base_object'
-require 'routes_to_swagger_docs/schema/v3/manager/file/components_file_manager'
+require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
+require 'r2-oas/schema/v3/manager/file/components_file_manager'
 
 module RoutesToSwaggerDocs
   module Schema

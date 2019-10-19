@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'routes_to_swagger_docs/schema/editor'
-require 'routes_to_swagger_docs/schema/ui'
-require 'routes_to_swagger_docs/schema/monitor'
-require 'routes_to_swagger_docs/task_logging'
+require 'r2-oas/schema/editor'
+require 'r2-oas/schema/ui'
+require 'r2-oas/schema/monitor'
+require 'r2-oas/task_logging'
 load File.expand_path('common.rake', __dir__)
 
 namespace :routes do

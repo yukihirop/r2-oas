@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'routes_to_swagger_docs/schema/v3/base'
+require 'r2-oas/schema/v3/base'
 
 # Scope Rails
 module RoutesToSwaggerDocs

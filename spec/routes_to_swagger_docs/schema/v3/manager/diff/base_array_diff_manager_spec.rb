@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'routes_to_swagger_docs/schema/v3/manager/diff/base_array_diff_manager'
+require 'r2-oas/schema/v3/manager/diff/base_array_diff_manager'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseArrayDiffManager do
   let(:before_schema_data) do

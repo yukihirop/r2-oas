@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'routes_to_swagger_docs/plugins/schema/v3/object/hookable_base_object'
+require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
 require_relative 'components/schema_object'
 require_relative 'components/request_body_object'
 

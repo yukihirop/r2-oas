@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'routes_to_swagger_docs/routing/adjustor'
+require 'r2-oas/routing/adjustor'
 
 RSpec.describe RoutesToSwaggerDocs::Routing::Adjustor do
   let(:route_wrapper) { double('ActionDispatch::Routing::RouteWrapper') }

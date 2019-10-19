@@ -4,7 +4,7 @@ require_relative 'analyzer/base_analyzer'
 require_relative 'analyzer/path_analyzer'
 require_relative 'analyzer/tag_analyzer'
 require_relative 'analyzer/components_analyzer'
-require 'routes_to_swagger_docs/schema/v3/manager/file_manager'
+require 'r2-oas/schema/v3/manager/file_manager'
 
 module RoutesToSwaggerDocs
   module Schema

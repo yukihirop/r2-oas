@@ -10,7 +10,7 @@ require 'forwardable'
 
 # Can't use ActiveSupport::Autroload
 # ThreadError: can't be called from trap context
-require 'routes_to_swagger_docs/schema/analyzer'
+require 'r2-oas/schema/analyzer'
 require_relative 'base'
 
 # Scope Rails

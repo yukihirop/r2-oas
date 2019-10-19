@@ -19,7 +19,7 @@ railsアプリケーションのGemfileに以下を追加します。
 
 ```ruby
 group :development do
-  gem 'routes_to_swagger_docs'
+  gem 'r2-oas'
 end
 ```
 
@@ -169,18 +169,18 @@ $ bundle exec rake routes:swagger:paths_stats
 
 ## 📚 More Usage
 
-- [How to generate docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
-- [How to start swagger editor](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
-- [How to start swagger ui](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
-- [How to monitor swagger document](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_MONITOR_SWAGGER_DOC.md)
-- [How to analyze docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
-- [How to clean docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_CLEAN_DOCS.md)
-- [How to deploy swagger doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
-- [How to use tag namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
-- [How to use schema namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
-- [How to use hook when generate doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
-- [How to display paths list](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
-- [How to display paths stats](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_STATS.md)
+- [How to generate docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
+- [How to start swagger editor](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
+- [How to start swagger ui](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
+- [How to monitor swagger document](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_MONITOR_SWAGGER_DOC.md)
+- [How to analyze docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
+- [How to clean docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_CLEAN_DOCS.md)
+- [How to deploy swagger doc](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
+- [How to use tag namespace](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
+- [How to use schema namespace](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
+- [How to use hook when generate doc](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
+- [How to display paths list](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
+- [How to display paths stats](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DISPLAY_PATHS_STATS.md)
 
 
 ## ⚾️ sample
@@ -209,7 +209,7 @@ $ bundle exec rake routes:swagger:paths_stats
 
 |version|document|
 |-------|--------|
-|v3|[versions/v3.md](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/versions/v3.md)|
+|v3|[versions/v3.md](https://github.com/yukihirop/r2-oas/blob/master/docs/versions/v3.md)|
 
 ## ❗️ Convention over Configuration (CoC)
 
@@ -574,7 +574,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## 🤝 Contributing
 
-1. Fork it ( http://github.com/yukihirop/routes_to_swagger_docs/fork )
+1. Fork it ( http://github.com/yukihirop/r2-oas/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'routes_to_swagger_docs/schema/v3/object/base_object'
-require 'routes_to_swagger_docs/hooks/hook'
+require 'r2-oas/schema/v3/object/base_object'
+require 'r2-oas/hooks/hook'
 
 module RoutesToSwaggerDocs
   module Plugins

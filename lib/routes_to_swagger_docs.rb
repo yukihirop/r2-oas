@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'routes_to_swagger_docs/version'
-require 'routes_to_swagger_docs/configuration'
-require 'routes_to_swagger_docs/errors'
-require 'routes_to_swagger_docs/schema/v3/object/public'
+require 'r2-oas/version'
+require 'r2-oas/configuration'
+require 'r2-oas/errors'
+require 'r2-oas/schema/v3/object/public'
 
 module RoutesToSwaggerDocs
   extend ActiveSupport::Autoload
@@ -13,22 +13,22 @@ module RoutesToSwaggerDocs
   # support Rails version
   elsif ::Rails::VERSION::STRING >= '4.2.5.1'
     extend Configuration
-    require 'routes_to_swagger_docs/task'
+    require 'r2-oas/task'
 
-    autoload :Base, 'routes_to_swagger_docs/base'
-    autoload :NoImplementError, 'routes_to_swagger_docs/errors'
-    autoload :NoFileExistsError, 'routes_to_swagger_docs/errors'
-    autoload :NoSupportError, 'routes_to_swagger_docs/errors'
-    autoload :Sortable, 'routes_to_swagger_docs/shared/all'
+    autoload :Base, 'r2-oas/base'
+    autoload :NoImplementError, 'r2-oas/errors'
+    autoload :NoFileExistsError, 'r2-oas/errors'
+    autoload :NoSupportError, 'r2-oas/errors'
+    autoload :Sortable, 'r2-oas/shared/all'
 
     module Schema
       extend ActiveSupport::Autoload
 
-      autoload :Base, 'routes_to_swagger_docs/schema/base'
-      autoload :Generator, 'routes_to_swagger_docs/schema/generator'
-      autoload :Analyzer, 'routes_to_swagger_docs/schema/analyzer'
-      autoload :Squeezer, 'routes_to_swagger_docs/schema/squeezer'
-      autoload :Cleaner, 'routes_to_swagger_docs/schema/cleaner'
+      autoload :Base, 'r2-oas/schema/base'
+      autoload :Generator, 'r2-oas/schema/generator'
+      autoload :Analyzer, 'r2-oas/schema/analyzer'
+      autoload :Squeezer, 'r2-oas/schema/squeezer'
+      autoload :Cleaner, 'r2-oas/schema/cleaner'
     end
   else
     raise NoImplementError, "Do not support Rails Version: #{::Rails::VERSION::STRING}"

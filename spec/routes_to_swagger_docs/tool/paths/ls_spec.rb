@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'routes_to_swagger_docs/tool/paths/ls'
+require 'r2-oas/tool/paths/ls'
 
 RSpec.describe RoutesToSwaggerDocs::Tool::Paths::Ls do
   let(:ls) { described_class.new }

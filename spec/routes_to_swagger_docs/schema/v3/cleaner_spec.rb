@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'routes_to_swagger_docs/schema/v3/cleaner'
+require 'r2-oas/schema/v3/cleaner'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::V3::Cleaner do
   let(:cleaner_options) { {} }

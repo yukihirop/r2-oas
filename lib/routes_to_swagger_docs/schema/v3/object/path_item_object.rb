@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'forwardable'
-require 'routes_to_swagger_docs/plugins/schema/v3/object/hookable_base_object'
-require 'routes_to_swagger_docs/routing/components/path_component'
+require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
+require 'r2-oas/routing/components/path_component'
 
 module RoutesToSwaggerDocs
   module Schema

@@ -2,7 +2,7 @@
 
 ```ruby
 
-require 'routes_to_swagger_docs'
+require 'r2-oas'
 
 RoutesToSwaggerDocs.configure do |config|
    # default setting        
@@ -125,7 +125,7 @@ swagger_docs
 
 ```ruby
 
-require 'routes_to_swagger_docs'
+require 'r2-oas'
 
 RoutesToSwaggerDocs.configure do |config|
    # default setting        

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'routes_to_swagger_docs/schema/v3/analyzer'
+require 'r2-oas/schema/v3/analyzer'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::V3::Analyzer do
   let(:before_schema_data) { {} }

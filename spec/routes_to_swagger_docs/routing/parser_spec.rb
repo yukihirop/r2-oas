@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'routes_to_swagger_docs/routing/parser'
+require 'r2-oas/routing/parser'
 
 RSpec.describe RoutesToSwaggerDocs::Routing::Parser do
   let(:routes) { ::Rails.application.routes.routes }

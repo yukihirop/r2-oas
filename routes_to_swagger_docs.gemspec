@@ -2,10 +2,10 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'routes_to_swagger_docs/version'
+require 'r2-oas/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'routes_to_swagger_docs'
+  spec.name          = 'r2-oas'
   spec.version       = RoutesToSwaggerDocs::VERSION
   spec.authors       = ['yukihirop']
   spec.email         = ['te108186@gmail.com']
@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
     ```
   EOF
   
-  spec.homepage      = 'https://github.com/yukihirop/routes_to_swagger_docs'
+  spec.homepage      = 'https://github.com/yukihirop/r2-oas'
   spec.license       = 'MIT'
 
   # Specify which files should be added to the gem when it is released.

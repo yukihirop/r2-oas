@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'routes_to_swagger_docs/schema/v3/object/openapi_object'
+require 'r2-oas/schema/v3/object/openapi_object'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::V3::OpenapiObject do
   let(:routes_data) do

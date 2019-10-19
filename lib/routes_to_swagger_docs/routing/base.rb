@@ -2,7 +2,7 @@
 
 # MEMO
 # load this file before autoload ::RoutesToSwaggerDocs::Base
-require 'routes_to_swagger_docs/base'
+require 'r2-oas/base'
 
 module RoutesToSwaggerDocs
   module Routing

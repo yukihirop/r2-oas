@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'routes_to_swagger_docs/routing/components/request_component'
+require 'r2-oas/routing/components/request_component'
 
 RSpec.describe RoutesToSwaggerDocs::Routing::RequestComponent do
   let(:request) { '' }

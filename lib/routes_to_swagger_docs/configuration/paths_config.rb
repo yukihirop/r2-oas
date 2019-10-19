@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'routes_to_swagger_docs/schema/manager/file/path_item_file_manager'
+require 'r2-oas/schema/manager/file/path_item_file_manager'
 
 module RoutesToSwaggerDocs
   module Configuration

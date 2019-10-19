@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'routes_to_swagger_docs/schema/v3/generator/base_generator'
+require 'r2-oas/schema/v3/generator/base_generator'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseGenerator do
   let(:options) { {} }

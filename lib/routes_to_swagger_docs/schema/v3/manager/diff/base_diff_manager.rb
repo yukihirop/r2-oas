@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'easy_diff'
-require 'routes_to_swagger_docs/schema/v3/base'
+require 'r2-oas/schema/v3/base'
 
 module RoutesToSwaggerDocs
   module Schema

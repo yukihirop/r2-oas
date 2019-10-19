@@ -3,7 +3,7 @@
 require 'bundler/setup'
 # workaround  uninitialized constant RoutesToSwaggerDocs::ActiveSupport
 require 'action_controller/railtie'
-require 'routes_to_swagger_docs'
+require 'r2-oas'
 require 'pry'
 
 # needs to load the app
