@@ -1,16 +1,16 @@
-# RoutesToSwaggerDocs
+# R2-OAS
 
 railsのルーティング情報からOpenAPI(V3)形式のドキュメントを生成し、閲覧・編集・管理するためのrakeタスクの提供をします。
 
 ```bash
-bundle exec rake routes:swagger:docs    # ドキュメント生成
-bundle exec rake routes:swagger:ui      # ドキュメント閲覧
-bundle exec rake routes:swagger:editor  # ドキュメント編集
-bundle exec rake routes:swagger:monitor # ドキュメント監視
-bundle exec rake routes:swagger:dist    # ドキュメント配布
-bundle exec rake routes:swagger:clean   # ドキュメント清掃
-bundle exec rake routes:swagger:analyze # ドキュメント分解・分析
-bundle exec rake routes:swagger:deploy  # ドキュメントデプロイ
+bundle exec rake routes:oas:docs    # ドキュメント生成
+bundle exec rake routes:oas:ui      # ドキュメント閲覧
+bundle exec rake routes:oas:editor  # ドキュメント編集
+bundle exec rake routes:oas:monitor # ドキュメント監視
+bundle exec rake routes:oas:dist    # ドキュメント配布
+bundle exec rake routes:oas:clean   # ドキュメント清掃
+bundle exec rake routes:oas:analyze # ドキュメント分解・分析
+bundle exec rake routes:oas:deploy  # ドキュメントデプロイ
 ```
 
 ## 💎 Installation
@@ -19,7 +19,7 @@ railsアプリケーションのGemfileに以下を追加します。
 
 ```ruby
 group :development do
-  gem 'routes_to_swagger_docs'
+  gem 'r2-oas'
 end
 ```
 
@@ -44,8 +44,8 @@ $ brew cask install chromedriver
 gemをrequire後、以下のrakeタスクを実行するだけです。
 
 ```bash
-bundle exec routes:swagger:docs
-bundle exec routes:swagger:editor
+bundle exec routes:oas:docs
+bundle exec routes:oas:editor
 ```
 
 ## 📖 Usage
@@ -58,12 +58,12 @@ bundle exec routes:swagger:editor
 
 ```ruby
 # default setting
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
   config.version                            = :v3
   #「docs」という名前は使えません。予約語です。
-  config.root_dir_path                      = "./swagger_docs"
+  config.root_dir_path                      = "./oas_docs"
   config.schema_save_dir_name               = "src"
-  config.doc_save_file_name                 = "swagger_doc.yml"
+  config.doc_save_file_name                 = "oas_doc.yml"
   config.force_update_schema                = false
   config.use_tag_namespace                  = true
   config.use_schema_namespace               = false
@@ -87,13 +87,13 @@ RoutesToSwaggerDocs.configure do |config|
   end
 
   config.use_object_classes = {
-    info_object:                    RoutesToSwaggerDocs::Schema::V3::InfoObject,
-    paths_object:                   RoutesToSwaggerDocs::Schema::V3::PathsObject,
-    path_item_object:               RoutesToSwaggerDocs::Schema::V3::PathItemObject,
-    external_document_object:       RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
-    components_object:              RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
-    components_schema_object:       RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject,
-    components_request_body_object: RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+    info_object:                    R2OAS::Schema::V3::InfoObject,
+    paths_object:                   R2OAS::Schema::V3::PathsObject,
+    path_item_object:               R2OAS::Schema::V3::PathItemObject,
+    external_document_object:       R2OAS::Schema::V3::ExternalDocumentObject,
+    components_object:              R2OAS::Schema::V3::ComponentsObject,
+    components_schema_object:       R2OAS::Schema::V3::Components::SchemaObject,
+    components_request_body_object: R2OAS::Schema::V3::Components::RequestBodyObject
   }
 
   config.http_statuses_when_http_method = {
@@ -138,49 +138,49 @@ railsプロジェクトのルートディレクトリで以下のコマンドが
 
 ```bash
 $ # ドキュメント生成
-$ bundle exec rake routes:swagger:docs
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs    # pathsファイルを指定してドキュメント生成
+$ bundle exec rake routes:oas:docs
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # pathsファイルを指定してドキュメント生成
 
 $ # SwaggerEditorでドキュメント編集
-$ bundle exec rake routes:swagger:editor
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor  # pathsファイルを指定してドキュメント編集
+$ bundle exec rake routes:oas:editor
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # pathsファイルを指定してドキュメント編集
 $ # SwaggerUIでドキュメント閲覧
-$ bundle exec rake routes:swagger:ui
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # pathsファイルを指定してドキュメント閲覧
-$ # テキストエディタでドキュメント編集(初期設定時、git管理しないswagger_docs/swagger_doc.ymlを監視)
-$ bundle exec rake routes:swagger:monitor
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # pathsファイルを指定してドキュメント監視
+$ bundle exec rake routes:oas:ui
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # pathsファイルを指定してドキュメント閲覧
+$ # テキストエディタでドキュメント編集(初期設定時、git管理しないoas_docs/oas_doc.ymlを監視)
+$ bundle exec rake routes:oas:monitor
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # pathsファイルを指定してドキュメント監視
 
 $ # ドキュメントを分解・分析
-$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
+$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
 $ # どこからも参照されてないcomponents/schemas(requestBodies, ...)を削除
-$ bundle exec rake routes:swagger:clean
+$ bundle exec rake routes:oas:clean
 $ # githubにホスティング
-$ bundle exec rake routes:swagger:deploy
-$ # ドキュメントを配布(初期設定時、配布ファイルは、swagger_docs/swagger_doc.yml)
-$ bundle exec rake routes:swagger:dist
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:dist    # pathsファイルを指定してドキュメント配布
+$ bundle exec rake routes:oas:deploy
+$ # ドキュメントを配布(初期設定時、配布ファイルは、oas_docs/oas_doc.yml)
+$ bundle exec rake routes:oas:dist
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:dist    # pathsファイルを指定してドキュメント配布
  
 # pathsファイルのリスト取得
-$ bundle exec rake routes:swagger:paths_ls
+$ bundle exec rake routes:oas:paths_ls
 # pathsファイルの編集履歴表示
-$ bundle exec rake routes:swagger:paths_stats
+$ bundle exec rake routes:oas:paths_stats
 ```
 
 ## 📚 More Usage
 
-- [How to generate docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
-- [How to start swagger editor](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
-- [How to start swagger ui](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
-- [How to monitor swagger document](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_MONITOR_SWAGGER_DOC.md)
-- [How to analyze docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
-- [How to clean docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_CLEAN_DOCS.md)
-- [How to deploy swagger doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
-- [How to use tag namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
-- [How to use schema namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
-- [How to use hook when generate doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
-- [How to display paths list](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
-- [How to display paths stats](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_STATS.md)
+- [How to generate docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
+- [How to start swagger editor](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
+- [How to start swagger ui](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
+- [How to monitor swagger document](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_MONITOR_SWAGGER_DOC.md)
+- [How to analyze docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
+- [How to clean docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_CLEAN_DOCS.md)
+- [How to deploy swagger doc](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
+- [How to use tag namespace](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
+- [How to use schema namespace](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
+- [How to use hook when generate doc](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
+- [How to display paths list](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
+- [How to display paths stats](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DISPLAY_PATHS_STATS.md)
 
 
 ## ⚾️ sample
@@ -209,7 +209,7 @@ $ bundle exec rake routes:swagger:paths_stats
 
 |version|document|
 |-------|--------|
-|v3|[versions/v3.md](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/versions/v3.md)|
+|v3|[versions/v3.md](https://github.com/yukihirop/r2-oas/blob/master/docs/versions/v3.md)|
 
 ## ❗️ Convention over Configuration (CoC)
 
@@ -235,9 +235,9 @@ $ bundle exec rake routes:swagger:paths_stats
 |option|description|default|
 |------|-----------|---|
 |version|OpenAPIのバージョン| `:v3` |
-|root_dir_path|ドキュメントの保存パス| `"./swagger_docs"` |
+|root_dir_path|ドキュメントの保存パス| `"./oas_docs"` |
 |schema_save_dir_name|分解したスキーマの保存ディレクトリ名|`"src"`|
-|doc_save_file_name|生成したドキュメントのファイル名|`"swagger_doc.yml"`|
+|doc_save_file_name|生成したドキュメントのファイル名|`"oas_doc.yml"`|
 |force_update_schema|既生のドキュメントをルーティング情報から生成されたデータで更新するか否か|`false`|
 |use_tag_namespace|タグ名にネームスペースを使うか否か|`true`|
 |use_schema_namespace|components/{schemas,requestBodies}名に擬似ネームスペースを利用するか否か|`true`|
@@ -268,7 +268,7 @@ $ bundle exec rake routes:swagger:paths_stats
 
 |option|description|default|
 |------|-----------|-------|
-|use_object_classes|ドキュメント生成時に使用するオブジェクトクラスの設定|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> components_schema_object: `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject` }|
+|use_object_classes|ドキュメント生成時に使用するオブジェクトクラスの設定|{ info_object: `R2OAS::Schema::V3::InfoObject`,<br>paths_object: `R2OAS::Schema::V3::PathsObject`,<br>path_item_object: `R2OAS::Schema::V3::PathItemObject`, external_document_object: `R2OAS::Schema::V3::ExternalDocumentObject`,<br> components_object: `R2OAS::Schema::V3::ComponentsObject`,<br> components_schema_object: `R2OAS::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`R2OAS::Schema::V3::Components::RequestBodyObject` }|
 
 #### tool
 
@@ -300,7 +300,7 @@ Please refer to [here](https://github.com/janlelis/paint) for the color.
 
 `paths` ディレクトリ以下のパスを書きます。
 
-`swagger_docs/.paths`
+`oas_docs/.paths`
 ```
 #account_user_role.yml    # ignore
 account.yml
@@ -317,20 +317,20 @@ account.yml               # ignore
 
 フック可能なオブジェクトは以下の通りです。
 
-- `RoutesToSwaggerDocs::Schema::V3::InfoObject`
-- `RoutesToSwaggerDocs::Schema::V3::PathsObject`
-- `RoutesToSwaggerDocs::Schema::V3::PathItemObject`
-- `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`
-- `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`
-- `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`
-- `RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject`
+- `R2OAS::Schema::V3::InfoObject`
+- `R2OAS::Schema::V3::PathsObject`
+- `R2OAS::Schema::V3::PathItemObject`
+- `R2OAS::Schema::V3::ExternalDocumentObject`
+- `R2OAS::Schema::V3::ComponentsObject`
+- `R2OAS::Schema::V3::Components::SchemaObject`
+- `R2OAS::Schema::V3::Components::RequestBodyObject`
 
 これらのクラスを継承して、フックの設定を書きます。以下に例を用意しました。
 
 #### case: InfoObject
 
 ```ruby
-class CustomInfoObject < RoutesToSwaggerDocs::Schema::V3::InfoObject
+class CustomInfoObject < R2OAS::Schema::V3::InfoObject
   before_create do |doc|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -352,7 +352,7 @@ end
 #### case: PathsObject
 
 ```ruby
-class CustomPathsObject < RoutesToSwaggerDocs::Schema::V3::PathsObject
+class CustomPathsObject < R2OAS::Schema::V3::PathsObject
   before_create do |doc|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -374,7 +374,7 @@ end
 #### case: PathItemObject
 
 ```ruby
-class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
+class CustomPathItemObject < R2OAS::Schema::V3::PathItemObject
   before_create do |doc, path|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -396,7 +396,7 @@ end
 #### case: ExternalDocumentObject
 
 ```ruby
-class CustomExternalDocumentObject < RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject
+class CustomExternalDocumentObject < R2OAS::Schema::V3::ExternalDocumentObject
   before_create do |doc|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -418,7 +418,7 @@ end
 #### case: ComponentsObject
 
 ```ruby
-class CustomComponentsObject < RoutesToSwaggerDocs::Schema::V3::ComponentsObject
+class CustomComponentsObject < R2OAS::Schema::V3::ComponentsObject
   before_create do |doc|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -440,7 +440,7 @@ end
 #### case: Components::SchemaObject
 
 ```ruby
-class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
   before_create do |doc, schema_name|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -462,7 +462,7 @@ end
 ドキュメント生成時にcomponents/schemas名を上書きしたい場合は以下の様にします。
 
 ```ruby
-class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
   def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
     # [重要] 返値は文字列であるべきです。
     # 初期値はschema_name
@@ -471,10 +471,10 @@ class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components
 end
 ```
 
-`path_component` は `RoutesToSwaggerDocs::Routing::PathComponent` のインスタンスです。
+`path_component` は `R2OAS::Routing::PathComponent` のインスタンスです。
 
 ```ruby
-module RoutesToSwaggerDocs
+module R2OAS
   module Routing
     class PathComponent < BaseComponent
       def initialize(path)
@@ -491,7 +491,7 @@ module RoutesToSwaggerDocs
 #### case: Components::RequestBodyObject
 
 ```ruby
-class CustomComponentsRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
   before_create do |doc, schema_name|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -513,7 +513,7 @@ end
 ドキュメント生成時にcomponents/requestBodies名を上書きしたい場合は以下の様にします。
 
 ```ruby
-class CustomComponentsRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
   def components_request_body_name(doc, path_component, tag_name, verb, schema_name)
     # [重要] 返値は文字列であるべきです。
     # 初期値はschema_name
@@ -532,7 +532,7 @@ end
 
 ```ruby
 # もし、InfoObjectとPathItemObjectをカスタムのものにしたい場合は以下の様にします。
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
   # 
   # omission ...
   # 
@@ -574,7 +574,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## 🤝 Contributing
 
-1. Fork it ( http://github.com/yukihirop/routes_to_swagger_docs/fork )
+1. Fork it ( http://github.com/yukihirop/r2-oas/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

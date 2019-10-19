@@ -2,13 +2,13 @@
 
 ```ruby
 
-require 'routes_to_swagger_docs'
+require 'r2-oas'
 
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
    # default setting        
-   config.root_dir_path        = "./swagger_docs"
+   config.root_dir_path        = "./oas_docs"
    config.schema_save_dir_name = "src"
-   config.doc_save_file_name   = "swagger_doc.yml"
+   config.doc_save_file_name   = "oas_doc.yml"
    # default
    config.use_tag_namespace    = true   # write here
    config.use_schema_namespace = true
@@ -16,7 +16,7 @@ RoutesToSwaggerDocs.configure do |config|
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:docs
+$ bundle exec rake routes:oas:docs
 ```
 
 ## Example
@@ -86,7 +86,7 @@ show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#
 Generate like this:
 
 ```
-swagger_docs
+oas_docs
 ├── schema
 │   ├── components
 │   │   └── schemas
@@ -118,27 +118,27 @@ swagger_docs
 │   │   └── user.yml
 │   ├── servers.yml
 │   └── tags.yml
-└── swagger_doc.yml
+└── oas_doc.yml
 ```
 
 ## Do not Use Tag Namespace
 
 ```ruby
 
-require 'routes_to_swagger_docs'
+require 'r2-oas'
 
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
    # default setting        
-   config.root_dir_path        = "./swagger_docs"
+   config.root_dir_path        = "./oas_docs"
    config.schema_save_dir_name = "src"
-   config.doc_save_file_name   = "swagger_doc.yml"
+   config.doc_save_file_name   = "oas_doc.yml"
    config.use_tag_namespace    = false # write here
    config.use_schema_namespace = true
 end
 ```
 
 ```bash
-$ bundle exec rake routes:swagger:docs
+$ bundle exec rake routes:oas:docs
 ```
 
 <img alt="swagger_ui" src="https://user-images.githubusercontent.com/11146767/57007590-bdc5f380-6c24-11e9-9aa4-85f2fe97e463.png" width="546">
@@ -146,7 +146,7 @@ $ bundle exec rake routes:swagger:docs
 Generate like this:
 
 ```
-swagger_docs
+oas_docs
 ├── schema
 │   ├── components
 │   │   └── schemas
@@ -172,5 +172,5 @@ swagger_docs
 │   │   └── user.yml
 │   ├── servers.yml
 │   └── tags.yml
-└── swagger_doc.yml
+└── oas_doc.yml
 ```

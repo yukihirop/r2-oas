@@ -2,15 +2,15 @@
 
 module PathHelper
   def root_dir_path
-    RoutesToSwaggerDocs.root_dir_path
+    R2OAS.root_dir_path
   end
 
   def schema_save_dir_name
-    RoutesToSwaggerDocs.schema_save_dir_name
+    R2OAS.schema_save_dir_name
   end
 
   def doc_save_file_name
-    RoutesToSwaggerDocs.doc_save_file_name
+    R2OAS.doc_save_file_name
   end
 
   def dot_paths_path

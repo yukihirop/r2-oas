@@ -18,9 +18,9 @@ Metrics/AbcSize:
   # a Float.
   Max: 20
   Exclude:
-    - 'lib/routes_to_swagger_docs/schema/v3/generator/schema_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/generator/components/request_body_generator.rb'
+    - 'lib/r2-oas/schema/v3/generator/schema_generator.rb'
+    - 'lib/r2-oas/schema/v3/analyzer.rb'
+    - 'lib/r2-oas/schema/v3/generator/components/request_body_generator.rb'
 
 Style/Documentation:
   Enabled: false
@@ -30,132 +30,132 @@ Style/GuardClause:
 
 Metrics/BlockLength:
   Exclude:
-    - 'routes_to_swagger_docs.gemspec'
-    - 'lib/routes_to_swagger_docs/tasks/main.rake'
-    - 'lib/routes_to_swagger_docs/tasks/tool.rake'
+    - 'r2-oas.gemspec'
+    - 'lib/r2-oas/tasks/main.rake'
+    - 'lib/r2-oas/tasks/tool.rake'
 
 Lint/AmbiguousOperator:
   Exclude:
-    - 'lib/routes_to_swagger_docs/app_configuration/swagger.rb'
-    - 'lib/routes_to_swagger_docs/app_configuration/tool/paths/stats.rb'
-    - 'lib/routes_to_swagger_docs/app_configuration/swagger/ui.rb'
-    - 'lib/routes_to_swagger_docs/app_configuration/swagger/editor.rb'
-    - 'lib/routes_to_swagger_docs/app_configuration/tool.rb'
-    - 'lib/routes_to_swagger_docs/configuration.rb'
-    - 'lib/routes_to_swagger_docs/app_configuration/server.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/object/base_object.rb'
-    - 'lib/routes_to_swagger_docs/base.rb'
-    - 'lib/routes_to_swagger_docs/routing/parser.rb'
-    - 'lib/routes_to_swagger_docs/app_configuration.rb'
-    - 'lib/routes_to_swagger_docs/pluggable_configuration.rb'
+    - 'lib/r2-oas/app_configuration/swagger.rb'
+    - 'lib/r2-oas/app_configuration/tool/paths/stats.rb'
+    - 'lib/r2-oas/app_configuration/swagger/ui.rb'
+    - 'lib/r2-oas/app_configuration/swagger/editor.rb'
+    - 'lib/r2-oas/app_configuration/tool.rb'
+    - 'lib/r2-oas/configuration.rb'
+    - 'lib/r2-oas/app_configuration/server.rb'
+    - 'lib/r2-oas/schema/v3/object/base_object.rb'
+    - 'lib/r2-oas/base.rb'
+    - 'lib/r2-oas/routing/parser.rb'
+    - 'lib/r2-oas/app_configuration.rb'
+    - 'lib/r2-oas/pluggable_configuration.rb'
 
 Metrics/MethodLength:
   Exclude:
-    - 'lib/routes_to_swagger_docs/logger/stdout_logger.rb'
-    - 'lib/routes_to_swagger_docs/routing/adjustor.rb'
-    - 'lib/routes_to_swagger_docs/routing/parser.rb'
-    - 'lib/routes_to_swagger_docs/hooks/hook.rb'
-    - 'lib/routes_to_swagger_docs/task_logging.rb'
-    - 'lib/routes_to_swagger_docs/schema/ui.rb'
-    - 'lib/routes_to_swagger_docs/schema/editor.rb'
-    - 'lib/routes_to_swagger_docs/shared/sortable.rb'
-    - 'lib/routes_to_swagger_docs/app_configuration.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/analyzer/path_analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/analyzer/base_analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/analyzer/components/request_bodies_analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/analyzer/components/schemas_analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/analyzer/tag_analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/analyzer.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/object/paths_object.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/object/components_object.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/object/path_item_object.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/object/info_object.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/manager/diff/base_array_diff_manager.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/manager/diff/base_hash_diff_manager.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/manager/file/components/request_body_file_manager.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/manager/file/path_item_file_manager.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/manager/file/include_ref_base_file_manager.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/manager/pathname_manager.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/generator/path_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/generator/components/request_body_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/generator/schema_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/generator/components/schema_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/generator/doc_generator.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/object/components/request_body_object.rb'
+    - 'lib/r2-oas/logger/stdout_logger.rb'
+    - 'lib/r2-oas/routing/adjustor.rb'
+    - 'lib/r2-oas/routing/parser.rb'
+    - 'lib/r2-oas/hooks/hook.rb'
+    - 'lib/r2-oas/task_logging.rb'
+    - 'lib/r2-oas/schema/ui.rb'
+    - 'lib/r2-oas/schema/editor.rb'
+    - 'lib/r2-oas/shared/sortable.rb'
+    - 'lib/r2-oas/app_configuration.rb'
+    - 'lib/r2-oas/schema/v3/analyzer/path_analyzer.rb'
+    - 'lib/r2-oas/schema/v3/analyzer/base_analyzer.rb'
+    - 'lib/r2-oas/schema/v3/analyzer/components/request_bodies_analyzer.rb'
+    - 'lib/r2-oas/schema/v3/analyzer/components/schemas_analyzer.rb'
+    - 'lib/r2-oas/schema/v3/analyzer/tag_analyzer.rb'
+    - 'lib/r2-oas/schema/v3/analyzer.rb'
+    - 'lib/r2-oas/schema/v3/object/paths_object.rb'
+    - 'lib/r2-oas/schema/v3/object/components_object.rb'
+    - 'lib/r2-oas/schema/v3/object/path_item_object.rb'
+    - 'lib/r2-oas/schema/v3/object/info_object.rb'
+    - 'lib/r2-oas/schema/v3/manager/diff/base_array_diff_manager.rb'
+    - 'lib/r2-oas/schema/v3/manager/diff/base_hash_diff_manager.rb'
+    - 'lib/r2-oas/schema/v3/manager/file/components/request_body_file_manager.rb'
+    - 'lib/r2-oas/schema/v3/manager/file/path_item_file_manager.rb'
+    - 'lib/r2-oas/schema/v3/manager/file/include_ref_base_file_manager.rb'
+    - 'lib/r2-oas/schema/v3/manager/pathname_manager.rb'
+    - 'lib/r2-oas/schema/v3/generator/path_generator.rb'
+    - 'lib/r2-oas/schema/v3/generator/components/request_body_generator.rb'
+    - 'lib/r2-oas/schema/v3/generator/schema_generator.rb'
+    - 'lib/r2-oas/schema/v3/generator/components/schema_generator.rb'
+    - 'lib/r2-oas/schema/v3/generator/doc_generator.rb'
+    - 'lib/r2-oas/schema/v3/object/components/request_body_object.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:
-    - 'lib/routes_to_swagger_docs/logger/stdout_logger.rb'
+    - 'lib/r2-oas/logger/stdout_logger.rb'
 
 Naming/ConstantName:
   Exclude:
-    - 'lib/routes_to_swagger_docs/logger/stdout_logger.rb'
+    - 'lib/r2-oas/logger/stdout_logger.rb'
 
 Naming/PredicateName:
   Exclude:
-    - 'lib/routes_to_swagger_docs/hooks/hook.rb'
-    - 'lib/routes_to_swagger_docs/plugins/schema/v3/object/hookable_base_object.rb'
+    - 'lib/r2-oas/hooks/hook.rb'
+    - 'lib/r2-oas/plugins/schema/v3/object/hookable_base_object.rb'
 
 Style/DoubleNegation:
   Exclude:
-    - 'lib/routes_to_swagger_docs/hooks/hook.rb'
+    - 'lib/r2-oas/hooks/hook.rb'
 
 Style/MultilineBlockChain:
   Exclude:
-    - 'lib/routes_to_swagger_docs/routing/parser.rb'
+    - 'lib/r2-oas/routing/parser.rb'
 
 Naming/MemoizedInstanceVariableName:
   Exclude:
-    - 'lib/routes_to_swagger_docs/configuration.rb'
+    - 'lib/r2-oas/configuration.rb'
 
 Naming/AccessorMethodName:
   Exclude:
-    - 'lib/routes_to_swagger_docs/configuration.rb'
-    - 'lib/routes_to_swagger_docs/app_configuration.rb'
-    - 'lib/routes_to_swagger_docs/pluggable_configuration.rb'
+    - 'lib/r2-oas/configuration.rb'
+    - 'lib/r2-oas/app_configuration.rb'
+    - 'lib/r2-oas/pluggable_configuration.rb'
 
 Style/AsciiComments:
   Exclude:
-    - 'lib/routes_to_swagger_docs/logger/stdout_logger.rb'
+    - 'lib/r2-oas/logger/stdout_logger.rb'
 
 Lint/UnderscorePrefixedVariableName:
   Exclude:
-    - 'lib/routes_to_swagger_docs/logger/stdout_logger.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/object/components/request_body_object.rb'
+    - 'lib/r2-oas/logger/stdout_logger.rb'
+    - 'lib/r2-oas/schema/v3/object/components/request_body_object.rb'
 
 Lint/UselessAccessModifier:
   Exclude:
-    - 'lib/routes_to_swagger_docs/pluggable_configuration.rb'
+    - 'lib/r2-oas/pluggable_configuration.rb'
 
 Style/IdenticalConditionalBranches:
   Exclude:
-    - 'lib/routes_to_swagger_docs/schema/editor.rb'
+    - 'lib/r2-oas/schema/editor.rb'
 
 Style/ClassVars:
   Exclude:
-    - 'lib/routes_to_swagger_docs/plugins/schema/v3/object/hookable_base_object.rb'
+    - 'lib/r2-oas/plugins/schema/v3/object/hookable_base_object.rb'
 
 Style/AccessModifierDeclarations:
   Exclude:
-    - 'lib/routes_to_swagger_docs/app_configuration.rb'
+    - 'lib/r2-oas/app_configuration.rb'
 
 Style/NumericPredicate:
   Exclude:
-    - 'lib/routes_to_swagger_docs/schema/v3/generator/base_generator.rb'
+    - 'lib/r2-oas/schema/v3/generator/base_generator.rb'
 
 Metrics/ClassLength:
   Exclude:
-    - 'lib/routes_to_swagger_docs/schema/v3/object/path_item_object.rb'
+    - 'lib/r2-oas/schema/v3/object/path_item_object.rb'
 
 Metrics/ParameterLists:
   Exclude:
-    - 'lib/routes_to_swagger_docs/schema/v3/object/path_item_object.rb'
-    - 'lib/routes_to_swagger_docs/schema/v3/object/components/schema_object.rb'
+    - 'lib/r2-oas/schema/v3/object/path_item_object.rb'
+    - 'lib/r2-oas/schema/v3/object/components/schema_object.rb'
 
 Layout/EndAlignment:
   Exclude:
-    - 'lib/routes_to_swagger_docs/shared/sortable.rb'
+    - 'lib/r2-oas/shared/sortable.rb'
 
 Security/YAMLLoad:
   Exclude:
-    - 'lib/routes_to_swagger_docs/schema/editor.rb'
+    - 'lib/r2-oas/schema/editor.rb'

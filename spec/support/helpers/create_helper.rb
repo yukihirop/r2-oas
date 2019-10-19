@@ -7,14 +7,14 @@ module CreateHelper
   include FixtureHelper
 
   def create_dot_paths
-    RoutesToSwaggerDocs.paths_config.create_dot_paths
+    R2OAS.paths_config.create_dot_paths
   end
 
   def create_dir(path = '')
     FileUtils.mkdir_p Rails.root.join(src_path, path)
   end
 
-  def delete_swagger_docs
+  def delete_oas_docs
     FileUtils.rm_rf Rails.root.join(root_dir_path)
   end
 

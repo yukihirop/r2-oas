@@ -14,8 +14,8 @@ module DummyApp
     config.action_dispatch.show_exceptions = false
     config.root = File.dirname(__FILE__)
 
-    RoutesToSwaggerDocs.configure do |c|
-      c.root_dir_path = "#{config.root}/swagger_docs"
+    R2OAS.configure do |c|
+      c.root_dir_path = "#{config.root}/oas_docs"
     end
   end
 end

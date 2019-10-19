@@ -1,18 +1,18 @@
-# RoutesToSwaggerDocs
+# R2-OAS
 
 Generate api docment(OpenAPI) side only from `rails` routing.
 
 Provides rake commands to help `docs`, `edit`, `view` and so on.
 
 ```bash
-bundle exec rake routes:swagger:docs    # generate
-bundle exec rake routes:swagger:ui      # view
-bundle exec rake routes:swagger:editor  # edit
-bundle exec rake routes:swagger:monitor # monitor
-bundle exec rake routes:swagger:dist    # distribute
-bundle exec rake routes:swagger:clean   # clean
-bundle exec rake routes:swagger:analyze # analyze
-bundle exec rake routes:swagger:deploy  # deploy
+bundle exec rake routes:oas:docs    # generate
+bundle exec rake routes:oas:ui      # view
+bundle exec rake routes:oas:editor  # edit
+bundle exec rake routes:oas:monitor # monitor
+bundle exec rake routes:oas:dist    # distribute
+bundle exec rake routes:oas:clean   # clean
+bundle exec rake routes:oas:analyze # analyze
+bundle exec rake routes:oas:deploy  # deploy
 ```
 
 ## 💎 Installation
@@ -21,7 +21,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 group :development do
-  gem 'routes_to_swagger_docs'
+  gem 'r2-oas'
 end
 ```
 
@@ -31,7 +31,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install routes_to_swagger_docs
+    $ gem install r2-oas
 
 ## 🔦 Requirements
 
@@ -54,8 +54,8 @@ $ brew cask install chromedriver
 After requiring a gem,
 
 ```bash
-bundle exec routes:swagger:docs
-bundle exec routes:swagger:editor
+bundle exec routes:oas:docs
+bundle exec routes:oas:editor
 ```
 
 ## 📖 Usage
@@ -66,12 +66,12 @@ In your rails project, Write `config/environments/development.rb` like that:
 
 ```ruby
 # default setting
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
   config.version                            = :v3
   #「docs」is not used. 「docs」is reserved word
-  config.root_dir_path                      = "./swagger_docs"
+  config.root_dir_path                      = "./oas_docs"
   config.schema_save_dir_name               = "src"
-  config.doc_save_file_name                 = "swagger_doc.yml"
+  config.doc_save_file_name                 = "oas_doc.yml"
   config.force_update_schema                = false
   config.use_tag_namespace                  = true
   config.use_schema_namespace               = false
@@ -95,13 +95,13 @@ RoutesToSwaggerDocs.configure do |config|
   end
 
   config.use_object_classes = {
-    info_object:                    RoutesToSwaggerDocs::Schema::V3::InfoObject,
-    paths_object:                   RoutesToSwaggerDocs::Schema::V3::PathsObject,
-    path_item_object:               RoutesToSwaggerDocs::Schema::V3::PathItemObject,
-    external_document_object:       RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
-    components_object:              RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
-    components_schema_object:       RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject,
-    components_request_body_object: RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+    info_object:                    R2OAS::Schema::V3::InfoObject,
+    paths_object:                   R2OAS::Schema::V3::PathsObject,
+    path_item_object:               R2OAS::Schema::V3::PathItemObject,
+    external_document_object:       R2OAS::Schema::V3::ExternalDocumentObject,
+    components_object:              R2OAS::Schema::V3::ComponentsObject,
+    components_schema_object:       R2OAS::Schema::V3::Components::SchemaObject,
+    components_request_body_object: R2OAS::Schema::V3::Components::RequestBodyObject
   }
 
   config.http_statuses_when_http_method = {
@@ -146,50 +146,50 @@ You can execute the following command in the root directory of rails.
 
 ```bash
 $ # Generate docs
-$ bundle exec rake routes:swagger:docs                                                                        # Generate docs
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:docs    # Generate docs by specify unit paths
+$ bundle exec rake routes:oas:docs                                                                        # Generate docs
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # Generate docs by specify unit paths
 
 $ # Start swagger editor
-$ bundle exec rake routes:swagger:editor                                                                      # Start swagger editor
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:editor  # Start swagger editor by specify unit paths
+$ bundle exec rake routes:oas:editor                                                                      # Start swagger editor
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # Start swagger editor by specify unit paths
 $ # Start swagger ui
-$ bundle exec rake routes:swagger:ui                                                                          # Start swagger ui
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # Start swagger ui by specify unit paths
+$ bundle exec rake routes:oas:ui                                                                          # Start swagger ui
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # Start swagger ui by specify unit paths
 $ # Monitor swagger document
-$ bundle exec rake routes:swagger:monitor                                                                     # Monitor swagger document
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # Monitor swagger by specify unit paths
+$ bundle exec rake routes:oas:monitor                                                                     # Monitor swagger document
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # Monitor swagger by specify unit paths
 
 $ # Analyze docs
-$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:swagger:analyze
+$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
 $ # Clean docs
-$ bundle exec rake routes:swagger:clean
+$ bundle exec rake routes:oas:clean
 $ # Deploy docs
-$ bundle exec rake routes:swagger:deploy
+$ bundle exec rake routes:oas:deploy
 $ # Distribute swagger document
-$ bundle exec rake routes:swagger:dist
+$ bundle exec rake routes:oas:dist
 $ # Distribute swagger document
-$ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:dist # Distribute swagger document by specify unit paths
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:dist # Distribute swagger document by specify unit paths
  
 # Display paths list
-$ bundle exec rake routes:swagger:paths_ls
+$ bundle exec rake routes:oas:paths_ls
 # Display paths stats
-$ bundle exec rake routes:swagger:paths_stats
+$ bundle exec rake routes:oas:paths_stats
 ```
 
 ## 📚 More Usage
 
-- [How to generate docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
-- [How to start swagger editor](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
-- [How to start swagger ui](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
-- [How to monitor swagger document](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_MONITOR_SWAGGER_DOC.md)
-- [How to analyze docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
-- [How to clean docs](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_CLEAN_DOCS.md)
-- [How to deploy swagger doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
-- [How to use tag namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
-- [How to use schema namespace](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
-- [How to use hook when generate doc](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
-- [How to display paths list](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
-- [How to display paths stats](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/HOW_TO_DISPLAY_PATHS_STATS.md)
+- [How to generate docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
+- [How to start swagger editor](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
+- [How to start swagger ui](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
+- [How to monitor swagger document](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_MONITOR_SWAGGER_DOC.md)
+- [How to analyze docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
+- [How to clean docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_CLEAN_DOCS.md)
+- [How to deploy swagger doc](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
+- [How to use tag namespace](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
+- [How to use schema namespace](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
+- [How to use hook when generate doc](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
+- [How to display paths list](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
+- [How to display paths stats](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DISPLAY_PATHS_STATS.md)
 
 ## ❤️ Support Rails Version
 
@@ -208,7 +208,7 @@ $ bundle exec rake routes:swagger:paths_stats
 
 |version|document|
 |-------|--------|
-|v3|[versions/v3.md](https://github.com/yukihirop/routes_to_swagger_docs/blob/master/docs/versions/v3.md)|
+|v3|[versions/v3.md](https://github.com/yukihirop/r2-oas/blob/master/docs/versions/v3.md)|
 
 ## ❗️ Convention over Configuration (CoC)
 
@@ -234,9 +234,9 @@ we explain the options that can be set.
 |option|description|default|
 |------|-----------|---|
 |version|OpenAPI schema version| `:v3` |
-|root_dir_path|Root directory for storing products.| `"./swagger_docs"` |
+|root_dir_path|Root directory for storing products.| `"./oas_docs"` |
 |schema_save_dir_name|Directory name for storing swagger schemas|`"src"`|
-|doc_save_file_name|File name for storing swagger doc|`"swagger_doc.yml"`|
+|doc_save_file_name|File name for storing swagger doc|`"oas_doc.yml"`|
 |force_update_schema|Force update schema from routes data|`false`|
 |use_tag_namespace|Use namespace for tag name|`true`|
 |use_schema_namespace|Use namespace for schema name|`true`|
@@ -267,7 +267,7 @@ we explain the options that can be set.
 
 |option|description|default|
 |------|-----------|-------|
-|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> components_schema_object: `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject` }|
+|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `R2OAS::Schema::V3::InfoObject`,<br>paths_object: `R2OAS::Schema::V3::PathsObject`,<br>path_item_object: `R2OAS::Schema::V3::PathItemObject`, external_document_object: `R2OAS::Schema::V3::ExternalDocumentObject`,<br> components_object: `R2OAS::Schema::V3::ComponentsObject`,<br> components_schema_object: `R2OAS::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`R2OAS::Schema::V3::Components::RequestBodyObject` }|
 
 #### tool
 
@@ -296,7 +296,7 @@ We explain the environment variables that can be set.
 Writing file paths in .paths will only read them.
 You can comment out with `#`
 
-`swagger_docs/.paths`
+`oas_docs/.paths`
 
 ```
 #account_user_role.yml    # ignore
@@ -314,20 +314,20 @@ Supported hook(life cycle methods) is like this:
 
 Supported Hook class is like this:
 
-- `RoutesToSwaggerDocs::Schema::V3::InfoObject`
-- `RoutesToSwaggerDocs::Schema::V3::PathsObject`
-- `RoutesToSwaggerDocs::Schema::V3::PathItemObject`
-- `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`
-- `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`
-- `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`
-- `RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject`
+- `R2OAS::Schema::V3::InfoObject`
+- `R2OAS::Schema::V3::PathsObject`
+- `R2OAS::Schema::V3::PathItemObject`
+- `R2OAS::Schema::V3::ExternalDocumentObject`
+- `R2OAS::Schema::V3::ComponentsObject`
+- `R2OAS::Schema::V3::Components::SchemaObject`
+- `R2OAS::Schema::V3::Components::RequestBodyObject`
 
 By inheriting these classes, you can hook them at the time of document generation by writing like this:
 
 #### case: InfoObject
 
 ```ruby
-class CustomInfoObject < RoutesToSwaggerDocs::Schema::V3::InfoObject
+class CustomInfoObject < R2OAS::Schema::V3::InfoObject
   before_create do |doc|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -349,7 +349,7 @@ end
 #### case: PathsObject
 
 ```ruby
-class CustomPathsObject < RoutesToSwaggerDocs::Schema::V3::PathsObject
+class CustomPathsObject < R2OAS::Schema::V3::PathsObject
   before_create do |doc|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -371,7 +371,7 @@ end
 #### case: PathItemObject
 
 ```ruby
-class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
+class CustomPathItemObject < R2OAS::Schema::V3::PathItemObject
   before_create do |doc, path|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -393,7 +393,7 @@ end
 #### case: ExternalDocumentObject
 
 ```ruby
-class CustomExternalDocumentObject < RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject
+class CustomExternalDocumentObject < R2OAS::Schema::V3::ExternalDocumentObject
   before_create do |doc|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -415,7 +415,7 @@ end
 #### case: ComponentsObject
 
 ```ruby
-class CustomComponentsObject < RoutesToSwaggerDocs::Schema::V3::ComponentsObject
+class CustomComponentsObject < R2OAS::Schema::V3::ComponentsObject
   before_create do |doc|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -437,7 +437,7 @@ end
 #### case: Components::SchemaObject
 
 ```ruby
-class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
   before_create do |doc, schema_name|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -459,7 +459,7 @@ end
 If you want to determine the component schema name at runtime, like this:
 
 ```ruby
-class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
   def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
     # [Important] Please return string.
     # default
@@ -468,10 +468,10 @@ class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components
 end
 ```
 
-`path_component` is `RoutesToSwaggerDocs::Routing::PathComponent` instance.
+`path_component` is `R2OAS::Routing::PathComponent` instance.
 
 ```ruby
-module RoutesToSwaggerDocs
+module R2OAS
   module Routing
     class PathComponent < BaseComponent
       def initialize(path)
@@ -488,7 +488,7 @@ module RoutesToSwaggerDocs
 #### case: Components::RequestBodyObject
 
 ```ruby
-class CustomComponentsRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
   before_create do |doc, schema_name|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -510,7 +510,7 @@ end
 If you want to determine the component schema name at runtime, like this:
 
 ```ruby
-class CustomComponentsRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
   def components_request_body_name(doc, path_component, tag_name, verb, schema_name)
     # [Important] Please return string.
     # default
@@ -529,7 +529,7 @@ And write this to the configuration.
 
 ```ruby
 # If only InfoObject and PathItemObject, use a custom class
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
   # 
   # omission ...
   # 
@@ -571,7 +571,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## 🤝 Contributing
 
-1. Fork it ( http://github.com/yukihirop/routes_to_swagger_docs/fork )
+1. Fork it ( http://github.com/yukihirop/r2-oas/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
