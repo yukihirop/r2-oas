@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'base_diff_manager'
+
 module RoutesToSwaggerDocs
   module Schema
     module V3
@@ -9,7 +11,7 @@ module RoutesToSwaggerDocs
         def initialize(before_schema_data, after_schema_data)
           super
           @major_category     = 'base'
-          @middle_category    = ''
+          @middle_category    = 'middle'
         end
 
         def process_by_using_diff_data
@@ -29,9 +31,11 @@ module RoutesToSwaggerDocs
             is_removed   = to_boolean(removed, target_name)
             is_added     = to_boolean(added, target_name)
             is_leftovers = to_boolean(leftovers, target_name)
-
+            
             yield(target_name, is_removed, is_added, is_leftovers, after_schema_data) if block_given?
           end
+
+          return nil
         end
 
         private
@@ -80,7 +84,7 @@ module RoutesToSwaggerDocs
 
         def to_boolean(diff, target_name)
           if diff.present?
-            diff[@major_category][@middle_category][target_name].present?
+            diff.fetch(@major_category, nil)&.fetch(@middle_category, nil)&.fetch(target_name, nil).present?
           else
             false
           end
