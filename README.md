@@ -160,7 +160,7 @@ $ bundle exec rake routes:oas:monitor                                           
 $ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # Monitor swagger by specify unit paths
 
 $ # Analyze docs
-$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
+$ OAS_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
 $ # Clean docs
 $ bundle exec rake routes:oas:clean
 $ # Deploy docs
@@ -288,7 +288,7 @@ We explain the environment variables that can be set.
 |variable|description|default|
 |--------|-----------|-------|
 |PATHS_FILE|Specify one paths file path|`""`|
-|SWAGGER_FILE|Specify swagger file path to analyze|`""`|
+|OAS_FILE|Specify swagger file path to analyze|`""`|
 
 
 ## .paths

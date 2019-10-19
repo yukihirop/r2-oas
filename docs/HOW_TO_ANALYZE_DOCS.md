@@ -13,7 +13,7 @@ end
 ```
 
 ```bash
-$ SWAGGER_FILE="~/Desktop/swagger_file.yml" bundle exec rake routes:oas:analyze
+$ OAS_FILE="~/Desktop/swagger_file.yml" bundle exec rake routes:oas:analyze
 ```
 
 ## Example
@@ -790,7 +790,7 @@ servers:
 
 
 ```
-$ SWAGGER_FILE=~/Desktop/swagger_file.yml be rake routes:oas:analyze
+$ OAS_FILE=~/Desktop/swagger_file.yml be rake routes:oas:analyze
 I, [2019-05-05T15:00:40.716815 #18669]  INFO -- : [R2-OAS] start
 I, [2019-05-05T15:00:40.756046 #18669]  INFO -- : [Analyze Swagger file] start
 I, [2019-05-05T15:00:40.758453 #18669]  INFO -- : [Analyze Swagger file (paths)] start

@@ -73,7 +73,7 @@ namespace :routes do
     end
 
     def existing_schema_file_path
-      ENV.fetch('SWAGGER_FILE', '')
+      ENV.fetch('OAS_FILE', '')
     end
   end
 end
