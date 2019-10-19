@@ -19,4 +19,4 @@ install:
 
 script:
   - bundle exec rubocop --fail-level=W
-  - bundle exec rspec spec
+  - bundle exec rspec spec --exclude-pattern "spec/r2-oas/tasks/tool_spec.rb,spec/r2-oas/tool/paths/stats_spec.rb"
