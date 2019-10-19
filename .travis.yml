@@ -1,7 +1,22 @@
 ---
 sudo: false
+
 language: ruby
+
 cache: bundler
+
 rvm:
   - 2.3.3
+
 before_install: gem install bundler -v 1.17.3
+
+gemfile:
+  - Gemfile
+bundler_args: "--without development --deployment"
+
+install:
+  - bundle install
+
+script:
+  - bundle exec rubocop --fail-level=W
+  - bundle exec rspec spec
