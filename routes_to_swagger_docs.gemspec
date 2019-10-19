@@ -10,8 +10,23 @@ Gem::Specification.new do |spec|
   spec.authors       = ['yukihirop']
   spec.email         = ['te108186@gmail.com']
 
-  spec.summary       = 'Generate swagger docs (side only) from rails routing.'
-  spec.description   = 'Generate swagger docs (side only) from rails routing.'
+  spec.summary       = 'Generate api docment(OpenAPI) side only from rails routing.'
+  spec.description   = <<~EOF
+    Generate api docment(OpenAPI) side only from `rails` routing.
+    Provides rake commands to help `docs`, `edit`, `view` and so on.
+
+    ```
+    bundle exec rake routes:swagger:docs    # generate
+    bundle exec rake routes:swagger:ui      # view
+    bundle exec rake routes:swagger:editor  # edit
+    bundle exec rake routes:swagger:monitor # monitor
+    bundle exec rake routes:swagger:dist    # distribute
+    bundle exec rake routes:swagger:clean   # clean
+    bundle exec rake routes:swagger:analyze # analyze
+    bundle exec rake routes:swagger:deploy  # deploy
+    ```
+  EOF
+  
   spec.homepage      = 'https://github.com/yukihirop/routes_to_swagger_docs'
   spec.license       = 'MIT'
 

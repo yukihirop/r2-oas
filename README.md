@@ -2,13 +2,17 @@
 
 Generate api docment(OpenAPI) side only from `rails` routing.
 
-Provides rake commands to help `generate`, `edit`, `view` and `manage`.
+Provides rake commands to help `docs`, `edit`, `view` and so on.
 
 ```bash
 bundle exec rake routes:swagger:docs    # generate
 bundle exec rake routes:swagger:ui      # view
 bundle exec rake routes:swagger:editor  # edit
+bundle exec rake routes:swagger:monitor # monitor
 bundle exec rake routes:swagger:dist    # distribute
+bundle exec rake routes:swagger:clean   # clean
+bundle exec rake routes:swagger:analyze # analyze
+bundle exec rake routes:swagger:deploy  # deploy
 ```
 
 ## 💎 Installation
@@ -16,7 +20,9 @@ bundle exec rake routes:swagger:dist    # distribute
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'routes_to_swagger_docs'
+group :development do
+  gem 'routes_to_swagger_docs'
+end
 ```
 
 And then execute:
@@ -62,6 +68,7 @@ In your rails project, Write `config/environments/development.rb` like that:
 # default setting
 RoutesToSwaggerDocs.configure do |config|
   config.version                            = :v3
+  #「docs」is not used. 「docs」is reserved word
   config.root_dir_path                      = "./swagger_docs"
   config.schema_save_dir_name               = "src"
   config.doc_save_file_name                 = "swagger_doc.yml"
@@ -148,7 +155,8 @@ $ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes
 $ # Start swagger ui
 $ bundle exec rake routes:swagger:ui                                                                          # Start swagger ui
 $ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:ui      # Start swagger ui by specify unit paths
-$ # Monitor swagger document$ bundle exec rake routes:swagger:monitor                                                                     # Monitor swagger document
+$ # Monitor swagger document
+$ bundle exec rake routes:swagger:monitor                                                                     # Monitor swagger document
 $ PATHS_FILE="swagger_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:swagger:monitor # Monitor swagger by specify unit paths
 
 $ # Analyze docs
@@ -210,6 +218,12 @@ $ bundle exec rake routes:swagger:paths_stats
 - `_` of `components/{schemas,requestBodies} name` convert `/` when save file.
   - For example, If `components/schemas name` is `Api_V1_User`, `components/schemas file name` is `api/v1/user.yml`.
   - `_` is supposed to be used to express `namespace`.
+  - format is `Namespace1_Namespace2_Model`.
+
+- `.` of `components/{schemas,requestBodies} name` convert `/` when save file.
+  - For example, If `components/schemas name` is `api.v1.User`, `components/schemas file name` is `api/v1/user.yml`.
+  - `.` is supposed to be used to express `namespace`.
+  - format is `namespace1.namespace2.Model`.
 
 ## ⚙ Configure
 
@@ -376,18 +390,6 @@ class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
 end
 ```
 
-If you want to determine the component schema name at runtime, like this:
-
-```ruby
-class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
-  def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
-    # [Inportant] Please return string.
-    # default
-    schema_name
-  end
-end
-```
-
 #### case: ExternalDocumentObject
 
 ```ruby
@@ -542,7 +544,7 @@ This is the end.
 
 ## 🔩 CORS
 
-If you use the online demo, make sure your API supports foreign requests by enabling CORS in Grape, otherwise you'll see the API description, but requests on the API won't return. Use [rack-cors](https://github.com/cyu/rack-cors) to enable CORS.
+Use [rack-cors](https://github.com/cyu/rack-cors) to enable CORS.
 
 ```ruby
 require 'rack/cors'
@@ -554,7 +556,7 @@ use Rack::Cors do
 end
 ```
 
-Alternatively you can set CORS headers in a Grape `before` block.
+Alternatively you can set CORS headers in a `before` block.
 
 ```ruby
 before do
