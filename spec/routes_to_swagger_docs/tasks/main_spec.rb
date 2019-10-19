@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe 'main_rake' do
@@ -10,14 +12,14 @@ RSpec.describe 'main_rake' do
 
   shared_examples_for 'Generated file verification test' do |result|
     it 'should generate docs' do
-      expect(FileTest.exists? components_schemas_path).to eq result
-      expect(FileTest.exists? components_request_bodies_path).to eq result
-      expect(FileTest.exists? paths_path).to eq result
-      expect(FileTest.exists? external_docs_path).to eq result
-      expect(FileTest.exists? info_path).to eq result
-      expect(FileTest.exists? openapi_path).to eq result
-      expect(FileTest.exists? servers_path).to eq result
-      expect(FileTest.exists? tags_path).to eq result
+      expect(FileTest.exists?(components_schemas_path)).to eq result
+      expect(FileTest.exists?(components_request_bodies_path)).to eq result
+      expect(FileTest.exists?(paths_path)).to eq result
+      expect(FileTest.exists?(external_docs_path)).to eq result
+      expect(FileTest.exists?(info_path)).to eq result
+      expect(FileTest.exists?(openapi_path)).to eq result
+      expect(FileTest.exists?(servers_path)).to eq result
+      expect(FileTest.exists?(tags_path)).to eq result
     end
   end
 
@@ -29,7 +31,7 @@ RSpec.describe 'main_rake' do
     end
 
     it_behaves_like 'Generated file verification test', true
-    it { expect(FileTest.exists? doc_save_file_path).to eq true }
+    it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
   end
 
   describe 'routes:swagger:analyze' do
@@ -46,21 +48,21 @@ RSpec.describe 'main_rake' do
       let(:ext_name) { :json }
 
       it_behaves_like 'Generated file verification test', true
-      it { expect(FileTest.exists? doc_save_file_path).to eq true }
+      it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
     end
 
     context 'when ext_name is :yml' do
       let(:ext_name) { :yml }
 
       it_behaves_like 'Generated file verification test', true
-      it { expect(FileTest.exists? doc_save_file_path).to eq true }
+      it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
     end
 
     context 'when ext_name is :yaml' do
       let(:ext_name) { :yml }
 
       it_behaves_like 'Generated file verification test', true
-      it { expect(FileTest.exists? doc_save_file_path).to eq true }
+      it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
     end
   end
 
@@ -71,7 +73,7 @@ RSpec.describe 'main_rake' do
       generate_docs
     end
 
-    it { expect(FileTest.exists? doc_save_file_path).to eq true }
+    it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
   end
 
   describe 'routes:swagger:clean' do
@@ -82,7 +84,7 @@ RSpec.describe 'main_rake' do
       generate_docs
       create_dummy_components_schemas_file
       create_dummy_components_request_bodies_file
-      create_components_securitySchemes_file()
+      create_components_securitySchemes_file
       task.invoke
     end
 

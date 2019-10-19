@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe RoutesToSwaggerDocs::Configuration::PathsConfig do
@@ -32,7 +34,7 @@ RSpec.describe RoutesToSwaggerDocs::Configuration::PathsConfig do
 
       context 'when .paths is not blank' do
         before do
-          File.write(config.abs_paths_path, "api/v1/user.yml")
+          File.write(config.abs_paths_path, 'api/v1/user.yml')
           config.many_paths_file_paths
         end
 
@@ -108,6 +110,6 @@ RSpec.describe RoutesToSwaggerDocs::Configuration::PathsConfig do
   end
 
   describe '#create_dot_paths' do
-    it { expect{ config.create_dot_paths }.to change{ FileTest.exists?("#{root_dir_path}/.paths") }.from(false).to(true) }
+    it { expect { config.create_dot_paths }.to change { FileTest.exists?("#{root_dir_path}/.paths") }.from(false).to(true) }
   end
 end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::V1::TasksController < ApplicationController
-  before_action :set_api_v1_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_api_v1_task, only: %i[show edit update destroy]
 
   # GET /api/v1/tasks
   # GET /api/v1/tasks.json
@@ -9,8 +11,7 @@ class Api::V1::TasksController < ApplicationController
 
   # GET /api/v1/tasks/1
   # GET /api/v1/tasks/1.json
-  def show
-  end
+  def show; end
 
   # GET /api/v1/tasks/new
   def new
@@ -18,8 +19,7 @@ class Api::V1::TasksController < ApplicationController
   end
 
   # GET /api/v1/tasks/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /api/v1/tasks
   # POST /api/v1/tasks.json
@@ -62,13 +62,14 @@ class Api::V1::TasksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_api_v1_task
-      @api_v1_task = Api::V1::Task.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def api_v1_task_params
-      params.require(:api_v1_task).permit(:status, :content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_api_v1_task
+    @api_v1_task = Api::V1::Task.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def api_v1_task_params
+    params.require(:api_v1_task).permit(:status, :content)
+  end
 end

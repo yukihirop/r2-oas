@@ -17,7 +17,7 @@ module RoutesToSwaggerDocs
         end
 
         class << self
-          alias :build :new
+          alias build new
         end
 
         def descendants_paths
@@ -56,12 +56,12 @@ module RoutesToSwaggerDocs
           # Don't pick up JSON Schema $ref
           # e.x.)
           #  $ref: { "type" => "string" }
-          if (ref_key_or_not.eql? REF) && (ref_value_or_not.to_s.start_with?("#/"))
-            
+          if (ref_key_or_not.eql? REF) && ref_value_or_not.to_s.start_with?('#/')
+
             # Avoid $ ref circular references
             pm = PathnameManager.new(ref_value_or_not, :ref)
             relative_save_file_path = pm.relative_save_file_path
-            
+
             if @parent_save_file_paths.include?(relative_save_file_path)
               return
             else

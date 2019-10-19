@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::Generator do
@@ -25,7 +27,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::Generator do
       end
 
       it 'should raise error' do
-        expect{ generator }.to raise_error(RoutesToSwaggerDocs::NoImplementError, "Do not support version: v2")
+        expect { generator }.to raise_error(RoutesToSwaggerDocs::NoImplementError, 'Do not support version: v2')
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'path_helper'
 
 module CreateHelper
@@ -17,7 +19,7 @@ module CreateHelper
   end
 
   def delete_docs_for_deploy
-    FileUtils.rm_rf Rails.root.join("docs")
+    FileUtils.rm_rf Rails.root.join('docs')
   end
 
   def create_components_securitySchemes_file

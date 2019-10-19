@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 require 'routes_to_swagger_docs/plugins/schema/v3/object/hookable_base_object'

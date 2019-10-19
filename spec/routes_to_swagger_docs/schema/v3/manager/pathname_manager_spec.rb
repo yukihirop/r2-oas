@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathnameManager do
@@ -92,7 +94,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathnameManager do
         let(:path) { 'paths/api/v1/task' }
         let(:path_type) { :invalid }
 
-        it { expect{ subject }.to raise_error(RoutesToSwaggerDocs::NoSupportError, 'Do not support path_type: invalid') }
+        it { expect { subject }.to raise_error(RoutesToSwaggerDocs::NoSupportError, 'Do not support path_type: invalid') }
       end
     end
   end

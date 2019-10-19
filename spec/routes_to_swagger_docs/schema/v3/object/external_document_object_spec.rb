@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject do
@@ -12,22 +14,22 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject do
       before do
         class TestExternalDocumentObject < RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject
           before_create do |doc|
-            doc.merge!({
+            doc.merge!(
               'before_key' => 'before_value'
-            })
+            )
           end
 
           after_create do |doc|
-            doc.merge!({
+            doc.merge!(
               'after_key' => 'after_value'
-            })
+            )
           end
         end
 
         RoutesToSwaggerDocs.configure do |config|
-          config.use_object_classes.merge!({
+          config.use_object_classes.merge!(
             external_document_object: TestExternalDocumentObject
-          })
+          )
         end
       end
 
@@ -37,6 +39,6 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject do
   end
 
   describe '#create_doc' do
-    it { expect(object.create_doc).to eq "description" => "", "url" => "" }
+    it { expect(object.create_doc).to eq 'description' => '', 'url' => '' }
   end
 end

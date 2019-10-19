@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
-  self.append_view_path File.dirname(__FILE__)
+  append_view_path File.dirname(__FILE__)
 end

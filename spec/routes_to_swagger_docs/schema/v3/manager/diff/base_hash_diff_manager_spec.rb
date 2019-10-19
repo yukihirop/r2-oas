@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'routes_to_swagger_docs/schema/v3/manager/diff/base_hash_diff_manager'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
   let(:before_schema_data) do
     {
-      "base" => {
-        "middle" => {
-          "a_00" => {
-            "b_00" => "c_00"
+      'base' => {
+        'middle' => {
+          'a_00' => {
+            'b_00' => 'c_00'
           },
-          "a_01" => "b_01"
+          'a_01' => 'b_01'
         }
       }
     }
@@ -17,13 +19,13 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
 
   let(:after_schema_data) do
     {
-      "base" => {
-        "middle" => {
-          "a_00" => {
-            "b_00" => "c_00"
+      'base' => {
+        'middle' => {
+          'a_00' => {
+            'b_00' => 'c_00'
           },
-          "a_02" => {
-            "b_02" => "c_02"
+          'a_02' => {
+            'b_02' => 'c_02'
           }
         }
       }
@@ -41,25 +43,25 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
       before do
         @result = []
         manager.process_by_using_diff_data do |target_name, is_removed, is_added, is_leftovers, after_schema_data|
-          @result.push({
+          @result.push(
             target_name: target_name,
             is_removed: is_removed,
             is_added: is_added,
             is_leftovers: is_leftovers,
             after_schema_data: after_schema_data
-          })
+          )
         end
       end
 
       context 'when modified' do
         let(:before_schema_data) do
           {
-            "base" => {
-              "middle" => {
-                "a_00" => {
-                  "b_00" => "c_00"
+            'base' => {
+              'middle' => {
+                'a_00' => {
+                  'b_00' => 'c_00'
                 },
-                "a_01" => "b_01"
+                'a_01' => 'b_01'
               }
             }
           }
@@ -67,12 +69,12 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
 
         let(:after_schema_data) do
           {
-            "base" => {
-              "middle" => {
-                "a_00" => {
-                  "b_00" => "d_00"
+            'base' => {
+              'middle' => {
+                'a_00' => {
+                  'b_00' => 'd_00'
                 },
-                "a_01" => "d_01"
+                'a_01' => 'd_01'
               }
             }
           }
@@ -81,19 +83,17 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
         it do
           expect(@result).to include(
             {
-              :after_schema_data=>{"base"=>{"middle"=>{"a_00"=>{"b_00"=>"d_00"}}}},
-              :is_added=>true,
-              :is_leftovers=>false,
-              :is_removed=>true,
-              :target_name=>"a_00"
+              after_schema_data: { 'base' => { 'middle' => { 'a_00' => { 'b_00' => 'd_00' } } } },
+              is_added: true,
+              is_leftovers: false,
+              is_removed: true,
+              target_name: 'a_00'
             },
-            {
-              :after_schema_data=>{"base"=>{"middle"=>{"a_01"=>"d_01"}}},
-              :is_added=>true,
-              :is_leftovers=>false,
-              :is_removed=>true,
-              :target_name=>"a_01"
-            }
+            after_schema_data: { 'base' => { 'middle' => { 'a_01' => 'd_01' } } },
+            is_added: true,
+            is_leftovers: false,
+            is_removed: true,
+            target_name: 'a_01'
           )
         end
       end
@@ -101,12 +101,12 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
       context 'when added' do
         let(:before_schema_data) do
           {
-            "base" => {
-              "middle" => {
-                "a_00" => {
-                  "b_00" => "c_00"
+            'base' => {
+              'middle' => {
+                'a_00' => {
+                  'b_00' => 'c_00'
                 },
-                "a_01" => "b_01"
+                'a_01' => 'b_01'
               }
             }
           }
@@ -114,13 +114,13 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
 
         let(:after_schema_data) do
           {
-            "base" => {
-              "middle" => {
-                "a_00" => {
-                  "b_00" => "c_00"
+            'base' => {
+              'middle' => {
+                'a_00' => {
+                  'b_00' => 'c_00'
                 },
-                "a_01" => "b_01",
-                "a_02" => "b_02"
+                'a_01' => 'b_01',
+                'a_02' => 'b_02'
               }
             }
           }
@@ -129,26 +129,24 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
         it do
           expect(@result).to include(
             {
-              :after_schema_data=>{"base"=>{"middle"=>{"a_00"=>{"b_00"=>"c_00"}}}},
-              :is_added=>false,
-              :is_leftovers=>true,
-              :is_removed=>false,
-              :target_name=>"a_00"
+              after_schema_data: { 'base' => { 'middle' => { 'a_00' => { 'b_00' => 'c_00' } } } },
+              is_added: false,
+              is_leftovers: true,
+              is_removed: false,
+              target_name: 'a_00'
             },
             {
-              :after_schema_data=>{"base"=>{"middle"=>{"a_01"=>"b_01"}}},
-              :is_added=>false,
-              :is_leftovers=>true,
-              :is_removed=>false,
-              :target_name=>"a_01"
+              after_schema_data: { 'base' => { 'middle' => { 'a_01' => 'b_01' } } },
+              is_added: false,
+              is_leftovers: true,
+              is_removed: false,
+              target_name: 'a_01'
             },
-            {
-              :after_schema_data=>{"base"=>{"middle"=>{"a_02"=>"b_02"}}},
-              :is_added=>true,
-              :is_leftovers=>false,
-              :is_removed=>false,
-              :target_name=>"a_02"
-            }
+            after_schema_data: { 'base' => { 'middle' => { 'a_02' => 'b_02' } } },
+            is_added: true,
+            is_leftovers: false,
+            is_removed: false,
+            target_name: 'a_02'
           )
         end
       end
@@ -156,12 +154,12 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
       context 'when removed' do
         let(:before_schema_data) do
           {
-            "base" => {
-              "middle" => {
-                "a_00" => {
-                  "b_00" => "c_00"
+            'base' => {
+              'middle' => {
+                'a_00' => {
+                  'b_00' => 'c_00'
                 },
-                "a_01" => "b_01"
+                'a_01' => 'b_01'
               }
             }
           }
@@ -169,9 +167,9 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
 
         let(:after_schema_data) do
           {
-            "base" => {
-              "middle" => {
-                "a_01" => "b_01"
+            'base' => {
+              'middle' => {
+                'a_01' => 'b_01'
               }
             }
           }
@@ -180,19 +178,17 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseHashDiffManager do
         it do
           expect(@result).to include(
             {
-              :after_schema_data=>{"base"=>{"middle"=>{"a_00"=>nil}}},
-              :is_added=>false,
-              :is_leftovers=>false,
-              :is_removed=>true,
-              :target_name=>"a_00"
+              after_schema_data: { 'base' => { 'middle' => { 'a_00' => nil } } },
+              is_added: false,
+              is_leftovers: false,
+              is_removed: true,
+              target_name: 'a_00'
             },
-            {
-              :after_schema_data=>{"base"=>{"middle"=>{"a_01"=>"b_01"}}},
-              :is_added=>false,
-              :is_leftovers=>true,
-              :is_removed=>false,
-              :target_name=>"a_01"
-            }
+            after_schema_data: { 'base' => { 'middle' => { 'a_01' => 'b_01' } } },
+            is_added: false,
+            is_leftovers: true,
+            is_removed: false,
+            target_name: 'a_01'
           )
         end
       end

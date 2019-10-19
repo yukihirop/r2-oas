@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'active_record'
 require 'action_controller/railtie'
 
-ActiveRecord::Base.establish_connection(adapter: "sqlite3", database: ":memory:")
+ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: ':memory:')
 
 module DummyApp
   class Application < Rails::Application
-    config.secret_token = "209c94433ee5bf2a2b086bd51a7b6a5d15487d3353f438418e0c71d0fe534ea717777f3ca9655c0b2865206703a2ab61dcd1384341b1f94ca54b5fffb6987f3d"
-    config.session_store :cookie_store, key: "_dummy_session"
+    config.secret_token = '209c94433ee5bf2a2b086bd51a7b6a5d15487d3353f438418e0c71d0fe534ea717777f3ca9655c0b2865206703a2ab61dcd1384341b1f94ca54b5fffb6987f3d'
+    config.session_store :cookie_store, key: '_dummy_session'
     config.active_support.deprecation = :log
     config.eager_load = false
     config.action_dispatch.show_exceptions = false

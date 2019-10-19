@@ -67,8 +67,7 @@ module RoutesToSwaggerDocs
             name: route.name,
             verb: route.verb,
             path: route.path,
-            reqs: route.reqs
-          }
+            reqs: route.reqs }
         end
 
         # Push Rails Engine Routes Data

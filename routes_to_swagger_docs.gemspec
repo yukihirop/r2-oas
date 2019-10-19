@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.3p222".freeze)
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.3.3p222')
 
   spec.add_runtime_dependency 'docker-api', '~> 1.34.2'
   spec.add_runtime_dependency 'easy_diff', '~> 1.0.0'

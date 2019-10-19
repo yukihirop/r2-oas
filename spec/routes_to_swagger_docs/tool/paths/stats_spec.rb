@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'routes_to_swagger_docs/tool/paths/stats'
 

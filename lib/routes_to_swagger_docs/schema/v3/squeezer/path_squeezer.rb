@@ -6,8 +6,8 @@ module RoutesToSwaggerDocs
   module Schema
     module V3
       class PathSqueezer < BaseSqueezer
-        VERB = %w(get put post delete options head patch trace)
-        NOT_VERB = %w($ref summary description servers parameters)
+        VERB = %w[get put post delete options head patch trace].freeze
+        NOT_VERB = %w[$ref summary description servers parameters].freeze
 
         def squeeze_docs
           slice_paths_schema = @schema_data['paths'].each_with_object({}) do |(path, data_when_path), result|

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DummyFileHelper
   def create_dummy_components_schemas_file(data = "---\n")
     File.write("#{components_schemas_path}/dummy.yml", data)

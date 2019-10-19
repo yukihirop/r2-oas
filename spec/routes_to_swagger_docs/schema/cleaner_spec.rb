@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::Cleaner do
@@ -17,7 +19,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::Cleaner do
       end
 
       it 'should raise error' do
-        expect{ cleaner }.to raise_error(RoutesToSwaggerDocs::NoImplementError, "Do not support version: v2")
+        expect { cleaner }.to raise_error(RoutesToSwaggerDocs::NoImplementError, 'Do not support version: v2')
       end
     end
   end

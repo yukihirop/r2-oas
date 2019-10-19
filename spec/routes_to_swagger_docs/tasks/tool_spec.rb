@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe 'tool_rake' do
@@ -32,7 +34,7 @@ RSpec.describe 'tool_rake' do
       generate_docs
     end
 
-    it { expect{ task.invoke }.not_to raise_error }
+    it { expect { task.invoke }.not_to raise_error }
   end
 
   describe 'routes:swagger:paths_stats' do
@@ -43,6 +45,6 @@ RSpec.describe 'tool_rake' do
       generate_docs
     end
 
-    it { expect{ task.invoke }.not_to raise_error }
+    it { expect { task.invoke }.not_to raise_error }
   end
 end

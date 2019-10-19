@@ -45,7 +45,7 @@ module RoutesToSwaggerDocs
             schema_name_only
           end
         else
-          schema_name.split(ns_div).last 
+          schema_name.split(ns_div).last
         end
       end
 

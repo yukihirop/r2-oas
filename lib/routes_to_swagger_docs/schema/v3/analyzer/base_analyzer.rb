@@ -17,11 +17,11 @@ module RoutesToSwaggerDocs
         end
 
         def analyze_docs
-          raise NoImplementError.new 'Please implement in inherited class.'
+          raise NoImplementError, 'Please implement in inherited class.'
         end
 
         def generate_from_existing_schema
-          raise NoImplementError.new 'Please implement in inherited class.'
+          raise NoImplementError, 'Please implement in inherited class.'
         end
 
         private
@@ -48,10 +48,10 @@ module RoutesToSwaggerDocs
         end
 
         def create_after_schema_data_when_not_specify_path
-          if FileTest.exists?(doc_save_file_path) 
+          if FileTest.exists?(doc_save_file_path)
             YAML.load_file(doc_save_file_path)
           else
-            raise NoFileExistsError.new("Do not exists file: #{doc_save_file_path}")
+            raise NoFileExistsError, "Do not exists file: #{doc_save_file_path}"
           end
         end
 
@@ -67,7 +67,7 @@ module RoutesToSwaggerDocs
           when /yml/
             YAML.load_file(existing_schema_file_path)
           else
-            raise NoImplementError.new "Do not support extension: #{extname}"
+            raise NoImplementError, "Do not support extension: #{extname}"
           end
         end
       end

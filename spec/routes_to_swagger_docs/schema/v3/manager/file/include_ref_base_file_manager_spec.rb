@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe RoutesToSwaggerDocs::Schema::V3::IncludeRefBaseFileManager do
@@ -11,35 +13,35 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::IncludeRefBaseFileManager do
         create_dir('components/schemas')
         create_dir('components/requestBodies')
         create_components_schemas_file('api/v1/task/detail.yml', {
-          "components" => {
-            "schemas" => {
-              "Api_V1_Task_Detail" => {
-                "type" => "object",
-                "properties" => {
-                  "id" => {
-                    "type" => "integer",
-                    "format" => "int64"
+          'components' => {
+            'schemas' => {
+              'Api_V1_Task_Detail' => {
+                'type' => 'object',
+                'properties' => {
+                  'id' => {
+                    'type' => 'integer',
+                    'format' => 'int64'
                   }
                 }
               }
             }
           }
         }.to_yaml)
-        create_components_schemas_file('api/v1/task.yml',{
-          "components" => {
-            "schemas" => {
-              "Api_V1_Task" => {
-                "type" => "object",
-                "properties" => {
-                  "id" => {
-                    "type" => "integer",
-                    "format" => "int64"
+        create_components_schemas_file('api/v1/task.yml', {
+          'components' => {
+            'schemas' => {
+              'Api_V1_Task' => {
+                'type' => 'object',
+                'properties' => {
+                  'id' => {
+                    'type' => 'integer',
+                    'format' => 'int64'
                   },
-                  "detail" => {
-                    "$ref" => "#/components/schemas/Api_V1_Task_Detail"
+                  'detail' => {
+                    '$ref' => '#/components/schemas/Api_V1_Task_Detail'
                   },
-                  "json_schema" => {
-                    "$ref" => "#/components/schemas/Api_V1_Task"
+                  'json_schema' => {
+                    '$ref' => '#/components/schemas/Api_V1_Task'
                   }
                 }
               }
@@ -47,14 +49,14 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::IncludeRefBaseFileManager do
           }
         }.to_yaml)
 
-        create_components_request_bodies_file('api/v1/task.yml',{
-          "components" => {
-            "requestBodies" => {
-              "Api_V1_Task" => {
-                "content" => {
-                  "application/json" => {
-                    "schema" => {
-                      "$ref" => "#/components/schemas/Api_V1_Task"
+        create_components_request_bodies_file('api/v1/task.yml', {
+          'components' => {
+            'requestBodies' => {
+              'Api_V1_Task' => {
+                'content' => {
+                  'application/json' => {
+                    'schema' => {
+                      '$ref' => '#/components/schemas/Api_V1_Task'
                     }
                   }
                 }
@@ -76,4 +78,4 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::IncludeRefBaseFileManager do
       end
     end
   end
-end 
+end

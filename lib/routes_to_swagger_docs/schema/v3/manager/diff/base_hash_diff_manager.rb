@@ -26,16 +26,16 @@ module RoutesToSwaggerDocs
             after_schema_data = schema_data_at(after_target_data, target_name)
 
             removed, added = before_schema_data.easy_diff(after_schema_data)
-            leftovers, _   = before_schema_data.easy_diff(removed)
+            leftovers, = before_schema_data.easy_diff(removed)
 
             is_removed   = to_boolean(removed, target_name)
             is_added     = to_boolean(added, target_name)
             is_leftovers = to_boolean(leftovers, target_name)
-            
+
             yield(target_name, is_removed, is_added, is_leftovers, after_schema_data) if block_given?
           end
 
-          return nil
+          nil
         end
 
         private

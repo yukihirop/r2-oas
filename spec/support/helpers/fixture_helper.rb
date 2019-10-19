@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FixtureHelper
   def swagger_file_path(type)
     case type
@@ -33,6 +35,6 @@ module FixtureHelper
   private
 
   def fixture_dirname
-    File.expand_path("../../../fixtures", __FILE__)
+    File.expand_path('../../fixtures', __dir__)
   end
 end

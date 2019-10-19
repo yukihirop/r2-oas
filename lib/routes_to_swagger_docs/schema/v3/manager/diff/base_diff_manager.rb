@@ -15,7 +15,7 @@ module RoutesToSwaggerDocs
         end
 
         def process_by_using_diff_data
-          raise NoImplementError.new 'Please implement in inherited class.'
+          raise NoImplementError, 'Please implement in inherited class.'
         end
 
         private

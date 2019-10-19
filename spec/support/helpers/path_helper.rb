@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PathHelper
   def root_dir_path
     RoutesToSwaggerDocs.root_dir_path

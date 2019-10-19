@@ -47,7 +47,7 @@ module RoutesToSwaggerDocs
               {}
             end
           else
-            raise NoSupportError.new("Do not support @ext_name: #{@ext_name}")
+            raise NoSupportError, "Do not support @ext_name: #{@ext_name}"
           end
         end
 

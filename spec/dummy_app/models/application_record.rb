@@ -1,1 +1,3 @@
-class ApplicationRecord < ActiveRecord::Base; end;
+# frozen_string_literal: true
+
+class ApplicationRecord < ActiveRecord::Base; end

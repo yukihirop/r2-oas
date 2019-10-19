@@ -16,9 +16,9 @@ module RoutesToSwaggerDocs
 
         def generate_docs
           support_components_objects.each do |object_name|
-            generator_class(object_name).new(@components, @options.merge({
-              middle_category: object_name
-            })).generate_docs
+            generator_class(object_name).new(@components, @options.merge(
+                                                            middle_category: object_name
+                                                          )).generate_docs
           end
         end
 

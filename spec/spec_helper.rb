@@ -10,7 +10,7 @@ require 'pry'
 require 'dummy_app/application'
 require 'rake_helper'
 
-Dir["./spec/support/**/*.rb"].each { |f| require f }
+Dir['./spec/support/**/*.rb'].each { |f| require f }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

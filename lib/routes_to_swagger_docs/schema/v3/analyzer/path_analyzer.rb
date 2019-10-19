@@ -10,8 +10,8 @@ module RoutesToSwaggerDocs
   module Schema
     module V3
       class PathAnalyzer < BaseAnalyzer
-        VERB = %w(get put post delete options head patch trace)
-        NOT_VERB = %w($ref summary description servers parameters)
+        VERB = %w[get put post delete options head patch trace].freeze
+        NOT_VERB = %w[$ref summary description servers parameters].freeze
 
         def initialize(before_schema_data, after_schema_data, options = {})
           super
@@ -61,13 +61,13 @@ module RoutesToSwaggerDocs
         end
 
         def group_by_tags_when_verb(verb, data_when_verb, path, result)
-          if !data_when_verb.is_a?(Array) && data_when_verb.has_key?('tags')
+          if !data_when_verb.is_a?(Array) && data_when_verb.key?('tags')
             tag_name = data_when_verb['tags'].first
           else
             tag_name = 'unknown'
-            data_when_verb.deep_merge!({
-              'tags' => [ tag_name ]
-            })
+            data_when_verb.deep_merge!(
+              'tags' => [tag_name]
+            )
           end
 
           push_tags(tag_name)

@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe RoutesToSwaggerDocs::Configuration do
   describe 'configure' do
     before(:all) do
-      class RtsdInfoObject < RoutesToSwaggerDocs::Schema::V3::InfoObject; end;
-      class RtsdPathsObject < RoutesToSwaggerDocs::Schema::V3::PathsObject; end;
-      class RtsdPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject; end;
-      class RtsdExternalDocumentObject < RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject; end;
-      class RtsdComponentsObject < RoutesToSwaggerDocs::Schema::V3::ComponentsObject; end;
+      class RtsdInfoObject < RoutesToSwaggerDocs::Schema::V3::InfoObject; end
+      class RtsdPathsObject < RoutesToSwaggerDocs::Schema::V3::PathsObject; end
+      class RtsdPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject; end
+      class RtsdExternalDocumentObject < RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject; end
+      class RtsdComponentsObject < RoutesToSwaggerDocs::Schema::V3::ComponentsObject; end
       module Components
-        class RtsdSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject; end;
-        class RtsdRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject; end;
+        class RtsdSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject; end
+        class RtsdRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject; end
       end
     end
 
@@ -25,23 +27,23 @@ RSpec.describe RoutesToSwaggerDocs::Configuration do
 
       it 'should set correctly' do
         expect(subject[:version]).to eq :v3
-        expect(subject[:root_dir_path]).to eq "./swagger_docs"
-        expect(subject[:schema_save_dir_name]).to eq "src"
-        expect(subject[:doc_save_file_name]).to eq "swagger_doc.yml"
+        expect(subject[:root_dir_path]).to eq './swagger_docs'
+        expect(subject[:schema_save_dir_name]).to eq 'src'
+        expect(subject[:doc_save_file_name]).to eq 'swagger_doc.yml'
         expect(subject[:force_update_schema]).to eq false
         expect(subject[:use_tag_namespace]).to eq true
         expect(subject[:use_schema_namespace]).to eq true
         expect(subject[:namespace_type]).to eq :underbar
-        expect(subject[:http_statuses_when_http_method][:get][:default]).to include("200", "422")
-        expect(subject[:http_statuses_when_http_method][:get][:path_parameter]).to include("200", "404", "422")
-        expect(subject[:http_statuses_when_http_method][:post][:default]).to include("201", "422")
-        expect(subject[:http_statuses_when_http_method][:post][:path_parameter]).to include("201", "404", "422")
-        expect(subject[:http_statuses_when_http_method][:patch][:default]).to include("204", "422")
-        expect(subject[:http_statuses_when_http_method][:patch][:path_parameter]).to include("204", "404", "422")
-        expect(subject[:http_statuses_when_http_method][:put][:default]).to include("204", "422")
-        expect(subject[:http_statuses_when_http_method][:put][:path_parameter]).to include("204", "404", "422")
-        expect(subject[:http_statuses_when_http_method][:delete][:default]).to include("200", "422")
-        expect(subject[:http_statuses_when_http_method][:delete][:path_parameter]).to include("200", "404", "422")
+        expect(subject[:http_statuses_when_http_method][:get][:default]).to include('200', '422')
+        expect(subject[:http_statuses_when_http_method][:get][:path_parameter]).to include('200', '404', '422')
+        expect(subject[:http_statuses_when_http_method][:post][:default]).to include('201', '422')
+        expect(subject[:http_statuses_when_http_method][:post][:path_parameter]).to include('201', '404', '422')
+        expect(subject[:http_statuses_when_http_method][:patch][:default]).to include('204', '422')
+        expect(subject[:http_statuses_when_http_method][:patch][:path_parameter]).to include('204', '404', '422')
+        expect(subject[:http_statuses_when_http_method][:put][:default]).to include('204', '422')
+        expect(subject[:http_statuses_when_http_method][:put][:path_parameter]).to include('204', '404', '422')
+        expect(subject[:http_statuses_when_http_method][:delete][:default]).to include('200', '422')
+        expect(subject[:http_statuses_when_http_method][:delete][:path_parameter]).to include('200', '404', '422')
         # server configuration
         expect(subject[:server].data[0][:url]).to eq 'http://localhost:3000'
         expect(subject[:server].data[0][:description]).to eq 'localhost'
@@ -77,33 +79,33 @@ RSpec.describe RoutesToSwaggerDocs::Configuration do
 
           configure do |config|
             config.version = :v4
-            config.root_dir_path = "apidocs"
-            config.schema_save_dir_name = "files"
-            config.doc_save_file_name = "swagger.yml"
+            config.root_dir_path = 'apidocs'
+            config.schema_save_dir_name = 'files'
+            config.doc_save_file_name = 'swagger.yml'
             config.force_update_schema = true
             config.use_tag_namespace = true
             config.use_schema_namespace = true
             config.namespace_type = :dot
             config.http_statuses_when_http_method = {
               get: {
-                default: %w(200 403),
-                path_parameter: %w(200 404 403)
+                default: %w[200 403],
+                path_parameter: %w[200 404 403]
               },
               post: {
-                default: %w(201 403),
-                path_parameter: %w(201 404 403)
+                default: %w[201 403],
+                path_parameter: %w[201 404 403]
               },
               patch: {
-                default: %w(204 403),
-                path_parameter: %w(204 404 403)
+                default: %w[204 403],
+                path_parameter: %w[204 404 403]
               },
               put: {
-                default: %w(204 403),
-                path_parameter: %w(204 404 403)
+                default: %w[204 403],
+                path_parameter: %w[204 404 403]
               },
               delete: {
-                default: %w(200 403),
-                path_parameter: %w(200 404 403)
+                default: %w[200 403],
+                path_parameter: %w[200 404 403]
               }
             }
             # server configuration
@@ -119,22 +121,22 @@ RSpec.describe RoutesToSwaggerDocs::Configuration do
             ]
             # swagger configuration
             config.swagger.configure do |swagger|
-              swagger.ui.image            = "original/swagger-ui"
-              swagger.ui.port             = "9090"
-              swagger.ui.exposed_port     = "9090/tcp"
-              swagger.ui.volume           = "/app/swagger_doc.json"
-              swagger.editor.image        = "original/swagger-editor"
-              swagger.editor.port         = "91"
-              swagger.editor.exposed_port = "9090/tcp" 
+              swagger.ui.image            = 'original/swagger-ui'
+              swagger.ui.port             = '9090'
+              swagger.ui.exposed_port     = '9090/tcp'
+              swagger.ui.volume           = '/app/swagger_doc.json'
+              swagger.editor.image        = 'original/swagger-editor'
+              swagger.editor.port         = '91'
+              swagger.editor.exposed_port = '9090/tcp'
             end
             # object classes
             config.use_object_classes = {
-              info_object:                    RtsdInfoObject,
-              paths_object:                   RtsdPathsObject,
-              path_item_object:               RtsdPathItemObject,
-              external_document_object:       RtsdExternalDocumentObject,
-              components_object:              RtsdComponentsObject,
-              components_schema_object:       Components::RtsdSchemaObject,
+              info_object: RtsdInfoObject,
+              paths_object: RtsdPathsObject,
+              path_item_object: RtsdPathItemObject,
+              external_document_object: RtsdExternalDocumentObject,
+              components_object: RtsdComponentsObject,
+              components_schema_object: Components::RtsdSchemaObject,
               components_request_body_object: Components::RtsdRequestBodyObject
             }
             # tool configuration
@@ -153,23 +155,23 @@ RSpec.describe RoutesToSwaggerDocs::Configuration do
 
       it 'should set correctly' do
         expect(subject[:version]).to eq :v4
-        expect(subject[:root_dir_path]).to eq "apidocs"
-        expect(subject[:schema_save_dir_name]).to eq "files"
-        expect(subject[:doc_save_file_name]).to eq "swagger.yml"
+        expect(subject[:root_dir_path]).to eq 'apidocs'
+        expect(subject[:schema_save_dir_name]).to eq 'files'
+        expect(subject[:doc_save_file_name]).to eq 'swagger.yml'
         expect(subject[:force_update_schema]).to eq true
         expect(subject[:use_tag_namespace]).to eq true
         expect(subject[:use_schema_namespace]).to eq true
         expect(subject[:namespace_type]).to eq :dot
-        expect(subject[:http_statuses_when_http_method][:get][:default]).to include("200", "403")
-        expect(subject[:http_statuses_when_http_method][:get][:path_parameter]).to include("200", "404", "403")
-        expect(subject[:http_statuses_when_http_method][:post][:default]).to include("201", "403")
-        expect(subject[:http_statuses_when_http_method][:post][:path_parameter]).to include("201", "404", "403")
-        expect(subject[:http_statuses_when_http_method][:patch][:default]).to include("204", "403")
-        expect(subject[:http_statuses_when_http_method][:patch][:path_parameter]).to include("204", "404", "403")
-        expect(subject[:http_statuses_when_http_method][:put][:default]).to include("204", "403")
-        expect(subject[:http_statuses_when_http_method][:put][:path_parameter]).to include("204", "404", "403")
-        expect(subject[:http_statuses_when_http_method][:delete][:default]).to include("200", "403")
-        expect(subject[:http_statuses_when_http_method][:delete][:path_parameter]).to include("200", "404", "403")
+        expect(subject[:http_statuses_when_http_method][:get][:default]).to include('200', '403')
+        expect(subject[:http_statuses_when_http_method][:get][:path_parameter]).to include('200', '404', '403')
+        expect(subject[:http_statuses_when_http_method][:post][:default]).to include('201', '403')
+        expect(subject[:http_statuses_when_http_method][:post][:path_parameter]).to include('201', '404', '403')
+        expect(subject[:http_statuses_when_http_method][:patch][:default]).to include('204', '403')
+        expect(subject[:http_statuses_when_http_method][:patch][:path_parameter]).to include('204', '404', '403')
+        expect(subject[:http_statuses_when_http_method][:put][:default]).to include('204', '403')
+        expect(subject[:http_statuses_when_http_method][:put][:path_parameter]).to include('204', '404', '403')
+        expect(subject[:http_statuses_when_http_method][:delete][:default]).to include('200', '403')
+        expect(subject[:http_statuses_when_http_method][:delete][:path_parameter]).to include('200', '404', '403')
         # server configuration
         expect(subject[:server].data[0][:url]).to eq 'http://localhost:3000'
         expect(subject[:server].data[0][:description]).to eq 'main'

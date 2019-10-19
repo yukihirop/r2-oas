@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'routes_to_swagger_docs/routing/parser'
 
@@ -13,22 +15,22 @@ RSpec.describe RoutesToSwaggerDocs::Routing::Parser do
 
       it 'should return routes data' do
         expect(parser.routes_data).to include(
-          {:data=>{:format_name=>"",:path=>"/tasks",:required_parameters=>{},:schema_name=>"Task",:tag_name=>"task",:verb=>"get"},:path=>"/tasks"},
-          {:data=>{:format_name=>"",:path=>"/tasks",:required_parameters=>{},:schema_name=>"Task",:tag_name=>"task",:verb=>"post"},:path=>"/tasks"},
-          {:data=>{:format_name=>"",:path=>"/tasks/new",:required_parameters=>{},:schema_name=>"Task",:tag_name=>"task",:verb=>"get"},:path=>"/tasks/new"},
-          {:data=>{:format_name=>"",:path=>"/tasks/{id}/edit",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Task",:tag_name=>"task",:verb=>"get"},:path=>"/tasks/{id}/edit"},
-          {:data=>{:format_name=>"",:path=>"/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Task",:tag_name=>"task",:verb=>"get"},:path=>"/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Task",:tag_name=>"task",:verb=>"patch"},:path=>"/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Task",:tag_name=>"task",:verb=>"put"},:path=>"/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Task",:tag_name=>"task",:verb=>"delete"},:path=>"/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks",:required_parameters=>{},:schema_name=>"Api_V1_Task",:tag_name=>"api/v1/task",:verb=>"get"},:path=>"/api/v1/tasks"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks",:required_parameters=>{},:schema_name=>"Api_V1_Task",:tag_name=>"api/v1/task",:verb=>"post"},:path=>"/api/v1/tasks"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/new",:required_parameters=>{},:schema_name=>"Api_V1_Task",:tag_name=>"api/v1/task",:verb=>"get"},:path=>"/api/v1/tasks/new"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/{id}/edit",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Api_V1_Task",:tag_name=>"api/v1/task",:verb=>"get"},:path=>"/api/v1/tasks/{id}/edit"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Api_V1_Task",:tag_name=>"api/v1/task",:verb=>"get"},:path=>"/api/v1/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Api_V1_Task",:tag_name=>"api/v1/task",:verb=>"patch"},:path=>"/api/v1/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Api_V1_Task",:tag_name=>"api/v1/task",:verb=>"put"},:path=>"/api/v1/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Api_V1_Task",:tag_name=>"api/v1/task",:verb=>"delete"},:path=>"/api/v1/tasks/{id}"}
+          { data: { format_name: '', path: '/tasks', required_parameters: {}, schema_name: 'Task', tag_name: 'task', verb: 'get' }, path: '/tasks' },
+          { data: { format_name: '', path: '/tasks', required_parameters: {}, schema_name: 'Task', tag_name: 'task', verb: 'post' }, path: '/tasks' },
+          { data: { format_name: '', path: '/tasks/new', required_parameters: {}, schema_name: 'Task', tag_name: 'task', verb: 'get' }, path: '/tasks/new' },
+          { data: { format_name: '', path: '/tasks/{id}/edit', required_parameters: { id: { type: 'integer' } }, schema_name: 'Task', tag_name: 'task', verb: 'get' }, path: '/tasks/{id}/edit' },
+          { data: { format_name: '', path: '/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Task', tag_name: 'task', verb: 'get' }, path: '/tasks/{id}' },
+          { data: { format_name: '', path: '/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Task', tag_name: 'task', verb: 'patch' }, path: '/tasks/{id}' },
+          { data: { format_name: '', path: '/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Task', tag_name: 'task', verb: 'put' }, path: '/tasks/{id}' },
+          { data: { format_name: '', path: '/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Task', tag_name: 'task', verb: 'delete' }, path: '/tasks/{id}' },
+          { data: { format_name: '', path: '/api/v1/tasks', required_parameters: {}, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'get' }, path: '/api/v1/tasks' },
+          { data: { format_name: '', path: '/api/v1/tasks', required_parameters: {}, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'post' }, path: '/api/v1/tasks' },
+          { data: { format_name: '', path: '/api/v1/tasks/new', required_parameters: {}, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'get' }, path: '/api/v1/tasks/new' },
+          { data: { format_name: '', path: '/api/v1/tasks/{id}/edit', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'get' }, path: '/api/v1/tasks/{id}/edit' },
+          { data: { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'get' }, path: '/api/v1/tasks/{id}' },
+          { data: { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'patch' }, path: '/api/v1/tasks/{id}' },
+          { data: { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'put' }, path: '/api/v1/tasks/{id}' },
+          data: { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'delete' }, path: '/api/v1/tasks/{id}'
         )
       end
     end
@@ -40,22 +42,22 @@ RSpec.describe RoutesToSwaggerDocs::Routing::Parser do
 
       it 'should return routes data' do
         expect(parser.routes_data).to include(
-          {:data=>{:format_name=>"",:path=>"/tasks",:required_parameters=>{},:schema_name=>"Task",:tag_name=>"task",:verb=>"get"},:path=>"/tasks"},
-          {:data=>{:format_name=>"",:path=>"/tasks",:required_parameters=>{},:schema_name=>"Task",:tag_name=>"task",:verb=>"post"},:path=>"/tasks"},
-          {:data=>{:format_name=>"",:path=>"/tasks/new",:required_parameters=>{},:schema_name=>"Task",:tag_name=>"task",:verb=>"get"},:path=>"/tasks/new"},
-          {:data=>{:format_name=>"",:path=>"/tasks/{id}/edit",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Task",:tag_name=>"task",:verb=>"get"},:path=>"/tasks/{id}/edit"},
-          {:data=>{:format_name=>"",:path=>"/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Task",:tag_name=>"task",:verb=>"get"},:path=>"/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Task",:tag_name=>"task",:verb=>"patch"},:path=>"/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Task",:tag_name=>"task",:verb=>"put"},:path=>"/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"Task",:tag_name=>"task",:verb=>"delete"},:path=>"/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks",:required_parameters=>{},:schema_name=>"api.v1.Task",:tag_name=>"api/v1/task",:verb=>"get"},:path=>"/api/v1/tasks"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks",:required_parameters=>{},:schema_name=>"api.v1.Task",:tag_name=>"api/v1/task",:verb=>"post"},:path=>"/api/v1/tasks"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/new",:required_parameters=>{},:schema_name=>"api.v1.Task",:tag_name=>"api/v1/task",:verb=>"get"},:path=>"/api/v1/tasks/new"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/{id}/edit",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"api.v1.Task",:tag_name=>"api/v1/task",:verb=>"get"},:path=>"/api/v1/tasks/{id}/edit"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"api.v1.Task",:tag_name=>"api/v1/task",:verb=>"get"},:path=>"/api/v1/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"api.v1.Task",:tag_name=>"api/v1/task",:verb=>"patch"},:path=>"/api/v1/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"api.v1.Task",:tag_name=>"api/v1/task",:verb=>"put"},:path=>"/api/v1/tasks/{id}"},
-          {:data=>{:format_name=>"",:path=>"/api/v1/tasks/{id}",:required_parameters=>{:id=>{:type=>"integer"}},:schema_name=>"api.v1.Task",:tag_name=>"api/v1/task",:verb=>"delete"},:path=>"/api/v1/tasks/{id}"}
+          { data: { format_name: '', path: '/tasks', required_parameters: {}, schema_name: 'Task', tag_name: 'task', verb: 'get' }, path: '/tasks' },
+          { data: { format_name: '', path: '/tasks', required_parameters: {}, schema_name: 'Task', tag_name: 'task', verb: 'post' }, path: '/tasks' },
+          { data: { format_name: '', path: '/tasks/new', required_parameters: {}, schema_name: 'Task', tag_name: 'task', verb: 'get' }, path: '/tasks/new' },
+          { data: { format_name: '', path: '/tasks/{id}/edit', required_parameters: { id: { type: 'integer' } }, schema_name: 'Task', tag_name: 'task', verb: 'get' }, path: '/tasks/{id}/edit' },
+          { data: { format_name: '', path: '/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Task', tag_name: 'task', verb: 'get' }, path: '/tasks/{id}' },
+          { data: { format_name: '', path: '/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Task', tag_name: 'task', verb: 'patch' }, path: '/tasks/{id}' },
+          { data: { format_name: '', path: '/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Task', tag_name: 'task', verb: 'put' }, path: '/tasks/{id}' },
+          { data: { format_name: '', path: '/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Task', tag_name: 'task', verb: 'delete' }, path: '/tasks/{id}' },
+          { data: { format_name: '', path: '/api/v1/tasks', required_parameters: {}, schema_name: 'api.v1.Task', tag_name: 'api/v1/task', verb: 'get' }, path: '/api/v1/tasks' },
+          { data: { format_name: '', path: '/api/v1/tasks', required_parameters: {}, schema_name: 'api.v1.Task', tag_name: 'api/v1/task', verb: 'post' }, path: '/api/v1/tasks' },
+          { data: { format_name: '', path: '/api/v1/tasks/new', required_parameters: {}, schema_name: 'api.v1.Task', tag_name: 'api/v1/task', verb: 'get' }, path: '/api/v1/tasks/new' },
+          { data: { format_name: '', path: '/api/v1/tasks/{id}/edit', required_parameters: { id: { type: 'integer' } }, schema_name: 'api.v1.Task', tag_name: 'api/v1/task', verb: 'get' }, path: '/api/v1/tasks/{id}/edit' },
+          { data: { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'api.v1.Task', tag_name: 'api/v1/task', verb: 'get' }, path: '/api/v1/tasks/{id}' },
+          { data: { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'api.v1.Task', tag_name: 'api/v1/task', verb: 'patch' }, path: '/api/v1/tasks/{id}' },
+          { data: { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'api.v1.Task', tag_name: 'api/v1/task', verb: 'put' }, path: '/api/v1/tasks/{id}' },
+          data: { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'api.v1.Task', tag_name: 'api/v1/task', verb: 'delete' }, path: '/api/v1/tasks/{id}'
         )
       end
     end
@@ -63,7 +65,7 @@ RSpec.describe RoutesToSwaggerDocs::Routing::Parser do
 
   describe '#tags_data' do
     it 'should return tags data' do
-      expect(parser.tags_data).to include("task", "api/v1/task")
+      expect(parser.tags_data).to include('task', 'api/v1/task')
     end
   end
 
@@ -74,7 +76,7 @@ RSpec.describe RoutesToSwaggerDocs::Routing::Parser do
       end
 
       it 'should return schemas data' do
-        expect(parser.schemas_data).to include("Task", "Api_V1_Task")
+        expect(parser.schemas_data).to include('Task', 'Api_V1_Task')
       end
     end
 
@@ -84,7 +86,7 @@ RSpec.describe RoutesToSwaggerDocs::Routing::Parser do
       end
 
       it 'should return schemas data' do
-        expect(parser.schemas_data).to include("Task", "api.v1.Task")
+        expect(parser.schemas_data).to include('Task', 'api.v1.Task')
       end
     end
   end

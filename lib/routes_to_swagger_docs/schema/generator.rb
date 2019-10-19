@@ -16,7 +16,7 @@ module RoutesToSwaggerDocs
         when :v3
           @generator = V3::Generator.new(options)
         else
-          raise NoImplementError.new "Do not support version: #{::RoutesToSwaggerDocs.version}"
+          raise NoImplementError, "Do not support version: #{::RoutesToSwaggerDocs.version}"
         end
       end
     end

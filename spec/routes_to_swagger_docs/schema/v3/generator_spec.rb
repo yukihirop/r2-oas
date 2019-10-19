@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'routes_to_swagger_docs/schema/v3/generator'
 
@@ -15,14 +17,14 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Generator do
 
   shared_examples_for 'Generated file verification test' do |result|
     it 'should generate docs' do
-      expect(FileTest.exists? components_schemas_path).to eq result
-      expect(FileTest.exists? components_request_bodies_path).to eq result
-      expect(FileTest.exists? paths_path).to eq result
-      expect(FileTest.exists? external_docs_path).to eq result
-      expect(FileTest.exists? info_path).to eq result
-      expect(FileTest.exists? openapi_path).to eq result
-      expect(FileTest.exists? servers_path).to eq result
-      expect(FileTest.exists? tags_path).to eq result
+      expect(FileTest.exists?(components_schemas_path)).to eq result
+      expect(FileTest.exists?(components_request_bodies_path)).to eq result
+      expect(FileTest.exists?(paths_path)).to eq result
+      expect(FileTest.exists?(external_docs_path)).to eq result
+      expect(FileTest.exists?(info_path)).to eq result
+      expect(FileTest.exists?(openapi_path)).to eq result
+      expect(FileTest.exists?(servers_path)).to eq result
+      expect(FileTest.exists?(tags_path)).to eq result
     end
   end
 
@@ -35,7 +37,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Generator do
       end
 
       it_behaves_like 'Generated file verification test', true
-      it { expect(FileTest.exists? doc_save_file_path).to eq true }
+      it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
     end
 
     context 'when skip_generate_docs is true' do
@@ -85,7 +87,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Generator do
 
         context 'when PATHS_FILE is present' do
           let(:unit_paths_file_path) { "#{paths_path}/task.yml" }
-          let(:generator_options) { {skip_generate_docs: true, unit_paths_file_path: unit_paths_file_path} }
+          let(:generator_options) { { skip_generate_docs: true, unit_paths_file_path: unit_paths_file_path } }
 
           it 'should squeeze paths' do
             expect(@swagger_doc['paths']['/tasks']).not_to be_blank
