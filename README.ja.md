@@ -1,5 +1,7 @@
 # R2-OAS
 
+[![Build Status](https://travis-ci.org/yukihirop/r2-oas.svg?branch=master)](https://travis-ci.org/yukihirop/r2-oas)
+
 railsのルーティング情報からOpenAPI(V3)形式のドキュメントを生成し、閲覧・編集・管理するためのrakeタスクの提供をします。
 
 ```bash

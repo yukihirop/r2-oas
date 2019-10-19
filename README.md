@@ -1,5 +1,7 @@
 # R2-OAS
 
+[![Build Status](https://travis-ci.org/yukihirop/r2-oas.svg?branch=master)](https://travis-ci.org/yukihirop/r2-oas)
+
 Generate api docment(OpenAPI) side only from `rails` routing.
 
 Provides rake commands to help `docs`, `edit`, `view` and so on.
