@@ -28,7 +28,7 @@ RSpec.describe R2OAS::Schema::V3::Analyzer do
 
   describe '#analyze_docs' do
     context 'when type is :existing' do
-      context 'when SWAGGER_FILE is blank' do
+      context 'when OAS_FILE is blank' do
         let(:analyzer_options) { { type: :existing, existing_schema_file_path: '' } }
 
         it 'should raise error' do
@@ -36,7 +36,7 @@ RSpec.describe R2OAS::Schema::V3::Analyzer do
         end
       end
 
-      context 'when SWAGGER_FILE is present' do
+      context 'when OAS_FILE is present' do
         before do
           analyzer.analyze_docs
         end

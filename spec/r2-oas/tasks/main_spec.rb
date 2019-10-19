@@ -40,7 +40,7 @@ RSpec.describe 'main_rake' do
 
     before do
       allow(ENV).to receive(:fetch).and_call_original
-      allow(ENV).to receive(:fetch).with('SWAGGER_FILE', '').and_return(swagger_file_path(ext_name))
+      allow(ENV).to receive(:fetch).with('OAS_FILE', '').and_return(swagger_file_path(ext_name))
       task.invoke
     end
 

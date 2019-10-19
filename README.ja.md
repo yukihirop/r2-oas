@@ -152,7 +152,7 @@ $ bundle exec rake routes:oas:monitor
 $ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # pathsファイルを指定してドキュメント監視
 
 $ # ドキュメントを分解・分析
-$ SWAGGER_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
+$ OAS_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
 $ # どこからも参照されてないcomponents/schemas(requestBodies, ...)を削除
 $ bundle exec rake routes:oas:clean
 $ # githubにホスティング
@@ -289,7 +289,7 @@ Please refer to [here](https://github.com/janlelis/paint) for the color.
 |variable|description|default|
 |--------|-----------|-------|
 |PATHS_FILE|pathsファイルのパス|`""`|
-|SWAGGER_FILE|analyzeするドキュメントへのパス|`""`|
+|OAS_FILE|analyzeするドキュメントへのパス|`""`|
 
 
 ## .paths
