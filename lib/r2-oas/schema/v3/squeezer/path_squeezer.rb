@@ -2,7 +2,7 @@
 
 require_relative 'base_squeezer'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class PathSqueezer < BaseSqueezer

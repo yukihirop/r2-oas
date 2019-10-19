@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/schema/v3/analyzer'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::Analyzer do
+RSpec.describe R2OAS::Schema::V3::Analyzer do
   let(:before_schema_data) { {} }
   let(:after_schema_data) { {} }
   let(:analyzer_options) { {} }
@@ -32,7 +32,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Analyzer do
         let(:analyzer_options) { { type: :existing, existing_schema_file_path: '' } }
 
         it 'should raise error' do
-          expect { analyzer.analyze_docs }.to raise_error(RoutesToSwaggerDocs::NoFileExistsError, "Do not exists file: #{doc_save_file_path}")
+          expect { analyzer.analyze_docs }.to raise_error(R2OAS::NoFileExistsError, "Do not exists file: #{doc_save_file_path}")
         end
       end
 

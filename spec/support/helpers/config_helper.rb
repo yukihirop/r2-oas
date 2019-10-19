@@ -2,7 +2,7 @@
 
 module ConfigHelper
   def reset_config
-    RoutesToSwaggerDocs.configure do |config|
+    R2OAS.configure do |config|
       config.version                            = :v3
       config.root_dir_path                      = Rails.root.join('swagger_docs').to_s
       config.schema_save_dir_name               = 'src'
@@ -30,13 +30,13 @@ module ConfigHelper
       end
 
       config.use_object_classes = {
-        info_object: RoutesToSwaggerDocs::Schema::V3::InfoObject,
-        paths_object: RoutesToSwaggerDocs::Schema::V3::PathsObject,
-        path_item_object: RoutesToSwaggerDocs::Schema::V3::PathItemObject,
-        external_document_object: RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
-        components_object: RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
-        components_schema_object: RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject,
-        components_request_body_object: RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+        info_object: R2OAS::Schema::V3::InfoObject,
+        paths_object: R2OAS::Schema::V3::PathsObject,
+        path_item_object: R2OAS::Schema::V3::PathItemObject,
+        external_document_object: R2OAS::Schema::V3::ExternalDocumentObject,
+        components_object: R2OAS::Schema::V3::ComponentsObject,
+        components_schema_object: R2OAS::Schema::V3::Components::SchemaObject,
+        components_request_body_object: R2OAS::Schema::V3::Components::RequestBodyObject
       }
 
       config.http_statuses_when_http_method = {

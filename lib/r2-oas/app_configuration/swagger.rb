@@ -3,7 +3,7 @@
 require_relative 'swagger/ui'
 require_relative 'swagger/editor'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module AppConfiguration
     class Swagger
       DEFAULT_EDITOR = Editor.new

@@ -4,7 +4,7 @@ require_relative 'base_object'
 require_relative 'tag_object'
 require_relative 'server_object'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class OpenapiObject < BaseObject

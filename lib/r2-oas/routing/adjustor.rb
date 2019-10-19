@@ -3,7 +3,7 @@
 require_relative 'base'
 require_relative 'components/all'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Routing
     class Adjustor < Base
       VALID_KEYS = %i[route name verb path reqs].freeze

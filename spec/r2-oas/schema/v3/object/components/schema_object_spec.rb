@@ -2,12 +2,12 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject do
+RSpec.describe R2OAS::Schema::V3::Components::SchemaObject do
   let(:path) { '/api/v1/tasks/{id}' }
   let(:route_data) do
     { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'patch' }
   end
-  let(:object) { RoutesToSwaggerDocs.use_object_classes[:components_schema_object].new(route_data, path) }
+  let(:object) { R2OAS.use_object_classes[:components_schema_object].new(route_data, path) }
 
   before do
     create_dot_paths
@@ -28,7 +28,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject do
     context 'when use before_create && after_create' do
       before do
         module Components
-          class TestSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+          class TestSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
             before_create do |doc, _schema_name|
               doc.merge!(
                 'before_key' => 'before_value'
@@ -43,7 +43,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject do
           end
         end
 
-        RoutesToSwaggerDocs.configure do |config|
+        R2OAS.configure do |config|
           config.use_object_classes.merge!(
             components_schema_object: Components::TestSchemaObject
           )
@@ -64,7 +64,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject do
   describe '#components_schema_name' do
     before do
       module Components
-        class TestSchemaObject2 < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+        class TestSchemaObject2 < R2OAS::Schema::V3::Components::SchemaObject
           NS_DIV = '_'
           # e.x.)
           # GET(200) /v1/tasks/{id} => V1_Task_P1_GET_200
@@ -84,7 +84,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject do
           end
         end
 
-        RoutesToSwaggerDocs.configure do |config|
+        R2OAS.configure do |config|
           config.use_object_classes.merge!(
             components_schema_object: Components::TestSchemaObject2
           )

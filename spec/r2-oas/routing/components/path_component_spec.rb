@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Routing::PathComponent do
+RSpec.describe R2OAS::Routing::PathComponent do
   let(:path) { '' }
   let(:comp) { described_class.new(path) }
 

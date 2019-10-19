@@ -2,8 +2,8 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject do
-  let(:object) { RoutesToSwaggerDocs.use_object_classes[:external_document_object].new }
+RSpec.describe R2OAS::Schema::V3::ExternalDocumentObject do
+  let(:object) { R2OAS.use_object_classes[:external_document_object].new }
 
   after do
     reset_config
@@ -12,7 +12,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject do
   describe '#to_doc' do
     context 'when use before_create && after_create' do
       before do
-        class TestExternalDocumentObject < RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject
+        class TestExternalDocumentObject < R2OAS::Schema::V3::ExternalDocumentObject
           before_create do |doc|
             doc.merge!(
               'before_key' => 'before_value'
@@ -26,7 +26,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject do
           end
         end
 
-        RoutesToSwaggerDocs.configure do |config|
+        R2OAS.configure do |config|
           config.use_object_classes.merge!(
             external_document_object: TestExternalDocumentObject
           )

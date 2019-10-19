@@ -5,7 +5,7 @@ require 'fileutils'
 require_relative 'base_generator'
 require_relative 'schema_generator'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class DocGenerator < BaseGenerator

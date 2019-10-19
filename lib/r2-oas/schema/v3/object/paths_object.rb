@@ -2,10 +2,10 @@
 
 require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
-      class PathsObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
+      class PathsObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
         def initialize(routes_data)
           super()
           @routes_data = routes_data

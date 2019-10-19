@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/schema/v3/generator/base_generator'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseGenerator do
+RSpec.describe R2OAS::Schema::V3::BaseGenerator do
   let(:options) { {} }
   let(:generator) { described_class.new(options) }
   let(:openapi_doc) { double('Schema::V3::OpenapiObject#to_doc') }
@@ -19,7 +19,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseGenerator do
   context 'private methods' do
     describe '#create_docs' do
       before do
-        allow_any_instance_of(RoutesToSwaggerDocs::Schema::V3::OpenapiObject).to receive(:to_doc).and_return(openapi_doc)
+        allow_any_instance_of(R2OAS::Schema::V3::OpenapiObject).to receive(:to_doc).and_return(openapi_doc)
       end
 
       it { expect(generator.send(:create_docs)).to eq openapi_doc }

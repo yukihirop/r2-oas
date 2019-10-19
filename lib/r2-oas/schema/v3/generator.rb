@@ -6,7 +6,7 @@ require 'r2-oas/routing/parser'
 require_relative 'generator/doc_generator'
 require_relative 'generator/base_generator'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class Generator < BaseGenerator

@@ -3,9 +3,9 @@
 require_relative '../base'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
-    class Base < ::RoutesToSwaggerDocs::Base
+    class Base < ::R2OAS::Base
     end
   end
 end

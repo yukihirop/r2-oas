@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class BaseObject
@@ -45,11 +45,11 @@ module RoutesToSwaggerDocs
         private
 
         def app_configuration_options
-          RoutesToSwaggerDocs.app_configuration_options
+          R2OAS.app_configuration_options
         end
 
         def pluggable_configuration_options
-          RoutesToSwaggerDocs.pluggable_configuration_options
+          R2OAS.pluggable_configuration_options
         end
 
         # Can not define attr_accessor for PluggableConfiguration::VALID_OPTIONS_KEYS.

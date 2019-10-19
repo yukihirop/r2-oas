@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/schema/v3/object/server_object'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::ServerObject do
+RSpec.describe R2OAS::Schema::V3::ServerObject do
   let(:object) { described_class.new }
 
   before do
@@ -12,7 +12,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::ServerObject do
 
   describe '#to_doc' do
     before do
-      RoutesToSwaggerDocs.configure do |config|
+      R2OAS.configure do |config|
         config.server.data = [
           {
             url: 'http://localhost:3000',

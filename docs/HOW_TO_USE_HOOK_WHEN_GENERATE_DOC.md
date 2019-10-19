@@ -3,7 +3,7 @@
 `custom_path_item_object.rb`
 
 ```ruby
-class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
+class CustomPathItemObject < R2OAS::Schema::V3::PathItemObject
 
   # [Important] Please change doc destructively.
   before_create do |doc, path|
@@ -55,7 +55,7 @@ end
 ```ruby
 require_relative 'custom_path_item_object'
 
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
   config.root_dir_path        = "./swagger_docs"
   config.schema_save_dir_name = "src"
   config.doc_save_file_name   = "swagger_doc.yml"

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Sortable
     def deep_sort(data, target)
       if data.is_a?(Hash)

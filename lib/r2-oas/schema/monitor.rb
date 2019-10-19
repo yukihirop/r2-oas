@@ -3,7 +3,7 @@
 require 'eventmachine'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     class Monitor < Base
       def initialize(before_schema_data, options)

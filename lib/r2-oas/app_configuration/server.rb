@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RoutesToSwaggerDocs
+module R2OAS
   module AppConfiguration
     class Server
       DEFAULT_URL = 'http://localhost:3000'

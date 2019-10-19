@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::Generator do
+RSpec.describe R2OAS::Schema::Generator do
   let(:generator_options) { {} }
   let(:generator) { described_class.new(generator_options) }
 
@@ -23,11 +23,11 @@ RSpec.describe RoutesToSwaggerDocs::Schema::Generator do
 
     context 'when version is :v2 (do not support)' do
       before do
-        allow(RoutesToSwaggerDocs).to receive(:version).and_return(:v2)
+        allow(R2OAS).to receive(:version).and_return(:v2)
       end
 
       it 'should raise error' do
-        expect { generator }.to raise_error(RoutesToSwaggerDocs::NoImplementError, 'Do not support version: v2')
+        expect { generator }.to raise_error(R2OAS::NoImplementError, 'Do not support version: v2')
       end
     end
   end

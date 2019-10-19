@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/tool/paths/ls'
 
-RSpec.describe RoutesToSwaggerDocs::Tool::Paths::Ls do
+RSpec.describe R2OAS::Tool::Paths::Ls do
   let(:ls) { described_class.new }
 
   before do

@@ -4,7 +4,7 @@ require_relative '../task_logging'
 
 namespace :routes do
   namespace :swagger do
-    extend RoutesToSwaggerDocs::TaskLogging
+    extend R2OAS::TaskLogging
 
     # private
     # desc "Setup a common setting for every tasks"
@@ -20,7 +20,7 @@ namespace :routes do
     end
 
     def create_dot_paths
-      RoutesToSwaggerDocs.paths_config.create_dot_paths
+      R2OAS.paths_config.create_dot_paths
     end
   end
 end

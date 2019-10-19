@@ -7,7 +7,7 @@ module CreateHelper
   include FixtureHelper
 
   def create_dot_paths
-    RoutesToSwaggerDocs.paths_config.create_dot_paths
+    R2OAS.paths_config.create_dot_paths
   end
 
   def create_dir(path = '')

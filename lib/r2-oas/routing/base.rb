@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 # MEMO
-# load this file before autoload ::RoutesToSwaggerDocs::Base
+# load this file before autoload ::R2OAS::Base
 require 'r2-oas/base'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Routing
-    class Base < ::RoutesToSwaggerDocs::Base
+    class Base < ::R2OAS::Base
     end
   end
 end

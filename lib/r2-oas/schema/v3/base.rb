@@ -3,10 +3,10 @@
 require_relative '../base'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
-      class Base < ::RoutesToSwaggerDocs::Schema::Base
+      class Base < ::R2OAS::Schema::Base
         SUPPORT_COMPONENTS_OBJECTS = %w[
           schemas
           requestBodies

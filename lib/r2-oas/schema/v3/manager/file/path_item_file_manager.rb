@@ -4,7 +4,7 @@ require_relative 'include_ref_base_file_manager'
 require_relative 'components_file_manager'
 require_relative '../pathname_manager'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class PathItemFileManager < IncludeRefBaseFileManager

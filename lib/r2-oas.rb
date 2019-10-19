@@ -5,7 +5,7 @@ require 'r2-oas/configuration'
 require 'r2-oas/errors'
 require 'r2-oas/schema/v3/object/public'
 
-module RoutesToSwaggerDocs
+module R2OAS
   extend ActiveSupport::Autoload
 
   if !defined?(::Rails)

@@ -5,7 +5,7 @@ require 'fileutils'
 require_relative 'object_generator'
 require 'r2-oas/schema/v3/manager/file/components_file_manager'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       module Components

@@ -2,10 +2,10 @@
 
 require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
-      class InfoObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
+      class InfoObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
         def create_doc
           result = {
             'title' => 'Swagger API Document Title',

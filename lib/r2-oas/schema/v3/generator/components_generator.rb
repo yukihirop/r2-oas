@@ -4,7 +4,7 @@ require_relative 'base_generator'
 require_relative 'components/object_generator'
 require_relative 'components/request_body_generator'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class ComponentsGenerator < BaseGenerator

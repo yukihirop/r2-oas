@@ -6,7 +6,7 @@ require_relative 'analyzer/tag_analyzer'
 require_relative 'analyzer/components_analyzer'
 require 'r2-oas/schema/v3/manager/file_manager'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class Analyzer < BaseAnalyzer

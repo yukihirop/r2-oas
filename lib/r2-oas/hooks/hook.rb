@@ -4,7 +4,7 @@ require 'singleton'
 require_relative './global_hook'
 require_relative './repository'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Hooks
     class Hook
       include Singleton

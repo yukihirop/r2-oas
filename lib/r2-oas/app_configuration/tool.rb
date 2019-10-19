@@ -2,7 +2,7 @@
 
 require_relative 'tool/paths/stats'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module AppConfiguration
     class Tool
       DEFAULT_PATHS_STATS = PathsStats.new

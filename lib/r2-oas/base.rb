@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RoutesToSwaggerDocs
+module R2OAS
   class Base
     def initialize(options = {})
       @options = options
@@ -16,14 +16,14 @@ module RoutesToSwaggerDocs
 
     def merged_options
       if @options.present?
-        RoutesToSwaggerDocs.options.merge(@options)
+        R2OAS.options.merge(@options)
       else
-        RoutesToSwaggerDocs.options
+        R2OAS.options
       end
     end
 
     def logger
-      RoutesToSwaggerDocs.logger
+      R2OAS.logger
     end
 
     def schema_save_dir_path

@@ -2,7 +2,7 @@
 
 require 'r2-oas/schema/manager/file/path_item_file_manager'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Configuration
     class PathsConfig
       def initialize(root_dir_path, schema_save_dir_name)

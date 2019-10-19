@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Referred to　lib/ruby/2.3.0/logger.rb
-module RoutesToSwaggerDocs
+module R2OAS
   class StdoutLogger
     DEBUG = 0
     INFO = 1

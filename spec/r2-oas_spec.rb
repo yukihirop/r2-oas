@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe RoutesToSwaggerDocs do
+RSpec.describe R2OAS do
   it 'has a version number' do
-    expect(RoutesToSwaggerDocs::VERSION).not_to be nil
+    expect(R2OAS::VERSION).not_to be nil
   end
 end

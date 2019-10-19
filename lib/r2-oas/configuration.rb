@@ -5,7 +5,7 @@ require_relative 'pluggable_configuration'
 require_relative 'configuration/paths_config'
 require_relative 'logger/stdout_logger'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Configuration
     extend AppConfiguration
     extend PluggableConfiguration

@@ -6,7 +6,7 @@ require 'r2-oas/schema/v3/manager/file_manager'
 require 'r2-oas/schema/v3/object/tag_object'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class PathAnalyzer < BaseAnalyzer

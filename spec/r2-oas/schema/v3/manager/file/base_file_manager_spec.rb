@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseFileManager do
+RSpec.describe R2OAS::Schema::V3::BaseFileManager do
   let(:path) { '#/components/schemas/Dummy' }
   let(:path_type) { :ref }
   let(:manager) { described_class.new(path, path_type) }
@@ -88,7 +88,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseFileManager do
         @ext_name = manager.instance_variable_get(:@ext_name)
       end
 
-      it { expect { manager.load_data }.to raise_error(RoutesToSwaggerDocs::NoSupportError, "Do not support @ext_name: #{@ext_name}") }
+      it { expect { manager.load_data }.to raise_error(R2OAS::NoSupportError, "Do not support @ext_name: #{@ext_name}") }
     end
   end
 

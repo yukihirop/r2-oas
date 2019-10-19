@@ -7,7 +7,7 @@ require 'shell'
 require 'forwardable'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     class UI < Base
       extend Forwardable

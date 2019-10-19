@@ -2,17 +2,17 @@
 
 require_relative 'schema/v3/object/public'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module PluggableConfiguration
     # rubocop:disable Style/MutableConstant
     DEFAULT_USE_OBJECT_CLASSES = {
-      info_object: RoutesToSwaggerDocs::Schema::V3::InfoObject,
-      paths_object: RoutesToSwaggerDocs::Schema::V3::PathsObject,
-      path_item_object: RoutesToSwaggerDocs::Schema::V3::PathItemObject,
-      external_document_object: RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
-      components_object: RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
-      components_schema_object: RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject,
-      components_request_body_object: RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+      info_object: R2OAS::Schema::V3::InfoObject,
+      paths_object: R2OAS::Schema::V3::PathsObject,
+      path_item_object: R2OAS::Schema::V3::PathItemObject,
+      external_document_object: R2OAS::Schema::V3::ExternalDocumentObject,
+      components_object: R2OAS::Schema::V3::ComponentsObject,
+      components_schema_object: R2OAS::Schema::V3::Components::SchemaObject,
+      components_request_body_object: R2OAS::Schema::V3::Components::RequestBodyObject
     }
     # rubocop:enable Style/MutableConstant
 

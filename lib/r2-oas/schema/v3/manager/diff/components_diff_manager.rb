@@ -2,7 +2,7 @@
 
 require_relative 'base_hash_diff_manager'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class ComponentsDiffManager < BaseHashDiffManager

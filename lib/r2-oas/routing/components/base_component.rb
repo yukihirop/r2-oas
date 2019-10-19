@@ -2,7 +2,7 @@
 
 require_relative '../base'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Routing
     class BaseComponent < Base
     end

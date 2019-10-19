@@ -3,7 +3,7 @@
 require_relative 'adjustor'
 require_relative 'base'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Routing
     class Parser
       # routes should be Rails.application.routes.routes

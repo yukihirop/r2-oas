@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Configuration::PathsConfig do
+RSpec.describe R2OAS::Configuration::PathsConfig do
   let(:config) { described_class.new(root_dir_path, schema_save_dir_name) }
 
   before do

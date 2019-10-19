@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/schema/v3/squeezer'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::Squeezer do
+RSpec.describe R2OAS::Schema::V3::Squeezer do
   let(:before_schema_data) { YAML.load_file docs_file_path(:before) }
   let(:many_paths_file_paths) { [] }
 

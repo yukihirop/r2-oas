@@ -2,24 +2,24 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Configuration do
+RSpec.describe R2OAS::Configuration do
   describe 'configure' do
     before(:all) do
-      class RtsdInfoObject < RoutesToSwaggerDocs::Schema::V3::InfoObject; end
-      class RtsdPathsObject < RoutesToSwaggerDocs::Schema::V3::PathsObject; end
-      class RtsdPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject; end
-      class RtsdExternalDocumentObject < RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject; end
-      class RtsdComponentsObject < RoutesToSwaggerDocs::Schema::V3::ComponentsObject; end
+      class RtsdInfoObject < R2OAS::Schema::V3::InfoObject; end
+      class RtsdPathsObject < R2OAS::Schema::V3::PathsObject; end
+      class RtsdPathItemObject < R2OAS::Schema::V3::PathItemObject; end
+      class RtsdExternalDocumentObject < R2OAS::Schema::V3::ExternalDocumentObject; end
+      class RtsdComponentsObject < R2OAS::Schema::V3::ComponentsObject; end
       module Components
-        class RtsdSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject; end
-        class RtsdRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject; end
+        class RtsdSchemaObject < R2OAS::Schema::V3::Components::SchemaObject; end
+        class RtsdRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject; end
       end
     end
 
     context 'when default setting' do
       before do
         class DefaultDummy
-          extend RoutesToSwaggerDocs::Configuration
+          extend R2OAS::Configuration
         end
       end
 
@@ -56,13 +56,13 @@ RSpec.describe RoutesToSwaggerDocs::Configuration do
         expect(subject[:swagger].editor.port).to eq '81'
         expect(subject[:swagger].editor.exposed_port).to eq '8080/tcp'
         # object classes
-        expect(subject[:use_object_classes][:info_object]).to eq RoutesToSwaggerDocs::Schema::V3::InfoObject
-        expect(subject[:use_object_classes][:paths_object]).to eq RoutesToSwaggerDocs::Schema::V3::PathsObject
-        expect(subject[:use_object_classes][:path_item_object]).to eq RoutesToSwaggerDocs::Schema::V3::PathItemObject
-        expect(subject[:use_object_classes][:external_document_object]).to eq RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject
-        expect(subject[:use_object_classes][:components_object]).to eq RoutesToSwaggerDocs::Schema::V3::ComponentsObject
-        expect(subject[:use_object_classes][:components_schema_object]).to eq RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
-        expect(subject[:use_object_classes][:components_request_body_object]).to eq RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+        expect(subject[:use_object_classes][:info_object]).to eq R2OAS::Schema::V3::InfoObject
+        expect(subject[:use_object_classes][:paths_object]).to eq R2OAS::Schema::V3::PathsObject
+        expect(subject[:use_object_classes][:path_item_object]).to eq R2OAS::Schema::V3::PathItemObject
+        expect(subject[:use_object_classes][:external_document_object]).to eq R2OAS::Schema::V3::ExternalDocumentObject
+        expect(subject[:use_object_classes][:components_object]).to eq R2OAS::Schema::V3::ComponentsObject
+        expect(subject[:use_object_classes][:components_schema_object]).to eq R2OAS::Schema::V3::Components::SchemaObject
+        expect(subject[:use_object_classes][:components_request_body_object]).to eq R2OAS::Schema::V3::Components::RequestBodyObject
         # tool configuraiton
         expect(subject[:tool].paths_stats.month_to_turn_to_warning_color).to eq 3
         expect(subject[:tool].paths_stats.warning_color).to eq :red
@@ -75,7 +75,7 @@ RSpec.describe RoutesToSwaggerDocs::Configuration do
     context 'when override setting' do
       before do
         class CustomDummy
-          extend RoutesToSwaggerDocs::Configuration
+          extend R2OAS::Configuration
 
           configure do |config|
             config.version = :v4

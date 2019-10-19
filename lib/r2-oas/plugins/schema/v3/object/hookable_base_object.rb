@@ -3,11 +3,11 @@
 require 'r2-oas/schema/v3/object/base_object'
 require 'r2-oas/hooks/hook'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Plugins
     module Schema
       module V3
-        class HookableBaseObject < RoutesToSwaggerDocs::Schema::V3::BaseObject
+        class HookableBaseObject < R2OAS::Schema::V3::BaseObject
           module ClassMethods
             def before_create(&block)
               proc = (block_given? ? block : proc {})

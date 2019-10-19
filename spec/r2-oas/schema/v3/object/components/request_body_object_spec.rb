@@ -2,12 +2,12 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject do
+RSpec.describe R2OAS::Schema::V3::Components::RequestBodyObject do
   let(:path) { '/api/v1/tasks/{id}' }
   let(:route_data) do
     { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'patch' }
   end
-  let(:object) { RoutesToSwaggerDocs.use_object_classes[:components_request_body_object].new(route_data, path) }
+  let(:object) { R2OAS.use_object_classes[:components_request_body_object].new(route_data, path) }
 
   before do
     create_dot_paths
@@ -32,7 +32,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject do
     context 'when use before_create && after_create' do
       before do
         module Components
-          class TestRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+          class TestRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
             before_create do |doc, _schema_name|
               doc.merge!(
                 'before_key' => 'before_value'
@@ -47,7 +47,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject do
           end
         end
 
-        RoutesToSwaggerDocs.configure do |config|
+        R2OAS.configure do |config|
           config.use_object_classes.merge!(
             components_request_body_object: Components::TestRequestBodyObject
           )

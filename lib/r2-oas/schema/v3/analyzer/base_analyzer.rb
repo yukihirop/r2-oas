@@ -3,7 +3,7 @@
 require 'r2-oas/schema/v3/base'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class BaseAnalyzer < Base

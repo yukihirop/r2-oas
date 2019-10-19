@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::Analyzer do
+RSpec.describe R2OAS::Schema::Analyzer do
   let(:before_schema_data) { {} }
   let(:after_schema_data) { {} }
   let(:analyzer_options) { {} }
@@ -17,11 +17,11 @@ RSpec.describe RoutesToSwaggerDocs::Schema::Analyzer do
 
     context 'when version is :v2 (do not support)' do
       before do
-        allow(RoutesToSwaggerDocs).to receive(:version).and_return(:v2)
+        allow(R2OAS).to receive(:version).and_return(:v2)
       end
 
       it 'should raise error' do
-        expect { analyzer }.to raise_error(RoutesToSwaggerDocs::NoImplementError, 'Do not support version: v2')
+        expect { analyzer }.to raise_error(R2OAS::NoImplementError, 'Do not support version: v2')
       end
     end
   end

@@ -5,7 +5,7 @@ require 'r2-oas/routing/parser'
 require 'r2-oas/schema/v3/object/openapi_object'
 require 'r2-oas/schema/v3/manager/file/path_item_file_manager'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class BaseGenerator < Base

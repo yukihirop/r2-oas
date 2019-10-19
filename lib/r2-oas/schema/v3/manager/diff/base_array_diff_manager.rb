@@ -2,7 +2,7 @@
 
 require_relative 'base_diff_manager'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class BaseArrayDiffManager < BaseDiffManager

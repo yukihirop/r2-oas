@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/schema/v3/generator'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::Generator do
+RSpec.describe R2OAS::Schema::V3::Generator do
   let(:generator_options) { {} }
   let(:generator) { described_class.new(generator_options) }
 

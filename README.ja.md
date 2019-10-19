@@ -1,4 +1,4 @@
-# RoutesToSwaggerDocs
+# R2OAS
 
 railsのルーティング情報からOpenAPI(V3)形式のドキュメントを生成し、閲覧・編集・管理するためのrakeタスクの提供をします。
 
@@ -58,7 +58,7 @@ bundle exec routes:swagger:editor
 
 ```ruby
 # default setting
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
   config.version                            = :v3
   #「docs」という名前は使えません。予約語です。
   config.root_dir_path                      = "./swagger_docs"
@@ -87,13 +87,13 @@ RoutesToSwaggerDocs.configure do |config|
   end
 
   config.use_object_classes = {
-    info_object:                    RoutesToSwaggerDocs::Schema::V3::InfoObject,
-    paths_object:                   RoutesToSwaggerDocs::Schema::V3::PathsObject,
-    path_item_object:               RoutesToSwaggerDocs::Schema::V3::PathItemObject,
-    external_document_object:       RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
-    components_object:              RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
-    components_schema_object:       RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject,
-    components_request_body_object: RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+    info_object:                    R2OAS::Schema::V3::InfoObject,
+    paths_object:                   R2OAS::Schema::V3::PathsObject,
+    path_item_object:               R2OAS::Schema::V3::PathItemObject,
+    external_document_object:       R2OAS::Schema::V3::ExternalDocumentObject,
+    components_object:              R2OAS::Schema::V3::ComponentsObject,
+    components_schema_object:       R2OAS::Schema::V3::Components::SchemaObject,
+    components_request_body_object: R2OAS::Schema::V3::Components::RequestBodyObject
   }
 
   config.http_statuses_when_http_method = {
@@ -268,7 +268,7 @@ $ bundle exec rake routes:swagger:paths_stats
 
 |option|description|default|
 |------|-----------|-------|
-|use_object_classes|ドキュメント生成時に使用するオブジェクトクラスの設定|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> components_schema_object: `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject` }|
+|use_object_classes|ドキュメント生成時に使用するオブジェクトクラスの設定|{ info_object: `R2OAS::Schema::V3::InfoObject`,<br>paths_object: `R2OAS::Schema::V3::PathsObject`,<br>path_item_object: `R2OAS::Schema::V3::PathItemObject`, external_document_object: `R2OAS::Schema::V3::ExternalDocumentObject`,<br> components_object: `R2OAS::Schema::V3::ComponentsObject`,<br> components_schema_object: `R2OAS::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`R2OAS::Schema::V3::Components::RequestBodyObject` }|
 
 #### tool
 
@@ -317,20 +317,20 @@ account.yml               # ignore
 
 フック可能なオブジェクトは以下の通りです。
 
-- `RoutesToSwaggerDocs::Schema::V3::InfoObject`
-- `RoutesToSwaggerDocs::Schema::V3::PathsObject`
-- `RoutesToSwaggerDocs::Schema::V3::PathItemObject`
-- `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`
-- `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`
-- `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`
-- `RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject`
+- `R2OAS::Schema::V3::InfoObject`
+- `R2OAS::Schema::V3::PathsObject`
+- `R2OAS::Schema::V3::PathItemObject`
+- `R2OAS::Schema::V3::ExternalDocumentObject`
+- `R2OAS::Schema::V3::ComponentsObject`
+- `R2OAS::Schema::V3::Components::SchemaObject`
+- `R2OAS::Schema::V3::Components::RequestBodyObject`
 
 これらのクラスを継承して、フックの設定を書きます。以下に例を用意しました。
 
 #### case: InfoObject
 
 ```ruby
-class CustomInfoObject < RoutesToSwaggerDocs::Schema::V3::InfoObject
+class CustomInfoObject < R2OAS::Schema::V3::InfoObject
   before_create do |doc|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -352,7 +352,7 @@ end
 #### case: PathsObject
 
 ```ruby
-class CustomPathsObject < RoutesToSwaggerDocs::Schema::V3::PathsObject
+class CustomPathsObject < R2OAS::Schema::V3::PathsObject
   before_create do |doc|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -374,7 +374,7 @@ end
 #### case: PathItemObject
 
 ```ruby
-class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
+class CustomPathItemObject < R2OAS::Schema::V3::PathItemObject
   before_create do |doc, path|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -396,7 +396,7 @@ end
 #### case: ExternalDocumentObject
 
 ```ruby
-class CustomExternalDocumentObject < RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject
+class CustomExternalDocumentObject < R2OAS::Schema::V3::ExternalDocumentObject
   before_create do |doc|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -418,7 +418,7 @@ end
 #### case: ComponentsObject
 
 ```ruby
-class CustomComponentsObject < RoutesToSwaggerDocs::Schema::V3::ComponentsObject
+class CustomComponentsObject < R2OAS::Schema::V3::ComponentsObject
   before_create do |doc|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -440,7 +440,7 @@ end
 #### case: Components::SchemaObject
 
 ```ruby
-class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
   before_create do |doc, schema_name|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -462,7 +462,7 @@ end
 ドキュメント生成時にcomponents/schemas名を上書きしたい場合は以下の様にします。
 
 ```ruby
-class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
   def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
     # [重要] 返値は文字列であるべきです。
     # 初期値はschema_name
@@ -471,10 +471,10 @@ class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components
 end
 ```
 
-`path_component` は `RoutesToSwaggerDocs::Routing::PathComponent` のインスタンスです。
+`path_component` は `R2OAS::Routing::PathComponent` のインスタンスです。
 
 ```ruby
-module RoutesToSwaggerDocs
+module R2OAS
   module Routing
     class PathComponent < BaseComponent
       def initialize(path)
@@ -491,7 +491,7 @@ module RoutesToSwaggerDocs
 #### case: Components::RequestBodyObject
 
 ```ruby
-class CustomComponentsRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
   before_create do |doc, schema_name|
     # [重要] docへの破壊的な変更をしてください。
     # [重要] railsが提供するメソッドを使用する事ができます。
@@ -513,7 +513,7 @@ end
 ドキュメント生成時にcomponents/requestBodies名を上書きしたい場合は以下の様にします。
 
 ```ruby
-class CustomComponentsRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
   def components_request_body_name(doc, path_component, tag_name, verb, schema_name)
     # [重要] 返値は文字列であるべきです。
     # 初期値はschema_name
@@ -532,7 +532,7 @@ end
 
 ```ruby
 # もし、InfoObjectとPathItemObjectをカスタムのものにしたい場合は以下の様にします。
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
   # 
   # omission ...
   # 

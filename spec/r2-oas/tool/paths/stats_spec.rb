@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/tool/paths/stats'
 
-RSpec.describe RoutesToSwaggerDocs::Tool::Paths::Stats do
+RSpec.describe R2OAS::Tool::Paths::Stats do
   let(:stats) { described_class.new }
 
   before do

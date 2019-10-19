@@ -3,7 +3,7 @@
 require_relative 'base_object'
 require_relative 'path_item_object'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class TagObject < BaseObject

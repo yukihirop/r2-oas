@@ -4,7 +4,7 @@ require_relative 'app_configuration/server'
 require_relative 'app_configuration/swagger'
 require_relative 'app_configuration/tool'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module AppConfiguration
     DEFAULT_VERSION = :v3
     DEFAULT_ROOT_DIR_PATH = './swagger_docs'

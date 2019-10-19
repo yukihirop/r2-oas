@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathnameManager do
+RSpec.describe R2OAS::Schema::V3::PathnameManager do
   let(:path) { '' }
   let(:path_type) { :ref }
   let(:manager) { described_class.new(path, path_type) }
@@ -94,7 +94,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathnameManager do
         let(:path) { 'paths/api/v1/task' }
         let(:path_type) { :invalid }
 
-        it { expect { subject }.to raise_error(RoutesToSwaggerDocs::NoSupportError, 'Do not support path_type: invalid') }
+        it { expect { subject }.to raise_error(R2OAS::NoSupportError, 'Do not support path_type: invalid') }
       end
     end
   end

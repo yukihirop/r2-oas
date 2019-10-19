@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/schema/v3/manager/diff/base_array_diff_manager'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseArrayDiffManager do
+RSpec.describe R2OAS::Schema::V3::BaseArrayDiffManager do
   let(:before_schema_data) do
     {
       'base' => [

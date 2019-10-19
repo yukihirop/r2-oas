@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/routing/adjustor'
 
-RSpec.describe RoutesToSwaggerDocs::Routing::Adjustor do
+RSpec.describe R2OAS::Routing::Adjustor do
   let(:route_wrapper) { double('ActionDispatch::Routing::RouteWrapper') }
   let(:routes_data) do
     {
@@ -24,7 +24,7 @@ RSpec.describe RoutesToSwaggerDocs::Routing::Adjustor do
 
       context 'when namespace_type is :underbar' do
         before do
-          allow(RoutesToSwaggerDocs).to receive(:namespace_type).and_return(:underbar)
+          allow(R2OAS).to receive(:namespace_type).and_return(:underbar)
         end
 
         it 'should return adjusted' do
@@ -44,7 +44,7 @@ RSpec.describe RoutesToSwaggerDocs::Routing::Adjustor do
 
       context 'when namespace_type is :dot' do
         before do
-          allow(RoutesToSwaggerDocs).to receive(:namespace_type).and_return(:dot)
+          allow(R2OAS).to receive(:namespace_type).and_return(:dot)
         end
 
         it 'should return adjusted' do
@@ -80,7 +80,7 @@ RSpec.describe RoutesToSwaggerDocs::Routing::Adjustor do
 
       context 'when namespace_type is :underbar' do
         before do
-          allow(RoutesToSwaggerDocs).to receive(:namespace_type).and_return(:underbar)
+          allow(R2OAS).to receive(:namespace_type).and_return(:underbar)
         end
 
         it 'should return adjusted' do
@@ -100,7 +100,7 @@ RSpec.describe RoutesToSwaggerDocs::Routing::Adjustor do
 
       context 'when namespace_type is :dot' do
         before do
-          allow(RoutesToSwaggerDocs).to receive(:namespace_type).and_return(:dot)
+          allow(R2OAS).to receive(:namespace_type).and_return(:dot)
         end
 
         it 'should return adjusted' do

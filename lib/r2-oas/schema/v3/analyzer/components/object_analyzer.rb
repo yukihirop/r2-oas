@@ -5,7 +5,7 @@ require 'r2-oas/schema/v3/manager/file/components_file_manager'
 require 'r2-oas/schema/v3/manager/diff/components_diff_manager'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       module Components

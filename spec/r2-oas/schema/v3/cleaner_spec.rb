@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/schema/v3/cleaner'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::Cleaner do
+RSpec.describe R2OAS::Schema::V3::Cleaner do
   let(:cleaner_options) { {} }
   let(:cleaner) { described_class.new(cleaner_options) }
 

@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/schema/v3/object/openapi_object'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::OpenapiObject do
+RSpec.describe R2OAS::Schema::V3::OpenapiObject do
   let(:routes_data) do
     [
       { data: { format_name: '', path: '/tasks', required_parameters: {}, schema_name: 'Task', tag_name: 'task', verb: 'get' }, path: '/tasks' },
@@ -37,12 +37,12 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::OpenapiObject do
 
   describe '#to_doc' do
     before do
-      allow_any_instance_of(RoutesToSwaggerDocs::Schema::V3::InfoObject).to receive(:to_doc).and_return(info_doc)
-      allow_any_instance_of(RoutesToSwaggerDocs::Schema::V3::TagObject).to receive(:to_doc).and_return(tag_doc)
-      allow_any_instance_of(RoutesToSwaggerDocs::Schema::V3::PathsObject).to receive(:to_doc).and_return(paths_doc)
-      allow_any_instance_of(RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject).to receive(:to_doc).and_return(external_docs_doc)
-      allow_any_instance_of(RoutesToSwaggerDocs::Schema::V3::ServerObject).to receive(:to_doc).and_return(servers_doc)
-      allow_any_instance_of(RoutesToSwaggerDocs::Schema::V3::ComponentsObject).to receive(:to_doc).and_return(components_doc)
+      allow_any_instance_of(R2OAS::Schema::V3::InfoObject).to receive(:to_doc).and_return(info_doc)
+      allow_any_instance_of(R2OAS::Schema::V3::TagObject).to receive(:to_doc).and_return(tag_doc)
+      allow_any_instance_of(R2OAS::Schema::V3::PathsObject).to receive(:to_doc).and_return(paths_doc)
+      allow_any_instance_of(R2OAS::Schema::V3::ExternalDocumentObject).to receive(:to_doc).and_return(external_docs_doc)
+      allow_any_instance_of(R2OAS::Schema::V3::ServerObject).to receive(:to_doc).and_return(servers_doc)
+      allow_any_instance_of(R2OAS::Schema::V3::ComponentsObject).to receive(:to_doc).and_return(components_doc)
     end
 
     it { expect(object.to_doc['openapi']).to eq '3.0.0' }

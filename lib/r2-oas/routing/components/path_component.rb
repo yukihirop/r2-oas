@@ -2,7 +2,7 @@
 
 require_relative 'base_component'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Routing
     class PathComponent < BaseComponent
       FORMAT_PATH_PARAMETER_REGEXP = /\(.+\)/.freeze

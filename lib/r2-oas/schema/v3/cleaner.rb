@@ -3,7 +3,7 @@
 require_relative 'cleaner/base_cleaner'
 require_relative 'cleaner/components_cleaner'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class Cleaner < BaseCleaner

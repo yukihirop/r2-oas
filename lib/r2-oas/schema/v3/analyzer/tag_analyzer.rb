@@ -5,7 +5,7 @@ require 'r2-oas/schema/v3/manager/file_manager'
 require 'r2-oas/schema/v3/manager/diff/tag_diff_manager'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class TagAnalyzer < BaseAnalyzer

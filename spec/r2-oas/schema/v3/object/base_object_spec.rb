@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseObject do
+RSpec.describe R2OAS::Schema::V3::BaseObject do
   let(:object) { described_class.new }
   let(:swagger) { object.send(:swagger) }
   let(:use_object_classes) { object.instance_variable_get(:@use_object_classes) }
@@ -32,13 +32,13 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseObject do
       it { expect(swagger.editor.image).to eq 'swaggerapi/swagger-editor' }
       it { expect(swagger.editor.port).to eq '81' }
       it { expect(swagger.editor.exposed_port).to eq '8080/tcp' }
-      it { expect(use_object_classes[:info_object]).to eq RoutesToSwaggerDocs::Schema::V3::InfoObject }
-      it { expect(use_object_classes[:paths_object]).to eq RoutesToSwaggerDocs::Schema::V3::PathsObject }
-      it { expect(use_object_classes[:path_item_object]).to eq RoutesToSwaggerDocs::Schema::V3::PathItemObject }
-      it { expect(use_object_classes[:external_document_object]).to eq RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject }
-      it { expect(use_object_classes[:components_object]).to eq RoutesToSwaggerDocs::Schema::V3::ComponentsObject }
-      it { expect(use_object_classes[:components_schema_object]).to eq RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject }
-      it { expect(use_object_classes[:components_request_body_object]).to eq RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject }
+      it { expect(use_object_classes[:info_object]).to eq R2OAS::Schema::V3::InfoObject }
+      it { expect(use_object_classes[:paths_object]).to eq R2OAS::Schema::V3::PathsObject }
+      it { expect(use_object_classes[:path_item_object]).to eq R2OAS::Schema::V3::PathItemObject }
+      it { expect(use_object_classes[:external_document_object]).to eq R2OAS::Schema::V3::ExternalDocumentObject }
+      it { expect(use_object_classes[:components_object]).to eq R2OAS::Schema::V3::ComponentsObject }
+      it { expect(use_object_classes[:components_schema_object]).to eq R2OAS::Schema::V3::Components::SchemaObject }
+      it { expect(use_object_classes[:components_request_body_object]).to eq R2OAS::Schema::V3::Components::RequestBodyObject }
       it { expect(http_statuses_when_http_method[:get]).to eq default: %w[200 422], path_parameter: %w[200 404 422] }
       it { expect(http_statuses_when_http_method[:post]).to eq default: %w[201 422], path_parameter: %w[201 404 422] }
       it { expect(http_statuses_when_http_method[:patch]).to eq default: %w[204 422], path_parameter: %w[204 404 422] }
@@ -56,7 +56,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseObject do
       let(:info_object_class) { double('TestInfoObjectClass') }
 
       before do
-        RoutesToSwaggerDocs.configure do |config|
+        R2OAS.configure do |config|
           config.namespace_type = :dot
           config.doc_save_file_name = 'apidoc.yml'
           config.use_object_classes.merge!(
@@ -72,30 +72,30 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseObject do
   end
 
   describe '#info_object_class' do
-    it { expect(object.info_object_class).to eq RoutesToSwaggerDocs::Schema::V3::InfoObject }
+    it { expect(object.info_object_class).to eq R2OAS::Schema::V3::InfoObject }
   end
 
   describe '#paths_object_class' do
-    it { expect(object.paths_object_class).to eq RoutesToSwaggerDocs::Schema::V3::PathsObject }
+    it { expect(object.paths_object_class).to eq R2OAS::Schema::V3::PathsObject }
   end
 
   describe '#path_item_object_class' do
-    it { expect(object.path_item_object_class).to eq RoutesToSwaggerDocs::Schema::V3::PathItemObject }
+    it { expect(object.path_item_object_class).to eq R2OAS::Schema::V3::PathItemObject }
   end
 
   describe '#external_document_object_class' do
-    it { expect(object.external_document_object_class).to eq RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject }
+    it { expect(object.external_document_object_class).to eq R2OAS::Schema::V3::ExternalDocumentObject }
   end
 
   describe '#components_object_class' do
-    it { expect(object.components_object_class).to eq RoutesToSwaggerDocs::Schema::V3::ComponentsObject }
+    it { expect(object.components_object_class).to eq R2OAS::Schema::V3::ComponentsObject }
   end
 
   describe '#components_schema_object_class' do
-    it { expect(object.components_schema_object_class).to eq RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject }
+    it { expect(object.components_schema_object_class).to eq R2OAS::Schema::V3::Components::SchemaObject }
   end
 
   describe '#components_request_body_object_class' do
-    it { expect(object.components_request_body_object_class).to eq RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject }
+    it { expect(object.components_request_body_object_class).to eq R2OAS::Schema::V3::Components::RequestBodyObject }
   end
 end

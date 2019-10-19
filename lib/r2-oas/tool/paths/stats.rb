@@ -4,7 +4,7 @@ require 'terminal-table'
 require 'paint'
 require 'forwardable'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Tool
     module Paths
       class Stats < Base

@@ -14,7 +14,7 @@ require 'r2-oas/schema/analyzer'
 require_relative 'base'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     class Editor < Base
       extend Forwardable

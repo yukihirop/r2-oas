@@ -3,7 +3,7 @@
 require_relative '../pathname_manager'
 require 'r2-oas/schema/v3/base'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class BaseFileManager < Base

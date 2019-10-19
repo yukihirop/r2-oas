@@ -3,7 +3,7 @@
 require 'forwardable'
 require 'r2-oas/schema/v3/cleaner'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     class Cleaner
       extend Forwardable
@@ -11,11 +11,11 @@ module RoutesToSwaggerDocs
       def_delegators :@cleaner, :clean_docs
 
       def initialize(options = {})
-        case ::RoutesToSwaggerDocs.version
+        case ::R2OAS.version
         when :v3
           @cleaner = V3::Cleaner.new(options)
         else
-          raise NoImplementError, "Do not support version: #{::RoutesToSwaggerDocs.version}"
+          raise NoImplementError, "Do not support version: #{::R2OAS.version}"
         end
       end
     end

@@ -13,11 +13,11 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
+      generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       client_options = {}
-      client = RoutesToSwaggerDocs::Deploy::Client.new(client_options)
+      client = R2OAS::Deploy::Client.new(client_options)
       client.deploy
 
       logger.info '[Routes to Swagger docs] end'
@@ -32,7 +32,7 @@ namespace :routes do
       $stdout = StringIO.new
 
       paths_ls_options = {}
-      paths_ls = RoutesToSwaggerDocs::Tool::Paths::Ls.new(paths_ls_options)
+      paths_ls = R2OAS::Tool::Paths::Ls.new(paths_ls_options)
       paths_ls.print
 
       logger.info '[Routes to Swagger docs] end'
@@ -50,13 +50,13 @@ namespace :routes do
 
       logger.info '[Routes to Swagger docs] start'
       generator_options = { skip_generate_docs: true, skip_load_dot_paths: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
+      generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       $stdout = StringIO.new
 
       paths_log_options = {}
-      paths_log = RoutesToSwaggerDocs::Tool::Paths::Stats.new(paths_log_options)
+      paths_log = R2OAS::Tool::Paths::Stats.new(paths_log_options)
       paths_log.print
 
       logger.info '[Routes to Swagger docs] end'

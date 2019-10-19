@@ -2,7 +2,7 @@
 
 require_relative 'file/base_file_manager'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class FileManager < BaseFileManager

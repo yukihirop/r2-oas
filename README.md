@@ -1,4 +1,4 @@
-# RoutesToSwaggerDocs
+# R2OAS
 
 Generate api docment(OpenAPI) side only from `rails` routing.
 
@@ -66,7 +66,7 @@ In your rails project, Write `config/environments/development.rb` like that:
 
 ```ruby
 # default setting
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
   config.version                            = :v3
   #「docs」is not used. 「docs」is reserved word
   config.root_dir_path                      = "./swagger_docs"
@@ -95,13 +95,13 @@ RoutesToSwaggerDocs.configure do |config|
   end
 
   config.use_object_classes = {
-    info_object:                    RoutesToSwaggerDocs::Schema::V3::InfoObject,
-    paths_object:                   RoutesToSwaggerDocs::Schema::V3::PathsObject,
-    path_item_object:               RoutesToSwaggerDocs::Schema::V3::PathItemObject,
-    external_document_object:       RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject,
-    components_object:              RoutesToSwaggerDocs::Schema::V3::ComponentsObject,
-    components_schema_object:       RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject,
-    components_request_body_object: RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+    info_object:                    R2OAS::Schema::V3::InfoObject,
+    paths_object:                   R2OAS::Schema::V3::PathsObject,
+    path_item_object:               R2OAS::Schema::V3::PathItemObject,
+    external_document_object:       R2OAS::Schema::V3::ExternalDocumentObject,
+    components_object:              R2OAS::Schema::V3::ComponentsObject,
+    components_schema_object:       R2OAS::Schema::V3::Components::SchemaObject,
+    components_request_body_object: R2OAS::Schema::V3::Components::RequestBodyObject
   }
 
   config.http_statuses_when_http_method = {
@@ -267,7 +267,7 @@ we explain the options that can be set.
 
 |option|description|default|
 |------|-----------|-------|
-|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `RoutesToSwaggerDocs::Schema::V3::InfoObject`,<br>paths_object: `RoutesToSwaggerDocs::Schema::V3::PathsObject`,<br>path_item_object: `RoutesToSwaggerDocs::Schema::V3::PathItemObject`, external_document_object: `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`,<br> components_object: `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`,<br> components_schema_object: `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject` }|
+|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `R2OAS::Schema::V3::InfoObject`,<br>paths_object: `R2OAS::Schema::V3::PathsObject`,<br>path_item_object: `R2OAS::Schema::V3::PathItemObject`, external_document_object: `R2OAS::Schema::V3::ExternalDocumentObject`,<br> components_object: `R2OAS::Schema::V3::ComponentsObject`,<br> components_schema_object: `R2OAS::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`R2OAS::Schema::V3::Components::RequestBodyObject` }|
 
 #### tool
 
@@ -314,20 +314,20 @@ Supported hook(life cycle methods) is like this:
 
 Supported Hook class is like this:
 
-- `RoutesToSwaggerDocs::Schema::V3::InfoObject`
-- `RoutesToSwaggerDocs::Schema::V3::PathsObject`
-- `RoutesToSwaggerDocs::Schema::V3::PathItemObject`
-- `RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject`
-- `RoutesToSwaggerDocs::Schema::V3::ComponentsObject`
-- `RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject`
-- `RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject`
+- `R2OAS::Schema::V3::InfoObject`
+- `R2OAS::Schema::V3::PathsObject`
+- `R2OAS::Schema::V3::PathItemObject`
+- `R2OAS::Schema::V3::ExternalDocumentObject`
+- `R2OAS::Schema::V3::ComponentsObject`
+- `R2OAS::Schema::V3::Components::SchemaObject`
+- `R2OAS::Schema::V3::Components::RequestBodyObject`
 
 By inheriting these classes, you can hook them at the time of document generation by writing like this:
 
 #### case: InfoObject
 
 ```ruby
-class CustomInfoObject < RoutesToSwaggerDocs::Schema::V3::InfoObject
+class CustomInfoObject < R2OAS::Schema::V3::InfoObject
   before_create do |doc|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -349,7 +349,7 @@ end
 #### case: PathsObject
 
 ```ruby
-class CustomPathsObject < RoutesToSwaggerDocs::Schema::V3::PathsObject
+class CustomPathsObject < R2OAS::Schema::V3::PathsObject
   before_create do |doc|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -371,7 +371,7 @@ end
 #### case: PathItemObject
 
 ```ruby
-class CustomPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
+class CustomPathItemObject < R2OAS::Schema::V3::PathItemObject
   before_create do |doc, path|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -393,7 +393,7 @@ end
 #### case: ExternalDocumentObject
 
 ```ruby
-class CustomExternalDocumentObject < RoutesToSwaggerDocs::Schema::V3::ExternalDocumentObject
+class CustomExternalDocumentObject < R2OAS::Schema::V3::ExternalDocumentObject
   before_create do |doc|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -415,7 +415,7 @@ end
 #### case: ComponentsObject
 
 ```ruby
-class CustomComponentsObject < RoutesToSwaggerDocs::Schema::V3::ComponentsObject
+class CustomComponentsObject < R2OAS::Schema::V3::ComponentsObject
   before_create do |doc|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -437,7 +437,7 @@ end
 #### case: Components::SchemaObject
 
 ```ruby
-class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
   before_create do |doc, schema_name|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -459,7 +459,7 @@ end
 If you want to determine the component schema name at runtime, like this:
 
 ```ruby
-class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components::SchemaObject
+class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
   def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
     # [Important] Please return string.
     # default
@@ -468,10 +468,10 @@ class CustomComponentsSchemaObject < RoutesToSwaggerDocs::Schema::V3::Components
 end
 ```
 
-`path_component` is `RoutesToSwaggerDocs::Routing::PathComponent` instance.
+`path_component` is `R2OAS::Routing::PathComponent` instance.
 
 ```ruby
-module RoutesToSwaggerDocs
+module R2OAS
   module Routing
     class PathComponent < BaseComponent
       def initialize(path)
@@ -488,7 +488,7 @@ module RoutesToSwaggerDocs
 #### case: Components::RequestBodyObject
 
 ```ruby
-class CustomComponentsRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
   before_create do |doc, schema_name|
     # [Important] Please change doc destructively.
     # [Important] To be able to use methods in Rails !
@@ -510,7 +510,7 @@ end
 If you want to determine the component schema name at runtime, like this:
 
 ```ruby
-class CustomComponentsRequestBodyObject < RoutesToSwaggerDocs::Schema::V3::Components::RequestBodyObject
+class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
   def components_request_body_name(doc, path_component, tag_name, verb, schema_name)
     # [Important] Please return string.
     # default
@@ -529,7 +529,7 @@ And write this to the configuration.
 
 ```ruby
 # If only InfoObject and PathItemObject, use a custom class
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
   # 
   # omission ...
   # 

@@ -3,7 +3,7 @@
 require 'fileutils'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Deploy
     class Client < Schema::Base
       def deploy

@@ -4,10 +4,10 @@ require 'forwardable'
 require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
 require 'r2-oas/routing/components/path_component'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
-      class PathItemObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
+      class PathItemObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
         extend Forwardable
         # reference
         # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object

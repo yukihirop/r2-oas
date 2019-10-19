@@ -2,9 +2,9 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathsObject do
+RSpec.describe R2OAS::Schema::V3::PathsObject do
   let(:routes_data) { [] }
-  let(:object) { RoutesToSwaggerDocs.use_object_classes[:paths_object].new(routes_data) }
+  let(:object) { R2OAS.use_object_classes[:paths_object].new(routes_data) }
 
   before do
     create_dot_paths
@@ -19,7 +19,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathsObject do
   describe '#to_doc' do
     context 'when use before_create && after_create' do
       before do
-        class TestPathsObject < RoutesToSwaggerDocs::Schema::V3::PathsObject
+        class TestPathsObject < R2OAS::Schema::V3::PathsObject
           before_create do |doc, _path|
             doc.merge!(
               'before_key' => 'before_value'
@@ -33,7 +33,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathsObject do
           end
         end
 
-        RoutesToSwaggerDocs.configure do |config|
+        R2OAS.configure do |config|
           config.use_object_classes.merge!(
             paths_object: TestPathsObject
           )
@@ -206,7 +206,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathsObject do
       end
 
       before do
-        RoutesToSwaggerDocs.configure do |config|
+        R2OAS.configure do |config|
           config.http_methods_when_generate_request_body = %w[post]
         end
       end
@@ -261,7 +261,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathsObject do
       end
 
       before do
-        RoutesToSwaggerDocs.configure do |config|
+        R2OAS.configure do |config|
           config.http_statuses_when_http_method = {
             get: {
               default: %w[200],

@@ -6,7 +6,7 @@ Delete `components/schemas` and `components/requestBodies` files not in use.
 
 require 'r2-oas'
 
-RoutesToSwaggerDocs.configure do |config|
+R2OAS.configure do |config|
    # default setting        
    config.root_dir_path        = "./swagger_docs"
    config.schema_save_dir_name = "src"

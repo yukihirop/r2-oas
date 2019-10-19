@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-# workaround  uninitialized constant RoutesToSwaggerDocs::ActiveSupport
+# workaround  uninitialized constant R2OAS::ActiveSupport
 require 'action_controller/railtie'
 require 'r2-oas'
 require 'pry'
@@ -24,7 +24,7 @@ RSpec.configure do |config|
   end
 
   # mute log
-  RoutesToSwaggerDocs.logger.level = :null
+  R2OAS.logger.level = :null
 
   config.include PathHelper
   config.include CreateHelper

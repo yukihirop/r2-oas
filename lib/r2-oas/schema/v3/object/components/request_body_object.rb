@@ -3,11 +3,11 @@
 require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
 require 'r2-oas/schema/v3/manager/file/components_file_manager'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       module Components
-        class RequestBodyObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
+        class RequestBodyObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
           def initialize(route_data, path)
             super()
             @path_comp   = Routing::PathComponent.new(path)

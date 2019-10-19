@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/routing/components/request_component'
 
-RSpec.describe RoutesToSwaggerDocs::Routing::RequestComponent do
+RSpec.describe R2OAS::Routing::RequestComponent do
   let(:request) { '' }
   let(:is_route_engine) { false }
   let(:comp) { described_class.new(request, is_route_engine) }

@@ -4,10 +4,10 @@ require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
 require_relative 'components/schema_object'
 require_relative 'components/request_body_object'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
-      class ComponentsObject < RoutesToSwaggerDocs::Plugins::Schema::V3::HookableBaseObject
+      class ComponentsObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
         def initialize(routes_data)
           super()
           @routes_data = routes_data

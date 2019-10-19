@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     class PathItemFileManager
       extend Forwardable
@@ -8,11 +8,11 @@ module RoutesToSwaggerDocs
       def_delegators :@manager, :skip_save?, :descendants_paths, :descendants_ref_paths
 
       def initialize(path, path_type = :ref)
-        case ::RoutesToSwaggerDocs.version
+        case ::R2OAS.version
         when :v3
           @manager = V3::PathItemFileManager.new(path, path_type)
         else
-          raise "Do not support version: #{::RoutesToSwaggerDocs.version}"
+          raise "Do not support version: #{::R2OAS.version}"
         end
       end
 

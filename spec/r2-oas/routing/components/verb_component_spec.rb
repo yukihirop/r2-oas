@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/routing/components/verb_component'
 
-RSpec.describe RoutesToSwaggerDocs::Routing::VerbComponent do
+RSpec.describe R2OAS::Routing::VerbComponent do
   let(:verb) { '' }
   let(:comp) { described_class.new(verb) }
 

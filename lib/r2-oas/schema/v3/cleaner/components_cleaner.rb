@@ -3,7 +3,7 @@
 require_relative 'base_cleaner'
 require 'r2-oas/schema/v3/manager/file/path_item_file_manager'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class ComponentsCleaner < BaseCleaner

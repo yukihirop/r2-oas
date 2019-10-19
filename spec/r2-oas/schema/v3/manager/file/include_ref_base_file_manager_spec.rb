@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::IncludeRefBaseFileManager do
+RSpec.describe R2OAS::Schema::V3::IncludeRefBaseFileManager do
   let(:path) { '#/components/requestBodies/Api_V1_Task' }
   let(:path_type) { :ref }
   let(:manager) { described_class.new(path, path_type) }

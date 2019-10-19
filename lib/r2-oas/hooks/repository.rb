@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Hooks
     class Repository
       attr_accessor :global_hooks_data, :last_hook_id, :target

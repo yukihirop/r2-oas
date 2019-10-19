@@ -2,12 +2,12 @@
 
 require 'spec_helper'
 
-RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathItemObject do
+RSpec.describe R2OAS::Schema::V3::PathItemObject do
   let(:route_data) do
     { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'delete' }
   end
   let(:path) { '/api/v1/tasks/{id}' }
-  let(:object) { RoutesToSwaggerDocs.use_object_classes[:path_item_object].new(route_data, path) }
+  let(:object) { R2OAS.use_object_classes[:path_item_object].new(route_data, path) }
 
   after do
     reset_config
@@ -16,7 +16,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathItemObject do
   describe '#to_doc' do
     context 'when use before_create && after_create' do
       before do
-        class TestPathItemObject < RoutesToSwaggerDocs::Schema::V3::PathItemObject
+        class TestPathItemObject < R2OAS::Schema::V3::PathItemObject
           before_create do |doc, _path|
             doc.merge!(
               'before_key' => 'before_value'
@@ -30,7 +30,7 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::PathItemObject do
           end
         end
 
-        RoutesToSwaggerDocs.configure do |config|
+        R2OAS.configure do |config|
           config.use_object_classes.merge!(
             path_item_object: TestPathItemObject
           )

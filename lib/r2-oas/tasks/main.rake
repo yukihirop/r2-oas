@@ -12,7 +12,7 @@ namespace :routes do
     task docs: [:common] do
       logger.info '[Routes to Swagger docs] start'
       options = { unit_paths_file_path: unit_paths_file_path, skip_load_dot_paths: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new(options)
+      generator = R2OAS::Schema::Generator.new(options)
       generator.generate_docs
       logger.info '[Routes to Swagger docs] end'
     end
@@ -22,11 +22,11 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       analyzer_options = { type: :existing, existing_schema_file_path: existing_schema_file_path }
-      analyzer = RoutesToSwaggerDocs::Schema::Analyzer.new({}, {}, analyzer_options)
+      analyzer = R2OAS::Schema::Analyzer.new({}, {}, analyzer_options)
       analyzer.analyze_docs
 
       generator_options = { skip_generate_docs: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
+      generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       logger.info '[Routes to Swagger docs] end'
@@ -37,7 +37,7 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
+      generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       logger.info '[Routes to Swagger docs] end'
@@ -48,12 +48,12 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
+      generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       before_schema_data = generator.swagger_doc
       editor_options = { unit_paths_file_path: unit_paths_file_path }
-      editor = RoutesToSwaggerDocs::Schema::Editor.new(before_schema_data, editor_options)
+      editor = R2OAS::Schema::Editor.new(before_schema_data, editor_options)
       editor.start
 
       logger.info '[Routes to Swagger docs] end'
@@ -64,11 +64,11 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
+      generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       ui_options = { unit_paths_file_path: unit_paths_file_path }
-      ui = RoutesToSwaggerDocs::Schema::UI.new(ui_options)
+      ui = R2OAS::Schema::UI.new(ui_options)
       ui.start
 
       logger.info '[Routes to Swagger docs] end'
@@ -79,12 +79,12 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
+      generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
       before_schema_data = generator.swagger_doc
       monitor_options = { unit_paths_file_path: unit_paths_file_path }
-      monitor = RoutesToSwaggerDocs::Schema::Monitor.new(before_schema_data, monitor_options)
+      monitor = R2OAS::Schema::Monitor.new(before_schema_data, monitor_options)
       monitor.start
 
       logger.info '[Routes to Swagger docs] end'
@@ -95,10 +95,10 @@ namespace :routes do
       logger.info '[Routes to Swagger docs] start'
 
       generator_options = { skip_generate_docs: true, skip_load_dot_paths: true }
-      generator = RoutesToSwaggerDocs::Schema::Generator.new(generator_options)
+      generator = R2OAS::Schema::Generator.new(generator_options)
       generator.generate_docs
 
-      cleaner = RoutesToSwaggerDocs::Schema::Cleaner.new
+      cleaner = R2OAS::Schema::Cleaner.new
       cleaner.clean_docs
 
       logger.info '[Routes to Swagger docs] end'

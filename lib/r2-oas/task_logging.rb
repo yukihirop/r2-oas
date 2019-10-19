@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module TaskLogging
     def task(*args, &block)
       Rake::Task.define_task(*args) do |task|
@@ -21,19 +21,19 @@ module RoutesToSwaggerDocs
     private
 
     def logger
-      RoutesToSwaggerDocs.logger
+      R2OAS.logger
     end
 
     def set_info_level
-      RoutesToSwaggerDocs.logger.level = StdoutLogger::INFO
+      R2OAS.logger.level = StdoutLogger::INFO
     end
 
     def set_debug_level
-      RoutesToSwaggerDocs.logger.level = StdoutLogger::DEBUG
+      R2OAS.logger.level = StdoutLogger::DEBUG
     end
 
     def debug_log(task, message)
-      RoutesToSwaggerDocs.logger.debug message.to_s unless task.name == 'routes:swagger:debug'
+      R2OAS.logger.debug message.to_s unless task.name == 'routes:swagger:debug'
     end
   end
 end

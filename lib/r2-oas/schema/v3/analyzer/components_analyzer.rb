@@ -4,7 +4,7 @@ require_relative 'base_analyzer'
 require_relative 'components/object_analyzer'
 
 # Scope Rails
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class ComponentsAnalyzer < BaseAnalyzer

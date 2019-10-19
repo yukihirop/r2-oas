@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Hooks
     class GlobalHook
       attr_accessor :callback, :once, :uid, :target

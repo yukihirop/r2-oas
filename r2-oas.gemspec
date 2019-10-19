@@ -6,7 +6,7 @@ require 'r2-oas/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'r2-oas'
-  spec.version       = RoutesToSwaggerDocs::VERSION
+  spec.version       = R2OAS::VERSION
   spec.authors       = ['yukihirop']
   spec.email         = ['te108186@gmail.com']
 

@@ -4,7 +4,7 @@ require_relative 'squeezer/base_squeezer'
 require_relative 'squeezer/tag_squeezer'
 require_relative 'squeezer/path_squeezer'
 
-module RoutesToSwaggerDocs
+module R2OAS
   module Schema
     module V3
       class Squeezer < BaseSqueezer
