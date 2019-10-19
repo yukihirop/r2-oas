@@ -15,7 +15,7 @@ module RoutesToSwaggerDocs
       end
 
       def all_load_paths?
-        !many_paths_file_paths.present?
+        many_paths_file_paths.present?
       end
 
       def many_paths_file_paths

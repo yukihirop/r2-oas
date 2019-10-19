@@ -90,7 +90,7 @@ module RoutesToSwaggerDocs
       end
 
       def open_browser_and_set_schema
-        capabilities = { "chromeOptions" => {'w3c' => false } }
+        capabilities = { 'chromeOptions' => { 'w3c' => false } }
         @browser ||= Watir::Browser.new(:chrome, capabilities)
         @browser.goto(url)
         if wait_for_loaded

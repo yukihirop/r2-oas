@@ -1,3 +1,7 @@
 # frozen_string_literal: true
 
-class NoImplementError < StandardError; end
+module RoutesToSwaggerDocs
+  class NoImplementError < StandardError; end
+  class NoFileExistsError < StandardError; end
+  class NoSupportError < StandardError; end
+end

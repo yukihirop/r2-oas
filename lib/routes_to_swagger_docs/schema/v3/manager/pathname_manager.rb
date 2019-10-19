@@ -39,12 +39,12 @@ module RoutesToSwaggerDocs
 
         def relative_save_file_path
           result = normalized_about_path_type
-          if (@path_type.in? %i[ref relative]) && (support_components_objects.include?(object_type))
+          if (@path_type.in? %i[ref relative]) && support_components_objects.include?(object_type)
             dirname = File.dirname(result)
             basename = File.basename(result, '.yml')
             basename = basename.gsub(ns_div, '/').underscore
             "#{schema_save_dir_path}/#{dirname}/#{basename}.yml"
-          elsif @path_type.eql?(:relative) && !(support_components_objects.include?(object_type))
+          elsif @path_type.eql?(:relative) && !support_components_objects.include?(object_type)
             "#{schema_save_dir_path}/#{result.underscore}"
           elsif @path_type.eql?(:full)
             result
@@ -63,6 +63,8 @@ module RoutesToSwaggerDocs
             "#{@path}.#{@ext_name}"
           when :full
             @path
+          else
+            raise NoSupportError, "Do not support path_type: #{@path_type}"
           end
         end
       end

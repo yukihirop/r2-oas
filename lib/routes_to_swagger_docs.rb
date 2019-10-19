@@ -16,7 +16,9 @@ module RoutesToSwaggerDocs
     require 'routes_to_swagger_docs/task'
 
     autoload :Base, 'routes_to_swagger_docs/base'
-    autoload :NotImplementError, 'routes_to_swagger_docs/errors'
+    autoload :NoImplementError, 'routes_to_swagger_docs/errors'
+    autoload :NoFileExistsError, 'routes_to_swagger_docs/errors'
+    autoload :NoSupportError, 'routes_to_swagger_docs/errors'
     autoload :Sortable, 'routes_to_swagger_docs/shared/all'
 
     module Schema
@@ -26,7 +28,7 @@ module RoutesToSwaggerDocs
       autoload :Generator, 'routes_to_swagger_docs/schema/generator'
       autoload :Analyzer, 'routes_to_swagger_docs/schema/analyzer'
       autoload :Squeezer, 'routes_to_swagger_docs/schema/squeezer'
-      autoload :Cleaner, 'routes_to_swagger_docs/schema/v3/cleaner'
+      autoload :Cleaner, 'routes_to_swagger_docs/schema/cleaner'
     end
   else
     raise NoImplementError, "Do not support Rails Version: #{::Rails::VERSION::STRING}"

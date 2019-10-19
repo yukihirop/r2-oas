@@ -1,0 +1,9 @@
+---
+components:
+  schemas:
+    Api_V1_User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64

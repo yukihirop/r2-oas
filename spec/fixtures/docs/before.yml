@@ -1,0 +1,503 @@
+---
+openapi: 3.0.0
+externalDocs:
+  description: ""
+  url: ""
+info:
+  title: Swagger API Document Title
+  description: |-
+    This is a sample server Petstore server.  You can find out more about
+                Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net,
+                #swagger](http://swagger.io/irc/).  For this sample, you can use the api key
+                `special-key` to test the authorization filters.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: ""
+    url: ""
+  license:
+    name: ""
+    url: ""
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: localhost
+tags:
+  - name: task
+    description: task description
+    externalDocs:
+      description: description
+      url: url
+  - name: api/v1/task
+    description: api/v1/task description
+    externalDocs:
+      description: description
+      url: url
+paths:
+  "/api/v1/tasks":
+    get:
+      tags:
+        - api/v1/task
+      summary: get summary
+      description: get description
+      responses:
+        "200":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "422":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+      deprecated: false
+    post:
+      tags:
+        - api/v1/task
+      summary: post summary
+      description: post description
+      responses:
+        "201":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "422":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+      deprecated: false
+      requestBody:
+        "$ref": "#/components/requestBodies/Api_V1_Task"
+  "/api/v1/tasks/new":
+    get:
+      tags:
+        - api/v1/task
+      summary: get summary
+      description: get description
+      responses:
+        "200":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "422":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+      deprecated: false
+  "/api/v1/tasks/{id}":
+    get:
+      tags:
+        - api/v1/task
+      summary: get summary
+      description: get description
+      responses:
+        "200":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "404":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "422":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+      deprecated: false
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+    patch:
+      tags:
+        - api/v1/task
+      summary: patch summary
+      description: patch description
+      responses:
+        "204":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "404":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "422":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+      deprecated: false
+      requestBody:
+        "$ref": "#/components/requestBodies/Api_V1_Task"
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+    put:
+      tags:
+        - api/v1/task
+      summary: put summary
+      description: put description
+      responses:
+        "204":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "404":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "422":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+      deprecated: false
+      requestBody:
+        "$ref": "#/components/requestBodies/Api_V1_Task"
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+    delete:
+      tags:
+        - api/v1/task
+      summary: delete summary
+      description: delete description
+      responses:
+        "200":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "404":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "422":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+      deprecated: false
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+  "/api/v1/tasks/{id}/edit":
+    get:
+      tags:
+        - api/v1/task
+      summary: get summary
+      description: get description
+      responses:
+        "200":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "404":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+        "422":
+          description: api/v1/task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Api_V1_Task"
+      deprecated: false
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+  "/tasks":
+    get:
+      tags:
+        - task
+      summary: get summary
+      description: get description
+      responses:
+        "200":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "422":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+      deprecated: false
+    post:
+      tags:
+        - task
+      summary: post summary
+      description: post description
+      responses:
+        "201":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "422":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+      deprecated: false
+      requestBody:
+        "$ref": "#/components/requestBodies/Task"
+  "/tasks/new":
+    get:
+      tags:
+        - task
+      summary: get summary
+      description: get description
+      responses:
+        "200":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "422":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+      deprecated: false
+  "/tasks/{id}":
+    get:
+      tags:
+        - task
+      summary: get summary
+      description: get description
+      responses:
+        "200":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "404":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "422":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+      deprecated: false
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+    patch:
+      tags:
+        - task
+      summary: patch summary
+      description: patch description
+      responses:
+        "204":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "404":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "422":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+      deprecated: false
+      requestBody:
+        "$ref": "#/components/requestBodies/Task"
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+    put:
+      tags:
+        - task
+      summary: put summary
+      description: put description
+      responses:
+        "204":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "404":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "422":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+      deprecated: false
+      requestBody:
+        "$ref": "#/components/requestBodies/Task"
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+    delete:
+      tags:
+        - task
+      summary: delete summary
+      description: delete description
+      responses:
+        "200":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "404":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "422":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+      deprecated: false
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+  "/tasks/{id}/edit":
+    get:
+      tags:
+        - task
+      summary: get summary
+      description: get description
+      responses:
+        "200":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "404":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+        "422":
+          description: task description
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Task"
+      deprecated: false
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+  requestBodies:
+    Task:
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/Task"

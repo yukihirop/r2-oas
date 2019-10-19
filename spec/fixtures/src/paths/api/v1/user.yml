@@ -1,0 +1,11 @@
+---
+paths:
+  post:
+    summary: api/v1/user summary
+    description: api/v1/user description
+    responses:
+      "200":
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Api_V1_User"

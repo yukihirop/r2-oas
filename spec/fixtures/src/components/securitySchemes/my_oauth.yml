@@ -1,0 +1,9 @@
+---
+components:
+  securitySchemes:
+    MyOauth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: /oauth/authorize
+          tokenUrl: /oauth/token

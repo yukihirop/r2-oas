@@ -47,7 +47,7 @@ module RoutesToSwaggerDocs
               {}
             end
           else
-            raise ::NoImplementError
+            raise NoSupportError, "Do not support @ext_name: #{@ext_name}"
           end
         end
 

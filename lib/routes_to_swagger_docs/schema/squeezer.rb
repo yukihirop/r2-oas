@@ -15,7 +15,7 @@ module RoutesToSwaggerDocs
         when :v3
           @squeezer = V3::Squeezer.new(schema_data, options)
         else
-          raise "Do not support version: #{::RoutesToSwaggerDocs.version}"
+          raise NoImplementError, "Do not support version: #{::RoutesToSwaggerDocs.version}"
         end
       end
     end

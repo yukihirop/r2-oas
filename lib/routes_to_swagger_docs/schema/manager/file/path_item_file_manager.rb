@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module RoutesToSwaggerDocs
   module Schema
     class PathItemFileManager
       extend Forwardable
-        
+
       def_delegators :@manager, :skip_save?, :descendants_paths, :descendants_ref_paths
 
       def initialize(path, path_type = :ref)
@@ -15,7 +17,7 @@ module RoutesToSwaggerDocs
       end
 
       class << self
-        alias :build :new
+        alias build new
       end
     end
   end
