@@ -18,7 +18,7 @@ RSpec.describe R2OAS::Schema::V3::Squeezer do
   end
 
   after do
-    delete_swagger_docs
+    delete_oas_docs
   end
 
   describe '#squeeze_docs' do

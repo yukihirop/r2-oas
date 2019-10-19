@@ -13,7 +13,7 @@ RSpec.describe R2OAS::Schema::V3::BaseGenerator do
   end
 
   after do
-    delete_swagger_docs
+    delete_oas_docs
   end
 
   context 'private methods' do

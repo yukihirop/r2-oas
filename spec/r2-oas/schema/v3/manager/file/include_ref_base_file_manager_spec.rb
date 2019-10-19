@@ -67,7 +67,7 @@ RSpec.describe R2OAS::Schema::V3::IncludeRefBaseFileManager do
       end
 
       after do
-        delete_swagger_docs
+        delete_oas_docs
       end
 
       it do

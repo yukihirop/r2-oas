@@ -10,7 +10,7 @@ RSpec.describe R2OAS::Schema::V3::Analyzer do
   let(:analyzer) { described_class.new(before_schema_data, after_schema_data, analyzer_options) }
 
   after do
-    delete_swagger_docs
+    delete_oas_docs
   end
 
   shared_examples_for 'Generated file verification test' do |result|

@@ -11,7 +11,7 @@ RSpec.describe R2OAS::Schema::Generator do
   end
 
   after do
-    delete_swagger_docs
+    delete_oas_docs
   end
 
   describe '.initialize' do

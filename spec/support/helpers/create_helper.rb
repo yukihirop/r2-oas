@@ -14,7 +14,7 @@ module CreateHelper
     FileUtils.mkdir_p Rails.root.join(src_path, path)
   end
 
-  def delete_swagger_docs
+  def delete_oas_docs
     FileUtils.rm_rf Rails.root.join(root_dir_path)
   end
 

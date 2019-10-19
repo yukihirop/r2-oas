@@ -20,7 +20,7 @@ RSpec.describe R2OAS::Schema::V3::Cleaner do
     end
 
     after do
-      delete_swagger_docs
+      delete_oas_docs
     end
 
     it 'remove unreferenced components files(except securitySchemes files)' do

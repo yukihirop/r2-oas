@@ -7,7 +7,7 @@ RSpec.describe 'tool_rake' do
   let(:task) { Rake.application[task_name] }
 
   after do
-    delete_swagger_docs
+    delete_oas_docs
     delete_docs_for_deploy
   end
 

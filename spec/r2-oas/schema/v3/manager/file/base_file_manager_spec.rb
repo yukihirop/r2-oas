@@ -8,7 +8,7 @@ RSpec.describe R2OAS::Schema::V3::BaseFileManager do
   let(:manager) { described_class.new(path, path_type) }
 
   after do
-    delete_swagger_docs
+    delete_oas_docs
   end
 
   describe '#delete' do

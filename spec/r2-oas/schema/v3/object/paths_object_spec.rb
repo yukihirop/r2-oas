@@ -13,7 +13,7 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
   after do
     reset_config
     # TODO: remove this method
-    delete_swagger_docs
+    delete_oas_docs
   end
 
   describe '#to_doc' do

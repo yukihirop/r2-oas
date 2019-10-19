@@ -10,7 +10,7 @@ RSpec.describe R2OAS::Configuration::PathsConfig do
   end
 
   after do
-    delete_swagger_docs
+    delete_oas_docs
   end
 
   describe '#abs_paths_path' do

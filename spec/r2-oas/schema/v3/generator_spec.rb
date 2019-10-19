@@ -12,7 +12,7 @@ RSpec.describe R2OAS::Schema::V3::Generator do
   end
 
   after do
-    delete_swagger_docs
+    delete_oas_docs
   end
 
   shared_examples_for 'Generated file verification test' do |result|

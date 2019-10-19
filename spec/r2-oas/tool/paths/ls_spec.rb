@@ -12,7 +12,7 @@ RSpec.describe R2OAS::Tool::Paths::Ls do
   end
 
   after do
-    delete_swagger_docs
+    delete_oas_docs
   end
 
   describe '#print' do

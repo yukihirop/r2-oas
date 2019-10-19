@@ -7,7 +7,7 @@ RSpec.describe 'main_rake' do
   let(:task) { Rake.application[task_name] }
 
   after do
-    delete_swagger_docs
+    delete_oas_docs
   end
 
   shared_examples_for 'Generated file verification test' do |result|
