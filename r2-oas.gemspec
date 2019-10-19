@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
     bundle exec rake routes:oas:deploy  # deploy
     ```
   EOF
-  
+
   spec.homepage      = 'https://github.com/yukihirop/r2-oas'
   spec.license       = 'MIT'
 
