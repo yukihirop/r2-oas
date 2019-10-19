@@ -37,73 +37,10 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseGenerator do
       context 'when exists paths files' do
         shared_context 'necessary file prepare' do
           before do
-            create_components_schemas_file('api/v1/task.yml', {
-              "components" => {
-                "schemas" => {
-                  "Api_V1_Task" => {
-                    "type" => "object",
-                    "properties"=> {
-                      "id" => {
-                        "type" => "integer",
-                        "format" => "int64"
-                      }
-                    }
-                  }
-                }
-              }
-            }.to_yaml)
-            create_components_schemas_file('api/v1/task/rb.yml', {
-              "components" => {
-                "schemas" => {
-                  "Api_V1_Task_RB" => {
-                    "type" => "object",
-                    "properties"=> {
-                      "id" => {
-                        "type" => "integer",
-                        "format" => "int64"
-                      }
-                    }
-                  }
-                }
-              }
-            }.to_yaml)
-            create_components_request_bodies_file('api/v1/task/rb.yml', {
-              "components" => {
-                "requestBodies" => {
-                  "Api_V1_Task_RB" => {
-                    "content" => {
-                      "application/json" => {
-                        "schema" => {
-                          "$ref" => "#/components/schemas/Api_V1_Task_RB"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }.to_yaml)
-            create_paths_file('api/v1/task.yml',{
-              "paths" => {
-                "post" => {
-                  "summary" => "api/v1/task summary",
-                  "description" => "api/v1/task description",
-                  "responses" => {
-                    "201" => {
-                      "content" => {
-                        "application/json" => {
-                          "schema" => {
-                            "$ref" => "#/components/schemas/Api_V1_Task"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "requestBody" => {
-                    "$ref" => "#/components/requestBodies/Api_V1_Task_RB"
-                  }
-                }
-              }
-            }.to_yaml)
+            create_components_schemas_file('api/v1/task.yml', yaml_fixture('src/components/schemas/api/v1/task.yml'))
+            create_components_schemas_file('api/v1/task/rb.yml', yaml_fixture('src/components/schemas/api/v1/task/rb.yml'))
+            create_components_request_bodies_file('api/v1/task/rb.yml', yaml_fixture('src/components/requestBodies/api/v1/task/rb.yml'))
+            create_paths_file('api/v1/task.yml', yaml_fixture('src/paths/api/v1/task.yml'))
           end
         end
 
@@ -127,40 +64,8 @@ RSpec.describe RoutesToSwaggerDocs::Schema::V3::BaseGenerator do
 
           include_context 'necessary file prepare'
           before do
-            create_components_schemas_file('/api/v1/user.yml', {
-              "components" => {
-                "schemas" => {
-                  "Api_V1_User" => {
-                    "type" => "object",
-                    "properties"=> {
-                      "id" => {
-                        "type" => "integer",
-                        "format" => "int64"
-                      }
-                    }
-                  }
-                }
-              }
-            }.to_yaml)
-            create_paths_file('api/v1/user.yml',{
-              "paths" => {
-                "get" => {
-                  "summary" => "api/v1/user summary",
-                  "description" => "api/v1/user description",
-                  "responses" => {
-                    "200" => {
-                      "content" => {
-                        "application/json" => {
-                          "schema" => {
-                            "$ref" => "#/components/schemas/Api_V1_User"
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }.to_yaml)
+            create_components_schemas_file('/api/v1/user.yml', yaml_fixture('src/components/schemas/api/v1/user.yml'))
+            create_paths_file('api/v1/user.yml', yaml_fixture('src/paths/api/v1/user.yml'))
           end
 
           it do

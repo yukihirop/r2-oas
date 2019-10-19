@@ -1,0 +1,7 @@
+---
+components:
+  requestBodies:
+    Api_V1_Task_RB:
+      content:
+        application/json:
+          "$ref": "#/components/schemas/Api_V1_Task_RB"

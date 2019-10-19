@@ -26,6 +26,10 @@ module FixtureHelper
     end
   end
 
+  def yaml_fixture(relative_path)
+    YAML.load_file("#{fixture_dirname}/#{relative_path}").to_yaml
+  end
+
   private
 
   def fixture_dirname

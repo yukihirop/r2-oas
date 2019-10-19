@@ -1,0 +1,9 @@
+---
+components:
+  schemas:
+    Api_V1_Task:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64

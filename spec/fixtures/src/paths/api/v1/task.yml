@@ -1,0 +1,13 @@
+---
+paths:
+  post:
+    summary: api/v1/task summary
+    description: api/v1/task description
+    responses:
+      "201":
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Api_V1_Task"
+    requestBody:
+      "$ref": "#/components/requestBodies/Api_V1_Task_RB"
