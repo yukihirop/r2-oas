@@ -1,6 +1,8 @@
 # R2-OAS
 
 [![Build Status](https://travis-ci.org/yukihirop/r2-oas.svg?branch=master)](https://travis-ci.org/yukihirop/r2-oas)
+[![Coverage Status](https://coveralls.io/repos/github/yukihirop/r2-oas/badge.svg)](https://coveralls.io/github/yukihirop/r2-oas)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f8c3846f350bb412fd63/maintainability)](https://codeclimate.com/github/yukihirop/r2-oas/maintainability)
 
 Generate api docment(OpenAPI) side only from `rails` routing.
 
@@ -217,12 +219,12 @@ $ bundle exec rake routes:oas:paths_stats
 - `tag name` represents `controller name` and determine `paths file name`.
   - For example, If `controller name` is `Api::V1::UsersController`, `tag_name` is `api/v1/user`. and `paths file name` is `api/v1/user.yml`
 
-- `_` of `components/{schemas,requestBodies} name` convert `/` when save file.
+- `_` of `components/{schemas,requestBodies, ...} name` convert `/` when save file.
   - For example, If `components/schemas name` is `Api_V1_User`, `components/schemas file name` is `api/v1/user.yml`.
   - `_` is supposed to be used to express `namespace`.
   - format is `Namespace1_Namespace2_Model`.
 
-- `.` of `components/{schemas,requestBodies} name` convert `/` when save file.
+- `.` of `components/{schemas,requestBodies, ...} name` convert `/` when save file.
   - For example, If `components/schemas name` is `api.v1.User`, `components/schemas file name` is `api/v1/user.yml`.
   - `.` is supposed to be used to express `namespace`.
   - format is `namespace1.namespace2.Model`.

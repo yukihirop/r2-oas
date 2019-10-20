@@ -10,6 +10,9 @@ require 'pry'
 require 'dummy_app/application'
 require 'rake_helper'
 
+require 'coveralls'
+Coveralls.wear!
+
 Dir['./spec/support/**/*.rb'].each { |f| require f }
 
 RSpec.configure do |config|
