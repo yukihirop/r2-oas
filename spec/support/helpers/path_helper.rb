@@ -13,6 +13,10 @@ module PathHelper
     R2OAS.doc_save_file_name
   end
 
+  def deploy_dir_path
+    R2OAS.deploy_dir_path
+  end
+
   def dot_paths_path
     "#{root_dir_path}/.paths"
   end

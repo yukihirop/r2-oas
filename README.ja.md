@@ -64,7 +64,6 @@ bundle exec routes:oas:editor
 # default setting
 R2OAS.configure do |config|
   config.version                            = :v3
-  #「docs」という名前は使えません。予約語です。
   config.root_dir_path                      = "./oas_docs"
   config.schema_save_dir_name               = "src"
   config.doc_save_file_name                 = "oas_doc.yml"
@@ -72,6 +71,9 @@ R2OAS.configure do |config|
   config.use_tag_namespace                  = true
   config.use_schema_namespace               = false
   config.interval_to_save_edited_tmp_schema = 15
+  # :dot or :underbar
+  config.namespace_type = :underbar
+  config.deploy_dir_path = "./deploy_docs"
 
   config.server.data = [
     {
@@ -132,9 +134,6 @@ R2OAS.configure do |config|
     paths_stats.heading_color                  = :yellow
     paths_stats.highlight_color                = :magenta
   end
-
-  # :dot or :underbar
-  config.namespace_type = :underbar
 end
 ```
 
@@ -249,6 +248,7 @@ $ bundle exec rake routes:oas:paths_stats
 |http_statuses_when_http_method|HTTPメソッド毎にどのHTTPステータスのレスポンスを用意するかを決める設定|omission...|
 |http_methods_when_generate_request_body|リクエストボディーを生成する時のHTTPメソッド|`[post put patch]`|
 |namespace_type|components/{schemas,requestBodies,...}名で使用する擬似ネームスペースの種類(:dot or :underbar)| `:underbar` |
+|deploy_dir_path|deployのディレクトリパス|`"./deploy_docs"`|
 
 #### server
 

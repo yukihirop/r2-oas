@@ -8,7 +8,7 @@ RSpec.describe 'tool_rake' do
 
   after do
     delete_oas_docs
-    delete_docs_for_deploy
+    delete_deploy_docs
   end
 
   describe 'routes:oas:deploy' do
@@ -21,8 +21,8 @@ RSpec.describe 'tool_rake' do
     end
 
     it do
-      expect(FileTest.exists?("#{Rails.root}/docs")).to eq true
-      expect(FileTest.exists?("#{Rails.root}/docs/#{doc_save_file_name}")).to eq true
+      expect(FileTest.exists?("#{deploy_dir_path}")).to eq true
+      expect(FileTest.exists?("#{deploy_dir_path}/#{doc_save_file_name}")).to eq true
     end
   end
 

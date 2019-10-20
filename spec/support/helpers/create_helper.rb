@@ -18,8 +18,8 @@ module CreateHelper
     FileUtils.rm_rf Rails.root.join(root_dir_path)
   end
 
-  def delete_docs_for_deploy
-    FileUtils.rm_rf Rails.root.join('docs')
+  def delete_deploy_docs
+    FileUtils.rm_rf Rails.root.join(deploy_dir_path)
   end
 
   def create_components_securitySchemes_file
