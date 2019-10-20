@@ -6,7 +6,7 @@
 
 Generate api docment(OpenAPI) side only from `rails` routing.
 
-Provides rake commands to help `docs`, `edit`, `view` and so on.
+Provides a rake command to help `generate` , `view` , and `edit` OpenAPI documents.
 
 ```bash
 bundle exec rake routes:oas:docs    # generate
