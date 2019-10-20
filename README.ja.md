@@ -72,8 +72,8 @@ R2OAS.configure do |config|
   config.use_schema_namespace               = false
   config.interval_to_save_edited_tmp_schema = 15
   # :dot or :underbar
-  config.namespace_type = :underbar
-  config.deploy_dir_path = "./deploy_docs"
+  config.namespace_type                     = :underbar
+  config.deploy_dir_path                    = "./deploy_docs"
 
   config.server.data = [
     {
