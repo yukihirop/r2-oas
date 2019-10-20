@@ -15,7 +15,7 @@ module R2OAS
       private
 
       def copy_swagger_ui_dist
-        docs_path = File.expand_path(Rails.root.join('docs'), __FILE__)
+        docs_path = File.expand_path(Rails.root.join(deploy_dir_path), __FILE__)
         return if FileTest.exists?(docs_path)
 
         FileUtils.mkdir_p(docs_path) unless FileTest.exists?(docs_path)
@@ -25,9 +25,7 @@ module R2OAS
       end
 
       def copy_swagger_ui_index
-        index_path = File.expand_path("#{Rails.root.join('docs')}/index.html", __FILE__)
-        raise 'Exist docs already' if FileTest.exists?(index_path)
-
+        index_path = File.expand_path(Rails.root.join(deploy_dir_path, "index.html"), __FILE__)
         @schema_file_path = doc_save_file_name
         template_path = File.expand_path('swagger-ui/index.html.erb', __dir__)
         template = File.read(template_path)
@@ -36,7 +34,7 @@ module R2OAS
       end
 
       def copy_oas_doc_file
-        swagger_file_path = File.expand_path(Rails.root.join('docs', doc_save_file_name), __FILE__)
+        swagger_file_path = File.expand_path(Rails.root.join(deploy_dir_path, doc_save_file_name), __FILE__)
         oas_doc_file_path = File.expand_path("#{root_dir_path}/#{doc_save_file_name}")
         FileUtils.cp_r(oas_doc_file_path, swagger_file_path)
       end

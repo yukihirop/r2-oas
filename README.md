@@ -72,7 +72,6 @@ In your rails project, Write `config/environments/development.rb` like that:
 # default setting
 R2OAS.configure do |config|
   config.version                            = :v3
-  #「docs」is not used. 「docs」is reserved word
   config.root_dir_path                      = "./oas_docs"
   config.schema_save_dir_name               = "src"
   config.doc_save_file_name                 = "oas_doc.yml"
@@ -80,6 +79,9 @@ R2OAS.configure do |config|
   config.use_tag_namespace                  = true
   config.use_schema_namespace               = false
   config.interval_to_save_edited_tmp_schema = 15
+  # :dot or :underbar
+  config.namespace_type = :underbar
+  config.deploy_dir_path = "./deploy_docs"
 
   config.server.data = [
     {
@@ -140,9 +142,6 @@ R2OAS.configure do |config|
     paths_stats.heading_color                  = :yellow
     paths_stats.highlight_color                = :magenta
   end
-
-  # :dot or :underbar
-  config.namespace_type = :underbar
 end
 ```
 
@@ -248,6 +247,7 @@ we explain the options that can be set.
 |http_statuses_when_http_method|Determine the response to support for each HTTP method|omission...|
 |http_methods_when_generate_request_body|HTTP methods when generate requestBody|`[post put patch]`|
 |namespace_type|namespace for components(schemas/requestBodies) name| `underbar` |
+|deploy_dir_path|deploy directory.|`"./deploy_docs"`|
 
 #### server
 

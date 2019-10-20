@@ -44,6 +44,7 @@ module R2OAS
     DEFAULT_TOOL = Tool.new
     # :dot or :underbar
     DEFAULT_NAMESPACE_TYPE = :underbar
+    DEFAULT_DEPLOY_DIR_PATH = "./deploy_docs"
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
       version
@@ -60,6 +61,7 @@ module R2OAS
       http_methods_when_generate_request_body
       tool
       namespace_type
+      deploy_dir_path
     ].freeze
 
     UNPUBLIC_VALID_OPTIONS_KEYS = %i[
@@ -94,6 +96,7 @@ module R2OAS
       target.tool                                    = DEFAULT_TOOL
       target.http_methods_when_generate_request_body = DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY
       target.namespace_type                          = DEFAULT_NAMESPACE_TYPE
+      target.deploy_dir_path                         = DEFAULT_DEPLOY_DIR_PATH
     end
   end
 end
