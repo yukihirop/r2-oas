@@ -52,90 +52,11 @@ bundle exec routes:oas:docs
 bundle exec routes:oas:editor
 ```
 
+## 📚 Documents
+
+公式ドキュメントはこちら => https://yukihirop.github.io/r2-oas
+
 ## 📖 Usage
-
-全ての設定は `オプショナル` です。設定してもしなくても構いません。
-
-設定はrailsプロジェクトの `config/environments/development.rb` に書きます。
-
-デフォルトでは以下に設定されています。
-
-```ruby
-# default setting
-R2OAS.configure do |config|
-  config.version                            = :v3
-  config.root_dir_path                      = "./oas_docs"
-  config.schema_save_dir_name               = "src"
-  config.doc_save_file_name                 = "oas_doc.yml"
-  config.force_update_schema                = false
-  config.use_tag_namespace                  = true
-  config.use_schema_namespace               = false
-  config.interval_to_save_edited_tmp_schema = 15
-  # :dot or :underbar
-  config.namespace_type                     = :underbar
-  config.deploy_dir_path                    = "./deploy_docs"
-
-  config.server.data = [
-    {
-      url: "http://localhost:3000",
-      description: "localhost"
-    }
-  ]
-
-  config.swagger.configure do |swagger|
-    swagger.ui.image            = "swaggerapi/swagger-ui"
-    swagger.ui.port             = "8080"
-    swagger.ui.exposed_port     = "8080/tcp"
-    swagger.ui.volume           = "/app/swagger.json"
-    swagger.editor.image        = "swaggerapi/swagger-editor"
-    swagger.editor.port         = "81"
-    swagger.editor.exposed_port = "8080/tcp" 
-  end
-
-  config.use_object_classes = {
-    info_object:                    R2OAS::Schema::V3::InfoObject,
-    paths_object:                   R2OAS::Schema::V3::PathsObject,
-    path_item_object:               R2OAS::Schema::V3::PathItemObject,
-    external_document_object:       R2OAS::Schema::V3::ExternalDocumentObject,
-    components_object:              R2OAS::Schema::V3::ComponentsObject,
-    components_schema_object:       R2OAS::Schema::V3::Components::SchemaObject,
-    components_request_body_object: R2OAS::Schema::V3::Components::RequestBodyObject
-  }
-
-  config.http_statuses_when_http_method = {
-    get: {
-      default: %w(200 422),
-      path_parameter: %w(200 404 422)
-    },
-    post: {
-      default: %w(201 422),
-      path_parameter: %w(201 404 422)
-    },
-    patch: {
-      default: %w(204 422),
-      path_parameter: %w(204 404 422)
-    },
-    put: {
-      default: %w(204 422),
-      path_parameter: %w(204 404 422)
-    },
-    delete: {
-      default: %w(200 422),
-      path_parameter: %w(200 404 422)
-    }
-  }
-
-  config.http_methods_when_generate_request_body = %w[post patch put]
-
-  config.tool.paths_stats.configure do |paths_stats|
-    paths_stats.month_to_turn_to_warning_color = 3
-    paths_stats.warning_color                  = :red
-    paths_stats.table_title_color              = :yellow
-    paths_stats.heading_color                  = :yellow
-    paths_stats.highlight_color                = :magenta
-  end
-end
-```
 
 railsプロジェクトのルートディレクトリで以下のコマンドが実行可能です。
 
@@ -170,21 +91,6 @@ $ bundle exec rake routes:oas:paths_ls
 $ bundle exec rake routes:oas:paths_stats
 ```
 
-## 📚 More Usage
-
-- [How to generate docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
-- [How to start swagger editor](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
-- [How to start swagger ui](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
-- [How to monitor swagger document](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_MONITOR_SWAGGER_DOC.md)
-- [How to analyze docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
-- [How to clean docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_CLEAN_DOCS.md)
-- [How to deploy swagger doc](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
-- [How to use tag namespace](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
-- [How to use schema namespace](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
-- [How to use hook when generate doc](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
-- [How to display paths list](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
-- [How to display paths stats](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DISPLAY_PATHS_STATS.md)
-
 
 ## ⚾️ sample
 
@@ -210,11 +116,11 @@ $ bundle exec rake routes:oas:paths_stats
 
 ## ❤️ Support OpenAPI Schema
 
-|version|document|
-|-------|--------|
-|v3|[versions/v3.md](https://github.com/yukihirop/r2-oas/blob/master/docs/versions/v3.md)|
+OpenAPIの3.0.0をサポートしてます。
 
-## ❗️ Convention over Configuration (CoC)
+公式ドキュメントはこちら => https://yukihirop.github.io/r2-oas/#/schema/3.0.0
+
+## ❗️Convention over Configuration (CoC)
 
 ツールを便利にするために、設定よりも制約があります。
 
@@ -231,323 +137,15 @@ $ bundle exec rake routes:oas:paths_stats
 
 ## ⚙ Configure
 
-設定可能な設定に関して説明します。
+全ての設定は `オプショナル` です。設定してもしなくても構いません。
 
-#### basic
-
-|option|description|default|
-|------|-----------|---|
-|version|OpenAPIのバージョン| `:v3` |
-|root_dir_path|ドキュメントの保存パス| `"./oas_docs"` |
-|schema_save_dir_name|分解したスキーマの保存ディレクトリ名|`"src"`|
-|doc_save_file_name|生成したドキュメントのファイル名|`"oas_doc.yml"`|
-|force_update_schema|既生のドキュメントをルーティング情報から生成されたデータで更新するか否か|`false`|
-|use_tag_namespace|タグ名にネームスペースを使うか否か|`true`|
-|use_schema_namespace|components/{schemas,requestBodies}名に擬似ネームスペースを利用するか否か|`true`|
-|interval_to_save_edited_tmp_schema|SwaggerEditor上で編集されたドキュメントをメモリに保存する間隔(sec)|`15`|
-|http_statuses_when_http_method|HTTPメソッド毎にどのHTTPステータスのレスポンスを用意するかを決める設定|omission...|
-|http_methods_when_generate_request_body|リクエストボディーを生成する時のHTTPメソッド|`[post put patch]`|
-|namespace_type|components/{schemas,requestBodies,...}名で使用する擬似ネームスペースの種類(:dot or :underbar)| `:underbar` |
-|deploy_dir_path|deployのディレクトリパス|`"./deploy_docs"`|
-
-#### server
-
-|option|children option|description|default|
-|------|---------------|-----------|-------|
-|server|data|サーバー情報(url, description) |[{ url: `http://localhost:3000`, description: `localhost` }] |
-
-#### swagger
-
-|option|children option|grandchild option|description|default|
-|------|---------------|-----------------|-----------|-------|
-|swagger|ui|image|SwaggerUIのDockerイメージ|`"swaggerapi/swagger-ui"`|
-|swagger|ui|port|SwaggerUIのポート|`"8080"`|
-|swagger|ui|exposed_port|SwaggerUIの公開ポート|`"8080/tcp"`|
-|swagger|ui|volume|SwaggerUIのVolume|`"/app/swagger.json"`|
-|swagger|editor|image|SwaggerEditorのDockerイメージ|`"swaggerapi/swagger-editor"`|
-|swagger|editor|port|SwaggerEditorのポート|`"8080"`|
-|swagger|editor|exposed_port|SwaggerEditorの公開ポート|`"8080/tcp"`|
-
-#### hook
-
-|option|description|default|
-|------|-----------|-------|
-|use_object_classes|ドキュメント生成時に使用するオブジェクトクラスの設定|{ info_object: `R2OAS::Schema::V3::InfoObject`,<br>paths_object: `R2OAS::Schema::V3::PathsObject`,<br>path_item_object: `R2OAS::Schema::V3::PathItemObject`, external_document_object: `R2OAS::Schema::V3::ExternalDocumentObject`,<br> components_object: `R2OAS::Schema::V3::ComponentsObject`,<br> components_schema_object: `R2OAS::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`R2OAS::Schema::V3::Components::RequestBodyObject` }|
-
-#### tool
-
-|option|children option|grandchild option|description|default|
-|------|---------------|-----------------|-----------|-------|
-|tool|paths_stats|month_to_turn_to_warning_color|警告色を表示するまでの期間(ヶ月)|`3`|
-|tool|paths_stats|warning_color|警告色|`:red`|
-|tool|paths_stats|table_title_color|テーブルのタイトルの色|`:yellow`|
-|tool|paths_stats|heading_color|ヘッダーの色|`:yellow`|
-|tool|paths_stats|highlight_color|強調色|`:magenta`|
-
-Please refer to [here](https://github.com/janlelis/paint) for the color.
-
-## Environment variables
-
-環境変数は以下を用意しております。
-
-|variable|description|default|
-|--------|-----------|-------|
-|PATHS_FILE|pathsファイルのパス|`""`|
-|OAS_FILE|analyzeするドキュメントへのパス|`""`|
-
-
-## .paths
-
-`.paths` ファイルを書くことで必要な分だけドキュメントを閲覧・編集・配布する事が可能になります。
-
-`#` から始まる行はコメントとして扱われ無視されます。重複も無視されます。
-
-`paths` ディレクトリ以下のパスを書きます。
-
-`oas_docs/.paths`
-```
-#account_user_role.yml    # ignore
-account.yml
-account.yml               # ignore
-account.yml               # ignore
-```
+公式ドキュメントはこちら => https://yukihirop.github.io/r2-oas/#/setting/configure
 
 ## 💊 Life Cycle Methods (Hook Metohds)
 
 ドキュメント生成時に、フックを可能にするメソッドを用意しております。
 
-- `before_create`
-- `after_create`
-
-フック可能なオブジェクトは以下の通りです。
-
-- `R2OAS::Schema::V3::InfoObject`
-- `R2OAS::Schema::V3::PathsObject`
-- `R2OAS::Schema::V3::PathItemObject`
-- `R2OAS::Schema::V3::ExternalDocumentObject`
-- `R2OAS::Schema::V3::ComponentsObject`
-- `R2OAS::Schema::V3::Components::SchemaObject`
-- `R2OAS::Schema::V3::Components::RequestBodyObject`
-
-これらのクラスを継承して、フックの設定を書きます。以下に例を用意しました。
-
-#### case: InfoObject
-
-```ruby
-class CustomInfoObject < R2OAS::Schema::V3::InfoObject
-  before_create do |doc|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc, path|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: PathsObject
-
-```ruby
-class CustomPathsObject < R2OAS::Schema::V3::PathsObject
-  before_create do |doc|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: PathItemObject
-
-```ruby
-class CustomPathItemObject < R2OAS::Schema::V3::PathItemObject
-  before_create do |doc, path|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc, schema_name|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: ExternalDocumentObject
-
-```ruby
-class CustomExternalDocumentObject < R2OAS::Schema::V3::ExternalDocumentObject
-  before_create do |doc|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: ComponentsObject
-
-```ruby
-class CustomComponentsObject < R2OAS::Schema::V3::ComponentsObject
-  before_create do |doc|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: Components::SchemaObject
-
-```ruby
-class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
-  before_create do |doc, schema_name|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc, schema_name|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-ドキュメント生成時にcomponents/schemas名を上書きしたい場合は以下の様にします。
-
-```ruby
-class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
-  def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
-    # [重要] 返値は文字列であるべきです。
-    # 初期値はschema_name
-    schema_name
-  end
-end
-```
-
-`path_component` は `R2OAS::Routing::PathComponent` のインスタンスです。
-
-```ruby
-module R2OAS
-  module Routing
-    class PathComponent < BaseComponent
-      def initialize(path)
-      def to_s
-      def symbol_to_brace
-      def path_parameters_data
-      def path_excluded_path_parameters
-      def exist_path_parameters?
-      def path_parameters
-      private
-      def without_format
-```
-
-#### case: Components::RequestBodyObject
-
-```ruby
-class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
-  before_create do |doc, schema_name|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc, schema_name|
-    # [重要] docへの破壊的な変更をしてください。
-    # [重要] railsが提供するメソッドを使用する事ができます。
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-ドキュメント生成時にcomponents/requestBodies名を上書きしたい場合は以下の様にします。
-
-```ruby
-class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
-  def components_request_body_name(doc, path_component, tag_name, verb, schema_name)
-    # [重要] 返値は文字列であるべきです。
-    # 初期値はschema_name
-    schema_name
-  end
-
-  def components_schema_name(doc, path_component, tag_name, verb, schema_name)
-    # [重要] 返値は文字列であるべきです。
-    # 初期値はschema_name
-    schema_name
-  end
-end
-```
-
-そして最後に設定を書きます。
-
-```ruby
-# もし、InfoObjectとPathItemObjectをカスタムのものにしたい場合は以下の様にします。
-R2OAS.configure do |config|
-  # 
-  # omission ...
-  # 
-  config.use_object_classes.merge!({
-    info_object:      CustomInfoObject,
-    path_item_object: CustomPathItemObject
-  })
-end
-```
-
-これだけです。
+公式ドキュメントはこちら => https://yukihirop.github.io/r2-oas/#/usage/use_hook_methods
 
 ## 🔩 CORS
 
