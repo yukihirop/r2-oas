@@ -97,7 +97,7 @@ GEM
     minitest (5.12.0)
     multi_json (1.13.1)
     nio4r (2.5.2)
-    nokogiri (1.10.5)
+    nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     paint (2.1.1)
     parallel (1.17.0)
