@@ -1,6 +1,8 @@
-## BasicUsage
+## Use hook to generate docs
 
-`custom_path_item_object.rb`
+## Prepare
+
+prepare a file like `custom_path_item_object.rb`
 
 ```ruby
 class CustomPathItemObject < R2OAS::Schema::V3::PathItemObject
@@ -56,24 +58,13 @@ end
 require_relative 'custom_path_item_object'
 
 R2OAS.configure do |config|
-  config.root_dir_path        = "./oas_docs"
-  config.schema_save_dir_name = "src"
-  config.doc_save_file_name   = "oas_doc.yml"
-  config.force_update_schema  = false
-  config.use_tag_namespace    = true
-  config.use_schema_namespace = false
-  config.server.data = [
-    {
-      url: "http://localhost:3000",
-      description: "localhost"
-    }
-  ]
-  config.interval_to_save_edited_tmp_schema = 15
   config.use_object_classes.merge!({
     path_item_object:  CustomPathItemObject
   })
 end
 ```
+
+## Command
 
 ```bash
 $ bundle exec rake routes:oas:docs

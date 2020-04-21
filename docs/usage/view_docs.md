@@ -1,16 +1,16 @@
-## Basic Usage
+# View docs
+
+## Prepare
+
+Add this line to your application's Gemfile:
 
 ```ruby
-
-require 'r2-oas'
-
-R2OAS.configure do |config|
-   # default setting        
-   config.root_dir_path        = "./oas_docs"
-   config.schema_save_dir_name = "src"
-   config.doc_save_file_name   = "oas_doc.yml"
+group :development do
+  gem 'r2-oas'
 end
 ```
+
+## Command
 
 ```bash
 $ bundle exec rake routes:oas:ui
@@ -185,10 +185,10 @@ When you press `Ctrl + C` , the ui closes and the following message appears.
 I, [2019-04-29T12:54:14.333082 #10516]  INFO -- : [R2-OAS] end
 ```
 
-## Advanced Usage
+## Use PATHS_FILE environment
 
 If you want to generate docs by squeezing unit paths (For example, `api/v1/task.yml`), 
-you set PATHS_FILE environment like this:
+you set `PATHS_FILE` environment like this:
 
 ```bash
 $ PATHS_FILE="../oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor

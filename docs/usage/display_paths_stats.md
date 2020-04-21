@@ -1,23 +1,24 @@
-## Basic Usage
+
+# Display paths stats
+
+## Prepare
+
+Add this line to your application's Gemfile:
 
 ```ruby
-
-require 'r2-oas'
-
-R2OAS.configure do |config|
-   # default setting        
-   config.root_dir_path        = "./oas_docs"
-   config.schema_save_dir_name = "src"
-   config.doc_save_file_name   = "oas_doc.yml"
-
-   config.tool.paths_stats.configure do |paths_stats|
-    paths_stats.month_to_turn_to_warning_color = 3
-    paths_stats.warning_color                  = :red
-    paths_stats.table_title_color              = :yellow
-    paths_stats.heading_color                  = :yellow
-   end
+group :development do
+  gem 'r2-oas'
 end
 ```
+
+## Command
+
+```bash
+$ bundle exec rake routes:oas:paths_stats
+```
+
+## Example
+
 
 ```bash
 $ bundle exec rake routes:oas:paths_stats
