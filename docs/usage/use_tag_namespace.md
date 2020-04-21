@@ -1,19 +1,26 @@
-## Use Tag Namespace (default)
+# Use Tag Namespace
+
+## Prepare
+
+Add this line to your application's Gemfile:
 
 ```ruby
+group :development do
+  gem 'r2-oas'
+end
+```
 
+Add the following settings to your rails project's `config/environments/development.rb`.
+
+```ruby
 require 'r2-oas'
 
 R2OAS.configure do |config|
-   # default setting        
-   config.root_dir_path        = "./oas_docs"
-   config.schema_save_dir_name = "src"
-   config.doc_save_file_name   = "oas_doc.yml"
-   # default
-   config.use_tag_namespace    = true   # write here
-   config.use_schema_namespace = true
- end
+ config.use_tag_namespace    = true
+end
 ```
+
+## Command
 
 ```bash
 $ bundle exec rake routes:oas:docs
@@ -121,21 +128,20 @@ oas_docs
 └── oas_doc.yml
 ```
 
-## Do not Use Tag Namespace
+# Do not Use Tag Namespace
+
+## Prepare
 
 ```ruby
 
 require 'r2-oas'
 
 R2OAS.configure do |config|
-   # default setting        
-   config.root_dir_path        = "./oas_docs"
-   config.schema_save_dir_name = "src"
-   config.doc_save_file_name   = "oas_doc.yml"
-   config.use_tag_namespace    = false # write here
-   config.use_schema_namespace = true
+   config.use_tag_namespace = false
 end
 ```
+
+## Command
 
 ```bash
 $ bundle exec rake routes:oas:docs

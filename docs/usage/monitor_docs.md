@@ -1,16 +1,16 @@
-## Basic Usage
+# Monitor docs
+
+## Prepare
+
+Add this line to your application's Gemfile:
 
 ```ruby
-
-require 'r2-oas'
-
-R2OAS.configure do |config|
-   # default setting        
-   config.root_dir_path        = "./oas_docs"
-   config.schema_save_dir_name = "src"
-   config.doc_save_file_name   = "oas_doc.yml"
+group :development do
+  gem 'r2-oas'
 end
 ```
+
+## Command
 
 ```bash
 $ bundle exec rake routes:oas:monitor
@@ -137,7 +137,7 @@ bulk_action POST        /:model_name/bulk_action(.:format)     rails_admin/main#
 show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#show_in_app
 ```
 
-#### Usage
+#### VS Code
 
 If you use [Swagger Viewer](https://marketplace.visualstudio.com/items?itemName=Arjun.swagger-viewer)
 

@@ -1,16 +1,16 @@
-## Basic Usage
+# Analyze docs
+
+## Prepare
+
+Add this line to your application's Gemfile:
 
 ```ruby
-
-require 'r2-oas'
-
-R2OAS.configure do |config|
-   # default setting        
-   config.root_dir_path        = "./oas_docs"
-   config.schema_save_dir_name = "src"
-   config.doc_save_file_name   = "oas_doc.yml"
+group :development do
+  gem 'r2-oas'
 end
 ```
+
+## Command
 
 ```bash
 $ OAS_FILE="~/Desktop/swagger_file.yml" bundle exec rake routes:oas:analyze
