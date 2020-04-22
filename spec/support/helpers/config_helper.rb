@@ -63,6 +63,7 @@ module ConfigHelper
       }
 
       config.http_methods_when_generate_request_body = %w[post patch put]
+      config.ignored_http_statuses_when_generate_component_schema = %w[204 404]
 
       config.tool.paths_stats.configure do |paths_stats|
         paths_stats.month_to_turn_to_warning_color = 3

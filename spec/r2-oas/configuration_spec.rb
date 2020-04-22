@@ -175,6 +175,7 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:http_statuses_when_http_method][:put][:path_parameter]).to include('204', '404', '403')
         expect(subject[:http_statuses_when_http_method][:delete][:default]).to include('200', '403')
         expect(subject[:http_statuses_when_http_method][:delete][:path_parameter]).to include('200', '404', '403')
+        expect(subject[:ignored_http_statuses_when_generate_component_schema]).to include('204', '404')
         # server configuration
         expect(subject[:server].data[0][:url]).to eq 'http://localhost:3000'
         expect(subject[:server].data[0][:description]).to eq 'main'

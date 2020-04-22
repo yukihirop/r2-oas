@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/yukihirop/r2-oas/badge.svg)](https://coveralls.io/github/yukihirop/r2-oas)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8c3846f350bb412fd63/maintainability)](https://codeclimate.com/github/yukihirop/r2-oas/maintainability)
 
-Generate api docment(OpenAPI) side only from `rails` routing.
+Generate api docment(OpenAPI) side only from `Rails` routing.
 
 Provides a rake command to help `generate` , `view` , and `edit` OpenAPI documents.
 
@@ -134,6 +134,7 @@ R2OAS.configure do |config|
   }
 
   config.http_methods_when_generate_request_body = %w[post patch put]
+  config.ignored_http_statuses_when_generate_component_schema = %w[204 404]
 
   config.tool.paths_stats.configure do |paths_stats|
     paths_stats.month_to_turn_to_warning_color = 3
@@ -179,21 +180,6 @@ $ bundle exec rake routes:oas:paths_ls
 $ bundle exec rake routes:oas:paths_stats
 ```
 
-## 📚 More Usage
-
-- [How to generate docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_GENERATE_DOCS.md)
-- [How to start swagger editor](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_START_SWAGGER_EDITOR.md)
-- [How to start swagger ui](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_START_SWAGGER_UI.md)
-- [How to monitor swagger document](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_MONITOR_SWAGGER_DOC.md)
-- [How to analyze docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_ANALYZE_DOCS.md)
-- [How to clean docs](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_CLEAN_DOCS.md)
-- [How to deploy swagger doc](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DEPLOY_SWAGGER_DOC.md)
-- [How to use tag namespace](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_TAG_NAMESPACE.md)
-- [How to use schema namespace](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_SCHEMA_NAMESPACE.md)
-- [How to use hook when generate doc](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_USE_HOOK_WHEN_GENERATE_DOC.md)
-- [How to display paths list](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DISPLAY_PATHS_LIST.md)
-- [How to display paths stats](https://github.com/yukihirop/r2-oas/blob/master/docs/HOW_TO_DISPLAY_PATHS_STATS.md)
-
 ## ❤️ Support Rails Version
 
 - Rails (>= 4.2.5.1)
@@ -206,12 +192,6 @@ $ bundle exec rake routes:oas:paths_stats
 
 - Rails Engine Routing
 - Rails Normal Routing
-
-## ❤️ Support OpenAPI Schema
-
-|version|document|
-|-------|--------|
-|v3|[versions/v3.md](https://github.com/yukihirop/r2-oas/blob/master/docs/versions/v3.md)|
 
 ## ❗️ Convention over Configuration (CoC)
 
@@ -246,6 +226,7 @@ we explain the options that can be set.
 |interval_to_save_edited_tmp_schema|Interval(sec) to save edited tmp schema|`15`|
 |http_statuses_when_http_method|Determine the response to support for each HTTP method|omission...|
 |http_methods_when_generate_request_body|HTTP methods when generate requestBody|`[post put patch]`|
+|ignored_http_statuses_when_generate_component_schema|Ignore HTTP statuses when generate component schema|`[204 404]`|
 |namespace_type|namespace for components(schemas/requestBodies) name| `underbar` |
 |deploy_dir_path|deploy directory.|`"./deploy_docs"`|
 
@@ -308,243 +289,6 @@ account.yml
 account.yml               # ignore
 account.yml               # ignore
 ```
-
-## 💊 Life Cycle Methods (Hook Metohds)
-
-Supported hook(life cycle methods) is like this:
-
-- `before_create`
-- `after_create`
-
-Supported Hook class is like this:
-
-- `R2OAS::Schema::V3::InfoObject`
-- `R2OAS::Schema::V3::PathsObject`
-- `R2OAS::Schema::V3::PathItemObject`
-- `R2OAS::Schema::V3::ExternalDocumentObject`
-- `R2OAS::Schema::V3::ComponentsObject`
-- `R2OAS::Schema::V3::Components::SchemaObject`
-- `R2OAS::Schema::V3::Components::RequestBodyObject`
-
-By inheriting these classes, you can hook them at the time of document generation by writing like this:
-
-#### case: InfoObject
-
-```ruby
-class CustomInfoObject < R2OAS::Schema::V3::InfoObject
-  before_create do |doc|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc, path|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: PathsObject
-
-```ruby
-class CustomPathsObject < R2OAS::Schema::V3::PathsObject
-  before_create do |doc|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: PathItemObject
-
-```ruby
-class CustomPathItemObject < R2OAS::Schema::V3::PathItemObject
-  before_create do |doc, path|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc, schema_name|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: ExternalDocumentObject
-
-```ruby
-class CustomExternalDocumentObject < R2OAS::Schema::V3::ExternalDocumentObject
-  before_create do |doc|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: ComponentsObject
-
-```ruby
-class CustomComponentsObject < R2OAS::Schema::V3::ComponentsObject
-  before_create do |doc|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-#### case: Components::SchemaObject
-
-```ruby
-class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
-  before_create do |doc, schema_name|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc, schema_name|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-If you want to determine the component schema name at runtime, like this:
-
-```ruby
-class CustomComponentsSchemaObject < R2OAS::Schema::V3::Components::SchemaObject
-  def components_schema_name(doc, path_component, tag_name, verb, http_status, schema_name)
-    # [Important] Please return string.
-    # default
-    schema_name
-  end
-end
-```
-
-`path_component` is `R2OAS::Routing::PathComponent` instance.
-
-```ruby
-module R2OAS
-  module Routing
-    class PathComponent < BaseComponent
-      def initialize(path)
-      def to_s
-      def symbol_to_brace
-      def path_parameters_data
-      def path_excluded_path_parameters
-      def exist_path_parameters?
-      def path_parameters
-      private
-      def without_format
-```
-
-#### case: Components::RequestBodyObject
-
-```ruby
-class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
-  before_create do |doc, schema_name|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something .... 
-    })
-  end
-
-  after_create do |doc, schema_name|
-    # [Important] Please change doc destructively.
-    # [Important] To be able to use methods in Rails !
-    doc.merge!({
-      # Something ....
-    })
-  end
-end
-```
-
-If you want to determine the component schema name at runtime, like this:
-
-```ruby
-class CustomComponentsRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
-  def components_request_body_name(doc, path_component, tag_name, verb, schema_name)
-    # [Important] Please return string.
-    # default
-    schema_name
-  end
-
-  def components_schema_name(doc, path_component, tag_name, verb, schema_name)
-    # [Important] Please return string.
-    # default
-    schema_name
-  end
-end
-```
-
-And write this to the configuration.
-
-```ruby
-# If only InfoObject and PathItemObject, use a custom class
-R2OAS.configure do |config|
-  # 
-  # omission ...
-  # 
-  config.use_object_classes.merge!({
-    info_object:      CustomInfoObject,
-    path_item_object: CustomPathItemObject
-  })
-end
-```
-
-This is the end.
 
 ## 🔩 CORS
 
