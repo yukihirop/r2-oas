@@ -64,7 +64,7 @@ module R2OAS
 
         def responses_when_http_status
           http_statuses.each_with_object({}) do |http_status, result|
-            if (ignored_http_statuses_when_generate_component_schema.include?(http_status))
+            if ignored_http_statuses_when_generate_component_schema.include?(http_status)
               result.deep_merge!(
                 http_status => {
                   'description' => "#{@tag_name} description"

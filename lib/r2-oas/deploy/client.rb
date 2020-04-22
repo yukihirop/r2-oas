@@ -25,7 +25,7 @@ module R2OAS
       end
 
       def copy_swagger_ui_index
-        index_path = File.expand_path(Rails.root.join(deploy_dir_path, "index.html"), __FILE__)
+        index_path = File.expand_path(Rails.root.join(deploy_dir_path, 'index.html'), __FILE__)
         @schema_file_path = doc_save_file_name
         template_path = File.expand_path('swagger-ui/index.html.erb', __dir__)
         template = File.read(template_path)

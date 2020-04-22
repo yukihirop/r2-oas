@@ -45,7 +45,7 @@ module R2OAS
     DEFAULT_TOOL = Tool.new
     # :dot or :underbar
     DEFAULT_NAMESPACE_TYPE = :underbar
-    DEFAULT_DEPLOY_DIR_PATH = "./deploy_docs"
+    DEFAULT_DEPLOY_DIR_PATH = './deploy_docs'
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
       version
