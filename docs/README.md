@@ -62,6 +62,15 @@ bundle exec routes:oas:docs
 bundle exec routes:oas:editor
 ```
 
+#### Generate docs
+
+![oas_docs](https://user-images.githubusercontent.com/11146767/79999059-6e906700-84f6-11ea-818c-30d9fdfeafb6.gif)
+
+
+#### Edit docs
+
+![oas_editor](https://user-images.githubusercontent.com/11146767/79999041-69cbb300-84f6-11ea-99b6-f454b6baa3ee.gif)
+
 ## 📖 Usage
 
 All settings are optional. The initial value is as follows.
