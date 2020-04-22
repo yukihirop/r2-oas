@@ -70,6 +70,7 @@ R2OAS.configure do |config|
   }
 
   config.http_methods_when_generate_request_body = %w[post patch put]
+  config.ignored_http_statuses_when_generate_component_schema = %w[204 404]
 
   config.tool.paths_stats.configure do |paths_stats|
     paths_stats.month_to_turn_to_warning_color = 3
@@ -97,6 +98,7 @@ we explain the options that can be set.
 |interval_to_save_edited_tmp_schema|Interval(sec) to save edited tmp schema|`15`|
 |http_statuses_when_http_method|Determine the response to support for each HTTP method|omission...|
 |http_methods_when_generate_request_body|HTTP methods when generate requestBody|`[post put patch]`|
+|ignored_http_statuses_when_generate_component_schema|Ignore HTTP statuses when generate component schema|`[204 404]`|
 |namespace_type|namespace for components(schemas/requestBodies) name| `underbar` |
 |deploy_dir_path|deploy directory.|`"./deploy_docs"`|
 

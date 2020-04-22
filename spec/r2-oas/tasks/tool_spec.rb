@@ -21,7 +21,7 @@ RSpec.describe 'tool_rake' do
     end
 
     it do
-      expect(FileTest.exists?("#{deploy_dir_path}")).to eq true
+      expect(FileTest.exists?(deploy_dir_path.to_s)).to eq true
       expect(FileTest.exists?("#{deploy_dir_path}/#{doc_save_file_name}")).to eq true
     end
   end

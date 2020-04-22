@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'r2-oas/deploy/client'
 
@@ -19,7 +21,7 @@ RSpec.describe R2OAS::Deploy::Client do
     it do
       expect(FileTest.exists?(deploy_dir_path)).to eq true
       expect(FileTest.exists?("#{deploy_dir_path}/index.html")).to eq true
-      expect(FileTest.exists?("#{deploy_dir_path}/dist")).to eq true 
+      expect(FileTest.exists?("#{deploy_dir_path}/dist")).to eq true
     end
   end
 end

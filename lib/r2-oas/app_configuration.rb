@@ -40,11 +40,12 @@ module R2OAS
       }
     }
     DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY = %w[post patch put]
+    DEFAULT_IGNORED_HTTP_STATUSES_WHEN_GENERATE_COMPONENT_SCHEMA = %w[204 404]
     # rubocop:enable Style/MutableConstant
     DEFAULT_TOOL = Tool.new
     # :dot or :underbar
     DEFAULT_NAMESPACE_TYPE = :underbar
-    DEFAULT_DEPLOY_DIR_PATH = "./deploy_docs"
+    DEFAULT_DEPLOY_DIR_PATH = './deploy_docs'
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
       version
@@ -59,6 +60,7 @@ module R2OAS
       swagger
       http_statuses_when_http_method
       http_methods_when_generate_request_body
+      ignored_http_statuses_when_generate_component_schema
       tool
       namespace_type
       deploy_dir_path
@@ -82,21 +84,22 @@ module R2OAS
     private
 
     module_function def set_default(target)
-      target.version                                 = DEFAULT_VERSION
-      target.root_dir_path                           = DEFAULT_ROOT_DIR_PATH
-      target.schema_save_dir_name                    = DEFAULT_SCHEMA_SAVE_DIR_NAME
-      target.doc_save_file_name                      = DEFAULT_DOC_SAVE_FILE_NAME
-      target.force_update_schema                     = DEFAULT_FORCE_UPDATE_SCHEMA
-      target.use_tag_namespace                       = DEFAULT_USE_TAG_NAMESPACE
-      target.use_schema_namespace                    = DEFAULT_USE_SCHEMA_NAMESPACE
-      target.server                                  = DEFAULT_SERVER
-      target.interval_to_save_edited_tmp_schema      = DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA
-      target.swagger                                 = DEFAULT_SWAGGER
-      target.http_statuses_when_http_method          = DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD
-      target.tool                                    = DEFAULT_TOOL
-      target.http_methods_when_generate_request_body = DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY
-      target.namespace_type                          = DEFAULT_NAMESPACE_TYPE
-      target.deploy_dir_path                         = DEFAULT_DEPLOY_DIR_PATH
+      target.version                                              = DEFAULT_VERSION
+      target.root_dir_path                                        = DEFAULT_ROOT_DIR_PATH
+      target.schema_save_dir_name                                 = DEFAULT_SCHEMA_SAVE_DIR_NAME
+      target.doc_save_file_name                                   = DEFAULT_DOC_SAVE_FILE_NAME
+      target.force_update_schema                                  = DEFAULT_FORCE_UPDATE_SCHEMA
+      target.use_tag_namespace                                    = DEFAULT_USE_TAG_NAMESPACE
+      target.use_schema_namespace                                 = DEFAULT_USE_SCHEMA_NAMESPACE
+      target.server                                               = DEFAULT_SERVER
+      target.interval_to_save_edited_tmp_schema                   = DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA
+      target.swagger                                              = DEFAULT_SWAGGER
+      target.http_statuses_when_http_method                       = DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD
+      target.tool                                                 = DEFAULT_TOOL
+      target.http_methods_when_generate_request_body              = DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY
+      target.ignored_http_statuses_when_generate_component_schema = DEFAULT_IGNORED_HTTP_STATUSES_WHEN_GENERATE_COMPONENT_SCHEMA
+      target.namespace_type                                       = DEFAULT_NAMESPACE_TYPE
+      target.deploy_dir_path                                      = DEFAULT_DEPLOY_DIR_PATH
     end
   end
 end

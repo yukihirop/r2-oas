@@ -34,7 +34,7 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:use_tag_namespace]).to eq true
         expect(subject[:use_schema_namespace]).to eq true
         expect(subject[:namespace_type]).to eq :underbar
-        expect(subject[:deploy_dir_path]).to eq "./deploy_docs"
+        expect(subject[:deploy_dir_path]).to eq './deploy_docs'
         expect(subject[:http_statuses_when_http_method][:get][:default]).to include('200', '422')
         expect(subject[:http_statuses_when_http_method][:get][:path_parameter]).to include('200', '404', '422')
         expect(subject[:http_statuses_when_http_method][:post][:default]).to include('201', '422')
@@ -87,7 +87,7 @@ RSpec.describe R2OAS::Configuration do
             config.use_tag_namespace = true
             config.use_schema_namespace = true
             config.namespace_type = :dot
-            config.deploy_dir_path = "dist_docs"
+            config.deploy_dir_path = 'dist_docs'
             config.http_statuses_when_http_method = {
               get: {
                 default: %w[200 403],
@@ -164,7 +164,7 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:use_tag_namespace]).to eq true
         expect(subject[:use_schema_namespace]).to eq true
         expect(subject[:namespace_type]).to eq :dot
-        expect(subject[:deploy_dir_path]).to eq "dist_docs"
+        expect(subject[:deploy_dir_path]).to eq 'dist_docs'
         expect(subject[:http_statuses_when_http_method][:get][:default]).to include('200', '403')
         expect(subject[:http_statuses_when_http_method][:get][:path_parameter]).to include('200', '404', '403')
         expect(subject[:http_statuses_when_http_method][:post][:default]).to include('201', '403')
@@ -175,6 +175,7 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:http_statuses_when_http_method][:put][:path_parameter]).to include('204', '404', '403')
         expect(subject[:http_statuses_when_http_method][:delete][:default]).to include('200', '403')
         expect(subject[:http_statuses_when_http_method][:delete][:path_parameter]).to include('200', '404', '403')
+        expect(subject[:ignored_http_statuses_when_generate_component_schema]).to include('204', '404')
         # server configuration
         expect(subject[:server].data[0][:url]).to eq 'http://localhost:3000'
         expect(subject[:server].data[0][:description]).to eq 'main'

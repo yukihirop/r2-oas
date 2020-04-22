@@ -74,8 +74,8 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
                 'summary' => 'patch summary',
                 'description' => 'patch description',
                 'responses' =>
-                { '204' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
-                  '404' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
+                { '204' => { 'description' => 'task description' },
+                  '404' => { 'description' => 'task description' },
                   '422' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } } },
                 'deprecated' => false,
                 'requestBody' => { '$ref' => '#/components/requestBodies/Task' },
@@ -114,7 +114,7 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
                 'description' => 'delete description',
                 'responses' =>
                 { '200' => { 'description' => 'api/v1/task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Api_V1_Task' } } } },
-                  '404' => { 'description' => 'api/v1/task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Api_V1_Task' } } } },
+                  '404' => { 'description' => 'api/v1/task description' },
                   '422' => { 'description' => 'api/v1/task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Api_V1_Task' } } } } },
                 'deprecated' => false,
                 'parameters' => [{ 'name' => 'id', 'in' => 'path', 'description' => 'id', 'required' => true, 'schema' => { 'type' => 'integer' } }] } }
@@ -149,8 +149,8 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
                 'summary' => 'patch summary',
                 'description' => 'patch description',
                 'responses' =>
-                { '204' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
-                  '404' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
+                { '204' => { 'description' => 'task description' },
+                  '404' => { 'description' => 'task description' },
                   '422' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } } },
                 'deprecated' => false,
                 'requestBody' => { '$ref' => '#/components/requestBodies/Task' },
@@ -189,7 +189,7 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
                 'description' => 'delete description',
                 'responses' =>
                 { '200' => { 'description' => 'api/v1/task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/api.v1.Task' } } } },
-                  '404' => { 'description' => 'api/v1/task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/api.v1.Task' } } } },
+                  '404' => { 'description' => 'api/v1/task description' },
                   '422' => { 'description' => 'api/v1/task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/api.v1.Task' } } } } },
                 'deprecated' => false,
                 'parameters' => [{ 'name' => 'id', 'in' => 'path', 'description' => 'id', 'required' => true, 'schema' => { 'type' => 'integer' } }] } }
@@ -228,8 +228,8 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
               'summary' => 'patch summary',
               'description' => 'patch description',
               'responses' =>
-              { '204' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
-                '404' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
+              { '204' => { 'description' => 'task description' },
+                '404' => { 'description' => 'task description' },
                 '422' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } } },
               'deprecated' => false,
               'parameters' => [{ 'name' => 'id', 'in' => 'path', 'description' => 'id', 'required' => true, 'schema' => { 'type' => 'integer' } }] },
@@ -238,8 +238,8 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
               'summary' => 'put summary',
               'description' => 'put description',
               'responses' =>
-              { '204' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
-                '404' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
+              { '204' => { 'description' => 'task description' },
+                '404' => { 'description' => 'task description' },
                 '422' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } } },
               'deprecated' => false,
               'parameters' => [{ 'name' => 'id', 'in' => 'path', 'description' => 'id', 'required' => true, 'schema' => { 'type' => 'integer' } }] } }
@@ -316,7 +316,7 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
               'description' => 'get description',
               'responses' =>
               { '200' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
-                '404' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } } },
+                '404' => { 'description' => 'task description' } },
               'deprecated' => false,
               'parameters' => [{ 'name' => 'id', 'in' => 'path', 'description' => 'id', 'required' => true, 'schema' => { 'type' => 'integer' } }] } },
                                         '/tasks/{id}' =>
@@ -326,7 +326,7 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
               'description' => 'get description',
               'responses' =>
               { '200' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
-                '404' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } } },
+                '404' => { 'description' => 'task description' } },
               'deprecated' => false,
               'parameters' => [{ 'name' => 'id', 'in' => 'path', 'description' => 'id', 'required' => true, 'schema' => { 'type' => 'integer' } }] },
             'patch' =>
@@ -334,8 +334,8 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
               'summary' => 'patch summary',
               'description' => 'patch description',
               'responses' =>
-              { '204' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
-                '404' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } } },
+              { '204' => { 'description' => 'task description' },
+                '404' => { 'description' => 'task description' } },
               'deprecated' => false,
               'requestBody' => { '$ref' => '#/components/requestBodies/Task' },
               'parameters' => [{ 'name' => 'id', 'in' => 'path', 'description' => 'id', 'required' => true, 'schema' => { 'type' => 'integer' } }] },
@@ -344,8 +344,8 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
               'summary' => 'put summary',
               'description' => 'put description',
               'responses' =>
-              { '204' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
-                '404' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } } },
+              { '204' => { 'description' => 'task description' },
+                '404' => { 'description' => 'task description' } },
               'deprecated' => false,
               'requestBody' => { '$ref' => '#/components/requestBodies/Task' },
               'parameters' => [{ 'name' => 'id', 'in' => 'path', 'description' => 'id', 'required' => true, 'schema' => { 'type' => 'integer' } }] },
@@ -355,7 +355,7 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
               'description' => 'delete description',
               'responses' =>
               { '200' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } },
-                '404' => { 'description' => 'task description', 'content' => { 'application/json' => { 'schema' => { '$ref' => '#/components/schemas/Task' } } } } },
+                '404' => { 'description' => 'task description' } },
               'deprecated' => false,
               'parameters' => [{ 'name' => 'id', 'in' => 'path', 'description' => 'id', 'required' => true, 'schema' => { 'type' => 'integer' } }] } }
       end

@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/yukihirop/r2-oas/badge.svg)](https://coveralls.io/github/yukihirop/r2-oas)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8c3846f350bb412fd63/maintainability)](https://codeclimate.com/github/yukihirop/r2-oas/maintainability)
 
-Generate api docment(OpenAPI) side only from `rails` routing.
+Generate api docment(OpenAPI) side only from `Rails` routing.
 
 Provides a rake command to help `generate` , `view` , and `edit` OpenAPI documents.
 
