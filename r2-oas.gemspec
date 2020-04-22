@@ -10,24 +10,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ['yukihirop']
   spec.email         = ['te108186@gmail.com']
 
-  spec.summary       = 'Generate api docment(OpenAPI) side only from rails routing.'
-  spec.description   = <<~EOF
-    Generate api docment(OpenAPI) side only from `rails` routing.
-    Provides a rake command to help `generate` , `view` , and `edit` OpenAPI documents.
+  spec.summary       = 'Provide rake tasks to management API Docment (OpenAPI)'
+  spec.description   = "Let's intuitively write API documentation with Swagger Editor in your Rails Project! 😊"
 
-    ```
-    bundle exec rake routes:oas:docs    # generate
-    bundle exec rake routes:oas:ui      # view
-    bundle exec rake routes:oas:editor  # edit
-    bundle exec rake routes:oas:monitor # monitor
-    bundle exec rake routes:oas:dist    # distribute
-    bundle exec rake routes:oas:clean   # clean
-    bundle exec rake routes:oas:analyze # analyze
-    bundle exec rake routes:oas:deploy  # deploy
-    ```
-  EOF
-
-  spec.homepage      = 'https://github.com/yukihirop/r2-oas'
+  spec.homepage      = 'https://yukihirop.github.io/r2-oas'
   spec.license       = 'MIT'
 
   # Specify which files should be added to the gem when it is released.
