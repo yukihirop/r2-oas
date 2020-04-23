@@ -1,5 +1,6 @@
 <!-- docs/_sidebar.md -->
-
+* **Attention**
+ * [If Clash](/attention/if_clash)
 * **Usage**
  * [Generate Docs](/usage/generate_docs)
  * [Edit docs](/usage/edit_docs)
