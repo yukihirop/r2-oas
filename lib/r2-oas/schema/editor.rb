@@ -27,6 +27,7 @@ module R2OAS
         super(options)
         @editor = swagger.editor
         @before_schema_data = before_schema_data
+        @schema_doc_from_local = YAML.load_file(doc_save_file_path).to_yaml
       end
 
       def start
@@ -96,8 +97,7 @@ module R2OAS
         @browser ||= Watir::Browser.new(:chrome, capabilities)
         @browser.goto(url)
         if wait_for_loaded
-          schema_doc_from_local = YAML.load_file(doc_save_file_path)
-          @browser.driver.local_storage[storage_key] = schema_doc_from_local.to_yaml
+          @browser.driver.local_storage[storage_key] = @schema_doc_from_local
           @browser.refresh
         end
       end
