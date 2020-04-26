@@ -73,7 +73,9 @@ module R2OAS
 
       def ensure_save_tmp_schema_file
         EM.add_periodic_timer(interval_to_save_edited_tmp_schema) do
-          if @browser.exists?
+          m = Mutex.new
+          return nil unless @browser.exists?
+          m.synchronize do
             @after_schema_data = @browser.driver.local_storage[storage_key] || @after_schema_data
             save_edited_schema
             puts "\nwait for signal trap ..."
