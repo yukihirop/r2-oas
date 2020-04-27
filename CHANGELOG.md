@@ -1,5 +1,18 @@
 # Change Log
 
+## v0.1.3
+
+2020-04-27
+
+- [`FixBugs`] Fix clash when edit ([906d068](https://github.com/yukihirop/r2-oas/pull/109))
+- [`Feature`] Change log display to relative path ([c735d22](https://github.com/yukihirop/r2-oas/pull/111))
+
+## v0.1.2
+
+2020-04-22
+
+- No Change
+
 ## v0.1.1
 
 2020-04-22
