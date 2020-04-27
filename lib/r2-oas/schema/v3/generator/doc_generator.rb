@@ -29,9 +29,10 @@ module R2OAS
 
         def generate_docs_from_schema_files
           result_before_squeeze = schema_files_paths.each_with_object({}) do |path, data|
+            file_manager = FileManager.new(path)
             yaml = YAML.load_file(path)
             data.deep_merge!(yaml)
-            logger.info " Use schema file: \t#{path}"
+            logger.info " Use schema file: \t#{file_manager.save_file_path(type: :relative)}"
           end
 
           result = if many_paths_file_paths.present?

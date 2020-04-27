@@ -35,7 +35,7 @@ module R2OAS
                 end
               end
 
-              yield file_manager.save_file_path if block_given?
+              yield file_manager.save_file_path(type: :relative) if block_given?
             end
           end
         end

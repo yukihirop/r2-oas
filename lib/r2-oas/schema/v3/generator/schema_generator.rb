@@ -68,7 +68,7 @@ module R2OAS
               file_manager = FileManager.new(field_name, :relative)
               file_manager.save(result.to_yaml)
 
-              yield file_manager.save_file_path if block_given?
+              yield file_manager.save_file_path(type: :relative) if block_given?
             end
           end
         end

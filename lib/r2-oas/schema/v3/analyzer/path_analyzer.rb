@@ -25,7 +25,7 @@ module R2OAS
           save_each_tags(edited_paths_schema) do |tag_name, result|
             file_manager = PathItemFileManager.new("paths/#{tag_name}", :relative)
             file_manager.save(result.to_yaml)
-            logger.info "  Write schema file: \t#{file_manager.save_file_path}"
+            logger.info "  Write schema file: \t#{file_manager.save_file_path(type: :relative)}"
           end
 
           # Automatically generated when there is no tag object in the read schema file
