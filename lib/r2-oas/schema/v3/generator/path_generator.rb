@@ -51,7 +51,7 @@ module R2OAS
 
             path_item_file_manager.save(result.to_yaml) unless path_item_file_manager.skip_save?
 
-            yield path_item_file_manager.save_file_path if block_given?
+            yield path_item_file_manager.save_file_path(type: :relative) if block_given?
           end
         end
 

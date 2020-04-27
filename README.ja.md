@@ -1,5 +1,6 @@
 # R2-OAS
 
+[![Gem Version](https://badge.fury.io/rb/r2-oas.svg)](https://badge.fury.io/rb/r2-oas)
 [![Build Status](https://travis-ci.org/yukihirop/r2-oas.svg?branch=master)](https://travis-ci.org/yukihirop/r2-oas)
 [![Coverage Status](https://coveralls.io/repos/github/yukihirop/r2-oas/badge.svg)](https://coveralls.io/github/yukihirop/r2-oas)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8c3846f350bb412fd63/maintainability)](https://codeclimate.com/github/yukihirop/r2-oas/maintainability)
@@ -54,12 +55,12 @@ bundle exec routes:oas:editor
 
 #### Generate docs
 
-![oas_docs](https://user-images.githubusercontent.com/11146767/79999059-6e906700-84f6-11ea-818c-30d9fdfeafb6.gif)
+![oas_docs](https://user-images.githubusercontent.com/11146767/80364449-e678db80-88c0-11ea-8920-d757717ec610.gif)
 
 
 #### Edit docs
 
-![oas_editor](https://user-images.githubusercontent.com/11146767/79999041-69cbb300-84f6-11ea-99b6-f454b6baa3ee.gif)
+![oas_editor](https://user-images.githubusercontent.com/11146767/80364657-4079a100-88c1-11ea-8f56-c9af78829d68.gif)
 
 ## 📚 Documents
 

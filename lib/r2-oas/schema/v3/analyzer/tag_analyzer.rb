@@ -17,7 +17,7 @@ module R2OAS
         end
 
         def analyze_docs
-          save_file_path = @file_manager.save_file_path
+          save_file_path = @file_manager.save_file_path(type: :relative)
           case @type
           when :edited
             @diff_manager.process_by_using_diff_data do |after_edited_data|

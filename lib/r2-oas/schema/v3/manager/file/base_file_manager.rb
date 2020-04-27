@@ -31,10 +31,17 @@ module R2OAS
           save(result.to_yaml)
         end
 
-        def save_file_path
-          File.expand_path(@relative_save_file_path).tap do |abs_path|
+        def save_file_path(type: :full)
+          file_path = File.expand_path(@relative_save_file_path).tap do |abs_path|
             abs_dir = File.dirname(abs_path)
             FileUtils.mkdir_p(abs_dir) unless FileTest.exists?(abs_dir)
+          end
+
+          case type
+          when :relative
+            file_path.sub(%r{^#{Dir.getwd}/?}, '')
+          else
+            file_path
           end
         end
 

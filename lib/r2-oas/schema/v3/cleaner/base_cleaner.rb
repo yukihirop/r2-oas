@@ -11,7 +11,7 @@ module R2OAS
           clean_target_files.each do |file_path|
             file_manager = FileManager.new(file_path, :full)
             file_manager.delete
-            yield file_manager.save_file_path if block_given?
+            yield file_manager.save_file_path(type: :relative) if block_given?
           end
         end
 

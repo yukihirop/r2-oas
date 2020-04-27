@@ -67,7 +67,7 @@ module R2OAS
               file_manager = ComponentsFileManager.build(relative_path, :relative)
               file_manager.save(result.to_yaml) unless file_manager.skip_save?
 
-              yield file_manager.save_file_path if block_given?
+              yield file_manager.save_file_path(type: :relative) if block_given?
             end
           end
 
