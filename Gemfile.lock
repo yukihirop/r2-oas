@@ -8,7 +8,7 @@ PATH
       paint
       rails (>= 4.2.5)
       terminal-table (~> 1.6.0)
-      watir (~> 6.0)
+      watir (~> 6.16.5)
 
 GEM
   remote: https://rubygems.org/
