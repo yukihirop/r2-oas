@@ -20,6 +20,7 @@ module R2OAS
       extend Forwardable
 
       TMP_FILE_NAME = 'edited_schema'
+      ALERT_TEXT = 'Would you like to convert your JSON into YAML?'
 
       attr_accessor :edited_schema
 
@@ -77,11 +78,22 @@ module R2OAS
           m = Mutex.new
           return nil unless @browser.exists?
           m.synchronize do
-            @after_schema_data = @browser.driver.local_storage[storage_key] || @after_schema_data
-            save_edited_schema
-            puts "\nwait for signal trap ..."
+            begin
+              save_after_fetch_local_strage
+            rescue Selenium::WebDriver::Error::UnexpectedAlertOpenError => e
+              alert = @browser.driver.switch_to.alert
+              if alert.text.eql?(ALERT_TEXT)
+                alert.accept && save_after_fetch_local_strage
+              end
+            end
           end
         end
+      end
+
+      def save_after_fetch_local_strage
+        @after_schema_data = @browser.driver.local_storage[storage_key] || @after_schema_data
+        save_edited_schema
+        puts "\nwait for signal trap ..."
       end
 
       def fetch_edited_schema_from_browser
