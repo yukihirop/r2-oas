@@ -222,3 +222,7 @@ Style/ClassAndModuleChildren:
 Lint/RequireParentheses:
   Exclude:
     - "spec/r2-oas/schema/v3/object/components/schema_object_spec.rb"
+
+Style/IfUnlessModifier:
+  Exclude:
+    - "lib/r2-oas/schema/editor.rb"

@@ -20,6 +20,7 @@ module R2OAS
       extend Forwardable
 
       TMP_FILE_NAME = 'edited_schema'
+      ALERT_TEXT = 'Would you like to convert your JSON into YAML?'
 
       attr_accessor :edited_schema
 
@@ -27,6 +28,7 @@ module R2OAS
         super(options)
         @editor = swagger.editor
         @before_schema_data = before_schema_data
+        @schema_doc_from_local = YAML.load_file(doc_save_file_path).to_yaml
       end
 
       def start
@@ -73,12 +75,26 @@ module R2OAS
 
       def ensure_save_tmp_schema_file
         EM.add_periodic_timer(interval_to_save_edited_tmp_schema) do
-          if @browser.exists?
-            @after_schema_data = @browser.driver.local_storage[storage_key] || @after_schema_data
-            save_edited_schema
-            puts "\nwait for signal trap ..."
+          m = Mutex.new
+          return nil unless @browser.exists?
+
+          m.synchronize do
+            begin
+              save_after_fetch_local_strage
+            rescue Selenium::WebDriver::Error::UnexpectedAlertOpenError
+              alert = @browser.driver.switch_to.alert
+              if alert.text.eql?(ALERT_TEXT)
+                alert.accept && save_after_fetch_local_strage
+              end
+            end
           end
         end
+      end
+
+      def save_after_fetch_local_strage
+        @after_schema_data = @browser.driver.local_storage[storage_key] || @after_schema_data
+        save_edited_schema
+        puts "\nwait for signal trap ..."
       end
 
       def fetch_edited_schema_from_browser
@@ -94,8 +110,7 @@ module R2OAS
         @browser ||= Watir::Browser.new(:chrome, capabilities)
         @browser.goto(url)
         if wait_for_loaded
-          schema_doc_from_local = YAML.load_file(doc_save_file_path)
-          @browser.driver.local_storage[storage_key] = schema_doc_from_local.to_yaml
+          @browser.driver.local_storage[storage_key] = @schema_doc_from_local
           @browser.refresh
         end
       end
