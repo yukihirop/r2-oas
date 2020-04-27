@@ -77,10 +77,11 @@ module R2OAS
         EM.add_periodic_timer(interval_to_save_edited_tmp_schema) do
           m = Mutex.new
           return nil unless @browser.exists?
+
           m.synchronize do
             begin
               save_after_fetch_local_strage
-            rescue Selenium::WebDriver::Error::UnexpectedAlertOpenError => e
+            rescue Selenium::WebDriver::Error::UnexpectedAlertOpenError
               alert = @browser.driver.switch_to.alert
               if alert.text.eql?(ALERT_TEXT)
                 alert.accept && save_after_fetch_local_strage
