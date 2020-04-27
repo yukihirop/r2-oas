@@ -39,7 +39,7 @@ module R2OAS
 
           case type
           when :relative
-            file_path.sub(/^#{Dir.getwd}\/?/, '')
+            file_path.sub(%r{^#{Dir.getwd}/?}, '')
           else
             file_path
           end

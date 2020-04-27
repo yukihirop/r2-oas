@@ -6,7 +6,7 @@ module R2OAS
       class Ls < Base
         def print
           Dir.glob("#{schema_save_dir_path}/paths/**/**.yml").each do |path|
-            puts path.sub(/^#{Dir.getwd}\/?/, '')
+            puts path.sub(%r{^#{Dir.getwd}/?}, '')
           end
         end
       end
