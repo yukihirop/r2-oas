@@ -25,9 +25,9 @@ namespace :routes do
       analyzer = R2OAS::Schema::Analyzer.new({}, {}, analyzer_options)
       analyzer.analyze_docs
 
-      generator_options = { skip_generate_docs: true }
-      generator = R2OAS::Schema::Generator.new(generator_options)
-      generator.generate_docs
+      builder_options = {}
+      builder = R2OAS::Schema::Builder.new(builder_options)
+      builder.build_docs
 
       logger.info '[R2-OAS] end'
     end
@@ -36,9 +36,9 @@ namespace :routes do
     task dist: [:common] do
       logger.info '[R2-OAS] start'
 
-      generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
-      generator = R2OAS::Schema::Generator.new(generator_options)
-      generator.generate_docs
+      builder_options = { unit_paths_file_path: unit_paths_file_path }
+      builder = R2OAS::Schema::Builder.new(builder_options)
+      builder.build_docs
 
       logger.info '[R2-OAS] end'
     end
@@ -47,11 +47,11 @@ namespace :routes do
     task editor: [:common] do
       logger.info '[R2-OAS] start'
 
-      generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
-      generator = R2OAS::Schema::Generator.new(generator_options)
-      generator.generate_docs
+      builder_options = { unit_paths_file_path: unit_paths_file_path }
+      builder = R2OAS::Schema::Builder.new(builder_options)
+      builder.build_docs
 
-      before_schema_data = generator.oas_doc
+      before_schema_data = builder.oas_doc
       editor_options = { unit_paths_file_path: unit_paths_file_path }
       editor = R2OAS::Schema::Editor.new(before_schema_data, editor_options)
       editor.start
@@ -63,9 +63,9 @@ namespace :routes do
     task ui: [:common] do
       logger.info '[R2-OAS] start'
 
-      generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
-      generator = R2OAS::Schema::Generator.new(generator_options)
-      generator.generate_docs
+      builder_options = { unit_paths_file_path: unit_paths_file_path }
+      builder = R2OAS::Schema::Builder.new(builder_options)
+      builder.build_docs
 
       ui_options = { unit_paths_file_path: unit_paths_file_path }
       ui = R2OAS::Schema::UI.new(ui_options)
@@ -78,11 +78,11 @@ namespace :routes do
     task monitor: [:common] do
       logger.info '[R2-OAS] start'
 
-      generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
-      generator = R2OAS::Schema::Generator.new(generator_options)
-      generator.generate_docs
+      builder_options = { unit_paths_file_path: unit_paths_file_path }
+      builder = R2OAS::Schema::Builder.new(builder_options)
+      builder.build_docs
 
-      before_schema_data = generator.oas_doc
+      before_schema_data = builder.oas_doc
       monitor_options = { unit_paths_file_path: unit_paths_file_path }
       monitor = R2OAS::Schema::Monitor.new(before_schema_data, monitor_options)
       monitor.start
@@ -94,9 +94,9 @@ namespace :routes do
     task clean: [:common] do
       logger.info '[R2-OAS] start'
 
-      generator_options = { skip_generate_docs: true, skip_load_dot_paths: true }
-      generator = R2OAS::Schema::Generator.new(generator_options)
-      generator.generate_docs
+      builder_options = { skip_load_dot_paths: true }
+      builder = R2OAS::Schema::Builder.new(builder_options)
+      builder.build_docs
 
       cleaner = R2OAS::Schema::Cleaner.new
       cleaner.clean_docs

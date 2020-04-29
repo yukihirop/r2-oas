@@ -26,6 +26,7 @@ module R2OAS
 
       autoload :Base, 'r2-oas/schema/base'
       autoload :Generator, 'r2-oas/schema/generator'
+      autoload :Builder, 'r2-oas/schema/builder'
       autoload :Analyzer, 'r2-oas/schema/analyzer'
       autoload :Squeezer, 'r2-oas/schema/squeezer'
       autoload :Cleaner, 'r2-oas/schema/cleaner'

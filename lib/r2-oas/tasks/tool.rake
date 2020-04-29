@@ -12,9 +12,9 @@ namespace :routes do
     task deploy: [:common] do
       logger.info '[R2-OAS] start'
 
-      generator_options = { unit_paths_file_path: unit_paths_file_path, skip_generate_docs: true }
-      generator = R2OAS::Schema::Generator.new(generator_options)
-      generator.generate_docs
+      builder_options = { unit_paths_file_path: unit_paths_file_path }
+      builder = R2OAS::Schema::Builder.new(builder_options)
+      builder.build_docs
 
       client_options = {}
       client = R2OAS::Deploy::Client.new(client_options)
@@ -49,9 +49,9 @@ namespace :routes do
       logger.level = :null
 
       logger.info '[R2-OAS] start'
-      generator_options = { skip_generate_docs: true, skip_load_dot_paths: true }
-      generator = R2OAS::Schema::Generator.new(generator_options)
-      generator.generate_docs
+      builder_options = { skip_load_dot_paths: true }
+      builder = R2OAS::Schema::Builder.new(builder_options)
+      builder.build_docs
 
       $stdout = StringIO.new
 
