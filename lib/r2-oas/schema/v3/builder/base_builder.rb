@@ -19,20 +19,7 @@ module R2OAS
         private
 
         attr_accessor :unit_paths_file_path
-        attr_accessor :skip_generate_docs
         attr_accessor :skip_load_dot_paths
-
-        # Scope Rails
-        def create_docs
-          all_routes = create_all_routes
-          parser = Routing::Parser.new(all_routes)
-
-          routes_data = parser.routes_data
-          tags_data = parser.tags_data
-          schemas_data = parser.schemas_data
-
-          Schema::V3::OpenapiObject.new(routes_data, tags_data, schemas_data).to_doc
-        end
 
         def create_all_routes
           ::Rails.application.reload_routes!

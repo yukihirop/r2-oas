@@ -12,7 +12,7 @@ module R2OAS
       class SchemaBuilder < BaseBuilder
         def initialize(options = {})
           super(options)
-          @docs = create_docs
+          @docs = load_docs
           @options = options
         end
 
@@ -26,10 +26,8 @@ module R2OAS
           end
         end
 
-        def create_docs
-          if !skip_generate_docs
-            super
-          elsif skip_generate_docs && FileTest.exists?(doc_save_file_path)
+        def load_docs
+          if FileTest.exists?(doc_save_file_path)
             YAML.load_file(doc_save_file_path)
           else
             {}

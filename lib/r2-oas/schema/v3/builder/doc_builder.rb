@@ -18,11 +18,10 @@ module R2OAS
 
         def build_docs
           logger.info '[Build OAS schema files] start'
-          @schema_builder.build_docs unless skip_generate_docs
-          logger.info '[build OAS schema files] end'
           logger.info '[Build OAS docs from schema files] start'
           build_docs_from_schema_files
           logger.info '[Build OAS docs from schema files] end'
+          logger.info '[build OAS schema files] end'
         end
 
         private
