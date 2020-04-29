@@ -19,7 +19,6 @@ module R2OAS
         private
 
         attr_accessor :unit_paths_file_path
-        attr_accessor :skip_generate_docs
         attr_accessor :skip_load_dot_paths
 
         # Scope Rails

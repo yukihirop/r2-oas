@@ -18,7 +18,7 @@ module R2OAS
 
         def generate_docs
           logger.info '[Generate OAS schema files] start'
-          @schema_generator.generate_docs unless skip_generate_docs
+          @schema_generator.generate_docs
           logger.info '[Generate OAS schema files] end'
           logger.info '[Generate OAS docs from schema files] start'
           generate_docs_from_schema_files

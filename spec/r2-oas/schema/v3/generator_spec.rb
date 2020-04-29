@@ -39,22 +39,6 @@ RSpec.describe R2OAS::Schema::V3::Generator do
       it_behaves_like 'Generated file verification test', true
       it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
     end
-
-    context 'when skip_generate_docs is true' do
-      let(:generator_options) { { skip_generate_docs: true } }
-
-      context 'when file do not exists at doc_save_file_path' do
-        it { expect(generator.generate_docs).to eq true }
-      end
-
-      context 'when file exists at doc_save_file_path' do
-        before do
-          create_save_doc
-        end
-
-        it_behaves_like 'Generated file verification test', false
-      end
-    end
   end
 
   describe '#oas_doc' do
@@ -67,33 +51,6 @@ RSpec.describe R2OAS::Schema::V3::Generator do
 
       it 'should be present' do
         expect(generator.oas_doc).not_to be_blank
-      end
-    end
-
-    context 'when skip_generate_docs is true' do
-      let(:generator_options) { { skip_generate_docs: true } }
-
-      context 'when file exists at doc_save_file_path' do
-        before do
-          # Strike the docs command in advance
-          generate_docs
-          generator.generate_docs
-          @oas_doc = generator.oas_doc
-        end
-
-        it 'should be present' do
-          expect(generator.oas_doc).not_to be_blank
-        end
-
-        context 'when PATHS_FILE is present' do
-          let(:unit_paths_file_path) { "#{paths_path}/task.yml" }
-          let(:generator_options) { { skip_generate_docs: true, unit_paths_file_path: unit_paths_file_path } }
-
-          it 'should squeeze paths' do
-            expect(@oas_doc['paths']['/tasks']).not_to be_blank
-            expect(@oas_doc['paths']['/api/v1/tasks']).to be_blank
-          end
-        end
       end
     end
   end
