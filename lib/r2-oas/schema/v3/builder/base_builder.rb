@@ -32,16 +32,10 @@ module R2OAS
 
         def create_glob_schema_paths
           exclude_paths_regexp_paths               = ["#{schema_save_dir_path}/**.yml"]
-          paths_regexp_paths                       = ["#{schema_save_dir_path}/paths/**/**.yml"]
-          components_schemas_regexp_paths          = ["#{schema_save_dir_path}/components/**/**.yml"]
           components_security_schemes_regexp_paths = ["#{schema_save_dir_path}/components/securitySchemes/**/**.yml"]
 
-          if exists_paths_files?
-            # components/securitySchemes is not referenced in $ ref.
-            exclude_paths_regexp_paths + many_paths_file_paths + many_components_file_paths + components_security_schemes_regexp_paths
-          else
-            exclude_paths_regexp_paths + paths_regexp_paths + components_schemas_regexp_paths
-          end
+          # components/securitySchemes is not referenced in $ ref.
+          exclude_paths_regexp_paths + many_paths_file_paths + many_components_file_paths + components_security_schemes_regexp_paths
         end
 
         def schema_files_paths
