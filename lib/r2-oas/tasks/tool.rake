@@ -10,17 +10,15 @@ namespace :routes do
   namespace :oas do
     desc 'Deploy Swagger UI'
     task deploy: [:common] do
-      logger.info '[R2-OAS] start'
+      start do
+        builder_options = { unit_paths_file_path: unit_paths_file_path }
+        builder = R2OAS::Schema::Builder.new(builder_options)
+        builder.build_docs
 
-      builder_options = { unit_paths_file_path: unit_paths_file_path }
-      builder = R2OAS::Schema::Builder.new(builder_options)
-      builder.build_docs
-
-      client_options = {}
-      client = R2OAS::Deploy::Client.new(client_options)
-      client.deploy
-
-      logger.info '[R2-OAS] end'
+        client_options = {}
+        client = R2OAS::Deploy::Client.new(client_options)
+        client.deploy
+      end
     end
 
     desc 'Display paths list'
@@ -28,14 +26,14 @@ namespace :routes do
       fd = IO.sysopen('/dev/null', 'w+')
       $stdout = IO.new(fd)
       logger.level = :null
-      logger.info '[R2-OAS] start'
-      $stdout = StringIO.new
 
-      paths_ls_options = {}
-      paths_ls = R2OAS::Tool::Paths::Ls.new(paths_ls_options)
-      paths_ls.print
+      start do
+        $stdout = StringIO.new
 
-      logger.info '[R2-OAS] end'
+        paths_ls_options = {}
+        paths_ls = R2OAS::Tool::Paths::Ls.new(paths_ls_options)
+        paths_ls.print
+      end
 
       result = $stdout.string
       $stdout = STDOUT
@@ -48,18 +46,17 @@ namespace :routes do
       $stdout = IO.new(fd)
       logger.level = :null
 
-      logger.info '[R2-OAS] start'
-      builder_options = { skip_load_dot_paths: true }
-      builder = R2OAS::Schema::Builder.new(builder_options)
-      builder.build_docs
+      start do
+        builder_options = { skip_load_dot_paths: true }
+        builder = R2OAS::Schema::Builder.new(builder_options)
+        builder.build_docs
 
-      $stdout = StringIO.new
+        $stdout = StringIO.new
 
-      paths_log_options = {}
-      paths_log = R2OAS::Tool::Paths::Stats.new(paths_log_options)
-      paths_log.print
-
-      logger.info '[R2-OAS] end'
+        paths_log_options = {}
+        paths_log = R2OAS::Tool::Paths::Stats.new(paths_log_options)
+        paths_log.print
+      end
 
       result = $stdout.string
       $stdout = STDOUT
