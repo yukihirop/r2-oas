@@ -146,6 +146,7 @@ We explain the environment variables that can be set.
 |--------|-----------|-------|
 |PATHS_FILE|Specify one paths file path|`""`|
 |OAS_FILE|Specify swagger file path to analyze|`""`|
+|CACHE_DOCS|Effective only when there is no `.docs` file. Specifying `true` will generate a` .docs` file when the `routes:oas:docs` command is executed.|`false`|
 
 
 ## .paths
@@ -160,4 +161,16 @@ You can comment out with `#`
 account.yml
 account.yml               # ignore
 account.yml               # ignore
+```
+
+## .docs
+
+It holds the information in the current routing as a cache. Thanks to this, when the `routes:oas:docs` command is executed, changes in routing can be detected and appropriate processing can be performed.
+
+If you want to inspect `.docs`. You can check it by entering the following code with `pry` or something.
+
+```ruby
+result = IO.binread("oas_docs/.docs")
+inflate = Zlib::Inflate.inflate(result)
+puts Marshal.load(inflate)
 ```

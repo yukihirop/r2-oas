@@ -60,7 +60,12 @@ module R2OAS
           when :ref
             "#{@path.gsub('#/', '')}.#{@ext_name}"
           when :relative
-            "#{@path}.#{@ext_name}"
+            ext_name = File.extname(@path)
+            if ext_name.empty?
+              "#{@path}.#{@ext_name}"
+            else
+              @path
+            end
           when :full
             @path
           else

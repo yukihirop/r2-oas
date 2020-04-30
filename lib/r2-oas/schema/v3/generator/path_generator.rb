@@ -27,7 +27,7 @@ module R2OAS
 
         def generate_docs_from_routes_data
           process_when_generate_docs do |save_file_path|
-            logger.info "  Write schema file: \t#{save_file_path}"
+            logger.info "  Add schema file to store: \t#{save_file_path}"
           end
         end
 
@@ -35,11 +35,11 @@ module R2OAS
           logger.info ' <Update schema files (paths)>'
           save_each_tags(@paths) do |tag_name, result|
             relative_path = "paths/#{tag_name}"
-            path_item_file_manager = PathItemFileManager.new(relative_path, :relative)
+            file_manager = PathItemFileManager.new(relative_path, :relative)
+            save_file_path = file_manager.save_file_path(type: :relative)
+            store.add(save_file_path, result.to_yaml)
 
-            path_item_file_manager.save(result.to_yaml) unless path_item_file_manager.skip_save?
-
-            yield path_item_file_manager.save_file_path(type: :relative) if block_given?
+            yield save_file_path if block_given?
           end
         end
 

@@ -17,17 +17,15 @@ module R2OAS
         end
 
         def generate_docs
-          if force_update_schema || schema_file_do_not_exists?
-            logger.info '<From routes data>'
-            generate_docs_from_routes_data
-          end
+          logger.info '<From routes data>'
+          generate_docs_from_routes_data
         end
 
         private
 
         def generate_docs_from_routes_data
           process_when_generate_docs do |save_file_path|
-            logger.info " Write schema file: \t#{save_file_path}"
+            logger.info " Add schema file to store: \t#{save_file_path}"
           end
         end
 
@@ -47,7 +45,8 @@ module R2OAS
               logger.info ' [Generate OAS schema files (components)] end'
             else
               file_manager = FileManager.new(field_name, :relative)
-              file_manager.save(result.to_yaml)
+              save_file_path = file_manager.save_file_path(type: :relative)
+              store.add(save_file_path, result.to_yaml)
 
               yield file_manager.save_file_path(type: :relative) if block_given?
             end
