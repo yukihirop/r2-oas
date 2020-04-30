@@ -22,6 +22,10 @@ module CreateHelper
     FileUtils.rm_rf Rails.root.join(deploy_dir_path)
   end
 
+  def delete_cache_docs
+    FileUtils.rm_rf Rails.root.join(relative_cahe_docs_path)
+  end
+
   def create_components_securitySchemes_file
     FileUtils.mkdir_p(components_securitySchemes_path) unless FileTest.exists?(components_securitySchemes_path)
     File.write("#{components_securitySchemes_path}/my_oauth.yml", yaml_fixture('src/components/securitySchemes/my_oauth.yml'))
