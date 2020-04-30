@@ -17,7 +17,7 @@ namespace :routes do
       end
     end
 
-    desc 'Analyze Swagger documentation'
+    desc 'Analyze OAS documentation'
     task analyze: [:common] do
       start do
         analyzer_options = { type: :existing, existing_schema_file_path: existing_schema_file_path }

@@ -182,8 +182,8 @@ When you press `Ctrl + C` after edit schema ,
 
 ```
 ^C
-^CI, [2019-06-29T00:55:38.492337 #16277]  INFO -- : [Analyze Swagger file] start
-I, [2019-06-29T00:55:38.494113 #16277]  INFO -- : [Analyze Swagger file (paths)] start
+^CI, [2019-06-29T00:55:38.492337 #16277]  INFO -- : [Analyze OAS file] start
+I, [2019-06-29T00:55:38.494113 #16277]  INFO -- : [Analyze OAS file (paths)] start
 I, [2019-06-29T00:55:38.503677 #16277]  INFO -- :   Write schema file: 	oas_docs/src/paths/rails_admin/main.yml
 I, [2019-06-29T00:55:38.504894 #16277]  INFO -- :   Write schema file: 	oas_docs/src/paths/rails_admin/engine.yml
 I, [2019-06-29T00:55:38.509686 #16277]  INFO -- :   Write schema file: 	oas_docs/src/paths/api/v1/account_user_role.yml
@@ -195,12 +195,12 @@ I, [2019-06-29T00:55:38.548333 #16277]  INFO -- :   Write schema file: 	oas_docs
 I, [2019-06-29T00:55:38.552802 #16277]  INFO -- :   Write schema file: 	oas_docs/src/paths/api/v2/post.yml
 I, [2019-06-29T00:55:38.560056 #16277]  INFO -- :   Write schema file: 	oas_docs/src/paths/task.yml
 I, [2019-06-29T00:55:38.566850 #16277]  INFO -- :   Write schema file: 	oas_docs/src/paths/user.yml
-I, [2019-06-29T00:55:38.566886 #16277]  INFO -- : [Analyze Swagger file (paths)] end
-I, [2019-06-29T00:55:38.567852 #16277]  INFO -- : [Analyze Swagger file (tags)] start
+I, [2019-06-29T00:55:38.566886 #16277]  INFO -- : [Analyze OAS file (paths)] end
+I, [2019-06-29T00:55:38.567852 #16277]  INFO -- : [Analyze OAS file (tags)] start
 I, [2019-06-29T00:55:38.569655 #16277]  INFO -- :   Write schema file: 	oas_docs/src/tags.yml
-I, [2019-06-29T00:55:38.569691 #16277]  INFO -- : [Analyze Swagger file (tags)] end
-I, [2019-06-29T00:55:38.569708 #16277]  INFO -- : [Analyze Swagger file (components)] start
-I, [2019-06-29T00:55:38.569724 #16277]  INFO -- : [Analyze Swagger file (components/schemas)] start
+I, [2019-06-29T00:55:38.569691 #16277]  INFO -- : [Analyze OAS file (tags)] end
+I, [2019-06-29T00:55:38.569708 #16277]  INFO -- : [Analyze OAS file (components)] start
+I, [2019-06-29T00:55:38.569724 #16277]  INFO -- : [Analyze OAS file (components/schemas)] start
 I, [2019-06-29T00:55:38.570894 #16277]  INFO -- :   Write schema file: 	oas_docs/src/components/schemas/account.yml
 I, [2019-06-29T00:55:38.571540 #16277]  INFO -- :   Write schema file: 	oas_docs/src/components/schemas/account_user_role.yml
 I, [2019-06-29T00:55:38.572217 #16277]  INFO -- :   Write schema file: 	oas_docs/src/components/schemas/custom_post.yml
@@ -210,10 +210,10 @@ I, [2019-06-29T00:55:38.574328 #16277]  INFO -- :   Write schema file: 	oas_docs
 I, [2019-06-29T00:55:38.575088 #16277]  INFO -- :   Write schema file: 	oas_docs/src/components/schemas/task.yml
 I, [2019-06-29T00:55:38.575687 #16277]  INFO -- :   Write schema file: 	oas_docs/src/components/schemas/user.yml
 I, [2019-06-29T00:55:38.576485 #16277]  INFO -- :   Write schema file: 	oas_docs/src/components/schemas/user/new/200/get.yml
-I, [2019-06-29T00:55:38.576518 #16277]  INFO -- : [Analyze Swagger file (components/schemas)] end
-I, [2019-06-29T00:55:38.576535 #16277]  INFO -- : [Analyze Swagger file (components/requestBodies)] start
-I, [2019-06-29T00:55:38.576852 #16277]  INFO -- : [Analyze Swagger file (components/requestBodies)] end
-I, [2019-06-29T00:55:38.576867 #16277]  INFO -- : [Analyze Swagger file (components)] end
-I, [2019-06-29T00:55:38.580873 #16277]  INFO -- : [Analyze Swagger file] end
+I, [2019-06-29T00:55:38.576518 #16277]  INFO -- : [Analyze OAS file (components/schemas)] end
+I, [2019-06-29T00:55:38.576535 #16277]  INFO -- : [Analyze OAS file (components/requestBodies)] start
+I, [2019-06-29T00:55:38.576852 #16277]  INFO -- : [Analyze OAS file (components/requestBodies)] end
+I, [2019-06-29T00:55:38.576867 #16277]  INFO -- : [Analyze OAS file (components)] end
+I, [2019-06-29T00:55:38.580873 #16277]  INFO -- : [Analyze OAS file] end
 I, [2019-06-29T00:55:38.587586 #16277]  INFO -- : [R2-OAS] end
 ```
