@@ -315,7 +315,9 @@ If you run the `bundle exec rake routes:oas:docs` command without the `.docs` fi
 
 ```
 rake aborted!
-                Execute the following command to create ./oas_docs/.docs
+R2OAS::NoFileExistsError:
+                Can't find the file ./oas_docs/.docs
+                Please execute the following command to create ./oas_docs/.docs
 
                 CACHE_DOCS=true bundle exec rake routes:oas:docs
 ```
@@ -378,7 +380,9 @@ I, [2020-05-01T02:24:12.971004 #47636]  INFO -- :  <From routes data>
 I, [2020-05-01T02:24:12.971040 #47636]  INFO -- :  <Update Components schema files (components/callbacks)>
 I, [2020-05-01T02:24:12.971052 #47636]  INFO -- :  [Generate OAS schema files (components)] end
 rake aborted!
-                Execute the following command to create ./oas_docs/.docs
+R2OAS::NoFileExistsError:
+                Can't find the file ./oas_docs/.docs
+                Please execute the following command to create ./oas_docs/.docs
 
                 CACHE_DOCS=true bundle exec rake routes:oas:docs
 /Users/yukihirop/RubyProjects/r2-oas/lib/r2-oas/schema/v3/generator/doc_generator.rb:73:in `save_diff_schemas_from'

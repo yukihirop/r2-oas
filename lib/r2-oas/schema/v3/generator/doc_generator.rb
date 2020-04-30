@@ -70,8 +70,10 @@ module R2OAS
             end
           else
             unless is_create_cache || is_exists_cache
-              raise <<-ERR
-                Execute the following command to create #{relative_cahe_docs_path}
+              raise NoFileExistsError.new <<-ERR
+              
+                Can't find the file #{relative_cahe_docs_path}
+                Please execute the following command to create #{relative_cahe_docs_path}
 
                 CACHE_DOCS=true bundle exec rake routes:oas:docs
               ERR
