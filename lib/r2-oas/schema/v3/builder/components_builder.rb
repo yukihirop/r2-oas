@@ -17,8 +17,8 @@ module R2OAS
         def build_docs
           support_components_objects.each do |object_name|
             builder_class(object_name).new(@components, @options.merge(
-                                                            middle_category: object_name
-                                                          )).build_docs
+                                                          middle_category: object_name
+                                                        )).build_docs
           end
         end
 
