@@ -30,7 +30,7 @@ namespace :routes do
       end
     end
 
-    desc 'Distribute Swagger documentation'
+    desc 'Distribute OAS documentation'
     task dist: [:common] do
       start do
         builder_options = { unit_paths_file_path: unit_paths_file_path }
@@ -66,7 +66,7 @@ namespace :routes do
       end
     end
 
-    desc 'Monitor Swagger Document'
+    desc 'Monitor OAS Document'
     task monitor: [:common] do
       start do
         builder_options = { unit_paths_file_path: unit_paths_file_path }
@@ -80,7 +80,7 @@ namespace :routes do
       end
     end
 
-    desc 'Clean Swagger Document'
+    desc 'Clean OAS Document'
     task clean: [:common] do
       start do
         builder_options = { skip_load_dot_paths: true }

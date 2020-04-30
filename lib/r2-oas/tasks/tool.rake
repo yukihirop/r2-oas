@@ -8,7 +8,7 @@ load File.expand_path('common.rake', __dir__)
 
 namespace :routes do
   namespace :oas do
-    desc 'Deploy Swagger UI'
+    desc 'Deploy OAS Document'
     task deploy: [:common] do
       start do
         builder_options = { unit_paths_file_path: unit_paths_file_path }
