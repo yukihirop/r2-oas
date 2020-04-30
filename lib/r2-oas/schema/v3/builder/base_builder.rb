@@ -21,11 +21,6 @@ module R2OAS
         attr_accessor :unit_paths_file_path
         attr_accessor :skip_load_dot_paths
 
-        def create_all_routes
-          ::Rails.application.reload_routes!
-          ::Rails.application.routes.routes
-        end
-
         def schema_file_do_not_exists?
           schema_files_paths.count == 0
         end
@@ -58,10 +53,6 @@ module R2OAS
             components_file_paths_at_path = file_manager.descendants_ref_paths
             result.push(*components_file_paths_at_path)
           end.uniq
-        end
-
-        def exists_paths_files?
-          Dir.glob("#{schema_save_dir_path}/paths/**/**.yml").present?
         end
       end
     end

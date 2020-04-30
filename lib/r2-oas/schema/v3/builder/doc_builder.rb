@@ -3,18 +3,12 @@
 require 'yaml'
 require 'fileutils'
 require_relative 'base_builder'
-require_relative 'schema_builder'
 
 module R2OAS
   module Schema
     module V3
       class DocBuilder < BaseBuilder
         attr_accessor :oas_doc
-
-        def initialize(options = {})
-          super
-          @schema_builder = SchemaBuilder.new(options)
-        end
 
         def build_docs
           logger.info '[Build OAS schema files] start'
