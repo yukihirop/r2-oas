@@ -55,6 +55,7 @@ Metrics/BlockLength:
     - "spec/r2-oas/tasks/tool_spec.rb"
     - "spec/r2-oas/configuration_spec.rb"
     - "spec/r2-oas/schema/v3/generator_spec.rb"
+    - "spec/r2-oas/schema/v3/builder_spec.rb"
     - "spec/r2-oas/schema/v3/analyzer_spec.rb"
     - "spec/support/helpers/config_helper.rb"
     - "spec/r2-oas/schema/v3/object/components_object_spec.rb"
@@ -62,6 +63,7 @@ Metrics/BlockLength:
     - "spec/r2-oas/schema/v3/manager/diff/base_array_diff_manager_spec.rb"
     - "spec/r2-oas/schema/v3/manager/file/include_ref_base_file_manager_spec.rb"
     - "spec/r2-oas/schema/v3/generator/base_generator_spec.rb"
+    - "spec/r2-oas/schema/v3/builder/base_builder_spec.rb"
     - "spec/r2-oas/schema/v3/object/openapi_object_spec.rb"
     - "spec/r2-oas/schema/v3/object/info_object_spec.rb"
 
@@ -112,6 +114,7 @@ Metrics/MethodLength:
     - "lib/r2-oas/schema/v3/generator/schema_generator.rb"
     - "lib/r2-oas/schema/v3/generator/components/schema_generator.rb"
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
+    - "lib/r2-oas/schema/v3/builder/doc_builder.rb"
     - "lib/r2-oas/schema/v3/object/components/request_body_object.rb"
     - "lib/r2-oas/schema/v3/squeezer/path_squeezer.rb"
     - "lib/r2-oas/schema/v3/generator/components/object_generator.rb"
@@ -180,6 +183,7 @@ Style/AccessModifierDeclarations:
 Style/NumericPredicate:
   Exclude:
     - "lib/r2-oas/schema/v3/generator/base_generator.rb"
+    - "lib/r2-oas/schema/v3/builder/base_builder.rb"
 
 Metrics/ClassLength:
   Exclude:
@@ -195,6 +199,7 @@ Layout/EndAlignment:
   Exclude:
     - "lib/r2-oas/shared/sortable.rb"
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
+    - "lib/r2-oas/schema/v3/builder/doc_builder.rb"
 
 Security/YAMLLoad:
   Exclude:

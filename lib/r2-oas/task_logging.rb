@@ -20,6 +20,12 @@ module R2OAS
 
     private
 
+    def start
+      logger.info '[R2-OAS] start'
+      yield
+      logger.info '[R2-OAS] end'
+    end
+
     def logger
       R2OAS.logger
     end

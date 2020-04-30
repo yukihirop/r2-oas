@@ -137,13 +137,13 @@ show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#
 ```
 $ bundle exec rake routes:oas:docs
 I, [2019-06-02T22:12:41.530676 #61323]  INFO -- : [R2-OAS] start
-I, [2019-06-02T22:12:41.609492 #61323]  INFO -- : [Generate Swagger schema files] start
+I, [2019-06-02T22:12:41.609492 #61323]  INFO -- : [Generate OAS schema files] start
 I, [2019-06-02T22:12:41.609574 #61323]  INFO -- : <From routes data>
 I, [2019-06-02T22:12:41.609591 #61323]  INFO -- : <Update schema files>
 I, [2019-06-02T22:12:41.611183 #61323]  INFO -- :  Write schema file: 	oas_docs/src/openapi.yml
 I, [2019-06-02T22:12:41.611676 #61323]  INFO -- :  Write schema file: 	oas_docs/src/info.yml
 I, [2019-06-02T22:12:41.612596 #61323]  INFO -- :  Write schema file: 	oas_docs/src/tags.yml
-I, [2019-06-02T22:12:41.612619 #61323]  INFO -- :  [Generate Swagger schema files (paths)] start
+I, [2019-06-02T22:12:41.612619 #61323]  INFO -- :  [Generate OAS schema files (paths)] start
 I, [2019-06-02T22:12:41.612765 #61323]  INFO -- :  <From routes data>
 I, [2019-06-02T22:12:41.612782 #61323]  INFO -- :  <Update schema files (paths)>
 I, [2019-06-02T22:12:41.614701 #61323]  INFO -- :   Write schema file: 	oas_docs/src/paths/rails_admin/engine.yml
@@ -153,10 +153,10 @@ I, [2019-06-02T22:12:41.630184 #61323]  INFO -- :   Write schema file: 	oas_docs
 I, [2019-06-02T22:12:41.633369 #61323]  INFO -- :   Write schema file: 	oas_docs/src/paths/task.yml
 I, [2019-06-02T22:12:41.636323 #61323]  INFO -- :   Write schema file: 	oas_docs/src/paths/user.yml
 I, [2019-06-02T22:12:41.642353 #61323]  INFO -- :   Write schema file: 	oas_docs/src/paths/rails_admin/main.yml
-I, [2019-06-02T22:12:41.642381 #61323]  INFO -- :  [Generate Swagger schema files (paths)] end
+I, [2019-06-02T22:12:41.642381 #61323]  INFO -- :  [Generate OAS schema files (paths)] end
 I, [2019-06-02T22:12:41.642664 #61323]  INFO -- :  Write schema file: 	oas_docs/src/externalDocs.yml
 I, [2019-06-02T22:12:41.642993 #61323]  INFO -- :  Write schema file: 	oas_docs/src/servers.yml
-I, [2019-06-02T22:12:41.643015 #61323]  INFO -- :  [Generate Swagger schema files (components)] start
+I, [2019-06-02T22:12:41.643015 #61323]  INFO -- :  [Generate OAS schema files (components)] start
 I, [2019-06-02T22:12:41.643335 #61323]  INFO -- :  <From routes data>
 I, [2019-06-02T22:12:41.643421 #61323]  INFO -- :  <Update Components schema files (components/schemas)>
 I, [2019-06-02T22:12:41.645158 #61323]  INFO -- :   Write schema file: 	oas_docs/src/components/schemas/engine.yml
@@ -164,9 +164,9 @@ I, [2019-06-02T22:12:41.645613 #61323]  INFO -- :   Write schema file: 	oas_docs
 I, [2019-06-02T22:12:41.645987 #61323]  INFO -- :   Write schema file: 	oas_docs/src/components/schemas/task.yml
 I, [2019-06-02T22:12:41.646443 #61323]  INFO -- :   Write schema file: 	oas_docs/src/components/schemas/user.yml
 I, [2019-06-02T22:12:41.646833 #61323]  INFO -- :   Write schema file: 	oas_docs/src/components/schemas/main.yml
-I, [2019-06-02T22:12:41.646853 #61323]  INFO -- :  [Generate Swagger schema files (components)] end
-I, [2019-06-02T22:12:41.646865 #61323]  INFO -- : [Generate Swagger schema files] end
-I, [2019-06-02T22:12:41.646874 #61323]  INFO -- : [Generate Swagger docs from schema files] start
+I, [2019-06-02T22:12:41.646853 #61323]  INFO -- :  [Generate OAS schema files (components)] end
+I, [2019-06-02T22:12:41.646865 #61323]  INFO -- : [Generate OAS schema files] end
+I, [2019-06-02T22:12:41.646874 #61323]  INFO -- : [Generate OAS docs from schema files] start
 I, [2019-06-02T22:12:41.647400 #61323]  INFO -- :  Use schema file: 	oas_docs/src/openapi.yml
 I, [2019-06-02T22:12:41.648404 #61323]  INFO -- :  Use schema file: 	oas_docs/src/paths/user.yml
 I, [2019-06-02T22:12:41.649983 #61323]  INFO -- :  Use schema file: 	oas_docs/src/paths/api/v1/task.yml
@@ -184,7 +184,7 @@ I, [2019-06-02T22:12:41.660788 #61323]  INFO -- :  Use schema file: 	oas_docs/sr
 I, [2019-06-02T22:12:41.661004 #61323]  INFO -- :  Use schema file: 	oas_docs/src/components/schemas/post.yml
 I, [2019-06-02T22:12:41.661261 #61323]  INFO -- :  Use schema file: 	oas_docs/src/info.yml
 I, [2019-06-02T22:12:41.661520 #61323]  INFO -- :  Use schema file: 	oas_docs/src/servers.yml
-I, [2019-06-02T22:12:41.686435 #61323]  INFO -- : [Generate Swagger docs from schema files] end
+I, [2019-06-02T22:12:41.686435 #61323]  INFO -- : [Generate OAS docs from schema files] end
 I, [2019-06-02T22:12:41.686477 #61323]  INFO -- : [R2-OAS] end
 ```
 

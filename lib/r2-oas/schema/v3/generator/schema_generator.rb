@@ -20,29 +20,10 @@ module R2OAS
           if force_update_schema || schema_file_do_not_exists?
             logger.info '<From routes data>'
             generate_docs_from_routes_data
-          else
-            logger.info '<From schema files>'
-            generate_docs_from_schema_fiels
-          end
-        end
-
-        def create_docs
-          if !skip_generate_docs
-            super
-          elsif skip_generate_docs && FileTest.exists?(doc_save_file_path)
-            YAML.load_file(doc_save_file_path)
-          else
-            {}
           end
         end
 
         private
-
-        def generate_docs_from_schema_fiels
-          process_when_generate_docs do |save_file_path|
-            logger.info " Merge schema file: \t#{save_file_path}"
-          end
-        end
 
         def generate_docs_from_routes_data
           process_when_generate_docs do |save_file_path|

@@ -17,25 +17,13 @@ module R2OAS
         end
 
         def generate_docs
-          if paths_file_do_not_exists?
-            logger.info ' <From routes data>'
-            generate_docs_from_routes_data
-          else
-            logger.info ' <From schema files>'
-            generate_docs_from_schema_fiels
-          end
+          logger.info ' <From routes data>'
+          generate_docs_from_routes_data
         end
 
         private
 
         alias paths_files_paths schema_files_paths
-        alias paths_file_do_not_exists? schema_file_do_not_exists?
-
-        def generate_docs_from_schema_fiels
-          process_when_generate_docs do |save_file_path|
-            logger.info "  Merge schema file: \t#{save_file_path}"
-          end
-        end
 
         def generate_docs_from_routes_data
           process_when_generate_docs do |save_file_path|

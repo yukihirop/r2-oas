@@ -87,7 +87,7 @@ The ui starts up with the schema set.
 ```
 I, [2019-04-29T12:53:03.010443 #10516]  INFO -- : [R2-OAS] start
 I, [2019-04-29T12:53:03.010557 #10516]  INFO -- : [R2-OAS] start
-I, [2019-04-29T12:53:03.133380 #10516]  INFO -- : [Generate Swagger schema files] start
+I, [2019-04-29T12:53:03.133380 #10516]  INFO -- : [Build OAS schema files] start
 I, [2019-04-29T12:53:03.133776 #10516]  INFO -- : <From schema files>
 I, [2019-04-29T12:53:03.135212 #10516]  INFO -- :  Fetch schema file: 	oas_docs/src/openapi.yml
 I, [2019-04-29T12:53:03.136340 #10516]  INFO -- :  Fetch schema file: 	oas_docs/src/paths/user.yml
@@ -112,7 +112,7 @@ I, [2019-04-29T12:53:03.145597 #10516]  INFO -- : <Update schema files>
 I, [2019-04-29T12:53:03.146179 #10516]  INFO -- :  Merge schema file: 	oas_docs/src/openapi.yml
 I, [2019-04-29T12:53:03.146613 #10516]  INFO -- :  Merge schema file: 	oas_docs/src/info.yml
 I, [2019-04-29T12:53:03.147470 #10516]  INFO -- :  Merge schema file: 	oas_docs/src/tags.yml
-I, [2019-04-29T12:53:03.147492 #10516]  INFO -- :  [Generate Swagger schema files (paths)] start
+I, [2019-04-29T12:53:03.147492 #10516]  INFO -- :  [Build OAS schema files (paths)] start
 I, [2019-04-29T12:53:03.183824 #10516]  INFO -- :  <From schema files>
 I, [2019-04-29T12:53:03.184629 #10516]  INFO -- :   Fetch schema file: 	oas_docs/src/paths/user.yml
 I, [2019-04-29T12:53:03.185143 #10516]  INFO -- :   Fetch schema file: 	oas_docs/src/paths/api/v1/task.yml
@@ -129,10 +129,10 @@ I, [2019-04-29T12:53:03.193803 #10516]  INFO -- :   Merge schema file: 	oas_docs
 I, [2019-04-29T12:53:03.195408 #10516]  INFO -- :   Merge schema file: 	oas_docs/src/paths/task.yml
 I, [2019-04-29T12:53:03.196820 #10516]  INFO -- :   Merge schema file: 	oas_docs/src/paths/user.yml
 I, [2019-04-29T12:53:03.199474 #10516]  INFO -- :   Merge schema file: 	oas_docs/src/paths/rails_admin/main.yml
-I, [2019-04-29T12:53:03.199496 #10516]  INFO -- :  [Generate Swagger schema files (paths)] end
+I, [2019-04-29T12:53:03.199496 #10516]  INFO -- :  [Build OAS schema files (paths)] end
 I, [2019-04-29T12:53:03.199768 #10516]  INFO -- :  Merge schema file: 	oas_docs/src/externalDocs.yml
 I, [2019-04-29T12:53:03.200231 #10516]  INFO -- :  Merge schema file: 	oas_docs/src/servers.yml
-I, [2019-04-29T12:53:03.200257 #10516]  INFO -- :  [Generate Swagger schema files (components)] start
+I, [2019-04-29T12:53:03.200257 #10516]  INFO -- :  [Build OAS schema files (components)] start
 I, [2019-04-29T12:53:03.268381 #10516]  INFO -- :  <From schema files>
 I, [2019-04-29T12:53:03.268772 #10516]  INFO -- :   Fetch Components schema file: 	oas_docs/src/components/schemas/user.yml
 I, [2019-04-29T12:53:03.268969 #10516]  INFO -- :   Fetch Components schema file: 	oas_docs/src/components/schemas/api/v1/task.yml
@@ -149,9 +149,9 @@ I, [2019-04-29T12:53:03.272166 #10516]  INFO -- :   Merge schema file: 	oas_docs
 I, [2019-04-29T12:53:03.272620 #10516]  INFO -- :   Merge schema file: 	oas_docs/src/components/schemas/task.yml
 I, [2019-04-29T12:53:03.273053 #10516]  INFO -- :   Merge schema file: 	oas_docs/src/components/schemas/user.yml
 I, [2019-04-29T12:53:03.273541 #10516]  INFO -- :   Merge schema file: 	oas_docs/src/components/schemas/rails_admin/main.yml
-I, [2019-04-29T12:53:03.273562 #10516]  INFO -- :  [Generate Swagger schema files (components)] end
-I, [2019-04-29T12:53:03.273574 #10516]  INFO -- : [Generate Swagger schema files] end
-I, [2019-04-29T12:53:03.273584 #10516]  INFO -- : [Generate Swagger docs from schema files] start
+I, [2019-04-29T12:53:03.273562 #10516]  INFO -- :  [Build OAS schema files (components)] end
+I, [2019-04-29T12:53:03.273574 #10516]  INFO -- : [Build OAS schema files] end
+I, [2019-04-29T12:53:03.273584 #10516]  INFO -- : [Build OAS docs from schema files] start
 I, [2019-04-29T12:53:03.274133 #10516]  INFO -- :  Use schema file: 	oas_docs/src/openapi.yml
 I, [2019-04-29T12:53:03.274566 #10516]  INFO -- :  Use schema file: 	oas_docs/src/paths/user.yml
 I, [2019-04-29T12:53:03.275000 #10516]  INFO -- :  Use schema file: 	oas_docs/src/paths/api/v1/task.yml
@@ -171,7 +171,7 @@ I, [2019-04-29T12:53:03.279759 #10516]  INFO -- :  Use schema file: 	oas_docs/sr
 I, [2019-04-29T12:53:03.279935 #10516]  INFO -- :  Use schema file: 	oas_docs/src/components/schemas/rails_admin/main.yml
 I, [2019-04-29T12:53:03.280107 #10516]  INFO -- :  Use schema file: 	oas_docs/src/info.yml
 I, [2019-04-29T12:53:03.280223 #10516]  INFO -- :  Use schema file: 	oas_docs/src/servers.yml
-I, [2019-04-29T12:53:03.301656 #10516]  INFO -- : [Generate Swagger docs from schema files] end
+I, [2019-04-29T12:53:03.301656 #10516]  INFO -- : [Build OAS docs from schema files] end
 I, [2019-04-29T12:53:03.301698 #10516]  INFO -- : [R2-OAS] end
 
 wait for single trap ...
@@ -199,7 +199,7 @@ $ PATHS_FILE="../oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:
 ```
 I, [2019-04-29T12:55:15.434226 #10698]  INFO -- : [R2-OAS] start
 I, [2019-04-29T12:55:15.434334 #10698]  INFO -- : [R2-OAS] start
-I, [2019-04-29T12:55:15.550674 #10698]  INFO -- : [Generate Swagger schema files] start
+I, [2019-04-29T12:55:15.550674 #10698]  INFO -- : [Build OAS schema files] start
 I, [2019-04-29T12:55:15.551016 #10698]  INFO -- : <From schema files>
 I, [2019-04-29T12:55:15.551724 #10698]  INFO -- :  Fetch schema file: 	oas_docs/src/paths/api/v1/task.yml
 I, [2019-04-29T12:55:15.551870 #10698]  INFO -- :  Fetch schema file: 	oas_docs/src/components/schemas/api/v1/task.yml
@@ -212,7 +212,7 @@ I, [2019-04-29T12:55:15.553144 #10698]  INFO -- : <Update schema files>
 I, [2019-04-29T12:55:15.553650 #10698]  INFO -- :  Merge schema file: 	oas_docs/src/openapi.yml
 I, [2019-04-29T12:55:15.554101 #10698]  INFO -- :  Merge schema file: 	oas_docs/src/info.yml
 I, [2019-04-29T12:55:15.555634 #10698]  INFO -- :  Merge schema file: 	oas_docs/src/tags.yml
-I, [2019-04-29T12:55:15.555714 #10698]  INFO -- :  [Generate Swagger schema files (paths)] start
+I, [2019-04-29T12:55:15.555714 #10698]  INFO -- :  [Build OAS schema files (paths)] start
 I, [2019-04-29T12:55:15.589466 #10698]  INFO -- :  <From schema files>
 I, [2019-04-29T12:55:15.590112 #10698]  INFO -- :   Fetch schema file: 	oas_docs/src/paths/api/v1/task.yml
 I, [2019-04-29T12:55:15.590216 #10698]  INFO -- :  <Update schema files (paths)>
@@ -223,10 +223,10 @@ I, [2019-04-29T12:55:15.596491 #10698]  INFO -- :   Merge schema file: 	oas_docs
 I, [2019-04-29T12:55:15.598158 #10698]  INFO -- :   Merge schema file: 	oas_docs/src/paths/task.yml
 I, [2019-04-29T12:55:15.599531 #10698]  INFO -- :   Merge schema file: 	oas_docs/src/paths/user.yml
 I, [2019-04-29T12:55:15.602490 #10698]  INFO -- :   Merge schema file: 	oas_docs/src/paths/rails_admin/main.yml
-I, [2019-04-29T12:55:15.602516 #10698]  INFO -- :  [Generate Swagger schema files (paths)] end
+I, [2019-04-29T12:55:15.602516 #10698]  INFO -- :  [Build OAS schema files (paths)] end
 I, [2019-04-29T12:55:15.602822 #10698]  INFO -- :  Merge schema file: 	oas_docs/src/externalDocs.yml
 I, [2019-04-29T12:55:15.603159 #10698]  INFO -- :  Merge schema file: 	oas_docs/src/servers.yml
-I, [2019-04-29T12:55:15.603181 #10698]  INFO -- :  [Generate Swagger schema files (components)] start
+I, [2019-04-29T12:55:15.603181 #10698]  INFO -- :  [Build OAS schema files (components)] start
 I, [2019-04-29T12:55:15.669796 #10698]  INFO -- :  <From schema files>
 I, [2019-04-29T12:55:15.670091 #10698]  INFO -- :   Fetch Components schema file: 	oas_docs/src/components/schemas/api/v1/task.yml
 I, [2019-04-29T12:55:15.670122 #10698]  INFO -- :  <Update Components schema files (components/schemas)>
@@ -237,9 +237,9 @@ I, [2019-04-29T12:55:15.672328 #10698]  INFO -- :   Merge schema file: 	oas_docs
 I, [2019-04-29T12:55:15.672745 #10698]  INFO -- :   Merge schema file: 	oas_docs/src/components/schemas/task.yml
 I, [2019-04-29T12:55:15.673160 #10698]  INFO -- :   Merge schema file: 	oas_docs/src/components/schemas/user.yml
 I, [2019-04-29T12:55:15.673729 #10698]  INFO -- :   Merge schema file: 	oas_docs/src/components/schemas/rails_admin/main.yml
-I, [2019-04-29T12:55:15.673771 #10698]  INFO -- :  [Generate Swagger schema files (components)] end
-I, [2019-04-29T12:55:15.673785 #10698]  INFO -- : [Generate Swagger schema files] end
-I, [2019-04-29T12:55:15.673830 #10698]  INFO -- : [Generate Swagger docs from schema files] start
+I, [2019-04-29T12:55:15.673771 #10698]  INFO -- :  [Build OAS schema files (components)] end
+I, [2019-04-29T12:55:15.673785 #10698]  INFO -- : [Build OAS schema files] end
+I, [2019-04-29T12:55:15.673830 #10698]  INFO -- : [Build OAS docs from schema files] start
 I, [2019-04-29T12:55:15.674608 #10698]  INFO -- :  Use schema file: 	oas_docs/src/paths/api/v1/task.yml
 I, [2019-04-29T12:55:15.674796 #10698]  INFO -- :  Use schema file: 	oas_docs/src/components/schemas/api/v1/task.yml
 I, [2019-04-29T12:55:15.675010 #10698]  INFO -- :  Use schema file: 	oas_docs/src/openapi.yml
@@ -247,7 +247,7 @@ I, [2019-04-29T12:55:15.675144 #10698]  INFO -- :  Use schema file: 	oas_docs/sr
 I, [2019-04-29T12:55:15.675523 #10698]  INFO -- :  Use schema file: 	oas_docs/src/tags.yml
 I, [2019-04-29T12:55:15.675700 #10698]  INFO -- :  Use schema file: 	oas_docs/src/info.yml
 I, [2019-04-29T12:55:15.675817 #10698]  INFO -- :  Use schema file: 	oas_docs/src/servers.yml
-I, [2019-04-29T12:55:15.679925 #10698]  INFO -- : [Generate Swagger docs from schema files] end
+I, [2019-04-29T12:55:15.679925 #10698]  INFO -- : [Build OAS docs from schema files] end
 I, [2019-04-29T12:55:15.679950 #10698]  INFO -- : [R2-OAS] end
 
 wait for single trap ...

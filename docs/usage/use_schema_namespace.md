@@ -95,37 +95,36 @@ Generate like this:
 ```
 oas_docs
 ├── schema
-│   ├── components
-│   │   └── schemas
-│   │       ├── api
-│   │       │   ├── v1
-│   │       │   │   ├── post.yml
-│   │       │   │   └── task.yml
-│   │       │   └── v2
-│   │       │       └── post.yml
-│   │       ├── rails_admin
-│   │       │   ├── engine.yml
-│   │       │   └── main.yml
-│   │       ├── task.yml
-│   │       └── user.yml
-│   ├── externalDocs.yml
-│   ├── info.yml
-│   ├── openapi.yml
-│   ├── paths
-│   │   ├── api
-│   │   │   ├── v1
-│   │   │   │   ├── post.yml
-│   │   │   │   └── task.yml
-│   │   │   └── v2
-│   │   │       └── post.yml
-│   │   ├── rails_admin
-│   │   │   ├── engine.yml
-│   │   │   └── main.yml
-│   │   ├── task.yml
-│   │   └── user.yml
-│   ├── servers.yml
-│   └── tags.yml
-└── oas_doc.yml
+    ├── components
+    │   └── schemas
+    │       ├── api
+    │       │   ├── v1
+    │       │   │   ├── post.yml
+    │       │   │   └── task.yml
+    │       │   └── v2
+    │       │       └── post.yml
+    │       ├── rails_admin
+    │       │   ├── engine.yml
+    │       │   └── main.yml
+    │       ├── task.yml
+    │       └── user.yml
+    ├── externalDocs.yml
+    ├── info.yml
+    ├── openapi.yml
+    ├── paths
+    │   ├── api
+    │   │   ├── v1
+    │   │   │   ├── post.yml
+    │   │   │   └── task.yml
+    │   │   └── v2
+    │   │       └── post.yml
+    │   ├── rails_admin
+    │   │   ├── engine.yml
+    │   │   └── main.yml
+    │   ├── task.yml
+    │   └── user.yml
+    ├── servers.yml
+    └── tags.yml
 ```
 
 ## Do not Use Tag Namespace
@@ -179,5 +178,4 @@ oas_docs
 │   │   └── user.yml
 │   ├── servers.yml
 │   └── tags.yml
-└── oas_doc.yml
 ```

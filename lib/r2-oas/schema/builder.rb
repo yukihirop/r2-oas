@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
 require 'forwardable'
-require 'r2-oas/schema/v3/generator'
+require 'r2-oas/schema/v3/builder'
 
 module R2OAS
   module Schema
-    class Generator
+    class Builder
       extend Forwardable
 
-      def_delegators :@generator, :generate_docs
+      def_delegators :@builder, :build_docs, :oas_doc
 
       def initialize(options = {})
         case ::R2OAS.version
         when :v3
-          @generator = V3::Generator.new(options)
+          @builder = V3::Builder.new(options)
         else
           raise NoImplementError, "Do not support version: #{::R2OAS.version}"
         end
