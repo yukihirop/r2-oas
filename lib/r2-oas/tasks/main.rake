@@ -11,7 +11,7 @@ namespace :routes do
     desc 'Generate OAS documentation files'
     task docs: [:common] do
       start do
-        is_create_cache = cache_docs === 'true'
+        is_create_cache = cache_docs.eql? 'true'
         options = { unit_paths_file_path: unit_paths_file_path, skip_load_dot_paths: true, is_create_cache: is_create_cache }
         generator = R2OAS::Schema::Generator.new(options)
         generator.generate_docs

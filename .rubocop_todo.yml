@@ -26,6 +26,7 @@ Metrics/AbcSize:
     - "lib/r2-oas/routing/components/request_component.rb"
     - "spec/r2-oas/schema/v3/object/components/schema_object_spec.rb"
     - "spec/support/helpers/config_helper.rb"
+    - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
 
 Style/Documentation:
   Enabled: false
@@ -121,11 +122,13 @@ Metrics/MethodLength:
     - "lib/r2-oas/routing/components/request_component.rb"
     - "spec/support/helpers/config_helper.rb"
     - "lib/r2-oas/schema/v3/analyzer/components/object_analyzer.rb"
+    - "lib/r2-oas/store.rb"
 
 Metrics/CyclomaticComplexity:
   Exclude:
     - "lib/r2-oas/logger/stdout_logger.rb"
     - "lib/r2-oas/schema/v3/manager/pathname_manager.rb"
+    - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
 
 Naming/ConstantName:
   Exclude:
@@ -231,3 +234,16 @@ Lint/RequireParentheses:
 Style/IfUnlessModifier:
   Exclude:
     - "lib/r2-oas/schema/editor.rb"
+
+Security/MarshalLoad:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Style/NestedParenthesizedCalls:
+  Enabled: false

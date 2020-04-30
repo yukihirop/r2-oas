@@ -66,7 +66,7 @@ module R2OAS
       @data['data'].each_with_object([]) do |(sha1, value), arr|
         child_key = value['key']
         child_value = Zlib::Inflate.inflate(value['value'])
-        arr.push(sha1 === calc_sha1(child_key, child_value))
+        arr.push(sha1.eql? calc_sha1(child_key, child_value))
       end.all?
     end
 
