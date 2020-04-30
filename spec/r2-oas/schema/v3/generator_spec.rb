@@ -37,21 +37,7 @@ RSpec.describe R2OAS::Schema::V3::Generator do
       end
 
       it_behaves_like 'Generated file verification test', true
-      it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
-    end
-  end
-
-  describe '#oas_doc' do
-    context 'when skip_load_dot_paths is true' do
-      let(:generator_options) { { skip_load_dot_paths: true } }
-
-      before do
-        generator.generate_docs
-      end
-
-      it 'should be present' do
-        expect(generator.oas_doc).not_to be_blank
-      end
+      it { expect(FileTest.exists?(doc_save_file_path)).to eq false }
     end
   end
 end

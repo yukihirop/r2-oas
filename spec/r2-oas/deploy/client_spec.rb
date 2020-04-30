@@ -10,6 +10,7 @@ RSpec.describe R2OAS::Deploy::Client do
     before do
       create_dot_paths
       generate_docs
+      build_docs
       client.deploy
     end
 

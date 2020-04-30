@@ -31,7 +31,7 @@ RSpec.describe 'main_rake' do
     end
 
     it_behaves_like 'Generated file verification test', true
-    it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
+    it { expect(FileTest.exists?(doc_save_file_path)).to eq false }
   end
 
   describe 'routes:oas:analyze' do
@@ -71,6 +71,7 @@ RSpec.describe 'main_rake' do
 
     before do
       generate_docs
+      build_docs
     end
 
     it { expect(FileTest.exists?(doc_save_file_path)).to eq true }

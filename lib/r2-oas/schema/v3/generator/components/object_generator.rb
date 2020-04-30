@@ -20,33 +20,13 @@ module R2OAS
           end
 
           def generate_docs
-            if components_objects_file_do_not_exists?
-              logger.info ' <From routes data>'
-              generate_docs_from_routes_data
-            else
-              logger.info ' <From schema files>'
-              generate_docs_from_schema_fiels
-            end
+            logger.info ' <From routes data>'
+            generate_docs_from_routes_data
           end
 
           private
 
           alias components_objects_files_paths schema_files_paths
-          alias components_objects_file_do_not_exists? schema_file_do_not_exists?
-
-          def generate_docs_from_schema_fiels
-            components_schemas_from_schema_files = components_objects_files_paths.each_with_object({}) do |path, data|
-              yaml = YAML.load_file(path)
-              data.deep_merge!(yaml)
-              full_path = File.expand_path(path, './')
-              logger.info "  Fetch Components schema file: \t#{full_path}"
-            end
-            @components_objects.deep_merge!(components_schemas_from_schema_files[@major_category][@middle_category])
-
-            process_when_generate_docs do |save_file_path|
-              logger.info "  Merge schema file: \t#{save_file_path}"
-            end
-          end
 
           def generate_docs_from_routes_data
             process_when_generate_docs do |save_file_path|

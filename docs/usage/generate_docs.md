@@ -186,24 +186,23 @@ Generate like this:
 ```
 oas_docs
 ├── schema
-│   ├── externalDocs.yml
-│   ├── info.yml
-│   ├── openapi.yml
-│   ├── paths
-│   │   ├── api
-│   │   │   ├── v1
-│   │   │   │   ├── post.yml
-│   │   │   │   └── task.yml
-│   │   │   └── v2
-│   │   │       └── post.yml
-│   │   ├── rails_admin
-│   │   │   ├── engine.yml
-│   │   │   └── main.yml
-│   │   ├── task.yml
-│   │   └── user.yml
-│   ├── servers.yml
-│   └── tags.yml
-└── oas_doc.yml
+    ├── externalDocs.yml
+    ├── info.yml
+    ├── openapi.yml
+    ├── paths
+    │   ├── api
+    │   │   ├── v1
+    │   │   │   ├── post.yml
+    │   │   │   └── task.yml
+    │   │   └── v2
+    │   │       └── post.yml
+    │   ├── rails_admin
+    │   │   ├── engine.yml
+    │   │   └── main.yml
+    │   ├── task.yml
+    │   └── user.yml
+    ├── servers.yml
+    └── tags.yml
 ```
 
 ## Advanced Usage
