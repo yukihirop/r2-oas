@@ -8,7 +8,7 @@ load File.expand_path('common.rake', __dir__)
 
 namespace :routes do
   namespace :oas do
-    desc 'Generate Swagger documentation files'
+    desc 'Generate OAS documentation files'
     task docs: [:common] do
       start do
         options = { unit_paths_file_path: unit_paths_file_path, skip_load_dot_paths: true }
