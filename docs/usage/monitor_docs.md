@@ -145,9 +145,9 @@ If you use [Swagger Viewer](https://marketplace.visualstudio.com/items?itemName=
 
 ```
 I, [2019-06-29T00:52:29.568306 #16277]  INFO -- : [R2-OAS] start
-I, [2019-06-29T00:52:29.857556 #16277]  INFO -- : [Generate Swagger schema files] start
-I, [2019-06-29T00:52:29.857599 #16277]  INFO -- : [Generate Swagger schema files] end
-I, [2019-06-29T00:52:29.857609 #16277]  INFO -- : [Generate Swagger docs from schema files] start
+I, [2019-06-29T00:52:29.857556 #16277]  INFO -- : [Build OAS schema files] start
+I, [2019-06-29T00:52:29.857599 #16277]  INFO -- : [Build OAS schema files] end
+I, [2019-06-29T00:52:29.857609 #16277]  INFO -- : [Build OAS docs from schema files] start
 I, [2019-06-29T00:52:29.858201 #16277]  INFO -- :  Use schema file: 	oas_docs/src/openapi.yml
 I, [2019-06-29T00:52:29.859837 #16277]  INFO -- :  Use schema file: 	oas_docs/src/paths/user.yml
 I, [2019-06-29T00:52:29.861592 #16277]  INFO -- :  Use schema file: 	oas_docs/src/paths/api/v1/account_user_role.yml
@@ -173,7 +173,7 @@ I, [2019-06-29T00:52:29.879621 #16277]  INFO -- :  Use schema file: 	oas_docs/sr
 I, [2019-06-29T00:52:29.879767 #16277]  INFO -- :  Use schema file: 	oas_docs/src/components/schemas/post.yml
 I, [2019-06-29T00:52:29.879960 #16277]  INFO -- :  Use schema file: 	oas_docs/src/info.yml
 I, [2019-06-29T00:52:29.880072 #16277]  INFO -- :  Use schema file: 	oas_docs/src/servers.yml
-I, [2019-06-29T00:52:29.926654 #16277]  INFO -- : [Generate Swagger docs from schema files] end
+I, [2019-06-29T00:52:29.926654 #16277]  INFO -- : [Build OAS docs from schema files] end
 
 wait for single trap ...
 ```

@@ -815,9 +815,9 @@ I, [2019-05-05T15:00:40.792495 #18669]  INFO -- :   Write schema file: 	oas_docs
 I, [2019-05-05T15:00:40.792515 #18669]  INFO -- : [Analyze Swagger file (components/schemas)] end
 I, [2019-05-05T15:00:40.792526 #18669]  INFO -- : [Analyze Swagger file (components)] end
 I, [2019-05-05T15:00:40.793238 #18669]  INFO -- : [Analyze Swagger file] end
-I, [2019-05-05T15:00:40.848054 #18669]  INFO -- : [Generate Swagger schema files] start
-I, [2019-05-05T15:00:40.848102 #18669]  INFO -- : [Generate Swagger schema files] end
-I, [2019-05-05T15:00:40.848115 #18669]  INFO -- : [Generate Swagger docs from schema files] start
+I, [2019-05-05T15:00:40.848054 #18669]  INFO -- : [Build OAS schema files] start
+I, [2019-05-05T15:00:40.848102 #18669]  INFO -- : [Build OAS schema files] end
+I, [2019-05-05T15:00:40.848115 #18669]  INFO -- : [Build OAS docs from schema files] start
 I, [2019-05-05T15:00:40.848612 #18669]  INFO -- :  Use schema file: 	oas_docs/src/openapi.yml
 I, [2019-05-05T15:00:40.849247 #18669]  INFO -- :  Use schema file: 	oas_docs/src/paths/user.yml
 I, [2019-05-05T15:00:40.850005 #18669]  INFO -- :  Use schema file: 	oas_docs/src/paths/api/v1/task.yml
@@ -835,7 +835,7 @@ I, [2019-05-05T15:00:40.854978 #18669]  INFO -- :  Use schema file: 	oas_docs/sr
 I, [2019-05-05T15:00:40.855185 #18669]  INFO -- :  Use schema file: 	oas_docs/src/components/schemas/post.yml
 I, [2019-05-05T15:00:40.855543 #18669]  INFO -- :  Use schema file: 	oas_docs/src/info.yml
 I, [2019-05-05T15:00:40.855888 #18669]  INFO -- :  Use schema file: 	oas_docs/src/servers.yml
-I, [2019-05-05T15:00:40.872235 #18669]  INFO -- : [Generate Swagger docs from schema files] end
+I, [2019-05-05T15:00:40.872235 #18669]  INFO -- : [Build OAS docs from schema files] end
 I, [2019-05-05T15:00:40.872286 #18669]  INFO -- : [R2-OAS] end
 ```
 
