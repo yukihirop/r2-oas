@@ -107,6 +107,10 @@ module R2OAS
         def relative_cahe_docs_path
           "#{@root_dir_path}/.docs"
         end
+
+        def unknown_paths_path
+          "#{@root_dir_path}/src/paths/unknown.yml"
+        end
       end
     end
   end

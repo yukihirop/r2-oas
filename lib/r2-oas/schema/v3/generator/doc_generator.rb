@@ -4,6 +4,7 @@ require 'yaml'
 require 'fileutils'
 require 'r2-oas/errors'
 require 'r2-oas/lib/three-way-merge/twm'
+require 'r2-oas/schema/v3/manager/file_manager'
 require_relative 'base_generator'
 require_relative 'schema_generator'
 
@@ -81,6 +82,11 @@ module R2OAS
                   analyzer.analyze_docs
                 end
               end
+
+              # TODO: Fix Bugs
+              # Delete paths/unknown.yml
+              file_manager = FileManager.new(unknown_paths_path, :full)
+              file_manager.delete
             end
           else
             unless is_create_cache || is_exists_cache
