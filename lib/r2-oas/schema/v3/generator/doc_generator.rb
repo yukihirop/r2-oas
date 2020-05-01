@@ -46,38 +46,34 @@ module R2OAS
           global_sha1s = store.data['data'].keys
 
           # Maake diff sha1s
-          new_sha1s, modified_sha1s, added_sha1s = nil
+          new_sha1s, after_sha1s, before_sha1s = nil
           if exists_cache?
-            modified_sha1s = global_sha1s - local_sha1s
-            removed_sha1s = local_sha1s - global_sha1s
+            after_sha1s = global_sha1s - local_sha1s
+            before_sha1s = local_sha1s - global_sha1s
           else
             new_sha1s = global_sha1s - local_sha1s
           end
 
           # Make diff store
           new_store = store.dup_slice(*new_sha1s)
-          modified_store = store.dup_slice(*modified_sha1s)
-          removed_store = local_store.dup_slice(*removed_sha1s)
+          after_store = store.dup_slice(*after_sha1s)
+          before_store = local_store.dup_slice(*before_sha1s)
 
           is_exists_cache = exists_cache?
           if is_exists_cache || schema_file_do_not_exists?
             unless is_create_cache
-              # Save schema files
+              # First try
               if new_store&.exists?
                 new_store.save do |save_path|
                   logger.info "  Write schema file: \t#{save_path}"
                 end
               end
 
-              if removed_store&.exists?
-                removed_store.delete do |delete_path|
-                  logger.info "  Delete schema file: \t#{delete_path}"
-                end
-              end
-
-              if modified_store&.exists?
-                modified_store.save do |save_path|
-                  logger.info "  Write schema file: \t#{save_path}"
+              # Change routing
+              after_store.diff_from(before_store) do |analyze_data|
+                analyze_data.each do |_, data|
+                  analyzer = Analyzer.new(data['before'], data['after'])
+                  analyzer.analyze_docs
                 end
               end
             end

@@ -78,10 +78,34 @@ module R2OAS
       !@data['data']&.empty?
     end
 
+    def values
+      arr = @data['data'].values
+      arr.each_with_object([]) do |el, result|
+        key = el['key']
+        value = el['value']
+        result.push([key, value])
+      end
+    end
+
+    def diff_from(local_store)
+      to_hash = adjust(values.to_h, 'after')
+      from_hash = adjust(local_store.values.to_h, 'before')
+      analyze_data = to_hash.deep_merge(from_hash)
+      yield analyze_data
+    end
+
     private
 
     def calc_sha1(key, value)
       Digest::SHA1.hexdigest("#{key}\0#{value}")
+    end
+
+    def adjust(hash, direct)
+      hash.each_with_object({}) do |(key, value), result|
+        result[key] = { direct => {}}
+        result[key][direct] = YAML.load(Zlib::Inflate.inflate(value))
+        result
+      end
     end
 
     class << self
