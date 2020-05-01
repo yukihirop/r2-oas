@@ -3,6 +3,7 @@
 require 'yaml'
 require 'fileutils'
 require 'r2-oas/errors'
+require 'r2-oas/lib/three-way-merge/twm'
 require_relative 'base_generator'
 require_relative 'schema_generator'
 
@@ -71,8 +72,12 @@ module R2OAS
 
               # Change routing
               after_store.diff_from(before_store) do |analyze_data|
-                analyze_data.each do |_, data|
-                  analyzer = Analyzer.new(data['before'], data['after'])
+                analyze_data.each do |file_path, data|
+                  left = data['after']
+                  orig = data['before']
+                  right = YAML.load_file(file_path)
+                  merged3 =  Twm.yaml_merge(left, orig, right)
+                  analyzer = Analyzer.new({},merged3)
                   analyzer.analyze_docs
                 end
               end
