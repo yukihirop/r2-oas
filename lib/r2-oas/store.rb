@@ -71,11 +71,11 @@ module R2OAS
     end
 
     def key?(key)
-      @data['data'].key?(key)
+      @data['data']&.key?(key)
     end
 
     def exists?
-      !@data['data'].empty?
+      !@data['data']&.empty?
     end
 
     private
