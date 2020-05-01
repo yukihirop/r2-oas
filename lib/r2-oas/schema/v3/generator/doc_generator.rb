@@ -2,6 +2,7 @@
 
 require 'yaml'
 require 'fileutils'
+require 'r2-oas/errors'
 require_relative 'base_generator'
 require_relative 'schema_generator'
 
@@ -25,6 +26,18 @@ module R2OAS
 
         def save_schemas_from_store
           local_store = Store.new(cache_docs)
+          
+          #Check checksum
+          unless local_store.checksum?
+            raise R2OAS::ChecksumError.new <<-ERR
+
+              Invalid file: #{relative_cahe_docs_path}
+              Please delete #{relative_cahe_docs_path} and execute the following command again.
+              
+              CACHE_DOCS=true bundle exec rake routes:oas:docs
+            ERR
+          end
+
           save_diff_schemas_from(local_store)
         end
 
