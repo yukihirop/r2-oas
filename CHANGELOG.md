@@ -1,5 +1,20 @@
 # Change Log
 
+## v0.2.0
+
+2020-05-02
+
+- [`Feature/Breaking`] Upgrade `routes:oas:docs` cmd ([37ccddf](https://github.com/yukihirop/r2-oas/pull/117))
+  
+  - `.docs` is needed to continue using r2-oas. `If you are using previous version`,you need to run the following command to generate `.docs`.
+
+    ```bash
+    CACHE_DOCS=true bundle exec rake routes:oas:docs
+    ```
+
+- [`Breaking`] Divide into `Generator` and `Builder` ([00fea7d](https://github.com/yukihirop/r2-oas/pull/116))
+  - `routes:oas:docs` cmd do not generate `oas_docs/oas_doc.yml`
+
 ## v0.1.3
 
 2020-04-27
