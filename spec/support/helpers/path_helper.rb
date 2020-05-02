@@ -68,4 +68,8 @@ module PathHelper
   def tags_path
     "#{root_dir_path}/#{schema_save_dir_name}/tags.yml"
   end
+
+  def relative_cache_docs_path
+    "#{root_dir_path}/.docs"
+  end
 end

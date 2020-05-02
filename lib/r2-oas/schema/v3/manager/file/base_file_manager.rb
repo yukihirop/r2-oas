@@ -23,6 +23,8 @@ module R2OAS
         end
 
         def save(data)
+          abs_dir = File.dirname(save_file_path)
+          FileUtils.mkdir_p(abs_dir) unless FileTest.exists?(abs_dir)
           File.write(save_file_path, data)
         end
 
@@ -32,10 +34,7 @@ module R2OAS
         end
 
         def save_file_path(type: :full)
-          file_path = File.expand_path(@relative_save_file_path).tap do |abs_path|
-            abs_dir = File.dirname(abs_path)
-            FileUtils.mkdir_p(abs_dir) unless FileTest.exists?(abs_dir)
-          end
+          file_path = File.expand_path(@relative_save_file_path)
 
           case type
           when :relative

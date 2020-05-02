@@ -49,7 +49,6 @@ RSpec.describe R2OAS::Schema::V3::BaseFileManager do
 
   describe '#save_file_path' do
     it { expect(manager.save_file_path).to eq "#{components_schemas_path}/dummy.yml" }
-    it { expect { manager.save_file_path }.to change { FileTest.exists?(components_schemas_path) }.from(false).to(true) }
   end
 
   describe '#load_data' do

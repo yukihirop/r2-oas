@@ -4,6 +4,7 @@ require 'r2-oas/schema/v3/base'
 require 'r2-oas/routing/parser'
 require 'r2-oas/schema/v3/object/openapi_object'
 require 'r2-oas/schema/v3/manager/file/path_item_file_manager'
+require 'r2-oas/store'
 
 module R2OAS
   module Schema
@@ -13,6 +14,7 @@ module R2OAS
 
         def initialize(options = {})
           super
+          @store = Store.create
           @glob_schema_paths = create_glob_schema_paths
         end
 
@@ -20,6 +22,8 @@ module R2OAS
 
         attr_accessor :unit_paths_file_path
         attr_accessor :skip_load_dot_paths
+        attr_accessor :is_create_cache
+        attr_accessor :store
 
         # Scope Rails
         def create_docs
@@ -80,6 +84,32 @@ module R2OAS
 
         def exists_paths_files?
           Dir.glob("#{schema_save_dir_path}/paths/**/**.yml").present?
+        end
+
+        def cache_docs
+          if exists_cache?
+            result = IO.binread(abs_cache_docs_path)
+            inflate = Zlib::Inflate.inflate(result)
+            @cache_docs ||= Marshal.load(inflate)
+          else
+            @cache_docs ||= {}
+          end
+        end
+
+        def exists_cache?
+          FileTest.exists?(abs_cache_docs_path)
+        end
+
+        def abs_cache_docs_path
+          File.expand_path(relative_cahe_docs_path)
+        end
+
+        def relative_cahe_docs_path
+          "#{@root_dir_path}/.docs"
+        end
+
+        def unknown_paths_path
+          "#{@root_dir_path}/src/paths/unknown.yml"
         end
       end
     end

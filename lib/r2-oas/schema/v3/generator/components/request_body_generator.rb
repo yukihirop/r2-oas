@@ -24,18 +24,18 @@ module R2OAS
 
               relative_path = "#{@major_category}/#{@middle_category}/#{schema_name}"
               file_manager = ComponentsFileManager.build(relative_path, :relative)
-              file_manager.save(result.to_yaml) unless file_manager.skip_save?
+              save_file_path = file_manager.save_file_path(type: :relative)
+              store.add(save_file_path, result.to_yaml)
 
               if data.key?('has_one') && data['has_one']['type'].eql?('schema')
                 original_path = data['has_one']['original_path']
                 file_manager = ComponentsFileManager.new(original_path, :ref)
-                unless file_manager.skip_save?
-                  result = data['has_one']['data']
-                  file_manager.save(result.to_yaml)
-                end
+                result = data['has_one']['data']
+                save_file_path = file_manager.save_file_path(type: :relative)
+                store.add(save_file_path, result.to_yaml)
               end
 
-              yield file_manager.save_file_path(type: :relative) if block_given?
+              yield save_file_path if block_given?
             end
           end
         end

@@ -30,7 +30,7 @@ module R2OAS
 
           def generate_docs_from_routes_data
             process_when_generate_docs do |save_file_path|
-              logger.info "  Write schema file: \t#{save_file_path}"
+              logger.info "  Add schema file into store: \t#{save_file_path}"
             end
           end
 
@@ -45,9 +45,10 @@ module R2OAS
 
               relative_path = "#{@major_category}/#{@middle_category}/#{schema_name}"
               file_manager = ComponentsFileManager.build(relative_path, :relative)
-              file_manager.save(result.to_yaml) unless file_manager.skip_save?
+              save_file_path = file_manager.save_file_path(type: :relative)
+              store.add(save_file_path, result.to_yaml)
 
-              yield file_manager.save_file_path(type: :relative) if block_given?
+              yield save_file_path if block_given?
             end
           end
 
