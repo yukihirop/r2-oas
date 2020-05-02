@@ -11,10 +11,16 @@ Gem::Specification.new do |spec|
   spec.email         = ['te108186@gmail.com']
 
   spec.summary       = 'Provide rake tasks to management API Docment (OpenAPI)'
-  spec.description   = "Let's intuitively write API documentation with Swagger Editor in your Rails Project! 😊 Provide rake tasks to management API Docment (OpenAPI) 🎉"
+  spec.description   = %Q{#{IO.read('GEMSPEC.md')}}
 
-  spec.homepage      = 'https://yukihirop.github.io/r2-oas'
+  spec.homepage      = 'https://github.com/yukihirop/r2-oas'
   spec.license       = 'MIT'
+  spec.metadata = {
+    "bug_tracker_uri"   => "https://github.com/yukihirop/r2-oas/issues",
+    "changelog_uri"     => "https://github.com/yukihirop/r2-oas/blob/v#{spec.version}/CHANGELOG.md",
+    "documentation_uri" => "https://yukihirop.github.io/r2-oas",
+    "source_code_uri"   => "https://github.com/yukihirop/r2-oas/tree/v#{spec.version}"
+  }
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
