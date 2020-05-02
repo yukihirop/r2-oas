@@ -65,12 +65,12 @@ bundle exec routes:oas:editor
 
 #### Generate docs
 
-![oas_docs](https://user-images.githubusercontent.com/11146767/80364449-e678db80-88c0-11ea-8920-d757717ec610.gif)
+![oas_docs](https://user-images.githubusercontent.com/11146767/80856236-0b839a80-8c83-11ea-888f-d0e659e0c251.gif)
 
 
 #### Edit docs
 
-![oas_editor](https://user-images.githubusercontent.com/11146767/80364657-4079a100-88c1-11ea-8f56-c9af78829d68.gif)
+![oas_editor](https://user-images.githubusercontent.com/11146767/80856240-15a59900-8c83-11ea-9dbd-4382528944f2.gif)
 
 ## 📖 Usage
 
