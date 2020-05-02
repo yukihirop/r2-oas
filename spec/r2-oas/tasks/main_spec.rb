@@ -61,7 +61,7 @@ RSpec.describe 'main_rake' do
         end
         it do
           subject
-          expect(FileTest.exists?(relative_cahe_docs_path)).to eq true
+          expect(FileTest.exists?(relative_cache_docs_path)).to eq true
         end
       end
     end

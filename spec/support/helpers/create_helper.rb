@@ -23,7 +23,7 @@ module CreateHelper
   end
 
   def delete_cache_docs
-    FileUtils.rm_rf Rails.root.join(relative_cahe_docs_path)
+    FileUtils.rm_rf Rails.root.join(relative_cache_docs_path)
   end
 
   def create_components_securitySchemes_file
