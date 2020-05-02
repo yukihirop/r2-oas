@@ -42,19 +42,6 @@ module R2OAS
       end
     end
 
-    def delete
-      type = @data['type']
-      @data['data'].values.each do |value|
-        case type
-        when :schema
-          delete_path = value['key']
-          manager = Schema::FileManager.new(delete_path, :full)
-          manager.delete
-          yield delete_path
-        end
-      end
-    end
-
     def dup_slice(*sha1s)
       dup_store = Store.new(@data.dup)
       dup_data = dup_store.data['data']
@@ -78,6 +65,23 @@ module R2OAS
       !@data['data']&.empty?
     end
 
+    def diff_from(local_store)
+      to_hash = adjust(values.to_h, 'after')
+      from_hash = adjust(local_store.send(:values).to_h, 'before')
+      analyze_data = to_hash.deep_merge(from_hash)
+      if block_given?
+        yield analyze_data
+      else
+        analyze_data
+      end
+    end
+
+    private
+
+    def calc_sha1(key, value)
+      Digest::SHA1.hexdigest("#{key}\0#{value}")
+    end
+
     def values
       arr = @data['data'].values
       arr.each_with_object([]) do |el, result|
@@ -85,19 +89,6 @@ module R2OAS
         value = el['value']
         result.push([key, value])
       end
-    end
-
-    def diff_from(local_store)
-      to_hash = adjust(values.to_h, 'after')
-      from_hash = adjust(local_store.values.to_h, 'before')
-      analyze_data = to_hash.deep_merge(from_hash)
-      yield analyze_data
-    end
-
-    private
-
-    def calc_sha1(key, value)
-      Digest::SHA1.hexdigest("#{key}\0#{value}")
     end
 
     def adjust(hash, direct)
@@ -111,7 +102,7 @@ module R2OAS
     class << self
       extend Forwardable
 
-      def_delegators :instance, :data, :add, :slice, :checksum?, :exists?
+      def_delegators :instance, :add
 
       def create
         instance
