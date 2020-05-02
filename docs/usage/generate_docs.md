@@ -47,39 +47,39 @@ I, [2020-05-01T00:26:30.037255 #32948]  INFO -- : [R2-OAS] start
 I, [2020-05-01T00:26:30.672796 #32948]  INFO -- : [Generate OAS schema files] start
 I, [2020-05-01T00:26:30.672844 #32948]  INFO -- : <From routes data>
 I, [2020-05-01T00:26:30.672860 #32948]  INFO -- : <Update schema files>
-I, [2020-05-01T00:26:30.674709 #32948]  INFO -- :  Add schema file to store: 	oas_docs/src/openapi.yml
-I, [2020-05-01T00:26:30.677510 #32948]  INFO -- :  Add schema file to store: 	oas_docs/src/info.yml
-I, [2020-05-01T00:26:30.679245 #32948]  INFO -- :  Add schema file to store: 	oas_docs/src/tags.yml
+I, [2020-05-01T00:26:30.674709 #32948]  INFO -- :  Add schema file into store: 	oas_docs/src/openapi.yml
+I, [2020-05-01T00:26:30.677510 #32948]  INFO -- :  Add schema file into store: 	oas_docs/src/info.yml
+I, [2020-05-01T00:26:30.679245 #32948]  INFO -- :  Add schema file into store: 	oas_docs/src/tags.yml
 I, [2020-05-01T00:26:30.679266 #32948]  INFO -- :  [Generate OAS schema files (paths)] start
 I, [2020-05-01T00:26:30.733419 #32948]  INFO -- :  <From routes data>
 I, [2020-05-01T00:26:30.733458 #32948]  INFO -- :  <Update schema files (paths)>
-I, [2020-05-01T00:26:30.739675 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/api/v1/task.yml
-I, [2020-05-01T00:26:30.746521 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/api/v2/post.yml
-I, [2020-05-01T00:26:30.748522 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/blob.yml
-I, [2020-05-01T00:26:30.750825 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/direct_upload.yml
-I, [2020-05-01T00:26:30.753929 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/disk.yml
-I, [2020-05-01T00:26:30.755903 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/representation.yml
-I, [2020-05-01T00:26:30.761207 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/user.yml
+I, [2020-05-01T00:26:30.739675 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/api/v1/task.yml
+I, [2020-05-01T00:26:30.746521 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/api/v2/post.yml
+I, [2020-05-01T00:26:30.748522 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/blob.yml
+I, [2020-05-01T00:26:30.750825 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/direct_upload.yml
+I, [2020-05-01T00:26:30.753929 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/disk.yml
+I, [2020-05-01T00:26:30.755903 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/representation.yml
+I, [2020-05-01T00:26:30.761207 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/user.yml
 I, [2020-05-01T00:26:30.761230 #32948]  INFO -- :  [Generate OAS schema files (paths)] end
-I, [2020-05-01T00:26:30.762215 #32948]  INFO -- :  Add schema file to store: 	oas_docs/src/external_docs.yml
-I, [2020-05-01T00:26:30.763149 #32948]  INFO -- :  Add schema file to store: 	oas_docs/src/servers.yml
+I, [2020-05-01T00:26:30.762215 #32948]  INFO -- :  Add schema file into store: 	oas_docs/src/external_docs.yml
+I, [2020-05-01T00:26:30.763149 #32948]  INFO -- :  Add schema file into store: 	oas_docs/src/servers.yml
 I, [2020-05-01T00:26:30.763188 #32948]  INFO -- :  [Generate OAS schema files (components)] start
 I, [2020-05-01T00:26:30.866904 #32948]  INFO -- :  <From routes data>
 I, [2020-05-01T00:26:30.866941 #32948]  INFO -- :  <Update Components schema files (components/schemas)>
-I, [2020-05-01T00:26:30.868176 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/user.yml
-I, [2020-05-01T00:26:30.869116 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/blob.yml
-I, [2020-05-01T00:26:30.870156 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
-I, [2020-05-01T00:26:30.871289 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/disk.yml
-I, [2020-05-01T00:26:30.872316 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/representation.yml
-I, [2020-05-01T00:26:30.873301 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v1/task.yml
-I, [2020-05-01T00:26:30.874282 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v2/post.yml
+I, [2020-05-01T00:26:30.868176 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/user.yml
+I, [2020-05-01T00:26:30.869116 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/blob.yml
+I, [2020-05-01T00:26:30.870156 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
+I, [2020-05-01T00:26:30.871289 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/disk.yml
+I, [2020-05-01T00:26:30.872316 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/representation.yml
+I, [2020-05-01T00:26:30.873301 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v1/task.yml
+I, [2020-05-01T00:26:30.874282 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v2/post.yml
 I, [2020-05-01T00:26:30.925057 #32948]  INFO -- :  <From routes data>
 I, [2020-05-01T00:26:30.925096 #32948]  INFO -- :  <Update Components schema files (components/requestBodies)>
-I, [2020-05-01T00:26:30.927746 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/user.yml
-I, [2020-05-01T00:26:30.929966 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
-I, [2020-05-01T00:26:30.932245 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/disk.yml
-I, [2020-05-01T00:26:30.934686 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v1/task.yml
-I, [2020-05-01T00:26:30.937036 #32948]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v2/post.yml
+I, [2020-05-01T00:26:30.927746 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/user.yml
+I, [2020-05-01T00:26:30.929966 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
+I, [2020-05-01T00:26:30.932245 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/disk.yml
+I, [2020-05-01T00:26:30.934686 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v1/task.yml
+I, [2020-05-01T00:26:30.937036 #32948]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v2/post.yml
 I, [2020-05-01T00:26:30.994492 #32948]  INFO -- :  <From routes data>
 I, [2020-05-01T00:26:30.994534 #32948]  INFO -- :  <Update Components schema files (components/securitySchemes)>
 I, [2020-05-01T00:26:31.057864 #32948]  INFO -- :  <From routes data>
@@ -181,39 +181,39 @@ I, [2020-05-01T01:06:35.982655 #34660]  INFO -- : [R2-OAS] start
 I, [2020-05-01T01:06:36.508949 #34660]  INFO -- : [Generate OAS schema files] start
 I, [2020-05-01T01:06:36.509027 #34660]  INFO -- : <From routes data>
 I, [2020-05-01T01:06:36.509053 #34660]  INFO -- : <Update schema files>
-I, [2020-05-01T01:06:36.511900 #34660]  INFO -- :  Add schema file to store: 	oas_docs/src/openapi.yml
-I, [2020-05-01T01:06:36.513213 #34660]  INFO -- :  Add schema file to store: 	oas_docs/src/info.yml
-I, [2020-05-01T01:06:36.515045 #34660]  INFO -- :  Add schema file to store: 	oas_docs/src/tags.yml
+I, [2020-05-01T01:06:36.511900 #34660]  INFO -- :  Add schema file into store: 	oas_docs/src/openapi.yml
+I, [2020-05-01T01:06:36.513213 #34660]  INFO -- :  Add schema file into store: 	oas_docs/src/info.yml
+I, [2020-05-01T01:06:36.515045 #34660]  INFO -- :  Add schema file into store: 	oas_docs/src/tags.yml
 I, [2020-05-01T01:06:36.515066 #34660]  INFO -- :  [Generate OAS schema files (paths)] start
 I, [2020-05-01T01:06:36.572245 #34660]  INFO -- :  <From routes data>
 I, [2020-05-01T01:06:36.572281 #34660]  INFO -- :  <Update schema files (paths)>
-I, [2020-05-01T01:06:36.574396 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/api/v1/task.yml
-I, [2020-05-01T01:06:36.580388 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/api/v2/post.yml
-I, [2020-05-01T01:06:36.582187 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/blob.yml
-I, [2020-05-01T01:06:36.583721 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/direct_upload.yml
-I, [2020-05-01T01:06:36.585989 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/disk.yml
-I, [2020-05-01T01:06:36.588352 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/representation.yml
-I, [2020-05-01T01:06:36.594436 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/user.yml
+I, [2020-05-01T01:06:36.574396 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/api/v1/task.yml
+I, [2020-05-01T01:06:36.580388 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/api/v2/post.yml
+I, [2020-05-01T01:06:36.582187 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/blob.yml
+I, [2020-05-01T01:06:36.583721 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/direct_upload.yml
+I, [2020-05-01T01:06:36.585989 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/disk.yml
+I, [2020-05-01T01:06:36.588352 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/representation.yml
+I, [2020-05-01T01:06:36.594436 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/user.yml
 I, [2020-05-01T01:06:36.594470 #34660]  INFO -- :  [Generate OAS schema files (paths)] end
-I, [2020-05-01T01:06:36.595590 #34660]  INFO -- :  Add schema file to store: 	oas_docs/src/external_docs.yml
-I, [2020-05-01T01:06:36.596515 #34660]  INFO -- :  Add schema file to store: 	oas_docs/src/servers.yml
+I, [2020-05-01T01:06:36.595590 #34660]  INFO -- :  Add schema file into store: 	oas_docs/src/external_docs.yml
+I, [2020-05-01T01:06:36.596515 #34660]  INFO -- :  Add schema file into store: 	oas_docs/src/servers.yml
 I, [2020-05-01T01:06:36.596534 #34660]  INFO -- :  [Generate OAS schema files (components)] start
 I, [2020-05-01T01:06:36.717794 #34660]  INFO -- :  <From routes data>
 I, [2020-05-01T01:06:36.717835 #34660]  INFO -- :  <Update Components schema files (components/schemas)>
-I, [2020-05-01T01:06:36.718962 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/user.yml
-I, [2020-05-01T01:06:36.719937 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/blob.yml
-I, [2020-05-01T01:06:36.720934 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
-I, [2020-05-01T01:06:36.722095 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/disk.yml
-I, [2020-05-01T01:06:36.723164 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/representation.yml
-I, [2020-05-01T01:06:36.724655 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v1/task.yml
-I, [2020-05-01T01:06:36.725850 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v2/post.yml
+I, [2020-05-01T01:06:36.718962 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/user.yml
+I, [2020-05-01T01:06:36.719937 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/blob.yml
+I, [2020-05-01T01:06:36.720934 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
+I, [2020-05-01T01:06:36.722095 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/disk.yml
+I, [2020-05-01T01:06:36.723164 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/representation.yml
+I, [2020-05-01T01:06:36.724655 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v1/task.yml
+I, [2020-05-01T01:06:36.725850 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v2/post.yml
 I, [2020-05-01T01:06:36.777317 #34660]  INFO -- :  <From routes data>
 I, [2020-05-01T01:06:36.777355 #34660]  INFO -- :  <Update Components schema files (components/requestBodies)>
-I, [2020-05-01T01:06:36.779647 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/user.yml
-I, [2020-05-01T01:06:36.782242 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
-I, [2020-05-01T01:06:36.784386 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/disk.yml
-I, [2020-05-01T01:06:36.786612 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v1/task.yml
-I, [2020-05-01T01:06:36.788868 #34660]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v2/post.yml
+I, [2020-05-01T01:06:36.779647 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/user.yml
+I, [2020-05-01T01:06:36.782242 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
+I, [2020-05-01T01:06:36.784386 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/disk.yml
+I, [2020-05-01T01:06:36.786612 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v1/task.yml
+I, [2020-05-01T01:06:36.788868 #34660]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v2/post.yml
 I, [2020-05-01T01:06:36.841673 #34660]  INFO -- :  <From routes data>
 I, [2020-05-01T01:06:36.841712 #34660]  INFO -- :  <Update Components schema files (components/securitySchemes)>
 I, [2020-05-01T01:06:36.893801 #34660]  INFO -- :  <From routes data>
@@ -256,39 +256,39 @@ I, [2020-05-01T01:31:23.512339 #38857]  INFO -- : [R2-OAS] start
 I, [2020-05-01T01:31:24.103471 #38857]  INFO -- : [Generate OAS schema files] start
 I, [2020-05-01T01:31:24.103509 #38857]  INFO -- : <From routes data>
 I, [2020-05-01T01:31:24.103546 #38857]  INFO -- : <Update schema files>
-I, [2020-05-01T01:31:24.106149 #38857]  INFO -- :  Add schema file to store: 	oas_docs/src/openapi.yml
-I, [2020-05-01T01:31:24.108049 #38857]  INFO -- :  Add schema file to store: 	oas_docs/src/info.yml
-I, [2020-05-01T01:31:24.110170 #38857]  INFO -- :  Add schema file to store: 	oas_docs/src/tags.yml
+I, [2020-05-01T01:31:24.106149 #38857]  INFO -- :  Add schema file into store: 	oas_docs/src/openapi.yml
+I, [2020-05-01T01:31:24.108049 #38857]  INFO -- :  Add schema file into store: 	oas_docs/src/info.yml
+I, [2020-05-01T01:31:24.110170 #38857]  INFO -- :  Add schema file into store: 	oas_docs/src/tags.yml
 I, [2020-05-01T01:31:24.110190 #38857]  INFO -- :  [Generate OAS schema files (paths)] start
 I, [2020-05-01T01:31:24.161252 #38857]  INFO -- :  <From routes data>
 I, [2020-05-01T01:31:24.161307 #38857]  INFO -- :  <Update schema files (paths)>
-I, [2020-05-01T01:31:24.168345 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/api/v1/task.yml
-I, [2020-05-01T01:31:24.174644 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/api/v2/post.yml
-I, [2020-05-01T01:31:24.177262 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/blob.yml
-I, [2020-05-01T01:31:24.179036 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/direct_upload.yml
-I, [2020-05-01T01:31:24.182049 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/disk.yml
-I, [2020-05-01T01:31:24.184352 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/representation.yml
-I, [2020-05-01T01:31:24.191103 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/user.yml
+I, [2020-05-01T01:31:24.168345 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/api/v1/task.yml
+I, [2020-05-01T01:31:24.174644 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/api/v2/post.yml
+I, [2020-05-01T01:31:24.177262 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/blob.yml
+I, [2020-05-01T01:31:24.179036 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/direct_upload.yml
+I, [2020-05-01T01:31:24.182049 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/disk.yml
+I, [2020-05-01T01:31:24.184352 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/representation.yml
+I, [2020-05-01T01:31:24.191103 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/user.yml
 I, [2020-05-01T01:31:24.191138 #38857]  INFO -- :  [Generate OAS schema files (paths)] end
-I, [2020-05-01T01:31:24.192176 #38857]  INFO -- :  Add schema file to store: 	oas_docs/src/external_docs.yml
-I, [2020-05-01T01:31:24.193420 #38857]  INFO -- :  Add schema file to store: 	oas_docs/src/servers.yml
+I, [2020-05-01T01:31:24.192176 #38857]  INFO -- :  Add schema file into store: 	oas_docs/src/external_docs.yml
+I, [2020-05-01T01:31:24.193420 #38857]  INFO -- :  Add schema file into store: 	oas_docs/src/servers.yml
 I, [2020-05-01T01:31:24.193439 #38857]  INFO -- :  [Generate OAS schema files (components)] start
 I, [2020-05-01T01:31:24.284912 #38857]  INFO -- :  <From routes data>
 I, [2020-05-01T01:31:24.284948 #38857]  INFO -- :  <Update Components schema files (components/schemas)>
-I, [2020-05-01T01:31:24.285956 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/user.yml
-I, [2020-05-01T01:31:24.287138 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/blob.yml
-I, [2020-05-01T01:31:24.288612 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
-I, [2020-05-01T01:31:24.289710 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/disk.yml
-I, [2020-05-01T01:31:24.290637 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/representation.yml
-I, [2020-05-01T01:31:24.291558 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v1/task.yml
-I, [2020-05-01T01:31:24.292834 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v2/post.yml
+I, [2020-05-01T01:31:24.285956 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/user.yml
+I, [2020-05-01T01:31:24.287138 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/blob.yml
+I, [2020-05-01T01:31:24.288612 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
+I, [2020-05-01T01:31:24.289710 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/disk.yml
+I, [2020-05-01T01:31:24.290637 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/representation.yml
+I, [2020-05-01T01:31:24.291558 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v1/task.yml
+I, [2020-05-01T01:31:24.292834 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v2/post.yml
 I, [2020-05-01T01:31:24.409634 #38857]  INFO -- :  <From routes data>
 I, [2020-05-01T01:31:24.409687 #38857]  INFO -- :  <Update Components schema files (components/requestBodies)>
-I, [2020-05-01T01:31:24.412535 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/user.yml
-I, [2020-05-01T01:31:24.415665 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
-I, [2020-05-01T01:31:24.418540 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/disk.yml
-I, [2020-05-01T01:31:24.420598 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v1/task.yml
-I, [2020-05-01T01:31:24.423222 #38857]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v2/post.yml
+I, [2020-05-01T01:31:24.412535 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/user.yml
+I, [2020-05-01T01:31:24.415665 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
+I, [2020-05-01T01:31:24.418540 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/disk.yml
+I, [2020-05-01T01:31:24.420598 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v1/task.yml
+I, [2020-05-01T01:31:24.423222 #38857]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v2/post.yml
 I, [2020-05-01T01:31:24.470555 #38857]  INFO -- :  <From routes data>
 I, [2020-05-01T01:31:24.470597 #38857]  INFO -- :  <Update Components schema files (components/securitySchemes)>
 I, [2020-05-01T01:31:24.522482 #38857]  INFO -- :  <From routes data>
@@ -331,39 +331,39 @@ I, [2020-05-01T02:24:11.823975 #47636]  INFO -- : [R2-OAS] start
 I, [2020-05-01T02:24:12.337130 #47636]  INFO -- : [Generate OAS schema files] start
 I, [2020-05-01T02:24:12.337177 #47636]  INFO -- : <From routes data>
 I, [2020-05-01T02:24:12.337189 #47636]  INFO -- : <Update schema files>
-I, [2020-05-01T02:24:12.339013 #47636]  INFO -- :  Add schema file to store: 	oas_docs/src/openapi.yml
-I, [2020-05-01T02:24:12.340182 #47636]  INFO -- :  Add schema file to store: 	oas_docs/src/info.yml
-I, [2020-05-01T02:24:12.341872 #47636]  INFO -- :  Add schema file to store: 	oas_docs/src/tags.yml
+I, [2020-05-01T02:24:12.339013 #47636]  INFO -- :  Add schema file into store: 	oas_docs/src/openapi.yml
+I, [2020-05-01T02:24:12.340182 #47636]  INFO -- :  Add schema file into store: 	oas_docs/src/info.yml
+I, [2020-05-01T02:24:12.341872 #47636]  INFO -- :  Add schema file into store: 	oas_docs/src/tags.yml
 I, [2020-05-01T02:24:12.341890 #47636]  INFO -- :  [Generate OAS schema files (paths)] start
 I, [2020-05-01T02:24:12.391772 #47636]  INFO -- :  <From routes data>
 I, [2020-05-01T02:24:12.391817 #47636]  INFO -- :  <Update schema files (paths)>
-I, [2020-05-01T02:24:12.393787 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/api/v1/task.yml
-I, [2020-05-01T02:24:12.400245 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/api/v2/post.yml
-I, [2020-05-01T02:24:12.401931 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/blob.yml
-I, [2020-05-01T02:24:12.403456 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/direct_upload.yml
-I, [2020-05-01T02:24:12.405666 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/disk.yml
-I, [2020-05-01T02:24:12.408723 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/active_storage/representation.yml
-I, [2020-05-01T02:24:12.417412 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/paths/user.yml
+I, [2020-05-01T02:24:12.393787 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/api/v1/task.yml
+I, [2020-05-01T02:24:12.400245 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/api/v2/post.yml
+I, [2020-05-01T02:24:12.401931 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/blob.yml
+I, [2020-05-01T02:24:12.403456 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/direct_upload.yml
+I, [2020-05-01T02:24:12.405666 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/disk.yml
+I, [2020-05-01T02:24:12.408723 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/active_storage/representation.yml
+I, [2020-05-01T02:24:12.417412 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/paths/user.yml
 I, [2020-05-01T02:24:12.417509 #47636]  INFO -- :  [Generate OAS schema files (paths)] end
-I, [2020-05-01T02:24:12.420108 #47636]  INFO -- :  Add schema file to store: 	oas_docs/src/external_docs.yml
-I, [2020-05-01T02:24:12.421518 #47636]  INFO -- :  Add schema file to store: 	oas_docs/src/servers.yml
+I, [2020-05-01T02:24:12.420108 #47636]  INFO -- :  Add schema file into store: 	oas_docs/src/external_docs.yml
+I, [2020-05-01T02:24:12.421518 #47636]  INFO -- :  Add schema file into store: 	oas_docs/src/servers.yml
 I, [2020-05-01T02:24:12.421539 #47636]  INFO -- :  [Generate OAS schema files (components)] start
 I, [2020-05-01T02:24:12.516931 #47636]  INFO -- :  <From routes data>
 I, [2020-05-01T02:24:12.516967 #47636]  INFO -- :  <Update Components schema files (components/schemas)>
-I, [2020-05-01T02:24:12.518440 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/user.yml
-I, [2020-05-01T02:24:12.519569 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/blob.yml
-I, [2020-05-01T02:24:12.520535 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
-I, [2020-05-01T02:24:12.521450 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/disk.yml
-I, [2020-05-01T02:24:12.522427 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/representation.yml
-I, [2020-05-01T02:24:12.523469 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v1/task.yml
-I, [2020-05-01T02:24:12.524670 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v2/post.yml
+I, [2020-05-01T02:24:12.518440 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/user.yml
+I, [2020-05-01T02:24:12.519569 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/blob.yml
+I, [2020-05-01T02:24:12.520535 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
+I, [2020-05-01T02:24:12.521450 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/disk.yml
+I, [2020-05-01T02:24:12.522427 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/representation.yml
+I, [2020-05-01T02:24:12.523469 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v1/task.yml
+I, [2020-05-01T02:24:12.524670 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v2/post.yml
 I, [2020-05-01T02:24:12.576654 #47636]  INFO -- :  <From routes data>
 I, [2020-05-01T02:24:12.576697 #47636]  INFO -- :  <Update Components schema files (components/requestBodies)>
-I, [2020-05-01T02:24:12.580611 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/user.yml
-I, [2020-05-01T02:24:12.582940 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
-I, [2020-05-01T02:24:12.585316 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/activestorage/disk.yml
-I, [2020-05-01T02:24:12.587631 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v1/task.yml
-I, [2020-05-01T02:24:12.589786 #47636]  INFO -- :   Add schema file to store: 	oas_docs/src/components/schemas/api/v2/post.yml
+I, [2020-05-01T02:24:12.580611 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/user.yml
+I, [2020-05-01T02:24:12.582940 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/direct_upload.yml
+I, [2020-05-01T02:24:12.585316 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/activestorage/disk.yml
+I, [2020-05-01T02:24:12.587631 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v1/task.yml
+I, [2020-05-01T02:24:12.589786 #47636]  INFO -- :   Add schema file into store: 	oas_docs/src/components/schemas/api/v2/post.yml
 I, [2020-05-01T02:24:12.650356 #47636]  INFO -- :  <From routes data>
 I, [2020-05-01T02:24:12.650394 #47636]  INFO -- :  <Update Components schema files (components/securitySchemes)>
 I, [2020-05-01T02:24:12.710266 #47636]  INFO -- :  <From routes data>

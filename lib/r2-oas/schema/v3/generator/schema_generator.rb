@@ -25,7 +25,7 @@ module R2OAS
 
         def generate_docs_from_routes_data
           process_when_generate_docs do |save_file_path|
-            logger.info " Add schema file to store: \t#{save_file_path}"
+            logger.info " Add schema file into store: \t#{save_file_path}"
           end
         end
 
