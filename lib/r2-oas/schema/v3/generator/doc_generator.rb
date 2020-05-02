@@ -76,9 +76,9 @@ module R2OAS
                 analyze_data.each do |file_path, data|
                   left = data['after']
                   orig = data['before']
-                  right = YAML.load_file(file_path)
+                  right = FileManager.new(file_path, :full).load_data
                   merged3 =  Twm.yaml_merge(left, orig, right)
-                  analyzer = Analyzer.new({},merged3)
+                  analyzer = Analyzer.new({},merged3, { type: :edited })
                   analyzer.analyze_docs
                 end
               end

@@ -9,13 +9,13 @@ module Twm
     #
     # condition: merge right into left
     def yaml_merge(left, orig, right)
-      flat_orig = KeyFlatten.key_flatten(orig).to_h
-      flat_left = KeyFlatten.key_flatten(left).to_h
-      flat_right = KeyFlatten.key_flatten(right).to_h
+      flat_orig = KeyFlatten.key_flatten(orig || {}).to_h
+      flat_left = KeyFlatten.key_flatten(left || {}).to_h
+      flat_right = KeyFlatten.key_flatten(right || {}).to_h
 
       all_keys = (flat_left.keys + flat_orig.keys + flat_right.keys).uniq
 
-      thm = all_keys.each_with_object({}) do |key, result|
+      twm = all_keys.each_with_object({}) do |key, result|
         r = three_equal?(flat_left[key], flat_orig[key], flat_right[key])
 
         case
@@ -24,20 +24,21 @@ module Twm
           result[key] = flat_orig[key]
         when r[:left_orig] && !r[:orig_right] && !r[:left_right]
           # edited
-          result[key] = flat_right[key] unless flat_right[key].nil?
+          result[key] = flat_right[key]
         when !r[:left_orig] && r[:orig_right] && !r[:left_right]
           # generate
-          result[key] = flat_left[key] unless flat_left[key].nil?
+          result[key] = flat_left[key]
         when !r[:left_orig] && !r[:orig_right] && r[:left_right]
           # edited
-          result[key] = flat_right[key] unless flat_right[key].nil?
+          result[key] = flat_right[key]
         when !r[:left_orig] && !r[:orig_right] && !r[:left_right]
           # conflict => prioritize edited
-          result[key] = flat_right[key] unless flat_right[key].nil?
+          result[key] = flat_right[key]
         end
       end
 
-      KeyFlatten.key_unflatten(thm)
+      twm = twm.delete_if{ |k,v| v.nil? }
+      KeyFlatten.key_unflatten(twm)
     end
 
     private

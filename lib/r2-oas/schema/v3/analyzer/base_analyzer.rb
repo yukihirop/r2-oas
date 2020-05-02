@@ -26,14 +26,13 @@ module R2OAS
 
         private
 
-        attr_accessor :edited_schema_file_path
         attr_accessor :existing_schema_file_path
         attr_accessor :type
 
         def create_after_schema_data
           case @type
           when :edited
-            create_after_schema_data_when_edited
+            {}
           when :existing
             if existing_schema_file_path.present?
               create_after_schema_data_when_specify_path
@@ -41,10 +40,6 @@ module R2OAS
               create_after_schema_data_when_not_specify_path
             end
           end
-        end
-
-        def create_after_schema_data_when_edited
-          YAML.load_file(edited_schema_file_path)
         end
 
         def create_after_schema_data_when_not_specify_path
