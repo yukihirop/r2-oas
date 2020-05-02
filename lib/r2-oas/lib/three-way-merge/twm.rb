@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'key_flatten'
 
 module Twm
@@ -18,58 +20,56 @@ module Twm
       twm = all_keys.each_with_object({}) do |key, result|
         r = three_equal?(flat_left[key], flat_orig[key], flat_right[key])
 
-        case
-        when r[:left_orig] && r[:orig_right] && r[:left_right]
+        if r[:left_orig] && r[:orig_right] && r[:left_right]
           # no change
           result[key] = flat_orig[key]
-        when r[:left_orig] && !r[:orig_right] && !r[:left_right]
+        elsif r[:left_orig] && !r[:orig_right] && !r[:left_right]
           # edited
           result[key] = flat_right[key]
-        when !r[:left_orig] && r[:orig_right] && !r[:left_right]
+        elsif !r[:left_orig] && r[:orig_right] && !r[:left_right]
           # generate
           result[key] = flat_left[key]
-        when !r[:left_orig] && !r[:orig_right] && r[:left_right]
+        elsif !r[:left_orig] && !r[:orig_right] && r[:left_right]
           # edited
           result[key] = flat_right[key]
-        when !r[:left_orig] && !r[:orig_right] && !r[:left_right]
+        elsif !r[:left_orig] && !r[:orig_right] && !r[:left_right]
           # conflict => prioritize edited
           result[key] = flat_right[key]
         end
       end
 
-      twm = twm.delete_if{ |k,v| v.nil? }
+      twm = twm.delete_if { |_k, v| v.nil? }
       KeyFlatten.key_unflatten(twm)
     end
 
     private
 
     def three_equal?(left, orig, right)
-      case
-      when left == orig && orig == right
+      if left == orig && orig == right
         {
           left_orig: true,
           orig_right: true,
           left_right: true
         }
-      when left == orig && orig != right
+      elsif left == orig && orig != right
         {
           left_orig: true,
           orig_right: false,
           left_right: false
         }
-      when left != orig && orig == right
+      elsif left != orig && orig == right
         {
           left_orig: false,
           orig_right: true,
           left_right: false
         }
-      when left != orig && orig != right && left == right
+      elsif left != orig && orig != right && left == right
         {
           left_orig: false,
           orig_right: false,
           left_right: true
         }
-      when left != orig && orig != right && left != right
+      elsif left != orig && orig != right && left != right
         {
           left_orig: false,
           orig_right: false,
@@ -79,5 +79,3 @@ module Twm
     end
   end
 end
-
-

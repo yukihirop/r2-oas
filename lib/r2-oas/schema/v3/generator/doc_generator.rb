@@ -28,14 +28,14 @@ module R2OAS
 
         def save_schemas_from_store
           local_store = Store.new(cache_docs)
-          
-          #Check checksum
+
+          # Check checksum
           unless local_store.checksum?
-            raise R2OAS::ChecksumError.new <<-ERR
+            raise R2OAS::ChecksumError, <<-ERR
 
               Invalid file: #{relative_cahe_docs_path}
               Please delete #{relative_cahe_docs_path} and execute the following command again.
-              
+
               CACHE_DOCS=true bundle exec rake routes:oas:docs
             ERR
           end
@@ -78,7 +78,7 @@ module R2OAS
                   orig = data['before']
                   right = FileManager.new(file_path, :full).load_data
                   merged3 =  Twm.yaml_merge(left, orig, right)
-                  analyzer = Analyzer.new({},merged3, { type: :edited })
+                  analyzer = Analyzer.new({}, merged3, type: :edited)
                   analyzer.analyze_docs
                 end
               end
@@ -90,8 +90,8 @@ module R2OAS
             end
           else
             unless is_create_cache || is_exists_cache
-              raise NoFileExistsError.new <<-ERR
-              
+              raise NoFileExistsError, <<-ERR
+
                 Can't find the file #{relative_cahe_docs_path}
                 Please execute the following command to create #{relative_cahe_docs_path}
 

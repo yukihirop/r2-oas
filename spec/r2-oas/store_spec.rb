@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'r2-oas/store'
 
@@ -22,13 +24,12 @@ RSpec.describe R2OAS::Store do
 
   let(:model) { described_class.new(data) }
 
-
-  describe "#add" do
+  describe '#add' do
     subject { model.add('oas_docs/src/servers.yml', servers) }
     it { is_expected.not_to be_blank }
   end
 
-  describe "#save" do
+  describe '#save' do
     before do
       allow_any_instance_of(R2OAS::Schema::FileManager).to receive(:save).and_return(true)
     end
@@ -60,7 +61,7 @@ RSpec.describe R2OAS::Store do
 
   describe '#checksum?' do
     subject { model.checksum? }
-    
+
     context 'when success' do
       it { is_expected.to be true }
     end
@@ -147,7 +148,7 @@ RSpec.describe R2OAS::Store do
 
     context 'when block not given' do
       it do
-        expect(model.diff_from(local_store)).to eq "oas_docs/src/servers.yml" => {"after"=>{"servers"=>[{"description"=>"localhost", "url"=>"http://localhost:3000"}]}, "before"=>{"servers"=>[{"description"=>"localhost", "url"=>"http://localhost:3008"}]}},"oas_docs/src/tags.yml" => {"after"=>{"tags"=>[{"description"=>"api/v2/post description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"api/v2/post"}, {"description"=>"api/v1/task description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"api/v1/task"}, {"description"=>"user description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"user"}, {"description"=>"active_storage/blob description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"active_storage/blob"}, {"description"=>"active_storage/representation description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"active_storage/representation"}, {"description"=>"active_storage/disk description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"active_storage/disk"}, {"description"=>"active_storage/direct_upload description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"active_storage/direct_upload"}]}, "before"=>{"tags"=>[{"description"=>"api/v2/post local description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"api/v2/post"}, {"description"=>"api/v1/task description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"api/v1/task"}, {"description"=>"user description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"user"}, {"description"=>"active_storage/blob description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"active_storage/blob"}, {"description"=>"active_storage/representation description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"active_storage/representation"}, {"description"=>"active_storage/disk description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"active_storage/disk"}, {"description"=>"active_storage/direct_upload description", "externalDocs"=>{"description"=>"description", "url"=>"url"}, "name"=>"active_storage/direct_upload"}]}}
+        expect(model.diff_from(local_store)).to eq 'oas_docs/src/servers.yml' => { 'after' => { 'servers' => [{ 'description' => 'localhost', 'url' => 'http://localhost:3000' }] }, 'before' => { 'servers' => [{ 'description' => 'localhost', 'url' => 'http://localhost:3008' }] } }, 'oas_docs/src/tags.yml' => { 'after' => { 'tags' => [{ 'description' => 'api/v2/post description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'api/v2/post' }, { 'description' => 'api/v1/task description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'api/v1/task' }, { 'description' => 'user description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'user' }, { 'description' => 'active_storage/blob description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'active_storage/blob' }, { 'description' => 'active_storage/representation description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'active_storage/representation' }, { 'description' => 'active_storage/disk description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'active_storage/disk' }, { 'description' => 'active_storage/direct_upload description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'active_storage/direct_upload' }] }, 'before' => { 'tags' => [{ 'description' => 'api/v2/post local description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'api/v2/post' }, { 'description' => 'api/v1/task description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'api/v1/task' }, { 'description' => 'user description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'user' }, { 'description' => 'active_storage/blob description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'active_storage/blob' }, { 'description' => 'active_storage/representation description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'active_storage/representation' }, { 'description' => 'active_storage/disk description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'active_storage/disk' }, { 'description' => 'active_storage/direct_upload description', 'externalDocs' => { 'description' => 'description', 'url' => 'url' }, 'name' => 'active_storage/direct_upload' }] } }
       end
     end
   end

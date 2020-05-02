@@ -93,8 +93,8 @@ module R2OAS
 
     def adjust(hash, direct)
       hash.each_with_object({}) do |(key, value), result|
-        result[key] = { direct => {}}
-        result[key][direct] = YAML.load(Zlib::Inflate.inflate(value))
+        result[key] = { direct => {} }
+        result[key][direct] = YAML.safe_load(Zlib::Inflate.inflate(value))
         result
       end
     end
