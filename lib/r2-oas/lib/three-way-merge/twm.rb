@@ -2,6 +2,7 @@
 
 require 'key_flatten'
 
+# rubocop:disable all
 module Twm
   class << self
     #
@@ -79,3 +80,4 @@ module Twm
     end
   end
 end
+# rubocop:enable all

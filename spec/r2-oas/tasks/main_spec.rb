@@ -59,7 +59,10 @@ RSpec.describe 'main_rake' do
         it 'should do not occur error' do
           expect { subject }.not_to raise_error(R2OAS::NoFileExistsError)
         end
-        it { subject; expect(FileTest.exists?(relative_cahe_docs_path)).to eq true }
+        it do
+          subject
+          expect(FileTest.exists?(relative_cahe_docs_path)).to eq true
+        end
       end
     end
   end
