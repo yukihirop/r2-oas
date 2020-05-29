@@ -156,6 +156,66 @@ Supported hook(life cycle methods) is like this:
 
 Full docs are available at https://yukihirop.github.io/r2-oas/#/usage/use_hook_methods
 
+## Bundle and Rspec with multiple ruby ​​versions
+
+#### Bundle
+
+```bash
+/bin/bash devscript/bundle_for_all_support_ruby.sh
+.
+.
+.
+===== Bundle install for All Support Ruby Result =====
+ruby-2.3.3: 0
+ruby-2.4.2: 0
+ruby-2.5.8: 0
+ruby-2.6.6: 0
+ruby-2.7.1: 0
+======================================================
+```
+
+If specify ruby version `2.6.6` and `2.7.1`
+
+```bash
+/bin/bash devscript/bundle_for_all_support_ruby.sh 2.6.6 2.7.1
+.
+.
+.
+===== Bundle install for All Support Ruby Result =====
+ruby-2.6.6: 0
+ruby-2.7.1: 0
+======================================================
+```
+
+#### Rspec
+
+```bash
+/bin/bash devscript/rspec_for_all_support_ruby.sh
+.
+.
+.
+===== Rspec for All Support Ruby Result =====
+ruby-2.3.3: 0
+ruby-2.4.2: 0
+ruby-2.5.8: 0
+ruby-2.6.6: 0
+ruby-2.7.1: 0
+=============================================
+```
+
+If specify ruby version `2.6.6` and `2.7.1`
+
+```bash
+/bin/bash devscript/rspec_for_all_support_ruby.sh 2.6.6 2.7.1
+.
+.
+.
+===== Rspec for All Support Ruby Result =====
+ruby-2.6.6: 0
+ruby-2.7.1: 0
+=============================================
+```
+
 ## 🔩 CORS
 
 Use [rack-cors](https://github.com/cyu/rack-cors) to enable CORS.
