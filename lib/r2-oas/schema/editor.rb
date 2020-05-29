@@ -5,7 +5,6 @@ require 'eventmachine'
 require 'watir'
 require 'tempfile'
 require 'fileutils'
-require 'shell'
 require 'forwardable'
 
 # Can't use ActiveSupport::Autroload
@@ -73,6 +72,10 @@ module R2OAS
         analyzer.analyze_docs
       end
 
+      # MEMO
+      # TargetRubyVersion is 2.7 and there is a warning
+      # Because it is necessary to support from ruby2.3 series where begin cannot be omitted
+      # rubocop:disable Style/RedundantBegin
       def ensure_save_tmp_schema_file
         EM.add_periodic_timer(interval_to_save_edited_tmp_schema) do
           m = Mutex.new
@@ -90,6 +93,7 @@ module R2OAS
           end
         end
       end
+      # rubocop:enable Style/RedundantBegin
 
       def save_after_fetch_local_strage
         @after_schema_data = @browser.driver.local_storage[storage_key] || @after_schema_data

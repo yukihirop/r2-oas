@@ -29,7 +29,7 @@ module R2OAS
         @schema_file_path = doc_save_file_name
         template_path = File.expand_path('swagger-ui/index.html.erb', __dir__)
         template = File.read(template_path)
-        index = ERB.new(template, nil, '%').result(binding)
+        index = make_index(template)
         File.write(index_path, index)
       end
 
@@ -37,6 +37,18 @@ module R2OAS
         swagger_file_path = File.expand_path(Rails.root.join(deploy_dir_path, doc_save_file_name), __FILE__)
         oas_doc_file_path = File.expand_path("#{root_dir_path}/#{doc_save_file_name}")
         FileUtils.cp_r(oas_doc_file_path, swagger_file_path)
+      end
+
+      # [ref]
+      # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Lint/ErbNewArguments
+      def make_index(template)
+        if RUBY_VERSION >= '2.6'
+          ERB.new(template, trim_mode: '%').result(binding)
+        else
+          # rubocop:disable Lint/ErbNewArguments
+          ERB.new(template, nil, trim_mode: '%').result(binding)
+          # rubocop:enable Lint/ErbNewArguments
+        end
       end
     end
   end

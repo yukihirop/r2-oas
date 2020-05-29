@@ -3,7 +3,6 @@
 require 'docker'
 require 'eventmachine'
 require 'watir'
-require 'shell'
 require 'forwardable'
 
 # Scope Rails

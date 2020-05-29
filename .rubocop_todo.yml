@@ -247,3 +247,36 @@ Lint/UselessAssignment:
 
 Style/NestedParenthesizedCalls:
   Enabled: false
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: false
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: false
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: false
+
+Lint/RaiseException:
+  Enabled: false
+
+Lint/StructNewOverride:
+  Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: false
+
+Lint/NonDeterministicRequireOrder:
+  Exclude:
+    - "spec/spec_helper.rb"
