@@ -276,3 +276,7 @@ Style/HashTransformValues:
 
 Style/SlicingWithRange:
   Enabled: false
+
+Lint/NonDeterministicRequireOrder:
+  Exclude:
+    - "spec/spec_helper.rb"
