@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['te108186@gmail.com']
 
   spec.summary       = 'Provide rake tasks to management API Docment (OpenAPI)'
-  spec.description   = %Q{#{IO.read('GEMSPEC.md')}}
+  spec.description   = %Q{== Let's intuitively write API documentation with Swagger Editor in your Rails Project! 😊\n#{IO.read('GEMSPEC.md')}}
 
   spec.homepage      = 'https://github.com/yukihirop/r2-oas'
   spec.license       = 'MIT'
