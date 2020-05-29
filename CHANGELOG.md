@@ -1,5 +1,16 @@
 # Change Log
 
+## v0.2.1
+
+2020-05-30
+
+- [`Feature/Breaking`] Support Ruby 2.7 🎉 ([931ec4b](https://github.com/yukihirop/r2-oas/pull/122))
+
+  - Remove `Gemfile.lock`
+
+- [`Developer`] Create script to test all support ruby in development ([8d0df98](https://github.com/yukihirop/r2-oas/pull/124))
+- [`Docs`] Add docs about Trableshouting ([f4a782f](https://github.com/yukihirop/r2-oas/pull/125))
+
 ## v0.2.0
 
 2020-05-02
