@@ -1,6 +1,8 @@
 <!-- docs/_sidebar.md -->
 * **Attention**
  * [If Clash](/attention/if_clash)
+* **Trableshouting**
+ * [RuntimeError](/trableshouting/runtime_error)
 * **Usage**
  * [Generate Docs](/usage/generate_docs)
  * [Edit docs](/usage/edit_docs)
