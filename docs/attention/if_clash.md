@@ -1,8 +1,6 @@
 # If clash
 
-Unfortunately, if you do the paste operation with Swagger Editor running, it may occasionally crash.
-
-f you crash while Swagger Editor is running, you can execute the following command to reflect the editing status up to a few seconds before in the local file.
+If you crash while Swagger Editor is running, you can execute the following command to reflect the editing status up to a few seconds before in the local file.
 
 ```bash
 bundle exec rake routes:oas:analyze
