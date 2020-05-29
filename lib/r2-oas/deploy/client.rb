@@ -29,7 +29,7 @@ module R2OAS
         @schema_file_path = doc_save_file_name
         template_path = File.expand_path('swagger-ui/index.html.erb', __dir__)
         template = File.read(template_path)
-        index = ERB.new(template, nil, '%').result(binding)
+        index = ERB.new(template, trim_mode: '%').result(binding)
         File.write(index_path, index)
       end
 

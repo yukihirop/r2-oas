@@ -79,13 +79,11 @@ module R2OAS
           return nil unless @browser.exists?
 
           m.synchronize do
-            begin
-              save_after_fetch_local_strage
-            rescue Selenium::WebDriver::Error::UnexpectedAlertOpenError
-              alert = @browser.driver.switch_to.alert
-              if alert.text.eql?(ALERT_TEXT)
-                alert.accept && save_after_fetch_local_strage
-              end
+            save_after_fetch_local_strage
+          rescue Selenium::WebDriver::Error::UnexpectedAlertOpenError
+            alert = @browser.driver.switch_to.alert
+            if alert.text.eql?(ALERT_TEXT)
+              alert.accept && save_after_fetch_local_strage
             end
           end
         end
