@@ -163,7 +163,7 @@ OpenAPIの3.0.0をサポートしてます。
 #### Bundle
 
 ```bash
-/bin/bash devscript/bundle_for_all_support_ruby.sh
+/bin/bash devscript/all_support_ruby.sh bundle
 .
 .
 .
@@ -179,7 +179,7 @@ ruby-2.7.1: 0
 rubyのバージョンを `2.6.6` と `2.7.1`　に指定する場合
 
 ```bash
-/bin/bash devscript/bundle_for_all_support_ruby.sh 2.6.6 2.7.1
+/bin/bash devscript/all_support_ruby.sh bundle 2.6.6 2.7.1
 .
 .
 .
@@ -192,7 +192,7 @@ ruby-2.7.1: 0
 #### Rspec
 
 ```bash
-/bin/bash devscript/rspec_for_all_support_ruby.sh
+/bin/bash devscript/all_support_ruby.sh rspec
 .
 .
 .
@@ -208,7 +208,7 @@ ruby-2.7.1: 0
 rubyのバージョンを `2.6.6` と `2.7.1`　に指定する場合
 
 ```bash
-/bin/bash devscript/rspec_for_all_support_ruby.sh 2.6.6 2.7.1
+/bin/bash devscript/all_support_ruby.sh rspec 2.6.6 2.7.1
 .
 .
 .

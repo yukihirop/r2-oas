@@ -1,26 +1,8 @@
 #!/usr/local/bin/bash
 
-# Check if rbenv is installed
-which rbenv > /dev/null 2>&1 && if [ $? -ne 0 ]; then echo -e 'rbenv is need\nPlease install rbenv: https://github.com/rbenv/rbenv'; exit 1; fi
-
-declare -a all_support_ruby=(
-  '2.3.3'
-  '2.4.2'
-  '2.5.8'
-  '2.6.6'
-  '2.7.1'
-)
-declare -a target_ruby
-
-if [ $# -ne 0 ]; then
-  target_ruby=("$@")
-else
-  target_ruby=("${all_support_ruby[@]}")
-fi
-
 # Rspec each All Support Ruby
 declare -a report
-for version in "${target_ruby[@]}"; do
+for version in $@; do
   echo "== Rspec for Ruby Version: ${version} =="
   
   # Change Ruby Version
