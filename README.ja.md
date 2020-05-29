@@ -157,6 +157,67 @@ OpenAPIの3.0.0をサポートしてます。
 
 公式ドキュメントはこちら => https://yukihirop.github.io/r2-oas/#/usage/use_hook_methods
 
+
+## Bundle and Rspec with multiple ruby ​​versions
+
+#### Bundle
+
+```bash
+/bin/bash devscript/all_support_ruby.sh bundle
+.
+.
+.
+===== Bundle install for All Support Ruby Result =====
+ruby-2.3.3: 0
+ruby-2.4.2: 0
+ruby-2.5.8: 0
+ruby-2.6.6: 0
+ruby-2.7.1: 0
+======================================================
+```
+
+rubyのバージョンを `2.6.6` と `2.7.1`　に指定する場合
+
+```bash
+/bin/bash devscript/all_support_ruby.sh bundle 2.6.6 2.7.1
+.
+.
+.
+===== Bundle install for All Support Ruby Result =====
+ruby-2.6.6: 0
+ruby-2.7.1: 0
+======================================================
+```
+
+#### Rspec
+
+```bash
+/bin/bash devscript/all_support_ruby.sh rspec
+.
+.
+.
+===== Rspec for All Support Ruby Result =====
+ruby-2.3.3: 0
+ruby-2.4.2: 0
+ruby-2.5.8: 0
+ruby-2.6.6: 0
+ruby-2.7.1: 0
+=============================================
+```
+
+rubyのバージョンを `2.6.6` と `2.7.1`　に指定する場合
+
+```bash
+/bin/bash devscript/all_support_ruby.sh rspec 2.6.6 2.7.1
+.
+.
+.
+===== Rspec for All Support Ruby Result =====
+ruby-2.6.6: 0
+ruby-2.7.1: 0
+=============================================
+```
+
 ## 🔩 CORS
 
 [rack-cors](https://github.com/cyu/rack-cors)を使用する事でCORSを可能にします。

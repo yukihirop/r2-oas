@@ -3,6 +3,8 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   TargetRubyVersion: 2.7
   Exclude:
-    - 'example*/**/*'
-    - 'vendor/**/*'
-    - 'r2-oas.gemspec'
+    - "example*/**/*"
+    - "vendor/**/*"
+    - "r2-oas.gemspec"
+    - "gemfiles/**/*"
+    - "Appraisals"
