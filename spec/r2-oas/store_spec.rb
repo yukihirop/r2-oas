@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'r2-oas/store'
 
-# rubocop:disable Metrics/BlockLength, Metrics/LineLength
+# rubocop:disable Metrics/BlockLength, Layout/LineLength
 RSpec.describe R2OAS::Store do
   let(:servers) { "---\nservers:\n- url: http://localhost:3000\n  description: localhost\n" }
   let(:tags) { "---\ntags:\n- name: api/v2/post\n  description: api/v2/post description\n  externalDocs:\n    description: description\n    url: url\n- name: api/v1/task\n  description: api/v1/task description\n  externalDocs:\n    description: description\n    url: url\n- name: user\n  description: user description\n  externalDocs:\n    description: description\n    url: url\n- name: active_storage/blob\n  description: active_storage/blob description\n  externalDocs:\n    description: description\n    url: url\n- name: active_storage/representation\n  description: active_storage/representation description\n  externalDocs:\n    description: description\n    url: url\n- name: active_storage/disk\n  description: active_storage/disk description\n  externalDocs:\n    description: description\n    url: url\n- name: active_storage/direct_upload\n  description: active_storage/direct_upload description\n  externalDocs:\n    description: description\n    url: url\n" }
@@ -154,4 +154,4 @@ RSpec.describe R2OAS::Store do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength, Metrics/LineLength
+# rubocop:enable Metrics/BlockLength, Layout/LineLength

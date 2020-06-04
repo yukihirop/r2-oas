@@ -10,7 +10,7 @@
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
-Metrics/LineLength:
+Layout/LineLength:
   Max: 2088
 
 Metrics/AbcSize:
@@ -280,3 +280,12 @@ Style/SlicingWithRange:
 Lint/NonDeterministicRequireOrder:
   Exclude:
     - "spec/spec_helper.rb"
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: false
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: false
+
+Style/RedundantRegexpEscape:
+  Enabled: false
