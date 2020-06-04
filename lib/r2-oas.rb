@@ -12,6 +12,7 @@ module R2OAS
   elsif ::Rails::VERSION::STRING >= '4.2.5.1'
     extend Configuration
     require 'r2-oas/task'
+    require 'r2-oas/lib/core_ext/hash/deep_merge'
 
     autoload :Base, 'r2-oas/base'
     autoload :NoImplementError, 'r2-oas/errors'
