@@ -1,7 +1,7 @@
 Configureless and no DSL. 👍 But you can also configure.  
 Manage with yaml file instead of Ruby code.  
 Loosely coupled to your Rails project. 👍  
-So If it doesn't, you can always stop easily. 😢  
+So if you want to use another tool, you can port it right away. 😢  
 Generate api docment(OpenAPI) side only from `Rails` routing.  
   
 Provide rake tasks to management API Docment (OpenAPI) 🎉  
