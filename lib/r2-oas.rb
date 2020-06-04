@@ -6,8 +6,6 @@ require 'r2-oas/errors'
 require 'r2-oas/schema/v3/object/public'
 
 module R2OAS
-  extend ActiveSupport::Autoload
-
   if !defined?(::Rails)
     raise NoImplementError, 'Can not load Rails'
   # support Rails version
@@ -22,8 +20,6 @@ module R2OAS
     autoload :Sortable, 'r2-oas/shared/all'
 
     module Schema
-      extend ActiveSupport::Autoload
-
       autoload :Base, 'r2-oas/schema/base'
       autoload :Generator, 'r2-oas/schema/generator'
       autoload :Builder, 'r2-oas/schema/builder'

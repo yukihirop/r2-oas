@@ -37,7 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'eventmachine', '>= 1.2.0'
   spec.add_runtime_dependency 'key_flatten', '>= 1.0.0'
   spec.add_runtime_dependency 'paint'
-  spec.add_runtime_dependency 'rails', '>= 4.2.5'
+  spec.add_runtime_dependency 'railties', '>= 4.2.5'
   spec.add_runtime_dependency 'terminal-table', '>= 1.6.0'
   spec.add_runtime_dependency 'watir', '>= 6.16.5'
   spec.add_development_dependency 'bundler', '>= 1.17'
@@ -47,4 +47,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'appraisal'
+  spec.add_development_dependency 'activerecord', '>= 4.2.5'
 end
