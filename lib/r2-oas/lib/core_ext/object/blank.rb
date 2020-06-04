@@ -100,7 +100,7 @@ class Hash
 end
 
 class String
-  BLANK_RE = /\A[[:space:]]*\z/
+  BLANK_REGEXP = /\A[[:space:]]*\z/
 
   # A string is blank if it's empty or contains whitespaces only:
   #
@@ -115,7 +115,7 @@ class String
   #
   # @return [true, false]
   def blank?
-    BLANK_RE === self
+    BLANK_REGEXP === self
   end
 end
 
