@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 # Copy From https://github.com/rails/rails/blob/v4.2.5/activesupport/lib/active_support/core_ext/hash/deep_merge.rb
 
+# rubocop:disable all
 class Hash
   # Returns a new hash with +self+ and +other_hash+ merged recursively.
   #
@@ -38,3 +41,4 @@ class Hash
     self
   end
 end
+# rubocop:enable all

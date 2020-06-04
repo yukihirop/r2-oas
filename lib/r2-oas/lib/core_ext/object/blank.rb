@@ -1,6 +1,8 @@
-# encoding: utf-8
+# frozen_string_literal: true
 
 # Copy From https://github.com/rails/rails/blob/v4.2.5/activesupport/lib/active_support/core_ext/object/blank.rb
+
+# rubocop:disable all
 class Object
   # An object is blank if it's false, empty, or a whitespace string.
   # For example, +false+, '', '   ', +nil+, [], and {} are all blank.
@@ -130,3 +132,4 @@ class Numeric #:nodoc:
     false
   end
 end
+# rubocop:enable all
