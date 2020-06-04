@@ -13,6 +13,7 @@ module R2OAS
     extend Configuration
     require 'r2-oas/task'
     require 'r2-oas/lib/core_ext/hash/deep_merge'
+    require 'r2-oas/lib/core_ext/object/blank'
 
     autoload :Base, 'r2-oas/base'
     autoload :NoImplementError, 'r2-oas/errors'
