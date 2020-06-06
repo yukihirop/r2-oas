@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.3.1
+
+2020-06-07
+
+- [`Breaking`] Remove unnecessary runtime dependencies ([384ea1a](https://github.com/yukihirop/r2-oas/pull/132))
+
 ## v0.3.0
 
 2020-05-30
