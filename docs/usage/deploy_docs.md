@@ -791,6 +791,7 @@ servers:
 ```
 $ be rake routes:oas:deploy
 I, [2019-05-06T19:32:52.014417 #22431]  INFO -- : [R2-OAS] start
+Download swagger-api/swagger-ui/dist ... (async)
 I, [2019-05-06T19:32:52.075691 #22431]  INFO -- : [Build OAS schema files] start
 I, [2019-05-06T19:32:52.075731 #22431]  INFO -- : [Build OAS schema files] end
 I, [2019-05-06T19:32:52.075743 #22431]  INFO -- : [Build OAS docs from schema files] start
@@ -812,14 +813,28 @@ I, [2019-05-06T19:32:52.088567 #22431]  INFO -- :  Use schema file: 	oas_docs/sr
 I, [2019-05-06T19:32:52.088867 #22431]  INFO -- :  Use schema file: 	oas_docs/src/info.yml
 I, [2019-05-06T19:32:52.089136 #22431]  INFO -- :  Use schema file: 	oas_docs/src/servers.yml
 I, [2019-05-06T19:32:52.100673 #22431]  INFO -- : [Build OAS docs from schema files] end
+A    22fd638a/dist
+A    22fd638a/dist/favicon-16x16.png
+A    22fd638a/dist/favicon-32x32.png
+A    22fd638a/dist/index.html
+A    22fd638a/dist/oauth2-redirect.html
+A    22fd638a/dist/swagger-ui-bundle.js
+A    22fd638a/dist/swagger-ui-bundle.js.map
+A    22fd638a/dist/swagger-ui-standalone-preset.js
+A    22fd638a/dist/swagger-ui-standalone-preset.js.map
+A    22fd638a/dist/swagger-ui.css
+A    22fd638a/dist/swagger-ui.css.map
+A    22fd638a/dist/swagger-ui.js
+A    22fd638a/dist/swagger-ui.js.map
+Exported revision 14056.
 I, [2019-05-06T19:32:52.133732 #22431]  INFO -- : [R2-OAS] end
 ```
 
 Generate docs like this:
 
 ```
-$ tree docs
-docs
+$ tree deploy_docs
+deploy_docs
 ├── dist
 │   ├── favicon-16x16.png
 │   ├── favicon-32x32.png

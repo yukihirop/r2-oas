@@ -11,6 +11,10 @@ RSpec.describe R2OAS::Deploy::Client do
       create_dot_paths
       generate_docs
       build_docs
+      download_dist_th = Thread.new do
+        client.download_swagger_ui_dist
+      end
+      download_dist_th.join
       client.deploy
     end
 
