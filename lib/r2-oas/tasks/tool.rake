@@ -11,12 +11,19 @@ namespace :routes do
     desc 'Deploy OAS Document'
     task deploy: [:common] do
       start do
+        client_options = {}
+        client = R2OAS::Deploy::Client.new(client_options)
+
+        download_dist_th = Thread.new do
+          puts 'Download swagger-api/swagger-ui/dist ... (async)'
+          client.download_swagger_ui_dist
+        end
+
         builder_options = { unit_paths_file_path: unit_paths_file_path }
         builder = R2OAS::Schema::Builder.new(builder_options)
         builder.build_docs
 
-        client_options = {}
-        client = R2OAS::Deploy::Client.new(client_options)
+        download_dist_th.join
         client.deploy
       end
     end
