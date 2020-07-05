@@ -1,5 +1,11 @@
 # Change Log
 
+## v0.3.2
+
+2020-07-05
+
+- [`Feature`] The file size at the time of gem install was reduced by about 10MB. ([dbdbce9 ](https://github.com/yukihirop/r2-oas/pull/138))
+
 ## v0.3.1
 
 2020-06-07
