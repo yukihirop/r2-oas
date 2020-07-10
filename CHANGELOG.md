@@ -1,5 +1,16 @@
 # Change Log
 
+## v0.3.3
+
+2020-07-11
+
+- [`FixBugs`] A cute pet store syndrome 🐈 ([f3f4c30](https://github.com/yukihirop/r2-oas/pull/144))
+- [`FixBugs`]  R2OAS.logger.level does not work ([f3f4c30](https://github.com/yukihirop/r2-oas/pull/144))
+- [`Breaking`] Change default namespace type from `:underbar` to `:dot` ([f3f4c30](https://github.com/yukihirop/r2-oas/pull/144))
+- [`Other`] Modify gemspec `files` fields ([f3f4c30](https://github.com/yukihirop/r2-oas/pull/144))
+
+See milestone [v0.3.3](https://github.com/yukihirop/r2-oas/milestone/3?closed=1)
+
 ## v0.3.2
 
 2020-07-05
