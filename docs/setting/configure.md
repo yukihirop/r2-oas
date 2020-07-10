@@ -16,7 +16,7 @@ R2OAS.configure do |config|
   config.use_schema_namespace               = false
   config.interval_to_save_edited_tmp_schema = 15
   # :dot or :underbar
-  config.namespace_type                     = :underbar
+  config.namespace_type                     = :dot
   config.deploy_dir_path                    = "./deploy_docs"
 
   config.server.data = [
@@ -99,7 +99,7 @@ we explain the options that can be set.
 |http_statuses_when_http_method|Determine the response to support for each HTTP method|omission...|
 |http_methods_when_generate_request_body|HTTP methods when generate requestBody|`[post put patch]`|
 |ignored_http_statuses_when_generate_component_schema|Ignore HTTP statuses when generate component schema|`[204 404]`|
-|namespace_type|namespace for components(schemas/requestBodies) name| `underbar` |
+|namespace_type|namespace for components(schemas/requestBodies) name| `dot` |
 |deploy_dir_path|deploy directory.|`"./deploy_docs"`|
 
 #### server

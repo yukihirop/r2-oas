@@ -30,10 +30,6 @@ module R2OAS
       R2OAS.logger
     end
 
-    def set_info_level
-      R2OAS.logger.level = StdoutLogger::INFO
-    end
-
     def set_debug_level
       R2OAS.logger.level = StdoutLogger::DEBUG
     end
