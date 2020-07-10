@@ -1,0 +1,52 @@
+version: 2.1
+
+references:
+  shared_setting: &shared_setting
+    shell: /bin/bash -ex
+    working_directory: ~/r2-oas
+    environment:
+      TZ: Asia/Tokyo
+
+executors:
+  test_container:
+    docker:
+      - image: circleci/ruby:2.7.1
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+
+jobs:
+  run_rspec_and_rubocop:
+    <<: *shared_setting
+    executor: test_container
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore gem dependencies
+          keys:
+            - r2-oas-test-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - r2-oas-test-bundle-v2-
+      - run:
+          name: bundle install
+          command: bundle check || bundle install
+      - save_cache:
+          name: Save gem dependencies
+          key: r2-oas-test-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: run rspec in parallel
+          no_output_timeout: 5m
+          command: |
+            TEST_FILES=$(circleci tests glob "spec/**/*_spec.rb" | egrep -v "spec/r2-oas/tasks/tool_spec.rb|spec/r2-oas/tool/paths/stats_spec.rb")
+                  bundle exec rspec --profile 10 --color --format progress \
+                    $( echo ${TEST_FILES} | circleci tests split --split-by=timings)
+      - run:
+          name: run rubocop
+          no_output_timeout: 5m
+          command: |
+            ruby -e "if RUBY_VERSION >= '2.7'; system('bundle exec rubocop --fail-level=W'); end"
+      - store_test_results:
+          path: test_results
