@@ -44,7 +44,7 @@ module R2OAS
     # rubocop:enable Style/MutableConstant
     DEFAULT_TOOL = Tool.new
     # :dot or :underbar
-    DEFAULT_NAMESPACE_TYPE = :underbar
+    DEFAULT_NAMESPACE_TYPE = :dot
     DEFAULT_DEPLOY_DIR_PATH = './deploy_docs'
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[

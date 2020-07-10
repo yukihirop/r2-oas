@@ -33,7 +33,7 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:force_update_schema]).to eq false
         expect(subject[:use_tag_namespace]).to eq true
         expect(subject[:use_schema_namespace]).to eq true
-        expect(subject[:namespace_type]).to eq :underbar
+        expect(subject[:namespace_type]).to eq :dot
         expect(subject[:deploy_dir_path]).to eq './deploy_docs'
         expect(subject[:http_statuses_when_http_method][:get][:default]).to include('200', '422')
         expect(subject[:http_statuses_when_http_method][:get][:path_parameter]).to include('200', '404', '422')
@@ -86,7 +86,7 @@ RSpec.describe R2OAS::Configuration do
             config.force_update_schema = true
             config.use_tag_namespace = true
             config.use_schema_namespace = true
-            config.namespace_type = :dot
+            config.namespace_type = :underbar
             config.deploy_dir_path = 'dist_docs'
             config.http_statuses_when_http_method = {
               get: {
@@ -163,7 +163,7 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:force_update_schema]).to eq true
         expect(subject[:use_tag_namespace]).to eq true
         expect(subject[:use_schema_namespace]).to eq true
-        expect(subject[:namespace_type]).to eq :dot
+        expect(subject[:namespace_type]).to eq :underbar
         expect(subject[:deploy_dir_path]).to eq 'dist_docs'
         expect(subject[:http_statuses_when_http_method][:get][:default]).to include('200', '403')
         expect(subject[:http_statuses_when_http_method][:get][:path_parameter]).to include('200', '404', '403')

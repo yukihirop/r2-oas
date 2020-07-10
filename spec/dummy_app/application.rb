@@ -17,6 +17,7 @@ module DummyApp
     R2OAS.configure do |c|
       c.root_dir_path = "#{config.root}/oas_docs"
       c.deploy_dir_path = "#{config.root}/deploy_docs"
+      c.namespace_type = :underbar
     end
   end
 end
