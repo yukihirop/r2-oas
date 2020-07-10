@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/bin/bash
 
 if [ $# -eq 0 ]; then
   echo "Please specify 'rspec' or 'bundle', 'list'"
