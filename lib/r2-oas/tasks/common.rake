@@ -10,7 +10,6 @@ namespace :routes do
     # desc "Setup a common setting for every tasks"
     task common: [:environment] do
       create_dot_paths
-      set_info_level
     end
 
     # private
