@@ -114,7 +114,14 @@ module R2OAS
         @browser ||= Watir::Browser.new(:chrome, capabilities)
         @browser.goto(url)
         if wait_for_loaded
-          @browser.driver.local_storage[storage_key] = @schema_doc_from_local
+          # MEMO:
+          # Because it may not be updated
+          # Make sure that the launched local storage is updated reliably
+          Watir::Wait.until do
+            old_storage = @browser.driver.local_storage[storage_key].dup
+            @browser.driver.local_storage[storage_key] = new_storage = @schema_doc_from_local
+            old_storage != new_storage
+          end
           @browser.refresh
         end
       end
