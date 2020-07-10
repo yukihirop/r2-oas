@@ -1,5 +1,12 @@
 # Change Log
 
+## v0.3.4
+
+2020-07-11
+
+- [`Other`] Modify gemspec `files` fields ([#147](https://github.com/yukihirop/r2-oas/pull/147))
+    - Add `r2-oas.gemspec` into gemspec `files`
+
 ## v0.3.3
 
 2020-07-11
