@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   }
 
   # Specify which files should be added to the gem when it is released.
-  spec.files         = Dir["CHANGELOG.md", "GEMSPEC.md", "README.md", "README.ja.md", "LICENSE.txt", "lib/**/*"]
+  spec.files         = Dir["CHANGELOG.md", "GEMSPEC.md", "README.md", "README.ja.md", "LICENSE.txt", "lib/**/*", "r2-oas.gemspec"]
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
