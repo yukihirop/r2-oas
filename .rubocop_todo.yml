@@ -137,7 +137,7 @@ Naming/ConstantName:
 Naming/PredicateName:
   Exclude:
     - "lib/r2-oas/hooks/hook.rb"
-    - "lib/r2-oas/plugins/schema/v3/object/hookable_base_object.rb"
+    - "lib/r2-oas/dynamic/schema/v3/object/hookable_base_object.rb"
 
 Style/DoubleNegation:
   Exclude:
@@ -177,7 +177,7 @@ Style/IdenticalConditionalBranches:
 
 Style/ClassVars:
   Exclude:
-    - "lib/r2-oas/plugins/schema/v3/object/hookable_base_object.rb"
+    - "lib/r2-oas/dynamic/schema/v3/object/hookable_base_object.rb"
 
 Style/AccessModifierDeclarations:
   Exclude:

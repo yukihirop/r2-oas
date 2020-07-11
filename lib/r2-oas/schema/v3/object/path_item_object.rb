@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'forwardable'
-require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
+require 'r2-oas/dynamic/schema/v3/object/hookable_base_object'
 require 'r2-oas/routing/components/path_component'
 
 module R2OAS
