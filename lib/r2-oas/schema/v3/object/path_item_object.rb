@@ -7,7 +7,7 @@ require 'r2-oas/routing/components/path_component'
 module R2OAS
   module Schema
     module V3
-      class PathItemObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
+      class PathItemObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
         extend Forwardable
         # reference
         # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object

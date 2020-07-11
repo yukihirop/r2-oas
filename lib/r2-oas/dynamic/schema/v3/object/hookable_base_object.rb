@@ -4,7 +4,7 @@ require 'r2-oas/schema/v3/object/base_object'
 require 'r2-oas/hooks/hook'
 
 module R2OAS
-  module Plugins
+  module Dynamic
     module Schema
       module V3
         class HookableBaseObject < R2OAS::Schema::V3::BaseObject

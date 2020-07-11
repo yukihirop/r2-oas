@@ -7,7 +7,7 @@ module R2OAS
   module Schema
     module V3
       module Components
-        class RequestBodyObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
+        class RequestBodyObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
           def initialize(route_data, path)
             super()
             @path_comp   = Routing::PathComponent.new(path)

@@ -6,7 +6,7 @@ module R2OAS
   module Schema
     module V3
       module Components
-        class SchemaObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
+        class SchemaObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
           def initialize(route_data, path)
             super()
             @path_comp    = Routing::PathComponent.new(path)
