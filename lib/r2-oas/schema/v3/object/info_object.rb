@@ -6,6 +6,16 @@ module R2OAS
   module Schema
     module V3
       class InfoObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
+        def to_doc
+          execute_before_create
+          create_doc
+          execute_after_create
+          execute_transform_plugins(:info, doc)
+          doc
+        end
+
+        private
+
         def create_doc
           result = {
             'title' => 'OAS API Document Title',

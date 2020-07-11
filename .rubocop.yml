@@ -8,3 +8,4 @@ AllCops:
     - "r2-oas.gemspec"
     - "gemfiles/**/*"
     - "Appraisals"
+    - "plugin_sample/**/*"

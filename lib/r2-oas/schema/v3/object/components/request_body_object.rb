@@ -42,21 +42,8 @@ module R2OAS
               end
             end
             execute_after_create(@schema_name)
+            execute_transform_plugins(:components_request_body, doc, @schema_name)
             doc
-          end
-
-          def create_doc
-            file_manager = ComponentsFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
-            doc.deep_merge!(
-              'content' => {
-                'application/json' => {
-                  'schema' => {
-                    '$ref' => file_manager.original_path
-                  }
-                }
-              }
-            )
-            yield if block_given?
           end
 
           # MEMO:
@@ -77,13 +64,39 @@ module R2OAS
           end
 
           private
+          
+          def create_doc
+            file_manager = ComponentsFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
+            doc.deep_merge!(
+              'content' => {
+                'application/json' => {
+                  'schema' => {
+                    '$ref' => file_manager.original_path
+                  }
+                }
+              }
+            )
+            yield if block_given?
+          end
 
           def _components_schema_name
-            components_schema_name(doc, @path_comp, @tag_name, @verb, @schema_name)
+            schema_name = components_schema_name(doc, @path_comp, @tag_name, @verb, @schema_name)
+            # MEMO:
+            # Allow primitive types that cannot be passed by reference to be passed by reference
+            # This is Compromise
+            ref = { schema_name: schema_name }
+            execute_transform_plugins(:components_schema_name_at_request_body, ref, doc, @path_comp, @tag_name, @verb)
+            ref[:schema_name]
           end
 
           def _components_request_body_name
-            components_request_body_name(doc, @path_comp, @tag_name, @verb, @schema_name)
+            schema_name = components_request_body_name(doc, @path_comp, @tag_name, @verb, @schema_name)
+            # MEMO:
+            # Allow primitive types that cannot be passed by reference to be passed by reference
+            # This is Compromise
+            ref = { schema_name: schema_name }
+            execute_transform_plugins(:components_request_body_name, ref, doc, @path_comp, @tag_name, @verb)
+            ref[:schema_name]
           end
         end
       end

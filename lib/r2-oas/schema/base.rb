@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../base'
+require 'r2-oas/base'
 
 # Scope Rails
 module R2OAS

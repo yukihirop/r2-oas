@@ -40,8 +40,8 @@ module R2OAS
         # ]
         def components_schema_docs
           @routes_data.each_with_object({}) do |(route_el), data|
-            path        = route_el[:path]
-            route_data  = route_el[:data]
+            path = route_el[:path]
+            route_data = route_el[:data]
 
             path_item_object = path_item_object_class.new(route_data, path)
             path_item_object.http_statuses.each do |http_status|
@@ -60,8 +60,8 @@ module R2OAS
 
         def components_request_body_docs
           @routes_data.each_with_object({}) do |(route_el), data|
-            path        = route_el[:path]
-            route_data  = route_el[:data]
+            path = route_el[:path]
+            route_data = route_el[:data]
 
             components_request_body_object = components_request_body_object_class.new(route_data, path)
             next unless components_request_body_object.generate?

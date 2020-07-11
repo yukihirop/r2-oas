@@ -21,9 +21,18 @@ module R2OAS
             execute_before_create(@schema_name)
             create_doc
             execute_after_create(@schema_name)
+            execute_transform_plugins(:components_schema, doc, @schema_name)
             doc
           end
 
+          # MEMO:
+          # please override in inherited class.
+          def components_schema_name(_doc, _path_component, _tag_name, _verb, _http_status, schema_name)
+            schema_name
+          end
+
+          private
+          
           def create_doc
             result = {
               'type' => 'object',
@@ -37,16 +46,14 @@ module R2OAS
             doc.merge!(result)
           end
 
-          # MEMO:
-          # please override in inherited class.
-          def components_schema_name(_doc, _path_component, _tag_name, _verb, _http_status, schema_name)
-            schema_name
-          end
-
-          private
-
           def _components_schema_name(http_status)
-            components_schema_name(doc, @path_comp, @tag_name, @verb, http_status, @schema_name)
+            schema_name = components_schema_name(doc, @path_comp, @tag_name, @verb, http_status, @schema_name)
+            # MEMO:
+            # Allow primitive types that cannot be passed by reference to be passed by reference
+            # This is Compromise
+            ref = { schema_name: schema_name }
+            execute_transform_plugins(:components_schema_name, ref, doc, @path_comp, @tag_name, @verb, http_status)
+            ref[:schema_name]
           end
         end
       end

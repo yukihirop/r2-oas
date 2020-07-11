@@ -46,6 +46,7 @@ module R2OAS
     # :dot or :underbar
     DEFAULT_NAMESPACE_TYPE = :dot
     DEFAULT_DEPLOY_DIR_PATH = './deploy_docs'
+    EDFAULT_PLUGINS = [].freeze
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
       version
@@ -64,6 +65,7 @@ module R2OAS
       tool
       namespace_type
       deploy_dir_path
+      plugins
     ].freeze
 
     UNPUBLIC_VALID_OPTIONS_KEYS = %i[
@@ -100,6 +102,7 @@ module R2OAS
       target.ignored_http_statuses_when_generate_component_schema = DEFAULT_IGNORED_HTTP_STATUSES_WHEN_GENERATE_COMPONENT_SCHEMA
       target.namespace_type                                       = DEFAULT_NAMESPACE_TYPE
       target.deploy_dir_path                                      = DEFAULT_DEPLOY_DIR_PATH
+      target.plugins                                              = EDFAULT_PLUGINS
     end
   end
 end
