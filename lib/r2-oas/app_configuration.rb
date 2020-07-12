@@ -47,6 +47,7 @@ module R2OAS
     DEFAULT_NAMESPACE_TYPE = :dot
     DEFAULT_DEPLOY_DIR_PATH = './deploy_docs'
     EDFAULT_PLUGINS = [].freeze
+    DEFAULT_LOCAL_PLUGINS_DIR_PATH = './oas_docs/plugins'
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
       version
@@ -66,6 +67,7 @@ module R2OAS
       namespace_type
       deploy_dir_path
       plugins
+      local_plugins_dir_path
     ].freeze
 
     UNPUBLIC_VALID_OPTIONS_KEYS = %i[
@@ -103,6 +105,7 @@ module R2OAS
       target.namespace_type                                       = DEFAULT_NAMESPACE_TYPE
       target.deploy_dir_path                                      = DEFAULT_DEPLOY_DIR_PATH
       target.plugins                                              = EDFAULT_PLUGINS
+      target.local_plugins_dir_path                               = DEFAULT_LOCAL_PLUGINS_DIR_PATH
     end
   end
 end
