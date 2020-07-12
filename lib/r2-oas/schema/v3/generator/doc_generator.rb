@@ -101,6 +101,12 @@ module R2OAS
           end
 
           # Save docs cache
+
+          # MEMO:
+          # The .docs file is not updated when the plugin is applied.
+          # The .docs file only stores data that can be taken from the routing data.
+          return if use_plugin?
+
           deflated_cache_docs = Zlib::Deflate.deflate(Marshal.dump(store.data))
           IO.binwrite(abs_cache_docs_path, deflated_cache_docs)
           if is_exists_cache

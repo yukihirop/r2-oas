@@ -16,8 +16,8 @@ module R2OAS
 
         def_delegators :@http_status_manager, :http_statuses
 
-        def initialize(route_data, path)
-          super()
+        def initialize(route_data, path, opts = {})
+          super(opts)
           @path_comp                      = Routing::PathComponent.new(path)
           @path                           = @path_comp.symbol_to_brace
           @route_data                     = route_data
@@ -27,8 +27,8 @@ module R2OAS
           @required_parameters            = route_data[:required_parameters]
           @format_name                    = create_format_name
           @http_status_manager            = HttpStatusManager.new(@path, @verb, http_statuses_when_http_method)
-          @components_schema_object       = components_schema_object_class.new(route_data, path)
-          @components_request_body_object = components_request_body_object_class.new(route_data, path)
+          @components_schema_object       = components_schema_object_class.new(route_data, path, opts)
+          @components_request_body_object = components_request_body_object_class.new(route_data, path, opts)
           support_field_name? if route_data.key?(:verb)
         end
 

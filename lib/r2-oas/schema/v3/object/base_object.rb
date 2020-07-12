@@ -11,7 +11,7 @@ module R2OAS
 
         def_delegators :@plugin_executor, :execute_transform_plugins
 
-        def initialize(*_args)
+        def initialize(opts = {})
           AppConfiguration::VALID_OPTIONS_KEYS.each do |key|
             send("#{key}=", app_configuration_options[key])
           end
@@ -20,7 +20,8 @@ module R2OAS
             instance_variable_set(:"@#{key}", pluggable_configuration_options[key])
           end
 
-          @plugin_executor = ::R2OAS::Plugin::Executor.new(@plugins)
+          @opts = opts
+          @plugin_executor = ::R2OAS::Plugin::Executor.new(@plugins, opts)
         end
 
         def info_object_class

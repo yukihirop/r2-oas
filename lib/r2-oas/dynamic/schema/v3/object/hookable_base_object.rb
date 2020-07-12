@@ -58,8 +58,8 @@ module R2OAS
 
           attr_accessor :doc
 
-          def initialize
-            super
+          def initialize(opts = {})
+            super(opts)
             self.doc = {}
           end
 

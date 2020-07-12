@@ -8,8 +8,8 @@ module R2OAS
   module Schema
     module V3
       class OpenapiObject < BaseObject
-        def initialize(routes_data, tags_data, schemas_data)
-          super()
+        def initialize(routes_data, tags_data, schemas_data, opts = {})
+          super(opts)
           @routes_data = routes_data
           @tags_data = tags_data
           @schemas_data = schemas_data
@@ -37,11 +37,11 @@ module R2OAS
         end
 
         def tags_doc
-          TagObject.new(@tags_data).to_doc
+          TagObject.new(@tags_data, @opts).to_doc
         end
 
         def paths_doc
-          paths_object_class.new(@routes_data).to_doc
+          paths_object_class.new(@routes_data, @opts).to_doc
         end
 
         def external_docs_doc
@@ -49,11 +49,11 @@ module R2OAS
         end
 
         def servers_doc
-          ServerObject.new.to_doc
+          ServerObject.new(@opts).to_doc
         end
 
         def components_doc
-          components_object_class.new(@routes_data).to_doc
+          components_object_class.new(@routes_data, @opts).to_doc
         end
       end
     end

@@ -8,8 +8,8 @@ module R2OAS
     module V3
       module Components
         class RequestBodyObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
-          def initialize(route_data, path)
-            super()
+          def initialize(route_data, path, opts = {})
+            super(opts)
             @path_comp   = Routing::PathComponent.new(path)
             @path        = @path_comp.symbol_to_brace
             @route_data  = route_data
@@ -22,7 +22,7 @@ module R2OAS
             execute_before_create(@schema_name)
             create_doc do
               child_file_manager = ComponentsFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
-              schema_object = components_schema_object_class.new(@route_data, @path)
+              schema_object = components_schema_object_class.new(@route_data, @path, @opts)
 
               unless child_file_manager.skip_save?
                 result = {

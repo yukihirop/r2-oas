@@ -8,15 +8,20 @@ module R2OAS
     class Executor
       extend ::R2OAS::Plugin::Hookable
 
-      def initialize(plugins)
+      def initialize(plugins, opts)
         @plugins = plugins
+        @use_plugin = !!opts[:use_plugin]
       end
 
       def execute_transform_plugins(hook_method, *args)
+        return unless @use_plugin
+
         self.class.execute_transform_plugins(@plugins, hook_method, *args)
       end
 
       def execute_plugins(type, hook_method, *args)
+        return unless @use_plugin
+
         self.class.execute_plugins(@plugins, type, hook_method, *args)
       end
 
