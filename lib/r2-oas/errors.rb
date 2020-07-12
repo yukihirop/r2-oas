@@ -5,6 +5,7 @@ module R2OAS
   class NoFileExistsError < StandardError; end
   class NoSupportError < StandardError; end
   class ChecksumError < StandardError; end
+  class PluginNameError < StandardError; end
   class PluginDuplicationError < StandardError; end
   class PluginLoadError < StandardError; end
 end

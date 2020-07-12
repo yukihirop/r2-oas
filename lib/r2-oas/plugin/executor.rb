@@ -59,8 +59,17 @@ module R2OAS
           return @result if @result.present?
 
           plugins.each do |plugin_info|
-            plugin_name = plugin_info[0]
-            plugin_opts = plugin_info[1]
+            if plugin_info.is_a?(Array)
+              plugin_name = plugin_info[0]
+              plugin_opts = plugin_info[1]
+
+              raise PluginNameError, 'Missing plugin name' if plugin_name.blank?
+            elsif plugin_info.is_a?(String)
+              plugin_name = plugin_info
+              plugin_opts = nil
+            else
+              raise NoSupportError, "The plugin loading format '#{plugin_info.kind}' is incorrect"
+            end
 
             if @used_plugins.include?(plugin_name)
               raise PluginDuplicationError, "Plugin: duplicate '#{plugin_name}'"
@@ -117,7 +126,13 @@ module R2OAS
         end
 
         def plugins_list(plugins)
-          plugins.map { |plugin_info| plugin_info[0] }
+          plugins.map do |plugin_info|
+            if plugin_info.is_a?(Array)
+              plugin_info[0]
+            elsif plugin_info.is_a?(String)
+              plugin_info
+            end
+          end
         end
       end
     end
