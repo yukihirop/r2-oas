@@ -1,4 +1,7 @@
-# Use hook methods
+# [Deprecated] Use hook methods
+
+!> ・will be removed in `v0.4.2`  
+   ・Please use the `plugin` instead
 
 Supported hook(life cycle methods) is like this:
 

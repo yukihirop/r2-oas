@@ -18,6 +18,7 @@ bundle exec rake routes:oas:dist    # distribute
 bundle exec rake routes:oas:clean   # clean
 bundle exec rake routes:oas:analyze # analyze
 bundle exec rake routes:oas:deploy  # deploy
+bundle exec rake routes:oas:plugin  # execute plugin
 ```
 
 ## 💎 Installation

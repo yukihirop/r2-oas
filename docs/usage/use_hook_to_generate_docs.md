@@ -1,4 +1,7 @@
-## Use hook to generate docs
+## [Deprecated] Use hook to generate docs
+
+!> ・will be removed in `v0.4.2`  
+   ・Please use the `plugin` instead
 
 ## Prepare
 
