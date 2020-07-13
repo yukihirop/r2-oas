@@ -72,7 +72,7 @@ module R2OAS
               plugin_name = plugin_info
               plugin_opts = nil
             else
-              raise NoSupportError, "The plugin loading format '#{plugin_info.kind}' is incorrect"
+              raise NoSupportError, "The plugin loading format '#{plugin_info.class}' is incorrect"
             end
 
             if @used_plugins.include?(plugin_name)
@@ -87,7 +87,7 @@ module R2OAS
               if !klass.respond_to?(:plugin_name)
                 next
               elsif !plugins_list(plugins).include?(klass.plugin_name) && klass.plugin_name != plugin_name
-                raise PluginLoadError, "The '#{plugin_name}' plugin doesn't exist or can't be loaded." if klass.plugin_name.present?
+                raise PluginLoadError, "The '#{plugin_name}' plugin doesn't exist or can't be loaded" if klass.plugin_name.present?
 
                 next
               # else

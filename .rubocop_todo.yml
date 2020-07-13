@@ -69,6 +69,7 @@ Metrics/BlockLength:
     - "spec/r2-oas/schema/v3/object/openapi_object_spec.rb"
     - "spec/r2-oas/schema/v3/object/info_object_spec.rb"
     - "lib/r2-oas/plugin/executor.rb"
+    - "spec/r2-oas/plugin/executor_spec.rb"
 
 Lint/AmbiguousOperator:
   Exclude:
