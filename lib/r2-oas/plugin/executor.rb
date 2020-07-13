@@ -16,24 +16,22 @@ module R2OAS
       def execute_transform_plugins(hook_method, *args)
         return unless @use_plugin
 
-        self.class.execute_transform_plugins(@plugins, hook_method, *args)
-      end
+        @plugin_map ||= self.class.plugin_map(@plugins)
 
-      def execute_plugins(type, hook_method, *args)
-        return unless @use_plugin
-
-        self.class.execute_plugins(@plugins, type, hook_method, *args)
+        self.class.execute_transform_plugins(@plugin_map, hook_method, *args)
       end
 
       class << self
-        def execute_transform_plugins(plugins, hook_method, *args)
-          execute_plugins(plugins, :transform, hook_method, *args)
+        attr_accessor :plugin_map
+
+        def execute_transform_plugins(plugin_map, hook_method, *args)
+          execute_plugins(plugin_map, :transform, hook_method, *args)
         end
 
-        def execute_plugins(plugins, type, hook_method, *args)
-          return unless plugin_map(plugins).present?
+        def execute_plugins(plugin_map, type, hook_method, *args)
+          return unless plugin_map.present?
 
-          plugins_info = plugin_map(plugins)[type.to_sym][hook_method.to_sym]
+          plugins_info = plugin_map[type.to_sym][hook_method.to_sym]
 
           return if plugins_info.nil?
 
@@ -59,9 +57,10 @@ module R2OAS
         # }
         #
         def plugin_map(plugins)
-          @used_plugins ||= []
-          @result ||= {}
-          return @result if @result.present?
+          @plugin_map ||= {}
+          return @plugin_map if @plugin_map.present?
+
+          @used_plugins = []
 
           plugins.each do |plugin_info|
             if plugin_info.is_a?(Array)
@@ -113,21 +112,21 @@ module R2OAS
                     execute_hook_method: "execute_#{hook_method}"
                   }
 
-                  if @result[plugin_type].present?
-                    if @result[plugin_type][hook_method].present?
-                      @result[plugin_type][hook_method].push(data)
+                  if @plugin_map[plugin_type].present?
+                    if @plugin_map[plugin_type][hook_method].present?
+                      @plugin_map[plugin_type][hook_method].push(data)
                     else
-                      @result[plugin_type][hook_method] = [data]
+                      @plugin_map[plugin_type][hook_method] = [data]
                     end
                   else
-                    @result[plugin_type] = {}
-                    @result[plugin_type][hook_method] = [data]
+                    @plugin_map[plugin_type] = {}
+                    @plugin_map[plugin_type][hook_method] = [data]
                   end
                 end
               end
             end
           end
-          @result
+          @plugin_map
         end
 
         def plugins_list(plugins)

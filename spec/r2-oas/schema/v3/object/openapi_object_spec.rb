@@ -26,7 +26,8 @@ RSpec.describe R2OAS::Schema::V3::OpenapiObject do
   end
   let(:tags_data) { ['task', 'api/v1/task'] }
   let(:schemas_data) { %w[Task Api_V1_Task] }
-  let(:object) { described_class.new(routes_data, tags_data, schemas_data) }
+  let(:opts) { {} }
+  let(:object) { described_class.new(routes_data, tags_data, schemas_data, opts) }
 
   let(:info_doc) { double('InfoObject#to_doc') }
   let(:tag_doc) { double('TagObject#to_doc') }
@@ -34,6 +35,11 @@ RSpec.describe R2OAS::Schema::V3::OpenapiObject do
   let(:external_docs_doc) { double('ExternalDocumentObject#to_doc') }
   let(:servers_doc) { double('ServerObject#to_doc') }
   let(:components_doc) { double('ComponentsObject#to_doc') }
+
+  after do
+    reset_config
+    reset_plugin
+  end
 
   describe '#to_doc' do
     before do
@@ -44,13 +50,62 @@ RSpec.describe R2OAS::Schema::V3::OpenapiObject do
       allow_any_instance_of(R2OAS::Schema::V3::ServerObject).to receive(:to_doc).and_return(servers_doc)
       allow_any_instance_of(R2OAS::Schema::V3::ComponentsObject).to receive(:to_doc).and_return(components_doc)
     end
+    context 'when default' do
+      it { expect(object.to_doc['openapi']).to eq '3.0.0' }
+      it { expect(object.to_doc['info']).to eq info_doc }
+      it { expect(object.to_doc['tags']).to eq tag_doc }
+      it { expect(object.to_doc['paths']).to eq paths_doc }
+      it { expect(object.to_doc['externalDocs']).to eq external_docs_doc }
+      it { expect(object.to_doc['servers']).to eq servers_doc }
+      it { expect(object.to_doc['components']).to eq components_doc }
+    end
 
-    it { expect(object.to_doc['openapi']).to eq '3.0.0' }
-    it { expect(object.to_doc['info']).to eq info_doc }
-    it { expect(object.to_doc['tags']).to eq tag_doc }
-    it { expect(object.to_doc['paths']).to eq paths_doc }
-    it { expect(object.to_doc['externalDocs']).to eq external_docs_doc }
-    it { expect(object.to_doc['servers']).to eq servers_doc }
-    it { expect(object.to_doc['components']).to eq components_doc }
+    context 'when use plugins (setup)' do
+      let(:opts) { { use_plugin: true } }
+
+      before do
+        class TestSetupTransform < ::R2OAS::Plugin::Transform
+          self.plugin_name = 'r2oas-plugin-transform-setup-test'
+
+          setup do
+            self.opts = { setup: true }
+          end
+        end
+
+        R2OAS.configure do |config|
+          config.plugins = [
+            'r2oas-plugin-transform-setup-test'
+          ]
+        end
+
+        object.to_doc
+      end
+
+      it { expect(TestSetupTransform.opts).to eq setup: true }
+    end
+
+    context 'when use plugins (teardown)' do
+      let(:opts) { { use_plugin: true } }
+
+      before do
+        class TestTeardownTransform < ::R2OAS::Plugin::Transform
+          self.plugin_name = 'r2oas-plugin-transform-teardown-test'
+
+          teardown do
+            self.opts = { teardown: true }
+          end
+        end
+
+        R2OAS.configure do |config|
+          config.plugins = [
+            'r2oas-plugin-transform-teardown-test'
+          ]
+        end
+
+        object.to_doc
+      end
+
+      it { expect(TestTeardownTransform.opts).to eq teardown: true }
+    end
   end
 end

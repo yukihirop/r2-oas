@@ -22,11 +22,11 @@ module R2OAS
 
           def self.inherited(base)
             base.extend ClassMethods
-            self.hook = Hooks::Hook.register(base)
+            self.hook = Hooks::Hook.register(:dynamic, base)
           end
 
           def self.hooks
-            superclass.hook.repository[self].global_hooks_data
+            superclass.hook.repository[:dynamic][self].global_hooks_data
           end
 
           def self.hook=(value)
@@ -72,7 +72,7 @@ module R2OAS
           end
 
           def use_superclass_hook
-            self.class.hook.repository[self.class] = self.class.hook.repository[self.class.superclass]
+            self.class.hook.repository[:dynamic][self.class] = self.class.hook.repository[:dynamic][self.class.superclass]
           end
 
           private

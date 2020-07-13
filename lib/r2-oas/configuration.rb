@@ -62,7 +62,7 @@ module R2OAS
     private
 
     def load_local_plugins
-      plugins_path = File.expand_path(local_plugins_dir_path)
+      plugins_path = File.expand_path("#{root_dir_path}/#{local_plugins_dir_name}")
       Dir.glob("#{plugins_path}/**/*.rb").sort.each do |file|
         require file if FileTest.exists?(file)
       end

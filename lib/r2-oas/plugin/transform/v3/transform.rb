@@ -11,7 +11,7 @@ module R2OAS
 
         def self.inherited(base)
           super
-          self.hook_klass = ::R2OAS::Hooks::Hook.register(base)
+          self.hook_klass = ::R2OAS::Hooks::Hook.register(:plugin, base)
           base.type = :transform
         end
       end

@@ -235,6 +235,8 @@ Naming/HeredocDelimiterNaming:
 Style/ClassAndModuleChildren:
   Exclude:
     - "spec/dummy_app/controllers/api/v1/tasks_controller.rb"
+    - "spec/r2-oas/schema/v3/object/components/request_body_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/components/schema_object_spec.rb"
 
 Lint/RequireParentheses:
   Exclude:
@@ -301,5 +303,9 @@ Style/RedundantRegexpEscape:
   Enabled: false
 
 Layout/CommentIndentation:
+  Exclude:
+    - "lib/r2-oas/plugin/executor.rb"
+
+Lint/DuplicateMethods:
   Exclude:
     - "lib/r2-oas/plugin/executor.rb"

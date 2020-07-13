@@ -6,7 +6,7 @@ module R2OAS
   module Plugin
     module Hookable
       def hooks_map
-        hook_klass.repository
+        hook_klass.repository[:plugin]
       end
 
       def hooks

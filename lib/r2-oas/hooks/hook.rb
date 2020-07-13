@@ -12,19 +12,21 @@ module R2OAS
       class << self
         attr_accessor :repository
 
-        def register(target_class)
+        def register(type, target_class)
           @repository ||= {}
+          @repository[type] ||= {}
+          @type = type
           @hooks ||= {}
-          @repository[target_class] = Repository.new(target_class)
+          @repository[type][target_class] = Repository.new(target_class)
           self
         end
 
         def on(on, callback, target_class, once = false)
-          target_repository = @repository[target_class]
+          target_repository = @repository[@type][target_class]
           uid = target_repository.last_hook_id + 1
           target_repository.last_hook_id = uid
 
-          @repository[target_class].global_hooks_data[on] ||= []
+          target_repository.global_hooks_data[on] ||= []
           global_hook = GlobalHook.new(callback, once, uid, target_class)
 
           target_repository.global_hooks_data[on].push(global_hook)
@@ -34,7 +36,7 @@ module R2OAS
 
         #  MEMO: Do not Use
         def off(uid, target_class)
-          target_repository = @repository[target_class]
+          target_repository = @repository[@type][target_class]
           result = uid
 
           target_repository.global_hooks_data.each do |on|

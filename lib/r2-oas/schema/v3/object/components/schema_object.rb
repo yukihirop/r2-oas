@@ -32,7 +32,7 @@ module R2OAS
           end
 
           private
-          
+
           def create_doc
             result = {
               'type' => 'object',

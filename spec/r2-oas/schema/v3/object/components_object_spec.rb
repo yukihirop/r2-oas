@@ -20,7 +20,6 @@ RSpec.describe R2OAS::Schema::V3::ComponentsObject do
 
   after do
     reset_config
-    # TODO: remove this method
     delete_oas_docs
   end
 

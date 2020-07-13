@@ -64,7 +64,7 @@ module R2OAS
           end
 
           private
-          
+
           def create_doc
             file_manager = ComponentsFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
             doc.deep_merge!(

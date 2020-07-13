@@ -75,6 +75,7 @@ module ConfigHelper
 
       # :dot or :underbar
       config.namespace_type = :underbar
+      config.plugins = []
     end
   end
 end

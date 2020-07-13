@@ -17,6 +17,10 @@ module PathHelper
     R2OAS.deploy_dir_path
   end
 
+  def local_plugins_dir_name
+    R2OAS.local_plugins_dir_name
+  end
+
   def dot_paths_path
     "#{root_dir_path}/.paths"
   end
@@ -71,5 +75,9 @@ module PathHelper
 
   def relative_cache_docs_path
     "#{root_dir_path}/.docs"
+  end
+
+  def plugins_path
+    "#{root_dir_path}/#{local_plugins_dir_name}"
   end
 end

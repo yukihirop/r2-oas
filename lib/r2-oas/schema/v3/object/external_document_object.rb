@@ -13,9 +13,9 @@ module R2OAS
           execute_transform_plugins(:external_document, doc)
           doc
         end
-        
+
         private
-        
+
         def create_doc
           result = {
             'description' => '',
