@@ -21,7 +21,7 @@ RSpec.describe R2OAS::Schema::V3::BaseObject do
       it { expect(object.send(:doc_save_file_name)).to eq 'oas_doc.yml' }
       it { expect(object.send(:force_update_schema)).to eq false }
       it { expect(object.send(:use_tag_namespace)).to eq true }
-      it { expect(object.send(:use_schema_namespace)).to eq false }
+      it { expect(object.send(:use_schema_namespace)).to eq true }
       it { expect(object.send(:interval_to_save_edited_tmp_schema)).to eq 15 }
       it { expect(object.send(:server).data).to include(description: 'localhost', url: 'http://localhost:3000') }
       it { expect(object.send(:namespace_type)).to eq :underbar }

@@ -13,6 +13,7 @@ RSpec.describe R2OAS::Schema::Builder do
 
   after do
     delete_oas_docs
+    reset_config
   end
 
   describe '.initialize' do

@@ -16,6 +16,10 @@ RSpec.describe R2OAS::Routing::Adjustor do
   end
   let(:adjustor) { described_class.new(routes_data) }
 
+  after do
+    reset_config
+  end
+
   describe '#route_els' do
     context 'when rails normal routing' do
       before do
@@ -23,10 +27,6 @@ RSpec.describe R2OAS::Routing::Adjustor do
       end
 
       context 'when namespace_type is :underbar' do
-        before do
-          allow(R2OAS).to receive(:namespace_type).and_return(:underbar)
-        end
-
         it 'should return adjusted' do
           expect(adjustor.routes_els).to include(
             data: {

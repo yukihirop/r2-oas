@@ -7,10 +7,15 @@ RSpec.describe R2OAS::Routing::Parser do
   let(:routes) { ::Rails.application.routes.routes }
   let(:parser) { described_class.new(routes) }
 
+  after do
+    reset_config
+  end
+
   describe '#routes_data' do
     context 'when namespace_type is :underbar' do
       before do
         allow(R2OAS).to receive(:namespace_type).and_return(:underbar)
+        allow(R2OAS).to receive(:use_schema_namespace).and_return(true)
       end
 
       it 'should return routes data' do
@@ -38,6 +43,7 @@ RSpec.describe R2OAS::Routing::Parser do
     context 'when namespace_type is :dot' do
       before do
         allow(R2OAS).to receive(:namespace_type).and_return(:dot)
+        allow(R2OAS).to receive(:use_schema_namespace).and_return(true)
       end
 
       it 'should return routes data' do
@@ -73,6 +79,7 @@ RSpec.describe R2OAS::Routing::Parser do
     context 'when namespace_type is :underbar' do
       before do
         allow(R2OAS).to receive(:namespace_type).and_return(:underbar)
+        allow(R2OAS).to receive(:use_schema_namespace).and_return(true)
       end
 
       it 'should return schemas data' do
@@ -83,6 +90,7 @@ RSpec.describe R2OAS::Routing::Parser do
     context 'when namespace_type is :dot' do
       before do
         allow(R2OAS).to receive(:namespace_type).and_return(:dot)
+        allow(R2OAS).to receive(:use_schema_namespace).and_return(true)
       end
 
       it 'should return schemas data' do

@@ -9,7 +9,7 @@ module ConfigHelper
       config.doc_save_file_name                 = 'oas_doc.yml'
       config.force_update_schema                = false
       config.use_tag_namespace                  = true
-      config.use_schema_namespace               = false
+      config.use_schema_namespace               = true
       config.interval_to_save_edited_tmp_schema = 15
 
       config.server.data = [
@@ -73,6 +73,10 @@ module ConfigHelper
         paths_stats.highlight_color                = :magenta
       end
 
+      # MEMO:
+      # The initial value was changed on the way, so it is not the initial value.
+      # It is a compromise because the number of corrections becomes huge.
+      #
       # :dot or :underbar
       config.namespace_type = :underbar
       config.plugins = []
