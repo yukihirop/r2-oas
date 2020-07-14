@@ -42,5 +42,6 @@ RSpec.configure do |config|
     reset_config
     reset_plugin
     reset_store
+    delete_oas_docs
   end
 end

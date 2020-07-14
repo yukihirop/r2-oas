@@ -8,7 +8,7 @@ load File.expand_path('common.rake', __dir__)
 
 namespace :routes do
   namespace :oas do
-    desc 'Generate OAS documentation files'
+    desc '[R2-OAS] Generate OAS documentation files'
     task docs: [:common] do
       start do
         is_create_cache = cache_docs.eql? 'true'
@@ -18,7 +18,7 @@ namespace :routes do
       end
     end
 
-    desc 'Apply the plugin to the OAS document'
+    desc '[R2-OAS] Apply the plugin to the OAS document'
     task plugin: [:common] do
       start do
         options = { unit_paths_file_path: unit_paths_file_path, skip_load_dot_paths: true, use_plugin: true }
@@ -27,7 +27,7 @@ namespace :routes do
       end
     end
 
-    desc 'Analyze OAS documentation'
+    desc '[R2-OAS] Analyze OAS documentation'
     task analyze: [:common] do
       start do
         analyzer_options = { type: :existing, existing_schema_file_path: existing_schema_file_path }
@@ -40,7 +40,7 @@ namespace :routes do
       end
     end
 
-    desc 'Distribute OAS documentation'
+    desc '[R2-OAS] Distribute OAS documentation'
     task dist: [:common] do
       start do
         builder_options = { unit_paths_file_path: unit_paths_file_path }
@@ -49,7 +49,7 @@ namespace :routes do
       end
     end
 
-    desc 'Open Swagger Editor'
+    desc '[R2-OAS] Open Swagger Editor'
     task editor: [:common] do
       start do
         builder_options = { unit_paths_file_path: unit_paths_file_path }
@@ -63,7 +63,7 @@ namespace :routes do
       end
     end
 
-    desc 'Open Swagger UI'
+    desc '[R2-OAS] Open Swagger UI'
     task ui: [:common] do
       start do
         builder_options = { unit_paths_file_path: unit_paths_file_path }
@@ -76,7 +76,7 @@ namespace :routes do
       end
     end
 
-    desc 'Monitor OAS Document'
+    desc '[R2-OAS] Monitor OAS Document'
     task monitor: [:common] do
       start do
         builder_options = { unit_paths_file_path: unit_paths_file_path }
@@ -90,7 +90,7 @@ namespace :routes do
       end
     end
 
-    desc 'Clean OAS Document'
+    desc '[R2-OAS] Clean OAS Document'
     task clean: [:common] do
       start do
         builder_options = { skip_load_dot_paths: true }

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../task_logging'
+require 'r2-oas/task_logging'
 
 namespace :routes do
   namespace :oas do

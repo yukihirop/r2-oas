@@ -21,6 +21,10 @@ module PathHelper
     R2OAS.local_plugins_dir_name
   end
 
+  def local_tasks_dir_name
+    R2OAS.local_tasks_dir_name
+  end
+
   def dot_paths_path
     "#{root_dir_path}/.paths"
   end
@@ -79,5 +83,9 @@ module PathHelper
 
   def plugins_path
     "#{root_dir_path}/#{local_plugins_dir_name}"
+  end
+
+  def tasks_path
+    "#{root_dir_path}/#{local_tasks_dir_name}"
   end
 end

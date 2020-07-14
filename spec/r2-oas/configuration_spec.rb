@@ -73,6 +73,7 @@ RSpec.describe R2OAS::Configuration do
         # plugin configuration
         expect(subject[:plugins]).to eq []
         expect(subject[:local_plugins_dir_name]).to eq 'plugins'
+        expect(subject[:local_tasks_dir_name]).to eq 'tasks'
       end
     end
 
@@ -158,6 +159,7 @@ RSpec.describe R2OAS::Configuration do
               'r2oas-plugin-transform-sample2'
             ]
             config.local_plugins_dir_name = 'plugins'
+            config.local_tasks_dir_name = 'rake_tasks'
           end
         end
       end
@@ -218,6 +220,7 @@ RSpec.describe R2OAS::Configuration do
           'r2oas-plugin-transform-sample2'
         )
         expect(subject[:local_plugins_dir_name]).to eq 'plugins'
+        expect(subject[:local_tasks_dir_name]).to eq 'rake_tasks'
       end
     end
   end

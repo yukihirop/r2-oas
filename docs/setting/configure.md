@@ -81,6 +81,7 @@ R2OAS.configure do |config|
   end
   config.plugins = []
   config.local_plugins_dir_name = 'plugins'
+  config.local_tasks_dir_name = 'tasks'
 end
 ```
 
@@ -105,6 +106,7 @@ we explain the options that can be set.
 |deploy_dir_path|deploy directory.|`"./deploy_docs"`|
 |plugins|Load plugin|`[]`|
 |local_plugins_dir_name|Plugin directory name|`"plugins"`|
+|local_tasks_dir_name|Rake tasks directory name|`"tasks"`|
 
 #### server
 
