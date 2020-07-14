@@ -14,6 +14,11 @@ module R2OAS
 
         def initialize(options = {})
           super
+
+          options.keys.each do |key|
+            send("#{key}=", options[key])
+          end
+
           @store = Store.create
           @glob_schema_paths = create_glob_schema_paths
         end
@@ -24,6 +29,9 @@ module R2OAS
         attr_accessor :skip_load_dot_paths
         attr_accessor :is_create_cache
         attr_accessor :store
+        attr_accessor :use_plugin
+
+        alias use_plugin? use_plugin
 
         # Scope Rails
         def create_docs
@@ -34,7 +42,7 @@ module R2OAS
           tags_data = parser.tags_data
           schemas_data = parser.schemas_data
 
-          Schema::V3::OpenapiObject.new(routes_data, tags_data, schemas_data).to_doc
+          Schema::V3::OpenapiObject.new(routes_data, tags_data, schemas_data, { use_plugin: use_plugin }).to_doc
         end
 
         def create_all_routes

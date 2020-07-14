@@ -16,8 +16,8 @@ module R2OAS
     }
     # rubocop:enable Style/MutableConstant
 
-    VALID_OPTIONS_KEYS = [
-      :use_object_classes
+    VALID_OPTIONS_KEYS = %i[
+      use_object_classes
     ].freeze
 
     attr_accessor *VALID_OPTIONS_KEYS

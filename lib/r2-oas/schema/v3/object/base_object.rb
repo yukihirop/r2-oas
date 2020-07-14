@@ -1,10 +1,17 @@
 # frozen_string_literal: true
 
+require 'forwardable'
+require 'r2-oas/plugin/executor'
+
 module R2OAS
   module Schema
     module V3
       class BaseObject
-        def initialize(*_args)
+        extend Forwardable
+
+        def_delegators :@plugin_executor, :execute_transform_plugins
+
+        def initialize(opts = {})
           AppConfiguration::VALID_OPTIONS_KEYS.each do |key|
             send("#{key}=", app_configuration_options[key])
           end
@@ -12,6 +19,9 @@ module R2OAS
           PluggableConfiguration::VALID_OPTIONS_KEYS.each do |key|
             instance_variable_set(:"@#{key}", pluggable_configuration_options[key])
           end
+
+          @opts = opts
+          @plugin_executor = ::R2OAS::Plugin::Executor.new(@plugins, opts)
         end
 
         def info_object_class

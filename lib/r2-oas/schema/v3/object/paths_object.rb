@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
-require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
+require 'r2-oas/dynamic/schema/v3/object/hookable_base_object'
+require 'r2-oas/routing/components/path_component'
 
 module R2OAS
   module Schema
     module V3
-      class PathsObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
-        def initialize(routes_data)
-          super()
+      class PathsObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
+        def initialize(routes_data, opts = {})
+          super(opts)
           @routes_data = routes_data
           define_hookable_tmp_object_class
         end
@@ -16,7 +17,7 @@ module R2OAS
           if unit_paths_file_path.present?
             unit_paths_data = YAML.load_file(unit_paths_file_path)['paths']
             result = unit_paths_data.each_with_object({}) do |(path, path_item_doc), docs|
-              docs[path] = HookableTmpObjectClass.new(path_item_doc, path).to_doc
+              docs[path] = HookableTmpObjectClass.new(path_item_doc, path, @opts).to_doc
             end
           else
             result = path_item_docs.each_with_object({}) do |(path, path_item_doc), docs|
@@ -30,10 +31,11 @@ module R2OAS
 
         def define_hookable_tmp_object_class
           klass = Class.new(path_item_object_class) do |_c|
-            def initialize(data, path)
-              super
+            def initialize(data, path, opts = {})
+              super(opts)
               @data = data
               @path = path
+              @path_comp = Routing::PathComponent.new(path)
               use_superclass_hook
             end
 
@@ -45,6 +47,7 @@ module R2OAS
               execute_before_create(@path)
               create_doc
               execute_after_create(@path)
+              execute_transform_plugins(:path_item, doc, @path_comp)
               doc
             end
           end
@@ -60,7 +63,7 @@ module R2OAS
             path = route_el[:path]
             route_data = route_el[:data]
 
-            path_item_doc = path_item_object_class.new(route_data, path).to_doc
+            path_item_doc = path_item_object_class.new(route_data, path, @opts).to_doc
             if data[path].present?
               data[path].merge!(path_item_doc)
             else

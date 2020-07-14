@@ -8,6 +8,12 @@ RSpec.describe R2OAS::Routing::RequestComponent do
   let(:is_route_engine) { false }
   let(:comp) { described_class.new(request, is_route_engine) }
 
+  before do
+    R2OAS.configure do |config|
+      config.use_schema_namespace = true
+    end
+  end
+
   describe '#to_tag_name' do
     context 'when route is not engine' do
       let(:request) { 'api/v1/tasks#show' }

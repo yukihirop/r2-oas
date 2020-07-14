@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require 'forwardable'
-require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
+require 'r2-oas/dynamic/schema/v3/object/hookable_base_object'
 require 'r2-oas/routing/components/path_component'
 
 module R2OAS
   module Schema
     module V3
-      class PathItemObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
+      class PathItemObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
         extend Forwardable
         # reference
         # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object
@@ -16,8 +16,8 @@ module R2OAS
 
         def_delegators :@http_status_manager, :http_statuses
 
-        def initialize(route_data, path)
-          super()
+        def initialize(route_data, path, opts = {})
+          super(opts)
           @path_comp                      = Routing::PathComponent.new(path)
           @path                           = @path_comp.symbol_to_brace
           @route_data                     = route_data
@@ -27,8 +27,8 @@ module R2OAS
           @required_parameters            = route_data[:required_parameters]
           @format_name                    = create_format_name
           @http_status_manager            = HttpStatusManager.new(@path, @verb, http_statuses_when_http_method)
-          @components_schema_object       = components_schema_object_class.new(route_data, path)
-          @components_request_body_object = components_request_body_object_class.new(route_data, path)
+          @components_schema_object       = components_schema_object_class.new(route_data, path, opts)
+          @components_request_body_object = components_request_body_object_class.new(route_data, path, opts)
           support_field_name? if route_data.key?(:verb)
         end
 
@@ -36,6 +36,7 @@ module R2OAS
           execute_before_create(@path)
           create_doc
           execute_after_create(@path)
+          execute_transform_plugins(:path_item, doc, @path_comp)
           doc
         end
 

@@ -7,7 +7,8 @@ module R2OAS
   module Schema
     module V3
       class TagObject < BaseObject
-        def initialize(tags_data)
+        def initialize(tags_data, opts = {})
+          super(opts)
           @tags_data = tags_data
         end
 

@@ -27,6 +27,7 @@ Metrics/AbcSize:
     - "spec/r2-oas/schema/v3/object/components/schema_object_spec.rb"
     - "spec/support/helpers/config_helper.rb"
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
+    - "lib/r2-oas/plugin/executor.rb"
 
 Style/Documentation:
   Enabled: false
@@ -67,6 +68,8 @@ Metrics/BlockLength:
     - "spec/r2-oas/schema/v3/builder/base_builder_spec.rb"
     - "spec/r2-oas/schema/v3/object/openapi_object_spec.rb"
     - "spec/r2-oas/schema/v3/object/info_object_spec.rb"
+    - "lib/r2-oas/plugin/executor.rb"
+    - "spec/r2-oas/plugin/executor_spec.rb"
 
 Lint/AmbiguousOperator:
   Exclude:
@@ -123,21 +126,26 @@ Metrics/MethodLength:
     - "spec/support/helpers/config_helper.rb"
     - "lib/r2-oas/schema/v3/analyzer/components/object_analyzer.rb"
     - "lib/r2-oas/store.rb"
+    - "lib/r2-oas/schema/v3/object/openapi_object.rb"
+    - "lib/r2-oas/plugin/executor.rb"
 
 Metrics/CyclomaticComplexity:
   Exclude:
     - "lib/r2-oas/logger/stdout_logger.rb"
     - "lib/r2-oas/schema/v3/manager/pathname_manager.rb"
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
+    - "lib/r2-oas/plugin/executor.rb"
 
 Naming/ConstantName:
   Exclude:
     - "lib/r2-oas/logger/stdout_logger.rb"
+    - "lib/r2-oas/plugin/transform/transform.rb"
 
 Naming/PredicateName:
   Exclude:
     - "lib/r2-oas/hooks/hook.rb"
-    - "lib/r2-oas/plugins/schema/v3/object/hookable_base_object.rb"
+    - "lib/r2-oas/dynamic/schema/v3/object/hookable_base_object.rb"
+    - "lib/r2-oas/plugin/hookable.rb"
 
 Style/DoubleNegation:
   Exclude:
@@ -177,7 +185,8 @@ Style/IdenticalConditionalBranches:
 
 Style/ClassVars:
   Exclude:
-    - "lib/r2-oas/plugins/schema/v3/object/hookable_base_object.rb"
+    - "lib/r2-oas/dynamic/schema/v3/object/hookable_base_object.rb"
+    - "lib/r2-oas/plugin/hookable.rb"
 
 Style/AccessModifierDeclarations:
   Exclude:
@@ -203,6 +212,7 @@ Layout/EndAlignment:
     - "lib/r2-oas/shared/sortable.rb"
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
     - "lib/r2-oas/schema/v3/builder/doc_builder.rb"
+    - "lib/r2-oas/plugin/transform/transform.rb"
 
 Security/YAMLLoad:
   Exclude:
@@ -226,6 +236,8 @@ Naming/HeredocDelimiterNaming:
 Style/ClassAndModuleChildren:
   Exclude:
     - "spec/dummy_app/controllers/api/v1/tasks_controller.rb"
+    - "spec/r2-oas/schema/v3/object/components/request_body_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/components/schema_object_spec.rb"
 
 Lint/RequireParentheses:
   Exclude:
@@ -241,6 +253,7 @@ Security/MarshalLoad:
 Metrics/PerceivedComplexity:
   Exclude:
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
+    - "lib/r2-oas/plugin/executor.rb"
 
 Lint/UselessAssignment:
   Enabled: false
@@ -289,3 +302,11 @@ Style/RedundantRegexpCharacterClass:
 
 Style/RedundantRegexpEscape:
   Enabled: false
+
+Layout/CommentIndentation:
+  Exclude:
+    - "lib/r2-oas/plugin/executor.rb"
+
+Lint/DuplicateMethods:
+  Exclude:
+    - "lib/r2-oas/plugin/executor.rb"

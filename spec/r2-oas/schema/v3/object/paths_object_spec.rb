@@ -11,8 +11,6 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
   end
 
   after do
-    reset_config
-    # TODO: remove this method
     delete_oas_docs
   end
 

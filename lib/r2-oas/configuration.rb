@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'fileutils'
+
 require_relative 'app_configuration'
 require_relative 'pluggable_configuration'
 require_relative 'configuration/paths_config'
@@ -28,6 +30,7 @@ module R2OAS
 
     def configure
       yield self if block_given?
+      load_local_plugins
     end
 
     def options
@@ -57,6 +60,13 @@ module R2OAS
     end
 
     private
+
+    def load_local_plugins
+      plugins_path = File.expand_path("#{root_dir_path}/#{local_plugins_dir_name}")
+      Dir.glob("#{plugins_path}/**/*.rb").sort.each do |file|
+        require file if FileTest.exists?(file)
+      end
+    end
 
     def set_default_for_configuration(target)
       AppConfiguration.set_default(target)

@@ -9,10 +9,6 @@ RSpec.describe R2OAS::Schema::V3::BaseObject do
   let(:http_statuses_when_http_method) { object.send(:http_statuses_when_http_method) }
   let(:tool_paths_stats) { object.send(:tool).paths_stats }
 
-  after do
-    reset_config
-  end
-
   describe '.initialize' do
     context 'when default' do
       it { expect(object.send(:version)).to eq :v3 }
@@ -21,7 +17,7 @@ RSpec.describe R2OAS::Schema::V3::BaseObject do
       it { expect(object.send(:doc_save_file_name)).to eq 'oas_doc.yml' }
       it { expect(object.send(:force_update_schema)).to eq false }
       it { expect(object.send(:use_tag_namespace)).to eq true }
-      it { expect(object.send(:use_schema_namespace)).to eq false }
+      it { expect(object.send(:use_schema_namespace)).to eq true }
       it { expect(object.send(:interval_to_save_edited_tmp_schema)).to eq 15 }
       it { expect(object.send(:server).data).to include(description: 'localhost', url: 'http://localhost:3000') }
       it { expect(object.send(:namespace_type)).to eq :underbar }

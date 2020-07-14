@@ -6,10 +6,6 @@ require 'r2-oas/schema/v3/object/server_object'
 RSpec.describe R2OAS::Schema::V3::ServerObject do
   let(:object) { described_class.new }
 
-  before do
-    reset_config
-  end
-
   describe '#to_doc' do
     before do
       R2OAS.configure do |config|

@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require 'r2-oas/plugins/schema/v3/object/hookable_base_object'
+require 'r2-oas/dynamic/schema/v3/object/hookable_base_object'
 require_relative 'components/schema_object'
 require_relative 'components/request_body_object'
 
 module R2OAS
   module Schema
     module V3
-      class ComponentsObject < R2OAS::Plugins::Schema::V3::HookableBaseObject
-        def initialize(routes_data)
-          super()
+      class ComponentsObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
+        def initialize(routes_data, opts = {})
+          super(opts)
           @routes_data = routes_data
         end
 
@@ -40,12 +40,12 @@ module R2OAS
         # ]
         def components_schema_docs
           @routes_data.each_with_object({}) do |(route_el), data|
-            path        = route_el[:path]
-            route_data  = route_el[:data]
+            path = route_el[:path]
+            route_data = route_el[:data]
 
-            path_item_object = path_item_object_class.new(route_data, path)
+            path_item_object = path_item_object_class.new(route_data, path, @opts)
             path_item_object.http_statuses.each do |http_status|
-              components_schema_object = components_schema_object_class.new(route_data, path)
+              components_schema_object = components_schema_object_class.new(route_data, path, @opts)
               components_schema_doc = components_schema_object.to_doc
               schema_name = components_schema_object.send(:_components_schema_name, http_status)
 
@@ -60,10 +60,10 @@ module R2OAS
 
         def components_request_body_docs
           @routes_data.each_with_object({}) do |(route_el), data|
-            path        = route_el[:path]
-            route_data  = route_el[:data]
+            path = route_el[:path]
+            route_data = route_el[:data]
 
-            components_request_body_object = components_request_body_object_class.new(route_data, path)
+            components_request_body_object = components_request_body_object_class.new(route_data, path, @opts)
             next unless components_request_body_object.generate?
 
             components_request_body_doc = components_request_body_object.to_doc

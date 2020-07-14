@@ -79,6 +79,8 @@ R2OAS.configure do |config|
     paths_stats.heading_color                  = :yellow
     paths_stats.highlight_color                = :magenta
   end
+  config.plugins = []
+  config.local_plugins_dir_name = 'plugins'
 end
 ```
 
@@ -101,6 +103,8 @@ we explain the options that can be set.
 |ignored_http_statuses_when_generate_component_schema|Ignore HTTP statuses when generate component schema|`[204 404]`|
 |namespace_type|namespace for components(schemas/requestBodies) name| `dot` |
 |deploy_dir_path|deploy directory.|`"./deploy_docs"`|
+|plugins|Load plugin|`[]`|
+|local_plugins_dir_name|Plugin directory name|`"plugins"`|
 
 #### server
 

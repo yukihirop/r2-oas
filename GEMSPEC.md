@@ -15,6 +15,7 @@ Provide rake tasks to management API Docment (OpenAPI) 🎉
     $ bundle exec rake routes:oas:clean
     $ bundle exec rake routes:oas:analyze
     $ bundle exec rake routes:oas:deploy
+    $ bundle exec rake routes:oas:plugin
 
   
 Happy Coding ❗️

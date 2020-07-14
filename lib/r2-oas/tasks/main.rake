@@ -18,6 +18,15 @@ namespace :routes do
       end
     end
 
+    desc 'Apply the plugin to the OAS document'
+    task plugin: [:common] do
+      start do
+        options = { unit_paths_file_path: unit_paths_file_path, skip_load_dot_paths: true, use_plugin: true }
+        generator = R2OAS::Schema::Generator.new(options)
+        generator.generate_docs
+      end
+    end
+
     desc 'Analyze OAS documentation'
     task analyze: [:common] do
       start do

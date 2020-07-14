@@ -70,6 +70,9 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:tool].paths_stats.table_title_color).to eq :yellow
         expect(subject[:tool].paths_stats.heading_color).to eq :yellow
         expect(subject[:tool].paths_stats.highlight_color).to eq :magenta
+        # plugin configuration
+        expect(subject[:plugins]).to eq []
+        expect(subject[:local_plugins_dir_name]).to eq 'plugins'
       end
     end
 
@@ -149,6 +152,12 @@ RSpec.describe R2OAS::Configuration do
               paths_stats.heading_color                  = :red
               paths_stats.highlight_color                = :yellow
             end
+            # plugins configuration
+            config.plugins = [
+              ['r2oas-plugin-transform-sample', { loose: false }],
+              'r2oas-plugin-transform-sample2'
+            ]
+            config.local_plugins_dir_name = 'plugins'
           end
         end
       end
@@ -203,6 +212,12 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:tool].paths_stats.table_title_color).to eq :red
         expect(subject[:tool].paths_stats.heading_color).to eq :red
         expect(subject[:tool].paths_stats.highlight_color).to eq :yellow
+        # plugin configuration
+        expect(subject[:plugins]).to include(
+          ['r2oas-plugin-transform-sample', { loose: false }],
+          'r2oas-plugin-transform-sample2'
+        )
+        expect(subject[:local_plugins_dir_name]).to eq 'plugins'
       end
     end
   end

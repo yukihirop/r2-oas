@@ -20,6 +20,10 @@ RSpec.describe R2OAS::Schema::V3::BaseBuilder do
   context 'private methods' do
     describe '#create_glob_schema_paths' do
       context 'when default' do
+        before do
+          allow(R2OAS).to receive(:use_schema_namespace).and_return(true)
+        end
+
         it do
           expect(builder.send(:create_glob_schema_paths)).to include(
             "#{src_path}/**.yml",
