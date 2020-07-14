@@ -15,7 +15,6 @@ RSpec.describe R2OAS::Schema::V3::BaseBuilder do
 
   after do
     delete_oas_docs
-    reset_config
   end
 
   context 'private methods' do

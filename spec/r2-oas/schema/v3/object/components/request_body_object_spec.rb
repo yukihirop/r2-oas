@@ -15,7 +15,6 @@ RSpec.describe R2OAS::Schema::V3::Components::RequestBodyObject do
   end
 
   after do
-    reset_config
     delete_oas_docs
   end
 
@@ -82,10 +81,6 @@ RSpec.describe R2OAS::Schema::V3::Components::RequestBodyObject do
         end
       end
 
-      after do
-        reset_plugin
-      end
-
       it { expect(object.to_doc['plugin_key']).to eq 'plugin_value_Api_V1_Task' }
     end
 
@@ -108,10 +103,6 @@ RSpec.describe R2OAS::Schema::V3::Components::RequestBodyObject do
         end
       end
 
-      after do
-        reset_plugin
-      end
-
       it { expect(object.send(:_components_request_body_name)).to eq 'Api_V1_Task_api/v1/task_patch' }
     end
 
@@ -132,10 +123,6 @@ RSpec.describe R2OAS::Schema::V3::Components::RequestBodyObject do
             ['r2oas-plugin-transform-test-components-schema-name-at-request-body', { override: true }]
           ]
         end
-      end
-
-      after do
-        reset_plugin
       end
 
       it { expect(object.send(:_components_schema_name)).to eq 'Api_V1_Task_api/v1/task_patch' }

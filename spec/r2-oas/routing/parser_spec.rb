@@ -7,10 +7,6 @@ RSpec.describe R2OAS::Routing::Parser do
   let(:routes) { ::Rails.application.routes.routes }
   let(:parser) { described_class.new(routes) }
 
-  after do
-    reset_config
-  end
-
   describe '#routes_data' do
     context 'when namespace_type is :underbar' do
       before do

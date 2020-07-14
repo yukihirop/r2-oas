@@ -6,10 +6,6 @@ RSpec.describe R2OAS::Schema::V3::ExternalDocumentObject do
   let(:opts) { {} }
   let(:object) { R2OAS.use_object_classes[:external_document_object].new(opts) }
 
-  after do
-    reset_config
-  end
-
   describe '#to_doc' do
     context 'when use before_create && after_create' do
       before do
@@ -59,10 +55,6 @@ RSpec.describe R2OAS::Schema::V3::ExternalDocumentObject do
             ['r2oas-plugin-transform-test-external-document', { merged: true }]
           ]
         end
-      end
-
-      after do
-        reset_plugin
       end
 
       it { expect(object.to_doc['plugin_key']).to eq 'plugin_value' }

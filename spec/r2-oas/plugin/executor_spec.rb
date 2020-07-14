@@ -7,10 +7,6 @@ RSpec.describe R2OAS::Plugin::Executor do
   let(:opts) { {} }
   let(:executor) { described_class.new(plugins, opts) }
 
-  after do
-    reset_config
-  end
-
   describe '#execute_transform_plugins' do
     before do
       allow(described_class).to receive(:plugin_map)
@@ -53,10 +49,6 @@ RSpec.describe R2OAS::Plugin::Executor do
 
   describe 'plugin_map' do
     subject { described_class.plugin_map(plugins) }
-
-    after do
-      reset_plugin
-    end
 
     context 'when default' do
       let(:plugins) { ['r2oas-plugin-transform-default'] }
@@ -163,10 +155,6 @@ RSpec.describe R2OAS::Plugin::Executor do
           'r2oas-plugin-transform-sample-2'
         ]
       end
-    end
-
-    after do
-      reset_plugin
     end
 
     it { expect(subject).to include('r2oas-plugin-transform-sample-1', 'r2oas-plugin-transform-sample-2') }

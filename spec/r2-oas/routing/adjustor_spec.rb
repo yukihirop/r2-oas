@@ -16,10 +16,6 @@ RSpec.describe R2OAS::Routing::Adjustor do
   end
   let(:adjustor) { described_class.new(routes_data) }
 
-  after do
-    reset_config
-  end
-
   describe '#route_els' do
     context 'when rails normal routing' do
       before do

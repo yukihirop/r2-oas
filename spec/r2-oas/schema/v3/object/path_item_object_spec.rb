@@ -9,10 +9,6 @@ RSpec.describe R2OAS::Schema::V3::PathItemObject do
   let(:path) { '/api/v1/tasks/{id}' }
   let(:object) { R2OAS.use_object_classes[:path_item_object].new(route_data, path) }
 
-  after do
-    reset_config
-  end
-
   describe '#to_doc' do
     context 'when use before_create && after_create' do
       before do
@@ -62,10 +58,6 @@ RSpec.describe R2OAS::Schema::V3::PathItemObject do
             ['r2oas-plugin-transform-test-path-item', { merged: true }]
           ]
         end
-      end
-
-      after do
-        reset_plugin
       end
 
       it { expect(object.to_doc['plugin_key']).to eq 'plugin_value_/api/v1/tasks/{id}' }

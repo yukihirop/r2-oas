@@ -14,10 +14,6 @@ RSpec.describe R2OAS::Routing::RequestComponent do
     end
   end
 
-  after do
-    reset_config
-  end
-
   describe '#to_tag_name' do
     context 'when route is not engine' do
       let(:request) { 'api/v1/tasks#show' }

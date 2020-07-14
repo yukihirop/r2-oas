@@ -9,10 +9,6 @@ RSpec.describe R2OAS::Schema::V3::BaseObject do
   let(:http_statuses_when_http_method) { object.send(:http_statuses_when_http_method) }
   let(:tool_paths_stats) { object.send(:tool).paths_stats }
 
-  after do
-    reset_config
-  end
-
   describe '.initialize' do
     context 'when default' do
       it { expect(object.send(:version)).to eq :v3 }

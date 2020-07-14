@@ -36,4 +36,11 @@ RSpec.configure do |config|
   config.include ConfigHelper
   config.include DummyFileHelper
   config.include PluginHelper
+  config.include StoreHelper
+
+  config.after(:each) do
+    reset_config
+    reset_plugin
+    reset_store
+  end
 end

@@ -36,11 +36,6 @@ RSpec.describe R2OAS::Schema::V3::OpenapiObject do
   let(:servers_doc) { double('ServerObject#to_doc') }
   let(:components_doc) { double('ComponentsObject#to_doc') }
 
-  after do
-    reset_config
-    reset_plugin
-  end
-
   describe '#to_doc' do
     before do
       allow_any_instance_of(R2OAS::Schema::V3::InfoObject).to receive(:to_doc).and_return(info_doc)
