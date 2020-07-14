@@ -44,10 +44,10 @@ RSpec.describe R2OAS::Schema::V3::PathItemObject do
         class TestPathItemTransform < R2OAS::Plugin::Transform
           self.plugin_name = 'r2oas-plugin-transform-test-path-item'
 
-          path_item do |doc, path|
+          path_item do |doc, path_comp|
             if opts[:merged]
               doc.merge!(
-                'plugin_key' => "plugin_value_#{path}"
+                'plugin_key' => "plugin_value_#{path_comp.symbol_to_brace}"
               )
             end
           end

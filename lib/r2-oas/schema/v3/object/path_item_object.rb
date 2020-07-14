@@ -36,7 +36,7 @@ module R2OAS
           execute_before_create(@path)
           create_doc
           execute_after_create(@path)
-          execute_transform_plugins(:path_item, doc, @path)
+          execute_transform_plugins(:path_item, doc, @path_comp)
           doc
         end
 

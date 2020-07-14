@@ -15,13 +15,17 @@ module R2OAS
             @verb         = route_data[:verb]
             @tag_name     = route_data[:tag_name]
             @schema_name  = route_data[:schema_name]
+            # MEMO:
+            # Allow primitive types that cannot be passed by reference to be passed by reference
+            # This is Compromise
+            @ref          = { schema_name: @schema_name, tag_name: @tag_name, verb: @verb }
           end
 
           def to_doc
             execute_before_create(@schema_name)
             create_doc
             execute_after_create(@schema_name)
-            execute_transform_plugins(:components_schema, doc, @schema_name)
+            execute_transform_plugins(:components_schema, doc, @path_comp, @ref)
             doc
           end
 
@@ -47,13 +51,10 @@ module R2OAS
           end
 
           def _components_schema_name(http_status)
-            schema_name = components_schema_name(doc, @path_comp, @tag_name, @verb, http_status, @schema_name)
-            # MEMO:
-            # Allow primitive types that cannot be passed by reference to be passed by reference
-            # This is Compromise
-            ref = { schema_name: schema_name }
-            execute_transform_plugins(:components_schema_name, ref, doc, @path_comp, @tag_name, @verb, http_status)
-            ref[:schema_name]
+            @ref[:schema_name] = components_schema_name(doc, @path_comp, @tag_name, @verb, http_status, @schema_name)
+            @ref[:http_status] = http_status
+            execute_transform_plugins(:components_schema_name, @path_comp, @ref)
+            @ref[:schema_name]
           end
         end
       end

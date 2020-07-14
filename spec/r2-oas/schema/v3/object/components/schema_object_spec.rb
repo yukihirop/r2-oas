@@ -61,10 +61,10 @@ RSpec.describe R2OAS::Schema::V3::Components::SchemaObject do
         class Components::TestSchemaTransform < R2OAS::Plugin::Transform
           self.plugin_name = 'r2oas-plugin-transform-test-components-schema'
 
-          components_schema do |doc, schema_name|
+          components_schema do |doc, _path_comp, ref|
             if opts[:merged]
               doc.merge!(
-                'plugin_key' => "plugin_value_#{schema_name}"
+                'plugin_key' => "plugin_value_#{ref[:schema_name]}_#{ref[:tag_name]}_#{ref[:verb]}"
               )
             end
           end
@@ -77,7 +77,7 @@ RSpec.describe R2OAS::Schema::V3::Components::SchemaObject do
         end
       end
 
-      it { expect(object.to_doc['plugin_key']).to eq 'plugin_value_Api_V1_Task' }
+      it { expect(object.to_doc['plugin_key']).to eq 'plugin_value_Api_V1_Task_api/v1/task_patch' }
     end
 
     context 'when use plugins (components_schema_name)' do
@@ -87,8 +87,8 @@ RSpec.describe R2OAS::Schema::V3::Components::SchemaObject do
         class Components::TestSchemaNameTransform < R2OAS::Plugin::Transform
           self.plugin_name = 'r2oas-plugin-transform-test-components-schema-name'
 
-          components_schema_name do |ref, _doc, _path_component, tag_name, verb, http_status|
-            ref[:schema_name] = "#{ref[:schema_name]}_#{tag_name}_#{verb}_#{http_status}" if opts[:override]
+          components_schema_name do |_path_comp, ref|
+            ref[:schema_name] = "#{ref[:schema_name]}_#{ref[:tag_name]}_#{ref[:verb]}_#{ref[:http_status]}" if opts[:override]
           end
         end
 

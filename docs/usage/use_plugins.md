@@ -1,7 +1,6 @@
 # 🆕 Use Plugins
 
-Starting from v0.4.0, you can use plugins.  
-This plugin can be used just like `babel-plugin-transform`.
+?> Starting from `v0.4.0`, you can use plugins.  
 
 You can use plug-ins to transform the API documentation.  
 You can also modify parameters or change the component schema name at once.
@@ -46,34 +45,76 @@ module YourNamespace
       })
     end
 
-    path_item do |doc, path|
+    external_document do |doc|
+      # [Important] Make destructive changes to the doc
+      # e.g.)
+      doc.merge!({
+        title: 'override title'
+      })
+    end
+
+    path_item do |doc, path_comp|
       # [Important] Make destructive changes to the doc
     end
 
-    components_schema do |doc, schema_name|
+    components_schema do |doc, path_comp, ref|
       # [Important] Make destructive changes to the doc
+      #
+      # ref is the following object:
+      # ref = { 
+      #  schema_name: 'api.v1.Task',
+      #  tag_name: 'api/v1/task',
+      #  verb: 'GET'
+      # }
     end
 
-    components_request_body do |doc, schema_name|
+    components_request_body do |doc, path_comp, ref|
       # [Important] Make destructive changes to the doc
+      #
+      # ref is the following object:
+      # ref = { 
+      #  schema_name: 'api.v1.Task',
+      #  tag_name: 'api/v1/task',
+      #  verb: 'GET'
+      # }
     end
 
-    components_schema_name do |ref, doc, path_component, tag_name, verb, http_status|
+    components_schema_name do |path_comp, ref|
       # [Important] Set a new value for ref[:schema_name]
+      # ref is the following object:
+      # ref = { 
+      #  schema_name: 'api.v1.Task',
+      #  tag_name: 'api/v1/task',
+      #  verb: 'GET',
+      #  http_status: '200'
+      # }
+      #
       # e.g.)
       if opts[:override]
         ref[:schema_name] = 'new component schema name'
       end
     end
 
-    components_request_body_name do |ref, doc, path_component, tag_name, verb|
+    components_request_body_name do |path_comp, ref|
       # [Important] Set a new value for ref[:schema_name]
+      # ref is the following object:
+      # ref = { 
+      #  schema_name: 'api.v1.Task',
+      #  tag_name: 'api/v1/task',
+      #  verb: 'GET'
+      # }
       # e.g.)
       ref[:schema_name] = 'new component schema name'
     end
 
-    components_schema_name_at_request_body do |ref, doc, path_component, tag_name, verb|
+    components_schema_name_at_request_body do |path_comp, ref|
       # [Important] Set a new value for ref[:schema_name]
+      # ref is the following object:
+      # ref = { 
+      #  schema_name: 'api.v1.Task',
+      #  tag_name: 'api/v1/task',
+      #  verb: 'GET'
+      # }
       # e.g.)
       ref[:schema_name] = 'new component schema name'
     end
@@ -85,7 +126,7 @@ end
    ・There are no rules for plugin names, but you can name them something easy to understand,
      like it is recommended to use the format `r2oas-plugin-transform-<your_plugin_name>`
 
-`path_component` is `R2OAS::Routing::PathComponent` instance.
+`path_comp` is `R2OAS::Routing::PathComponent` instance.
 
 ```rb
 module R2OAS

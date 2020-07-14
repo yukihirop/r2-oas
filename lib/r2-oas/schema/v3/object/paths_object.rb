@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'r2-oas/dynamic/schema/v3/object/hookable_base_object'
+require 'r2-oas/routing/components/path_component'
 
 module R2OAS
   module Schema
@@ -34,6 +35,7 @@ module R2OAS
               super(opts)
               @data = data
               @path = path
+              @path_comp = Routing::PathComponent.new(path)
               use_superclass_hook
             end
 
@@ -45,7 +47,7 @@ module R2OAS
               execute_before_create(@path)
               create_doc
               execute_after_create(@path)
-              execute_transform_plugins(:path_item, doc, @path)
+              execute_transform_plugins(:path_item, doc, @path_comp)
               doc
             end
           end
