@@ -8,7 +8,7 @@ load File.expand_path('common.rake', __dir__)
 
 namespace :routes do
   namespace :oas do
-    desc 'Deploy OAS Document'
+    desc '[R2-OAS] Deploy OAS Document'
     task deploy: [:common] do
       start do
         client_options = {}
@@ -28,7 +28,7 @@ namespace :routes do
       end
     end
 
-    desc 'Display paths list'
+    desc '[R2-OAS] Display paths list'
     task paths_ls: [:common] do
       fd = IO.sysopen('/dev/null', 'w+')
       $stdout = IO.new(fd)
@@ -47,7 +47,7 @@ namespace :routes do
       puts result
     end
 
-    desc 'Display paths stats'
+    desc '[R2-OAS] Display paths stats'
     task paths_stats: [:common] do
       fd = IO.sysopen('/dev/null', 'w+')
       $stdout = IO.new(fd)
