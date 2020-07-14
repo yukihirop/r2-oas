@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 require 'r2-oas/version'
-require 'r2-oas/configuration'
-require 'r2-oas/errors'
-require 'r2-oas/schema/v3/object/public'
+require 'r2-oas/public'
 
 module R2OAS
   if !defined?(::Rails)

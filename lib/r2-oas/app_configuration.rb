@@ -48,6 +48,7 @@ module R2OAS
     DEFAULT_DEPLOY_DIR_PATH = './deploy_docs'
     EDFAULT_PLUGINS = [].freeze
     DEFAULT_LOCAL_PLUGINS_DIR_NAME = 'plugins'
+    DEFAULT_LOCAL_TASKS_DIR_NAME = 'tasks'
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
       version
@@ -68,6 +69,7 @@ module R2OAS
       deploy_dir_path
       plugins
       local_plugins_dir_name
+      local_tasks_dir_name
     ].freeze
 
     UNPUBLIC_VALID_OPTIONS_KEYS = %i[
@@ -106,6 +108,7 @@ module R2OAS
       target.deploy_dir_path                                      = DEFAULT_DEPLOY_DIR_PATH
       target.plugins                                              = EDFAULT_PLUGINS
       target.local_plugins_dir_name                               = DEFAULT_LOCAL_PLUGINS_DIR_NAME
+      target.local_tasks_dir_name                                 = DEFAULT_LOCAL_TASKS_DIR_NAME
     end
   end
 end

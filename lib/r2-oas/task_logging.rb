@@ -20,10 +20,10 @@ module R2OAS
 
     private
 
-    def start
-      logger.info '[R2-OAS] start'
+    def start(initial = '[R2-OAS]')
+      logger.info "#{initial} start"
       yield
-      logger.info '[R2-OAS] end'
+      logger.info "#{initial} end"
     end
 
     def logger

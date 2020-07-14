@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'path_helper'
+require_relative 'fixture_helper'
 
 module CreateHelper
   include PathHelper
@@ -63,5 +64,12 @@ module CreateHelper
     # User
     create_components_schemas_file('/api/v1/user.yml', yaml_fixture('src/components/schemas/api/v1/user.yml'))
     create_paths_file('api/v1/user.yml', yaml_fixture('src/paths/api/v1/user.yml'))
+  end
+
+  def copy_tasks
+    FileUtils.mkdir Rails.root.join(root_dir_path) unless FileTest.exists?(Rails.root.join(root_dir_path))
+
+    local_tasks_path = Rails.root.join('tasks')
+    FileUtils.cp_r(local_tasks_path, tasks_path)
   end
 end
