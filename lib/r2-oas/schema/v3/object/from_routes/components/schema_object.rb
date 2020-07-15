@@ -25,7 +25,6 @@ module R2OAS
             execute_before_create(@schema_name)
             create_doc
             execute_after_create(@schema_name)
-            execute_transform_plugins(:components_schema, doc, @path_comp, @ref)
             doc
           end
 
@@ -51,10 +50,7 @@ module R2OAS
           end
 
           def _components_schema_name(http_status)
-            @ref[:schema_name] = components_schema_name(doc, @path_comp, @tag_name, @verb, http_status, @schema_name)
-            @ref[:http_status] = http_status
-            execute_transform_plugins(:components_schema_name, @path_comp, @ref)
-            @ref[:schema_name]
+            components_schema_name(doc, @path_comp, @tag_name, @verb, http_status, @schema_name)
           end
         end
       end

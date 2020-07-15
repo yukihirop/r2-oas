@@ -10,7 +10,6 @@ module R2OAS
           execute_before_create
           create_doc
           execute_after_create
-          execute_transform_plugins(:info, doc)
           doc
         end
 

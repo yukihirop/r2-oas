@@ -43,7 +43,7 @@ namespace :routes do
     desc '[R2-OAS] Distribute OAS documentation'
     task dist: [:common] do
       start do
-        builder_options = { unit_paths_file_path: unit_paths_file_path }
+        builder_options = { unit_paths_file_path: unit_paths_file_path, use_plugin: true }
         builder = R2OAS::Schema::Builder.new(builder_options)
         builder.build_docs
       end

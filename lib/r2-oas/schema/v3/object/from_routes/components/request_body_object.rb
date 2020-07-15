@@ -46,7 +46,6 @@ module R2OAS
               end
             end
             execute_after_create(@schema_name)
-            execute_transform_plugins(:components_request_body, doc, @path_comp, @ref)
             doc
           end
 
@@ -84,15 +83,11 @@ module R2OAS
           end
 
           def _components_schema_name
-            @ref[:schema_name] = components_schema_name(doc, @path_comp, @tag_name, @verb, @schema_name)
-            execute_transform_plugins(:components_schema_name_at_request_body, @path_comp, @ref)
-            @ref[:schema_name]
+            components_schema_name(doc, @path_comp, @tag_name, @verb, @schema_name)
           end
 
           def _components_request_body_name
-            @ref[:schema_name] = components_request_body_name(doc, @path_comp, @tag_name, @verb, @schema_name)
-            execute_transform_plugins(:components_request_body_name, @path_comp, @ref)
-            @ref[:schema_name]
+            components_request_body_name(doc, @path_comp, @tag_name, @verb, @schema_name)
           end
         end
       end

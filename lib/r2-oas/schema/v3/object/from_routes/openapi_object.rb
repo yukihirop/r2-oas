@@ -16,7 +16,6 @@ module R2OAS
         end
 
         def to_doc
-          execute_transform_plugins(:setup)
           result = {
             'openapi' => '3.0.0',
             'info' => info_doc,
@@ -26,7 +25,6 @@ module R2OAS
             'servers' => servers_doc,
             'components' => components_doc
           }
-          execute_transform_plugins(:teardown)
           result
         end
 

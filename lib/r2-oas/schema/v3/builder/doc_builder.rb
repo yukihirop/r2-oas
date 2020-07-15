@@ -2,6 +2,7 @@
 
 require 'yaml'
 require 'fileutils'
+require 'r2-oas/schema/v3/object/from_files/openapi_object'
 require_relative 'base_builder'
 
 module R2OAS
@@ -9,6 +10,10 @@ module R2OAS
     module V3
       class DocBuilder < BaseBuilder
         attr_accessor :oas_doc
+
+        def initialize(opts = {})
+          super
+        end
 
         def build_docs
           logger.info '[Build OAS schema files] start'
@@ -27,6 +32,8 @@ module R2OAS
             data.deep_merge!(yaml)
             logger.info " Use schema file: \t#{file_manager.save_file_path(type: :relative)}"
           end
+
+          result_before_squeeze = FromFiles::OpenapiObject.new(result_before_squeeze, opts).to_doc if use_plugin?
 
           result = if many_paths_file_paths.present?
                      Squeezer.new(result_before_squeeze, many_paths_file_paths: many_paths_file_paths).squeeze_docs

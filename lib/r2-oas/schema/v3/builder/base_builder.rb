@@ -11,8 +11,14 @@ module R2OAS
       class BaseBuilder < Base
         include Sortable
 
-        def initialize(options = {})
+        def initialize(opts = {})
           super
+
+          opts.keys.each do |key|
+            send("#{key}=", opts[key])
+          end
+
+          @opts = opts
           @glob_schema_paths = create_glob_schema_paths
         end
 
@@ -20,6 +26,10 @@ module R2OAS
 
         attr_accessor :unit_paths_file_path
         attr_accessor :skip_load_dot_paths
+        attr_accessor :opts
+        attr_accessor :use_plugin
+
+        alias use_plugin? use_plugin
 
         def schema_file_do_not_exists?
           schema_files_paths.count == 0

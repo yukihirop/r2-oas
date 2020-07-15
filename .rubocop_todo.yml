@@ -28,6 +28,7 @@ Metrics/AbcSize:
     - "spec/support/helpers/config_helper.rb"
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
     - "lib/r2-oas/plugin/executor.rb"
+    - "lib/r2-oas/schema/v3/builder/doc_builder.rb"
 
 Style/Documentation:
   Enabled: false
@@ -128,6 +129,10 @@ Metrics/MethodLength:
     - "lib/r2-oas/store.rb"
     - "lib/r2-oas/schema/v3/object/from_routes/openapi_object.rb"
     - "lib/r2-oas/plugin/executor.rb"
+    - "lib/r2-oas/schema/v3/object/from_files/components/request_body_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_files/openapi_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_files/path_item_object.rb"
+    - "lib/r2-oas/shared/callable.rb"
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -164,6 +169,7 @@ Naming/AccessorMethodName:
     - "lib/r2-oas/configuration.rb"
     - "lib/r2-oas/app_configuration.rb"
     - "lib/r2-oas/pluggable_configuration.rb"
+    - "lib/r2-oas/schema/v3/object/from_files/base_object.rb"
 
 Style/AsciiComments:
   Exclude:
