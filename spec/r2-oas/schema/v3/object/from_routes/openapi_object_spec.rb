@@ -54,53 +54,5 @@ RSpec.describe R2OAS::Schema::V3::OpenapiObject do
       it { expect(object.to_doc['servers']).to eq servers_doc }
       it { expect(object.to_doc['components']).to eq components_doc }
     end
-
-    context 'when use plugins (setup)' do
-      let(:opts) { { use_plugin: true } }
-
-      before do
-        class TestSetupTransform < ::R2OAS::Plugin::Transform
-          self.plugin_name = 'r2oas-plugin-transform-setup-test'
-
-          setup do
-            self.opts = { setup: true }
-          end
-        end
-
-        R2OAS.configure do |config|
-          config.plugins = [
-            'r2oas-plugin-transform-setup-test'
-          ]
-        end
-
-        object.to_doc
-      end
-
-      it { expect(TestSetupTransform.opts).to eq setup: true }
-    end
-
-    context 'when use plugins (teardown)' do
-      let(:opts) { { use_plugin: true } }
-
-      before do
-        class TestTeardownTransform < ::R2OAS::Plugin::Transform
-          self.plugin_name = 'r2oas-plugin-transform-teardown-test'
-
-          teardown do
-            self.opts = { teardown: true }
-          end
-        end
-
-        R2OAS.configure do |config|
-          config.plugins = [
-            'r2oas-plugin-transform-teardown-test'
-          ]
-        end
-
-        object.to_doc
-      end
-
-      it { expect(TestTeardownTransform.opts).to eq teardown: true }
-    end
   end
 end

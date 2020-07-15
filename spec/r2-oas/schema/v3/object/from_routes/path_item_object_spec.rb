@@ -36,32 +36,6 @@ RSpec.describe R2OAS::Schema::V3::PathItemObject do
       it { expect(object.to_doc['before_key']).to eq 'before_value' }
       it { expect(object.to_doc['after_key']).to eq 'after_value' }
     end
-
-    context 'when use plugins' do
-      let(:object) { R2OAS.use_object_classes[:path_item_object].new(route_data, path, { use_plugin: true }) }
-
-      before do
-        class TestPathItemTransform < R2OAS::Plugin::Transform
-          self.plugin_name = 'r2oas-plugin-transform-test-path-item'
-
-          path_item do |doc, path_comp|
-            if opts[:merged]
-              doc.merge!(
-                'plugin_key' => "plugin_value_#{path_comp.symbol_to_brace}"
-              )
-            end
-          end
-        end
-
-        R2OAS.configure do |config|
-          config.plugins = [
-            ['r2oas-plugin-transform-test-path-item', { merged: true }]
-          ]
-        end
-      end
-
-      it { expect(object.to_doc['plugin_key']).to eq 'plugin_value_/api/v1/tasks/{id}' }
-    end
   end
 
   describe '#create_doc' do

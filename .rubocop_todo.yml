@@ -71,6 +71,13 @@ Metrics/BlockLength:
     - "spec/r2-oas/schema/v3/object/from_routes/info_object_spec.rb"
     - "lib/r2-oas/plugin/executor.rb"
     - "spec/r2-oas/plugin/executor_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_files/components/request_body_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_files/components/schema_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_files/components_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_files/openapi_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_files/path_item_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_files/paths_object_spec.rb"
+    - ""
 
 Lint/AmbiguousOperator:
   Exclude:
