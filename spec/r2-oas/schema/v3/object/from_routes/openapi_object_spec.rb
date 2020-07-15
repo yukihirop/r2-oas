@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'r2-oas/schema/v3/object/openapi_object'
+require 'r2-oas/schema/v3/object/from_routes/openapi_object'
 
 RSpec.describe R2OAS::Schema::V3::OpenapiObject do
   let(:routes_data) do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'schema/v3/object/public'
+require 'r2-oas/schema/v3/object/from_routes/public'
 
 module R2OAS
   module PluggableConfiguration

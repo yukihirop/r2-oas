@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'r2-oas/dynamic/schema/v3/object/hookable_base_object'
+require 'r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object'
 require_relative 'components/schema_object'
 require_relative 'components/request_body_object'
 

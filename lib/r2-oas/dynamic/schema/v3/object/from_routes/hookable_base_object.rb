@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'r2-oas/schema/v3/object/base_object'
+require 'r2-oas/schema/v3/object/from_routes/base_object'
 require 'r2-oas/hooks/hook'
 
 module R2OAS

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'r2-oas/schema/v3/object/server_object'
+require 'r2-oas/schema/v3/object/from_routes/server_object'
 
 RSpec.describe R2OAS::Schema::V3::ServerObject do
   let(:object) { described_class.new }

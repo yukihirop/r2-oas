@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'r2-oas/dynamic/schema/v3/object/hookable_base_object'
+require 'r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object'
 require 'r2-oas/schema/v3/manager/file/components_file_manager'
 
 module R2OAS

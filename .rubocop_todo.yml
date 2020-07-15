@@ -24,7 +24,7 @@ Metrics/AbcSize:
     - "lib/r2-oas/schema/v3/manager/pathname_manager.rb"
     - "lib/r2-oas/schema/v3/manager/diff/base_hash_diff_manager.rb"
     - "lib/r2-oas/routing/components/request_component.rb"
-    - "spec/r2-oas/schema/v3/object/components/schema_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/components/schema_object_spec.rb"
     - "spec/support/helpers/config_helper.rb"
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
     - "lib/r2-oas/plugin/executor.rb"
@@ -42,16 +42,16 @@ Metrics/BlockLength:
     - "lib/r2-oas/tasks/tool.rake"
     - "spec/r2-oas/routing/adjustor_spec.rb"
     - "spec/r2-oas/routing/components/request_component_spec.rb"
-    - "spec/r2-oas/schema/v3/object/paths_object_spec.rb"
-    - "spec/r2-oas/schema/v3/object/external_document_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/paths_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/external_document_object_spec.rb"
     - "spec/r2-oas/schema/v3/manager/pathname_manager_spec.rb"
     - "spec/r2-oas/schema/v3/manager/diff/base_hash_diff_manager_spec.rb"
     - "spec/r2-oas/schema/v3/manager/file/base_file_manager_spec.rb"
     - "spec/r2-oas/routing/parser_spec.rb"
     - "spec/r2-oas/routing/components/path_component_spec.rb"
-    - "spec/r2-oas/schema/v3/object/components/request_body_object_spec.rb"
-    - "spec/r2-oas/schema/v3/object/components/schema_object_spec.rb"
-    - "spec/r2-oas/schema/v3/object/path_item_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/components/request_body_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/components/schema_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/path_item_object_spec.rb"
     - "spec/r2-oas/configuration/paths_config_spec.rb"
     - "spec/r2-oas/tasks/main_spec.rb"
     - "spec/r2-oas/tasks/tool_spec.rb"
@@ -60,14 +60,14 @@ Metrics/BlockLength:
     - "spec/r2-oas/schema/v3/builder_spec.rb"
     - "spec/r2-oas/schema/v3/analyzer_spec.rb"
     - "spec/support/helpers/config_helper.rb"
-    - "spec/r2-oas/schema/v3/object/components_object_spec.rb"
-    - "spec/r2-oas/schema/v3/object/base_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/components_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/base_object_spec.rb"
     - "spec/r2-oas/schema/v3/manager/diff/base_array_diff_manager_spec.rb"
     - "spec/r2-oas/schema/v3/manager/file/include_ref_base_file_manager_spec.rb"
     - "spec/r2-oas/schema/v3/generator/base_generator_spec.rb"
     - "spec/r2-oas/schema/v3/builder/base_builder_spec.rb"
-    - "spec/r2-oas/schema/v3/object/openapi_object_spec.rb"
-    - "spec/r2-oas/schema/v3/object/info_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/openapi_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/info_object_spec.rb"
     - "lib/r2-oas/plugin/executor.rb"
     - "spec/r2-oas/plugin/executor_spec.rb"
 
@@ -80,7 +80,7 @@ Lint/AmbiguousOperator:
     - "lib/r2-oas/app_configuration/tool.rb"
     - "lib/r2-oas/configuration.rb"
     - "lib/r2-oas/app_configuration/server.rb"
-    - "lib/r2-oas/schema/v3/object/base_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/base_object.rb"
     - "lib/r2-oas/base.rb"
     - "lib/r2-oas/routing/parser.rb"
     - "lib/r2-oas/app_configuration.rb"
@@ -103,10 +103,10 @@ Metrics/MethodLength:
     - "lib/r2-oas/schema/v3/analyzer/components/schemas_analyzer.rb"
     - "lib/r2-oas/schema/v3/analyzer/tag_analyzer.rb"
     - "lib/r2-oas/schema/v3/analyzer.rb"
-    - "lib/r2-oas/schema/v3/object/paths_object.rb"
-    - "lib/r2-oas/schema/v3/object/components_object.rb"
-    - "lib/r2-oas/schema/v3/object/path_item_object.rb"
-    - "lib/r2-oas/schema/v3/object/info_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/paths_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/components_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/path_item_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/info_object.rb"
     - "lib/r2-oas/schema/v3/manager/diff/base_array_diff_manager.rb"
     - "lib/r2-oas/schema/v3/manager/diff/base_hash_diff_manager.rb"
     - "lib/r2-oas/schema/v3/manager/file/components/request_body_file_manager.rb"
@@ -119,14 +119,14 @@ Metrics/MethodLength:
     - "lib/r2-oas/schema/v3/generator/components/schema_generator.rb"
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
     - "lib/r2-oas/schema/v3/builder/doc_builder.rb"
-    - "lib/r2-oas/schema/v3/object/components/request_body_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/components/request_body_object.rb"
     - "lib/r2-oas/schema/v3/squeezer/path_squeezer.rb"
     - "lib/r2-oas/schema/v3/generator/components/object_generator.rb"
     - "lib/r2-oas/routing/components/request_component.rb"
     - "spec/support/helpers/config_helper.rb"
     - "lib/r2-oas/schema/v3/analyzer/components/object_analyzer.rb"
     - "lib/r2-oas/store.rb"
-    - "lib/r2-oas/schema/v3/object/openapi_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/openapi_object.rb"
     - "lib/r2-oas/plugin/executor.rb"
 
 Metrics/CyclomaticComplexity:
@@ -144,7 +144,7 @@ Naming/ConstantName:
 Naming/PredicateName:
   Exclude:
     - "lib/r2-oas/hooks/hook.rb"
-    - "lib/r2-oas/dynamic/schema/v3/object/hookable_base_object.rb"
+    - "lib/r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object.rb"
     - "lib/r2-oas/plugin/hookable.rb"
 
 Style/DoubleNegation:
@@ -173,7 +173,7 @@ Style/AsciiComments:
 Lint/UnderscorePrefixedVariableName:
   Exclude:
     - "lib/r2-oas/logger/stdout_logger.rb"
-    - "lib/r2-oas/schema/v3/object/components/request_body_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/components/request_body_object.rb"
 
 Lint/UselessAccessModifier:
   Exclude:
@@ -185,7 +185,7 @@ Style/IdenticalConditionalBranches:
 
 Style/ClassVars:
   Exclude:
-    - "lib/r2-oas/dynamic/schema/v3/object/hookable_base_object.rb"
+    - "lib/r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object.rb"
     - "lib/r2-oas/plugin/hookable.rb"
 
 Style/AccessModifierDeclarations:
@@ -199,13 +199,13 @@ Style/NumericPredicate:
 
 Metrics/ClassLength:
   Exclude:
-    - "lib/r2-oas/schema/v3/object/path_item_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/path_item_object.rb"
 
 Metrics/ParameterLists:
   Exclude:
-    - "lib/r2-oas/schema/v3/object/path_item_object.rb"
-    - "lib/r2-oas/schema/v3/object/components/schema_object.rb"
-    - "spec/r2-oas/schema/v3/object/components/schema_object_spec.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/path_item_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_routes/components/schema_object.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/components/schema_object_spec.rb"
 
 Layout/EndAlignment:
   Exclude:
@@ -236,12 +236,12 @@ Naming/HeredocDelimiterNaming:
 Style/ClassAndModuleChildren:
   Exclude:
     - "spec/dummy_app/controllers/api/v1/tasks_controller.rb"
-    - "spec/r2-oas/schema/v3/object/components/request_body_object_spec.rb"
-    - "spec/r2-oas/schema/v3/object/components/schema_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/components/request_body_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/components/schema_object_spec.rb"
 
 Lint/RequireParentheses:
   Exclude:
-    - "spec/r2-oas/schema/v3/object/components/schema_object_spec.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/components/schema_object_spec.rb"
 
 Style/IfUnlessModifier:
   Exclude:
