@@ -26,6 +26,25 @@ RSpec.describe 'main_rake' do
       expect(FileTest.exists?(tags_path)).to eq result
     end
   end
+  
+  describe 'routes:oas:init' do
+    let(:task_name) { 'routes:oas:init' }
+    
+    before do
+      subject
+    end
+    
+    it do
+      expect(FileTest.exists?(plugins_path)).to eq true
+      expect(FileTest.exists?("#{plugins_path}/helpers")).to eq true
+      expect(FileTest.exists?(tasks_path)).to eq true
+      expect(FileTest.exists?(dot_paths_path)).to eq true
+      expect(FileTest.exists?("#{plugins_path}/.gitkeep")).to eq true
+      expect(FileTest.exists?("#{plugins_path}/helpers/.gitkeep")).to eq true
+      expect(FileTest.exists?("#{tasks_path}/.gitkeep")).to eq true
+      expect(FileTest.exists?("#{tasks_path}/helpers/.gitkeep")).to eq true
+    end
+  end
 
   describe 'routes:oas:docs' do
     let(:task_name) { 'routes:oas:docs' }

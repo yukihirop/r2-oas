@@ -8,6 +8,12 @@ load File.expand_path('common.rake', __dir__)
 
 namespace :routes do
   namespace :oas do
+    desc '[R2-OAS] Initialize'
+    task init: [:common] do
+      R2OAS.init
+      puts '[R2-OAS] Initialized!'
+    end
+    
     desc '[R2-OAS] Generate OAS documentation files'
     task docs: [:common] do
       start do
