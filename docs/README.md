@@ -10,15 +10,15 @@ Generate api docment(OpenAPI) side only from `Rails` routing.
 Provides a rake command to help `generate` , `view` , and `edit` OpenAPI documents.
 
 ```bash
+bunlde exec rake routes:oas:init    # initialize
 bundle exec rake routes:oas:docs    # generate
 bundle exec rake routes:oas:ui      # view
 bundle exec rake routes:oas:editor  # edit
 bundle exec rake routes:oas:monitor # monitor
-bundle exec rake routes:oas:dist    # distribute
+bundle exec rake routes:oas:build   # build
 bundle exec rake routes:oas:clean   # clean
 bundle exec rake routes:oas:analyze # analyze
 bundle exec rake routes:oas:deploy  # deploy
-bundle exec rake routes:oas:plugin  # execute plugin
 ```
 
 ## 💎 Installation
@@ -75,39 +75,60 @@ bundle exec routes:oas:editor
 
 ## 📖 Usage
 
+You can execute the following command in the root directory of rails.  
+The following are examples of typical command usage.
 
-You can execute the following command in the root directory of rails.
+### Initialize
+
+Initialize r2-oas.
 
 ```bash
-$ # Generate docs
+$ bundle exec rake routes:oas:init
+```
+
+### Generate
+
+Generate docs.
+
+```bash
 $ bundle exec rake routes:oas:docs                                                       # Generate docs
 $ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # Generate docs by specify unit paths
+```
 
-$ # Start swagger editor
+### Editor
+
+Start swagger editor.
+
+```bash
 $ bundle exec rake routes:oas:editor                                                     # Start swagger editor
 $ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # Start swagger editor by specify unit paths
-$ # Start swagger ui
+```
+
+### UI
+
+Start swagger ui.
+
+```bash
 $ bundle exec rake routes:oas:ui                                                         # Start swagger ui
 $ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # Start swagger ui by specify unit paths
-$ # Monitor swagger document
-$ bundle exec rake routes:oas:monitor                                                    # Monitor swagger document
-$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # Monitor swagger by specify unit paths
+```
 
-$ # Analyze docs
+### Build
+
+Build docs.  
+`Plugin is applied`
+
+```bash
+$ bundle exec rake routes:oas:build
+```
+
+### Analyze
+
+Analyze docs.  
+Reads OpenAPI format document and divides it into several parts to generate a source file
+
+```bash
 $ OAS_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
-$ # Clean docs
-$ bundle exec rake routes:oas:clean
-$ # Deploy docs
-$ bundle exec rake routes:oas:deploy
-$ # Distribute swagger document
-$ bundle exec rake routes:oas:dist
-$ # Distribute swagger document
-$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:dist # Distribute swagger document by specify unit paths
-
-# Display paths list
-$ bundle exec rake routes:oas:paths_ls
-# Display paths stats
-$ bundle exec rake routes:oas:paths_stats
 ```
 
 ## ❤️ Support Rails Version

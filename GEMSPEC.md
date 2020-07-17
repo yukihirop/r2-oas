@@ -6,12 +6,12 @@ Generate api docment(OpenAPI) side only from `Rails` routing.
   
 Provide rake tasks to management API Docment (OpenAPI) 🎉  
   
-
+    $ bundle exec rake routes:oas:init
     $ bundle exec rake routes:oas:docs
     $ bundle exec rake routes:oas:ui
     $ bundle exec rake routes:oas:editor
     $ bundle exec rake routes:oas:monitor
-    $ bundle exec rake routes:oas:dist
+    $ bundle exec rake routes:oas:build
     $ bundle exec rake routes:oas:clean
     $ bundle exec rake routes:oas:analyze
     $ bundle exec rake routes:oas:deploy

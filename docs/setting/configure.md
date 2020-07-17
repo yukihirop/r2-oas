@@ -82,6 +82,7 @@ R2OAS.configure do |config|
   config.plugins = []
   config.local_plugins_dir_name = 'plugins'
   config.local_tasks_dir_name = 'tasks'
+  config.output_path = './oas_docs/dist/oas_doc.yml'
 end
 ```
 
@@ -107,6 +108,7 @@ we explain the options that can be set.
 |plugins|Load plugin|`[]`|
 |local_plugins_dir_name|Plugin directory name|`"plugins"`|
 |local_tasks_dir_name|Rake tasks directory name|`"tasks"`|
+|output_path|Build result artifact path|`"./oas_docs/dist/oas_doc.yml"`|
 
 #### server
 
