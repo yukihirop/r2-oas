@@ -19,7 +19,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::ComponentsObject do
   let(:object) { described_class.new(doc, opts) }
 
   before do
-    create_dot_paths
+    init
   end
 
   after do

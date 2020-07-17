@@ -41,7 +41,7 @@ RSpec.describe 'main_rake' do
 
     context 'when oas_docs exists already' do
       before do
-        create_dot_paths
+        init
         generate_docs
         delete_cache_docs
       end
@@ -99,7 +99,7 @@ RSpec.describe 'main_rake' do
     end
   end
 
-  describe 'routes:oas:dist' do
+  describe 'routes:oas:build' do
     let(:task_name) { 'routes:oas:build' }
 
     before do
@@ -107,14 +107,15 @@ RSpec.describe 'main_rake' do
       subject
     end
 
-    it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
+    it { expect(FileTest.exists?(doc_save_file_path)).to eq false }
+    it { expect(FileTest.exists?(output_path)).to eq true }
   end
 
   describe 'routes:oas:clean' do
     let(:task_name) { 'routes:oas:clean' }
 
     before do
-      create_dot_paths
+      init
       generate_docs
       create_dummy_components_schemas_file
       create_dummy_components_request_bodies_file

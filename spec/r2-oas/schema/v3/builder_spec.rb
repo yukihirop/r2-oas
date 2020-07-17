@@ -8,7 +8,7 @@ RSpec.describe R2OAS::Schema::V3::Builder do
   let(:builder) { described_class.new(builder_options) }
 
   before do
-    create_dot_paths
+    init
     generate_docs
   end
 

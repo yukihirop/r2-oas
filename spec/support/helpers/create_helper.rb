@@ -7,8 +7,9 @@ module CreateHelper
   include PathHelper
   include FixtureHelper
 
-  def create_dot_paths
-    R2OAS.paths_config.create_dot_paths
+  def init
+    create_output_dir
+    create_dot_paths
   end
 
   def create_dir(path = '')
@@ -71,5 +72,15 @@ module CreateHelper
 
     local_tasks_path = Rails.root.join('tasks')
     FileUtils.cp_r(local_tasks_path, tasks_path)
+  end
+
+  private
+
+  def create_dot_paths
+    R2OAS.paths_config.create_dot_paths
+  end
+
+  def create_output_dir
+    FileUtils.mkdir_p(output_dir_path) unless FileTest.exists?(output_dir_path)
   end
 end

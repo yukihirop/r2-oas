@@ -7,7 +7,7 @@ RSpec.describe R2OAS::Tool::Paths::Ls do
   let(:ls) { described_class.new }
 
   before do
-    create_dot_paths
+    init
     generate_docs
   end
 

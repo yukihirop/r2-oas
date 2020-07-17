@@ -9,7 +9,7 @@ RSpec.describe R2OAS::Schema::V3::BaseBuilder do
   let(:openapi_doc) { double('Schema::V3::OpenapiObject#to_doc') }
 
   before do
-    create_dot_paths
+    init
     generate_docs
   end
 

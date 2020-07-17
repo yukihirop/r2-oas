@@ -7,7 +7,7 @@ RSpec.describe R2OAS::Schema::V3::PathsObject do
   let(:object) { R2OAS.use_object_classes[:paths_object].new(routes_data) }
 
   before do
-    create_dot_paths
+    init
   end
 
   after do

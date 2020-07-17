@@ -15,7 +15,7 @@ RSpec.describe R2OAS::Schema::V3::ComponentsObject do
   let(:object) { R2OAS.use_object_classes[:components_object].new(routes_data) }
 
   before do
-    create_dot_paths
+    init
   end
 
   after do

@@ -28,6 +28,10 @@ module PathHelper
   def output_path
     R2OAS.output_path
   end
+  
+  def output_dir_path
+    R2OAS.output_dir_path
+  end
 
   def dot_paths_path
     "#{root_dir_path}/.paths"

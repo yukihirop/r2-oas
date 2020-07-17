@@ -7,7 +7,7 @@ RSpec.describe R2OAS::Tool::Paths::Stats do
   let(:stats) { described_class.new }
 
   before do
-    create_dot_paths
+    init
     generate_docs
   end
 

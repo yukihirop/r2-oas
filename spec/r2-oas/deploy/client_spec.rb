@@ -8,9 +8,9 @@ RSpec.describe R2OAS::Deploy::Client do
 
   describe '#deploy' do
     before do
-      create_dot_paths
+      init
       generate_docs
-      build_docs
+      build_docs({ use_plugin: true, output: true })
       download_dist_th = Thread.new do
         client.download_swagger_ui_dist
       end

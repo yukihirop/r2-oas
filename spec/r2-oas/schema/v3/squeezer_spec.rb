@@ -13,7 +13,7 @@ RSpec.describe R2OAS::Schema::V3::Squeezer do
   let(:generator_options) { { skip_load_dot_paths: true } }
 
   before do
-    create_dot_paths
+    init
     generate_docs(generator_options)
   end
 

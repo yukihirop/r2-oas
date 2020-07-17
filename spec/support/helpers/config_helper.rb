@@ -80,7 +80,7 @@ module ConfigHelper
       # :dot or :underbar
       config.namespace_type = :underbar
       config.plugins = []
-      config.output_path = './oas_docs/dist/oas_doc.yml'
+      config.output_path = Rails.root.join('oas_docs/dist/oas_doc.yml').to_s
     end
   end
 end
