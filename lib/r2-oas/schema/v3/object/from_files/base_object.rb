@@ -38,11 +38,18 @@ module R2OAS
           end
 
           def set_root_doc(root_doc)
-            obj_store.root_doc = root_doc
+            obj_store.root_doc = root_doc.dup
           end
 
           def root_doc
             obj_store.root_doc
+          end
+
+          def set_components_name_list(root_doc)
+            obj_store.components_schema_name_list = root_doc['components']['schemas'].keys.sort.uniq
+            obj_store.appended_components_schema_name_list = []
+            obj_store.components_request_body_name_list = root_doc['components']['schemas'].keys.sort.uniq
+            obj_store.appended_components_request_body_name_list = []
           end
 
           def app_configuration_options

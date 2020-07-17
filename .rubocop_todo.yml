@@ -323,3 +323,6 @@ Layout/CommentIndentation:
 Lint/DuplicateMethods:
   Exclude:
     - "lib/r2-oas/plugin/executor.rb"
+
+Style/ConditionalAssignment:
+  Enabled: false

@@ -5,6 +5,8 @@ module R2OAS
     module V3
       class Store
         attr_accessor :root_doc
+        attr_accessor :components_schema_name_list, :appended_components_schema_name_list
+        attr_accessor :components_request_body_name_list, :appended_components_request_body_name_list
 
         def initialize(type = :obj)
           @data = {}
@@ -14,18 +16,19 @@ module R2OAS
 
         def add(obj_type, key, value)
           @data['data'][obj_type] ||= {}
-          @data['data'][obj_type][key] ||= []
-          @data['data'][obj_type][key].push(value)
+          # MEMO:
+          # Do not save the same thing in store by using unique contents for schema name
+          @data['data'][obj_type][key] ||= value
         end
 
         def gets(obj_type)
-          @data['data'][obj_type].present? ? @data['data'][obj_type].values.flatten : []
+          @data['data'][obj_type].values.present? ? @data['data'][obj_type].values : []
         end
 
         class << self
           extend Forwardable
 
-          def_delegators :instance, :add, :gets
+          def_delegators :instance, :add, :gets, :root_doc
 
           def create(type = :obj)
             instance(type)

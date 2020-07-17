@@ -15,6 +15,7 @@ module R2OAS
             super(opts)
             @doc = doc
             set_root_doc(doc)
+            set_components_name_list(doc)
           end
 
           def to_doc
