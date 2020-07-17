@@ -40,9 +40,29 @@ RSpec.describe R2OAS::Schema::V3::Builder do
       it_behaves_like 'Generated file verification test', true
       it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
     end
+    
+    context 'when output is true' do
+      let(:builder_options) { { output: true } }
+      
+      before do
+        builder.build_docs
+      end
+      
+      it { expect(FileTest.exists?(output_path)).to eq true }
+    end
   end
 
   describe '#oas_doc' do
+    context 'when default' do
+      before do
+        builder.build_docs
+      end
+      
+      it 'should be present' do
+        expect(builder.oas_doc).not_to be_blank
+      end
+    end
+    
     context 'when skip_load_dot_paths is true' do
       let(:builder_options) { { skip_load_dot_paths: true } }
 
@@ -52,6 +72,30 @@ RSpec.describe R2OAS::Schema::V3::Builder do
 
       it 'should be present' do
         expect(builder.oas_doc).not_to be_blank
+      end
+    end
+  end
+  
+  describe '#pure_oas_doc' do
+    context 'when default' do
+      before do
+        builder.build_docs
+      end
+      
+      it 'should be present' do
+        expect(builder.pure_oas_doc).not_to be_blank
+      end
+    end
+    
+    context 'when skip_load_dot_paths is true' do
+      let(:builder_options) { { skip_load_dot_paths: true } }
+
+      before do
+        builder.build_docs
+      end
+
+      it 'should be present' do
+        expect(builder.pure_oas_doc).not_to be_blank
       end
     end
   end

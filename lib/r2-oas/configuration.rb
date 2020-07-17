@@ -66,6 +66,10 @@ module R2OAS
       end
     end
 
+    def output_dir_path
+      output_path.to_s.split('/').slice(0..-2).join('/')
+    end
+
     private
 
     def load_local_plugins

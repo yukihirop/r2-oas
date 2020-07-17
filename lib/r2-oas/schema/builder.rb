@@ -8,7 +8,7 @@ module R2OAS
     class Builder
       extend Forwardable
 
-      def_delegators :@builder, :build_docs, :oas_doc
+      def_delegators :@builder, :build_docs, :oas_doc, :pure_oas_doc
 
       def initialize(options = {})
         case ::R2OAS.version

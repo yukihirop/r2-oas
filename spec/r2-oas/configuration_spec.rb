@@ -74,6 +74,7 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:plugins]).to eq []
         expect(subject[:local_plugins_dir_name]).to eq 'plugins'
         expect(subject[:local_tasks_dir_name]).to eq 'tasks'
+        expect(subject[:output_path]).to eq './oas_docs/dist/oas_doc.yml'
       end
     end
 
@@ -160,6 +161,7 @@ RSpec.describe R2OAS::Configuration do
             ]
             config.local_plugins_dir_name = 'plugins'
             config.local_tasks_dir_name = 'rake_tasks'
+            config.output_path = './dist/oas_doc.yml'
           end
         end
       end
@@ -221,6 +223,7 @@ RSpec.describe R2OAS::Configuration do
         )
         expect(subject[:local_plugins_dir_name]).to eq 'plugins'
         expect(subject[:local_tasks_dir_name]).to eq 'rake_tasks'
+        expect(subject[:output_path]).to eq './dist/oas_doc.yml'
       end
     end
   end

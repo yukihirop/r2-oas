@@ -46,7 +46,7 @@ module R2OAS
 
       def copy_oas_doc_file
         swagger_file_path = File.expand_path(Rails.root.join(deploy_dir_path, doc_save_file_name), __FILE__)
-        oas_doc_file_path = File.expand_path("#{root_dir_path}/#{doc_save_file_name}")
+        oas_doc_file_path = File.expand_path(output_path)
         FileUtils.cp_r(oas_doc_file_path, swagger_file_path)
       end
 

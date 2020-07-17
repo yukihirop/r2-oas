@@ -9,7 +9,7 @@ module R2OAS
   module Schema
     module V3
       class DocBuilder < BaseBuilder
-        attr_accessor :oas_doc
+        attr_accessor :oas_doc, :pure_oas_doc
 
         def initialize(opts = {})
           super
@@ -33,16 +33,17 @@ module R2OAS
             logger.info " Use schema file: \t#{file_manager.save_file_path(type: :relative)}"
           end
 
-          result_before_squeeze = FromFiles::OpenapiObject.new(result_before_squeeze, opts).to_doc if use_plugin?
-
           result = if many_paths_file_paths.present?
                      Squeezer.new(result_before_squeeze, many_paths_file_paths: many_paths_file_paths).squeeze_docs
                    else
                      result_before_squeeze
                   end
-
+          
+          @pure_oas_doc = result.dup
+          rsult = FromFiles::OpenapiObject.new(result, opts).to_doc if use_plugin?
           @oas_doc = result
-          File.write(doc_save_file_path, result.to_yaml)
+          
+          File.write(output? ? output_path : doc_save_file_path, result.to_yaml)
         end
       end
     end

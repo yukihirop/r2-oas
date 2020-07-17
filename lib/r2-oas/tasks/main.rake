@@ -18,15 +18,6 @@ namespace :routes do
       end
     end
 
-    desc '[R2-OAS] Apply the plugin to the OAS document'
-    task plugin: [:common] do
-      start do
-        options = { unit_paths_file_path: unit_paths_file_path, skip_load_dot_paths: true, use_plugin: true }
-        generator = R2OAS::Schema::Generator.new(options)
-        generator.generate_docs
-      end
-    end
-
     desc '[R2-OAS] Analyze OAS documentation'
     task analyze: [:common] do
       start do
@@ -40,12 +31,24 @@ namespace :routes do
       end
     end
 
-    desc '[R2-OAS] Distribute OAS documentation'
-    task dist: [:common] do
+    desc '[R2-OAS] Build OAS documentation'
+    task build: [:common] do
       start do
-        builder_options = { unit_paths_file_path: unit_paths_file_path, use_plugin: true }
+        output_dir_path = File.expand_path(R2OAS.output_dir_path)
+        FileUtils.mkdir_p(output_dir_path) unless FileTest.exists?(output_dir_path)
+        
+        is_overrirde_src = override_src.eql? 'true'
+        builder_options = { unit_paths_file_path: unit_paths_file_path, use_plugin: true, output: true }
         builder = R2OAS::Schema::Builder.new(builder_options)
         builder.build_docs
+        
+        if is_overrirde_src
+          before_schama_data = builder.pure_oas_doc
+          after_schema_data = builder.oas_doc
+          analyzer_options = { type: :edited }
+          analyzer = R2OAS::Schema::Analyzer.new(before_schama_data, after_schema_data, analyzer_options)
+          analyzer.analyze_docs
+        end
       end
     end
 
@@ -114,6 +117,10 @@ namespace :routes do
 
     def cache_docs
       ENV.fetch('CACHE_DOCS', 'false')
+    end
+    
+    def override_src
+      ENV.fetch('OVERRIDE_SRC', 'false')
     end
   end
 end

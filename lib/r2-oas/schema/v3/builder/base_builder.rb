@@ -28,8 +28,10 @@ module R2OAS
         attr_accessor :skip_load_dot_paths
         attr_accessor :opts
         attr_accessor :use_plugin
+        attr_accessor :output
 
         alias use_plugin? use_plugin
+        alias output? output
 
         def schema_file_do_not_exists?
           schema_files_paths.count == 0

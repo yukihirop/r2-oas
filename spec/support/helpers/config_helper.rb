@@ -80,6 +80,7 @@ module ConfigHelper
       # :dot or :underbar
       config.namespace_type = :underbar
       config.plugins = []
+      config.output_path = './oas_docs/dist/oas_doc.yml'
     end
   end
 end

@@ -100,11 +100,11 @@ RSpec.describe 'main_rake' do
   end
 
   describe 'routes:oas:dist' do
-    let(:task_name) { 'routes:oas:dist' }
+    let(:task_name) { 'routes:oas:build' }
 
     before do
       generate_docs
-      build_docs
+      subject
     end
 
     it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
