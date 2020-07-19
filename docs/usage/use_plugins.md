@@ -59,6 +59,7 @@ module YourNamespace
       # 
       # e.g.)
       # ref = {
+      #  type: :path_item,
       #  path: '/api/v1/task/{id}'
       # }
     end
@@ -69,13 +70,16 @@ module YourNamespace
       # ref is the following object:
       # 
       # e.g.)
-      # ref = { 
+      # ref = {
+      #  type: :schema,   
       #  path: '/api/v1/task/{id}',
       #  schema_name: 'api.v1.Task',
       #  tag_name: 'api/v1/task',
       #  verb: 'GET',
       #  http_status: 200,
-      #  from: :path_item (:request_body or :schema)
+      #  from: :path_item (:request_body or :schema),
+      #  parent_schema_name: 'api.v1.ParentTask',
+      #  depth: 1
       # }
     end
 
@@ -86,37 +90,43 @@ module YourNamespace
       #
       # e.g.)
       # ref = {
+      #  type: :request_body,
       #  path: '/api/v1/task/{id}', 
       #  schema_name: 'api.v1.Task',
       #  tag_name: 'api/v1/task',
       #  verb: 'PUT',
-      #  from: :path_item
+      #  from: :path_item,
+      #  parent_schema_name: 'api.v1.ParentTask',
+      #  depth: 1
       # }
     end
 
     components_schema_name do |ref|
-      # [Important] Set a new value for ref[:schema_name]
+      # [Important] Set a new value for ref[:schema_name] or ref.schema_name
       #
       # ref is the following object:
       # 
       # e.g.)
       # ref = { 
+      #  type: :schema,
       #  path: '/api/v1/task/{id}',
       #  schema_name: 'api.v1.Task',
       #  tag_name: 'api/v1/task',
       #  verb: 'GET',
       #  http_status: 200,
-      #  from: :schema (:request_body)
+      #  from: :schema (:request_body),
+      #  parent_schema_name: 'api.v1.ParentTask',
+      #  depth: 1
       # }
       #
       # e.g.)
       if opts[:override]
-        case ref[:from]
+        case ref.from
         when :path_item
           ref[:schema_name] = 'new component schema name'
           break;
         when :request_body
-          ref[:schema_name] = 'new component schema name'
+          ref.schema_name = 'new component schema name'
           break;
         when :schema
           ref[:schema_name] = 'new component schema name'
@@ -126,17 +136,20 @@ module YourNamespace
     end
 
     components_request_body_name do |ref|
-      # [Important] Set a new value for ref[:schema_name]
+      # [Important] Set a new value for ref[:schema_name] or ref.schema_name
       #
       # ref is the following object:
       # 
       # e.g.)
-      # ref = { 
+      # ref = {
+      #  type: :request_body, 
       #  path: '/api/v1/task/{id}',
       #  schema_name: 'api.v1.Task',
       #  tag_name: 'api/v1/task',
-      #  verb: 'GET'
-      #  from: :path_item
+      #  verb: 'PATCH',
+      #  from: :path_item,
+      #  parent_schema_name: 'api.v1.ParentTask',
+      #  depth: 0
       # }
       #
       # e.g.)
@@ -222,17 +235,62 @@ The plugin has the following API.
 
 ## ref
 
-`ref` is a hash consisting of the following `key list`  
-The key set in each block is slightly different for `ref`  
 
+`ref` can be instances of three classes  
 There is no ref for `setup・teardown・info・external_document`  
 
-|block name|key list|remark|
-|----------|--------|------|
-|path_item|`path`||
-|components_schema|`path`・`schema_name`・`tag_name`・`verb`・`http_status`・`from`|`from` is set to one of `:path_item`, `:request_body`, `:schema`|
-|components_schema_name|`path`・`schema_name`・`tag_name`・`verb`・`http_status`・`from`|`from` is set to one of `:path_item`, `:request_body`, `:schema`|
-|components_request_body|`path`・`schema_name`・`tag_name`・`verb`・`from`|`from` is set one of `:path_item`|
-|components_request_body_name|`path`・`schema_name`・`tag_name`・`verb`・`from`|`from` is set one of `:path_item`|
+- PathRef
+- Components::SchemaRef
+- Components::RequestBodyRef
 
-`from` indicates where the schema is referenced from
+The methods that can be called respectively are as follows
+
+### PathRef methods
+
+```bash
+[1] pry> ls ref
+R2OAS::Schema::V3::FromFiles::BaseRef#methods: []  []=  parent  pretty_print  to_h
+R2OAS::Schema::V3::FromFiles::PathRef#methods: path  type
+instance variables: @path  @type
+```
+
+### Components::SchemaRef methods
+
+Only `schema_name` can be rewritten with `ref.schema_name=` or `ref[:schema_name]=`
+
+```bash
+[1] pry> ls ref
+R2OAS::Schema::V3::FromFiles::BaseRef#methods: []  []=  parent  pretty_print  to_h
+R2OAS::Schema::V3::FromFiles::Components::SchemaRef#methods: depth  from  http_status  parent_schema_name  path  schema_name  schema_name=  tag_name  type  verb
+instance variables: @depth  @from  @http_status  @parent  @parent_schema_name  @path  @schema_name  @tag_name  @type  @verb
+```
+
+### Components::RequestBodyRef methods
+
+Only `schema_name` can be rewritten with `ref.schema_name=` or `ref[:schema_name]=`
+
+```bash
+[1] pry> ls ref
+R2OAS::Schema::V3::FromFiles::BaseRef#methods: []  []=  parent  pretty_print  to_h
+R2OAS::Schema::V3::FromFiles::Components::RequestBodyRef#methods: depth  from  parent_schema_name  path  schema_name  schema_name=  tag_name  type  verb
+instance variables: @depth  @from  @parent  @parent_schema_name  @path  @schema_name  @tag_name  @type  @verb
+```
+
+
+|block name|ref class|remark|
+|----------|--------|------|
+|path_item|`PathRef`||
+|components_schema|`Components::SchemaRef`|`from` is set to one of `:path_item`, `:request_body`, `:schema`|
+|components_schema_name|`Components::SchemaRef`|`from` is set to one of `:path_item`, `:request_body`, `:schema`|
+|components_request_body|`Components::RequestBodyRef`|`from` is set one of `:path_item`|
+|components_request_body_name|`Components::RequestBodyRef`|`from` is set one of `:path_item`|
+
+- `type` is the type of `ref`
+- `from` indicates where the schema is referenced from  
+- `depth` is the depth of the components schema(requestBody)  
+
+If you want to know the `ref of the parent schema` using the schema, call `ref.parent`  
+e.g.) `ref.parent`, `ref.parent.parent.parent`
+
+If you want to convert it to Hash, call `to_h`  
+e.g.) `ref.to_h`

@@ -9,4 +9,5 @@ module R2OAS
   class PluginDuplicationError < StandardError; end
   class PluginLoadError < StandardError; end
   class DepulicateSchemaNameError < StandardError; end
+  class RefInvalidAssignment < StandardError; end
 end

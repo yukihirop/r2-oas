@@ -3,7 +3,7 @@
 require 'r2-oas/shared/callable'
 require 'r2-oas/errors'
 require_relative '../base_object'
-require_relative '../utils/deep_methods'
+require_relative '../utils/all'
 
 module R2OAS
   module Schema
@@ -17,7 +17,7 @@ module R2OAS
             def initialize(doc, ref, opts)
               super(opts)
               @doc = doc
-              @parent_ref = ref
+              @parent_ref = Components::SchemaRef.new(ref)
               resolve_dependencies!
             end
 
@@ -31,13 +31,12 @@ module R2OAS
             end
 
             def resolve_dependencies!
-              doc_tmp = @doc.dup
-
               deep_replace!(@doc, '$ref') do |ref_path|
                 schema_obj, schema_type, pure_schema_name = ref_path.split('/').slice(1..-1)
                 schema_doc = root_doc&.fetch(schema_obj, nil)&.fetch(schema_type, nil)&.fetch(pure_schema_name, nil) || {}
 
-                obj = Components::SchemaObject.new(schema_doc, ref_dup.merge({ from: :schema, schema_name: pure_schema_name }), opts)
+                ref = create_child_ref(pure_schema_name)
+                obj = Components::SchemaObject.new(schema_doc, ref, opts)
 
                 obj_store.add('components/schemas', pure_schema_name, obj)
                 obj
@@ -84,6 +83,16 @@ module R2OAS
                 obj_store.components_schema_name_list +
                 obj_store.appended_components_schema_name_list
               ).uniq
+            end
+            
+            def create_child_ref(schema_name)
+              local_ref_hash = ref_dup.to_h
+              parent_schema_name = local_ref_hash[:schema_name]
+              depth = local_ref_hash[:depth] + 1
+              ref_data = local_ref_hash.merge({ from: :schema, schema_name: schema_name, parent_schema_name: parent_schema_name, depth: depth })
+              ref = Components::SchemaRef.new(ref_data)
+              ref.send(:parent=, ref_dup)
+              ref
             end
           end
         end
