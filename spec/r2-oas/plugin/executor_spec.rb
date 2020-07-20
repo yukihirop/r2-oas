@@ -17,11 +17,23 @@ RSpec.describe R2OAS::Plugin::Executor do
 
     context 'when use plugin' do
       let(:opts) { { use_plugin: true } }
-
-      it do
-        subject
-        expect(described_class).to have_received(:plugin_map).once
-        expect(described_class).to have_received(:execute_transform_plugins).once
+      
+      context 'when plugins is blank' do
+        it do
+          subject
+          expect(described_class).to have_received(:plugin_map).exactly(0).times
+          expect(described_class).to have_received(:execute_transform_plugins).exactly(0).times
+        end
+      end
+      
+      context 'when plugins is present' do
+        let(:plugins) { [ 'r2oas-plugin-transform-sample' ] }
+        
+        it do
+          subject
+          expect(described_class).to have_received(:plugin_map).once
+          expect(described_class).to have_received(:execute_transform_plugins).once
+        end
       end
     end
 
@@ -122,41 +134,27 @@ RSpec.describe R2OAS::Plugin::Executor do
       end
 
       context 'PluginLoadError' do
-        let(:plugins) { ['r2oas-plugin-transform-sample'] }
+        let(:plugins) do [
+          'r2oas-plugin-transform-sample-1',
+          'r2oas-plugin-transform-sample-2'
+          ]
+        end
 
         before do
           class TestSample3Transform < ::R2OAS::Plugin::Transform
-            self.plugin_name = 'r2oas-plugin-transform-sample-not-load'
+            self.plugin_name = 'r2oas-plugin-transform-sample-do-not-used'
           end
 
           R2OAS.configure do |config|
-            config.plugins = ['r2oas-plugin-transform-sample']
+            config.plugins = [
+              'r2oas-plugin-transform-sample-1',
+              'r2oas-plugin-transform-sample-2'
+            ]
           end
         end
 
-        it { expect { subject }.to raise_error(R2OAS::PluginLoadError, "The 'r2oas-plugin-transform-sample' plugin doesn't exist or can't be loaded") }
+        it { expect { subject }.to raise_error(R2OAS::PluginLoadError, "The 'r2oas-plugin-transform-sample-1, r2oas-plugin-transform-sample-2' plugin doesn't exist or can't be loaded") }
       end
     end
-  end
-
-  describe 'plugins_list' do
-    let(:plugins) do
-      [
-        ['r2oas-plugin-transform-sample-1', {}],
-        'r2oas-plugin-transform-sample-2'
-      ]
-    end
-    subject { described_class.plugins_list(plugins) }
-
-    before do
-      R2OAS.configure do |config|
-        config.plugins = [
-          ['r2oas-plugin-transform-sample-1', {}],
-          'r2oas-plugin-transform-sample-2'
-        ]
-      end
-    end
-
-    it { expect(subject).to include('r2oas-plugin-transform-sample-1', 'r2oas-plugin-transform-sample-2') }
   end
 end
