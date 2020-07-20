@@ -38,11 +38,11 @@ module R2OAS
                    else
                      result_before_squeeze
                   end
-          
+
           @pure_oas_doc = result.dup
           rsult = FromFiles::OpenapiObject.new(result, opts).to_doc if use_plugin?
           @oas_doc = result
-          
+
           File.write(output? ? output_path : doc_save_file_path, result.to_yaml)
         end
       end

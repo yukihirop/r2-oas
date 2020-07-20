@@ -87,19 +87,19 @@ module R2OAS
               obj
             end
           end
-          
+
           def create_child_schema_ref(schema_name, local_ref_hash)
             local_ref_hash_dup = local_ref_hash.dup
             ref_data = local_ref_hash_dup.merge({ from: :path_item, schema_name: schema_name, depth: 0 })
             ref = Components::SchemaRef.new(ref_data)
           end
-          
+
           def create_child_request_body_ref(schema_name, local_ref_hash)
             local_ref_hash_dup = local_ref_hash.dup
             # MEMO:
             # requestBody does not depend on http_status
             local_ref_hash_dup.delete(:http_status)
-              
+
             ref_data = local_ref_hash_dup.merge({ from: :path_item, schema_name: schema_name, depth: 0 })
             ref = Components::RequestBodyRef.new(ref_data)
           end

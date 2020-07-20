@@ -65,21 +65,21 @@ module R2OAS
         load file if FileTest.exists?(file)
       end
     end
-    
+
     def init
       plugins_path = File.expand_path("#{root_dir_path}/#{local_plugins_dir_name}")
       plugins_helpers_path = "#{plugins_path}/helpers"
       tasks_path = File.expand_path("#{root_dir_path}/#{local_tasks_dir_name}")
       tasks_helpers_path = "#{tasks_path}/helpers"
-      
+
       gitkeep_plugins_path = "#{plugins_path}/.gitkeep"
       gitkeep_plugins_helpers_path = "#{plugins_helpers_path}/.gitkeep"
       gitkeep_tasks_path = "#{tasks_path}/.gitkeep"
       gitkeep_tasks_helpers_path = "#{tasks_helpers_path}/.gitkeep"
-      
+
       FileUtils.mkdir_p(plugins_helpers_path) unless FileTest.exists?(plugins_helpers_path)
       FileUtils.mkdir_p(tasks_helpers_path) unless FileTest.exists?(tasks_helpers_path)
-      
+
       File.write(gitkeep_plugins_path, '') unless FileTest.exists?(gitkeep_plugins_path)
       File.write(gitkeep_plugins_helpers_path, '') unless FileTest.exists?(gitkeep_plugins_helpers_path)
       File.write(gitkeep_tasks_path, '') unless FileTest.exists?(gitkeep_tasks_path)

@@ -7,7 +7,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject do
   let(:path) { '/api/v1/tasks/{id}' }
   let(:opts) { {} }
   let(:ref) do
-    { 
+    {
       type: :request_body,
       path: path,
       schema_name: 'Api_V1_Task_RequestBody',
@@ -65,7 +65,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject do
       it { expect(object.to_doc['plugin_key']).to eq 'plugin_value.request_body./api/v1/tasks/{id}.Api_V1_Task_RequestBody.api/v1/task.patch.0' }
     end
   end
-  
+
   describe '#schema_name (#ref_path)' do
     context 'when default' do
       it do
@@ -73,7 +73,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject do
         expect(object.ref_path).to eq '#/components/requestBodies/Api_V1_Task_RequestBody'
       end
     end
-    
+
     context 'when use plugins (components_request_body_name)' do
       let(:opts) { { use_plugin: true } }
 
@@ -100,14 +100,14 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject do
         expect(object.ref_path).to eq '#/components/requestBodies/request_body./api/v1/tasks/{id}.api/v1/task.patch.0'
       end
     end
-    
+
     context 'when errors occurs (by using components_request_body_name in plugins)' do
       let(:opts) { { use_plugin: true } }
       let(:from) { :path_item }
-      
+
       before do
         set_components_request_body_name_list(['Api_V1_Task_RequestBody_Used'])
-        
+
         class TestRequestBodyNameErrorOccursTransform < R2OAS::Plugin::Transform
           self.plugin_name = 'r2oas-plugin-transform-test-components-request-body-name-error-occurs'
 
@@ -124,7 +124,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject do
           ]
         end
       end
-      
+
       it do
         expect { object.schema_name }.to raise_error(::R2OAS::DepulicateSchemaNameError, "Transformed schema name: 'Api_V1_Task_RequestBody_Used' cannot be used. It already exists.")
       end

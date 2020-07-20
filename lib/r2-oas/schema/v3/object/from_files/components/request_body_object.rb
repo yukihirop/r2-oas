@@ -35,7 +35,7 @@ module R2OAS
               deep_replace!(@doc, '$ref') do |ref_path|
                 schema_obj, schema_type, pure_schema_name = ref_path.split('/').slice(1..-1)
                 schema_doc = root_doc&.fetch(schema_obj, nil)&.fetch(schema_type, nil)&.fetch(pure_schema_name, nil) || {}
-                
+
                 ref = create_child_ref(pure_schema_name)
                 obj = Components::SchemaObject.new(schema_doc, ref, opts)
 
@@ -85,7 +85,7 @@ module R2OAS
                 obj_store.appended_components_request_body_name_list
               ).uniq
             end
-            
+
             def create_child_ref(schema_name)
               local_ref_hash = ref_dup.to_h
               parent_schema_name = local_ref_hash[:schema_name]

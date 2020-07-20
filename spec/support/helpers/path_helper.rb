@@ -24,11 +24,11 @@ module PathHelper
   def local_tasks_dir_name
     R2OAS.local_tasks_dir_name
   end
-  
+
   def output_path
     R2OAS.output_path
   end
-  
+
   def output_dir_path
     R2OAS.output_dir_path
   end

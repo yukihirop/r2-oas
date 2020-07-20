@@ -98,14 +98,14 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
 
         it { expect(object.to_doc['request_body']).to eq 'plugin_value.schema./api/v1/tasks/{id}.Api_V1_Task.api/v1/task.patch.204.0' }
       end
-      
+
       context 'when reference from :schema' do
         let(:from) { :schema }
-        
+
         before do
           class TestSchemaFromSchemaTransform < R2OAS::Plugin::Transform
             self.plugin_name = 'r2oas-plugin-transform-test-components-schema-from-schema'
-            
+
             components_schema do |doc, ref|
               if opts[:merged]
                 if ref[:from] == :schema
@@ -116,19 +116,19 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
               end
             end
           end
-          
+
           R2OAS.configure do |config|
             config.plugins = [
               ['r2oas-plugin-transform-test-components-schema-from-schema', { merged: true }]
             ]
           end
         end
-        
+
         it { expect(object.to_doc['schema']).to eq 'plugin_value.schema./api/v1/tasks/{id}.Api_V1_Task.api/v1/task.patch.204.0' }
       end
     end
   end
-  
+
   describe '#schema_name (#ref_path)' do
     context 'when default' do
       it do
@@ -136,7 +136,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
         expect(object.ref_path).to eq '#/components/schemas/Api_V1_Task'
       end
     end
-    
+
     context 'when use plugins (components_schema_name)' do
       let(:opts) { { use_plugin: true } }
       let(:http_status) { 204 }
@@ -150,9 +150,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
 
             components_schema_name do |ref|
               if opts[:override]
-                if ref[:from] == :path_item
-                  ref[:schema_name] = "#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:http_status]}.#{ref[:depth]}"
-                end
+                ref[:schema_name] = "#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:http_status]}.#{ref[:depth]}" if ref[:from] == :path_item
               end
             end
           end
@@ -169,30 +167,28 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
           expect(object.ref_path).to eq '#/components/schemas/schema./api/v1/tasks/{id}.Api_V1_Task.api/v1/task.patch.204.0'
         end
       end
-      
+
       context 'when reference from :schema' do
         let(:from) { :schema }
-        
+
         before do
           class TestSchemaNameFromSchemaTransform < R2OAS::Plugin::Transform
             self.plugin_name = 'r2oas-plugin-transform-test-components-schema-name-from-schema'
 
             components_schema_name do |ref|
               if opts[:override]
-                if ref[:from] == :schema
-                  ref[:schema_name] = "#{ref.type}.#{ref.path}.#{ref.schema_name}.#{ref.tag_name}.#{ref.verb}.#{ref.http_status}.#{ref.depth}"
-                end
+                ref[:schema_name] = "#{ref.type}.#{ref.path}.#{ref.schema_name}.#{ref.tag_name}.#{ref.verb}.#{ref.http_status}.#{ref.depth}" if ref[:from] == :schema
               end
             end
           end
-          
+
           R2OAS.configure do |config|
             config.plugins = [
               ['r2oas-plugin-transform-test-components-schema-name-from-schema', { override: true }]
             ]
           end
         end
-        
+
         it do
           expect(object.schema_name).to eq 'schema./api/v1/tasks/{id}.Api_V1_Task.api/v1/task.patch.204.0'
           expect(object.ref_path).to eq '#/components/schemas/schema./api/v1/tasks/{id}.Api_V1_Task.api/v1/task.patch.204.0'
@@ -208,9 +204,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
 
             components_schema_name do |ref|
               if opts[:override]
-                if ref[:from] == :request_body
-                  ref[:schema_name] = "#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:depth]}"
-                end
+                ref[:schema_name] = "#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:depth]}" if ref[:from] == :request_body
               end
             end
           end
@@ -228,23 +222,21 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
         end
       end
     end
-    
+
     context 'when errors occurs (by using components_schema_name in plugins)' do
       let(:opts) { { use_plugin: true } }
       let(:http_status) { 204 }
       let(:from) { :request_body }
-      
+
       before do
         set_components_schema_name_list(['Api_V1_Task_Used'])
-        
+
         class TestSchemaNameErrorOccursTransform < R2OAS::Plugin::Transform
           self.plugin_name = 'r2oas-plugin-transform-test-components-schema-name-error-occurs'
 
           components_schema_name do |ref|
             if opts[:override]
-              if ref[:from] == :request_body
-                ref[:schema_name] = 'Api_V1_Task_Used'
-              end
+              ref[:schema_name] = 'Api_V1_Task_Used' if ref[:from] == :request_body
             end
           end
         end
@@ -255,7 +247,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
           ]
         end
       end
-      
+
       it do
         expect { object.schema_name }.to raise_error(::R2OAS::DepulicateSchemaNameError, "Transformed schema name: 'Api_V1_Task_Used' cannot be used. It already exists.")
       end

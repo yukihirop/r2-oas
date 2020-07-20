@@ -23,4 +23,3 @@ module R2OAS
     end
   end
 end
-

@@ -17,7 +17,7 @@ RSpec.describe R2OAS::Plugin::Executor do
 
     context 'when use plugin' do
       let(:opts) { { use_plugin: true } }
-      
+
       context 'when plugins is blank' do
         it do
           subject
@@ -25,10 +25,10 @@ RSpec.describe R2OAS::Plugin::Executor do
           expect(described_class).to have_received(:execute_transform_plugins).exactly(0).times
         end
       end
-      
+
       context 'when plugins is present' do
-        let(:plugins) { [ 'r2oas-plugin-transform-sample' ] }
-        
+        let(:plugins) { ['r2oas-plugin-transform-sample'] }
+
         it do
           subject
           expect(described_class).to have_received(:plugin_map).once
@@ -134,9 +134,10 @@ RSpec.describe R2OAS::Plugin::Executor do
       end
 
       context 'PluginLoadError' do
-        let(:plugins) do [
-          'r2oas-plugin-transform-sample-1',
-          'r2oas-plugin-transform-sample-2'
+        let(:plugins) do
+          %w[
+            r2oas-plugin-transform-sample-1
+            r2oas-plugin-transform-sample-2
           ]
         end
 
@@ -146,9 +147,9 @@ RSpec.describe R2OAS::Plugin::Executor do
           end
 
           R2OAS.configure do |config|
-            config.plugins = [
-              'r2oas-plugin-transform-sample-1',
-              'r2oas-plugin-transform-sample-2'
+            config.plugins = %w[
+              r2oas-plugin-transform-sample-1
+              r2oas-plugin-transform-sample-2
             ]
           end
         end

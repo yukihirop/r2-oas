@@ -13,7 +13,7 @@ namespace :routes do
       R2OAS.init
       puts '[R2-OAS] Initialized!'
     end
-    
+
     desc '[R2-OAS] Generate OAS documentation files'
     task docs: [:common] do
       start do
@@ -42,12 +42,12 @@ namespace :routes do
       start do
         output_dir_path = File.expand_path(R2OAS.output_dir_path)
         FileUtils.mkdir_p(output_dir_path) unless FileTest.exists?(output_dir_path)
-        
+
         is_overrirde_src = override_src.eql? 'true'
         builder_options = { unit_paths_file_path: unit_paths_file_path, use_plugin: true, output: true }
         builder = R2OAS::Schema::Builder.new(builder_options)
         builder.build_docs
-        
+
         if is_overrirde_src
           before_schama_data = builder.pure_oas_doc
           after_schema_data = builder.oas_doc
@@ -124,7 +124,7 @@ namespace :routes do
     def cache_docs
       ENV.fetch('CACHE_DOCS', 'false')
     end
-    
+
     def override_src
       ENV.fetch('OVERRIDE_SRC', 'false')
     end

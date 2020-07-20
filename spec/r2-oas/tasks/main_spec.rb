@@ -26,14 +26,14 @@ RSpec.describe 'main_rake' do
       expect(FileTest.exists?(tags_path)).to eq result
     end
   end
-  
+
   describe 'routes:oas:init' do
     let(:task_name) { 'routes:oas:init' }
-    
+
     before do
       subject
     end
-    
+
     it do
       expect(FileTest.exists?(plugins_path)).to eq true
       expect(FileTest.exists?("#{plugins_path}/helpers")).to eq true

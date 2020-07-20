@@ -84,7 +84,7 @@ module R2OAS
                 obj_store.appended_components_schema_name_list
               ).uniq
             end
-            
+
             def create_child_ref(schema_name)
               local_ref_hash = ref_dup.to_h
               parent_schema_name = local_ref_hash[:schema_name]
