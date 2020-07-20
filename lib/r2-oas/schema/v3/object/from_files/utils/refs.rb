@@ -14,12 +14,13 @@ module R2OAS
           attr_reader :parent
 
           def []=(key, value)
-            unless writable_keys.include?(key)
+            if writable_keys.include?(key)
+              send(:"#{key}=", value)
+              value
+            else
               display_key = key.is_a?(Symbol) ? ":#{key}" : key
               raise ::R2OAS::RefInvalidAssignment, "invalid method `[#{display_key}]=' called for #{self}"
             end
-            send(:"#{key}=", value)
-            value
           end
 
           def [](key)
@@ -60,10 +61,7 @@ module R2OAS
             @parent = ref_or_data if ref_or_data.respond_to?(:parent)
           end
 
-          def parent=(parent)
-            @parent = parent
-            self
-          end
+          attr_writer :parent
 
           def valid_keys
             raise NoImplementError, 'Please implement in inherited class.'

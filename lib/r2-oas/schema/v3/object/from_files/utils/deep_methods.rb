@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module R2OAS
   module Schema
     module V3

@@ -29,6 +29,7 @@ Metrics/AbcSize:
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
     - "lib/r2-oas/plugin/executor.rb"
     - "lib/r2-oas/schema/v3/builder/doc_builder.rb"
+    - "lib/r2-oas/configuration.rb"
 
 Style/Documentation:
   Enabled: false
@@ -77,7 +78,8 @@ Metrics/BlockLength:
     - "spec/r2-oas/schema/v3/object/from_files/openapi_object_spec.rb"
     - "spec/r2-oas/schema/v3/object/from_files/path_item_object_spec.rb"
     - "spec/r2-oas/schema/v3/object/from_files/paths_object_spec.rb"
-    - ""
+    - "spec/r2-oas/schema/v3/object/from_files/utils/refs_spec.rb"
+    
 
 Lint/AmbiguousOperator:
   Exclude:
@@ -140,6 +142,10 @@ Metrics/MethodLength:
     - "lib/r2-oas/schema/v3/object/from_files/openapi_object.rb"
     - "lib/r2-oas/schema/v3/object/from_files/path_item_object.rb"
     - "lib/r2-oas/shared/callable.rb"
+    - "lib/r2-oas/configuration.rb"
+    - "lib/r2-oas/schema/v3/object/from_files/components/schema_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_files/utils/refs.rb"
+    
 
 Metrics/CyclomaticComplexity:
   Exclude:
@@ -147,6 +153,8 @@ Metrics/CyclomaticComplexity:
     - "lib/r2-oas/schema/v3/manager/pathname_manager.rb"
     - "lib/r2-oas/schema/v3/generator/doc_generator.rb"
     - "lib/r2-oas/plugin/executor.rb"
+    - "spec/r2-oas/schema/v3/object/from_routes/components/schema_object_spec.rb"
+    - "lib/r2-oas/configuration.rb"
 
 Naming/ConstantName:
   Exclude:
@@ -177,6 +185,8 @@ Naming/AccessorMethodName:
     - "lib/r2-oas/app_configuration.rb"
     - "lib/r2-oas/pluggable_configuration.rb"
     - "lib/r2-oas/schema/v3/object/from_files/base_object.rb"
+    - "spec/support/helpers/store_helper.rb"
+    - "spec/support/helpers/store_helper.rb"
 
 Style/AsciiComments:
   Exclude:
@@ -187,6 +197,8 @@ Lint/UnderscorePrefixedVariableName:
   Exclude:
     - "lib/r2-oas/logger/stdout_logger.rb"
     - "lib/r2-oas/schema/v3/object/from_routes/components/request_body_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_files/components/request_body_object.rb"
+    - "lib/r2-oas/schema/v3/object/from_files/components/schema_object.rb"
 
 Lint/UselessAccessModifier:
   Exclude:
@@ -326,3 +338,25 @@ Lint/DuplicateMethods:
 
 Style/ConditionalAssignment:
   Enabled: false
+  
+Naming/MethodParameterName:
+  Enabled: false
+
+Style/AccessorGrouping:
+  Enabled: true
+  Exclude:
+    - "lib/r2-oas/schema/v3/generator/base_generator.rb"
+    - "lib/r2-oas/schema/v3/object/store.rb"
+    - "lib/r2-oas/schema/v3/builder/base_builder.rb"
+    - "lib/r2-oas/schema/v3/analyzer/base_analyzer.rb"
+  
+Style/BisectedAttrAccessor:
+  Enabled: true
+
+Style/RedundantAssignment:
+  Enabled: true
+  Exclude:
+    - "lib/r2-oas/schema/v3/object/from_routes/openapi_object.rb"
+
+Style/RedundantFetchBlock:
+  Enabled: true
