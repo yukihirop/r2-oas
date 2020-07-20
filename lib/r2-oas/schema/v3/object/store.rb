@@ -12,6 +12,11 @@ module R2OAS
           @data = {}
           @data['type'] = type
           @data['data'] = {}
+          @root_doc = {}
+          @components_schema_name_list = []
+          @appended_components_schema_name_list = []
+          @components_request_body_name_list = []
+          @appended_components_request_body_name_list = []
         end
 
         def add(obj_type, key, value)
@@ -22,13 +27,15 @@ module R2OAS
         end
 
         def gets(obj_type)
-          @data['data'][obj_type].values.present? ? @data['data'][obj_type].values : []
+          (@data['data'][obj_type] || {}).values.present? ? @data['data'][obj_type].values : []
         end
 
         class << self
           extend Forwardable
 
           def_delegators :instance, :add, :gets, :root_doc
+          def_delegators :instance, :components_schema_name_list, :appended_components_schema_name_list
+          def_delegators :instance, :components_request_body_name_list, :appended_components_request_body_name_list
 
           def create(type = :obj)
             instance(type)

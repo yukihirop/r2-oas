@@ -46,10 +46,8 @@ module R2OAS
           end
 
           def set_components_name_list(root_doc)
-            obj_store.components_schema_name_list = root_doc['components']['schemas'].keys.sort.uniq
-            obj_store.appended_components_schema_name_list = []
-            obj_store.components_request_body_name_list = root_doc['components']['schemas'].keys.sort.uniq
-            obj_store.appended_components_request_body_name_list = []
+            obj_store.components_schema_name_list = (root_doc.fetch('components', nil)&.fetch('schemas', nil) || {}).keys.sort.uniq
+            obj_store.components_request_body_name_list = (root_doc.fetch('components', nil)&.fetch('schemas', nil) || {}).keys.sort.uniq
           end
 
           def app_configuration_options

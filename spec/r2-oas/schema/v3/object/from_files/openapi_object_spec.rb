@@ -28,6 +28,8 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::OpenapiObject do
 
   describe '#to_doc' do
     before do
+      allow_any_instance_of(R2OAS::Schema::V3::FromFiles::BaseObject).to receive(:set_root_doc)
+      allow_any_instance_of(R2OAS::Schema::V3::FromFiles::BaseObject).to receive(:set_components_name_list)
       allow_any_instance_of(R2OAS::Schema::V3::FromFiles::InfoObject).to receive(:to_doc).and_return(info_doc)
       allow_any_instance_of(R2OAS::Schema::V3::FromFiles::PathsObject).to receive(:to_doc).and_return(paths_doc)
       allow_any_instance_of(R2OAS::Schema::V3::FromFiles::ExternalDocumentObject).to receive(:to_doc).and_return(external_docs_doc)

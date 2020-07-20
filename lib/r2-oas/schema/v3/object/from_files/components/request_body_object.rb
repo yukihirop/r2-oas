@@ -60,7 +60,7 @@ module R2OAS
 
               if before_schema_name != @resolved_schema_name
                 if reserved_schema_name_list.include?(@resolved_schema_name)
-                  raise DepulicateSchemaNameError, "schema_name: '#{@resolved_schema_name}' cannot be used. It already exists."
+                  raise DepulicateSchemaNameError, "Transformed schema name: '#{@resolved_schema_name}' cannot be used. It already exists."
                 else
                   obj_store.appended_components_request_body_name_list.push(@resolved_schema_name)
                 end
