@@ -19,7 +19,10 @@ namespace :routes do
           client.download_swagger_ui_dist
         end
 
-        builder_options = { unit_paths_file_path: unit_paths_file_path }
+        output_dir_path = File.expand_path(R2OAS.output_dir_path)
+        FileUtils.mkdir_p(output_dir_path) unless FileTest.exists?(output_dir_path)
+
+        builder_options = { unit_paths_file_path: unit_paths_file_path, use_plugin: true, output: true }
         builder = R2OAS::Schema::Builder.new(builder_options)
         builder.build_docs
 

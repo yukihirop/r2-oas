@@ -36,12 +36,13 @@ module R2OAS
         attr_accessor :parent_save_file_paths, :recursive_search_class
 
         def deep_search_ref_recursive(yaml, &block)
-          if yaml.is_a?(Hash)
+          case yaml
+          when Hash
             yaml.each do |key, value|
               process_deep_search_ref_recursive(key, value, &block)
             end
           # Support allOf/oneOf/anyOf
-          elsif yaml.is_a?(Array)
+          when Array
             yaml.each do |el|
               next unless el.is_a?(Hash)
 

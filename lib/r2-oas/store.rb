@@ -9,29 +9,32 @@ module R2OAS
   class Store
     attr_accessor :data
 
-    def initialize(data = {})
+    def initialize(type, data = {})
       if data.empty?
         @data = {}
-        @data['type'] = :schema
+        @type = type
+        @data['type'] = type
         @data['data'] = {}
       else
+        @type = type
         @data = data
       end
     end
 
-    def add(key, value, type = :schema)
-      sha1 = calc_sha1(key, value)
+    def add(key, value)
+      case @type
+      when :schema
+        sha1 = calc_sha1(key, value)
 
-      @data['data'][sha1] ||= {}
-      @data['type'] = type
-      @data['data'][sha1]['key'] = key
-      @data['data'][sha1]['value'] = Zlib::Deflate.deflate(value)
+        @data['data'][sha1] ||= {}
+        @data['data'][sha1]['key'] = key
+        @data['data'][sha1]['value'] = Zlib::Deflate.deflate(value)
+      end
     end
 
     def save
-      type = @data['type']
       @data['data'].values.each do |value|
-        case type
+        case @type
         when :schema
           save_path = value['key']
           save_data = Zlib::Inflate.inflate(value['value'])
@@ -43,7 +46,7 @@ module R2OAS
     end
 
     def dup_slice(*sha1s)
-      dup_store = Store.new(@data.dup)
+      dup_store = Store.new(@type, @data.dup)
       dup_data = dup_store.data['data']
       dup_store.data['data'] = sha1s.each_with_object({}) { |sha1, data| data[sha1] = dup_data[sha1] if dup_store.key?(sha1) }
       dup_store
@@ -102,16 +105,17 @@ module R2OAS
     class << self
       extend Forwardable
 
-      def_delegators :instance, :add
+      def_delegators :instance, :add, :save, :dup_slice, :checksum?, :key?, :exists?, :diff_from
 
-      def create
-        instance
+      def create(type = :schema)
+        instance(type)
       end
 
       private
 
-      def instance
-        @instance ||= new
+      def instance(type)
+        @instance ||= {}
+        @instance[type] ||= new(type)
       end
     end
   end

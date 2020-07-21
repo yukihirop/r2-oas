@@ -23,7 +23,7 @@ RSpec.describe R2OAS::Store do
     }
   end
 
-  let(:model) { described_class.new(data) }
+  let(:model) { described_class.new(:schema, data) }
 
   describe '#add' do
     subject { model.add('oas_docs/src/servers.yml', servers) }
@@ -139,7 +139,7 @@ RSpec.describe R2OAS::Store do
         }
       }
     end
-    let(:local_store) { described_class.new(local_store_data) }
+    let(:local_store) { described_class.new(:schema, local_store_data) }
 
     context 'when block given' do
       it do

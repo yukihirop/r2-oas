@@ -8,11 +8,12 @@
 Railsのルーティング情報からOpenAPI形式のドキュメントを生成し、閲覧・編集・管理するためのrakeタスクの提供をします。
 
 ```bash
+bundle exec rake routes:oas:init    # 初期化
 bundle exec rake routes:oas:docs    # ドキュメント生成
 bundle exec rake routes:oas:ui      # ドキュメント閲覧
 bundle exec rake routes:oas:editor  # ドキュメント編集
 bundle exec rake routes:oas:monitor # ドキュメント監視
-bundle exec rake routes:oas:dist    # ドキュメント配布
+bundle exec rake routes:oas:build   # ドキュメントビルド
 bundle exec rake routes:oas:clean   # ドキュメント清掃
 bundle exec rake routes:oas:analyze # ドキュメント分解・分析
 bundle exec rake routes:oas:deploy  # ドキュメントデプロイ
@@ -68,39 +69,62 @@ bundle exec routes:oas:editor
 
 ## 📖 Usage
 
-railsプロジェクトのルートディレクトリで以下のコマンドが実行可能です。
+
+railsプロジェクトのルートディレクトリで以下のコマンドが実行可能です。  
+一般的なコマンドの使用例を示します。
+
+### Initialize
+
+`r2-oas`の初期化
 
 ```bash
-$ # ドキュメント生成
-$ bundle exec rake routes:oas:docs
-$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # pathsファイルを指定してドキュメント生成
-
-$ # SwaggerEditorでドキュメント編集
-$ bundle exec rake routes:oas:editor
-$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # pathsファイルを指定してドキュメント編集
-$ # SwaggerUIでドキュメント閲覧
-$ bundle exec rake routes:oas:ui
-$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # pathsファイルを指定してドキュメント閲覧
-$ # テキストエディタでドキュメント編集(初期設定時、git管理しないoas_docs/oas_doc.ymlを監視)
-$ bundle exec rake routes:oas:monitor
-$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:monitor # pathsファイルを指定してドキュメント監視
-
-$ # ドキュメントを分解・分析
-$ OAS_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
-$ # どこからも参照されてないcomponents/schemas(requestBodies, ...)を削除
-$ bundle exec rake routes:oas:clean
-$ # githubにホスティング
-$ bundle exec rake routes:oas:deploy
-$ # ドキュメントを配布(初期設定時、配布ファイルは、oas_docs/oas_doc.yml)
-$ bundle exec rake routes:oas:dist
-$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:dist    # pathsファイルを指定してドキュメント配布
- 
-# pathsファイルのリスト取得
-$ bundle exec rake routes:oas:paths_ls
-# pathsファイルの編集履歴表示
-$ bundle exec rake routes:oas:paths_stats
+$ bundle exec rake routes:oas:init
 ```
 
+### Generate
+
+ドキュメントの生成
+
+```bash
+$ bundle exec rake routes:oas:docs                                                       # Generate docs
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:docs    # Generate docs by specify unit paths
+```
+
+### Editor
+
+SwaggerEditorの起動
+
+```bash
+$ bundle exec rake routes:oas:editor                                                     # Start swagger editor
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:editor  # Start swagger editor by specify unit paths
+```
+
+### UI
+
+SwaggerUIの起動
+
+```bash
+$ bundle exec rake routes:oas:ui                                                         # Start swagger ui
+$ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas:ui      # Start swagger ui by specify unit paths
+```
+
+### Build
+
+ドキュメントのビルド  
+※プラグインが適用されます。
+
+```bash
+$ bundle exec rake routes:oas:build
+```
+
+### Analyze
+
+ドキュメントの分割   
+OpenAPI形式のドキュメントを読み取り、それをいくつかの部分に分割してソースファイルを生成します
+
+```bash
+$ OAS_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
+```
 
 ## ⚾️ sample
 
@@ -150,13 +174,6 @@ OpenAPIの3.0.0をサポートしてます。
 全ての設定は `オプショナル` です。設定してもしなくても構いません。
 
 公式ドキュメントはこちら => https://yukihirop.github.io/r2-oas/#/setting/configure
-
-## 💊 Life Cycle Methods (Hook Metohds)
-
-ドキュメント生成時に、フックを可能にするメソッドを用意しております。
-
-公式ドキュメントはこちら => https://yukihirop.github.io/r2-oas/#/usage/use_hook_methods
-
 
 ## Bundle and Rspec with multiple ruby ​​versions
 

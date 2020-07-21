@@ -4,10 +4,11 @@
 * **Trableshouting**
  * [RuntimeError](/trableshouting/runtime_error)
 * **Usage**
- * [🆕__Use plugins__](/usage/use_plugins)
- * [🆕__Define tasks__](/usage/define_tasks)
+ * [🆕 __Use plugins__](/usage/use_plugins)
+ * [🆕 __Define tasks__](/usage/define_tasks)
  * [__[Deprecated] Use hook methods__](/usage/use_hook_methods)
  * [__[Deprecated] Use Hook to Generate Docs__](/usage/use_hook_to_generate_docs)
+ * [Initialize](/usage/initialize)
  * [Silent Log](/usage/silent_log)
  * [Generate Docs](/usage/generate_docs)
  * [Edit docs](/usage/edit_docs)

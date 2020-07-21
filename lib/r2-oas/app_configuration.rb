@@ -49,6 +49,7 @@ module R2OAS
     EDFAULT_PLUGINS = [].freeze
     DEFAULT_LOCAL_PLUGINS_DIR_NAME = 'plugins'
     DEFAULT_LOCAL_TASKS_DIR_NAME = 'tasks'
+    DEFAULT_OUTPUT_PATH = './oas_docs/dist/oas_doc.yml'
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
       version
@@ -70,6 +71,7 @@ module R2OAS
       plugins
       local_plugins_dir_name
       local_tasks_dir_name
+      output_path
     ].freeze
 
     UNPUBLIC_VALID_OPTIONS_KEYS = %i[
@@ -109,6 +111,7 @@ module R2OAS
       target.plugins                                              = EDFAULT_PLUGINS
       target.local_plugins_dir_name                               = DEFAULT_LOCAL_PLUGINS_DIR_NAME
       target.local_tasks_dir_name                                 = DEFAULT_LOCAL_TASKS_DIR_NAME
+      target.output_path                                          = DEFAULT_OUTPUT_PATH
     end
   end
 end

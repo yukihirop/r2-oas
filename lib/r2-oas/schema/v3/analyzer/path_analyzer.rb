@@ -3,7 +3,7 @@
 require_relative 'base_analyzer'
 require 'r2-oas/schema/v3/manager/file/path_item_file_manager'
 require 'r2-oas/schema/v3/manager/file_manager'
-require 'r2-oas/schema/v3/object/tag_object'
+require 'r2-oas/schema/v3/object/from_routes/tag_object'
 
 # Scope Rails
 module R2OAS

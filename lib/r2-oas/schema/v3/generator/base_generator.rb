@@ -2,7 +2,7 @@
 
 require 'r2-oas/schema/v3/base'
 require 'r2-oas/routing/parser'
-require 'r2-oas/schema/v3/object/openapi_object'
+require 'r2-oas/schema/v3/object/from_routes/openapi_object'
 require 'r2-oas/schema/v3/manager/file/path_item_file_manager'
 require 'r2-oas/store'
 
@@ -19,7 +19,7 @@ module R2OAS
             send("#{key}=", options[key])
           end
 
-          @store = Store.create
+          @store = ::R2OAS::Store.create(:schema)
           @glob_schema_paths = create_glob_schema_paths
         end
 
@@ -29,9 +29,6 @@ module R2OAS
         attr_accessor :skip_load_dot_paths
         attr_accessor :is_create_cache
         attr_accessor :store
-        attr_accessor :use_plugin
-
-        alias use_plugin? use_plugin
 
         # Scope Rails
         def create_docs
@@ -42,7 +39,7 @@ module R2OAS
           tags_data = parser.tags_data
           schemas_data = parser.schemas_data
 
-          Schema::V3::OpenapiObject.new(routes_data, tags_data, schemas_data, { use_plugin: use_plugin }).to_doc
+          Schema::V3::OpenapiObject.new(routes_data, tags_data, schemas_data).to_doc
         end
 
         def create_all_routes

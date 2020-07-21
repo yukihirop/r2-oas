@@ -11,7 +11,7 @@ RSpec.describe R2OAS::Schema::V3::Cleaner do
 
   describe '#clean_docs' do
     before do
-      create_dot_paths
+      init
       generate_docs(generator_options)
       # create dummy components/schemas file
       create_dummy_components_schemas_file

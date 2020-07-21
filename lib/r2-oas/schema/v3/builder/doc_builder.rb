@@ -2,13 +2,18 @@
 
 require 'yaml'
 require 'fileutils'
+require 'r2-oas/schema/v3/object/from_files/openapi_object'
 require_relative 'base_builder'
 
 module R2OAS
   module Schema
     module V3
       class DocBuilder < BaseBuilder
-        attr_accessor :oas_doc
+        attr_accessor :oas_doc, :pure_oas_doc
+
+        def initialize(opts = {})
+          super
+        end
 
         def build_docs
           logger.info '[Build OAS schema files] start'
@@ -34,8 +39,11 @@ module R2OAS
                      result_before_squeeze
                   end
 
+          @pure_oas_doc = result.dup
+          rsult = FromFiles::OpenapiObject.new(result, opts).to_doc if use_plugin?
           @oas_doc = result
-          File.write(doc_save_file_path, result.to_yaml)
+
+          File.write(output? ? output_path : doc_save_file_path, result.to_yaml)
         end
       end
     end

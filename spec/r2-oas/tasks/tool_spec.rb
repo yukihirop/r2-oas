@@ -15,7 +15,7 @@ RSpec.describe 'tool_rake' do
     let(:task_name) { 'routes:oas:deploy' }
 
     before do
-      create_dot_paths
+      init
       generate_docs
       task.invoke
     end
@@ -23,6 +23,7 @@ RSpec.describe 'tool_rake' do
     it do
       expect(FileTest.exists?(deploy_dir_path.to_s)).to eq true
       expect(FileTest.exists?("#{deploy_dir_path}/#{doc_save_file_name}")).to eq true
+      expect(FileTest.exists?(output_path)).to eq true
     end
   end
 
@@ -30,7 +31,7 @@ RSpec.describe 'tool_rake' do
     let(:task_name) { 'routes:oas:paths_ls' }
 
     before do
-      create_dot_paths
+      init
       generate_docs
     end
 
@@ -41,7 +42,7 @@ RSpec.describe 'tool_rake' do
     let(:task_name) { 'routes:oas:paths_stats' }
 
     before do
-      create_dot_paths
+      init
       generate_docs
     end
 

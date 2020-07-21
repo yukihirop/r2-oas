@@ -8,7 +8,7 @@ RSpec.describe R2OAS::Schema::V3::Generator do
   let(:generator) { described_class.new(generator_options) }
 
   before do
-    create_dot_paths
+    init
   end
 
   after do

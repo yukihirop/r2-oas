@@ -27,6 +27,25 @@ RSpec.describe 'main_rake' do
     end
   end
 
+  describe 'routes:oas:init' do
+    let(:task_name) { 'routes:oas:init' }
+
+    before do
+      subject
+    end
+
+    it do
+      expect(FileTest.exists?(plugins_path)).to eq true
+      expect(FileTest.exists?("#{plugins_path}/helpers")).to eq true
+      expect(FileTest.exists?(tasks_path)).to eq true
+      expect(FileTest.exists?(dot_paths_path)).to eq true
+      expect(FileTest.exists?("#{plugins_path}/.gitkeep")).to eq true
+      expect(FileTest.exists?("#{plugins_path}/helpers/.gitkeep")).to eq true
+      expect(FileTest.exists?("#{tasks_path}/.gitkeep")).to eq true
+      expect(FileTest.exists?("#{tasks_path}/helpers/.gitkeep")).to eq true
+    end
+  end
+
   describe 'routes:oas:docs' do
     let(:task_name) { 'routes:oas:docs' }
 
@@ -41,7 +60,7 @@ RSpec.describe 'main_rake' do
 
     context 'when oas_docs exists already' do
       before do
-        create_dot_paths
+        init
         generate_docs
         delete_cache_docs
       end
@@ -99,22 +118,23 @@ RSpec.describe 'main_rake' do
     end
   end
 
-  describe 'routes:oas:dist' do
-    let(:task_name) { 'routes:oas:dist' }
+  describe 'routes:oas:build' do
+    let(:task_name) { 'routes:oas:build' }
 
     before do
       generate_docs
-      build_docs
+      subject
     end
 
-    it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
+    it { expect(FileTest.exists?(doc_save_file_path)).to eq false }
+    it { expect(FileTest.exists?(output_path)).to eq true }
   end
 
   describe 'routes:oas:clean' do
     let(:task_name) { 'routes:oas:clean' }
 
     before do
-      create_dot_paths
+      init
       generate_docs
       create_dummy_components_schemas_file
       create_dummy_components_request_bodies_file

@@ -82,6 +82,7 @@ R2OAS.configure do |config|
   config.plugins = []
   config.local_plugins_dir_name = 'plugins'
   config.local_tasks_dir_name = 'tasks'
+  config.output_path = './oas_docs/dist/oas_doc.yml'
 end
 ```
 
@@ -107,6 +108,7 @@ we explain the options that can be set.
 |plugins|Load plugin|`[]`|
 |local_plugins_dir_name|Plugin directory name|`"plugins"`|
 |local_tasks_dir_name|Rake tasks directory name|`"tasks"`|
+|output_path|Build result artifact path|`"./oas_docs/dist/oas_doc.yml"`|
 
 #### server
 
@@ -153,6 +155,7 @@ We explain the environment variables that can be set.
 |PATHS_FILE|Specify one paths file path|`""`|
 |OAS_FILE|Specify swagger file path to analyze|`""`|
 |CACHE_DOCS|Effective only when there is no `.docs` file. Specifying `true` will generate a` .docs` file when the `routes:oas:docs` command is executed.|`false`|
+|OVERRIDE_SRC|Apply the plugin to the src file when `routes:oas:build` is executed.|`false`|
 
 
 ## .paths

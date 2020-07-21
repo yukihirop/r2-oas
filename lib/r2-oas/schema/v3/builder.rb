@@ -12,7 +12,7 @@ module R2OAS
       class Builder < BaseBuilder
         extend Forwardable
 
-        def_delegators :@doc_builder, :oas_doc
+        def_delegators :@doc_builder, :oas_doc, :pure_oas_doc
 
         def initialize(options = {})
           super

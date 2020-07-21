@@ -27,7 +27,7 @@ module R2OAS
         private
 
         def save_schemas_from_store
-          local_store = Store.new(cache_docs)
+          local_store = ::R2OAS::Store.new(cache_docs)
 
           # Check checksum
           unless local_store.checksum?
@@ -101,12 +101,6 @@ module R2OAS
           end
 
           # Save docs cache
-
-          # MEMO:
-          # The .docs file is not updated when the plugin is applied.
-          # The .docs file only stores data that can be taken from the routing data.
-          return if use_plugin?
-
           deflated_cache_docs = Zlib::Deflate.deflate(Marshal.dump(store.data))
           IO.binwrite(abs_cache_docs_path, deflated_cache_docs)
           if is_exists_cache

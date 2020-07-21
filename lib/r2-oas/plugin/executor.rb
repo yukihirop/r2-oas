@@ -15,6 +15,7 @@ module R2OAS
 
       def execute_transform_plugins(hook_method, *args)
         return unless @use_plugin
+        return unless @plugins.present?
 
         @plugin_map ||= self.class.plugin_map(@plugins)
 
@@ -60,83 +61,86 @@ module R2OAS
           @plugin_map ||= {}
           return @plugin_map if @plugin_map.present?
 
-          @used_plugins = []
+          @will_plugins = []
 
-          plugins.each do |plugin_info|
-            if plugin_info.is_a?(Array)
-              plugin_name = plugin_info[0]
-              plugin_opts = plugin_info[1]
+          use_plugins_info = create_use_plugins_info(plugins)
 
-              raise PluginNameError, 'Missing plugin name' if plugin_name.blank?
-            elsif plugin_info.is_a?(String)
-              plugin_name = plugin_info
-              plugin_opts = nil
-            else
-              raise NoSupportError, "The plugin loading format '#{plugin_info.class}' is incorrect"
-            end
+          loaded_plugins_hooks_map = hooks_map.each_with_object({}) do |(klass, repo), result|
+            # MEMO:
+            # klass may be DynamicSchema or Plugin or Other Class
+            next unless klass.respond_to?(:plugin_name)
+            # Plugins that are loaded but not used
+            next unless use_plugins_info.keys.include?(klass.plugin_name)
 
-            if @used_plugins.include?(plugin_name)
-              raise PluginDuplicationError, "Plugin: duplicate '#{plugin_name}'"
-            else
-              @used_plugins.push(plugin_name)
-            end
+            result[klass.plugin_name] = { klass: klass, repo: repo }
+          end
 
-            hooks_map.each do |klass, repo|
-              # MEMO:
-              # klass may be DynamicSchema or Plugin or Other Class
-              if !klass.respond_to?(:plugin_name)
-                next
-              elsif !plugins_list(plugins).include?(klass.plugin_name) && klass.plugin_name != plugin_name
-                raise PluginLoadError, "The '#{plugin_name}' plugin doesn't exist or can't be loaded" if klass.plugin_name.present?
+          unknown_plugins = use_plugins_info.keys - loaded_plugins_hooks_map.keys
 
-                next
-              # else
-                # MEMO:
-                # At this point, it cannot be determined that a plugin class is a valid plugin class just
-                # because the plugin name is different from the one defined in the loaded plugin class.
-              end
+          raise R2OAS::PluginLoadError, "The '#{unknown_plugins.join(', ')}' plugin doesn't exist or can't be loaded" if unknown_plugins.present?
 
-              # MEMO:
-              # If you can reach this point, you're in the Plug-in class.
-              plugin_klass = klass
+          loaded_plugins_hooks_map.each do |plugin_name, info|
+            plugin_klass = info[:klass]
+            repo = info[:repo]
 
-              repo.global_hooks_data.each do |hook_method, callbacks|
-                callbacks.each do
-                  next if plugin_klass.plugin_name != plugin_name
+            repo.global_hooks_data.each do |hook_method, callbacks|
+              callbacks.each do
+                plugin_type = plugin_klass.type
 
-                  plugin_type = plugin_klass.type
-                  data = {
-                    plugin_name: plugin_name,
-                    plugin_klass: plugin_klass,
-                    plugin_opts: plugin_opts,
-                    execute_hook_method: "execute_#{hook_method}"
-                  }
+                data = {
+                  plugin_name: plugin_name,
+                  plugin_klass: plugin_klass,
+                  plugin_opts: use_plugins_info[plugin_name],
+                  execute_hook_method: "execute_#{hook_method}"
+                }
 
-                  if @plugin_map[plugin_type].present?
-                    if @plugin_map[plugin_type][hook_method].present?
-                      @plugin_map[plugin_type][hook_method].push(data)
-                    else
-                      @plugin_map[plugin_type][hook_method] = [data]
-                    end
+                if @plugin_map[plugin_type].present?
+                  if @plugin_map[plugin_type][hook_method].present?
+                    @plugin_map[plugin_type][hook_method].push(data)
                   else
-                    @plugin_map[plugin_type] = {}
                     @plugin_map[plugin_type][hook_method] = [data]
                   end
+                else
+                  @plugin_map[plugin_type] = {}
+                  @plugin_map[plugin_type][hook_method] = [data]
                 end
               end
             end
           end
+
           @plugin_map
         end
 
-        def plugins_list(plugins)
-          plugins.map do |plugin_info|
-            if plugin_info.is_a?(Array)
-              plugin_info[0]
-            elsif plugin_info.is_a?(String)
-              plugin_info
+        def create_use_plugins_info(plugins)
+          will_use_plugins = []
+          result = {}
+
+          plugins.each do |plugin_info|
+            case plugin_info
+            when Array
+              plugin_name = plugin_info[0]
+              plugin_opts = plugin_info[1]
+
+              raise PluginNameError, 'Missing plugin name' if plugin_name.blank?
+
+              result[plugin_name] = plugin_opts
+            when String
+              plugin_name = plugin_info
+              plugin_opts = nil
+
+              result[plugin_name] = plugin_opts
+            else
+              raise NoSupportError, "The plugin loading format '#{plugin_info.class}' is incorrect"
+            end
+
+            if will_use_plugins.include?(plugin_name)
+              raise PluginDuplicationError, "Plugin: duplicate '#{plugin_name}'"
+            else
+              will_use_plugins.push(plugin_name)
             end
           end
+
+          result
         end
       end
     end

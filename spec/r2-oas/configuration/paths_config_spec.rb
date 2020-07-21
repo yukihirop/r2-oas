@@ -19,7 +19,7 @@ RSpec.describe R2OAS::Configuration::PathsConfig do
 
   describe '#all_load_paths?' do
     before do
-      create_dot_paths
+      init
     end
 
     context 'when default' do
@@ -45,7 +45,7 @@ RSpec.describe R2OAS::Configuration::PathsConfig do
 
   describe '#many_paths_file_paths' do
     before do
-      create_dot_paths
+      init
     end
 
     context 'when .paths is blank' do
@@ -77,7 +77,7 @@ RSpec.describe R2OAS::Configuration::PathsConfig do
 
   describe '#many_components_file_paths' do
     before do
-      create_dot_paths
+      init
     end
 
     context 'many_paths_file_paths is blank' do
