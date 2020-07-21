@@ -81,6 +81,7 @@ module ConfigHelper
       config.namespace_type = :underbar
       config.plugins = []
       config.output_path = Rails.root.join('oas_docs/dist/oas_doc.yml').to_s
+      config.deprecation.silenced = false
     end
   end
 end

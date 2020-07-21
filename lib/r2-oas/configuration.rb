@@ -6,6 +6,7 @@ require_relative 'app_configuration'
 require_relative 'pluggable_configuration'
 require_relative 'configuration/paths_config'
 require_relative 'logger/stdout_logger'
+require_relative 'support/deprecation'
 
 module R2OAS
   module Configuration
@@ -22,6 +23,15 @@ module R2OAS
     VALID_OPTIONS_KEYS = PUBLIC_VALID_OPTIONS_KEYS + UNPUBLIC_VALID_OPTIONS_KEYS
 
     attr_accessor *PUBLIC_VALID_OPTIONS_KEYS
+
+    # MEMO: override because deprecated
+    def use_object_classes=(data)
+      ::R2OAS::Deprecation.will_remove(<<-MSG.squish)
+        Using a R2OAS.use_object_classes= in configuration is deprecated and
+        will be removed in r2-oas (v0.4.2).
+      MSG
+      @use_object_classes = data
+    end
 
     def self.extended(base)
       base.send :set_default_for_configuration, base

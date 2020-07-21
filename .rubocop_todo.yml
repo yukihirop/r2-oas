@@ -30,6 +30,7 @@ Metrics/AbcSize:
     - "lib/r2-oas/plugin/executor.rb"
     - "lib/r2-oas/schema/v3/builder/doc_builder.rb"
     - "lib/r2-oas/configuration.rb"
+    - "lib/r2-oas/app_configuration.rb"
 
 Style/Documentation:
   Enabled: false

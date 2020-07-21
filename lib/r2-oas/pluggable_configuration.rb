@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'r2-oas/schema/v3/object/from_routes/public'
+require_relative 'support/deprecation'
 
 module R2OAS
   module PluggableConfiguration
@@ -20,14 +21,16 @@ module R2OAS
       use_object_classes
     ].freeze
 
-    attr_accessor *VALID_OPTIONS_KEYS
+    attr_reader *VALID_OPTIONS_KEYS
 
     private
 
     module_function
 
     def set_default(target)
-      target.use_object_classes = DEFAULT_USE_OBJECT_CLASSES
+      Deprecation.silence do
+        target.use_object_classes = DEFAULT_USE_OBJECT_CLASSES
+      end
     end
   end
 end

@@ -3,6 +3,7 @@
 require_relative 'app_configuration/server'
 require_relative 'app_configuration/swagger'
 require_relative 'app_configuration/tool'
+require_relative 'app_configuration/deprecation'
 
 module R2OAS
   module AppConfiguration
@@ -50,6 +51,7 @@ module R2OAS
     DEFAULT_LOCAL_PLUGINS_DIR_NAME = 'plugins'
     DEFAULT_LOCAL_TASKS_DIR_NAME = 'tasks'
     DEFAULT_OUTPUT_PATH = './oas_docs/dist/oas_doc.yml'
+    DEFAULT_DEPRECATION = Deprecation.new
 
     PUBLIC_VALID_OPTIONS_KEYS = %i[
       version
@@ -72,6 +74,7 @@ module R2OAS
       local_plugins_dir_name
       local_tasks_dir_name
       output_path
+      deprecation
     ].freeze
 
     UNPUBLIC_VALID_OPTIONS_KEYS = %i[
@@ -112,6 +115,7 @@ module R2OAS
       target.local_plugins_dir_name                               = DEFAULT_LOCAL_PLUGINS_DIR_NAME
       target.local_tasks_dir_name                                 = DEFAULT_LOCAL_TASKS_DIR_NAME
       target.output_path                                          = DEFAULT_OUTPUT_PATH
+      target.deprecation                                          = DEFAULT_DEPRECATION
     end
   end
 end

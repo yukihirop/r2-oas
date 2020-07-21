@@ -75,6 +75,7 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:local_plugins_dir_name]).to eq 'plugins'
         expect(subject[:local_tasks_dir_name]).to eq 'tasks'
         expect(subject[:output_path]).to eq './oas_docs/dist/oas_doc.yml'
+        expect(subject[:deprecation].silenced).to eq false
       end
     end
 
@@ -162,6 +163,7 @@ RSpec.describe R2OAS::Configuration do
             config.local_plugins_dir_name = 'plugins'
             config.local_tasks_dir_name = 'rake_tasks'
             config.output_path = './dist/oas_doc.yml'
+            config.deprecation.silenced = true
           end
         end
       end
@@ -224,6 +226,30 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:local_plugins_dir_name]).to eq 'plugins'
         expect(subject[:local_tasks_dir_name]).to eq 'rake_tasks'
         expect(subject[:output_path]).to eq './dist/oas_doc.yml'
+        expect(subject[:deprecation].silenced).to eq true
+      end
+    end
+
+    context 'deprecation warning' do
+      context 'when deprecation.silenced is false (default)' do
+        it do
+          expect do
+            R2OAS.configure do |config|
+              config.use_object_classes = {}
+            end
+          end.to output(/DEPRECATION WARNING: Using a R2OAS.use_object_classes= in configuration is deprecated and will be removed in r2-oas \(v0.4.2\)./).to_stderr
+        end
+      end
+
+      context 'when deprecation.silenced is true' do
+        it do
+          expect do
+            R2OAS.configure do |config|
+              config.deprecation.silenced = true
+              config.use_object_classes = {}
+            end
+          end.not_to output(/DEPRECATION WARNING: Using a R2OAS.use_object_classes= in configuration is deprecated and will be removed in r2-oas \(v0.4.2\)./).to_stderr
+        end
       end
     end
   end

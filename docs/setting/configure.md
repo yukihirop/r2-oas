@@ -79,10 +79,15 @@ R2OAS.configure do |config|
     paths_stats.heading_color                  = :yellow
     paths_stats.highlight_color                = :magenta
   end
+  
   config.plugins = []
+  
   config.local_plugins_dir_name = 'plugins'
   config.local_tasks_dir_name = 'tasks'
+  
   config.output_path = './oas_docs/dist/oas_doc.yml'
+  
+  config.deprecation.silenced = false
 end
 ```
 
@@ -145,6 +150,12 @@ we explain the options that can be set.
 |tool|paths_stats|highlight_color|Highlight Color|`:magenta`|
 
 Please refer to [here](https://github.com/janlelis/paint) for the color.
+
+#### deprecation
+
+|option|children option|description|default|
+|------|---------------|-----------|-------|
+|deprecation|silenced|silence deprecated warnings|`false`|
 
 ## Environment variables
 
