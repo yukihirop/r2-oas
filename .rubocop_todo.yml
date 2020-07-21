@@ -30,6 +30,7 @@ Metrics/AbcSize:
     - "lib/r2-oas/plugin/executor.rb"
     - "lib/r2-oas/schema/v3/builder/doc_builder.rb"
     - "lib/r2-oas/configuration.rb"
+    - "lib/r2-oas/app_configuration.rb"
 
 Style/Documentation:
   Enabled: false
@@ -168,8 +169,7 @@ Naming/PredicateName:
     - "lib/r2-oas/plugin/hookable.rb"
 
 Style/DoubleNegation:
-  Exclude:
-    - "lib/r2-oas/hooks/hook.rb"
+  Enabled: false
 
 Style/MultilineBlockChain:
   Exclude:
@@ -378,3 +378,7 @@ Style/HashLikeCase:
 
 Style/RedundantFileExtensionInRequire:
   Enabled: true
+
+Style/StderrPuts:
+  Exclude:
+    - "lib/r2-oas/support/deprecation/behavior.rb"
