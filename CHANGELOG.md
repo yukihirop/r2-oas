@@ -1,5 +1,20 @@
 # Change Log
 
+## v0.4.0
+
+2020-07-22
+
+- [`BigFeature`] 🎯 Implement plugin ([#154](https://github.com/yukihirop/r2-oas/pull/154))
+    - Please see [use plugins docs](https://yukihirop.github.io/r2-oas/#/usage/use_plugins)
+- [`Feature`] Implement `routes:oas:init`([#154](https://github.com/yukihirop/r2-oas/pull/154))
+    - Please see [initialize docs](https://yukihirop.github.io/r2-oas/#/usage/initialize)
+- [`Breaking`] Rename from `routes:oas:dist` to `routes:oas:build` ([#154](https://github.com/yukihirop/r2-oas/pull/154))
+- [`Feature`] Allowed definition of custom rake tasks ([#152](https://github.com/yukihirop/r2-oas/pull/152))
+    - Please see [define tasks docs](https://yukihirop.github.io/r2-oas/#/usage/define_tasks)
+- [`Deprecated`] Deprecated use of `R2OAS.use_object_classes=` ([#155](https://github.com/yukihirop/r2-oas/pull/155))
+
+Please see milestone [v0.4.0](https://github.com/yukihirop/r2-oas/milestone/4?closed=1)
+
 ## v0.3.4
 
 2020-07-11
@@ -16,7 +31,7 @@
 - [`Breaking`] Change default namespace type from `:underbar` to `:dot` ([f3f4c30](https://github.com/yukihirop/r2-oas/pull/144))
 - [`Other`] Modify gemspec `files` fields ([f3f4c30](https://github.com/yukihirop/r2-oas/pull/144))
 
-See milestone [v0.3.3](https://github.com/yukihirop/r2-oas/milestone/3?closed=1)
+Please see milestone [v0.3.3](https://github.com/yukihirop/r2-oas/milestone/3?closed=1)
 
 ## v0.3.2
 
