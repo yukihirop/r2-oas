@@ -168,8 +168,7 @@ Naming/PredicateName:
     - "lib/r2-oas/plugin/hookable.rb"
 
 Style/DoubleNegation:
-  Exclude:
-    - "lib/r2-oas/hooks/hook.rb"
+  Enabled: false
 
 Style/MultilineBlockChain:
   Exclude:
@@ -378,3 +377,7 @@ Style/HashLikeCase:
 
 Style/RedundantFileExtensionInRequire:
   Enabled: true
+
+Style/StderrPuts:
+  Exclude:
+    - "lib/r2-oas/support/deprecation/behavior.rb"

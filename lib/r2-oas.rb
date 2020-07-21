@@ -19,6 +19,7 @@ module R2OAS
     autoload :NoFileExistsError, 'r2-oas/errors'
     autoload :NoSupportError, 'r2-oas/errors'
     autoload :Sortable, 'r2-oas/shared/all'
+    autoload :Deprecation, 'r2-oas/support/deprecation'
 
     module Schema
       autoload :Base, 'r2-oas/schema/base'
