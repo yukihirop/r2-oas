@@ -116,14 +116,15 @@ module R2OAS
           result = {}
 
           plugins.each do |plugin_info|
-            if plugin_info.is_a?(Array)
+            case plugin_info
+            when Array
               plugin_name = plugin_info[0]
               plugin_opts = plugin_info[1]
 
               raise PluginNameError, 'Missing plugin name' if plugin_name.blank?
 
               result[plugin_name] = plugin_opts
-            elsif plugin_info.is_a?(String)
+            when String
               plugin_name = plugin_info
               plugin_opts = nil
 

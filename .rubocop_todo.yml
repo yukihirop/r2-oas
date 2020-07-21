@@ -360,3 +360,21 @@ Style/RedundantAssignment:
 
 Style/RedundantFetchBlock:
   Enabled: true
+
+Lint/DuplicateElsifCondition:
+  Enabled: true
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/CaseLikeIf:
+  Enabled: true
+
+Style/HashAsLastArrayItem:
+  Enabled: true
+
+Style/HashLikeCase:
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
