@@ -54,8 +54,6 @@ module R2OAS
             R2OAS.app_configuration_options
           end
 
-          # Can not define attr_accessor for PluggableConfiguration::VALID_OPTIONS_KEYS.
-          # Because, PuggableConfiguration module is not loaded when this class is loaded.
           attr_accessor :opts
         end
       end

@@ -46,7 +46,7 @@ module R2OAS
     end
 
     def dup_slice(*sha1s)
-      dup_store = Store.new(:schema, @data.dup)
+      dup_store = Store.new(@type, @data.dup)
       dup_data = dup_store.data['data']
       dup_store.data['data'] = sha1s.each_with_object({}) { |sha1, data| data[sha1] = dup_data[sha1] if dup_store.key?(sha1) }
       dup_store
