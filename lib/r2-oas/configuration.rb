@@ -70,10 +70,8 @@ module R2OAS
     end
 
     def load_tasks
-      tasks_path = File.expand_path("#{root_dir_path}/#{local_tasks_dir_name}")
-      Dir.glob("#{tasks_path}/**/*.rake").sort.each do |file|
-        load file if FileTest.exists?(file)
-      end
+      load_local_tasks
+      load_builtin_tasks
     end
 
     def init
@@ -102,6 +100,20 @@ module R2OAS
     end
 
     private
+
+    def load_local_tasks
+      tasks_path = File.expand_path("#{root_dir_path}/#{local_tasks_dir_name}")
+      Dir.glob("#{tasks_path}/**/*.rake").sort.each do |file|
+        load file if FileTest.exists?(file)
+      end
+    end
+
+    def load_builtin_tasks
+      tasks_path = File.expand_path("#{__dir__}/tasks")
+      ["#{tasks_path}/main.rake", "#{tasks_path}/tool.rake"].sort.each do |file|
+        load file if FileTest.exists?(file)
+      end
+    end
 
     def load_local_plugins
       plugins_path = File.expand_path("#{root_dir_path}/#{local_plugins_dir_name}")

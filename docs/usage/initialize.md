@@ -1,6 +1,14 @@
 # Initialize
 
+!> Since `v0.4.1`, rake tasks are not automatically loaded. Please write `R2OAS.load_tasks` in `Rakefile` and load it.
+
 API document management using r2-oas begins with the execution of this command.
+
+After requiring a gem and Configure `Rakefile` in your rails project
+
+```rb
+R2OAS.load_tasks
+```
 
 ```bash
 $ bundle exec rake routes:oas:init
