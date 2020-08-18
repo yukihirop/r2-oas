@@ -167,6 +167,7 @@ We explain the environment variables that can be set.
 |OAS_FILE|Specify swagger file path to analyze|`""`|
 |CACHE_DOCS|Effective only when there is no `.docs` file. Specifying `true` will generate a` .docs` file when the `routes:oas:docs` command is executed.|`false`|
 |OVERRIDE_SRC|Apply the plugin to the src file when `routes:oas:build` is executed.|`false`|
+|SKIP_PLUGIN|Skip apply the plugin when `routes:oas:build` is executed.|`false`|
 
 
 ## .paths

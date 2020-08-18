@@ -201,6 +201,15 @@ $ OVERRIDE_SRC=true bundle exec rake routes:oas:build
 
 !> If the applied plugin is not idempotent, the converted data may be unexpected.
 
+### Skip plugin apply
+
+In case you don't want to apply the plugin when building the documentation,  
+Please set the environment variable `SKIP_PLUGIN` to `true`.
+
+```bash
+$ SKIP_PLUGIN=true bundle exec rake routes:oas:build
+```
+
 ## Important
 
 !> Be sure to write the plugin so that it is idempotent.  
