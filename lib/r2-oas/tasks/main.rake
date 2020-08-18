@@ -44,7 +44,8 @@ namespace :routes do
         FileUtils.mkdir_p(output_dir_path) unless FileTest.exists?(output_dir_path)
 
         is_overrirde_src = override_src.eql? 'true'
-        builder_options = { unit_paths_file_path: unit_paths_file_path, use_plugin: true, output: true }
+        use_plugin = skip_plugin.eql? 'false'
+        builder_options = { unit_paths_file_path: unit_paths_file_path, use_plugin: use_plugin, output: true }
         builder = R2OAS::Schema::Builder.new(builder_options)
         builder.build_docs
 
@@ -127,6 +128,10 @@ namespace :routes do
 
     def override_src
       ENV.fetch('OVERRIDE_SRC', 'false')
+    end
+
+    def skip_plugin
+      ENV.fetch('SKIP_PLUGIN', 'false')
     end
   end
 end
