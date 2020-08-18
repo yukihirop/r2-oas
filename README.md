@@ -57,7 +57,11 @@ $ brew cask install chromedriver
 
 ## 🚀 Tutorial
 
-After requiring a gem,
+After requiring a gem and Configure `Rakefile` in your rails project
+
+```rb
+R2OAS.load_tasks
+```
 
 ```bash
 bundle exec routes:oas:docs
