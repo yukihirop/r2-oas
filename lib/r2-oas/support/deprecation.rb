@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'singleton'
+
 require_relative 'deprecation/instance_delegator'
 require_relative 'deprecation/reporting'
 require_relative 'deprecation/behavior'
