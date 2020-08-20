@@ -148,4 +148,24 @@ RSpec.describe 'main_rake' do
       expect(FileTest.exists?("#{components_securitySchemes_path}/my_oauth.yml")).to eq true
     end
   end
+
+  describe 'routes:oas:deploy' do
+    let(:task_name) { 'routes:oas:deploy' }
+
+    before do
+      init
+      generate_docs
+      task.invoke
+    end
+
+    after do
+      delete_deploy_docs
+    end
+
+    it do
+      expect(FileTest.exists?(deploy_dir_path.to_s)).to eq true
+      expect(FileTest.exists?("#{deploy_dir_path}/#{doc_save_file_name}")).to eq true
+      expect(FileTest.exists?(output_path)).to eq true
+    end
+  end
 end

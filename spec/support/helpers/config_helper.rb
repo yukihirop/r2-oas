@@ -65,14 +65,6 @@ module ConfigHelper
       config.http_methods_when_generate_request_body = %w[post patch put]
       config.ignored_http_statuses_when_generate_component_schema = %w[204 404]
 
-      config.tool.paths_stats.configure do |paths_stats|
-        paths_stats.month_to_turn_to_warning_color = 3
-        paths_stats.warning_color                  = :red
-        paths_stats.table_title_color              = :yellow
-        paths_stats.heading_color                  = :yellow
-        paths_stats.highlight_color                = :magenta
-      end
-
       # MEMO:
       # The initial value was changed on the way, so it is not the initial value.
       # It is a compromise because the number of corrections becomes huge.
