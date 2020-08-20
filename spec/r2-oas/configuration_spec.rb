@@ -64,12 +64,6 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:use_object_classes][:components_object]).to eq R2OAS::Schema::V3::ComponentsObject
         expect(subject[:use_object_classes][:components_schema_object]).to eq R2OAS::Schema::V3::Components::SchemaObject
         expect(subject[:use_object_classes][:components_request_body_object]).to eq R2OAS::Schema::V3::Components::RequestBodyObject
-        # tool configuraiton
-        expect(subject[:tool].paths_stats.month_to_turn_to_warning_color).to eq 3
-        expect(subject[:tool].paths_stats.warning_color).to eq :red
-        expect(subject[:tool].paths_stats.table_title_color).to eq :yellow
-        expect(subject[:tool].paths_stats.heading_color).to eq :yellow
-        expect(subject[:tool].paths_stats.highlight_color).to eq :magenta
         # plugin configuration
         expect(subject[:plugins]).to eq []
         expect(subject[:local_plugins_dir_name]).to eq 'plugins'
@@ -147,14 +141,6 @@ RSpec.describe R2OAS::Configuration do
               components_schema_object: Components::RtsdSchemaObject,
               components_request_body_object: Components::RtsdRequestBodyObject
             }
-            # tool configuration
-            config.tool.paths_stats.configure do |paths_stats|
-              paths_stats.month_to_turn_to_warning_color = 6
-              paths_stats.warning_color                  = :blue
-              paths_stats.table_title_color              = :red
-              paths_stats.heading_color                  = :red
-              paths_stats.highlight_color                = :yellow
-            end
             # plugins configuration
             config.plugins = [
               ['r2oas-plugin-transform-sample', { loose: false }],
@@ -212,12 +198,6 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:use_object_classes][:components_object]).to eq RtsdComponentsObject
         expect(subject[:use_object_classes][:components_schema_object]).to eq Components::RtsdSchemaObject
         expect(subject[:use_object_classes][:components_request_body_object]).to eq Components::RtsdRequestBodyObject
-        # tool configuraiton
-        expect(subject[:tool].paths_stats.month_to_turn_to_warning_color).to eq 6
-        expect(subject[:tool].paths_stats.warning_color).to eq :blue
-        expect(subject[:tool].paths_stats.table_title_color).to eq :red
-        expect(subject[:tool].paths_stats.heading_color).to eq :red
-        expect(subject[:tool].paths_stats.highlight_color).to eq :yellow
         # plugin configuration
         expect(subject[:plugins]).to include(
           ['r2oas-plugin-transform-sample', { loose: false }],

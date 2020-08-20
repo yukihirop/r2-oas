@@ -42,7 +42,6 @@ Metrics/BlockLength:
   Exclude:
     - "r2-oas.gemspec"
     - "lib/r2-oas/tasks/main.rake"
-    - "lib/r2-oas/tasks/tool.rake"
     - "spec/r2-oas/routing/adjustor_spec.rb"
     - "spec/r2-oas/routing/components/request_component_spec.rb"
     - "spec/r2-oas/schema/v3/object/from_routes/paths_object_spec.rb"
@@ -57,7 +56,6 @@ Metrics/BlockLength:
     - "spec/r2-oas/schema/v3/object/from_routes/path_item_object_spec.rb"
     - "spec/r2-oas/configuration/paths_config_spec.rb"
     - "spec/r2-oas/tasks/main_spec.rb"
-    - "spec/r2-oas/tasks/tool_spec.rb"
     - "spec/r2-oas/configuration_spec.rb"
     - "spec/r2-oas/schema/v3/generator_spec.rb"
     - "spec/r2-oas/schema/v3/builder_spec.rb"
@@ -85,10 +83,8 @@ Metrics/BlockLength:
 Lint/AmbiguousOperator:
   Exclude:
     - "lib/r2-oas/app_configuration/swagger.rb"
-    - "lib/r2-oas/app_configuration/tool/paths/stats.rb"
     - "lib/r2-oas/app_configuration/swagger/ui.rb"
     - "lib/r2-oas/app_configuration/swagger/editor.rb"
-    - "lib/r2-oas/app_configuration/tool.rb"
     - "lib/r2-oas/configuration.rb"
     - "lib/r2-oas/app_configuration/server.rb"
     - "lib/r2-oas/schema/v3/object/from_routes/base_object.rb"

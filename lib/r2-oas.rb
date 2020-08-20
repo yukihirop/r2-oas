@@ -10,8 +10,7 @@ module R2OAS
   elsif ::Rails::VERSION::STRING >= '4.2.5.1'
     extend Configuration
     require 'r2-oas/plugin/public'
-    require 'r2-oas/lib/core_ext/hash/deep_merge'
-    require 'r2-oas/lib/core_ext/object/blank'
+    require 'r2-oas/lib/core_ext/all'
 
     autoload :Base, 'r2-oas/base'
     autoload :NoImplementError, 'r2-oas/errors'

@@ -2,7 +2,6 @@
 
 require_relative 'app_configuration/server'
 require_relative 'app_configuration/swagger'
-require_relative 'app_configuration/tool'
 require_relative 'app_configuration/deprecation'
 
 module R2OAS
@@ -43,7 +42,6 @@ module R2OAS
     DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY = %w[post patch put]
     DEFAULT_IGNORED_HTTP_STATUSES_WHEN_GENERATE_COMPONENT_SCHEMA = %w[204 404]
     # rubocop:enable Style/MutableConstant
-    DEFAULT_TOOL = Tool.new
     # :dot or :underbar
     DEFAULT_NAMESPACE_TYPE = :dot
     DEFAULT_DEPLOY_DIR_PATH = './deploy_docs'
@@ -67,7 +65,6 @@ module R2OAS
       http_statuses_when_http_method
       http_methods_when_generate_request_body
       ignored_http_statuses_when_generate_component_schema
-      tool
       namespace_type
       deploy_dir_path
       plugins
@@ -106,7 +103,6 @@ module R2OAS
       target.interval_to_save_edited_tmp_schema                   = DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA
       target.swagger                                              = DEFAULT_SWAGGER
       target.http_statuses_when_http_method                       = DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD
-      target.tool                                                 = DEFAULT_TOOL
       target.http_methods_when_generate_request_body              = DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY
       target.ignored_http_statuses_when_generate_component_schema = DEFAULT_IGNORED_HTTP_STATUSES_WHEN_GENERATE_COMPONENT_SCHEMA
       target.namespace_type                                       = DEFAULT_NAMESPACE_TYPE

@@ -110,7 +110,7 @@ module R2OAS
 
     def load_builtin_tasks
       tasks_path = File.expand_path("#{__dir__}/tasks")
-      ["#{tasks_path}/main.rake", "#{tasks_path}/tool.rake"].sort.each do |file|
+      ["#{tasks_path}/main.rake"].sort.each do |file|
         load file if FileTest.exists?(file)
       end
     end

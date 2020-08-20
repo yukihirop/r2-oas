@@ -7,7 +7,6 @@ RSpec.describe R2OAS::Schema::V3::BaseObject do
   let(:swagger) { object.send(:swagger) }
   let(:use_object_classes) { object.instance_variable_get(:@use_object_classes) }
   let(:http_statuses_when_http_method) { object.send(:http_statuses_when_http_method) }
-  let(:tool_paths_stats) { object.send(:tool).paths_stats }
 
   describe '.initialize' do
     context 'when default' do
@@ -41,11 +40,6 @@ RSpec.describe R2OAS::Schema::V3::BaseObject do
       it { expect(http_statuses_when_http_method[:put]).to eq default: %w[204 422], path_parameter: %w[204 404 422] }
       it { expect(http_statuses_when_http_method[:delete]).to eq default: %w[200 422], path_parameter: %w[200 404 422] }
       it { expect(object.send(:http_methods_when_generate_request_body)).to include('post', 'patch', 'put') }
-      it { expect(tool_paths_stats.month_to_turn_to_warning_color).to eq 3 }
-      it { expect(tool_paths_stats.warning_color).to eq :red }
-      it { expect(tool_paths_stats.table_title_color).to eq :yellow }
-      it { expect(tool_paths_stats.heading_color).to eq :yellow }
-      it { expect(tool_paths_stats.highlight_color).to eq :magenta }
     end
 
     context 'when override settings' do

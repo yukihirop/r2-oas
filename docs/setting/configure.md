@@ -71,14 +71,6 @@ R2OAS.configure do |config|
 
   config.http_methods_when_generate_request_body = %w[post patch put]
   config.ignored_http_statuses_when_generate_component_schema = %w[204 404]
-
-  config.tool.paths_stats.configure do |paths_stats|
-    paths_stats.month_to_turn_to_warning_color = 3
-    paths_stats.warning_color                  = :red
-    paths_stats.table_title_color              = :yellow
-    paths_stats.heading_color                  = :yellow
-    paths_stats.highlight_color                = :magenta
-  end
   
   config.plugins = []
   
@@ -138,18 +130,6 @@ we explain the options that can be set.
 |option|description|default|
 |------|-----------|-------|
 |use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `R2OAS::Schema::V3::InfoObject`,<br>paths_object: `R2OAS::Schema::V3::PathsObject`,<br>path_item_object: `R2OAS::Schema::V3::PathItemObject`, external_document_object: `R2OAS::Schema::V3::ExternalDocumentObject`,<br> components_object: `R2OAS::Schema::V3::ComponentsObject`,<br> components_schema_object: `R2OAS::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`R2OAS::Schema::V3::Components::RequestBodyObject` }|
-
-#### tool
-
-|option|children option|grandchild option|description|default|
-|------|---------------|-----------------|-----------|-------|
-|tool|paths_stats|month_to_turn_to_warning_color|Elapsed month to issue a warning|`3`|
-|tool|paths_stats|warning_color|Warning Color|`:red`|
-|tool|paths_stats|table_title_color|Table Title Color|`:yellow`|
-|tool|paths_stats|heading_color|Heading Color|`:yellow`|
-|tool|paths_stats|highlight_color|Highlight Color|`:magenta`|
-
-Please refer to [here](https://github.com/janlelis/paint) for the color.
 
 #### deprecation
 

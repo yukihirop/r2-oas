@@ -19,8 +19,6 @@
  * [Use tag namespace](/usage/use_tag_namespace)
  * [Deploy docs](/usage/deploy_docs)
  * [Clean Docs](/usage/clean_docs)
- * [Display Paths Lists](/usage/display_paths_list)
- * [Display Paths Stats](/usage/display_paths_stats)
 * **Configure**
  * [COC](/setting/COC)
  * [Configure](/setting/configure)
