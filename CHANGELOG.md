@@ -1,5 +1,16 @@
 # Change Log
 
+## v0.4.1
+
+2020-8-24
+
+- [`Breaking`] Remove `tool` tasks because it is infrequently used, it costs ([#162](https://github.com/yukihirop/r2-oas/pull/162))
+    - `routes:oas:paths_ls`
+    - `routes:oas:paths_stats`
+- [`Feature`] Add `SKIP_PLUGIN` enviroment variables ([#160](https://github.com/yukihirop/r2-oas/pull/160))
+
+Please see milestone [v0.4.1](https://github.com/yukihirop/r2-oas/milestone/6?closed=1)
+
 ## v0.4.0
 
 2020-07-22
