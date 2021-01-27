@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require 'forwardable'
-require 'r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object'
+require_relative 'base_object'
 require 'r2-oas/routing/components/path_component'
 
 module R2OAS
   module Schema
     module V3
-      class PathItemObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
+      class PathItemObject < BaseObject
         extend Forwardable
         # reference
         # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object
@@ -33,9 +33,7 @@ module R2OAS
         end
 
         def to_doc
-          execute_before_create(@path)
           create_doc
-          execute_after_create(@path)
           doc
         end
 

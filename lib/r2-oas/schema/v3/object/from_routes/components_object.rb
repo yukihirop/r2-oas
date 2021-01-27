@@ -1,16 +1,21 @@
 # frozen_string_literal: true
 
-require 'r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object'
+require_relative 'base_object'
 require_relative 'components/schema_object'
 require_relative 'components/request_body_object'
 
 module R2OAS
   module Schema
     module V3
-      class ComponentsObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
+      class ComponentsObject < BaseObject
         def initialize(routes_data, opts = {})
           super(opts)
           @routes_data = routes_data
+        end
+
+        def to_doc
+          create_doc
+          doc
         end
 
         def create_doc
@@ -24,14 +29,14 @@ module R2OAS
           result = components_schema_docs.each_with_object({}) do |(schema_name, components_schema_doc), docs|
             docs[schema_name] = components_schema_doc
           end
-          doc.merge!('schemas' => result)
+          doc.merge!({ 'schemas' => result })
         end
 
         def create_doc_for_components_request_bodies!
           result = components_request_body_docs.each_with_object({}) do |(schema_name, components_request_body_doc), docs|
             docs[schema_name] = components_request_body_doc
           end
-          doc.merge!('requestBodies' => result)
+          doc.merge!({ 'requestBodies' => result })
         end
 
         # e.x.)

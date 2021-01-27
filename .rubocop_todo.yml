@@ -160,7 +160,6 @@ Naming/ConstantName:
 Naming/PredicateName:
   Exclude:
     - "lib/r2-oas/hooks/hook.rb"
-    - "lib/r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object.rb"
     - "lib/r2-oas/plugin/hookable.rb"
 
 Style/DoubleNegation:
@@ -200,7 +199,6 @@ Style/IdenticalConditionalBranches:
 
 Style/ClassVars:
   Exclude:
-    - "lib/r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object.rb"
     - "lib/r2-oas/plugin/hookable.rb"
 
 Style/AccessModifierDeclarations:

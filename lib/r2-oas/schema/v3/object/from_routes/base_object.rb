@@ -21,6 +21,14 @@ module R2OAS
           @plugin_executor = ::R2OAS::Plugin::Executor.new(@plugins, opts)
         end
 
+        def doc
+          @_doc ||= {}
+        end
+
+        def to_doc
+          raise 'Implement Inherit Class'
+        end
+
         def info_object_class
           InfoObject
         end
@@ -56,10 +64,6 @@ module R2OAS
         end
 
         attr_accessor *AppConfiguration::VALID_OPTIONS_KEYS
-
-        def to_doc
-          raise 'Implement Inherit Class'
-        end
       end
     end
   end

@@ -4,6 +4,7 @@ require 'bundler/setup'
 # workaround  uninitialized constant R2OAS::ActiveSupport
 require 'action_controller/railtie'
 require 'r2-oas'
+require 'r2-oas/schema/v3/object/from_routes/all'
 require 'pry'
 
 # needs to load the app

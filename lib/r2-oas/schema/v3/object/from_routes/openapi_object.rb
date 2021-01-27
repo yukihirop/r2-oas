@@ -25,7 +25,7 @@ module R2OAS
             'servers' => servers_doc,
             'components' => components_doc
           }
-          result
+          doc.merge!(result)
         end
 
         private
