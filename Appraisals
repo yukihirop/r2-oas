@@ -1,6 +1,4 @@
-appraise 'ruby-2.3.3' do
-end
-appraise 'ruby-2.4.2' do
+appraise 'ruby-2.4.4' do
 end
 # stable
 appraise 'ruby-2.5.8' do
