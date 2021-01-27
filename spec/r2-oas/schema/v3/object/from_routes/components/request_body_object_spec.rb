@@ -8,7 +8,7 @@ RSpec.describe R2OAS::Schema::V3::Components::RequestBodyObject do
     { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'patch' }
   end
   let(:opts) { {} }
-  let(:object) { R2OAS.use_object_classes[:components_request_body_object].new(route_data, path, opts) }
+  let(:object) { described_class.new(route_data, path, opts) }
 
   before do
     init
@@ -27,35 +27,6 @@ RSpec.describe R2OAS::Schema::V3::Components::RequestBodyObject do
            'original_path' => '#/components/schemas/Api_V1_Task',
            'data' => { 'components' => { 'schemas' => { 'Api_V1_Task' => { 'type' => 'object', 'properties' => { 'id' => { 'type' => 'integer', 'format' => 'int64' } } } } } } }
       end
-    end
-
-    context 'when use before_create && after_create' do
-      before do
-        module Components
-          class TestRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject
-            before_create do |doc, _schema_name|
-              doc.merge!(
-                'before_key' => 'before_value'
-              )
-            end
-
-            after_create do |doc, _schema_name|
-              doc.merge!(
-                'after_key' => 'after_value'
-              )
-            end
-          end
-        end
-
-        R2OAS.configure do |config|
-          config.use_object_classes.merge!(
-            components_request_body_object: Components::TestRequestBodyObject
-          )
-        end
-      end
-
-      it { expect(object.to_doc['before_key']).to eq 'before_value' }
-      it { expect(object.to_doc['after_key']).to eq 'after_value' }
     end
   end
 

@@ -12,7 +12,7 @@ RSpec.describe R2OAS::Schema::V3::ComponentsObject do
       { data: { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'delete' }, path: '/api/v1/tasks/{id}' }
     ]
   end
-  let(:object) { R2OAS.use_object_classes[:components_object].new(routes_data) }
+  let(:object) { described_class.new(routes_data) }
 
   before do
     init
@@ -20,35 +20,6 @@ RSpec.describe R2OAS::Schema::V3::ComponentsObject do
 
   after do
     delete_oas_docs
-  end
-
-  describe '#to_doc' do
-    context 'when use before_create && after_create' do
-      before do
-        class TestComponentsObject < R2OAS::Schema::V3::ComponentsObject
-          before_create do |doc|
-            doc.merge!(
-              'before_key' => 'before_value'
-            )
-          end
-
-          after_create do |doc|
-            doc.merge!(
-              'after_key' => 'after_value'
-            )
-          end
-        end
-
-        R2OAS.configure do |config|
-          config.use_object_classes.merge!(
-            components_object: TestComponentsObject
-          )
-        end
-      end
-
-      it { expect(object.to_doc['before_key']).to eq 'before_value' }
-      it { expect(object.to_doc['after_key']).to eq 'after_value' }
-    end
   end
 
   describe '#create_doc' do

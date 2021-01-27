@@ -36,16 +36,6 @@ R2OAS.configure do |config|
     swagger.editor.exposed_port = "8080/tcp" 
   end
 
-  config.use_object_classes = {
-    info_object:                    R2OAS::Schema::V3::InfoObject,
-    paths_object:                   R2OAS::Schema::V3::PathsObject,
-    path_item_object:               R2OAS::Schema::V3::PathItemObject,
-    external_document_object:       R2OAS::Schema::V3::ExternalDocumentObject,
-    components_object:              R2OAS::Schema::V3::ComponentsObject,
-    components_schema_object:       R2OAS::Schema::V3::Components::SchemaObject,
-    components_request_body_object: R2OAS::Schema::V3::Components::RequestBodyObject
-  }
-
   config.http_statuses_when_http_method = {
     get: {
       default: %w(200 422),
@@ -124,12 +114,6 @@ we explain the options that can be set.
 |swagger|editor|image|Swagger Editor Docker Image|`"swaggerapi/swagger-editor"`|
 |swagger|editor|port|Swagger Editor Port|`"8080"`|
 |swagger|editor|exposed_port|Swagger Editor Exposed Port|`"8080/tcp"`|
-
-#### hook
-
-|option|description|default|
-|------|-----------|-------|
-|use_object_classes|Object class(hook class) to generate Openapi document|{ info_object: `R2OAS::Schema::V3::InfoObject`,<br>paths_object: `R2OAS::Schema::V3::PathsObject`,<br>path_item_object: `R2OAS::Schema::V3::PathItemObject`, external_document_object: `R2OAS::Schema::V3::ExternalDocumentObject`,<br> components_object: `R2OAS::Schema::V3::ComponentsObject`,<br> components_schema_object: `R2OAS::Schema::V3::Components::SchemaObject`, <br> components_request_body_object:`R2OAS::Schema::V3::Components::RequestBodyObject` }|
 
 #### deprecation
 
