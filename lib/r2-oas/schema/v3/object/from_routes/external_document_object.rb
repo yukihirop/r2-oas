@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-require 'r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object'
+require_relative 'base_object'
 
 module R2OAS
   module Schema
     module V3
-      class ExternalDocumentObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
+      class ExternalDocumentObject < BaseObject
         def to_doc
-          execute_before_create
           create_doc
-          execute_after_create
           doc
         end
 

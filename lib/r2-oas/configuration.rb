@@ -3,7 +3,6 @@
 require 'fileutils'
 
 require_relative 'app_configuration'
-require_relative 'pluggable_configuration'
 require_relative 'configuration/paths_config'
 require_relative 'logger/stdout_logger'
 require_relative 'support/deprecation'
@@ -11,9 +10,8 @@ require_relative 'support/deprecation'
 module R2OAS
   module Configuration
     extend AppConfiguration
-    extend PluggableConfiguration
 
-    PUBLIC_VALID_OPTIONS_KEYS = AppConfiguration::VALID_OPTIONS_KEYS + PluggableConfiguration::VALID_OPTIONS_KEYS
+    PUBLIC_VALID_OPTIONS_KEYS = AppConfiguration::VALID_OPTIONS_KEYS
 
     UNPUBLIC_VALID_OPTIONS_KEYS = %i[
       paths_config
@@ -24,18 +22,8 @@ module R2OAS
 
     attr_accessor *PUBLIC_VALID_OPTIONS_KEYS
 
-    # MEMO: override because deprecated
-    def use_object_classes=(data)
-      ::R2OAS::Deprecation.will_remove(<<-MSG.squish)
-        Using a R2OAS.use_object_classes= in configuration is deprecated and
-        will be removed in r2-oas (v0.4.2).
-      MSG
-      @use_object_classes = data
-    end
-
     def self.extended(base)
       base.send :set_default_for_configuration, base
-      base.send :set_default_for_pluggable, base
     end
 
     def configure
@@ -59,12 +47,6 @@ module R2OAS
 
     def app_configuration_options
       AppConfiguration::VALID_OPTIONS_KEYS.inject({}) do |option, key|
-        option.merge!(key => send(key))
-      end
-    end
-
-    def pluggable_configuration_options
-      PluggableConfiguration::VALID_OPTIONS_KEYS.inject({}) do |option, key|
         option.merge!(key => send(key))
       end
     end
@@ -116,10 +98,6 @@ module R2OAS
 
     def set_default_for_configuration(target)
       AppConfiguration.set_default(target)
-    end
-
-    def set_default_for_pluggable(target)
-      PluggableConfiguration.set_default(target)
     end
   end
 end

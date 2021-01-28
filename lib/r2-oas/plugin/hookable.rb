@@ -5,6 +5,11 @@ require 'r2-oas/hooks/hook'
 module R2OAS
   module Plugin
     module Hookable
+      def self.extended(base)
+        super
+        base.class_variable_set(:@@hook_klass, ::R2OAS::Hooks::Hook.register(:plugin, base))
+      end
+
       def hooks_map
         hook_klass.repository[:plugin]
       end
@@ -14,11 +19,11 @@ module R2OAS
       end
 
       def hook_klass=(klass)
-        @@hook_klass = klass
+        class_variable_set(:@@hook_klass, klass)
       end
 
       def hook_klass
-        @@hook_klass
+        class_variable_get(:@@hook_klass)
       end
 
       def on(on, callback, once = false)

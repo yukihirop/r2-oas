@@ -3,6 +3,10 @@
 require_relative 'base_object'
 require_relative 'tag_object'
 require_relative 'server_object'
+require_relative 'info_object'
+require_relative 'external_document_object'
+require_relative 'components_object'
+require_relative 'paths_object'
 
 module R2OAS
   module Schema
@@ -25,13 +29,13 @@ module R2OAS
             'servers' => servers_doc,
             'components' => components_doc
           }
-          result
+          doc.merge!(result)
         end
 
         private
 
         def info_doc
-          info_object_class.new(@opts).to_doc
+          InfoObject.new(@opts).to_doc
         end
 
         def tags_doc
@@ -39,11 +43,11 @@ module R2OAS
         end
 
         def paths_doc
-          paths_object_class.new(@routes_data, @opts).to_doc
+          PathsObject.new(@routes_data, @opts).to_doc
         end
 
         def external_docs_doc
-          external_document_object_class.new(@opts).to_doc
+          ExternalDocumentObject.new(@opts).to_doc
         end
 
         def servers_doc
@@ -51,7 +55,7 @@ module R2OAS
         end
 
         def components_doc
-          components_object_class.new(@routes_data, @opts).to_doc
+          ComponentsObject.new(@routes_data, @opts).to_doc
         end
       end
     end
