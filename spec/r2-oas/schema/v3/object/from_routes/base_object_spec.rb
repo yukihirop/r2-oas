@@ -46,32 +46,4 @@ RSpec.describe R2OAS::Schema::V3::BaseObject do
       it { expect(object.send(:doc_save_file_name)).to eq 'apidoc.yml' }
     end
   end
-
-  describe '#info_object_class' do
-    it { expect(object.info_object_class).to eq R2OAS::Schema::V3::InfoObject }
-  end
-
-  describe '#paths_object_class' do
-    it { expect(object.paths_object_class).to eq R2OAS::Schema::V3::PathsObject }
-  end
-
-  describe '#path_item_object_class' do
-    it { expect(object.path_item_object_class).to eq R2OAS::Schema::V3::PathItemObject }
-  end
-
-  describe '#external_document_object_class' do
-    it { expect(object.external_document_object_class).to eq R2OAS::Schema::V3::ExternalDocumentObject }
-  end
-
-  describe '#components_object_class' do
-    it { expect(object.components_object_class).to eq R2OAS::Schema::V3::ComponentsObject }
-  end
-
-  describe '#components_schema_object_class' do
-    it { expect(object.components_schema_object_class).to eq R2OAS::Schema::V3::Components::SchemaObject }
-  end
-
-  describe '#components_request_body_object_class' do
-    it { expect(object.components_request_body_object_class).to eq R2OAS::Schema::V3::Components::RequestBodyObject }
-  end
 end

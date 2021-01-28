@@ -3,6 +3,7 @@
 require_relative 'base_object'
 require_relative 'components/schema_object'
 require_relative 'components/request_body_object'
+require_relative 'path_item_object'
 
 module R2OAS
   module Schema
@@ -48,9 +49,9 @@ module R2OAS
             path = route_el[:path]
             route_data = route_el[:data]
 
-            path_item_object = path_item_object_class.new(route_data, path, @opts)
+            path_item_object = PathItemObject.new(route_data, path, @opts)
             path_item_object.http_statuses.each do |http_status|
-              components_schema_object = components_schema_object_class.new(route_data, path, @opts)
+              components_schema_object = Components::SchemaObject.new(route_data, path, @opts)
               components_schema_doc = components_schema_object.to_doc
               schema_name = components_schema_object.send(:_components_schema_name, http_status)
 
@@ -68,7 +69,7 @@ module R2OAS
             path = route_el[:path]
             route_data = route_el[:data]
 
-            components_request_body_object = components_request_body_object_class.new(route_data, path, @opts)
+            components_request_body_object = Components::RequestBodyObject.new(route_data, path, @opts)
             next unless components_request_body_object.generate?
 
             components_request_body_doc = components_request_body_object.to_doc

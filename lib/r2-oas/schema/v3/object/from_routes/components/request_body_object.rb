@@ -2,6 +2,7 @@
 
 require 'r2-oas/schema/v3/object/from_routes/base_object'
 require 'r2-oas/schema/v3/manager/file/components_file_manager'
+require_relative 'schema_object'
 
 module R2OAS
   module Schema
@@ -25,7 +26,7 @@ module R2OAS
           def to_doc
             create_doc do
               child_file_manager = ComponentsFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
-              schema_object = components_schema_object_class.new(@route_data, @path, @opts)
+              schema_object = Components::SchemaObject.new(@route_data, @path, @opts)
 
               unless child_file_manager.skip_save?
                 result = {
