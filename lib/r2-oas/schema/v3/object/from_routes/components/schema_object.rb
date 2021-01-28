@@ -41,7 +41,7 @@ module R2OAS
             doc.merge!(result)
           end
 
-          def _components_schema_name(http_status)
+          def _components_schema_name(_http_status)
             @schema_name
           end
         end

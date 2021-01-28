@@ -21,7 +21,7 @@ module R2OAS
         end
 
         def doc
-          @_doc ||= {}
+          @doc ||= {}
         end
 
         def to_doc

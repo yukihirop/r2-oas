@@ -8,7 +8,6 @@ require_relative 'external_document_object'
 require_relative 'components_object'
 require_relative 'paths_object'
 
-
 module R2OAS
   module Schema
     module V3
