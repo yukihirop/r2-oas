@@ -1,7 +1,6 @@
-## [Deprecated] Use hook to generate docs
+# [before v0.4.1] Use hook to generate docs
 
-!> ・This option is valid until `v0.4.1`.
-   ・Please use `plugin` instead for `v0.5.0` and above
+!> This option is valid until `v0.4.1`. Please use `plugin` instead for `v0.5.0` and above
 
 ## Prepare
 
