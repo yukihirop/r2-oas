@@ -91,7 +91,6 @@ Lint/AmbiguousOperator:
     - "lib/r2-oas/base.rb"
     - "lib/r2-oas/routing/parser.rb"
     - "lib/r2-oas/app_configuration.rb"
-    - "lib/r2-oas/pluggable_configuration.rb"
 
 Metrics/MethodLength:
   Exclude:
@@ -161,7 +160,6 @@ Naming/ConstantName:
 Naming/PredicateName:
   Exclude:
     - "lib/r2-oas/hooks/hook.rb"
-    - "lib/r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object.rb"
     - "lib/r2-oas/plugin/hookable.rb"
 
 Style/DoubleNegation:
@@ -179,7 +177,6 @@ Naming/AccessorMethodName:
   Exclude:
     - "lib/r2-oas/configuration.rb"
     - "lib/r2-oas/app_configuration.rb"
-    - "lib/r2-oas/pluggable_configuration.rb"
     - "lib/r2-oas/schema/v3/object/from_files/base_object.rb"
     - "spec/support/helpers/store_helper.rb"
     - "spec/support/helpers/store_helper.rb"
@@ -196,17 +193,12 @@ Lint/UnderscorePrefixedVariableName:
     - "lib/r2-oas/schema/v3/object/from_files/components/request_body_object.rb"
     - "lib/r2-oas/schema/v3/object/from_files/components/schema_object.rb"
 
-Lint/UselessAccessModifier:
-  Exclude:
-    - "lib/r2-oas/pluggable_configuration.rb"
-
 Style/IdenticalConditionalBranches:
   Exclude:
     - "lib/r2-oas/schema/editor.rb"
 
 Style/ClassVars:
   Exclude:
-    - "lib/r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object.rb"
     - "lib/r2-oas/plugin/hookable.rb"
 
 Style/AccessModifierDeclarations:

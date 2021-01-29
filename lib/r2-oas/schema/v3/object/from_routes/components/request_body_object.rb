@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
-require 'r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object'
+require 'r2-oas/schema/v3/object/from_routes/base_object'
 require 'r2-oas/schema/v3/manager/file/components_file_manager'
+require_relative 'schema_object'
 
 module R2OAS
   module Schema
     module V3
       module Components
-        class RequestBodyObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
+        class RequestBodyObject < R2OAS::Schema::V3::BaseObject
           def initialize(route_data, path, opts = {})
             super(opts)
             @path_comp   = Routing::PathComponent.new(path)
@@ -23,10 +24,9 @@ module R2OAS
           end
 
           def to_doc
-            execute_before_create(@schema_name)
             create_doc do
               child_file_manager = ComponentsFileManager.new("#/components/schemas/#{_components_schema_name}", :ref)
-              schema_object = components_schema_object_class.new(@route_data, @path, @opts)
+              schema_object = Components::SchemaObject.new(@route_data, @path, @opts)
 
               unless child_file_manager.skip_save?
                 result = {
@@ -45,20 +45,7 @@ module R2OAS
                 )
               end
             end
-            execute_after_create(@schema_name)
             doc
-          end
-
-          # MEMO:
-          # please override in inherited class.
-          def components_schema_name(_doc, _path_component, _tag_name, _verb, schema_name)
-            schema_name
-          end
-
-          # MEMO:
-          # please override in inherited class.
-          def components_request_body_name(_doc, _path_component, _tag_name, _verb, schema_name)
-            schema_name
           end
 
           def generate?
@@ -83,11 +70,11 @@ module R2OAS
           end
 
           def _components_schema_name
-            components_schema_name(doc, @path_comp, @tag_name, @verb, @schema_name)
+            @schema_name
           end
 
           def _components_request_body_name
-            components_request_body_name(doc, @path_comp, @tag_name, @verb, @schema_name)
+            @schema_name
           end
         end
       end

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object'
+require 'r2-oas/schema/v3/object/from_routes/base_object'
 
 module R2OAS
   module Schema
     module V3
       module Components
-        class SchemaObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
+        class SchemaObject < R2OAS::Schema::V3::BaseObject
           def initialize(route_data, path, opts = {})
             super(opts)
             @path_comp    = Routing::PathComponent.new(path)
@@ -22,16 +22,8 @@ module R2OAS
           end
 
           def to_doc
-            execute_before_create(@schema_name)
             create_doc
-            execute_after_create(@schema_name)
             doc
-          end
-
-          # MEMO:
-          # please override in inherited class.
-          def components_schema_name(_doc, _path_component, _tag_name, _verb, _http_status, schema_name)
-            schema_name
           end
 
           private
@@ -49,8 +41,8 @@ module R2OAS
             doc.merge!(result)
           end
 
-          def _components_schema_name(http_status)
-            components_schema_name(doc, @path_comp, @tag_name, @verb, http_status, @schema_name)
+          def _components_schema_name(_http_status)
+            @schema_name
           end
         end
       end

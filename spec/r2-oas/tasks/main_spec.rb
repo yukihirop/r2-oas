@@ -76,7 +76,7 @@ RSpec.describe 'main_rake' do
         end
 
         it 'should do not occur error' do
-          expect { subject }.not_to raise_error(R2OAS::NoFileExistsError)
+          expect { subject }.not_to raise_error
         end
         it do
           subject

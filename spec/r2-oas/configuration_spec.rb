@@ -4,18 +4,6 @@ require 'spec_helper'
 
 RSpec.describe R2OAS::Configuration do
   describe 'configure' do
-    before(:all) do
-      class RtsdInfoObject < R2OAS::Schema::V3::InfoObject; end
-      class RtsdPathsObject < R2OAS::Schema::V3::PathsObject; end
-      class RtsdPathItemObject < R2OAS::Schema::V3::PathItemObject; end
-      class RtsdExternalDocumentObject < R2OAS::Schema::V3::ExternalDocumentObject; end
-      class RtsdComponentsObject < R2OAS::Schema::V3::ComponentsObject; end
-      module Components
-        class RtsdSchemaObject < R2OAS::Schema::V3::Components::SchemaObject; end
-        class RtsdRequestBodyObject < R2OAS::Schema::V3::Components::RequestBodyObject; end
-      end
-    end
-
     context 'when default setting' do
       before do
         class DefaultDummy
@@ -56,14 +44,6 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:swagger].editor.image).to eq 'swaggerapi/swagger-editor'
         expect(subject[:swagger].editor.port).to eq '81'
         expect(subject[:swagger].editor.exposed_port).to eq '8080/tcp'
-        # object classes
-        expect(subject[:use_object_classes][:info_object]).to eq R2OAS::Schema::V3::InfoObject
-        expect(subject[:use_object_classes][:paths_object]).to eq R2OAS::Schema::V3::PathsObject
-        expect(subject[:use_object_classes][:path_item_object]).to eq R2OAS::Schema::V3::PathItemObject
-        expect(subject[:use_object_classes][:external_document_object]).to eq R2OAS::Schema::V3::ExternalDocumentObject
-        expect(subject[:use_object_classes][:components_object]).to eq R2OAS::Schema::V3::ComponentsObject
-        expect(subject[:use_object_classes][:components_schema_object]).to eq R2OAS::Schema::V3::Components::SchemaObject
-        expect(subject[:use_object_classes][:components_request_body_object]).to eq R2OAS::Schema::V3::Components::RequestBodyObject
         # plugin configuration
         expect(subject[:plugins]).to eq []
         expect(subject[:local_plugins_dir_name]).to eq 'plugins'
@@ -131,16 +111,6 @@ RSpec.describe R2OAS::Configuration do
               swagger.editor.port         = '91'
               swagger.editor.exposed_port = '9090/tcp'
             end
-            # object classes
-            config.use_object_classes = {
-              info_object: RtsdInfoObject,
-              paths_object: RtsdPathsObject,
-              path_item_object: RtsdPathItemObject,
-              external_document_object: RtsdExternalDocumentObject,
-              components_object: RtsdComponentsObject,
-              components_schema_object: Components::RtsdSchemaObject,
-              components_request_body_object: Components::RtsdRequestBodyObject
-            }
             # plugins configuration
             config.plugins = [
               ['r2oas-plugin-transform-sample', { loose: false }],
@@ -190,14 +160,6 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:swagger].editor.image).to eq 'original/swagger-editor'
         expect(subject[:swagger].editor.port).to eq '91'
         expect(subject[:swagger].editor.exposed_port).to eq '9090/tcp'
-        # object classes
-        expect(subject[:use_object_classes][:info_object]).to eq RtsdInfoObject
-        expect(subject[:use_object_classes][:paths_object]).to eq RtsdPathsObject
-        expect(subject[:use_object_classes][:path_item_object]).to eq RtsdPathItemObject
-        expect(subject[:use_object_classes][:external_document_object]).to eq RtsdExternalDocumentObject
-        expect(subject[:use_object_classes][:components_object]).to eq RtsdComponentsObject
-        expect(subject[:use_object_classes][:components_schema_object]).to eq Components::RtsdSchemaObject
-        expect(subject[:use_object_classes][:components_request_body_object]).to eq Components::RtsdRequestBodyObject
         # plugin configuration
         expect(subject[:plugins]).to include(
           ['r2oas-plugin-transform-sample', { loose: false }],
@@ -209,28 +171,9 @@ RSpec.describe R2OAS::Configuration do
         expect(subject[:deprecation].silenced).to eq true
       end
     end
+  end
 
-    context 'deprecation warning' do
-      context 'when deprecation.silenced is false (default)' do
-        it do
-          expect do
-            R2OAS.configure do |config|
-              config.use_object_classes = {}
-            end
-          end.to output(/DEPRECATION WARNING: Using a R2OAS.use_object_classes= in configuration is deprecated and will be removed in r2-oas \(v0.4.2\)./).to_stderr
-        end
-      end
-
-      context 'when deprecation.silenced is true' do
-        it do
-          expect do
-            R2OAS.configure do |config|
-              config.deprecation.silenced = true
-              config.use_object_classes = {}
-            end
-          end.not_to output(/DEPRECATION WARNING: Using a R2OAS.use_object_classes= in configuration is deprecated and will be removed in r2-oas \(v0.4.2\)./).to_stderr
-        end
-      end
-    end
+  describe 'init' do
+    it { expect { described_class.init }.not_to raise_error }
   end
 end

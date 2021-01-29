@@ -29,16 +29,6 @@ module ConfigHelper
         swagger.editor.exposed_port = '8080/tcp'
       end
 
-      config.use_object_classes = {
-        info_object: R2OAS::Schema::V3::InfoObject,
-        paths_object: R2OAS::Schema::V3::PathsObject,
-        path_item_object: R2OAS::Schema::V3::PathItemObject,
-        external_document_object: R2OAS::Schema::V3::ExternalDocumentObject,
-        components_object: R2OAS::Schema::V3::ComponentsObject,
-        components_schema_object: R2OAS::Schema::V3::Components::SchemaObject,
-        components_request_body_object: R2OAS::Schema::V3::Components::RequestBodyObject
-      }
-
       config.http_statuses_when_http_method = {
         get: {
           default: %w[200 422],

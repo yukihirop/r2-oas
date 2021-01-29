@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 require 'forwardable'
-require 'r2-oas/dynamic/schema/v3/object/from_routes/hookable_base_object'
 require 'r2-oas/routing/components/path_component'
+require_relative 'base_object'
+require_relative 'components/schema_object'
+require_relative 'components/request_body_object'
 
 module R2OAS
   module Schema
     module V3
-      class PathItemObject < R2OAS::Dynamic::Schema::V3::HookableBaseObject
+      class PathItemObject < BaseObject
         extend Forwardable
         # reference
         # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object
@@ -27,15 +29,13 @@ module R2OAS
           @required_parameters            = route_data[:required_parameters]
           @format_name                    = create_format_name
           @http_status_manager            = HttpStatusManager.new(@path, @verb, http_statuses_when_http_method)
-          @components_schema_object       = components_schema_object_class.new(route_data, path, opts)
-          @components_request_body_object = components_request_body_object_class.new(route_data, path, opts)
+          @components_schema_object       = Components::SchemaObject.new(route_data, path, opts)
+          @components_request_body_object = Components::RequestBodyObject.new(route_data, path, opts)
           support_field_name? if route_data.key?(:verb)
         end
 
         def to_doc
-          execute_before_create(@path)
           create_doc
-          execute_after_create(@path)
           doc
         end
 

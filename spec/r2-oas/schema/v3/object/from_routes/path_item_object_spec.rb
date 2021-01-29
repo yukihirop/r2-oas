@@ -7,36 +7,7 @@ RSpec.describe R2OAS::Schema::V3::PathItemObject do
     { format_name: '', path: '/api/v1/tasks/{id}', required_parameters: { id: { type: 'integer' } }, schema_name: 'Api_V1_Task', tag_name: 'api/v1/task', verb: 'delete' }
   end
   let(:path) { '/api/v1/tasks/{id}' }
-  let(:object) { R2OAS.use_object_classes[:path_item_object].new(route_data, path) }
-
-  describe '#to_doc' do
-    context 'when use before_create && after_create' do
-      before do
-        class TestPathItemObject < R2OAS::Schema::V3::PathItemObject
-          before_create do |doc, _path|
-            doc.merge!(
-              'before_key' => 'before_value'
-            )
-          end
-
-          after_create do |doc, _path|
-            doc.merge!(
-              'after_key' => 'after_value'
-            )
-          end
-        end
-
-        R2OAS.configure do |config|
-          config.use_object_classes.merge!(
-            path_item_object: TestPathItemObject
-          )
-        end
-      end
-
-      it { expect(object.to_doc['before_key']).to eq 'before_value' }
-      it { expect(object.to_doc['after_key']).to eq 'after_value' }
-    end
-  end
+  let(:object) { described_class.new(route_data, path) }
 
   describe '#create_doc' do
     it do
