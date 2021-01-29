@@ -202,8 +202,6 @@ OpenAPIの3.0.0をサポートしてます。
 .
 .
 ===== Bundle install for All Support Ruby Result =====
-ruby-2.3.3: 0
-ruby-2.4.2: 0
 ruby-2.5.8: 0
 ruby-2.6.6: 0
 ruby-2.7.1: 0
@@ -231,8 +229,6 @@ ruby-2.7.1: 0
 .
 .
 ===== Rspec for All Support Ruby Result =====
-ruby-2.3.3: 0
-ruby-2.4.2: 0
 ruby-2.5.8: 0
 ruby-2.6.6: 0
 ruby-2.7.1: 0
