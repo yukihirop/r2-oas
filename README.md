@@ -64,8 +64,17 @@ R2OAS.load_tasks
 ```
 
 ```bash
-bundle exec routes:oas:docs
-bundle exec routes:oas:editor
+$ bundle exec rake routes:oas:init
+      create	oas_docs
+      create	oas_docs/.paths
+      create	oas_docs/plugins/helpers
+      create	oas_docs/tasks/helpers
+      create	oas_docs/plugins/.gitkeep
+      create	oas_docs/plugins/helpers/.gitkeep
+      create	oas_docs/tasks/.gitkeep
+      create	oas_docs/tasks/helpers/.gitkeep
+$ bundle exec rake routes:oas:docs
+$ bundle exec rake routes:oas:editor
 ```
 
 #### Generate docs
@@ -90,6 +99,14 @@ Initialize r2-oas.
 
 ```bash
 $ bundle exec rake routes:oas:init
+      create	oas_docs
+      create	oas_docs/.paths
+      create	oas_docs/plugins/helpers
+      create	oas_docs/tasks/helpers
+      create	oas_docs/plugins/.gitkeep
+      create	oas_docs/plugins/helpers/.gitkeep
+      create	oas_docs/tasks/.gitkeep
+      create	oas_docs/tasks/helpers/.gitkeep
 ```
 
 ### Generate
@@ -189,8 +206,6 @@ Full docs are available at https://yukihirop.github.io/r2-oas/#/setting/configur
 .
 .
 ===== Bundle install for All Support Ruby Result =====
-ruby-2.3.3: 0
-ruby-2.4.2: 0
 ruby-2.5.8: 0
 ruby-2.6.6: 0
 ruby-2.7.1: 0
@@ -218,8 +233,6 @@ ruby-2.7.1: 0
 .
 .
 ===== Rspec for All Support Ruby Result =====
-ruby-2.3.3: 0
-ruby-2.4.2: 0
 ruby-2.5.8: 0
 ruby-2.6.6: 0
 ruby-2.7.1: 0

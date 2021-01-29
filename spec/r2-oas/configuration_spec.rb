@@ -172,4 +172,8 @@ RSpec.describe R2OAS::Configuration do
       end
     end
   end
+
+  describe 'init' do
+    it { expect { described_class.init }.not_to raise_error }
+  end
 end
