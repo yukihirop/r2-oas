@@ -82,8 +82,8 @@ RSpec.shared_examples 'test accessors when components schema/request_body ref' d
 
   context 'when error not occurs' do
     it do
-      expect { subject.schema_name = 'API_V1_Task_200_GET' }.not_to raise_error(NoMethodError)
-      expect { subject[:schema_name] = 'API_V1_Task_200_GET' }.not_to raise_error(R2OAS::RefInvalidAssignment)
+      expect { subject.schema_name = 'API_V1_Task_200_GET' }.not_to raise_error
+      expect { subject[:schema_name] = 'API_V1_Task_200_GET' }.not_to raise_error
     end
   end
 end
