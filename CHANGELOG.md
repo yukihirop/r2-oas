@@ -1,4 +1,14 @@
-# Change Log
+# CHANGELOG
+
+## v0.5.0
+
+2020-01-29
+
+- [`Breaking`] Remove `use_object_classes` option ([#171](https://github.com/yukihirop/r2-oas/pull/171))
+- [`Feature`] Upgrade init command ([#176](https://github.com/yukihirop/r2-oas/pull/176))
+- [`EOL`] EOL Ruby `2.3` and Support over Ruby `2.5.0` ([#170](https://github.com/yukihirop/r2-oas/pull/170))
+
+Please see mileston [v0.5.0](https://github.com/yukihirop/r2-oas/milestone/5?closed=1)
 
 ## v0.4.1
 
