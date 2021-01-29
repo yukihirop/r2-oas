@@ -64,8 +64,17 @@ R2OAS.load_tasks
 ```
 
 ```bash
-bundle exec routes:oas:docs
-bundle exec routes:oas:editor
+$ bundle exec rake routes:oas:init
+      create	oas_docs
+      create	oas_docs/.paths
+      create	oas_docs/plugins/helpers
+      create	oas_docs/tasks/helpers
+      create	oas_docs/plugins/.gitkeep
+      create	oas_docs/plugins/helpers/.gitkeep
+      create	oas_docs/tasks/.gitkeep
+      create	oas_docs/tasks/helpers/.gitkeep
+$ bundle exec rake routes:oas:docs
+$ bundle exec rake routes:oas:editor
 ```
 
 #### Generate docs
@@ -90,6 +99,14 @@ Initialize r2-oas.
 
 ```bash
 $ bundle exec rake routes:oas:init
+      create	oas_docs
+      create	oas_docs/.paths
+      create	oas_docs/plugins/helpers
+      create	oas_docs/tasks/helpers
+      create	oas_docs/plugins/.gitkeep
+      create	oas_docs/plugins/helpers/.gitkeep
+      create	oas_docs/tasks/.gitkeep
+      create	oas_docs/tasks/helpers/.gitkeep
 ```
 
 ### Generate

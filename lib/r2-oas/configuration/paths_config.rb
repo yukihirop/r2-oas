@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 require 'r2-oas/schema/manager/file/path_item_file_manager'
+require 'r2-oas/helpers/file_helper'
 
 module R2OAS
   module Configuration
     class PathsConfig
+      include Helpers::FileHelper
+
       def initialize(root_dir_path, schema_save_dir_name)
         @root_dir_path = root_dir_path
         @schema_save_dir_path = "#{root_dir_path}/#{schema_save_dir_name}"
@@ -25,11 +28,11 @@ module R2OAS
         end.uniq.compact.reject(&:empty?)
       end
 
-      def create_dot_paths
+      def create_dot_paths(silent = true)
         abs_root_path = File.expand_path(@root_dir_path)
 
-        FileUtils.mkdir_p(abs_root_path) unless FileTest.exists?(abs_root_path)
-        File.write(abs_paths_path, '') unless FileTest.exists?(abs_paths_path)
+        mkdir_p_dir_or_skip(abs_root_path, silent)
+        write_file_or_skip(abs_paths_path, '', silent)
       end
 
       def many_components_file_paths

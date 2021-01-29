@@ -12,6 +12,14 @@ R2OAS.load_tasks
 
 ```bash
 $ bundle exec rake routes:oas:init
+      create	oas_docs
+      create	oas_docs/.paths
+      create	oas_docs/plugins/helpers
+      create	oas_docs/tasks/helpers
+      create	oas_docs/plugins/.gitkeep
+      create	oas_docs/plugins/helpers/.gitkeep
+      create	oas_docs/tasks/.gitkeep
+      create	oas_docs/tasks/helpers/.gitkeep
 ```
 
 By default, the directory is created as follows.
