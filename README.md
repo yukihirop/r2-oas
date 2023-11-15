@@ -5,12 +5,12 @@
 [![Coverage Status](https://coveralls.io/repos/github/yukihirop/r2-oas/badge.svg)](https://coveralls.io/github/yukihirop/r2-oas)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8c3846f350bb412fd63/maintainability)](https://codeclimate.com/github/yukihirop/r2-oas/maintainability)
 
-Generate api docment(OpenAPI) side only from `Rails` routing.
+Generate api document (OpenAPI) side only from `Rails` routing.
 
-Provides a rake command to help `generate` , `view` , and `edit` OpenAPI documents.
+Provides a rake command to help `generate`, `view`, and `edit` OpenAPI documents.
 
 ```bash
-bunlde exec rake routes:oas:init    # initialize
+bundle exec rake routes:oas:init    # initialize
 bundle exec rake routes:oas:docs    # generate
 bundle exec rake routes:oas:ui      # view
 bundle exec rake routes:oas:editor  # edit
@@ -120,7 +120,7 @@ $ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas
 
 ### Editor
 
-Start swagger editor.
+Start Swagger editor.
 
 ```bash
 $ bundle exec rake routes:oas:editor                                                     # Start swagger editor
@@ -177,15 +177,15 @@ Full docs are available at https://yukihirop.github.io/r2-oas/#/schema/3.0.0
 
 ## ❗️ Convention over Configuration (CoC)
 
-- `tag name` represents `controller name` and determine `paths file name`.
-  - For example, If `controller name` is `Api::V1::UsersController`, `tag_name` is `api/v1/user`. and `paths file name` is `api/v1/user.yml`
+- `tag name` represents `controller name` and determines `paths file name`.
+  - For example, If `controller name` is `Api::V1::UsersController`, `tag_name` is `api/v1/user`, then `paths file name` is `api/v1/user.yml`
 
 - `_` of `components/{schemas,requestBodies, ...} name` convert `/` when save file.
   - For example, If `components/schemas name` is `Api_V1_User`, `components/schemas file name` is `api/v1/user.yml`.
   - `_` is supposed to be used to express `namespace`.
   - format is `Namespace1_Namespace2_Model`.
 
-- `.` of `components/{schemas,requestBodies, ...} name` convert `/` when save file.
+- `.` of `components/{schemas,requestBodies, ...} name` convert `/` when saving the file.
   - For example, If `components/schemas name` is `api.v1.User`, `components/schemas file name` is `api/v1/user.yml`.
   - `.` is supposed to be used to express `namespace`.
   - format is `namespace1.namespace2.Model`.
@@ -266,7 +266,7 @@ use Rack::Cors do
 end
 ```
 
-Alternatively you can set CORS headers in a `before` block.
+Alternatively, you can set CORS headers in a `before` block.
 
 ```ruby
 before do
