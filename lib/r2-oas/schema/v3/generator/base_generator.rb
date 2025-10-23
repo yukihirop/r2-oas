@@ -102,7 +102,7 @@ module R2OAS
         end
 
         def exists_cache?
-          FileTest.exists?(abs_cache_docs_path)
+          FileTest.exist?(abs_cache_docs_path)
         end
 
         def abs_cache_docs_path

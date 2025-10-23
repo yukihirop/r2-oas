@@ -41,7 +41,7 @@ namespace :routes do
     task build: [:common] do
       start do
         output_dir_path = File.expand_path(R2OAS.output_dir_path)
-        FileUtils.mkdir_p(output_dir_path) unless FileTest.exists?(output_dir_path)
+        FileUtils.mkdir_p(output_dir_path) unless FileTest.exist?(output_dir_path)
 
         is_overrirde_src = override_src.eql? 'true'
         use_plugin = skip_plugin.eql? 'false'
@@ -124,7 +124,7 @@ namespace :routes do
         end
 
         output_dir_path = File.expand_path(R2OAS.output_dir_path)
-        FileUtils.mkdir_p(output_dir_path) unless FileTest.exists?(output_dir_path)
+        FileUtils.mkdir_p(output_dir_path) unless FileTest.exist?(output_dir_path)
 
         builder_options = { unit_paths_file_path: unit_paths_file_path, use_plugin: true, output: true }
         builder = R2OAS::Schema::Builder.new(builder_options)

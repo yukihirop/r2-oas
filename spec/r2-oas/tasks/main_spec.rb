@@ -16,14 +16,14 @@ RSpec.describe 'main_rake' do
 
   shared_examples_for 'Generated file verification test' do |result|
     it 'should generate docs' do
-      expect(FileTest.exists?(components_schemas_path)).to eq result
-      expect(FileTest.exists?(components_request_bodies_path)).to eq result
-      expect(FileTest.exists?(paths_path)).to eq result
-      expect(FileTest.exists?(external_docs_path)).to eq result
-      expect(FileTest.exists?(info_path)).to eq result
-      expect(FileTest.exists?(openapi_path)).to eq result
-      expect(FileTest.exists?(servers_path)).to eq result
-      expect(FileTest.exists?(tags_path)).to eq result
+      expect(FileTest.exist?(components_schemas_path)).to eq result
+      expect(FileTest.exist?(components_request_bodies_path)).to eq result
+      expect(FileTest.exist?(paths_path)).to eq result
+      expect(FileTest.exist?(external_docs_path)).to eq result
+      expect(FileTest.exist?(info_path)).to eq result
+      expect(FileTest.exist?(openapi_path)).to eq result
+      expect(FileTest.exist?(servers_path)).to eq result
+      expect(FileTest.exist?(tags_path)).to eq result
     end
   end
 
@@ -35,14 +35,14 @@ RSpec.describe 'main_rake' do
     end
 
     it do
-      expect(FileTest.exists?(plugins_path)).to eq true
-      expect(FileTest.exists?("#{plugins_path}/helpers")).to eq true
-      expect(FileTest.exists?(tasks_path)).to eq true
-      expect(FileTest.exists?(dot_paths_path)).to eq true
-      expect(FileTest.exists?("#{plugins_path}/.gitkeep")).to eq true
-      expect(FileTest.exists?("#{plugins_path}/helpers/.gitkeep")).to eq true
-      expect(FileTest.exists?("#{tasks_path}/.gitkeep")).to eq true
-      expect(FileTest.exists?("#{tasks_path}/helpers/.gitkeep")).to eq true
+      expect(FileTest.exist?(plugins_path)).to eq true
+      expect(FileTest.exist?("#{plugins_path}/helpers")).to eq true
+      expect(FileTest.exist?(tasks_path)).to eq true
+      expect(FileTest.exist?(dot_paths_path)).to eq true
+      expect(FileTest.exist?("#{plugins_path}/.gitkeep")).to eq true
+      expect(FileTest.exist?("#{plugins_path}/helpers/.gitkeep")).to eq true
+      expect(FileTest.exist?("#{tasks_path}/.gitkeep")).to eq true
+      expect(FileTest.exist?("#{tasks_path}/helpers/.gitkeep")).to eq true
     end
   end
 
@@ -55,7 +55,7 @@ RSpec.describe 'main_rake' do
       end
 
       it_behaves_like 'Generated file verification test', true
-      it { expect(FileTest.exists?(doc_save_file_path)).to eq false }
+      it { expect(FileTest.exist?(doc_save_file_path)).to eq false }
     end
 
     context 'when oas_docs exists already' do
@@ -80,7 +80,7 @@ RSpec.describe 'main_rake' do
         end
         it do
           subject
-          expect(FileTest.exists?(relative_cache_docs_path)).to eq true
+          expect(FileTest.exist?(relative_cache_docs_path)).to eq true
         end
       end
     end
@@ -100,21 +100,21 @@ RSpec.describe 'main_rake' do
       let(:ext_name) { :json }
 
       it_behaves_like 'Generated file verification test', true
-      it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
+      it { expect(FileTest.exist?(doc_save_file_path)).to eq true }
     end
 
     context 'when ext_name is :yml' do
       let(:ext_name) { :yml }
 
       it_behaves_like 'Generated file verification test', true
-      it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
+      it { expect(FileTest.exist?(doc_save_file_path)).to eq true }
     end
 
     context 'when ext_name is :yaml' do
       let(:ext_name) { :yml }
 
       it_behaves_like 'Generated file verification test', true
-      it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
+      it { expect(FileTest.exist?(doc_save_file_path)).to eq true }
     end
   end
 
@@ -126,8 +126,8 @@ RSpec.describe 'main_rake' do
       subject
     end
 
-    it { expect(FileTest.exists?(doc_save_file_path)).to eq false }
-    it { expect(FileTest.exists?(output_path)).to eq true }
+    it { expect(FileTest.exist?(doc_save_file_path)).to eq false }
+    it { expect(FileTest.exist?(output_path)).to eq true }
   end
 
   describe 'routes:oas:clean' do
@@ -143,9 +143,9 @@ RSpec.describe 'main_rake' do
     end
 
     it do
-      expect(FileTest.exists?("#{components_schemas_path}/dummy.yml")).to eq false
-      expect(FileTest.exists?("#{components_request_bodies_path}/dummy.yml")).to eq false
-      expect(FileTest.exists?("#{components_securitySchemes_path}/my_oauth.yml")).to eq true
+      expect(FileTest.exist?("#{components_schemas_path}/dummy.yml")).to eq false
+      expect(FileTest.exist?("#{components_request_bodies_path}/dummy.yml")).to eq false
+      expect(FileTest.exist?("#{components_securitySchemes_path}/my_oauth.yml")).to eq true
     end
   end
 
@@ -163,9 +163,9 @@ RSpec.describe 'main_rake' do
     end
 
     it do
-      expect(FileTest.exists?(deploy_dir_path.to_s)).to eq true
-      expect(FileTest.exists?("#{deploy_dir_path}/#{doc_save_file_name}")).to eq true
-      expect(FileTest.exists?(output_path)).to eq true
+      expect(FileTest.exist?(deploy_dir_path.to_s)).to eq true
+      expect(FileTest.exist?("#{deploy_dir_path}/#{doc_save_file_name}")).to eq true
+      expect(FileTest.exist?(output_path)).to eq true
     end
   end
 end

@@ -24,9 +24,9 @@ RSpec.describe R2OAS::Deploy::Client do
     end
 
     it do
-      expect(FileTest.exists?(deploy_dir_path)).to eq true
-      expect(FileTest.exists?("#{deploy_dir_path}/index.html")).to eq true
-      expect(FileTest.exists?("#{deploy_dir_path}/dist")).to eq true
+      expect(FileTest.exist?(deploy_dir_path)).to eq true
+      expect(FileTest.exist?("#{deploy_dir_path}/index.html")).to eq true
+      expect(FileTest.exist?("#{deploy_dir_path}/dist")).to eq true
     end
   end
 end

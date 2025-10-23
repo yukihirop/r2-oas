@@ -97,14 +97,14 @@ module R2OAS
     def load_local_tasks
       tasks_path = File.expand_path("#{root_dir_path}/#{local_tasks_dir_name}")
       Dir.glob("#{tasks_path}/**/*.rake").sort.each do |file|
-        load file if FileTest.exists?(file)
+        load file if FileTest.exist?(file)
       end
     end
 
     def load_local_plugins
       plugins_path = File.expand_path("#{root_dir_path}/#{local_plugins_dir_name}")
       Dir.glob("#{plugins_path}/**/*.rb").sort.each do |file|
-        require file if FileTest.exists?(file)
+        require file if FileTest.exist?(file)
       end
     end
 
