@@ -7,8 +7,8 @@ module R2OAS
     module Reporting
       attr_accessor :silenced, :gem_name
 
-      FILE_LINE_METHOD_REGEXP = /^(?<file>.+?):(?<line>\d+)(?::in `(?<method>.*?)')?/.freeze
-      R2OAS_GEM_ROOT = File.expand_path('../../../../', __dir__) + '/lib'
+      FILE_LINE_METHOD_REGEXP = /^(?<file>.+?):(?<line>\d+)(?::in `(?<method>.*?)')?/
+      R2OAS_GEM_ROOT = "#{File.expand_path('../../../../', __dir__)}/lib".freeze
 
       def warn(message = nil, callstack = nil)
         return if silenced
@@ -83,7 +83,7 @@ module R2OAS
         #
         # e.g.)
         # R2OAS_GEM_ROOT = "/Users/yukihirop/RubyProjects/r2-oas/lib"
-        # rubylibprefix = "/Users/yukihirop/.rbenv/versions/2.7.1/lib/ruby"
+        # rubylibprefix = "/Users/yukihirop/.rbenv/versions/2.7.8/lib/ruby"
         path.start_with?(R2OAS_GEM_ROOT) || path.start_with?(RbConfig::CONFIG['rubylibprefix'])
       end
     end

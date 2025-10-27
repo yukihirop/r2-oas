@@ -33,7 +33,7 @@ module R2OAS
             def resolve_dependencies!
               deep_replace!(@doc, '$ref') do |ref_path|
                 schema_obj, schema_type, pure_schema_name = ref_path.split('/').slice(1..-1)
-                schema_doc = root_doc&.fetch(schema_obj, nil)&.fetch(schema_type, nil)&.fetch(pure_schema_name, nil) || {}
+                schema_doc = root_doc&.dig(schema_obj, schema_type, pure_schema_name) || {}
 
                 ref = create_child_ref(pure_schema_name)
                 obj = Components::SchemaObject.new(schema_doc, ref, opts)
@@ -44,7 +44,7 @@ module R2OAS
             end
 
             def call_ref_path!
-              callback = proc { |obj| obj.ref_path }
+              callback = proc(&:ref_path)
               deep_call(@doc, '$ref', callback)
             end
 

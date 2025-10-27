@@ -11,6 +11,7 @@ module R2OAS
     module V3
       class PathItemObject < BaseObject
         extend Forwardable
+
         # reference
         # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object
         # Support Field Name: get, put, post, delete, patch

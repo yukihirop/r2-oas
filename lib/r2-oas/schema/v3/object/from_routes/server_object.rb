@@ -9,8 +9,8 @@ module R2OAS
         def to_doc
           server.data.each_with_object([]) do |server, result|
             result.push(
-              'url' => (server[:url]).to_s,
-              'description' => (server[:description]).to_s
+              'url' => server[:url].to_s,
+              'description' => server[:description].to_s
             )
             # Do not Server Variable Object
           end
