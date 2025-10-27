@@ -164,8 +164,9 @@ Full docs are available at https://yukihirop.github.io/r2-oas
 
 ## ❤️ Support Ruby Version
 
-- Ruby 2.6.10
-- Ruby 2.7.8
+- Ruby 3.2.6
+- Ruby 3.3.6
+- Ruby (>= 3.4.x)
 
 ## ❤️ Support Rouging
 
@@ -207,21 +208,22 @@ Full docs are available at https://yukihirop.github.io/r2-oas/#/setting/configur
 .
 .
 ===== Bundle install for All Support Ruby Result =====
-ruby-2.6.10: 0
-ruby-2.7.8: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
+ruby-3.4.7: 0
 ======================================================
 ```
 
-If specify ruby version `2.6.10` and `2.7.8`
+If specify ruby version `3.2.6` and `3.3.6`
 
 ```bash
-/bin/bash devscript/all_support_ruby.sh bundle 2.6.10 2.7.8
+/bin/bash devscript/all_support_ruby.sh bundle 3.2.6 3.3.6
 .
 .
 .
 ===== Bundle install for All Support Ruby Result =====
-ruby-2.6.10: 0
-ruby-2.7.8: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
 ======================================================
 ```
 
@@ -233,21 +235,22 @@ ruby-2.7.8: 0
 .
 .
 ===== Rspec for All Support Ruby Result =====
-ruby-2.6.10: 0
-ruby-2.7.8: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
+ruby-3.4.7: 0
 =============================================
 ```
 
-If specify ruby version `2.6.10` and `2.7.8`
+If specify ruby version `3.2.6` and `3.3.6`
 
 ```bash
-/bin/bash devscript/all_support_ruby.sh rspec 2.6.10 2.7.8
+/bin/bash devscript/all_support_ruby.sh rspec 3.2.6 3.3.6
 .
 .
 .
 ===== Rspec for All Support Ruby Result =====
-ruby-2.6.10: 0
-ruby-2.7.8: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
 =============================================
 ```
 
