@@ -110,6 +110,6 @@ RSpec.describe R2OAS::Configuration::PathsConfig do
   end
 
   describe '#create_dot_paths' do
-    it { expect { config.create_dot_paths }.to change { FileTest.exists?("#{root_dir_path}/.paths") }.from(false).to(true) }
+    it { expect { config.create_dot_paths }.to change { FileTest.exist?("#{root_dir_path}/.paths") }.from(false).to(true) }
   end
 end

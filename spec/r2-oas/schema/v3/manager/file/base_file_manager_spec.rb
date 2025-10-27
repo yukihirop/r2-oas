@@ -18,7 +18,7 @@ RSpec.describe R2OAS::Schema::V3::BaseFileManager do
     end
 
     it do
-      expect { manager.delete }.to change { FileTest.exists?("#{components_schemas_path}/dummy.yml") }.from(true).to(false)
+      expect { manager.delete }.to change { FileTest.exist?("#{components_schemas_path}/dummy.yml") }.from(true).to(false)
     end
   end
 

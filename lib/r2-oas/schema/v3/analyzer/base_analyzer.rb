@@ -43,7 +43,7 @@ module R2OAS
         end
 
         def create_after_schema_data_when_not_specify_path
-          if FileTest.exists?(doc_save_file_path)
+          if FileTest.exist?(doc_save_file_path)
             YAML.load_file(doc_save_file_path)
           else
             raise NoFileExistsError, "Do not exists file: #{doc_save_file_path}"
