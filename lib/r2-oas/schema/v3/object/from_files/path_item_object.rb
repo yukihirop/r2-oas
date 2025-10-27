@@ -60,7 +60,7 @@ module R2OAS
 
               deep_replace!(data_when_http_status, '$ref') do |ref_path|
                 schema_obj, schema_type, schema_name = ref_path.split('/').slice(1..-1)
-                schema_doc = root_doc&.fetch(schema_obj, nil)&.fetch(schema_type, nil)&.fetch(schema_name, nil) || {}
+                schema_doc = root_doc&.dig(schema_obj, schema_type, schema_name) || {}
 
                 ref = create_child_schema_ref(schema_name, local_ref_hash)
                 obj = Components::SchemaObject.new(schema_doc, ref, opts)
@@ -76,7 +76,7 @@ module R2OAS
           def resolve_dependencies_at_request_body!(data, verb, data_when_verb, local_ref_hash)
             deep_replace!(data_when_verb['requestBody'], '$ref') do |ref_path|
               schema_obj, schema_type, schema_name = ref_path.split('/').slice(1..-1)
-              schema_doc = root_doc&.fetch(schema_obj, nil)&.fetch(schema_type, nil)&.fetch(schema_name, nil) || {}
+              schema_doc = root_doc&.dig(schema_obj, schema_type, schema_name) || {}
 
               ref = create_child_request_body_ref(schema_name, local_ref_hash)
               obj = Components::RequestBodyObject.new(schema_doc, ref, opts)

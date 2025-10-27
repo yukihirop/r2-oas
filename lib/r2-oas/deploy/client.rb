@@ -30,8 +30,8 @@ module R2OAS
 
       def copy_swagger_ui_dist
         docs_path = File.expand_path(Rails.root.join(deploy_dir_path), __FILE__)
-        FileUtils.mkdir_p(docs_path) unless FileTest.exist?(docs_path)
-        FileUtils.mkdir_p(@dist_path) unless FileTest.exist?(@dist_path)
+        FileUtils.mkdir_p(docs_path)
+        FileUtils.mkdir_p(@dist_path)
         FileUtils.cp_r(@dist_path, docs_path)
       end
 

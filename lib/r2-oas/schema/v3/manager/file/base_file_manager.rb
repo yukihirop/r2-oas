@@ -19,12 +19,12 @@ module R2OAS
         end
 
         def delete
-          File.delete(save_file_path) if FileTest.exist?(save_file_path)
+          FileUtils.rm_f(save_file_path)
         end
 
         def save(data)
           abs_dir = File.dirname(save_file_path)
-          FileUtils.mkdir_p(abs_dir) unless FileTest.exist?(abs_dir)
+          FileUtils.mkdir_p(abs_dir)
           File.write(save_file_path, data)
         end
 

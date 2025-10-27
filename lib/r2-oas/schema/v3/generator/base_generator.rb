@@ -48,7 +48,7 @@ module R2OAS
         end
 
         def schema_file_do_not_exists?
-          schema_files_paths.count == 0
+          schema_files_paths.none?
         end
 
         def create_glob_schema_paths
@@ -93,7 +93,7 @@ module R2OAS
 
         def cache_docs
           if exists_cache?
-            result = IO.binread(abs_cache_docs_path)
+            result = File.binread(abs_cache_docs_path)
             inflate = Zlib::Inflate.inflate(result)
             @cache_docs ||= Marshal.load(inflate)
           else
