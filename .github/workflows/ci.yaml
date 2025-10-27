@@ -25,10 +25,10 @@ jobs:
           bundler-cache: true
       
       - name: Install dependencies
-        run: bundle install --without development --deployment
-      
+        run: bundle install
+        
       - name: Run RuboCop
-        if: matrix.ruby-version >= '2.7.0'
+        if: matrix.ruby-version >= '3.2.6'
         run: bundle exec rubocop --fail-level=W
         continue-on-error: false
       
