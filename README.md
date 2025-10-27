@@ -206,7 +206,6 @@ Full docs are available at https://yukihirop.github.io/r2-oas/#/setting/configur
 .
 .
 ===== Bundle install for All Support Ruby Result =====
-ruby-2.5.8: 0
 ruby-2.6.6: 0
 ruby-2.7.1: 0
 ======================================================
@@ -233,7 +232,6 @@ ruby-2.7.1: 0
 .
 .
 ===== Rspec for All Support Ruby Result =====
-ruby-2.5.8: 0
 ruby-2.6.6: 0
 ruby-2.7.1: 0
 =============================================
