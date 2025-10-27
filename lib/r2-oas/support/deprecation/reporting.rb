@@ -7,8 +7,8 @@ module R2OAS
     module Reporting
       attr_accessor :silenced, :gem_name
 
-      FILE_LINE_METHOD_REGEXP = /^(?<file>.+?):(?<line>\d+)(?::in `(?<method>.*?)')?/.freeze
-      R2OAS_GEM_ROOT = File.expand_path('../../../../', __dir__) + '/lib'
+      FILE_LINE_METHOD_REGEXP = /^(?<file>.+?):(?<line>\d+)(?::in `(?<method>.*?)')?/
+      R2OAS_GEM_ROOT = "#{File.expand_path('../../../../', __dir__)}/lib".freeze
 
       def warn(message = nil, callstack = nil)
         return if silenced

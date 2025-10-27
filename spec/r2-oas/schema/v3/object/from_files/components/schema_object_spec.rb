@@ -51,12 +51,10 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
             self.plugin_name = 'r2oas-plugin-transform-test-components-schema-from-path-item'
 
             components_schema do |doc, ref|
-              if opts[:merged]
-                if ref[:from] == :path_item
-                  doc.merge!(
-                    'path_item' => "plugin_value.#{ref.type}.#{ref.path}.#{ref.schema_name}.#{ref.tag_name}.#{ref.verb}.#{ref.http_status}.#{ref.depth}"
-                  )
-                end
+              if opts[:merged] && (ref[:from] == :path_item)
+                doc.merge!(
+                  'path_item' => "plugin_value.#{ref.type}.#{ref.path}.#{ref.schema_name}.#{ref.tag_name}.#{ref.verb}.#{ref.http_status}.#{ref.depth}"
+                )
               end
             end
           end
@@ -79,12 +77,10 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
             self.plugin_name = 'r2oas-plugin-transform-test-components-schema-from-request-body'
 
             components_schema do |doc, ref|
-              if opts[:merged]
-                if ref[:from] == :request_body
-                  doc.merge!(
-                    'request_body' => "plugin_value.#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:http_status]}.#{ref[:depth]}"
-                  )
-                end
+              if opts[:merged] && (ref[:from] == :request_body)
+                doc.merge!(
+                  'request_body' => "plugin_value.#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:http_status]}.#{ref[:depth]}"
+                )
               end
             end
           end
@@ -107,12 +103,10 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
             self.plugin_name = 'r2oas-plugin-transform-test-components-schema-from-schema'
 
             components_schema do |doc, ref|
-              if opts[:merged]
-                if ref[:from] == :schema
-                  doc.merge!(
-                    'schema' => "plugin_value.#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:http_status]}.#{ref[:depth]}"
-                  )
-                end
+              if opts[:merged] && (ref[:from] == :schema)
+                doc.merge!(
+                  'schema' => "plugin_value.#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:http_status]}.#{ref[:depth]}"
+                )
               end
             end
           end
@@ -149,9 +143,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
             self.plugin_name = 'r2oas-plugin-transform-test-components-schema-name-from-path-item'
 
             components_schema_name do |ref|
-              if opts[:override]
-                ref[:schema_name] = "#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:http_status]}.#{ref[:depth]}" if ref[:from] == :path_item
-              end
+              ref[:schema_name] = "#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:http_status]}.#{ref[:depth]}" if opts[:override] && (ref[:from] == :path_item)
             end
           end
 
@@ -176,9 +168,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
             self.plugin_name = 'r2oas-plugin-transform-test-components-schema-name-from-schema'
 
             components_schema_name do |ref|
-              if opts[:override]
-                ref[:schema_name] = "#{ref.type}.#{ref.path}.#{ref.schema_name}.#{ref.tag_name}.#{ref.verb}.#{ref.http_status}.#{ref.depth}" if ref[:from] == :schema
-              end
+              ref[:schema_name] = "#{ref.type}.#{ref.path}.#{ref.schema_name}.#{ref.tag_name}.#{ref.verb}.#{ref.http_status}.#{ref.depth}" if opts[:override] && (ref[:from] == :schema)
             end
           end
 
@@ -203,9 +193,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
             self.plugin_name = 'r2oas-plugin-transform-test-components-schema-name-from-request-body'
 
             components_schema_name do |ref|
-              if opts[:override]
-                ref[:schema_name] = "#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:depth]}" if ref[:from] == :request_body
-              end
+              ref[:schema_name] = "#{ref[:type]}.#{ref[:path]}.#{ref[:schema_name]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:depth]}" if opts[:override] && (ref[:from] == :request_body)
             end
           end
 
@@ -235,9 +223,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::SchemaObject do
           self.plugin_name = 'r2oas-plugin-transform-test-components-schema-name-error-occurs'
 
           components_schema_name do |ref|
-            if opts[:override]
-              ref[:schema_name] = 'Api_V1_Task_Used' if ref[:from] == :request_body
-            end
+            ref[:schema_name] = 'Api_V1_Task_Used' if opts[:override] && (ref[:from] == :request_body)
           end
         end
 

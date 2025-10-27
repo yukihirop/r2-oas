@@ -5,9 +5,9 @@ require_relative 'base_component'
 module R2OAS
   module Routing
     class PathComponent < BaseComponent
-      FORMAT_PATH_PARAMETER_REGEXP = /\(.+\)/.freeze
-      SYMBOL_PATH_PARAMETER_REGEXP = /:(.\w+)/.freeze
-      BRACE_PATH_PARAMETER_REGEXP  = /\{(.\w+)\}/.freeze
+      FORMAT_PATH_PARAMETER_REGEXP = /\(.+\)/
+      SYMBOL_PATH_PARAMETER_REGEXP = /:(.\w+)/
+      BRACE_PATH_PARAMETER_REGEXP  = /\{(.\w+)\}/
 
       def initialize(path)
         super()

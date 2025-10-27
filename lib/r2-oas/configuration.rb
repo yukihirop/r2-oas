@@ -80,9 +80,9 @@ module R2OAS
       write_file_or_skip(gitkeep_tasks_helpers_path, '')
 
       if $stdout.string.present?
-        STDOUT.puts $stdout.string
+        $stdout.puts $stdout.string
       else
-        STDOUT.puts "Already Initialized existing oas_docs in #{root_dir_path}"
+        $stdout.puts "Already Initialized existing oas_docs in #{root_dir_path}"
       end
 
       $stdout = old_stdout

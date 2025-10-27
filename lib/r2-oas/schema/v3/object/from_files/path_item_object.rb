@@ -44,7 +44,7 @@ module R2OAS
           end
 
           def call_ref_path!
-            callback = proc { |obj| obj.ref_path }
+            callback = proc(&:ref_path)
             deep_call(@doc, '$ref', callback)
           end
 
