@@ -6,7 +6,9 @@ for version in $@; do
   echo "== Rspec for Ruby Version: ${version} =="
   
   # Change Ruby Version
-  echo ${version} > ./.ruby-version && rbenv rehash
+  echo ${version} > ./.ruby-version
+  mise use ruby@${version}
+  mise reshim
 
   # Rspec
   BUNDLE_GEMFILE=./gemfiles/ruby_${version}.gemfile bundle exec rspec --format progress && report+=("ruby-${version}: $?")

@@ -5,12 +5,13 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-# Check if rbenv is installed
-which rbenv > /dev/null 2>&1 && if [ $? -ne 0 ]; then echo -e 'rbenv is need\nPlease install rbenv: https://github.com/rbenv/rbenv'; exit 1; fi
+# Check if mise is installed
+which mise > /dev/null 2>&1 && if [ $? -ne 0 ]; then echo -e 'mise is need\nPlease install mise: https://github.com/mise/mise'; exit 1; fi
 
 declare -a all_support_ruby=(
-  '2.6.10'
-  '2.7.8'
+  '3.2.6'
+  '3.3.6'
+  '3.4.7'
 )
 
 declare -a target_ruby

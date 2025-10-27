@@ -10,7 +10,9 @@ for version in $@; do
   if [[ -f $lockfile ]]; then rm $lockfile; fi
   
   # Change Ruby Version
-  echo ${version} > ./.ruby-version && rbenv rehash
+  echo ${version} > ./.ruby-version
+  mise use ruby@${version}
+  mise reshim
   
   # Bundle install
   BUNDLE_GEMFILE=./gemfiles/ruby_${version}.gemfile bundle install --path vendor/bundle && report+=("ruby-${version}: $?") 
