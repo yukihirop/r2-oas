@@ -7,12 +7,19 @@ for version in $@; do
   
   # Change Ruby Version
   echo ${version} > ./.ruby-version
-  mise use ruby@${version}
-  mise reshim
-
-  # Rspec
-  BUNDLE_GEMFILE=./gemfiles/ruby_${version}.gemfile bundle exec rspec --format progress && report+=("ruby-${version}: $?")
-  if [ $? -ne 0 ]; then report+=("ruby-${version}: 1 (failed)");fi
+  
+  # Rspec with mise shell
+  mise shell ruby@${version} -- bash -c "
+    BUNDLE_GEMFILE=./gemfiles/ruby_${version}.gemfile bundle exec rspec --format progress
+    exit_code=\$?
+    exit \$exit_code
+  "
+  
+  if [ $? -eq 0 ]; then 
+    report+=("ruby-${version}: 0")
+  else 
+    report+=("ruby-${version}: 1 (failed)")
+  fi
 
   echo "== End for Ruby Version: ${version} =="
 done
