@@ -208,20 +208,20 @@ Full docs are available at https://yukihirop.github.io/r2-oas/#/setting/configur
 .
 ===== Bundle install for All Support Ruby Result =====
 ruby-2.6.10: 0
-ruby-2.7.1: 0
+ruby-2.7.8: 0
 ======================================================
 ```
 
-If specify ruby version `2.6.10` and `2.7.1`
+If specify ruby version `2.6.10` and `2.7.8`
 
 ```bash
-/bin/bash devscript/all_support_ruby.sh bundle 2.6.10 2.7.1
+/bin/bash devscript/all_support_ruby.sh bundle 2.6.10 2.7.8
 .
 .
 .
 ===== Bundle install for All Support Ruby Result =====
 ruby-2.6.10: 0
-ruby-2.7.1: 0
+ruby-2.7.8: 0
 ======================================================
 ```
 
@@ -234,20 +234,20 @@ ruby-2.7.1: 0
 .
 ===== Rspec for All Support Ruby Result =====
 ruby-2.6.10: 0
-ruby-2.7.1: 0
+ruby-2.7.8: 0
 =============================================
 ```
 
-If specify ruby version `2.6.10` and `2.7.1`
+If specify ruby version `2.6.10` and `2.7.8`
 
 ```bash
-/bin/bash devscript/all_support_ruby.sh rspec 2.6.10 2.7.1
+/bin/bash devscript/all_support_ruby.sh rspec 2.6.10 2.7.8
 .
 .
 .
 ===== Rspec for All Support Ruby Result =====
 ruby-2.6.10: 0
-ruby-2.7.1: 0
+ruby-2.7.8: 0
 =============================================
 ```
 

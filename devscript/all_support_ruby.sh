@@ -10,7 +10,7 @@ which rbenv > /dev/null 2>&1 && if [ $? -ne 0 ]; then echo -e 'rbenv is need\nPl
 
 declare -a all_support_ruby=(
   '2.6.10'
-  '2.7.1'
+  '2.7.8'
 )
 
 declare -a target_ruby

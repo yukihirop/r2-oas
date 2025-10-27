@@ -203,20 +203,20 @@ OpenAPIの3.0.0をサポートしてます。
 .
 ===== Bundle install for All Support Ruby Result =====
 ruby-2.6.10: 0
-ruby-2.7.1: 0
+ruby-2.7.8: 0
 ======================================================
 ```
 
-rubyのバージョンを `2.6.10` と `2.7.1`　に指定する場合
+rubyのバージョンを `2.6.10` と `2.7.8`　に指定する場合
 
 ```bash
-/bin/bash devscript/all_support_ruby.sh bundle 2.6.10 2.7.1
+/bin/bash devscript/all_support_ruby.sh bundle 2.6.10 2.7.8
 .
 .
 .
 ===== Bundle install for All Support Ruby Result =====
 ruby-2.6.10: 0
-ruby-2.7.1: 0
+ruby-2.7.8: 0
 ======================================================
 ```
 
@@ -229,20 +229,20 @@ ruby-2.7.1: 0
 .
 ===== Rspec for All Support Ruby Result =====
 ruby-2.6.10: 0
-ruby-2.7.1: 0
+ruby-2.7.8: 0
 =============================================
 ```
 
-rubyのバージョンを `2.6.10` と `2.7.1`　に指定する場合
+rubyのバージョンを `2.6.10` と `2.7.8`　に指定する場合
 
 ```bash
-/bin/bash devscript/all_support_ruby.sh rspec 2.6.10 2.7.1
+/bin/bash devscript/all_support_ruby.sh rspec 2.6.10 2.7.8
 .
 .
 .
 ===== Rspec for All Support Ruby Result =====
 ruby-2.6.10: 0
-ruby-2.7.1: 0
+ruby-2.7.8: 0
 =============================================
 ```
 
