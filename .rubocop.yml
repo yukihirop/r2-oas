@@ -2,6 +2,7 @@ inherit_from: .rubocop_todo.yml
 
 AllCops:
   TargetRubyVersion: 3.4
+  SuggestExtensions: false
   Exclude:
     - "example*/**/*"
     - "vendor/**/*"
