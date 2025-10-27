@@ -120,7 +120,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject do
       end
 
       it do
-        expect { object.schema_name }.to raise_error(::R2OAS::DepulicateSchemaNameError, "Transformed schema name: 'Api_V1_Task_RequestBody_Used' cannot be used. It already exists.")
+        expect { object.schema_name }.to raise_error(R2OAS::DepulicateSchemaNameError, "Transformed schema name: 'Api_V1_Task_RequestBody_Used' cannot be used. It already exists.")
       end
     end
   end

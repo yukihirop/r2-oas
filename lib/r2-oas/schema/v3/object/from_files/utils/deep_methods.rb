@@ -5,7 +5,7 @@ module R2OAS
     module V3
       module FromFiles
         module DeepMethods
-          def deep_replace!(data, target, &blk)
+          def deep_replace!(data, target, &)
             return unless data.is_a?(Hash)
 
             data.each do |key, value|
@@ -16,7 +16,7 @@ module R2OAS
                   data[key] = block_given? ? yield(value) : value
                 end
               else
-                deep_replace!(value, target, &blk)
+                deep_replace!(value, target, &)
               end
             end
           end

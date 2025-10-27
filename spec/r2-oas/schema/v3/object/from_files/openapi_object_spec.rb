@@ -49,7 +49,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::OpenapiObject do
       let(:opts) { { use_plugin: true } }
 
       before do
-        class TestSetupTransform < ::R2OAS::Plugin::Transform
+        class TestSetupTransform < R2OAS::Plugin::Transform
           self.plugin_name = 'r2oas-plugin-transform-setup-test'
 
           setup do
@@ -73,7 +73,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::OpenapiObject do
       let(:opts) { { use_plugin: true } }
 
       before do
-        class TestTeardownTransform < ::R2OAS::Plugin::Transform
+        class TestTeardownTransform < R2OAS::Plugin::Transform
           self.plugin_name = 'r2oas-plugin-transform-teardown-test'
 
           teardown do

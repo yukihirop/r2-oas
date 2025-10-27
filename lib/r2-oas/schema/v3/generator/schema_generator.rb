@@ -11,7 +11,7 @@ module R2OAS
     module V3
       class SchemaGenerator < BaseGenerator
         def initialize(options = {})
-          super(options)
+          super
           @docs = create_docs
           @options = options
         end

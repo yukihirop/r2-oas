@@ -35,11 +35,11 @@ module R2OAS
 
         attr_accessor :parent_save_file_paths, :recursive_search_class
 
-        def deep_search_ref_recursive(yaml, &block)
+        def deep_search_ref_recursive(yaml, &)
           case yaml
           when Hash
             yaml.each do |key, value|
-              process_deep_search_ref_recursive(key, value, &block)
+              process_deep_search_ref_recursive(key, value, &)
             end
           # Support allOf/oneOf/anyOf
           when Array
@@ -47,13 +47,13 @@ module R2OAS
               next unless el.is_a?(Hash)
 
               el.each do |key, value|
-                process_deep_search_ref_recursive(key, value, &block)
+                process_deep_search_ref_recursive(key, value, &)
               end
             end
           end
         end
 
-        def process_deep_search_ref_recursive(ref_key_or_not, ref_value_or_not, &block)
+        def process_deep_search_ref_recursive(ref_key_or_not, ref_value_or_not, &)
           # Don't pick up JSON Schema $ref
           # e.x.)
           #  $ref: { "type" => "string" }
@@ -80,7 +80,7 @@ module R2OAS
             results = [child_file_manager.save_file_path] + children_paths
             yield results if block_given?
           else
-            deep_search_ref_recursive(ref_value_or_not, &block)
+            deep_search_ref_recursive(ref_value_or_not, &)
           end
         end
       end

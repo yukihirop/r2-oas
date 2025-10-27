@@ -9,7 +9,7 @@ module R2OAS
       SWAGGER_UI_DIST_URL = 'https://github.com/swagger-api/swagger-ui/trunk/dist'
 
       def initialize(options = {})
-        super(options)
+        super
         @download_dir = "#{SecureRandom.uuid[0..7]}/dist"
         @dist_path = File.expand_path(Rails.root.join(@download_dir), __FILE__)
       end
