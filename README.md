@@ -52,7 +52,7 @@ If you do not have it download as below.
 ```
 $ docker pull swaggerapi/swagger-editor:latest
 $ docker pull swaggerapi/swagger-ui:latest
-$ brew cask install chromedriver
+$ brew install chromedriver
 ```
 
 ## 🚀 Tutorial

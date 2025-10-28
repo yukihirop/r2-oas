@@ -42,7 +42,7 @@ end
 ```
 $ docker pull swaggerapi/swagger-editor:latest
 $ docker pull swaggerapi/swagger-ui:latest
-$ brew cask install chromedriver
+$ brew install chromedriver
 ```
 
 ## 🚀 Tutorial
