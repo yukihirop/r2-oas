@@ -65,18 +65,24 @@ module R2OAS
       end
 
       def cleanup
+        logger.info("Starting cleanup process...")
         @running = false
         @save_thread&.join(1) # スレッドの終了を待つ（最大1秒）
         # ブラウザセッションの状態に依らず必ず後処理を実行する
         begin
+          logger.info("Processing edited schema...")
           process_after_close_browser
+          logger.info("Schema processing completed")
         rescue StandardError => e
           logger.warn("post close process failed: #{e.class}: #{e.message}")
         end
+        logger.info("Stopping container...")
         container.stop
+        logger.info("Removing container...")
         container.remove
         logger.info "container id: #{container.id} removed"
         @browser&.close
+        logger.info("Cleanup completed")
       end
 
       def process_after_close_browser
@@ -101,7 +107,7 @@ module R2OAS
           while @running
             # ブラウザが閉じられたかどうかをチェック
             if @browser.nil? || !browser_exists?
-              logger.info("Browser closed, triggering cleanup...")
+              logger.info("Browser was closed by user (X button), starting cleanup...")
               @running = false
               break
             end
@@ -110,18 +116,13 @@ module R2OAS
             m.synchronize do
               begin
                 data = get_local_storage(storage_key)
-                log_local_storage_state
                 if data
                   digest = Digest::SHA256.hexdigest(data)
                   if digest != (@last_saved_digest || '')
                     File.write(doc_save_file_path, data)
                     @last_saved_digest = digest
-                    logger.info("autosave wrote: bytes=#{data.bytesize} sha256=#{digest[0,8]}...")
-                  else
-                    logger.info("autosave skipped (unchanged): bytes=#{data.bytesize} sha256=#{digest[0,8]}...")
+                    logger.info("autosave: bytes=#{data.bytesize}")
                   end
-                else
-                  logger.info('autosave skipped: storage value is nil')
                 end
               rescue Selenium::WebDriver::Error::UnexpectedAlertOpenError
                 alert = @browser&.driver&.switch_to&.alert
@@ -133,7 +134,7 @@ module R2OAS
                     if digest != (@last_saved_digest || '')
                       File.write(doc_save_file_path, data)
                       @last_saved_digest = digest
-                      logger.info("autosave wrote (after alert): bytes=#{data.bytesize} sha256=#{digest[0,8]}...")
+                      logger.info("autosave: bytes=#{data.bytesize}")
                     end
                   end
                 end
@@ -194,16 +195,6 @@ module R2OAS
         @browser.execute_script('window.localStorage.setItem(arguments[0], arguments[1]);', key, value)
       end
 
-      def log_local_storage_state
-        return unless @browser
-        begin
-          keys = @browser.execute_script('return Object.keys(window.localStorage);')
-          val = @browser.execute_script('return window.localStorage.getItem(arguments[0]);', storage_key)
-          size = val ? val.bytesize : 0
-          logger.info("localStorage keys=#{Array(keys).join(', ')} target=#{storage_key} bytes=#{size}")
-        rescue StandardError
-        end
-      end
 
       def wait_for_loaded
         Watir::Wait.until { @browser.body.present? }
