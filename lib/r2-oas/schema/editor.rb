@@ -93,7 +93,6 @@ module R2OAS
         
         options = { type: :edited }
         @after_schema_data = File.read(doc_save_file_path)
-        save_edited_schema
         conv_after_schema_data = YAML.load(@after_schema_data)
         analyzer = Analyzer.new(@before_schema_data, conv_after_schema_data, options)
         analyzer.analyze_docs
@@ -105,6 +104,7 @@ module R2OAS
       # Because it is necessary to support from ruby2.3 series where begin cannot be omitted
       # rubocop:disable Style/RedundantBegin
       def ensure_save_tmp_schema_file
+        @save_mutex ||= Mutex.new
         @save_thread = Thread.new do
           while @running
             # ブラウザが閉じられたかどうかをチェック
@@ -114,8 +114,7 @@ module R2OAS
               break
             end
             
-            m = Mutex.new
-            m.synchronize do
+            @save_mutex.synchronize do
               begin
                 data = get_local_storage(storage_key)
                 if data
@@ -159,10 +158,6 @@ module R2OAS
       
       # rubocop:enable Style/RedundantBegin
 
-      def save_edited_schema
-        File.write(doc_save_file_path, @after_schema_data)
-      end
-
       def open_browser_and_set_schema
         @browser ||= Watir::Browser.new(:chrome, options: chrome_options)
         @browser.goto(url)
@@ -196,7 +191,6 @@ module R2OAS
       def set_local_storage(key, value)
         @browser.execute_script('window.localStorage.setItem(arguments[0], arguments[1]);', key, value)
       end
-
 
       def wait_for_loaded
         Watir::Wait.until { @browser.body.present? }
