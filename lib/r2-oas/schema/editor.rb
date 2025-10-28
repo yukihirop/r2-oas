@@ -68,7 +68,15 @@ module R2OAS
         logger.info("Starting cleanup process...")
         @running = false
         @save_thread&.join(1) # スレッドの終了を待つ（最大1秒）
-        # ブラウザセッションの状態に依らず必ず後処理を実行する
+        logger.info("Stopping container...")
+        container.stop
+        logger.info("Removing container...")
+        container.remove
+        logger.info "container id: #{container.id} removed"
+        @browser&.close
+        logger.info("Browser closed")
+        
+        # コンテナ削除後にスキーマ処理を実行
         begin
           logger.info("Processing edited schema...")
           process_after_close_browser
@@ -76,12 +84,6 @@ module R2OAS
         rescue StandardError => e
           logger.warn("post close process failed: #{e.class}: #{e.message}")
         end
-        logger.info("Stopping container...")
-        container.stop
-        logger.info("Removing container...")
-        container.remove
-        logger.info "container id: #{container.id} removed"
-        @browser&.close
         logger.info("Cleanup completed")
       end
 
