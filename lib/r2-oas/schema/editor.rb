@@ -99,10 +99,16 @@ module R2OAS
       def ensure_save_tmp_schema_file
         @save_thread = Thread.new do
           while @running
+            # ブラウザが閉じられたかどうかをチェック
+            if @browser.nil? || !browser_exists?
+              logger.info("Browser closed, triggering cleanup...")
+              @running = false
+              break
+            end
+            
             m = Mutex.new
             m.synchronize do
               begin
-                # 1秒ごとにローカルストレージから取得してcontainer内のファイルに保存
                 data = get_local_storage(storage_key)
                 log_local_storage_state
                 if data
@@ -139,6 +145,13 @@ module R2OAS
             sleep interval_to_save_edited_tmp_schema
           end
         end
+      end
+      
+      def browser_exists?
+        return false unless @browser
+        @browser.exists?
+      rescue StandardError
+        false
       end
       
       # rubocop:enable Style/RedundantBegin
