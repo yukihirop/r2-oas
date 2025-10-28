@@ -123,8 +123,7 @@ module R2OAS
       end
 
       def open_browser_and_set_schema
-        capabilities = { 'chromeOptions' => { 'w3c' => false } }
-        @browser ||= Watir::Browser.new(:chrome, capabilities)
+        @browser ||= Watir::Browser.new(:chrome)
         @browser.goto(url)
         if wait_for_loaded
           # MEMO:
