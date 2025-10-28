@@ -160,7 +160,8 @@ Full docs are available at https://yukihirop.github.io/r2-oas
 
 ## ❤️ Support Rails Version
 
-- Rails (>= 4.2.5.1)
+- Rails 7.2.2.2
+- Rails (>= 8.x)
 
 ## ❤️ Support Ruby Version
 
