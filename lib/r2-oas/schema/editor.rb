@@ -1,7 +1,6 @@
 # frozen_string_literal:true
 
 require 'docker'
-require 'eventmachine'
 require 'watir'
 require 'tempfile'
 require 'fileutils'
@@ -28,16 +27,23 @@ module R2OAS
         @editor = swagger.editor
         @before_schema_data = before_schema_data
         @schema_doc_from_local = YAML.load_file(doc_save_file_path).to_yaml
+        @running = false
       end
 
       def start
-        EM.run do
-          container.start
-          open_browser_and_set_schema
-          ensure_save_tmp_schema_file
-          signal_trap('INT')
-          signal_trap('TERM')
-        end
+        @running = true
+        container.start
+        open_browser_and_set_schema
+        ensure_save_tmp_schema_file
+        
+        puts "\nPress Ctrl+C to stop..."
+        setup_signal_traps
+        
+        # メインスレッドを待機状態に保つ
+        sleep 0.1 while @running
+
+        # ループを抜けたら安全なコンテキストでクリーンアップ
+        cleanup
       end
 
       private
@@ -45,21 +51,24 @@ module R2OAS
       attr_accessor :unit_paths_file_path
       def_delegators :@editor, :storage_key, :image, :port, :url, :exposed_port
 
-      def signal_trap(command)
-        Signal.trap(command) do
-          if @browser.exists?
-            process_after_close_browser
-            container.stop
-            container.remove
-            logger.info "container id: #{container.id} removed"
-          else
-            process_after_close_browser
-            container.remove
-            logger.info "container id: #{container.id} removed"
+      def setup_signal_traps
+        %w[INT TERM].each do |signal|
+          Signal.trap(signal) do
+            # シグナルトラップ内では重い処理（ミューテックス等）を行わない
+            # メインループを終了させ、終了後にクリーンアップを行う
+            @running = false
           end
-
-          EM.stop
         end
+      end
+
+      def cleanup
+        @running = false
+        @save_thread&.join(1) # スレッドの終了を待つ（最大1秒）
+        process_after_close_browser if @browser&.exists?
+        container.stop
+        container.remove
+        logger.info "container id: #{container.id} removed"
+        @browser&.close
       end
 
       def process_after_close_browser
@@ -77,19 +86,23 @@ module R2OAS
       # Because it is necessary to support from ruby2.3 series where begin cannot be omitted
       # rubocop:disable Style/RedundantBegin
       def ensure_save_tmp_schema_file
-        EM.add_periodic_timer(interval_to_save_edited_tmp_schema) do
-          m = Mutex.new
-          return nil unless @browser.exists?
-
-          m.synchronize do
-            begin
-              save_after_fetch_local_strage
-            rescue Selenium::WebDriver::Error::UnexpectedAlertOpenError
-              alert = @browser.driver.switch_to.alert
-              if alert.text.eql?(ALERT_TEXT)
-                alert.accept && save_after_fetch_local_strage
+        @save_thread = Thread.new do
+          while @running
+            next unless @browser&.exists?
+            
+            m = Mutex.new
+            m.synchronize do
+              begin
+                save_after_fetch_local_strage
+              rescue Selenium::WebDriver::Error::UnexpectedAlertOpenError
+                alert = @browser.driver.switch_to.alert
+                if alert.text.eql?(ALERT_TEXT)
+                  alert.accept && save_after_fetch_local_strage
+                end
               end
             end
+            
+            sleep interval_to_save_edited_tmp_schema
           end
         end
       end
