@@ -1,6 +1,6 @@
 # frozen_string_literal:true
 
-require 'em/pure_ruby'
+require 'eventmachine'
 
 # Scope Rails
 module R2OAS

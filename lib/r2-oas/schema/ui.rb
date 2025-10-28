@@ -1,7 +1,7 @@
 # frozen_string_literal:true
 
 require 'docker'
-require 'em/pure_ruby'
+require 'eventmachine'
 require 'watir'
 require 'forwardable'
 
