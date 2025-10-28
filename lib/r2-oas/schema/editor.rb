@@ -64,7 +64,12 @@ module R2OAS
       def cleanup
         @running = false
         @save_thread&.join(1) # スレッドの終了を待つ（最大1秒）
-        process_after_close_browser if @browser&.exists?
+        # ブラウザセッションの状態に依らず必ず後処理を実行する
+        begin
+          process_after_close_browser
+        rescue StandardError => e
+          logger.warn("post close process failed: #{e.class}: #{e.message}")
+        end
         container.stop
         container.remove
         logger.info "container id: #{container.id} removed"
@@ -72,13 +77,21 @@ module R2OAS
       end
 
       def process_after_close_browser
-        fetch_edited_schema_from_browser
+        # 可能ならブラウザから取得、ダメなら最後に保存されたファイルを使う
+        begin
+          fetch_edited_schema_from_browser
+        rescue StandardError
+          # ignore
+        end
+        @after_schema_data ||= (File.read(doc_save_file_path) rescue nil)
+        return unless @after_schema_data
 
         options = { type: :edited }
         save_edited_schema
         conv_after_schema_data = YAML.load(@after_schema_data)
         analyzer = Analyzer.new(@before_schema_data, conv_after_schema_data, options)
         analyzer.analyze_docs
+        $stdout.flush
       end
 
       # MEMO
@@ -88,8 +101,7 @@ module R2OAS
       def ensure_save_tmp_schema_file
         @save_thread = Thread.new do
           while @running
-            next unless @browser&.exists?
-            
+            # ブラウザが閉じられていても継続する
             m = Mutex.new
             m.synchronize do
               begin
@@ -99,6 +111,8 @@ module R2OAS
                 if alert.text.eql?(ALERT_TEXT)
                   alert.accept && save_after_fetch_local_strage
                 end
+              rescue StandardError
+                # ブラウザが無い/取得失敗時はスキップ
               end
             end
             
@@ -115,7 +129,7 @@ module R2OAS
       end
 
       def fetch_edited_schema_from_browser
-        @after_schema_data = get_local_storage(storage_key) if @browser.exists?
+        @after_schema_data = get_local_storage(storage_key)
       end
 
       def save_edited_schema
@@ -139,6 +153,7 @@ module R2OAS
       end
 
       def get_local_storage(key)
+        return nil unless @browser
         @browser.execute_script('return window.localStorage.getItem(arguments[0]);', key)
       end
 
