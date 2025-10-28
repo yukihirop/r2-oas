@@ -109,13 +109,13 @@ module R2OAS
       # rubocop:enable Style/RedundantBegin
 
       def save_after_fetch_local_strage
-        @after_schema_data = @browser.driver.local_storage[storage_key] || @after_schema_data
+        @after_schema_data = get_local_storage(storage_key) || @after_schema_data
         save_edited_schema
         puts "\nwait for signal trap ..."
       end
 
       def fetch_edited_schema_from_browser
-        @after_schema_data = @browser.driver.local_storage[storage_key] if @browser.exists?
+        @after_schema_data = get_local_storage(storage_key) if @browser.exists?
       end
 
       def save_edited_schema
@@ -130,12 +130,20 @@ module R2OAS
           # Because it may not be updated
           # Make sure that the launched local storage is updated reliably
           Watir::Wait.until do
-            old_storage = @browser.driver.local_storage[storage_key].dup
-            @browser.driver.local_storage[storage_key] = new_storage = @schema_doc_from_local
+            old_storage = (get_local_storage(storage_key) || '').dup
+            set_local_storage(storage_key, new_storage = @schema_doc_from_local)
             old_storage != new_storage
           end
           @browser.refresh
         end
+      end
+
+      def get_local_storage(key)
+        @browser.execute_script('return window.localStorage.getItem(arguments[0]);', key)
+      end
+
+      def set_local_storage(key, value)
+        @browser.execute_script('window.localStorage.setItem(arguments[0], arguments[1]);', key, value)
       end
 
       def wait_for_loaded
