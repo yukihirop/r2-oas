@@ -8,6 +8,7 @@ module R2OAS
     class Client < Schema::Base
       # Get master branch tarball from GitHub API
       SWAGGER_UI_TARBALL_URL = 'https://api.github.com/repos/swagger-api/swagger-ui/tarball/master'
+      FALLBACK_DIST_PATH = File.expand_path('swagger-ui/dist', __dir__).freeze
 
       def initialize(options = {})
         super
@@ -24,11 +25,19 @@ module R2OAS
 
         curl_ok = system("curl -fsSL -o #{@tar_path} #{SWAGGER_UI_TARBALL_URL}")
         logger.info("[deploy] curl result: ok=#{curl_ok} url=#{SWAGGER_UI_TARBALL_URL} -> #{@tar_path}")
-        return false unless curl_ok
+        unless curl_ok
+          logger.warn("[deploy] failed to download swagger-ui. using fallback dist: #{FALLBACK_DIST_PATH}")
+          @dist_path = FALLBACK_DIST_PATH if Dir.exist?(FALLBACK_DIST_PATH)
+          return @dist_path && Dir.exist?(@dist_path)
+        end
 
         tar_ok = system("tar -xzf #{@tar_path} -C #{@base_dir}")
         logger.info("[deploy] tar extract result: ok=#{tar_ok} tar=#{@tar_path} dest=#{@base_dir}")
-        return false unless tar_ok
+        unless tar_ok
+          logger.warn("[deploy] failed to extract swagger-ui tarball. using fallback dist: #{FALLBACK_DIST_PATH}")
+          @dist_path = FALLBACK_DIST_PATH if Dir.exist?(FALLBACK_DIST_PATH)
+          return @dist_path && Dir.exist?(@dist_path)
+        end
 
         # Find the actual dist directory after extraction
         # GitHub tarball extracts to swagger-api-swagger-ui-<sha>/dist/
@@ -45,7 +54,11 @@ module R2OAS
         end
         @dist_path = File.expand_path(dist_path) if Dir.exist?(dist_path)
 
-        raise 'Failed to find dist directory in extracted swagger-ui archive' unless @dist_path && Dir.exist?(@dist_path)
+        unless @dist_path && Dir.exist?(@dist_path)
+          logger.warn("[deploy] failed to find dist directory in extracted archive. using fallback dist: #{FALLBACK_DIST_PATH}")
+          @dist_path = FALLBACK_DIST_PATH if Dir.exist?(FALLBACK_DIST_PATH)
+          return @dist_path && Dir.exist?(@dist_path)
+        end
 
         logger.info("[deploy] dist_path detected: #{@dist_path}")
 
@@ -65,7 +78,15 @@ module R2OAS
       private
 
       def copy_swagger_ui_dist
-        raise 'dist directory not found. Please call download_swagger_ui_dist first.' unless @dist_path
+        # Use fallback dist if @dist_path is not set
+        unless @dist_path
+          if Dir.exist?(FALLBACK_DIST_PATH)
+            logger.warn("[deploy] @dist_path not set. using fallback dist: #{FALLBACK_DIST_PATH}")
+            @dist_path = FALLBACK_DIST_PATH
+          else
+            raise 'dist directory not found and fallback dist does not exist. Please call download_swagger_ui_dist first.'
+          end
+        end
 
         docs_path = File.expand_path(Rails.root.join(deploy_dir_path), __FILE__)
         dist_dest_path = File.join(docs_path, 'dist')
