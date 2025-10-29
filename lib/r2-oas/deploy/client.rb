@@ -6,16 +6,20 @@ require 'fileutils'
 module R2OAS
   module Deploy
     class Client < Schema::Base
-      SWAGGER_UI_DIST_URL = 'https://github.com/swagger-api/swagger-ui/trunk/dist'
+      SWAGGER_UI_ZIP_URL = 'https://github.com/swagger-api/swagger-ui/releases/latest/download/swagger-ui.zip'
 
       def initialize(options = {})
         super
-        @download_dir = "#{SecureRandom.uuid[0..7]}/dist"
-        @dist_path = File.expand_path(Rails.root.join(@download_dir), __FILE__)
+        @download_dir = SecureRandom.uuid[0..7]
+        @dist_path = File.expand_path(Rails.root.join(@download_dir, 'dist'), __FILE__)
+        @zip_path = File.expand_path(Rails.root.join(@download_dir, 'swagger-ui.zip'), __FILE__)
       end
 
       def download_swagger_ui_dist
-        system("svn export #{SWAGGER_UI_DIST_URL} #{@dist_path}")
+        base_dir = File.expand_path(Rails.root.join(@download_dir), __FILE__)
+        FileUtils.mkdir_p(base_dir)
+        system("curl -fsSL -o #{@zip_path} #{SWAGGER_UI_ZIP_URL}") &&
+          system("unzip -o -q #{@zip_path} -d #{base_dir}")
       end
 
       def deploy
@@ -31,7 +35,6 @@ module R2OAS
       def copy_swagger_ui_dist
         docs_path = File.expand_path(Rails.root.join(deploy_dir_path), __FILE__)
         FileUtils.mkdir_p(docs_path)
-        FileUtils.mkdir_p(@dist_path)
         FileUtils.cp_r(@dist_path, docs_path)
       end
 
@@ -51,7 +54,7 @@ module R2OAS
       end
 
       def remove_download_dist
-        FileUtils.rm_rf(File.expand_path('..', @dist_path))
+        FileUtils.rm_rf(File.expand_path(Rails.root.join(@download_dir), __FILE__))
       end
 
       # [ref]
