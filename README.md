@@ -239,6 +239,15 @@ bundle exec rake steep:ignore:preview
 #               →         YAML.load_file(doc_save_file_path) || @after_schema_data # steep:ignore Ruby::UnknownConstant
 ```
 
+```bash
+bundle exec rake steep:ignore:auto
+# =>
+# Analyzing steep check errors...
+# ✅ Modified: lib/r2-oas/app_configuration/deprecation.rb (2 lines)
+# ✅ Modified: lib/r2-oas/plugin/base.rb (3 lines)
+# ✅ Modified: lib/r2-oas/schema/squeezer.rb (2 lines)
+```
+
 ## Bundle and Rspec with multiple ruby ​​versions
 
 #### Bundle
