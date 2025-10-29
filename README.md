@@ -211,16 +211,7 @@ bundle exec steep check
 #### steep rake task
 
 ```bash
-bundle exec rake steep:ignore | pbcopy
-# =>
-#
-# configure_code_diagnostics do |hash|
-#   hash['Ruby::NoMethod'] = :information if hash.location.buffer.name.end_with?('lib/r2-oas/app_configuration/swagger.rb')
-# end
-```
-
-```bash
-bundle exec rake steep:dig:ignore | pbcopy
+bundle exec rake steep:ignore:dig | pbcopy
 # =>
 #
 # ignore 'RBS::DuplicatedMethodDefinition'
@@ -228,12 +219,24 @@ bundle exec rake steep:dig:ignore | pbcopy
 ```
 
 ```bash
-bundle exec rake steep:file:ignore | pbcopy
+bundle exec rake steep:ignore:file | pbcopy
 # =>
 #
 # ignore 'lib/r2-oas.rb'
 # ignore 'lib/r2-oas/app_configuration.rb'
 # ignore 'lib/r2-oas/app_configuration/deprecation.rb'
+```
+
+```bash
+bundle exec rake steep:ignore:preview
+# =>
+# 📄 lib/r2-oas/schema/monitor.rb
+#   Line 50: if current_time - last_check_time >= interval_to_save_edited_tmp_schema
+#               →           if current_time - last_check_time >= interval_to_save_edited_tmp_schema # steep:ignore Ruby::NoMethod
+#   Line 62: analyzer.analyze_docs
+#               →         analyzer.analyze_docs # steep:ignore Ruby::NoMethod
+#   Line 66: YAML.load_file(doc_save_file_path) || @after_schema_data
+#               →         YAML.load_file(doc_save_file_path) || @after_schema_data # steep:ignore Ruby::UnknownConstant
 ```
 
 ## Bundle and Rspec with multiple ruby ​​versions

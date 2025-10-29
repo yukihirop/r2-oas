@@ -27,45 +27,9 @@ task :rbs_prototype do
 end
 
 namespace :steep do
-  desc 'Generate ignore directives by file and Diagnostic ID'
-  task :ignore do
-    require 'open3'
-
-    stdout, stderr, status = Open3.capture3('bundle exec steep check')
-    output = stdout + stderr
-
-    # ファイルとDiagnostic IDのペアを抽出
-    current_file = nil
-    pairs = []
-
-    output.each_line do |line|
-      if line =~ /^([^\s#].*\.rb):/
-        current_file = Regexp.last_match(1).strip
-      elsif line =~ /Diagnostic ID: (.+)/
-        diagnostic_id = Regexp.last_match(1).strip
-        pairs << [current_file, diagnostic_id] if current_file
-      end
-    end
-
-    pairs.uniq!
-
-    if pairs.empty?
-      puts 'No errors found! 🎉'
-    else
-      puts '# Add to Steepfile:'
-      puts 'configure_code_diagnostics do |hash|'
-      pairs.group_by(&:last).each do |diag_id, file_pairs|
-        file_pairs.each do |file, _|
-          puts "  hash['#{diag_id}'] = :information if hash.location.buffer.name.end_with?('#{file}')"
-        end
-      end
-      puts 'end'
-    end
-  end
-
-  namespace :dig do
+  namespace :ignore do
     desc 'Generate ignore directives by Diagnostic ID'
-    task :ignore do
+    task :dig do
       require 'open3'
 
       stdout, stderr, status = Open3.capture3('bundle exec steep check')
@@ -82,11 +46,9 @@ namespace :steep do
         end
       end
     end
-  end
 
-  namespace :file do
     desc 'Generate ignore directives by file path'
-    task :ignore do
+    task :file do
       require 'open3'
 
       stdout, stderr, status = Open3.capture3('bundle exec steep check')
@@ -102,6 +64,169 @@ namespace :steep do
           puts "ignore '#{file}'"
         end
       end
+    end
+
+    desc 'Automatically add # steep:ignore with diagnostic ID'
+    task :auto do
+      require 'open3'
+
+      puts 'Analyzing steep check errors...'
+      stdout, stderr, status = Open3.capture3('bundle exec steep check')
+      output = stdout + stderr
+
+      # ファイル、行番号、Diagnostic IDを抽出
+      errors = []
+      current_file = nil
+      current_line = nil
+
+      output.each_line do |line|
+        if line =~ /^([^\s#].*\.rb):(\d+):(\d+):/
+          current_file = Regexp.last_match(1).strip
+          current_line = Regexp.last_match(2).to_i
+        elsif line =~ /Diagnostic ID: (.+)/ && current_file && current_line
+          diagnostic_id = Regexp.last_match(1).strip
+          errors << {
+            file: current_file,
+            line: current_line,
+            diagnostic_id: diagnostic_id
+          }
+        end
+      end
+
+      if errors.empty?
+        puts 'No errors found! 🎉'
+        exit 0
+      end
+
+      # ファイルごとにグループ化
+      errors_by_file = errors.group_by { |e| e[:file] }
+
+      modified_files = []
+
+      errors_by_file.each do |file, file_errors|
+        unless File.exist?(file)
+          puts "⚠️  Skipping #{file} (file not found)"
+          next
+        end
+
+        lines = File.readlines(file)
+
+        # 行番号ごとにグループ化（同じ行に複数のエラーがある場合）
+        errors_by_line = file_errors.group_by { |e| e[:line] }
+
+        # 逆順で処理（行番号がずれないように）
+        errors_by_line.keys.sort.reverse.each do |line_num|
+          next if line_num > lines.size || line_num < 1
+
+          target_line = lines[line_num - 1]
+          diagnostic_ids = errors_by_line[line_num].map { |e| e[:diagnostic_id] }.uniq
+
+          # 既に steep:ignore がある場合はスキップ
+          next if target_line =~ /steep:ignore/
+
+          # コメントを追加
+          next unless target_line =~ /^(\s*)(.+?)\s*$/
+
+          indent = Regexp.last_match(1)
+          code = Regexp.last_match(2)
+
+          lines[line_num - 1] = if diagnostic_ids.size == 1
+                                  # 単一のエラー
+                                  "#{indent}#{code} # steep:ignore #{diagnostic_ids.first}\n"
+                                else
+                                  # 複数のエラー
+                                  "#{indent}#{code} # steep:ignore (#{diagnostic_ids.join(', ')})\n"
+                                end
+        end
+
+        # ファイルに書き戻す
+        File.write(file, lines.join)
+        modified_files << file
+        puts "✅ Modified: #{file} (#{errors_by_line.keys.size} lines)"
+      end
+
+      puts "\n" + ('=' * 60)
+      puts 'Summary:'
+      puts "  Modified files: #{modified_files.size}"
+      puts "  Total errors ignored: #{errors.size}"
+      puts '=' * 60
+    end
+
+    desc 'Preview steep:ignore comments with diagnostic IDs (dry run)'
+    task :preview do
+      require 'open3'
+
+      puts 'Analyzing steep check errors...'
+      stdout, stderr, status = Open3.capture3('bundle exec steep check')
+      output = stdout + stderr
+
+      # ファイル、行番号、Diagnostic IDを抽出
+      errors = []
+      current_file = nil
+      current_line = nil
+
+      output.each_line do |line|
+        if line =~ /^([^\s#].*\.rb):(\d+):(\d+):/
+          current_file = Regexp.last_match(1).strip
+          current_line = Regexp.last_match(2).to_i
+        elsif line =~ /Diagnostic ID: (.+)/ && current_file && current_line
+          diagnostic_id = Regexp.last_match(1).strip
+          errors << {
+            file: current_file,
+            line: current_line,
+            diagnostic_id: diagnostic_id
+          }
+        end
+      end
+
+      if errors.empty?
+        puts 'No errors found! 🎉'
+        exit 0
+      end
+
+      # ファイルごとにグループ化
+      errors_by_file = errors.group_by { |e| e[:file] }
+
+      errors_by_file.each do |file, file_errors|
+        unless File.exist?(file)
+          puts "⚠️  Skipping #{file} (file not found)"
+          next
+        end
+
+        puts "\n📄 #{file}"
+        lines = File.readlines(file)
+
+        # 行番号ごとにグループ化
+        errors_by_line = file_errors.group_by { |e| e[:line] }
+
+        errors_by_line.keys.sort.each do |line_num|
+          next if line_num > lines.size || line_num < 1
+
+          target_line = lines[line_num - 1]
+          diagnostic_ids = errors_by_line[line_num].map { |e| e[:diagnostic_id] }.uniq
+
+          # 既に steep:ignore がある場合
+          if target_line =~ /steep:ignore/
+            puts "  Line #{line_num}: [ALREADY IGNORED] #{target_line.strip}"
+          else
+            puts "  Line #{line_num}: #{target_line.strip}"
+            if target_line =~ /^(\s*)(.+?)\s*$/
+              indent = Regexp.last_match(1)
+              code = Regexp.last_match(2)
+
+              if diagnostic_ids.size == 1
+                puts "              → #{indent}#{code} # steep:ignore #{diagnostic_ids.first}"
+              else
+                puts "              → #{indent}#{code} # steep:ignore (#{diagnostic_ids.join(', ')})"
+              end
+            end
+          end
+        end
+      end
+
+      puts "\n" + ('=' * 60)
+      puts "Run 'bundle exec rake steep:auto_ignore' to apply changes"
+      puts '=' * 60
     end
   end
 end
