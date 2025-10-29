@@ -1,0 +1,4 @@
+module Rails
+  class Railtie
+  end
+end
