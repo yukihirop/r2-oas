@@ -5,20 +5,20 @@
 [![Coverage Status](https://coveralls.io/repos/github/yukihirop/r2-oas/badge.svg)](https://coveralls.io/github/yukihirop/r2-oas)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8c3846f350bb412fd63/maintainability)](https://codeclimate.com/github/yukihirop/r2-oas/maintainability)
 
-Generate api docment(OpenAPI) side only from `Rails` routing.
+Generate api document (OpenAPI) side only from `Rails` routing.
 
-Provides a rake command to help `generate` , `view` , and `edit` OpenAPI documents.
+Provides a rake command to help `generate`, `view`, and `edit` OpenAPI documents.
 
 ```bash
-bunlde exec rake routes:oas:init    # initialize
-bundle exec rake routes:oas:docs    # generate
-bundle exec rake routes:oas:ui      # view
-bundle exec rake routes:oas:editor  # edit
-bundle exec rake routes:oas:monitor # monitor
-bundle exec rake routes:oas:build   # build
-bundle exec rake routes:oas:clean   # clean
-bundle exec rake routes:oas:analyze # analyze
-bundle exec rake routes:oas:deploy  # deploy
+bundle exec rake routes:oas:init    # r2-oas initialize
+bundle exec rake routes:oas:docs    # generate oas_docs
+bundle exec rake routes:oas:ui      # view at swagger ui
+bundle exec rake routes:oas:editor  # edit at swagger editor
+bundle exec rake routes:oas:monitor # monitor oas_docs and analyze
+bundle exec rake routes:oas:build   # build oas_docs from src
+bundle exec rake routes:oas:clean   # clean unused components
+bundle exec rake routes:oas:analyze # analyze oas_docs and generae src
+bundle exec rake routes:oas:deploy  # deploy oas_docs to deploy_docs
 ```
 
 ## 💎 Installation
@@ -52,7 +52,7 @@ If you do not have it download as below.
 ```
 $ docker pull swaggerapi/swagger-editor:latest
 $ docker pull swaggerapi/swagger-ui:latest
-$ brew cask install chromedriver
+$ brew install chromedriver
 ```
 
 ## 🚀 Tutorial
@@ -64,8 +64,17 @@ R2OAS.load_tasks
 ```
 
 ```bash
-bundle exec routes:oas:docs
-bundle exec routes:oas:editor
+$ bundle exec rake routes:oas:init
+      create	oas_docs
+      create	oas_docs/.paths
+      create	oas_docs/plugins/helpers
+      create	oas_docs/tasks/helpers
+      create	oas_docs/plugins/.gitkeep
+      create	oas_docs/plugins/helpers/.gitkeep
+      create	oas_docs/tasks/.gitkeep
+      create	oas_docs/tasks/helpers/.gitkeep
+$ bundle exec rake routes:oas:docs
+$ bundle exec rake routes:oas:editor
 ```
 
 #### Generate docs
@@ -77,10 +86,12 @@ bundle exec routes:oas:editor
 
 ![oas_editor](https://user-images.githubusercontent.com/11146767/80856240-15a59900-8c83-11ea-9dbd-4382528944f2.gif)
 
-## 📖 Usage
+## Usage
 
 You can execute the following command in the root directory of rails.  
 The following are examples of typical command usage.
+
+Full docs are available at https://yukihirop.github.io/r2-oas
 
 ### Initialize
 
@@ -88,6 +99,14 @@ Initialize r2-oas.
 
 ```bash
 $ bundle exec rake routes:oas:init
+      create	oas_docs
+      create	oas_docs/.paths
+      create	oas_docs/plugins/helpers
+      create	oas_docs/tasks/helpers
+      create	oas_docs/plugins/.gitkeep
+      create	oas_docs/plugins/helpers/.gitkeep
+      create	oas_docs/tasks/.gitkeep
+      create	oas_docs/tasks/helpers/.gitkeep
 ```
 
 ### Generate
@@ -101,7 +120,7 @@ $ PATHS_FILE="oas_docs/schema/paths/api/v1/task.yml" bundle exec rake routes:oas
 
 ### Editor
 
-Start swagger editor.
+Start Swagger editor.
 
 ```bash
 $ bundle exec rake routes:oas:editor                                                     # Start swagger editor
@@ -135,33 +154,106 @@ Reads OpenAPI format document and divides it into several parts to generate a so
 $ OAS_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
 ```
 
+## 📚 Documents
+
+Full docs are available at https://yukihirop.github.io/r2-oas
+
 ## ❤️ Support Rails Version
 
-- Rails (>= 4.2.5.1)
+- Rails 7.2.2.2
+- Rails (>= 8.x)
 
 ## ❤️ Support Ruby Version
 
-- Ruby (>= 2.3.3p222 (2016-11-21 revision 56859) [x86_64-darwin18])
+- Ruby 3.2.6
+- Ruby 3.3.6
+- Ruby (>= 3.4.x)
 
 ## ❤️ Support Rouging
 
 - Rails Engine Routing
 - Rails Normal Routing
 
+## ❤️ Support OpenAPI Schema
+
+Full docs are available at https://yukihirop.github.io/r2-oas/#/schema/3.0.0
+
 ## ❗️ Convention over Configuration (CoC)
 
-- `tag name` represents `controller name` and determine `paths file name`.
-  - For example, If `controller name` is `Api::V1::UsersController`, `tag_name` is `api/v1/user`. and `paths file name` is `api/v1/user.yml`
+- `tag name` represents `controller name` and determines `paths file name`.
+  - For example, If `controller name` is `Api::V1::UsersController`, `tag_name` is `api/v1/user`, then `paths file name` is `api/v1/user.yml`
 
 - `_` of `components/{schemas,requestBodies, ...} name` convert `/` when save file.
   - For example, If `components/schemas name` is `Api_V1_User`, `components/schemas file name` is `api/v1/user.yml`.
   - `_` is supposed to be used to express `namespace`.
   - format is `Namespace1_Namespace2_Model`.
 
-- `.` of `components/{schemas,requestBodies, ...} name` convert `/` when save file.
+- `.` of `components/{schemas,requestBodies, ...} name` convert `/` when saving the file.
   - For example, If `components/schemas name` is `api.v1.User`, `components/schemas file name` is `api/v1/user.yml`.
   - `.` is supposed to be used to express `namespace`.
   - format is `namespace1.namespace2.Model`.
+
+## ⚙ Configure
+
+All settings are `optional`
+
+Full docs are available at https://yukihirop.github.io/r2-oas/#/setting/configure
+
+## Bundle and Rspec with multiple ruby ​​versions
+
+#### Bundle
+
+```bash
+/bin/bash devscript/all_support_ruby.sh bundle
+.
+.
+.
+===== Bundle install for All Support Ruby Result =====
+ruby-3.2.6: 0
+ruby-3.3.6: 0
+ruby-3.4.7: 0
+======================================================
+```
+
+If specify ruby version `3.2.6` and `3.3.6`
+
+```bash
+/bin/bash devscript/all_support_ruby.sh bundle 3.2.6 3.3.6
+.
+.
+.
+===== Bundle install for All Support Ruby Result =====
+ruby-3.2.6: 0
+ruby-3.3.6: 0
+======================================================
+```
+
+#### Rspec
+
+```bash
+/bin/bash devscript/all_support_ruby.sh rspec
+.
+.
+.
+===== Rspec for All Support Ruby Result =====
+ruby-3.2.6: 0
+ruby-3.3.6: 0
+ruby-3.4.7: 0
+=============================================
+```
+
+If specify ruby version `3.2.6` and `3.3.6`
+
+```bash
+/bin/bash devscript/all_support_ruby.sh rspec 3.2.6 3.3.6
+.
+.
+.
+===== Rspec for All Support Ruby Result =====
+ruby-3.2.6: 0
+ruby-3.3.6: 0
+=============================================
+```
 
 ## 🔩 CORS
 
@@ -177,7 +269,7 @@ use Rack::Cors do
 end
 ```
 
-Alternatively you can set CORS headers in a `before` block.
+Alternatively, you can set CORS headers in a `before` block.
 
 ```ruby
 before do

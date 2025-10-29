@@ -10,15 +10,15 @@ Generate api document (OpenAPI) side only from `Rails` routing.
 Provides a rake command to help `generate`, `view`, and `edit` OpenAPI documents.
 
 ```bash
-bundle exec rake routes:oas:init    # initialize
-bundle exec rake routes:oas:docs    # generate
-bundle exec rake routes:oas:ui      # view
-bundle exec rake routes:oas:editor  # edit
-bundle exec rake routes:oas:monitor # monitor
-bundle exec rake routes:oas:build   # build
-bundle exec rake routes:oas:clean   # clean
-bundle exec rake routes:oas:analyze # analyze
-bundle exec rake routes:oas:deploy  # deploy
+bundle exec rake routes:oas:init    # r2-oas initialize
+bundle exec rake routes:oas:docs    # generate oas_docs
+bundle exec rake routes:oas:ui      # view at swagger ui
+bundle exec rake routes:oas:editor  # edit at swagger editor
+bundle exec rake routes:oas:monitor # monitor oas_docs and analyze
+bundle exec rake routes:oas:build   # build oas_docs from src
+bundle exec rake routes:oas:clean   # clean unused components
+bundle exec rake routes:oas:analyze # analyze oas_docs and generae src
+bundle exec rake routes:oas:deploy  # deploy oas_docs to deploy_docs
 ```
 
 ## 💎 Installation
@@ -52,7 +52,7 @@ If you do not have it download as below.
 ```
 $ docker pull swaggerapi/swagger-editor:latest
 $ docker pull swaggerapi/swagger-ui:latest
-$ brew cask install chromedriver
+$ brew install chromedriver
 ```
 
 ## 🚀 Tutorial
@@ -160,7 +160,8 @@ Full docs are available at https://yukihirop.github.io/r2-oas
 
 ## ❤️ Support Rails Version
 
-- Rails (>= 4.2.5.1)
+- Rails 7.2.2.2
+- Rails (>= 8.x)
 
 ## ❤️ Support Ruby Version
 

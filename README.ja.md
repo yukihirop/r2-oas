@@ -8,15 +8,15 @@
 Railsのルーティング情報からOpenAPI形式のドキュメントを生成し、閲覧・編集・管理するためのrakeタスクの提供をします。
 
 ```bash
-bundle exec rake routes:oas:init    # 初期化
-bundle exec rake routes:oas:docs    # ドキュメント生成
-bundle exec rake routes:oas:ui      # ドキュメント閲覧
-bundle exec rake routes:oas:editor  # ドキュメント編集
-bundle exec rake routes:oas:monitor # ドキュメント監視
-bundle exec rake routes:oas:build   # ドキュメントビルド
-bundle exec rake routes:oas:clean   # ドキュメント清掃
-bundle exec rake routes:oas:analyze # ドキュメント分解・分析
-bundle exec rake routes:oas:deploy  # ドキュメントデプロイ
+bundle exec rake routes:oas:init    # r2-oasを初期化
+bundle exec rake routes:oas:docs    # oas_docsを生成
+bundle exec rake routes:oas:ui      # swagger uiで閲覧
+bundle exec rake routes:oas:editor  # swagger editorで編集
+bundle exec rake routes:oas:monitor # oas_docsを監視・分析
+bundle exec rake routes:oas:build   # srcからoas_docsをビルド
+bundle exec rake routes:oas:clean   # 未使用コンポーネントを削除
+bundle exec rake routes:oas:analyze # oas_docsを分析・srcを生成
+bundle exec rake routes:oas:deploy  # oas_docsをdeploy_docsにデプロイ
 ```
 
 ## 💎 Installation
@@ -42,7 +42,7 @@ end
 ```
 $ docker pull swaggerapi/swagger-editor:latest
 $ docker pull swaggerapi/swagger-ui:latest
-$ brew cask install chromedriver
+$ brew install chromedriver
 ```
 
 ## 🚀 Tutorial
@@ -154,7 +154,8 @@ $ OAS_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
 
 ## ❤️ Support Rails Version
 
-- Rails (>= 4.2.5.1)
+- Rails 7.2.2.2
+- Rails (>= 8.x)
 
 ## ❤️ Support Ruby Version
 
