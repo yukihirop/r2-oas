@@ -27,6 +27,42 @@ task :rbs_prototype do
 end
 
 namespace :steep do
+  desc 'Generate ignore directives by file and Diagnostic ID'
+  task :ignore do
+    require 'open3'
+
+    stdout, stderr, status = Open3.capture3('bundle exec steep check')
+    output = stdout + stderr
+
+    # ファイルとDiagnostic IDのペアを抽出
+    current_file = nil
+    pairs = []
+
+    output.each_line do |line|
+      if line =~ /^([^\s#].*\.rb):/
+        current_file = Regexp.last_match(1).strip
+      elsif line =~ /Diagnostic ID: (.+)/
+        diagnostic_id = Regexp.last_match(1).strip
+        pairs << [current_file, diagnostic_id] if current_file
+      end
+    end
+
+    pairs.uniq!
+
+    if pairs.empty?
+      puts 'No errors found! 🎉'
+    else
+      puts '# Add to Steepfile:'
+      puts 'configure_code_diagnostics do |hash|'
+      pairs.group_by(&:last).each do |diag_id, file_pairs|
+        file_pairs.each do |file, _|
+          puts "  hash['#{diag_id}'] = :information if hash.location.buffer.name.end_with?('#{file}')"
+        end
+      end
+      puts 'end'
+    end
+  end
+
   namespace :dig do
     desc 'Generate ignore directives by Diagnostic ID'
     task :ignore do

@@ -208,6 +208,34 @@ bundle exec steep stats
 bundle exec steep check
 ```
 
+#### steep rake task
+
+```bash
+bundle exec rake steep:ignore | pbcopy
+# =>
+#
+# configure_code_diagnostics do |hash|
+#   hash['Ruby::NoMethod'] = :information if hash.location.buffer.name.end_with?('lib/r2-oas/app_configuration/swagger.rb')
+# end
+```
+
+```bash
+bundle exec rake steep:dig:ignore | pbcopy
+# =>
+#
+# ignore 'RBS::DuplicatedMethodDefinition'
+# ignore 'Ruby::ArgumentTypeMismatch'
+```
+
+```bash
+bundle exec rake steep:file:ignore | pbcopy
+# =>
+#
+# ignore 'lib/r2-oas.rb'
+# ignore 'lib/r2-oas/app_configuration.rb'
+# ignore 'lib/r2-oas/app_configuration/deprecation.rb'
+```
+
 ## Bundle and Rspec with multiple ruby ​​versions
 
 #### Bundle
