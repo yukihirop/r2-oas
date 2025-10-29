@@ -1,5 +1,5 @@
 # rubocop:disable all
-class Hash
+class Hash[unchecked out K, unchecked out V] < Object
   # Returns a new hash with +self+ and +other_hash+ merged recursively.
   #
   #   h1 = { a: true, b: { c: [1, 2, 3] } }

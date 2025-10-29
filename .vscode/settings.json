@@ -1,4 +1,10 @@
 {
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true,
+  "ruby.lint": {
+    "rubocop": false
+  },
+  "rubyLsp.enableExperimentalFeatures": true,
   "rubyLsp.enabledFeatures": {
     "codeActions": true,
     "diagnostics": true,
