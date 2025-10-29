@@ -11,15 +11,33 @@ module R2OAS
       def initialize(options = {})
         super
         @download_dir = SecureRandom.uuid[0..7]
-        @dist_path = File.expand_path(Rails.root.join(@download_dir, 'dist'), __FILE__)
+        @base_dir = File.expand_path(Rails.root.join(@download_dir), __FILE__)
         @zip_path = File.expand_path(Rails.root.join(@download_dir, 'swagger-ui.zip'), __FILE__)
+        @dist_path = nil
       end
 
       def download_swagger_ui_dist
-        base_dir = File.expand_path(Rails.root.join(@download_dir), __FILE__)
-        FileUtils.mkdir_p(base_dir)
-        system("curl -fsSL -o #{@zip_path} #{SWAGGER_UI_ZIP_URL}") &&
-          system("unzip -o -q #{@zip_path} -d #{base_dir}")
+        FileUtils.mkdir_p(@base_dir)
+        return false unless system("curl -fsSL -o #{@zip_path} #{SWAGGER_UI_ZIP_URL}")
+        return false unless system("unzip -o -q #{@zip_path} -d #{@base_dir}")
+
+        # Find the actual dist directory after extraction
+        # swagger-ui.zip extracts to swagger-ui-<version>/dist/
+        extracted_dirs = Dir.glob(File.join(@base_dir, 'swagger-ui-*'))
+        if extracted_dirs.empty?
+          # Fallback: check if dist exists directly
+          dist_path = File.join(@base_dir, 'dist')
+          @dist_path = File.expand_path(dist_path) if Dir.exist?(dist_path)
+        else
+          dist_path = File.join(extracted_dirs.first, 'dist')
+          @dist_path = File.expand_path(dist_path) if Dir.exist?(dist_path)
+        end
+
+        unless @dist_path && Dir.exist?(@dist_path)
+          raise "Failed to find dist directory in extracted swagger-ui archive"
+        end
+
+        true
       end
 
       def deploy
@@ -33,9 +51,13 @@ module R2OAS
       private
 
       def copy_swagger_ui_dist
+        raise "dist directory not found. Please call download_swagger_ui_dist first." unless @dist_path
+
         docs_path = File.expand_path(Rails.root.join(deploy_dir_path), __FILE__)
-        FileUtils.mkdir_p(docs_path)
-        FileUtils.cp_r(@dist_path, docs_path)
+        dist_dest_path = File.join(docs_path, 'dist')
+        FileUtils.mkdir_p(File.dirname(dist_dest_path))
+        FileUtils.rm_rf(dist_dest_path) if Dir.exist?(dist_dest_path)
+        FileUtils.cp_r(@dist_path, dist_dest_path)
       end
 
       def copy_swagger_ui_index
@@ -54,7 +76,7 @@ module R2OAS
       end
 
       def remove_download_dist
-        FileUtils.rm_rf(File.expand_path(Rails.root.join(@download_dir), __FILE__))
+        FileUtils.rm_rf(@base_dir) if @base_dir && Dir.exist?(@base_dir)
       end
 
       # [ref]
