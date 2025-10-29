@@ -66,7 +66,7 @@ namespace :steep do
       end
     end
 
-    desc 'Automatically add # steep:ignore with diagnostic ID'
+    # desc 'Automatically add # steep:ignore with diagnostic ID (before line)'
     task :auto do
       require 'open3'
 
@@ -111,7 +111,7 @@ namespace :steep do
 
         lines = File.readlines(file)
 
-        # 行番号ごとにグループ化（同じ行に複数のエラーがある場合）
+        # 行番号ごとにグループ化
         errors_by_line = file_errors.group_by { |e| e[:line] }
 
         # 逆順で処理（行番号がずれないように）
@@ -121,22 +121,22 @@ namespace :steep do
           target_line = lines[line_num - 1]
           diagnostic_ids = errors_by_line[line_num].map { |e| e[:diagnostic_id] }.uniq
 
-          # 既に steep:ignore がある場合はスキップ
-          next if target_line =~ /steep:ignore/
+          # 既に steep:ignore がある行またはその前の行にある場合はスキップ
+          prev_line = line_num > 1 ? lines[line_num - 2] : ''
+          next if target_line =~ /steep:ignore/ || prev_line =~ /steep:ignore/
 
-          # コメントを追加
-          next unless target_line =~ /^(\s*)(.+?)\s*$/
+          # インデントを取得
+          indent = target_line[/^\s*/]
 
-          indent = Regexp.last_match(1)
-          code = Regexp.last_match(2)
+          # コメント行を作成
+          comment_line = if diagnostic_ids.size == 1
+                           "#{indent}# steep:ignore #{diagnostic_ids.first}\n"
+                         else
+                           "#{indent}# steep:ignore #{diagnostic_ids.join(', ')}\n"
+                         end
 
-          lines[line_num - 1] = if diagnostic_ids.size == 1
-                                  # 単一のエラー
-                                  "#{indent}#{code} # steep:ignore #{diagnostic_ids.first}\n"
-                                else
-                                  # 複数のエラー
-                                  "#{indent}#{code} # steep:ignore (#{diagnostic_ids.join(', ')})\n"
-                                end
+          # コメント行を挿入
+          lines.insert(line_num - 1, comment_line)
         end
 
         # ファイルに書き戻す
@@ -152,7 +152,7 @@ namespace :steep do
       puts '=' * 60
     end
 
-    desc 'Preview steep:ignore comments with diagnostic IDs (dry run)'
+    desc 'Preview steep:ignore comments (dry run)'
     task :preview do
       require 'open3'
 
@@ -206,26 +206,29 @@ namespace :steep do
           diagnostic_ids = errors_by_line[line_num].map { |e| e[:diagnostic_id] }.uniq
 
           # 既に steep:ignore がある場合
-          if target_line =~ /steep:ignore/
-            puts "  Line #{line_num}: [ALREADY IGNORED] #{target_line.strip}"
+          prev_line = line_num > 1 ? lines[line_num - 2] : ''
+          if target_line =~ /steep:ignore/ || prev_line =~ /steep:ignore/
+            puts "  Line #{line_num}: [ALREADY IGNORED]"
+            puts "    #{prev_line.strip}" if prev_line =~ /steep:ignore/
+            puts "    #{target_line.strip}"
           else
-            puts "  Line #{line_num}: #{target_line.strip}"
-            if target_line =~ /^(\s*)(.+?)\s*$/
-              indent = Regexp.last_match(1)
-              code = Regexp.last_match(2)
+            indent = target_line[/^\s*/]
 
-              if diagnostic_ids.size == 1
-                puts "              → #{indent}#{code} # steep:ignore #{diagnostic_ids.first}"
-              else
-                puts "              → #{indent}#{code} # steep:ignore (#{diagnostic_ids.join(', ')})"
-              end
+            if diagnostic_ids.size == 1
+              puts "  Line #{line_num}: WILL ADD:"
+              puts "    #{indent}# steep:ignore #{diagnostic_ids.first}"
+              puts "    #{target_line.strip}"
+            else
+              puts "  Line #{line_num}: WILL ADD:"
+              puts "    #{indent}# steep:ignore #{diagnostic_ids.join(', ')}"
+              puts "    #{target_line.strip}"
             end
           end
         end
       end
 
       puts "\n" + ('=' * 60)
-      puts "Run 'bundle exec rake steep:auto_ignore' to apply changes"
+      puts "Run 'bundle exec rake steep:ignore:auto' to apply changes"
       puts '=' * 60
     end
   end
