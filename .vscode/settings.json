@@ -1,0 +1,8 @@
+{
+    "steep.enabled": true,
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp",
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true
+    }
+}
