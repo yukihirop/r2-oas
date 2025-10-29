@@ -195,6 +195,15 @@ OpenAPIの3.0.0をサポートしてます。
 
 公式ドキュメントはこちら => https://yukihirop.github.io/r2-oas/#/setting/configure
 
+## RBS, Steep
+
+```bash
+# エラーが出ていたら、エディタでhoverしても型の表示がされない原因になる
+bundle exec steep stats
+# エラーの内容は、こちらのコマンドで知ることができる
+bundle exec steep check
+```
+
 ## Bundle and Rspec with multiple ruby ​​versions
 
 #### Bundle

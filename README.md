@@ -199,6 +199,15 @@ All settings are `optional`
 
 Full docs are available at https://yukihirop.github.io/r2-oas/#/setting/configure
 
+## RBS, Steep
+
+```bash
+# Errors here can prevent type information from showing when hovering in the editor
+bundle exec steep stats
+# You can check the error details with this command
+bundle exec steep check
+```
+
 ## Bundle and Rspec with multiple ruby ​​versions
 
 #### Bundle
