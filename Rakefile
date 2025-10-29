@@ -25,3 +25,47 @@ task :rbs_prototype do
 
   puts 'RBS files generated under: sig/'
 end
+
+namespace :steep do
+  namespace :dig do
+    desc 'Generate ignore directives by Diagnostic ID'
+    task :ignore do
+      require 'open3'
+
+      stdout, stderr, status = Open3.capture3('bundle exec steep check')
+      output = stdout + stderr
+
+      # Diagnostic IDを抽出（改行を除去）
+      ids = output.scan(/Diagnostic ID: (.+)/).flatten.map(&:strip).uniq.sort
+
+      if ids.empty?
+        puts 'No errors found! 🎉'
+      else
+        ids.each do |id|
+          puts "ignore '#{id}'"
+        end
+      end
+    end
+  end
+
+  namespace :file do
+    desc 'Generate ignore directives by file path'
+    task :ignore do
+      require 'open3'
+
+      stdout, stderr, status = Open3.capture3('bundle exec steep check')
+      output = stdout + stderr
+
+      # エラーが出ているファイルパスを抽出（改行を除去）
+      files = output.scan(/^([^\s#].*\.rb):/).flatten.map(&:strip).uniq.sort
+
+      if files.empty?
+        puts 'No errors found! 🎉'
+      else
+        files.each do |file|
+          puts "ignore '#{file}'"
+        end
+      end
+    end
+  end
+end
