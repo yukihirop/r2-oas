@@ -22,10 +22,10 @@ module R2OAS
         @running = true
         container.start
         open_browser
-        
+
         puts "\nPress Ctrl+C to stop..."
         setup_signal_traps
-        
+
         # メインスレッドを待機状態に保つ
         sleep 0.1 while @running
 

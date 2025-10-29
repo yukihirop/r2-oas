@@ -38,10 +38,10 @@ module R2OAS
         container.start
         open_browser_and_set_schema
         ensure_save_tmp_schema_file
-        
+
         puts "\nPress Ctrl+C to stop..."
         setup_signal_traps
-        
+
         # メインスレッドを待機状態に保つ
         sleep 0.1 while @running
 
@@ -65,32 +65,32 @@ module R2OAS
       end
 
       def cleanup
-        logger.info("Starting cleanup process...")
+        logger.info('Starting cleanup process...')
         @running = false
         @save_thread&.join(1) # スレッドの終了を待つ（最大1秒）
-        logger.info("Stopping container...")
+        logger.info('Stopping container...')
         container.stop
-        logger.info("Removing container...")
+        logger.info('Removing container...')
         container.remove
         logger.info "container id: #{container.id} removed"
         @browser&.close
-        logger.info("Browser closed")
-        
+        logger.info('Browser closed')
+
         # コンテナ削除後にスキーマ処理を実行
         begin
-          logger.info("Processing edited schema...")
+          logger.info('Processing edited schema...')
           process_after_close_browser
-          logger.info("Schema processing completed")
+          logger.info('Schema processing completed')
         rescue StandardError => e
           logger.warn("post close process failed: #{e.class}: #{e.message}")
         end
-        logger.info("Cleanup completed")
+        logger.info('Cleanup completed')
       end
 
       def process_after_close_browser
         # ファイルは既にローカルに保存されているため、そのまま読み込んで処理
         return unless File.exist?(doc_save_file_path)
-        
+
         options = { type: :edited }
         @after_schema_data = File.read(doc_save_file_path)
         conv_after_schema_data = YAML.load(@after_schema_data)
@@ -109,11 +109,11 @@ module R2OAS
           while @running
             # ブラウザが閉じられたかどうかをチェック
             if @browser.nil? || !browser_exists?
-              logger.info("Browser was closed by user (X button), starting cleanup...")
+              logger.info('Browser was closed by user (X button), starting cleanup...')
               @running = false
               break
             end
-            
+
             @save_mutex.synchronize do
               begin
                 data = get_local_storage(storage_key)
@@ -127,7 +127,7 @@ module R2OAS
                 end
               rescue Selenium::WebDriver::Error::UnexpectedAlertOpenError
                 alert = @browser&.driver&.switch_to&.alert
-                if alert&.text&.eql?(ALERT_TEXT)
+                if alert&.text.eql?(ALERT_TEXT)
                   alert.accept
                   data = get_local_storage(storage_key)
                   if data
@@ -139,23 +139,24 @@ module R2OAS
                     end
                   end
                 end
-              rescue StandardError => e
+              rescue StandardError
                 # ブラウザが無い/取得失敗時はスキップ
               end
             end
-            
+
             sleep interval_to_save_edited_tmp_schema
           end
         end
       end
-      
+
       def browser_exists?
         return false unless @browser
+
         @browser.exists?
       rescue StandardError
         false
       end
-      
+
       # rubocop:enable Style/RedundantBegin
 
       def open_browser_and_set_schema
@@ -185,6 +186,7 @@ module R2OAS
 
       def get_local_storage(key)
         return nil unless @browser
+
         @browser.execute_script('return window.localStorage.getItem(arguments[0]);', key)
       end
 

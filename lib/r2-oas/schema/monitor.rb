@@ -13,13 +13,13 @@ module R2OAS
       def start
         @running = true
         @after_schema_data = @before_schema_data
-        
+
         puts "\nPress Ctrl+C to stop..."
         setup_signal_traps
-        
+
         # メインスレッドを待機状態に保つ
         monitor_loop
-        
+
         # ループを抜けたら安全なコンテキストでクリーンアップ
         process_after_close_monitor
       end
@@ -41,10 +41,10 @@ module R2OAS
       def monitor_loop
         puts "\nwait for signal trap ..."
         last_check_time = Time.now
-        
+
         while @running
           sleep 0.1
-          
+
           # 一定間隔で監視処理を実行
           current_time = Time.now
           if current_time - last_check_time >= interval_to_save_edited_tmp_schema

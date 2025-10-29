@@ -21,7 +21,7 @@ module R2OAS
       def download_swagger_ui_dist
         logger.info("[deploy] download_swagger_ui_dist: base_dir=#{@base_dir}")
         FileUtils.mkdir_p(@base_dir)
-        
+
         curl_ok = system("curl -fsSL -o #{@tar_path} #{SWAGGER_UI_TARBALL_URL}")
         logger.info("[deploy] curl result: ok=#{curl_ok} url=#{SWAGGER_UI_TARBALL_URL} -> #{@tar_path}")
         return false unless curl_ok
@@ -34,21 +34,19 @@ module R2OAS
         # GitHub tarball extracts to swagger-api-swagger-ui-<sha>/dist/
         extracted_dirs = Dir.glob(File.join(@base_dir, 'swagger-api-swagger-ui-*'))
         logger.info("[deploy] extracted_dirs: #{extracted_dirs}")
-        
+
         if extracted_dirs.empty?
           # Fallback: check if dist exists directly
           dist_path = File.join(@base_dir, 'dist')
           logger.info("[deploy] check direct dist: #{dist_path} exists=#{Dir.exist?(dist_path)}")
-          @dist_path = File.expand_path(dist_path) if Dir.exist?(dist_path)
         else
           dist_path = File.join(extracted_dirs.first, 'dist')
           logger.info("[deploy] check versioned dist: #{dist_path} exists=#{Dir.exist?(dist_path)}")
-          @dist_path = File.expand_path(dist_path) if Dir.exist?(dist_path)
         end
+        @dist_path = File.expand_path(dist_path) if Dir.exist?(dist_path)
 
-        unless @dist_path && Dir.exist?(@dist_path)
-          raise "Failed to find dist directory in extracted swagger-ui archive"
-        end
+        raise 'Failed to find dist directory in extracted swagger-ui archive' unless @dist_path && Dir.exist?(@dist_path)
+
         logger.info("[deploy] dist_path detected: #{@dist_path}")
 
         true
@@ -67,13 +65,13 @@ module R2OAS
       private
 
       def copy_swagger_ui_dist
-        raise "dist directory not found. Please call download_swagger_ui_dist first." unless @dist_path
+        raise 'dist directory not found. Please call download_swagger_ui_dist first.' unless @dist_path
 
         docs_path = File.expand_path(Rails.root.join(deploy_dir_path), __FILE__)
         dist_dest_path = File.join(docs_path, 'dist')
         logger.info("[deploy] copy dist: src=#{@dist_path} dest=#{dist_dest_path}")
         FileUtils.mkdir_p(File.dirname(dist_dest_path))
-        FileUtils.rm_rf(dist_dest_path) if Dir.exist?(dist_dest_path)
+        FileUtils.rm_rf(dist_dest_path)
         FileUtils.cp_r(@dist_path, dist_dest_path)
       end
 
