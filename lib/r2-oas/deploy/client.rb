@@ -99,16 +99,8 @@ module R2OAS
         FileUtils.rm_rf(@base_dir) if @base_dir && Dir.exist?(@base_dir)
       end
 
-      # [ref]
-      # https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Lint/ErbNewArguments
       def make_index(template)
-        if RUBY_VERSION >= '2.6'
-          ERB.new(template, trim_mode: '%').result(binding)
-        else
-          # rubocop:disable Lint/ErbNewArguments
-          ERB.new(template, nil, trim_mode: '%').result(binding)
-          # rubocop:enable Lint/ErbNewArguments
-        end
+        ERB.new(template, trim_mode: '%').result(binding)
       end
     end
   end
