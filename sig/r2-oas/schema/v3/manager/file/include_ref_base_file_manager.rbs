@@ -1,0 +1,33 @@
+module R2OAS
+  module Schema
+    module V3
+      class IncludeRefBaseFileManager < BaseFileManager
+        @convert_underscore_to_slash: untyped
+
+        @parent_save_file_paths: untyped
+
+        @recursive_search_class: untyped
+
+        REF: "$ref"
+
+        def initialize: (untyped path, ?::Symbol path_type) -> void
+
+        alias self.build self.new
+
+        def descendants_paths: () -> untyped
+
+        alias descendants_ref_paths descendants_paths
+
+        private
+
+        attr_accessor parent_save_file_paths: untyped
+
+        attr_accessor recursive_search_class: untyped
+
+        def deep_search_ref_recursive: (untyped yaml) { (?) -> untyped } -> untyped
+
+        def process_deep_search_ref_recursive: (untyped ref_key_or_not, untyped ref_value_or_not) ?{ (untyped) -> untyped } -> (nil | untyped | untyped)
+      end
+    end
+  end
+end

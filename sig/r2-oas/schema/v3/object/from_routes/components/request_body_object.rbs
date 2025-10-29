@@ -1,0 +1,40 @@
+module R2OAS
+  module Schema
+    module V3
+      module Components
+        class RequestBodyObject < R2OAS::Schema::V3::BaseObject
+          @path_comp: untyped
+
+          @path: untyped
+
+          @route_data: untyped
+
+          @verb: untyped
+
+          @tag_name: untyped
+
+          @schema_name: untyped
+
+          # MEMO:
+          # Allow primitive types that cannot be passed by reference to be passed by reference
+          # This is Compromise
+          @ref: untyped
+
+          def initialize: (untyped route_data, untyped path, ?::Hash[untyped, untyped] opts) -> void
+
+          def to_doc: () -> untyped
+
+          def generate?: () -> untyped
+
+          private
+
+          def create_doc: () ?{ () -> untyped } -> untyped
+
+          def _components_schema_name: () -> untyped
+
+          def _components_request_body_name: () -> untyped
+        end
+      end
+    end
+  end
+end

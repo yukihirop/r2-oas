@@ -1,0 +1,11 @@
+module R2OAS
+  module Schema
+    class Squeezer
+      @squeezer: untyped
+
+      extend Forwardable
+
+      def initialize: (untyped schema_data, ?::Hash[untyped, untyped] options) -> void
+    end
+  end
+end

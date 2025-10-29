@@ -1,0 +1,19 @@
+module R2OAS
+  module AppConfiguration
+    class Swagger
+      DEFAULT_EDITOR: untyped
+
+      DEFAULT_UI: untyped
+
+      VALID_OPTIONS_KEYS: ::Array[:editor | :ui]
+
+      def initialize: () -> void
+
+      def configure: () { (untyped) -> untyped } -> untyped
+
+      private
+
+      def set_default: () -> untyped
+    end
+  end
+end

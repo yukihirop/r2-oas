@@ -1,0 +1,26 @@
+# Background colors
+# 40	Black
+# 41	Red
+# 42	Green
+# 43	Yellow
+# 44	Blue
+# 45	Magenta
+# 46	Cyan
+# 47	White
+module R2OAS
+  module Helpers
+    module FileHelper
+      def write_file_or_skip: (untyped file_path, untyped data, ?bool silent) -> (untyped | nil)
+
+      def mkdir_p_dir_or_skip: (untyped dir_path, ?bool silent) -> (untyped | nil)
+
+      private
+
+      def relative: (untyped path) -> untyped
+
+      def bold: (untyped str) -> ::String
+
+      def space: () -> "      "
+    end
+  end
+end

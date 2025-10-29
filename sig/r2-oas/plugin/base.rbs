@@ -1,0 +1,23 @@
+module R2OAS
+  module Plugin
+    class Base < ::R2OAS::Base
+      extend ::R2OAS::Plugin::Hookable
+
+      attr_accessor self.plugin_name: untyped
+
+      attr_accessor self.type: untyped
+
+      attr_accessor self.opts: untyped
+
+      def self.setup: () ?{ (?) -> untyped } -> (nil | untyped)
+
+      def self.teardown: () ?{ (?) -> untyped } -> (nil | untyped)
+
+      def self.execute_setup: (*untyped) -> untyped
+
+      def self.execute_teardown: (*untyped) -> untyped
+
+      def self.inherited: (untyped base) -> untyped
+    end
+  end
+end

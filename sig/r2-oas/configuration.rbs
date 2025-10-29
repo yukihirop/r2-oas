@@ -1,0 +1,43 @@
+module R2OAS
+  module Configuration
+    @_stdout_logger: untyped
+
+    @_paths_config: untyped
+
+    extend AppConfiguration
+
+    include Helpers::FileHelper
+
+    PUBLIC_VALID_OPTIONS_KEYS: untyped
+
+    UNPUBLIC_VALID_OPTIONS_KEYS: ::Array[:paths_config | :logger]
+
+    VALID_OPTIONS_KEYS: untyped
+
+    def self.extended: (untyped base) -> untyped
+
+    def configure: () ?{ (untyped) -> untyped } -> untyped
+
+    def options: () -> untyped
+
+    def logger: () -> untyped
+
+    def paths_config: () -> untyped
+
+    def app_configuration_options: () -> untyped
+
+    def load_tasks: () -> untyped
+
+    def init: () -> untyped
+
+    def output_dir_path: () -> untyped
+
+    private
+
+    def load_local_tasks: () -> untyped
+
+    def load_local_plugins: () -> untyped
+
+    def set_default_for_configuration: (untyped target) -> untyped
+  end
+end

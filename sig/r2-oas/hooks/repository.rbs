@@ -1,0 +1,19 @@
+module R2OAS
+  module Hooks
+    class Repository
+      @global_hooks_data: untyped
+
+      @last_hook_id: untyped
+
+      @target: untyped
+
+      attr_accessor global_hooks_data: untyped
+
+      attr_accessor last_hook_id: untyped
+
+      attr_accessor target: untyped
+
+      def initialize: (untyped target) -> void
+    end
+  end
+end

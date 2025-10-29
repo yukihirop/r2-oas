@@ -1,0 +1,32 @@
+module R2OAS
+  module Schema
+    module V3
+      class BaseFileManager < Base
+        @ext_name: untyped
+
+        @path_type: untyped
+
+        @original_path: untyped
+
+        @relative_save_file_path: untyped
+
+        attr_accessor original_path: untyped
+
+        # e.x.) openapi_path = "#/components/schemas/Account"
+        def initialize: (untyped path, ?::Symbol path_type) -> void
+
+        def delete: () -> untyped
+
+        def save: (untyped data) -> untyped
+
+        def save_after_deep_merge: (untyped data) -> untyped
+
+        def save_file_path: (?type: ::Symbol) -> untyped
+
+        def load_data: () -> untyped
+
+        def descendants_paths: () -> ::Array[untyped]
+      end
+    end
+  end
+end

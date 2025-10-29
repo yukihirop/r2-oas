@@ -1,0 +1,13 @@
+module R2OAS
+  module Schema
+    module V3
+      class PathSqueezer < BaseSqueezer
+        VERB: ::Array["get" | "put" | "post" | "delete" | "options" | "head" | "patch" | "trace"]
+
+        NOT_VERB: ::Array["$ref" | "summary" | "description" | "servers" | "parameters"]
+
+        def squeeze_docs: () -> { "paths" => untyped }
+      end
+    end
+  end
+end

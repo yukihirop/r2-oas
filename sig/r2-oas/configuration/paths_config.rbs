@@ -1,0 +1,27 @@
+module R2OAS
+  module Configuration
+    class PathsConfig
+      @root_dir_path: untyped
+
+      @schema_save_dir_path: untyped
+
+      @many_paths_file_paths: untyped
+
+      @many_components_file_paths: untyped
+
+      include Helpers::FileHelper
+
+      def initialize: (untyped root_dir_path, untyped schema_save_dir_name) -> void
+
+      def abs_paths_path: () -> untyped
+
+      def all_load_paths?: () -> untyped
+
+      def many_paths_file_paths: () -> untyped
+
+      def create_dot_paths: (?bool silent) -> untyped
+
+      def many_components_file_paths: () -> untyped
+    end
+  end
+end

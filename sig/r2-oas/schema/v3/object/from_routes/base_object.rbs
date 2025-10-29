@@ -1,0 +1,25 @@
+module R2OAS
+  module Schema
+    module V3
+      class BaseObject
+        @opts: untyped
+
+        @plugin_executor: untyped
+
+        @doc: untyped
+
+        extend Forwardable
+
+        def initialize: (?::Hash[untyped, untyped] opts) -> void
+
+        def doc: () -> untyped
+
+        def to_doc: () -> untyped
+
+        private
+
+        def app_configuration_options: () -> untyped
+      end
+    end
+  end
+end

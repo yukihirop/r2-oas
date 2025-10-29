@@ -1,0 +1,14 @@
+module R2OAS
+  module Routing
+    class VerbComponent < BaseComponent
+      @verb: untyped
+
+      def initialize: (untyped verb) -> void
+
+      # e.x.) "" => ["get"]
+      # e.x.) "POST" => ["post"]
+      # e.x.) "GET|POST" => ["get","post"]
+      def verbs: () -> untyped
+    end
+  end
+end

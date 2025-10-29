@@ -1,0 +1,9 @@
+module R2OAS
+  module Schema
+    module V3
+      class ServerObject < BaseObject
+        def to_doc: () -> untyped
+      end
+    end
+  end
+end

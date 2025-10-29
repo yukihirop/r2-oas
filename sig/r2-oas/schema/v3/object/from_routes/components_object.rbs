@@ -1,0 +1,29 @@
+module R2OAS
+  module Schema
+    module V3
+      class ComponentsObject < BaseObject
+        @routes_data: untyped
+
+        def initialize: (untyped routes_data, ?::Hash[untyped, untyped] opts) -> void
+
+        def to_doc: () -> untyped
+
+        def create_doc: () -> untyped
+
+        private
+
+        def create_doc_for_components_schemas!: () -> untyped
+
+        def create_doc_for_components_request_bodies!: () -> untyped
+
+        # e.x.)
+        # [
+        #  { path: "/tasks", data: {:verb=>"get", :path=>"/tasks", :tag_name=>"task" } },
+        # ]
+        def components_schema_docs: () -> untyped
+
+        def components_request_body_docs: () -> untyped
+      end
+    end
+  end
+end

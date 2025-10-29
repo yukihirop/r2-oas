@@ -1,0 +1,41 @@
+module R2OAS
+  module Schema
+    module V3
+      module FromFiles
+        module Components
+          class SchemaObject < ::R2OAS::Schema::V3::FromFiles::BaseObject
+            @doc: untyped
+
+            @parent_ref: untyped
+
+            @resolved_schema_name: untyped
+
+            include ::R2OAS::Callable
+
+            include DeepMethods
+
+            def initialize: (untyped doc, untyped ref, untyped opts) -> void
+
+            def to_doc: () -> untyped
+
+            def resolve_dependencies!: () -> untyped
+
+            def call_ref_path!: () -> untyped
+
+            def schema_name: () -> untyped
+
+            def ref_path: () -> ::String
+
+            private
+
+            def ref_dup: () -> untyped
+
+            def reserved_schema_name_list: () -> untyped
+
+            def create_child_ref: (untyped schema_name) -> untyped
+          end
+        end
+      end
+    end
+  end
+end

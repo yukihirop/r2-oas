@@ -1,0 +1,23 @@
+# copy from https://github.com/rails/rails/blob/master/activesupport/lib/active_support/deprecation/instance_delegator.rb
+module R2OAS
+  class Deprecation
+    module InstanceDelegator
+      # MEMO:
+      # base must be singleton class
+      def self.included: (untyped base) -> untyped
+
+      module ClassMethods
+        # override Module#include
+        def include: (untyped included_module) -> untyped
+
+        def method_added: (untyped method_name) -> untyped
+      end
+
+      module OverrideDelegators
+        def warn: (?untyped? message, ?untyped? callstack) -> untyped
+
+        alias will_remove warn
+      end
+    end
+  end
+end

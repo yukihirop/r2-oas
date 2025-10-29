@@ -1,0 +1,17 @@
+module R2OAS
+  module Schema
+    module V3
+      class ComponentsDiffManager < BaseHashDiffManager
+        @major_category: untyped
+
+        @middle_category: untyped
+
+        @before_schema_data: untyped
+
+        @after_schema_data: untyped
+
+        def initialize: (untyped before_schema_data, untyped after_schema_data, ?::Hash[untyped, untyped] options) -> void
+      end
+    end
+  end
+end

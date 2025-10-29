@@ -1,0 +1,16 @@
+# Scope Rails
+module R2OAS
+  module Schema
+    module V3
+      class TagAnalyzer < BaseAnalyzer
+        @file_manager: untyped
+
+        @diff_manager: untyped
+
+        def initialize: (untyped after_schema_data, ?::Hash[untyped, untyped] options) -> void
+
+        def analyze_docs: () -> untyped
+      end
+    end
+  end
+end

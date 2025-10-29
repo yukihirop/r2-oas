@@ -1,0 +1,21 @@
+module R2OAS
+  module Schema
+    module V3
+      class Analyzer < BaseAnalyzer
+        @path_analyzer: untyped
+
+        @tag_analyzer: untyped
+
+        @components_analyzer: untyped
+
+        def initialize: (untyped before_schema_data, untyped after_schema_data, ?::Hash[untyped, untyped] options) -> void
+
+        def analyze_docs: () -> untyped
+
+        private
+
+        def save_schema_when: (untyped schema_name) -> untyped
+      end
+    end
+  end
+end

@@ -1,0 +1,15 @@
+module R2OAS
+  module Schema
+    module V3
+      class BaseCleaner < Base
+        def clean_docs: () ?{ (untyped) -> untyped } -> untyped
+
+        private
+
+        def many_paths_file_paths: () -> untyped
+
+        def clean_target_files: () -> untyped
+      end
+    end
+  end
+end

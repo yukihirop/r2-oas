@@ -1,0 +1,21 @@
+module R2OAS
+  module Schema
+    module V3
+      class BaseSqueezer < Base
+        @schema_data: untyped
+
+        @tag_names: untyped
+
+        def initialize: (untyped schema_data, ?::Hash[untyped, untyped] options) -> void
+
+        def squeeze_docs: () -> untyped
+
+        private
+
+        attr_accessor many_paths_file_paths: untyped
+
+        def create_tag_names: () -> untyped
+      end
+    end
+  end
+end

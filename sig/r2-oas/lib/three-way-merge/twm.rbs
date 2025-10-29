@@ -1,0 +1,14 @@
+# rubocop:disable all
+module Twm
+  #
+  # orig: local docs
+  # left: generate docs
+  # right: local src files
+  #
+  # condition: merge right into left
+  def self.yaml_merge: (untyped left, untyped orig, untyped right) -> untyped
+
+  private
+
+  def self.three_equal?: (untyped left, untyped orig, untyped right) -> ({ left_orig: true, orig_right: true, left_right: true } | { left_orig: true, orig_right: false, left_right: false } | { left_orig: false, orig_right: true, left_right: false } | { left_orig: false, orig_right: false, left_right: true } | { left_orig: false, orig_right: false, left_right: false } | nil)
+end

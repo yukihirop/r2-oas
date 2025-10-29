@@ -1,0 +1,25 @@
+module R2OAS
+  module Schema
+    module V3
+      module FromFiles
+        class OpenapiObject < BaseObject
+          @doc: untyped
+
+          def initialize: (untyped doc, ?::Hash[untyped, untyped] opts) -> void
+
+          def to_doc: () -> untyped
+
+          private
+
+          def info_doc: () -> untyped
+
+          def paths_doc: () -> untyped
+
+          def external_docs_doc: () -> untyped
+
+          def components_doc: () -> untyped
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,19 @@
+module R2OAS
+  class Base
+    @options: untyped
+
+    def initialize: (?::Hash[untyped, untyped] options) -> void
+
+    private
+
+    def merged_options: () -> untyped
+
+    def logger: () -> untyped
+
+    def schema_save_dir_path: () -> untyped
+
+    def doc_save_file_path: () -> untyped
+
+    def ns_div: () -> untyped
+  end
+end

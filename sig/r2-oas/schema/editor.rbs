@@ -1,0 +1,68 @@
+# Scope Rails
+module R2OAS
+  module Schema
+    class Editor < Base
+      @editor: untyped
+
+      @before_schema_data: untyped
+
+      @schema_doc_from_local: untyped
+
+      @running: untyped
+
+      @chrome_user_data_dir: untyped
+
+      @after_schema_data: untyped
+
+      @save_mutex: untyped
+
+      @save_thread: untyped
+
+      @browser: untyped
+
+      @container: untyped
+
+      extend Forwardable
+
+      TMP_FILE_NAME: "edited_schema"
+
+      ALERT_TEXT: "Would you like to convert your JSON into YAML?"
+
+      attr_accessor edited_schema: untyped
+
+      def initialize: (untyped before_schema_data, untyped options) -> void
+
+      def start: () -> untyped
+
+      private
+
+      attr_accessor unit_paths_file_path: untyped
+
+      def setup_signal_traps: () -> untyped
+
+      def cleanup: () -> untyped
+
+      def process_after_close_browser: () -> (nil | untyped)
+
+      # MEMO
+      # TargetRubyVersion is 2.7 and there is a warning
+      # Because it is necessary to support from ruby2.3 series where begin cannot be omitted
+      # rubocop:disable Style/RedundantBegin
+      def ensure_save_tmp_schema_file: () -> untyped
+
+      def browser_exists?: () -> untyped
+
+      def open_browser_and_set_schema: () -> untyped
+
+      def chrome_options: (?headless: bool) -> untyped
+
+      def get_local_storage: (untyped key) -> (nil | untyped)
+
+      def set_local_storage: (untyped key, untyped value) -> untyped
+
+      def wait_for_loaded: () -> untyped
+
+      def container: () -> untyped
+    end
+  end
+end

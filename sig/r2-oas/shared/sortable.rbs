@@ -1,0 +1,5 @@
+module R2OAS
+  module Sortable
+    def deep_sort: (untyped data, untyped target) -> untyped
+  end
+end

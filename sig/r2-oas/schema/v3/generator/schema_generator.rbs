@@ -1,0 +1,21 @@
+module R2OAS
+  module Schema
+    module V3
+      class SchemaGenerator < BaseGenerator
+        @docs: untyped
+
+        @options: untyped
+
+        def initialize: (?::Hash[untyped, untyped] options) -> void
+
+        def generate_docs: () -> untyped
+
+        private
+
+        def generate_docs_from_routes_data: () -> untyped
+
+        def process_when_generate_docs: () ?{ (untyped) -> untyped } -> untyped
+      end
+    end
+  end
+end

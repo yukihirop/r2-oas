@@ -1,0 +1,35 @@
+module R2OAS
+  module Schema
+    module V3
+      module FromFiles
+        class BaseObject
+          @opts: untyped
+
+          @plugin_executor: untyped
+
+          extend Forwardable
+
+          def self.obj_store: () -> untyped
+
+          def initialize: (?::Hash[untyped, untyped] opts) -> void
+
+          def to_doc: () -> untyped
+
+          private
+
+          def obj_store: () -> untyped
+
+          def set_root_doc: (untyped root_doc) -> untyped
+
+          def root_doc: () -> untyped
+
+          def set_components_name_list: (untyped root_doc) -> untyped
+
+          def app_configuration_options: () -> untyped
+
+          attr_accessor opts: untyped
+        end
+      end
+    end
+  end
+end

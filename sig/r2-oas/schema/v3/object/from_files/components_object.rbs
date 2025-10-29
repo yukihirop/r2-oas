@@ -1,0 +1,23 @@
+module R2OAS
+  module Schema
+    module V3
+      module FromFiles
+        class ComponentsObject < BaseObject
+          @doc: untyped
+
+          def initialize: (untyped doc, ?::Hash[untyped, untyped] opts) -> void
+
+          def to_doc: () -> untyped
+
+          private
+
+          def create_doc: () -> untyped
+
+          def create_components_schema_docs!: () -> untyped
+
+          def create_components_request_body_docs!: () -> untyped
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,35 @@
+module R2OAS
+  module Routing
+    class Parser
+      @_routes: untyped
+
+      @_engines: untyped
+
+      # routes should be Rails.application.routes.routes
+      def initialize: (untyped routes) -> void
+
+      def routes_data: () -> untyped
+
+      def tags_data: () -> untyped
+
+      def schemas_data: () -> untyped
+
+      private
+
+      attr_accessor _routes: untyped
+
+      attr_accessor _engines: untyped
+
+      def normalized_routes: () ?{ (?) -> untyped } -> untyped
+
+      # copy from:
+      # https://github.com/rails/rails/blob/v4.2.1/actionpack/lib/action_dispatch/routing/inspector.rb#L114-L140
+      # https://github.com/rails/rails/blob/v5.2.3/actionpack/lib/action_dispatch/routing/inspector.rb
+      def collect_routes: (untyped routes) -> untyped
+
+      # copy from:
+      # https://github.com/rails/rails/blob/v4.2.1/actionpack/lib/action_dispatch/routing/inspector.rb#L114-L140
+      def collect_engine_routes: (untyped route) -> (nil | untyped)
+    end
+  end
+end
