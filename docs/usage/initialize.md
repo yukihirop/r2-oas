@@ -2,6 +2,8 @@
 layout: default
 title: Initialize
 permalink: "/usage/initialize/"
+parent: Usage
+nav_order: 5
 ---
 
 # Initialize

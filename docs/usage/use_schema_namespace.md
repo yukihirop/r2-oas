@@ -2,6 +2,8 @@
 layout: default
 title: Use Schema Namespace
 permalink: "/usage/use-schema-namespace/"
+parent: Usage
+nav_order: 12
 ---
 
 # Use Schema Namespace

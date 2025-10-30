@@ -2,6 +2,8 @@
 layout: default
 title: Configure
 permalink: "/configuration/configure/"
+parent: Configuration
+nav_order: 2
 ---
 
 ## Configure

@@ -2,6 +2,8 @@
 layout: default
 title: Analyze Docs
 permalink: "/usage/analyze-docs/"
+parent: Usage
+nav_order: 11
 ---
 
 # Analyze docs

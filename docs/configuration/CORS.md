@@ -2,6 +2,8 @@
 layout: default
 title: Cors
 permalink: "/configuration/CORS/"
+parent: Configuration
+nav_order: 3
 ---
 
 # CORS

@@ -2,6 +2,8 @@
 layout: default
 title: Coc
 permalink: "/configuration/COC/"
+parent: Configuration
+nav_order: 1
 ---
 
 # ❗️Convention over Configuration (CoC)

@@ -2,6 +2,8 @@
 layout: default
 title: Monitor Docs
 permalink: "/usage/monitor-docs/"
+parent: Usage
+nav_order: 10
 ---
 
 # Monitor docs

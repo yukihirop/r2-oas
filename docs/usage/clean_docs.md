@@ -2,6 +2,8 @@
 layout: default
 title: Clean Docs
 permalink: "/usage/clean-docs/"
+parent: Usage
+nav_order: 15
 ---
 
 # Clean docs

@@ -2,6 +2,8 @@
 layout: default
 title: Use Hook Methods
 permalink: "/usage/use-hook-methods/"
+parent: Usage
+nav_order: 3
 ---
 
 # [before v0.4.1] Use hook methods

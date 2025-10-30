@@ -2,6 +2,8 @@
 layout: default
 title: Deploy Docs
 permalink: "/usage/deploy-docs/"
+parent: Usage
+nav_order: 14
 ---
 
 # Deploy docs

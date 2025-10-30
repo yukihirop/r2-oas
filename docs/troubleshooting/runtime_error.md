@@ -2,6 +2,8 @@
 layout: default
 title: Runtime Error
 permalink: "/troubleshooting/runtime-error/"
+parent: Troubleshooting
+nav_order: 1
 ---
 
 # Selenium::WebDriver::Error::SessionNotCreatedError

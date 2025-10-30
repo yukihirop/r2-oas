@@ -1,6 +1,7 @@
 ---
 layout: default
 title: R2-OAS Documentation
+nav_order: 1
 permalink: "/"
 ---
 

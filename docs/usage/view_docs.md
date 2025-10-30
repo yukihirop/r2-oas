@@ -2,6 +2,8 @@
 layout: default
 title: View Docs
 permalink: "/usage/view-docs/"
+parent: Usage
+nav_order: 9
 ---
 
 # View docs

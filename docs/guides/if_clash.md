@@ -2,6 +2,8 @@
 layout: default
 title: If Clash
 permalink: "/guides/if-clash/"
+parent: Guides
+nav_order: 1
 ---
 
 # If clash

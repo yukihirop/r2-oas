@@ -2,6 +2,8 @@
 layout: default
 title: Define Tasks
 permalink: "/usage/define-tasks/"
+parent: Usage
+nav_order: 2
 ---
 
 # 🆕 Define tasks

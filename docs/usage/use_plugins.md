@@ -2,6 +2,8 @@
 layout: default
 title: Use Plugins
 permalink: "/usage/use-plugins/"
+parent: Usage
+nav_order: 1
 ---
 
 # 🆕 Use Plugins
