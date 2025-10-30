@@ -1,5 +1,22 @@
 // Custom styles for R2-OAS Documentation
 
+// Site title gradient effect
+.site-title {
+  font-family: sans-serif;
+  font-weight: 700 !important;
+  background: -webkit-linear-gradient(90deg, #CC342D 20%, #E63D36 60%, #FF5C55 100%);
+  background: linear-gradient(90deg, #CC342D 20%, #E63D36 60%, #FF5C55 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  // Fallback for browsers that don't support background-clip
+  @supports not (background-clip: text) {
+    color: #E63D36;
+  }
+}
+
 // Info box styles
 .info-box {
   padding: 1rem;

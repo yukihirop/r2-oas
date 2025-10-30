@@ -1,12 +1,11 @@
 # Jekyll Configuration for R2-OAS Documentation
 
-title: "R2-OAS Documentation"
+title: "R2-OAS"
 description: "OpenAPI documentation generator for Rails"
 baseurl: "/r2-oas"
 url: "https://yukihirop.github.io"
 
-# Logo and Favicon
-logo: "/r2-oas/assets/logo.png"
+# Favicon (logo is displayed in index.md)
 favicon_ico: "/r2-oas/assets/favicon.ico"
 
 # Theme
