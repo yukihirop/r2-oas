@@ -36,6 +36,106 @@
 
 ## GitHub Pagesデプロイ設定手順
 
+### デプロイ方法の選択
+
+2つのデプロイ方法があります：
+
+1. **GitHub Actions（推奨）** - 自動デプロイ、カスタムビルドプロセス対応
+2. **Branch から直接デプロイ** - シンプル、従来の方法
+
+---
+
+## 方法1: GitHub Actions で自動デプロイ（推奨）
+
+### 1. GitHubリポジトリ設定
+
+#### Settings > Pages
+```
+Source:
+  GitHub Actions を選択
+```
+
+**手順**:
+1. GitHubリポジトリページを開く
+2. **Settings** タブをクリック
+3. 左サイドバーから **Pages** を選択
+4. **Source** セクションで **GitHub Actions** を選択
+5. 「Save」をクリック
+
+### 2. GitHub Actions ワークフロー確認
+
+ワークフローファイルが存在することを確認：
+```bash
+ls -la .github/workflows/jekyll-deploy.yml
+```
+
+**ワークフローの内容**:
+- トリガー: `master` ブランチへのプッシュ（`docs/` 配下の変更時）
+- ビルド: Jekyll サイトをビルド
+- デプロイ: GitHub Pages に自動デプロイ
+
+### 3. 変更のコミットとプッシュ
+
+```bash
+# 現在の作業ディレクトリ
+cd /Users/yukihirop/RubyProjects/r2-oas
+
+# ステータス確認
+git status
+
+# 変更をステージング
+git add docs/ .github/workflows/jekyll-deploy.yml
+
+# コミット
+git commit -m "feat: add GitHub Actions workflow for Jekyll deployment
+
+- Add .github/workflows/jekyll-deploy.yml
+- Configure automatic deployment to GitHub Pages
+- Set up build and deploy jobs with proper permissions
+
+Related: jekyll-docs-migration spec task 13.2"
+
+# プッシュ
+git push origin master
+```
+
+### 4. GitHub Actions ワークフロー実行確認
+
+1. GitHubリポジトリページを開く
+2. **Actions** タブをクリック
+3. 「Deploy Jekyll Documentation to GitHub Pages」ワークフローを確認
+4. 実行中のワークフローをクリックして進行状況を確認
+5. ビルドとデプロイが成功することを確認（✅ 緑のチェックマーク）
+
+**ワークフローの流れ**:
+```
+1. Checkout repository
+2. Setup Ruby (3.2)
+3. Install dependencies (bundle install)
+4. Build Jekyll site
+5. Upload artifact
+6. Deploy to GitHub Pages
+```
+
+### 5. デプロイ確認
+
+ビルド完了後（通常1-2分）、以下にアクセス：
+```
+https://yukihirop.github.io/r2-oas/
+```
+
+### GitHub Actions のメリット
+
+- ✅ **自動デプロイ**: master ブランチにプッシュするだけで自動デプロイ
+- ✅ **カスタムビルド**: 任意のRubyバージョンやプラグインを使用可能
+- ✅ **ビルドログ**: Actions タブで詳細なビルドログを確認可能
+- ✅ **高速**: 並列ビルドとキャッシュで高速化
+- ✅ **柔軟性**: ビルド前後に任意のスクリプトを実行可能
+
+---
+
+## 方法2: Branch から直接デプロイ（従来の方法）
+
 ### 1. GitHubリポジトリ設定
 
 #### Settings > Pages
@@ -73,17 +173,48 @@ Related: jekyll-docs-migration spec"
 git push origin <branch-name>
 ```
 
-### 3. GitHub Pagesビルド確認
+### 3. GitHub Pagesビルド確認（Branch デプロイの場合）
 
 1. GitHubリポジトリの **Settings > Pages** を開く
 2. ビルドステータスを確認
 3. ビルド完了後、`https://yukihirop.github.io/r2-oas/` にアクセス
 
-### 4. ビルドエラー時の対処
+---
+
+## ビルドエラー時の対処
+
+### GitHub Actions の場合
+
+**エラー確認手順**:
+1. GitHubリポジトリの **Actions** タブを開く
+2. 失敗したワークフロー（❌ 赤いX）をクリック
+3. 失敗したジョブをクリック
+4. エラーログを確認
+
+**よくあるエラーと対処法**:
+
+| エラー | 原因 | 解決方法 |
+|-------|------|---------|
+| `bundle install` 失敗 | Gemfile.lock の依存関係エラー | ローカルで `bundle install` 実行後、Gemfile.lock をコミット |
+| Jekyll ビルドエラー | Markdown構文エラー、Front Matterエラー | エラーログで該当ファイルを特定し修正 |
+| 権限エラー | Pages の write 権限がない | Settings > Actions > General で Workflow permissions を確認 |
+| デプロイ失敗 | GitHub Pages が無効 | Settings > Pages で GitHub Actions が選択されているか確認 |
+
+**デバッグ手順**:
+```bash
+# ローカルで同じビルドコマンドを実行
+cd docs
+bundle install
+bundle exec jekyll build --baseurl "/r2-oas"
+
+# エラーが再現すれば、ローカルで修正可能
+```
+
+### Branch デプロイの場合
 
 **エラー確認**:
 - GitHubからのメール通知を確認
-- Actions タブでビルドログを確認
+- Settings > Pages でビルドエラーメッセージを確認
 
 **よくあるエラー**:
 - プラグインがホワイトリスト外 → サポートされるプラグインに変更
@@ -142,7 +273,8 @@ git push origin <branch-name>
 
 - ✅ Task 10.1: GitHub Pages設定確認 - **完了**
 - ✅ Task 10.2: デプロイ前の最終チェック - **完了**
-- ⏳ **次のステップ**: GitHubにプッシュしてデプロイ
+- ✅ Task 13.2: GitHub Actions自動デプロイ設定 - **完了**
+- 🚀 **推奨**: GitHub Actions を使った自動デプロイを使用
 
 ---
 
