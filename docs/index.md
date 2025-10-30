@@ -5,12 +5,20 @@ nav_order: 1
 permalink: "/"
 ---
 
-# R2-OAS
-
 [![Gem Version](https://badge.fury.io/rb/r2-oas.svg)](https://badge.fury.io/rb/r2-oas)
 [![Build Status](https://travis-ci.org/yukihirop/r2-oas.svg?branch=master)](https://travis-ci.org/yukihirop/r2-oas)
 [![Coverage Status](https://coveralls.io/repos/github/yukihirop/r2-oas/badge.svg)](https://coveralls.io/github/yukihirop/r2-oas)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8c3846f350bb412fd63/maintainability)](https://codeclimate.com/github/yukihirop/r2-oas/maintainability)
+
+<p align="center">
+	<img alt="logo" width="196" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/docs/assets/logo.png">
+</p>
+
+<h1 align="center" style="font-family: sans-serif; font-size: 50px; font-weight: 700; background: -webkit-linear-gradient(90deg, #CC342D 20%, #E63D36 60%, #FF5C55 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">R2-OAS</h1>
+
+<p align="center">
+	<a href="https://yukihirop.github.io/r2-oas/" target="_blank">📚 Documentation</a>
+</p>
 
 Generate api document (OpenAPI) side only from `Rails` routing.
 
@@ -86,12 +94,15 @@ $ bundle exec rake routes:oas:editor
 
 #### Generate docs
 
-![oas_docs](https://user-images.githubusercontent.com/11146767/80856236-0b839a80-8c83-11ea-888f-d0e659e0c251.gif)
-
+<p align="center">
+	<img alt="r2-oas docs demo" width="800" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/demo/oas_docs.mp4">
+</p>
 
 #### Edit docs
 
-![oas_editor](https://user-images.githubusercontent.com/11146767/80856240-15a59900-8c83-11ea-9dbd-4382528944f2.gif)
+<p align="center">
+	<img alt="r2-oas editor demo" width="800" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/demo/oas_editor.mp4">
+</p>
 
 ## Usage
 
