@@ -1,0 +1,31 @@
+module R2OAS
+  module AppConfiguration
+    class Swagger
+      class Editor
+        DEFAULT_IMAGE: "swaggerapi/swagger-editor"
+
+        DEFAULT_PORT: "81"
+
+        DEFAULT_EXPOSED_PORT: "8080/tcp"
+
+        DEFAULT_STORAGE_KEY: "swagger-editor-content"
+
+        DEFAULT_HOST: "http://localhost"
+
+        VALID_OPTIONS_KEYS: ::Array[:image | :port | :exposed_port]
+
+        def initialize: () -> void
+
+        def configure: () { (untyped) -> untyped } -> untyped
+
+        def url: () -> ::String
+
+        def storage_key: () -> untyped
+
+        private
+
+        def set_default: () -> untyped
+      end
+    end
+  end
+end

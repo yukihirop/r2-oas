@@ -1,0 +1,8 @@
+module R2OAS
+  module Schema
+    module V3
+      class FileManager < BaseFileManager
+      end
+    end
+  end
+end

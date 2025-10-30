@@ -1,0 +1,17 @@
+module R2OAS
+  module Schema
+    module V3
+      class TagObject < BaseObject
+        @tags_data: untyped
+
+        def initialize: (untyped tags_data, ?::Hash[untyped, untyped] opts) -> void
+
+        def to_doc: () -> untyped
+
+        private
+
+        def create_doc: (untyped tag_name) -> { "name" => untyped, "description" => ::String, "externalDocs" => { "description" => "description", "url" => "url" } }
+      end
+    end
+  end
+end

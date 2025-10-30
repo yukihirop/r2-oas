@@ -1,0 +1,33 @@
+module R2OAS
+  module Routing
+    class PathComponent < BaseComponent
+      @path: untyped
+
+      FORMAT_PATH_PARAMETER_REGEXP: ::Regexp
+
+      SYMBOL_PATH_PARAMETER_REGEXP: ::Regexp
+
+      BRACE_PATH_PARAMETER_REGEXP: ::Regexp
+
+      def initialize: (untyped path) -> void
+
+      def to_s: () -> untyped
+
+      def symbol_to_brace: () -> untyped
+
+      def path_parameters_data: () -> (::Hash[untyped, untyped] | untyped)
+
+      def path_excluded_path_parameters: () -> untyped
+
+      def exist_path_parameters?: () -> untyped
+
+      def path_parameters: () -> untyped
+
+      private
+
+      # e.x.) "/tasks(.:format)" => "/tasks"
+      # e.x.) "/:model_name/:id/show_in_app(.:format)" => "/{model_name}/{id}/show_in_app"
+      def without_format: () -> untyped
+    end
+  end
+end

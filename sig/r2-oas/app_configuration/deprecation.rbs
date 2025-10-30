@@ -1,0 +1,19 @@
+module R2OAS
+  module AppConfiguration
+    class Deprecation
+      @silenced: untyped
+
+      DEFAULT_SILENCED: untyped
+
+      attr_reader silenced: untyped
+
+      def silenced=: (untyped value) -> untyped
+
+      def initialize: () -> void
+
+      private
+
+      def set_default: () -> untyped
+    end
+  end
+end

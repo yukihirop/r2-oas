@@ -1,0 +1,3392 @@
+---
+- file: lib/r2-oas/app_configuration/deprecation.rb
+  diagnostics:
+  - range:
+      start:
+        line: 8
+        character: 46
+      end:
+        line: 8
+        character: 54
+    severity: ERROR
+    message: Type `singleton(::R2OAS::Deprecation)` does not have method `silenced`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 14
+        character: 38
+      end:
+        line: 14
+        character: 39
+    severity: ERROR
+    message: Type `singleton(::R2OAS::Deprecation)` does not have method `silenced=`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/app_configuration/server.rb
+  diagnostics:
+  - range:
+      start:
+        line: 26
+        character: 18
+      end:
+        line: 26
+        character: 19
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Server` does not have method `data=`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/app_configuration/swagger/editor.rb
+  diagnostics:
+  - range:
+      start:
+        line: 30
+        character: 29
+      end:
+        line: 30
+        character: 33
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger::Editor` does not have method
+      `port`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 40
+        character: 29
+      end:
+        line: 40
+        character: 30
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger::Editor` does not have method
+      `image=`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 41
+        character: 29
+      end:
+        line: 41
+        character: 30
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger::Editor` does not have method
+      `port=`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 42
+        character: 29
+      end:
+        line: 42
+        character: 30
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger::Editor` does not have method
+      `exposed_port=`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/app_configuration/swagger/ui.rb
+  diagnostics:
+  - range:
+      start:
+        line: 31
+        character: 29
+      end:
+        line: 31
+        character: 33
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger::UI` does not have method `port`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 37
+        character: 28
+      end:
+        line: 37
+        character: 29
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger::UI` does not have method `image=`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 38
+        character: 28
+      end:
+        line: 38
+        character: 29
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger::UI` does not have method `port=`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 39
+        character: 28
+      end:
+        line: 39
+        character: 29
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger::UI` does not have method `exposed_port=`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 40
+        character: 28
+      end:
+        line: 40
+        character: 29
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger::UI` does not have method `volume=`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/app_configuration/swagger.rb
+  diagnostics:
+  - range:
+      start:
+        line: 30
+        character: 20
+      end:
+        line: 30
+        character: 21
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger` does not have method `editor=`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 31
+        character: 20
+      end:
+        line: 31
+        character: 21
+    severity: ERROR
+    message: Type `::R2OAS::AppConfiguration::Swagger` does not have method `ui=`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/app_configuration.rb
+  diagnostics:
+  - range:
+      start:
+        line: 48
+        character: 22
+      end:
+        line: 48
+        character: 24
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 87
+        character: 32
+      end:
+        line: 87
+        character: 34
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 88
+        character: 22
+      end:
+        line: 88
+        character: 38
+    severity: WARNING
+    message: Empty kwargs doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/base.rb
+  diagnostics:
+  - range:
+      start:
+        line: 30
+        character: 26
+      end:
+        line: 30
+        character: 39
+    severity: ERROR
+    message: Type `::R2OAS::Base` does not have method `root_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 30
+        character: 43
+      end:
+        line: 30
+        character: 63
+    severity: ERROR
+    message: Type `::R2OAS::Base` does not have method `schema_save_dir_name`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 34
+        character: 26
+      end:
+        line: 34
+        character: 39
+    severity: ERROR
+    message: Type `::R2OAS::Base` does not have method `root_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 34
+        character: 43
+      end:
+        line: 34
+        character: 61
+    severity: ERROR
+    message: Type `::R2OAS::Base` does not have method `doc_save_file_name`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 38
+        character: 11
+      end:
+        line: 38
+        character: 25
+    severity: ERROR
+    message: Type `::R2OAS::Base` does not have method `namespace_type`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 44
+        character: 32
+      end:
+        line: 44
+        character: 46
+    severity: ERROR
+    message: Type `::R2OAS::Base` does not have method `namespace_type`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/configuration/paths_config.rb
+  diagnostics:
+  - range:
+      start:
+        line: 39
+        character: 79
+      end:
+        line: 39
+        character: 81
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 41
+        character: 55
+      end:
+        line: 41
+        character: 76
+    severity: ERROR
+    message: Type `::R2OAS::Schema::PathItemFileManager` does not have method `descendants_ref_paths`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/configuration.rb
+  diagnostics:
+  - range:
+      start:
+        line: 37
+        character: 32
+      end:
+        line: 37
+        character: 34
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 38
+        character: 22
+      end:
+        line: 38
+        character: 38
+    severity: WARNING
+    message: Empty kwargs doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 47
+        character: 41
+      end:
+        line: 47
+        character: 54
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `root_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 47
+        character: 56
+      end:
+        line: 47
+        character: 76
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `schema_save_dir_name`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 51
+        character: 50
+      end:
+        line: 51
+        character: 52
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 52
+        character: 22
+      end:
+        line: 52
+        character: 38
+    severity: WARNING
+    message: Empty kwargs doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 64
+        character: 41
+      end:
+        line: 64
+        character: 54
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `root_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 64
+        character: 58
+      end:
+        line: 64
+        character: 80
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `local_plugins_dir_name`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 66
+        character: 39
+      end:
+        line: 66
+        character: 52
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `root_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 66
+        character: 56
+      end:
+        line: 66
+        character: 76
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `local_tasks_dir_name`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 82
+        character: 17
+      end:
+        line: 82
+        character: 23
+    severity: ERROR
+    message: Type `::IO` does not have method `string`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 83
+        character: 29
+      end:
+        line: 83
+        character: 35
+    severity: ERROR
+    message: Type `::IO` does not have method `string`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 85
+        character: 65
+      end:
+        line: 85
+        character: 78
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `root_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 92
+        character: 6
+      end:
+        line: 92
+        character: 17
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `output_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 98
+        character: 39
+      end:
+        line: 98
+        character: 52
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `root_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 98
+        character: 56
+      end:
+        line: 98
+        character: 76
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `local_tasks_dir_name`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 105
+        character: 41
+      end:
+        line: 105
+        character: 54
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `root_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 105
+        character: 58
+      end:
+        line: 105
+        character: 80
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Configuration)` does not have method `local_plugins_dir_name`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/deploy/client.rb
+  diagnostics:
+  - range:
+      start:
+        line: 11
+        character: 63
+      end:
+        line: 11
+        character: 70
+    severity: ERROR
+    message: |-
+      Cannot pass a value of type `(::String | nil)` as an argument of type `(::string | ::_ToPath)`
+        (::String | nil) <: (::string | ::_ToPath)
+          nil <: (::string | ::_ToPath)
+            nil <: ::string
+              nil <: (::String | ::_ToStr)
+                nil <: ::String
+    code: Ruby::ArgumentTypeMismatch
+  - range:
+      start:
+        line: 15
+        character: 24
+      end:
+        line: 15
+        character: 36
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `SecureRandom`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 16
+        character: 43
+      end:
+        line: 16
+        character: 47
+    severity: ERROR
+    message: Type `singleton(::Rails)` does not have method `root`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 17
+        character: 43
+      end:
+        line: 17
+        character: 47
+    severity: ERROR
+    message: Type `singleton(::Rails)` does not have method `root`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 24
+        character: 8
+      end:
+        line: 24
+        character: 17
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `FileUtils`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 91
+        character: 43
+      end:
+        line: 91
+        character: 47
+    severity: ERROR
+    message: Type `singleton(::Rails)` does not have method `root`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 91
+        character: 53
+      end:
+        line: 91
+        character: 68
+    severity: ERROR
+    message: Type `::R2OAS::Deploy::Client` does not have method `deploy_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 94
+        character: 8
+      end:
+        line: 94
+        character: 17
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `FileUtils`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 95
+        character: 8
+      end:
+        line: 95
+        character: 17
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `FileUtils`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 96
+        character: 8
+      end:
+        line: 96
+        character: 17
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `FileUtils`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 100
+        character: 44
+      end:
+        line: 100
+        character: 48
+    severity: ERROR
+    message: Type `singleton(::Rails)` does not have method `root`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 100
+        character: 54
+      end:
+        line: 100
+        character: 69
+    severity: ERROR
+    message: Type `::R2OAS::Deploy::Client` does not have method `deploy_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 101
+        character: 28
+      end:
+        line: 101
+        character: 46
+    severity: ERROR
+    message: Type `::R2OAS::Deploy::Client` does not have method `doc_save_file_name`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 102
+        character: 70
+      end:
+        line: 102
+        character: 77
+    severity: ERROR
+    message: |-
+      Cannot pass a value of type `(::String | nil)` as an argument of type `(::string | ::_ToPath)`
+        (::String | nil) <: (::string | ::_ToPath)
+          nil <: (::string | ::_ToPath)
+            nil <: ::string
+              nil <: (::String | ::_ToStr)
+                nil <: ::String
+    code: Ruby::ArgumentTypeMismatch
+  - range:
+      start:
+        line: 110
+        character: 51
+      end:
+        line: 110
+        character: 55
+    severity: ERROR
+    message: Type `singleton(::Rails)` does not have method `root`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 110
+        character: 61
+      end:
+        line: 110
+        character: 76
+    severity: ERROR
+    message: Type `::R2OAS::Deploy::Client` does not have method `deploy_dir_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 110
+        character: 78
+      end:
+        line: 110
+        character: 96
+    severity: ERROR
+    message: Type `::R2OAS::Deploy::Client` does not have method `doc_save_file_name`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 111
+        character: 45
+      end:
+        line: 111
+        character: 56
+    severity: ERROR
+    message: Type `::R2OAS::Deploy::Client` does not have method `output_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 113
+        character: 8
+      end:
+        line: 113
+        character: 17
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `FileUtils`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 118
+        character: 8
+      end:
+        line: 118
+        character: 17
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `FileUtils`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 122
+        character: 8
+      end:
+        line: 122
+        character: 11
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `ERB`'
+    code: Ruby::UnknownConstant
+- file: lib/r2-oas/helpers/file_helper.rb
+  diagnostics:
+  - range:
+      start:
+        line: 46
+        character: 10
+      end:
+        line: 46
+        character: 19
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `FileUtils`'
+    code: Ruby::UnknownConstant
+- file: lib/r2-oas/hooks/hook.rb
+  diagnostics:
+  - range:
+      start:
+        line: 16
+        character: 26
+      end:
+        line: 16
+        character: 28
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 17
+        character: 32
+      end:
+        line: 17
+        character: 34
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 19
+        character: 21
+      end:
+        line: 19
+        character: 23
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 29
+        character: 54
+      end:
+        line: 29
+        character: 56
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/lib/core_ext/hash/deep_merge.rb
+  diagnostics:
+  - range:
+      start:
+        line: 30
+        character: 40
+      end:
+        line: 30
+        character: 45
+    severity: ERROR
+    message: Type `V` does not have method `is_a?`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 31
+        character: 43
+      end:
+        line: 31
+        character: 49
+    severity: WARNING
+    message: |-
+      Cannot pass a value of type `(^ -> untyped | nil)` as a block-pass-argument of type `^ -> untyped`
+        (^ -> untyped | nil) <: ^ -> untyped
+          nil <: ^ -> untyped
+    code: Ruby::BlockTypeMismatch
+  - range:
+      start:
+        line: 34
+        character: 16
+      end:
+        line: 34
+        character: 20
+    severity: ERROR
+    message: Type `(^ -> untyped | nil)` does not have method `call`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/lib/core_ext/object/blank.rb
+  diagnostics:
+  - range:
+      start:
+        line: 20
+        character: 29
+      end:
+        line: 20
+        character: 35
+    severity: ERROR
+    message: Type `::Object` does not have method `empty?`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/lib/three-way-merge/twm.rb
+  diagnostics:
+  - range:
+      start:
+        line: 15
+        character: 18
+      end:
+        line: 15
+        character: 28
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `KeyFlatten`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 16
+        character: 18
+      end:
+        line: 16
+        character: 28
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `KeyFlatten`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 17
+        character: 19
+      end:
+        line: 17
+        character: 29
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `KeyFlatten`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 21
+        character: 38
+      end:
+        line: 21
+        character: 40
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 24
+        character: 12
+      end:
+        line: 24
+        character: 24
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 24
+        character: 29
+      end:
+        line: 24
+        character: 42
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 24
+        character: 47
+      end:
+        line: 24
+        character: 60
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 27
+        character: 15
+      end:
+        line: 27
+        character: 27
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 27
+        character: 33
+      end:
+        line: 27
+        character: 46
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 27
+        character: 52
+      end:
+        line: 27
+        character: 65
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 30
+        character: 16
+      end:
+        line: 30
+        character: 28
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 30
+        character: 33
+      end:
+        line: 30
+        character: 46
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 30
+        character: 52
+      end:
+        line: 30
+        character: 65
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 33
+        character: 16
+      end:
+        line: 33
+        character: 28
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 33
+        character: 34
+      end:
+        line: 33
+        character: 47
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 33
+        character: 52
+      end:
+        line: 33
+        character: 65
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 36
+        character: 16
+      end:
+        line: 36
+        character: 28
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 36
+        character: 34
+      end:
+        line: 36
+        character: 47
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 36
+        character: 53
+      end:
+        line: 36
+        character: 66
+    severity: ERROR
+    message: Type `({ :left_orig => true, :left_right => true, :orig_right => true
+      } | { :left_orig => true, :left_right => false, :orig_right => false } | { :left_orig
+      => false, :left_right => false, :orig_right => true } | { :left_orig => false,
+      :left_right => true, :orig_right => false } | { :left_orig => false, :left_right
+      => false, :orig_right => false } | nil)` does not have method `[]`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 43
+        character: 6
+      end:
+        line: 43
+        character: 16
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `KeyFlatten`'
+    code: Ruby::UnknownConstant
+- file: lib/r2-oas/logger/stdout_logger.rb
+  diagnostics:
+  - range:
+      start:
+        line: 107
+        character: 62
+      end:
+        line: 107
+        character: 73
+    severity: WARNING
+    message: 'Cannot find the declaration of global variable: `$PROCESS_ID`'
+    code: Ruby::UnknownGlobalVariable
+- file: lib/r2-oas/plugin/base.rb
+  diagnostics:
+  - range:
+      start:
+        line: 18
+        character: 42
+      end:
+        line: 18
+        character: 46
+    severity: ERROR
+    message: Type `(^ -> untyped | nil)` does not have method `call`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 25
+        character: 42
+      end:
+        line: 25
+        character: 46
+    severity: ERROR
+    message: Type `(^ -> untyped | nil)` does not have method `call`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 39
+        character: 22
+      end:
+        line: 39
+        character: 24
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/plugin/hookable.rb
+  diagnostics:
+  - range:
+      start:
+        line: 22
+        character: 8
+      end:
+        line: 22
+        character: 26
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Plugin::Hookable)` does not have method `class_variable_set`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 26
+        character: 8
+      end:
+        line: 26
+        character: 26
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Plugin::Hookable)` does not have method `class_variable_get`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/plugin/transform/transform.rb
+  diagnostics:
+  - range:
+      start:
+        line: 5
+        character: 38
+      end:
+        line: 5
+        character: 45
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 9
+        character: 35
+      end:
+        line: 9
+        character: 51
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `NoImplementError`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 9
+        character: 86
+      end:
+        line: 9
+        character: 93
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/plugin/transform/v3/visitable.rb
+  diagnostics:
+  - range:
+      start:
+        line: 26
+        character: 23
+      end:
+        line: 26
+        character: 27
+    severity: ERROR
+    message: Type `self` does not have method `proc`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 26
+        character: 23
+      end:
+        line: 26
+        character: 27
+    severity: ERROR
+    message: Type `self` does not have method `proc`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 27
+        character: 12
+      end:
+        line: 27
+        character: 14
+    severity: ERROR
+    message: Type `self` does not have method `on`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 31
+        character: 12
+      end:
+        line: 31
+        character: 24
+    severity: ERROR
+    message: Type `self` does not have method `execute_hook`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/routing/adjustor.rb
+  diagnostics:
+  - range:
+      start:
+        line: 22
+        character: 32
+      end:
+        line: 22
+        character: 34
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 23
+        character: 21
+      end:
+        line: 23
+        character: 23
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/routing/components/path_component.rb
+  diagnostics:
+  - range:
+      start:
+        line: 32
+        character: 41
+      end:
+        line: 32
+        character: 43
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/routing/components/request_component.rb
+  diagnostics:
+  - range:
+      start:
+        line: 23
+        character: 51
+      end:
+        line: 23
+        character: 68
+    severity: ERROR
+    message: Type `::R2OAS::Routing::RequestComponent` does not have method `use_tag_namespace`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 38
+        character: 11
+      end:
+        line: 38
+        character: 31
+    severity: ERROR
+    message: Type `::R2OAS::Routing::RequestComponent` does not have method `use_schema_namespace`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 64
+        character: 13
+      end:
+        line: 64
+        character: 27
+    severity: ERROR
+    message: Type `::R2OAS::Routing::RequestComponent` does not have method `namespace_type`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 70
+        character: 34
+      end:
+        line: 70
+        character: 48
+    severity: ERROR
+    message: Type `::R2OAS::Routing::RequestComponent` does not have method `namespace_type`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/routing/parser.rb
+  diagnostics:
+  - range:
+      start:
+        line: 16
+        character: 15
+      end:
+        line: 16
+        character: 17
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 24
+        character: 15
+      end:
+        line: 24
+        character: 17
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 35
+        character: 15
+      end:
+        line: 35
+        character: 17
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 50
+        character: 49
+      end:
+        line: 50
+        character: 51
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 52
+        character: 16
+      end:
+        line: 52
+        character: 20
+    severity: ERROR
+    message: Type `(^ -> untyped | nil)` does not have method `call`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 61
+        character: 10
+      end:
+        line: 61
+        character: 24
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `ActionDispatch`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 89
+        character: 71
+      end:
+        line: 89
+        character: 85
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `ActionDispatch`'
+    code: Ruby::UnknownConstant
+- file: lib/r2-oas/schema/analyzer.rb
+  diagnostics:
+  - range:
+      start:
+        line: 14
+        character: 21
+      end:
+        line: 14
+        character: 28
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 18
+        character: 69
+      end:
+        line: 18
+        character: 76
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/builder.rb
+  diagnostics:
+  - range:
+      start:
+        line: 14
+        character: 21
+      end:
+        line: 14
+        character: 28
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 18
+        character: 69
+      end:
+        line: 18
+        character: 76
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/cleaner.rb
+  diagnostics:
+  - range:
+      start:
+        line: 14
+        character: 21
+      end:
+        line: 14
+        character: 28
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 18
+        character: 69
+      end:
+        line: 18
+        character: 76
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/editor.rb
+  diagnostics:
+  - range:
+      start:
+        line: 29
+        character: 18
+      end:
+        line: 29
+        character: 25
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `swagger`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 31
+        character: 33
+      end:
+        line: 31
+        character: 37
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 33
+        character: 36
+      end:
+        line: 33
+        character: 44
+    severity: ERROR
+    message: Type `singleton(::Dir)` does not have method `mktmpdir`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 96
+        character: 33
+      end:
+        line: 96
+        character: 37
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 98
+        character: 17
+      end:
+        line: 98
+        character: 29
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Analyzer` does not have method `analyze_docs`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 119
+        character: 41
+      end:
+        line: 119
+        character: 52
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `storage_key`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 121
+        character: 27
+      end:
+        line: 121
+        character: 33
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Digest`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 128
+        character: 21
+      end:
+        line: 128
+        character: 29
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Selenium`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 132
+        character: 43
+      end:
+        line: 132
+        character: 54
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `storage_key`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 134
+        character: 29
+      end:
+        line: 134
+        character: 35
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Digest`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 147
+        character: 18
+      end:
+        line: 147
+        character: 52
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `interval_to_save_edited_tmp_schema`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 163
+        character: 21
+      end:
+        line: 163
+        character: 26
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Watir`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 164
+        character: 22
+      end:
+        line: 164
+        character: 25
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `url`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 169
+        character: 10
+      end:
+        line: 169
+        character: 15
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Watir`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 170
+        character: 45
+      end:
+        line: 170
+        character: 56
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `storage_key`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 171
+        character: 30
+      end:
+        line: 171
+        character: 41
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `storage_key`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 179
+        character: 15
+      end:
+        line: 179
+        character: 23
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Selenium`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 198
+        character: 8
+      end:
+        line: 198
+        character: 13
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Watir`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 202
+        character: 23
+      end:
+        line: 202
+        character: 29
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Docker`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 203
+        character: 21
+      end:
+        line: 203
+        character: 26
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `image`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 204
+        character: 30
+      end:
+        line: 204
+        character: 42
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `exposed_port`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 204
+        character: 46
+      end:
+        line: 204
+        character: 48
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 207
+        character: 14
+      end:
+        line: 207
+        character: 26
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `exposed_port`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 207
+        character: 47
+      end:
+        line: 207
+        character: 51
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Editor` does not have method `port`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/generator.rb
+  diagnostics:
+  - range:
+      start:
+        line: 14
+        character: 21
+      end:
+        line: 14
+        character: 28
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 18
+        character: 69
+      end:
+        line: 18
+        character: 76
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/manager/file/path_item_file_manager.rb
+  diagnostics:
+  - range:
+      start:
+        line: 11
+        character: 21
+      end:
+        line: 11
+        character: 28
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 15
+        character: 51
+      end:
+        line: 15
+        character: 58
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/manager/file_manager.rb
+  diagnostics:
+  - range:
+      start:
+        line: 13
+        character: 21
+      end:
+        line: 13
+        character: 28
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 17
+        character: 51
+      end:
+        line: 17
+        character: 58
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/monitor.rb
+  diagnostics:
+  - range:
+      start:
+        line: 50
+        character: 47
+      end:
+        line: 50
+        character: 81
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Monitor` does not have method `interval_to_save_edited_tmp_schema`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 62
+        character: 17
+      end:
+        line: 62
+        character: 29
+    severity: ERROR
+    message: Type `::R2OAS::Schema::Analyzer` does not have method `analyze_docs`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 66
+        character: 8
+      end:
+        line: 66
+        character: 12
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+- file: lib/r2-oas/schema/squeezer.rb
+  diagnostics:
+  - range:
+      start:
+        line: 14
+        character: 21
+      end:
+        line: 14
+        character: 28
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 18
+        character: 69
+      end:
+        line: 18
+        character: 76
+    severity: ERROR
+    message: Type `singleton(::R2OAS)` does not have method `version`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/ui.rb
+  diagnostics:
+  - range:
+      start:
+        line: 17
+        character: 14
+      end:
+        line: 17
+        character: 21
+    severity: ERROR
+    message: Type `::R2OAS::Schema::UI` does not have method `swagger`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 60
+        character: 21
+      end:
+        line: 60
+        character: 26
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Watir`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 61
+        character: 22
+      end:
+        line: 61
+        character: 25
+    severity: ERROR
+    message: Type `::R2OAS::Schema::UI` does not have method `url`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 66
+        character: 8
+      end:
+        line: 66
+        character: 13
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Watir`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 70
+        character: 23
+      end:
+        line: 70
+        character: 29
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Docker`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 71
+        character: 21
+      end:
+        line: 71
+        character: 26
+    severity: ERROR
+    message: Type `::R2OAS::Schema::UI` does not have method `image`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 72
+        character: 30
+      end:
+        line: 72
+        character: 42
+    severity: ERROR
+    message: Type `::R2OAS::Schema::UI` does not have method `exposed_port`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 72
+        character: 46
+      end:
+        line: 72
+        character: 48
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 75
+        character: 14
+      end:
+        line: 75
+        character: 26
+    severity: ERROR
+    message: Type `::R2OAS::Schema::UI` does not have method `exposed_port`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 75
+        character: 47
+      end:
+        line: 75
+        character: 51
+    severity: ERROR
+    message: Type `::R2OAS::Schema::UI` does not have method `port`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 77
+        character: 43
+      end:
+        line: 77
+        character: 49
+    severity: ERROR
+    message: Type `::R2OAS::Schema::UI` does not have method `volume`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 79
+        character: 25
+      end:
+        line: 79
+        character: 31
+    severity: ERROR
+    message: Type `::R2OAS::Schema::UI` does not have method `volume`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 79
+        character: 35
+      end:
+        line: 79
+        character: 37
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/analyzer/base_analyzer.rb
+  diagnostics:
+  - range:
+      start:
+        line: 47
+        character: 12
+      end:
+        line: 47
+        character: 16
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 58
+        character: 14
+      end:
+        line: 58
+        character: 18
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `JSON`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 61
+        character: 12
+      end:
+        line: 61
+        character: 16
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 63
+        character: 12
+      end:
+        line: 63
+        character: 16
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+- file: lib/r2-oas/schema/v3/analyzer/path_analyzer.rb
+  diagnostics:
+  - range:
+      start:
+        line: 35
+        character: 37
+      end:
+        line: 35
+        character: 44
+    severity: ERROR
+    message: Type `::Hash[::String, untyped]` does not have method `to_yaml`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 50
+        character: 43
+      end:
+        line: 50
+        character: 45
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 75
+        character: 31
+      end:
+        line: 75
+        character: 33
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 78
+        character: 22
+      end:
+        line: 80
+        character: 15
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 97
+        character: 31
+      end:
+        line: 97
+        character: 33
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 100
+        character: 22
+      end:
+        line: 102
+        character: 15
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/builder/base_builder.rb
+  diagnostics:
+  - range:
+      start:
+        line: 55
+        character: 74
+      end:
+        line: 55
+        character: 86
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::BaseBuilder` does not have method `paths_config`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 56
+        character: 12
+      end:
+        line: 56
+        character: 24
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::BaseBuilder` does not have method `paths_config`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 63
+        character: 81
+      end:
+        line: 63
+        character: 83
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/builder/doc_builder.rb
+  diagnostics:
+  - range:
+      start:
+        line: 29
+        character: 70
+      end:
+        line: 29
+        character: 72
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 31
+        character: 19
+      end:
+        line: 31
+        character: 23
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 46
+        character: 31
+      end:
+        line: 46
+        character: 42
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::DocBuilder` does not have method `output_path`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/cleaner/components_cleaner.rb
+  diagnostics:
+  - range:
+      start:
+        line: 27
+        character: 67
+      end:
+        line: 27
+        character: 69
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/generator/base_generator.rb
+  diagnostics:
+  - range:
+      start:
+        line: 46
+        character: 18
+      end:
+        line: 46
+        character: 29
+    severity: ERROR
+    message: Type `singleton(::Rails)` does not have method `application`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 47
+        character: 18
+      end:
+        line: 47
+        character: 29
+    severity: ERROR
+    message: Type `singleton(::Rails)` does not have method `application`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 75
+        character: 74
+      end:
+        line: 75
+        character: 86
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::BaseGenerator` does not have method `paths_config`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 76
+        character: 12
+      end:
+        line: 76
+        character: 24
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::BaseGenerator` does not have method `paths_config`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 83
+        character: 81
+      end:
+        line: 83
+        character: 83
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 97
+        character: 22
+      end:
+        line: 97
+        character: 26
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Zlib`'
+    code: Ruby::UnknownConstant
+- file: lib/r2-oas/schema/v3/generator/components/object_generator.rb
+  diagnostics:
+  - range:
+      start:
+        line: 42
+        character: 38
+      end:
+        line: 42
+        character: 66
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 49
+        character: 47
+      end:
+        line: 49
+        character: 54
+    severity: ERROR
+    message: Type `::Hash[untyped, ::Hash[untyped, ::Hash[untyped, untyped]]]` does
+      not have method `to_yaml`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/generator/components/request_body_generator.rb
+  diagnostics:
+  - range:
+      start:
+        line: 21
+        character: 38
+      end:
+        line: 21
+        character: 83
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 28
+        character: 47
+      end:
+        line: 28
+        character: 54
+    severity: ERROR
+    message: Type `::Hash[untyped, ::Hash[untyped, ::Hash[untyped, untyped]]]` does
+      not have method `to_yaml`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/generator/components_generator.rb
+  diagnostics:
+  - range:
+      start:
+        line: 13
+        character: 53
+      end:
+        line: 13
+        character: 64
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::ComponentsGenerator` does not have method
+      `scehma_data`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/generator/doc_generator.rb
+  diagnostics:
+  - range:
+      start:
+        line: 104
+        character: 32
+      end:
+        line: 104
+        character: 36
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Zlib`'
+    code: Ruby::UnknownConstant
+- file: lib/r2-oas/schema/v3/generator/path_generator.rb
+  diagnostics:
+  - range:
+      start:
+        line: 55
+        character: 43
+      end:
+        line: 55
+        character: 45
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 58
+        character: 35
+      end:
+        line: 58
+        character: 37
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 61
+        character: 26
+      end:
+        line: 63
+        character: 19
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/generator/schema_generator.rb
+  diagnostics:
+  - range:
+      start:
+        line: 35
+        character: 21
+      end:
+        line: 35
+        character: 48
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 49
+        character: 47
+      end:
+        line: 49
+        character: 54
+    severity: ERROR
+    message: Type `::Hash[untyped, untyped]` does not have method `to_yaml`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/manager/diff/base_array_diff_manager.rb
+  diagnostics:
+  - range:
+      start:
+        line: 39
+        character: 31
+      end:
+        line: 39
+        character: 33
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 40
+        character: 31
+      end:
+        line: 40
+        character: 55
+    severity: WARNING
+    message: Empty kwargs doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/manager/diff/base_hash_diff_manager.rb
+  diagnostics:
+  - range:
+      start:
+        line: 28
+        character: 48
+      end:
+        line: 28
+        character: 57
+    severity: ERROR
+    message: Type `(::Hash[untyped, ::Hash[untyped, ::Hash[untyped, untyped]]] | ::Hash[untyped,
+      ::Hash[untyped, untyped]])` does not have method `easy_diff`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 29
+        character: 44
+      end:
+        line: 29
+        character: 53
+    severity: ERROR
+    message: Type `(::Hash[untyped, ::Hash[untyped, ::Hash[untyped, untyped]]] | ::Hash[untyped,
+      ::Hash[untyped, untyped]])` does not have method `easy_diff`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 47
+        character: 55
+      end:
+        line: 47
+        character: 57
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 49
+        character: 33
+      end:
+        line: 49
+        character: 35
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 64
+        character: 33
+      end:
+        line: 66
+        character: 15
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/manager/file/base_file_manager.rb
+  diagnostics:
+  - range:
+      start:
+        line: 22
+        character: 10
+      end:
+        line: 22
+        character: 19
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `FileUtils`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 27
+        character: 10
+      end:
+        line: 27
+        character: 19
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `FileUtils`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 51
+        character: 14
+      end:
+        line: 51
+        character: 18
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+- file: lib/r2-oas/schema/v3/manager/file/components_file_manager.rb
+  diagnostics:
+  - range:
+      start:
+        line: 17
+        character: 29
+      end:
+        line: 17
+        character: 41
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::ComponentsFileManager` does not have method
+      `paths_config`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/manager/file/include_ref_base_file_manager.rb
+  diagnostics:
+  - range:
+      start:
+        line: 24
+        character: 20
+      end:
+        line: 24
+        character: 22
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 75
+        character: 29
+      end:
+        line: 75
+        character: 31
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 83
+        character: 56
+      end:
+        line: 83
+        character: 57
+    severity: WARNING
+    message: |-
+      Cannot pass a value of type `(^(untyped) -> untyped | nil)` as a block-pass-argument of type `^ -> untyped`
+        (^(untyped) -> untyped | nil) <: ^ -> untyped
+          nil <: ^ -> untyped
+    code: Ruby::BlockTypeMismatch
+- file: lib/r2-oas/schema/v3/manager/file/path_item_file_manager.rb
+  diagnostics:
+  - range:
+      start:
+        line: 17
+        character: 29
+      end:
+        line: 17
+        character: 41
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::PathItemFileManager` does not have method
+      `paths_config`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/manager/pathname_manager.rb
+  diagnostics:
+  - range:
+      start:
+        line: 45
+        character: 50
+      end:
+        line: 45
+        character: 60
+    severity: ERROR
+    message: Type `::String` does not have method `underscore`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/object/from_files/components/request_body_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 30
+        character: 14
+      end:
+        line: 30
+        character: 39
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject`
+      does not have method `execute_transform_plugins`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 48
+        character: 30
+      end:
+        line: 48
+        character: 40
+    severity: WARNING
+    message: |-
+      Cannot pass a value of type `::Proc` as a block-pass-argument of type `^ -> untyped`
+        ::Proc <: ^ -> untyped
+    code: Ruby::BlockTypeMismatch
+  - range:
+      start:
+        line: 58
+        character: 14
+      end:
+        line: 58
+        character: 39
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject`
+      does not have method `execute_transform_plugins`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/object/from_files/components/schema_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 29
+        character: 14
+      end:
+        line: 29
+        character: 39
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::FromFiles::Components::SchemaObject` does
+      not have method `execute_transform_plugins`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 47
+        character: 30
+      end:
+        line: 47
+        character: 40
+    severity: WARNING
+    message: |-
+      Cannot pass a value of type `::Proc` as a block-pass-argument of type `^ -> untyped`
+        ::Proc <: ^ -> untyped
+    code: Ruby::BlockTypeMismatch
+  - range:
+      start:
+        line: 57
+        character: 14
+      end:
+        line: 57
+        character: 39
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::FromFiles::Components::SchemaObject` does
+      not have method `execute_transform_plugins`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/object/from_files/components_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 29
+        character: 14
+      end:
+        line: 29
+        character: 44
+    severity: ERROR
+    message: |-
+      Cannot allow method body have type `nil` because declared as type `::Hash[::String, untyped]`
+        nil <: ::Hash[::String, untyped]
+    code: Ruby::MethodBodyTypeMismatch
+  - range:
+      start:
+        line: 30
+        character: 75
+      end:
+        line: 30
+        character: 77
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 36
+        character: 14
+      end:
+        line: 36
+        character: 50
+    severity: ERROR
+    message: |-
+      Cannot allow method body have type `nil` because declared as type `::Hash[::String, untyped]`
+        nil <: ::Hash[::String, untyped]
+    code: Ruby::MethodBodyTypeMismatch
+  - range:
+      start:
+        line: 37
+        character: 81
+      end:
+        line: 37
+        character: 83
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/object/from_files/external_document_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 16
+        character: 12
+      end:
+        line: 16
+        character: 37
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::FromFiles::ExternalDocumentObject` does not
+      have method `execute_transform_plugins`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/object/from_files/info_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 16
+        character: 12
+      end:
+        line: 16
+        character: 37
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::FromFiles::InfoObject` does not have method
+      `execute_transform_plugins`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/object/from_files/openapi_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 22
+        character: 12
+      end:
+        line: 22
+        character: 37
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::FromFiles::OpenapiObject` does not have method
+      `execute_transform_plugins`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 36
+        character: 12
+      end:
+        line: 36
+        character: 37
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::FromFiles::OpenapiObject` does not have method
+      `execute_transform_plugins`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/object/from_files/path_item_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 29
+        character: 12
+      end:
+        line: 29
+        character: 37
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::FromFiles::PathItemObject` does not have method
+      `execute_transform_plugins`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 47
+        character: 28
+      end:
+        line: 47
+        character: 38
+    severity: WARNING
+    message: |-
+      Cannot pass a value of type `::Proc` as a block-pass-argument of type `^ -> untyped`
+        ::Proc <: ^ -> untyped
+    code: Ruby::BlockTypeMismatch
+- file: lib/r2-oas/schema/v3/object/from_files/utils/refs.rb
+  diagnostics:
+  - range:
+      start:
+        line: 31
+        character: 40
+      end:
+        line: 31
+        character: 42
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/object/from_routes/components/request_body_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 34
+        character: 33
+      end:
+        line: 36
+        character: 21
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 53
+        character: 23
+      end:
+        line: 53
+        character: 62
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::Components::RequestBodyObject` does not have
+      method `http_methods_when_generate_request_body`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/object/from_routes/components_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 30
+        character: 59
+      end:
+        line: 30
+        character: 61
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 37
+        character: 65
+      end:
+        line: 37
+        character: 67
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 48
+        character: 40
+      end:
+        line: 48
+        character: 42
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 53
+        character: 29
+      end:
+        line: 53
+        character: 42
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::PathItemObject` does not have method `http_statuses`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 68
+        character: 40
+      end:
+        line: 68
+        character: 42
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/object/from_routes/path_item_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 32
+        character: 80
+      end:
+        line: 32
+        character: 110
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::PathItemObject` does not have method `http_statuses_when_http_method`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 44
+        character: 19
+      end:
+        line: 44
+        character: 51
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 59
+        character: 27
+      end:
+        line: 59
+        character: 29
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 62
+        character: 30
+      end:
+        line: 62
+        character: 41
+    severity: ERROR
+    message: Type `(::Array[untyped] | ::String | ::Hash[untyped, untyped] | bool)`
+      does not have method `deep_merge!`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 67
+        character: 10
+      end:
+        line: 67
+        character: 23
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::PathItemObject` does not have method `http_statuses`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 67
+        character: 41
+      end:
+        line: 67
+        character: 43
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 68
+        character: 15
+      end:
+        line: 68
+        character: 67
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::PathItemObject` does not have method `ignored_http_statuses_when_generate_component_schema`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 114
+        character: 46
+      end:
+        line: 114
+        character: 48
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 126
+        character: 37
+      end:
+        line: 126
+        character: 39
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 137
+        character: 58
+      end:
+        line: 137
+        character: 60
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 158
+        character: 38
+      end:
+        line: 158
+        character: 48
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::PathItemObject` does not have method `field_name`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/schema/v3/object/from_routes/paths_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 22
+        character: 13
+      end:
+        line: 22
+        character: 33
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::PathsObject` does not have method `unit_paths_file_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 23
+        character: 30
+      end:
+        line: 23
+        character: 34
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 23
+        character: 45
+      end:
+        line: 23
+        character: 65
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::PathsObject` does not have method `unit_paths_file_path`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 24
+        character: 54
+      end:
+        line: 24
+        character: 56
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 28
+        character: 53
+      end:
+        line: 28
+        character: 55
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 42
+        character: 40
+      end:
+        line: 42
+        character: 42
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/object/from_routes/server_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 10
+        character: 10
+      end:
+        line: 10
+        character: 16
+    severity: ERROR
+    message: Type `::R2OAS::Schema::V3::ServerObject` does not have method `server`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 10
+        character: 39
+      end:
+        line: 10
+        character: 41
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/object/from_routes/tag_object.rb
+  diagnostics:
+  - range:
+      start:
+        line: 16
+        character: 38
+      end:
+        line: 16
+        character: 40
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/object/store.rb
+  diagnostics:
+  - range:
+      start:
+        line: 14
+        character: 26
+      end:
+        line: 14
+        character: 28
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 23
+        character: 38
+      end:
+        line: 23
+        character: 40
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 36
+        character: 10
+      end:
+        line: 36
+        character: 24
+    severity: ERROR
+    message: Type `singleton(::Class)` does not have method `def_delegators`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 37
+        character: 10
+      end:
+        line: 37
+        character: 24
+    severity: ERROR
+    message: Type `singleton(::Class)` does not have method `def_delegators`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 38
+        character: 10
+      end:
+        line: 38
+        character: 24
+    severity: ERROR
+    message: Type `singleton(::Class)` does not have method `def_delegators`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 47
+        character: 26
+      end:
+        line: 47
+        character: 28
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/squeezer/base_squeezer.rb
+  diagnostics:
+  - range:
+      start:
+        line: 22
+        character: 49
+      end:
+        line: 22
+        character: 51
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 23
+        character: 31
+      end:
+        line: 23
+        character: 35
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+- file: lib/r2-oas/schema/v3/squeezer/path_squeezer.rb
+  diagnostics:
+  - range:
+      start:
+        line: 13
+        character: 70
+      end:
+        line: 13
+        character: 72
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 17
+        character: 35
+      end:
+        line: 17
+        character: 62
+    severity: WARNING
+    message: Empty kwargs doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 19
+        character: 35
+      end:
+        line: 19
+        character: 62
+    severity: WARNING
+    message: Empty kwargs doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/schema/v3/squeezer/tag_squeezer.rb
+  diagnostics:
+  - range:
+      start:
+        line: 10
+        character: 68
+      end:
+        line: 10
+        character: 70
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/shared/sortable.rb
+  diagnostics:
+  - range:
+      start:
+        line: 7
+        character: 30
+      end:
+        line: 7
+        character: 32
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/store.rb
+  diagnostics:
+  - range:
+      start:
+        line: 17
+        character: 24
+      end:
+        line: 17
+        character: 26
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 29
+        character: 32
+      end:
+        line: 29
+        character: 34
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 31
+        character: 39
+      end:
+        line: 31
+        character: 43
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Zlib`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 40
+        character: 22
+      end:
+        line: 40
+        character: 26
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Zlib`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 42
+        character: 18
+      end:
+        line: 42
+        character: 22
+    severity: ERROR
+    message: Type `::R2OAS::Schema::FileManager` does not have method `save`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 51
+        character: 54
+      end:
+        line: 51
+        character: 56
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 56
+        character: 37
+      end:
+        line: 56
+        character: 39
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 58
+        character: 22
+      end:
+        line: 58
+        character: 26
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Zlib`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 85
+        character: 6
+      end:
+        line: 85
+        character: 12
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Digest`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 90
+        character: 27
+      end:
+        line: 90
+        character: 29
+    severity: WARNING
+    message: Empty array doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 98
+        character: 28
+      end:
+        line: 98
+        character: 30
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 99
+        character: 34
+      end:
+        line: 99
+        character: 36
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+  - range:
+      start:
+        line: 100
+        character: 30
+      end:
+        line: 100
+        character: 34
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `YAML`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 100
+        character: 45
+      end:
+        line: 100
+        character: 49
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Zlib`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 108
+        character: 6
+      end:
+        line: 108
+        character: 20
+    severity: ERROR
+    message: Type `singleton(::Class)` does not have method `def_delegators`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 117
+        character: 22
+      end:
+        line: 117
+        character: 24
+    severity: WARNING
+    message: Empty hash doesn't have type annotation
+    code: Ruby::UnannotatedEmptyCollection
+- file: lib/r2-oas/support/deprecation/instance_delegator.rb
+  diagnostics:
+  - range:
+      start:
+        line: 26
+        character: 26
+      end:
+        line: 26
+        character: 40
+    severity: ERROR
+    message: Type `::Class` does not have method `def_delegators`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/support/deprecation/reporting.rb
+  diagnostics:
+  - range:
+      start:
+        line: 11
+        character: 59
+      end:
+        line: 11
+        character: 66
+    severity: ERROR
+    message: |-
+      Cannot pass a value of type `(::String | nil)` as an argument of type `(::string | ::_ToPath)`
+        (::String | nil) <: (::string | ::_ToPath)
+          nil <: (::string | ::_ToPath)
+            nil <: ::string
+              nil <: (::String | ::_ToStr)
+                nil <: ::String
+    code: Ruby::ArgumentTypeMismatch
+  - range:
+      start:
+        line: 18
+        character: 10
+      end:
+        line: 18
+        character: 18
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Deprecation::Reporting)` does not have method
+      `behavior`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 18
+        character: 53
+      end:
+        line: 18
+        character: 72
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Deprecation::Reporting)` does not have method
+      `deprecation_horizon`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 49
+        character: 15
+      end:
+        line: 49
+        character: 32
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Deprecation::Reporting)` does not have method
+      `_extract_callback`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 66
+        character: 25
+      end:
+        line: 66
+        character: 34
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Deprecation::Reporting)` does not have method
+      `callstack`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 66
+        character: 77
+      end:
+        line: 66
+        character: 86
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Deprecation::Reporting)` does not have method
+      `callstack`
+    code: Ruby::NoMethod
+  - range:
+      start:
+        line: 68
+        character: 11
+      end:
+        line: 68
+        character: 26
+    severity: ERROR
+    message: Type `(::Object & ::R2OAS::Deprecation::Reporting)` does not have method
+      `offendihng_line`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/task.rb
+  diagnostics:
+  - range:
+      start:
+        line: 5
+        character: 4
+      end:
+        line: 5
+        character: 14
+    severity: ERROR
+    message: Type `singleton(::R2OAS::Task)` does not have method `rake_tasks`
+    code: Ruby::NoMethod
+- file: lib/r2-oas/task_logging.rb
+  diagnostics:
+  - range:
+      start:
+        line: 7
+        character: 6
+      end:
+        line: 7
+        character: 10
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `Rake`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 11
+        character: 18
+      end:
+        line: 11
+        character: 22
+    severity: ERROR
+    message: Type `(^ -> untyped | nil)` does not have method `call`
+    code: Ruby::NoMethod
+- file: lib/r2-oas.rb
+  diagnostics:
+  - range:
+      start:
+        line: 10
+        character: 17
+      end:
+        line: 10
+        character: 24
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `VERSION`'
+    code: Ruby::UnknownConstant
+  - range:
+      start:
+        line: 33
+        character: 70
+      end:
+        line: 33
+        character: 77
+    severity: WARNING
+    message: 'Cannot find the declaration of constant: `VERSION`'
+    code: Ruby::UnknownConstant
+- file: sig/r2-oas/plugin/executor.rbs
+  diagnostics:
+  - range:
+      start:
+        line: 20
+        character: 6
+      end:
+        line: 20
+        character: 44
+    severity: ERROR
+    message: Non-overloading method definition of `plugin_map` in `::R2OAS::Plugin::Executor`
+      cannot be duplicated
+    code: RBS::DuplicatedMethodDefinition

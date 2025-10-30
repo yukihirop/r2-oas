@@ -199,6 +199,55 @@ All settings are `optional`
 
 Full docs are available at https://yukihirop.github.io/r2-oas/#/setting/configure
 
+## RBS, Steep
+
+```bash
+# Errors here can prevent type information from showing when hovering in the editor
+bundle exec steep stats
+# You can check the error details with this command
+bundle exec steep check
+```
+
+#### steep rake task
+
+```bash
+bundle exec rake steep:ignore:dig | pbcopy
+# =>
+#
+# ignore 'RBS::DuplicatedMethodDefinition'
+# ignore 'Ruby::ArgumentTypeMismatch'
+```
+
+```bash
+bundle exec rake steep:ignore:file | pbcopy
+# =>
+#
+# ignore 'lib/r2-oas.rb'
+# ignore 'lib/r2-oas/app_configuration.rb'
+# ignore 'lib/r2-oas/app_configuration/deprecation.rb'
+```
+
+```bash
+bundle exec rake steep:ignore:preview
+# =>
+# 📄 lib/r2-oas/schema/monitor.rb
+#   Line 50: if current_time - last_check_time >= interval_to_save_edited_tmp_schema
+#               →           if current_time - last_check_time >= interval_to_save_edited_tmp_schema # steep:ignore Ruby::NoMethod
+#   Line 62: analyzer.analyze_docs
+#               →         analyzer.analyze_docs # steep:ignore Ruby::NoMethod
+#   Line 66: YAML.load_file(doc_save_file_path) || @after_schema_data
+#               →         YAML.load_file(doc_save_file_path) || @after_schema_data # steep:ignore Ruby::UnknownConstant
+```
+
+```bash
+bundle exec rake steep:ignore:auto
+# =>
+# Analyzing steep check errors...
+# ✅ Modified: lib/r2-oas/app_configuration/deprecation.rb (2 lines)
+# ✅ Modified: lib/r2-oas/plugin/base.rb (3 lines)
+# ✅ Modified: lib/r2-oas/schema/squeezer.rb (2 lines)
+```
+
 ## Bundle and Rspec with multiple ruby ​​versions
 
 #### Bundle

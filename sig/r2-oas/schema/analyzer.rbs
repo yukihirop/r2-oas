@@ -1,0 +1,11 @@
+module R2OAS
+  module Schema
+    class Analyzer
+      @analyzer: untyped
+
+      extend Forwardable
+
+      def initialize: (untyped before_schema_data, untyped after_schema_data, ?::Hash[untyped, untyped] options) -> void
+    end
+  end
+end

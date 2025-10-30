@@ -1,0 +1,9 @@
+module R2OAS
+  module Schema
+    module V3
+      class TagSqueezer < BaseSqueezer
+        def squeeze_docs: () -> { "tags" => untyped }
+      end
+    end
+  end
+end

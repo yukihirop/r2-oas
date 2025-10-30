@@ -1,0 +1,19 @@
+module R2OAS
+  module Schema
+    module V3
+      class PathsObject < BaseObject
+        @routes_data: untyped
+
+        def initialize: (untyped routes_data, ?::Hash[untyped, untyped] opts) -> void
+
+        def to_doc: () -> untyped
+
+        def create_doc: () -> untyped
+
+        private
+
+        def path_item_docs: () -> untyped
+      end
+    end
+  end
+end

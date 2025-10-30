@@ -1,0 +1,31 @@
+module R2OAS
+  module Schema
+    module V3
+      module Components
+        class ObjectGenerator < BaseGenerator
+          @major_category: untyped
+
+          @middle_category: untyped
+
+          @components_objects: untyped
+
+          @glob_schema_paths: untyped
+
+          def initialize: (?::Hash[untyped, untyped] schema_data, ?::Hash[untyped, untyped] options) -> void
+
+          def generate_docs: () -> untyped
+
+          private
+
+          alias components_objects_files_paths schema_files_paths
+
+          def generate_docs_from_routes_data: () -> untyped
+
+          def process_when_generate_docs: () ?{ (untyped) -> untyped } -> untyped
+
+          def create_glob_components_objects_paths: () -> untyped
+        end
+      end
+    end
+  end
+end

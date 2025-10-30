@@ -1,0 +1,58 @@
+module R2OAS
+  module AppConfiguration
+    DEFAULT_VERSION: :v3
+
+    DEFAULT_ROOT_DIR_PATH: "./oas_docs"
+
+    DEFAULT_SCHEMA_SAVE_DIR_NAME: "src"
+
+    DEFAULT_DOC_SAVE_FILE_NAME: "oas_doc.yml"
+
+    DEFAULT_FORCE_UPDATE_SCHEMA: false
+
+    DEFAULT_USE_TAG_NAMESPACE: true
+
+    DEFAULT_USE_SCHEMA_NAMESPACE: true
+
+    DEFAULT_SERVER: untyped
+
+    DEFAULT_INTERVAL_TO_SAVE_EDITED_TMP_SCHEMA: ::Float
+
+    DEFAULT_SWAGGER: untyped
+
+    # rubocop:disable Style/MutableConstant
+    DEFAULT_HTTP_STATUSES_WHEN_HTTP_METHOD: { get: { default: ::Array["200" | "422"], path_parameter: ::Array["200" | "404" | "422"] }, post: { default: ::Array["201" | "422"], path_parameter: ::Array["201" | "404" | "422"] }, patch: { default: ::Array["204" | "422"], path_parameter: ::Array["204" | "404" | "422"] }, put: { default: ::Array["204" | "422"], path_parameter: ::Array["204" | "404" | "422"] }, delete: { default: ::Array["200" | "422"], path_parameter: ::Array["200" | "404" | "422"] } }
+
+    DEFAULT_HTTP_METHODS_WHEN_GENERATE_REQUEST_BODY: ::Array["post" | "patch" | "put"]
+
+    DEFAULT_IGNORED_HTTP_STATUSES_WHEN_GENERATE_COMPONENT_SCHEMA: ::Array["204" | "404"]
+
+    # rubocop:enable Style/MutableConstant
+    # :dot or :underbar
+    DEFAULT_NAMESPACE_TYPE: :dot
+
+    DEFAULT_DEPLOY_DIR_PATH: "./deploy_docs"
+
+    EDFAULT_PLUGINS: ::Array[untyped]
+
+    DEFAULT_LOCAL_PLUGINS_DIR_NAME: "plugins"
+
+    DEFAULT_LOCAL_TASKS_DIR_NAME: "tasks"
+
+    DEFAULT_OUTPUT_PATH: "./oas_docs/dist/oas_doc.yml"
+
+    DEFAULT_DEPRECATION: untyped
+
+    PUBLIC_VALID_OPTIONS_KEYS: ::Array[:version | :root_dir_path | :schema_save_dir_name | :doc_save_file_name | :force_update_schema | :use_tag_namespace | :use_schema_namespace | :server | :interval_to_save_edited_tmp_schema | :swagger | :http_statuses_when_http_method | :http_methods_when_generate_request_body | :ignored_http_statuses_when_generate_component_schema | :namespace_type | :deploy_dir_path | :plugins | :local_plugins_dir_name | :local_tasks_dir_name | :output_path | :deprecation]
+
+    UNPUBLIC_VALID_OPTIONS_KEYS: ::Array[:paths_config | :logger]
+
+    VALID_OPTIONS_KEYS: untyped
+
+    def options: () -> untyped
+
+    private
+
+    def self?.set_default: (untyped target) -> untyped
+  end
+end

@@ -32,6 +32,11 @@ jobs:
         run: bundle exec rubocop --fail-level=W
         continue-on-error: false
       
+      - name: Run Steep check
+        if: matrix.ruby-version >= '3.2.6'
+        run: bundle exec steep check --with-expectations
+        continue-on-error: false
+      
       - name: Run RSpec
         run: bundle exec rspec spec
 

@@ -1,0 +1,6 @@
+module R2OAS
+  module Routing
+    class BaseComponent < Base
+    end
+  end
+end

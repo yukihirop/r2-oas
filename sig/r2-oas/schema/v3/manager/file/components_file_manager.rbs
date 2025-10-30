@@ -1,0 +1,17 @@
+module R2OAS
+  module Schema
+    module V3
+      class ComponentsFileManager < IncludeRefBaseFileManager
+        @path_type: untyped
+
+        @original_path: untyped
+
+        @recursive_search_class: untyped
+
+        def initialize: (untyped path, ?::Symbol path_type) -> void
+
+        def skip_save?: () -> untyped
+      end
+    end
+  end
+end

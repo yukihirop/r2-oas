@@ -1,0 +1,43 @@
+module R2OAS
+  module Schema
+    module V3
+      class BaseBuilder < Base
+        @opts: untyped
+
+        @glob_schema_paths: untyped
+
+        @many_components_file_paths: untyped
+
+        include Sortable
+
+        def initialize: (?::Hash[untyped, untyped] opts) -> void
+
+        private
+
+        attr_accessor unit_paths_file_path: untyped
+
+        attr_accessor skip_load_dot_paths: untyped
+
+        attr_accessor opts: untyped
+
+        attr_accessor use_plugin: untyped
+
+        attr_accessor output: untyped
+
+        alias use_plugin? use_plugin
+
+        alias output? output
+
+        def schema_file_do_not_exists?: () -> untyped
+
+        def create_glob_schema_paths: () -> untyped
+
+        def schema_files_paths: () -> untyped
+
+        def many_paths_file_paths: () -> (::Array[untyped] | untyped)
+
+        def many_components_file_paths: () -> untyped
+      end
+    end
+  end
+end

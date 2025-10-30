@@ -1,0 +1,11 @@
+module R2OAS
+  module Schema
+    class Builder
+      @builder: untyped
+
+      extend Forwardable
+
+      def initialize: (?::Hash[untyped, untyped] options) -> void
+    end
+  end
+end

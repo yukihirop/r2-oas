@@ -1,0 +1,31 @@
+module R2OAS
+  module Schema
+    module V3
+      class OpenapiObject < BaseObject
+        @routes_data: untyped
+
+        @tags_data: untyped
+
+        @schemas_data: untyped
+
+        def initialize: (untyped routes_data, untyped tags_data, untyped schemas_data, ?::Hash[untyped, untyped] opts) -> void
+
+        def to_doc: () -> untyped
+
+        private
+
+        def info_doc: () -> untyped
+
+        def tags_doc: () -> untyped
+
+        def paths_doc: () -> untyped
+
+        def external_docs_doc: () -> untyped
+
+        def servers_doc: () -> untyped
+
+        def components_doc: () -> untyped
+      end
+    end
+  end
+end

@@ -1,0 +1,11 @@
+module R2OAS
+  module Plugin
+    module V3
+      class Transform < ::R2OAS::Plugin::Base
+        extend Visitable
+
+        def self.inherited: (untyped base) -> untyped
+      end
+    end
+  end
+end

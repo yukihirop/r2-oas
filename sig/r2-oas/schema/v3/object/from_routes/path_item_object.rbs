@@ -1,0 +1,74 @@
+module R2OAS
+  module Schema
+    module V3
+      class PathItemObject < BaseObject
+        @path_comp: untyped
+
+        @path: untyped
+
+        @route_data: untyped
+
+        @verb: untyped
+
+        @tag_name: untyped
+
+        @schema_name: untyped
+
+        @required_parameters: untyped
+
+        @format_name: untyped
+
+        @http_status_manager: untyped
+
+        @components_schema_object: untyped
+
+        @components_request_body_object: untyped
+
+        extend Forwardable
+
+        # reference
+        # https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#path-item-object
+        # Support Field Name: get, put, post, delete, patch
+        SUPPORT_FIELD_NAME: ::Array["get" | "put" | "post" | "delete" | "patch"]
+
+        def initialize: (untyped route_data, untyped path, ?::Hash[untyped, untyped] opts) -> void
+
+        def to_doc: () -> untyped
+
+        def create_doc: () -> untyped
+
+        private
+
+        def data_when_verb: () -> untyped
+
+        def responses_when_http_status: () -> untyped
+
+        def _components_schema_name: (untyped http_status) -> untyped
+
+        def _components_request_body_name: () -> untyped
+
+        def create_format_name: () -> untyped
+
+        def attach_request_body!: (untyped schema) -> untyped
+
+        def attach_media_type!: (untyped schema) -> untyped
+
+        def attach_parameters!: (untyped schema) -> untyped
+
+        def support_field_name?: () -> (untyped | nil)
+
+        class HttpStatusManager
+          @path_comp: untyped
+
+          @verb: untyped
+
+          @http_statuses_when_http_method: untyped
+
+          def initialize: (untyped path, untyped verb, untyped http_statuses_when_http_method) -> void
+
+          def http_statuses: () -> untyped
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,5 @@
+module R2OAS
+  module Callable
+    def deep_call: (untyped data, untyped target, untyped callback) -> untyped
+  end
+end

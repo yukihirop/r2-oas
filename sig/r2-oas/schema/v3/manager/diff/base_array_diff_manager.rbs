@@ -1,0 +1,25 @@
+module R2OAS
+  module Schema
+    module V3
+      class BaseArrayDiffManager < BaseDiffManager
+        @major_category: untyped
+
+        @judge_key: untyped
+
+        def initialize: (untyped before_schema_data, untyped after_schema_data) -> void
+
+        def process_by_using_diff_data: () ?{ (untyped) -> untyped } -> untyped
+
+        def after_target_data: () -> untyped
+
+        private
+
+        def schema_data_grouped_by_judge_key: (untyped arr) -> untyped
+
+        def schema_data_at: (untyped data) -> ::Hash[untyped, untyped]
+
+        def to_boolean: (untyped diff) -> (untyped | false)
+      end
+    end
+  end
+end

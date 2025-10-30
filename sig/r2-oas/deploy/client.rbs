@@ -1,0 +1,39 @@
+# Scope Rails
+module R2OAS
+  module Deploy
+    class Client < Schema::Base
+      @download_dir: untyped
+
+      @base_dir: untyped
+
+      @tar_path: untyped
+
+      @dist_path: untyped
+
+      @schema_file_path: untyped
+
+      # Get master branch tarball from GitHub API
+      SWAGGER_UI_TARBALL_URL: "https://api.github.com/repos/swagger-api/swagger-ui/tarball/master"
+
+      FALLBACK_DIST_PATH: untyped
+
+      def initialize: (?::Hash[untyped, untyped] options) -> void
+
+      def download_swagger_ui_dist: () -> (untyped | true)
+
+      def deploy: () -> untyped
+
+      private
+
+      def copy_swagger_ui_dist: () -> untyped
+
+      def copy_swagger_ui_index: () -> untyped
+
+      def copy_oas_doc_file: () -> untyped
+
+      def remove_download_dist: () -> untyped
+
+      def make_index: (untyped template) -> untyped
+    end
+  end
+end

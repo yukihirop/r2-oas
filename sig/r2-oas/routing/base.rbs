@@ -1,0 +1,6 @@
+module R2OAS
+  module Routing
+    class Base < ::R2OAS::Base
+    end
+  end
+end

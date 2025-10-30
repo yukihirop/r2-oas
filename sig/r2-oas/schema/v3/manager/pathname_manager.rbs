@@ -1,0 +1,24 @@
+module R2OAS
+  module Schema
+    module V3
+      class PathnameManager < Base
+        @ext_name: untyped
+
+        @path_type: untyped
+
+        @path: untyped
+
+        # e.x.) path = "#/components/schemas/Account" (when path_type = :ref)
+        def initialize: (untyped path, ?::Symbol path_type) -> void
+
+        def object_type: () -> untyped
+
+        def relative_save_file_path: () -> untyped
+
+        private
+
+        def normalized_about_path_type: () -> untyped
+      end
+    end
+  end
+end

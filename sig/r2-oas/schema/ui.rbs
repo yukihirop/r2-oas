@@ -1,0 +1,36 @@
+# Scope Rails
+module R2OAS
+  module Schema
+    class UI < Base
+      @ui: untyped
+
+      @running: untyped
+
+      @browser: untyped
+
+      @container: untyped
+
+      extend Forwardable
+
+      alias swagger_json doc_save_file_path
+
+      def initialize: (?::Hash[untyped, untyped] options) -> void
+
+      def start: () -> untyped
+
+      private
+
+      attr_accessor unit_paths_file_path: untyped
+
+      def setup_signal_traps: () -> untyped
+
+      def cleanup: () -> untyped
+
+      def open_browser: () -> untyped
+
+      def wait_for_loaded: () -> untyped
+
+      def container: () -> untyped
+    end
+  end
+end

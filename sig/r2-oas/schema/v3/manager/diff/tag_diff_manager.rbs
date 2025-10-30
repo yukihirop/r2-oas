@@ -1,0 +1,13 @@
+module R2OAS
+  module Schema
+    module V3
+      class TagDiffManager < BaseArrayDiffManager
+        @major_category: untyped
+
+        @judge_key: untyped
+
+        def initialize: (untyped before_schema_data, untyped after_schema_data) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,41 @@
+module R2OAS
+  class Store
+    self.@instance: untyped
+
+    @data: untyped
+
+    @type: untyped
+
+    attr_accessor data: untyped
+
+    def initialize: (untyped type, ?::Hash[untyped, untyped] data) -> void
+
+    def add: (untyped key, untyped value) -> untyped
+
+    def save: () { (untyped) -> untyped } -> untyped
+
+    def dup_slice: (*untyped sha1s) -> untyped
+
+    def checksum?: () -> untyped
+
+    def key?: (untyped key) -> untyped
+
+    def exists?: () -> untyped
+
+    def diff_from: (untyped local_store) ?{ (untyped) -> untyped } -> untyped
+
+    private
+
+    def calc_sha1: (untyped key, untyped value) -> untyped
+
+    def values: () -> untyped
+
+    def adjust: (untyped hash, untyped direct) -> untyped
+
+    extend Forwardable
+
+    def self.create: (?::Symbol type) -> untyped
+
+    def self.instance: (untyped type) -> untyped
+  end
+end

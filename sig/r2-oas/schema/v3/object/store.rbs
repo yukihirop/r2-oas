@@ -1,0 +1,45 @@
+module R2OAS
+  module Schema
+    module V3
+      class Store
+        self.@instance: untyped
+
+        @data: untyped
+
+        @root_doc: untyped
+
+        @components_schema_name_list: untyped
+
+        @appended_components_schema_name_list: untyped
+
+        @components_request_body_name_list: untyped
+
+        @appended_components_request_body_name_list: untyped
+
+        attr_accessor root_doc: untyped
+
+        attr_accessor components_schema_name_list: untyped
+
+        attr_accessor appended_components_schema_name_list: untyped
+
+        attr_accessor components_request_body_name_list: untyped
+
+        attr_accessor appended_components_request_body_name_list: untyped
+
+        def initialize: (?::Symbol type) -> void
+
+        def add: (untyped obj_type, untyped key, untyped value) -> untyped
+
+        def gets: (untyped obj_type) -> (untyped | ::Array[untyped])
+
+        extend Forwardable
+
+        def self.create: (?::Symbol type) -> untyped
+
+        private
+
+        def self.instance: (untyped type) -> untyped
+      end
+    end
+  end
+end

@@ -1,0 +1,19 @@
+module R2OAS
+  module Schema
+    module V3
+      class DocGenerator < BaseGenerator
+        @schema_generator: untyped
+
+        def initialize: (?::Hash[untyped, untyped] options) -> void
+
+        def generate_docs: () -> untyped
+
+        private
+
+        def save_schemas_from_store: () -> untyped
+
+        def save_diff_schemas_from: (untyped local_store) -> untyped
+      end
+    end
+  end
+end

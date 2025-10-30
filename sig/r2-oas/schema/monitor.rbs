@@ -1,0 +1,28 @@
+# Scope Rails
+module R2OAS
+  module Schema
+    class Monitor < Base
+      @before_schema_data: untyped
+
+      @running: untyped
+
+      @after_schema_data: untyped
+
+      def initialize: (untyped before_schema_data, untyped options) -> void
+
+      def start: () -> untyped
+
+      private
+
+      attr_accessor unit_paths_file_path: untyped
+
+      def setup_signal_traps: () -> untyped
+
+      def monitor_loop: () -> untyped
+
+      def process_after_close_monitor: () -> untyped
+
+      def fetch_after_schema_data: () -> untyped
+    end
+  end
+end

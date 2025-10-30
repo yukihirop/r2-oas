@@ -1,0 +1,81 @@
+module R2OAS
+  module Schema
+    module V3
+      module FromFiles
+        class BaseRef
+          @parent: untyped
+
+          def pretty_print: (untyped q) -> untyped
+
+          attr_reader parent: untyped
+
+          def []=: (untyped key, untyped value) -> untyped
+
+          def []: (untyped key) -> untyped
+
+          def to_h: () -> untyped
+
+          private
+
+          # MEMO:
+          # https://apidock.com/ruby/v1_9_3_392/PP/PPMethods/pp_hash
+          def pp_hash: (untyped q, untyped obj) -> untyped
+
+          def build: (untyped ref_or_data, ?::Hash[untyped, untyped] merge_data) -> untyped
+
+          attr_writer parent: untyped
+
+          def valid_keys: () -> untyped
+
+          def writable_keys: () -> untyped
+        end
+
+        class PathRef < BaseRef
+          VALID_KEYS: ::Array[:type | :path]
+
+          def initialize: (untyped data) -> void
+
+          private
+
+          def valid_keys: () -> untyped
+
+          def writable_keys: () -> ::Array[untyped]
+        end
+
+        module Components
+          class SchemaRef < BaseRef
+            READONLY_KEYS: ::Array[:type | :path | :parent_schema_name | :depth | :tag_name | :verb | :http_status | :from]
+
+            WRITABLE_KEYS: ::Array[:schema_name]
+
+            VALID_KEYS: untyped
+
+            def initialize: (untyped ref_or_data) -> void
+
+            private
+
+            def valid_keys: () -> untyped
+
+            def writable_keys: () -> untyped
+          end
+
+          class RequestBodyRef < BaseRef
+            READONLY_KEYS: ::Array[:type | :path | :parent_schema_name | :depth | :tag_name | :verb | :from]
+
+            WRITABLE_KEYS: ::Array[:schema_name]
+
+            VALID_KEYS: untyped
+
+            def initialize: (untyped ref_or_data) -> void
+
+            private
+
+            def valid_keys: () -> untyped
+
+            def writable_keys: () -> untyped
+          end
+        end
+      end
+    end
+  end
+end

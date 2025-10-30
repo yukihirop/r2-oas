@@ -1,0 +1,78 @@
+# Referred to　lib/ruby/2.3.0/logger.rb
+module R2OAS
+  class StdoutLogger
+    @progname: untyped
+
+    @level: untyped
+
+    @default_formatter: untyped
+
+    @formatter: untyped
+
+    DEBUG: 0
+
+    INFO: 1
+
+    WARN: 2
+
+    ERROR: 3
+
+    FATAL: 4
+
+    UNKNOWN: 5
+
+    NULL: 6
+
+    # Severity label for logging (max 5 chars).
+    SEV_LABEL: untyped
+
+    # Logging severity threshold (e.g. <tt>Logger::INFO</tt>).
+    attr_reader level: untyped
+
+    def initialize: () -> void
+
+    # Set logging severity threshold.
+    #
+    # +severity+:: The Severity of the log message.
+    def level=: (untyped severity) -> untyped
+
+    def debug: (?untyped? progname) -> untyped
+
+    def info: (?untyped? progname) -> untyped
+
+    def warn: (?untyped? progname) -> untyped
+
+    def error: (?untyped? progname) -> untyped
+
+    def fatal: (?untyped? progname) -> untyped
+
+    def unknown: (?untyped? progname) -> untyped
+
+    private
+
+    def add: (untyped severity, ?untyped? _message, ?untyped? progname) -> (true | untyped)
+
+    def format_message: (untyped severity, untyped datetime, untyped progname, untyped msg) -> untyped
+
+    def format_severity: (untyped severity) -> untyped
+
+    # Default formatter for log messages.
+    class Formatter
+      @datetime_format: untyped
+
+      Format: "%s, [%s#%d] %5s -- %s: %s\n"
+
+      attr_accessor datetime_format: untyped
+
+      def initialize: () -> void
+
+      def call: (untyped severity, untyped time, untyped progname, untyped msg) -> untyped
+
+      private
+
+      def format_datetime: (untyped time) -> untyped
+
+      def msg2str: (untyped msg) -> untyped
+    end
+  end
+end
