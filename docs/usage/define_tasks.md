@@ -8,7 +8,8 @@ nav_order: 2
 
 # 🆕 Define tasks
 
-?> Starting from `v0.4.0`, you can define tasks.  
+{: .note }
+> Starting from `v0.4.0`, you can define tasks.
 
 You can define rake tasks.
 

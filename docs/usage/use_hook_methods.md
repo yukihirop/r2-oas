@@ -8,7 +8,8 @@ nav_order: 3
 
 # [before v0.4.1] Use hook methods
 
-!> This option is valid until `v0.4.1`. Please use `plugin` instead for `v0.5.0` and above
+{: .warning }
+> This option is valid until `v0.4.1`. Please use `plugin` instead for `v0.5.0` and above
 
 Supported hook(life cycle methods) is like this:
 

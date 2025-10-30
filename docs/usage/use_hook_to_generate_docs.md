@@ -8,7 +8,8 @@ nav_order: 4
 
 # [before v0.4.1] Use hook to generate docs
 
-!> This option is valid until `v0.4.1`. Please use `plugin` instead for `v0.5.0` and above
+{: .warning }
+> This option is valid until `v0.4.1`. Please use `plugin` instead for `v0.5.0` and above
 
 ## Prepare
 
