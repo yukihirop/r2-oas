@@ -1,5 +1,5 @@
 <style>
-  /* Custom site title gradient effect */
+  /* Custom site title gradient effect with logo */
   .site-title {
     font-family: sans-serif !important;
     font-weight: 700 !important;
@@ -8,6 +8,22 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem;
+  }
+
+  /* Add logo icon before site title */
+  .site-title::before {
+    content: '';
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background-image: url('/r2-oas/assets/symbol.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
   }
 
   /* Fallback for browsers that don't support background-clip */
