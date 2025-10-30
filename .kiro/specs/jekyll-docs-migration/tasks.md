@@ -8,15 +8,15 @@
   - .gitignore ファイルを作成し、ビルド成果物とキャッシュディレクトリを除外する
   - _Requirements: 1.1, 1.2, 1.3, 1.4_
 
-- [ ] 2. Just-the-Docs テーマの設定とカスタマイズを実装する
-- [ ] 2.1 テーマの基本設定を構成する
+- [x] 2. Just-the-Docs テーマの設定とカスタマイズを実装する
+- [x] 2.1 テーマの基本設定を構成する
   - _config.yml に Just-the-Docs の設定を追加する (color_scheme, search_enabled, nav_sort)
   - Kramdown Markdown パーサーの設定を追加する (GFM サポート、シンタックスハイライト)
   - プラグイン設定を追加する (jekyll-seo-tag, jekyll-sitemap)
   - 検索機能の設定を構成する (heading_level, previews, preview_words)
   - _Requirements: 4.1, 4.2, 4.4, 5.1, 6.1, 6.3_
 
-- [ ] 2.2 カスタムレイアウトとコンポーネントを作成する
+- [x] 2.2 カスタムレイアウトとコンポーネントを作成する
   - 必要に応じてカスタムレイアウトを _layouts/ に作成する
   - 情報ボックス用の include コンポーネントを _includes/custom/ に作成する (info, warning, danger)
   - カスタム CSS を _sass/custom/custom.scss に定義する (オプション)

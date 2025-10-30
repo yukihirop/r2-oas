@@ -1,0 +1,61 @@
+// Custom styles for R2-OAS Documentation
+
+// Info box styles
+.info-box {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid #2196F3;
+  background-color: #E3F2FD;
+  display: flex;
+  align-items: flex-start;
+
+  .info-box-icon {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .info-box-content {
+    flex: 1;
+  }
+}
+
+// Warning box styles
+.warning-box {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid #FF9800;
+  background-color: #FFF3E0;
+  display: flex;
+  align-items: flex-start;
+
+  .warning-box-icon {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .warning-box-content {
+    flex: 1;
+  }
+}
+
+// Danger box styles
+.danger-box {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid #F44336;
+  background-color: #FFEBEE;
+  display: flex;
+  align-items: flex-start;
+
+  .danger-box-icon {
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .danger-box-content {
+    flex: 1;
+  }
+}
