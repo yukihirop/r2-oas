@@ -18,6 +18,9 @@ Kiro-style Spec Driven Development implementation using claude code slash comman
 - Check `.kiro/specs/` for active specifications
 - Use `/kiro:spec-status [feature-name]` to check progress
 
+#### Current Specifications
+- **jekyll-docs-migration**: Jekyll を使用した old_docs から新しい docs への移行
+
 ## Development Guidelines
 - Think in English, but generate responses in Japanese (思考は英語、回答の生成は日本語で行うように)
 
