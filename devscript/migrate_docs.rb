@@ -79,7 +79,8 @@ def add_front_matter(content, title, permalink, parent: nil, nav_order: nil)
   front_matter['parent'] = parent if parent
   front_matter['nav_order'] = nav_order if nav_order
 
-  "---\n#{front_matter.to_yaml}---\n\n#{content}"
+  # YAML.to_yaml already adds starting ---, so we only need ending ---
+  "#{front_matter.to_yaml}---\n\n#{content}"
 end
 
 # Convert Docsify links to Jekyll links
@@ -143,6 +144,100 @@ def display_excluded_files
   puts
 end
 
+# Migrate a single file
+#
+# @param source_file [String] Source file path
+# @param old_docs_root [String] Old docs root directory
+# @param docs_root [String] Target docs root directory
+# @return [Hash] Migration result
+def migrate_file(source_file, old_docs_root, docs_root)
+  relative_path = source_file.sub("#{old_docs_root}/", '')
+
+  # Determine target directory
+  parts = relative_path.split('/')
+  if parts.length == 1
+    # Root file (README.md)
+    target_dir = docs_root
+    target_file = File.join(target_dir, 'index.md')
+    directory = ''
+  else
+    source_dir = parts[0]
+    filename = parts[1]
+
+    # Map directory
+    target_subdir = DIRECTORY_MAPPING[source_dir] || source_dir
+    target_dir = File.join(docs_root, target_subdir)
+    target_file = File.join(target_dir, filename)
+    directory = target_subdir
+  end
+
+  # Read source content
+  content = File.read(source_file)
+
+  # Generate metadata
+  filename = File.basename(source_file)
+  title = generate_title(filename)
+  permalink = generate_permalink(directory, filename)
+
+  # Convert links
+  converted_content = convert_links(content)
+
+  # Add front matter
+  migrated_content = add_front_matter(converted_content, title, permalink)
+
+  # Create target directory
+  FileUtils.mkdir_p(target_dir) unless Dir.exist?(target_dir)
+
+  # Write migrated file
+  File.write(target_file, migrated_content)
+
+  {
+    source: source_file,
+    target: target_file,
+    success: true
+  }
+rescue StandardError => e
+  {
+    source: source_file,
+    target: target_file,
+    success: false,
+    error: e.message
+  }
+end
+
+# Execute migration for all files
+#
+# @param old_docs_root [String] Source directory
+# @param docs_root [String] Target directory
+# @return [Hash] Migration statistics
+def execute_migration(old_docs_root, docs_root)
+  files = list_markdown_files(old_docs_root)
+  results = {
+    total: files.length,
+    success: 0,
+    failed: 0,
+    errors: []
+  }
+
+  files.each_with_index do |file, index|
+    relative_path = file.sub("#{old_docs_root}/", '')
+    puts "[#{index + 1}/#{files.length}] Migrating #{relative_path}..."
+
+    result = migrate_file(file, old_docs_root, docs_root)
+
+    if result[:success]
+      results[:success] += 1
+      puts "  ✓ Success: #{result[:target].sub("#{docs_root}/", '')}"
+    else
+      results[:failed] += 1
+      results[:errors] << result
+      puts "  ✗ Failed: #{result[:error]}"
+    end
+  end
+
+  results
+end
+
 # Main execution
 if __FILE__ == $PROGRAM_NAME
   puts 'R2-OAS Documentation Migration Script'
@@ -168,12 +263,37 @@ if __FILE__ == $PROGRAM_NAME
   puts "Found #{files.length} markdown files to migrate"
   puts
 
-  files.each do |file|
-    relative_path = file.sub("#{old_docs_root}/", '')
-    puts "  - #{relative_path}"
-  end
+  # Check if --execute flag is provided
+  if ARGV.include?('--execute')
+    puts 'Starting migration...'
+    puts '=' * 50
+    puts
 
-  puts
-  puts 'Migration script is ready to use.'
-  puts 'Run with --execute flag to perform the actual migration.'
+    results = execute_migration(old_docs_root, docs_root)
+
+    puts
+    puts '=' * 50
+    puts 'Migration Complete!'
+    puts "Total: #{results[:total]}"
+    puts "Success: #{results[:success]}"
+    puts "Failed: #{results[:failed]}"
+
+    if results[:failed] > 0
+      puts
+      puts 'Errors:'
+      results[:errors].each do |error|
+        puts "  - #{error[:source]}: #{error[:error]}"
+      end
+      exit 1
+    end
+  else
+    files.each do |file|
+      relative_path = file.sub("#{old_docs_root}/", '')
+      puts "  - #{relative_path}"
+    end
+
+    puts
+    puts 'Migration script is ready to use.'
+    puts 'Run with --execute flag to perform the actual migration.'
+  end
 end

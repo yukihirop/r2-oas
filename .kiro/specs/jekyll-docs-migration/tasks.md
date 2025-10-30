@@ -36,8 +36,8 @@
   - コードブロックと画像パスを検証する機能を追加する
   - _Requirements: 2.2, 2.4_
 
-- [ ] 4. コンテンツの一括移行を実行する
-- [ ] 4.1 Markdown ファイルを移行する
+- [x] 4. コンテンツの一括移行を実行する
+- [x] 4.1 Markdown ファイルを移行する
   - old_docs/usage/*.md を docs/usage/ にコピーして変換する
   - old_docs/setting/*.md を docs/configuration/ にコピーして変換する
   - old_docs/schema/*.md を docs/schema/ にコピーして変換する
@@ -46,7 +46,7 @@
   - old_docs/README.md を docs/index.md に変換する
   - _Requirements: 2.1, 2.3_
 
-- [ ] 4.2 Front Matter を各ファイルに追加する
+- [x] 4.2 Front Matter を各ファイルに追加する
   - layout, title, permalink フィールドを追加する
   - 階層構造に応じて nav_order, parent, has_children フィールドを設定する
   - SEO 用の description と keywords を追加する (主要ページのみ)
