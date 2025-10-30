@@ -22,14 +22,14 @@
   - カスタム CSS を _sass/custom/custom.scss に定義する (オプション)
   - _Requirements: 4.1, 6.4_
 
-- [ ] 3. コンテンツ移行の準備とスクリプトを作成する
-- [ ] 3.1 ディレクトリマッピングとファイルリストを作成する
+- [x] 3. コンテンツ移行の準備とスクリプトを作成する
+- [x] 3.1 ディレクトリマッピングとファイルリストを作成する
   - old_docs/ の全 Markdown ファイルをリストアップする
   - ディレクトリマッピング規則を定義する (usage → usage, setting → configuration, etc.)
   - 移行対象ファイルと除外ファイルを特定する
   - _Requirements: 2.1_
 
-- [ ] 3.2 Markdown 変換スクリプトを実装する
+- [x] 3.2 Markdown 変換スクリプトを実装する
   - Front Matter を自動追加するスクリプトを作成する (Ruby または Python)
   - ファイル名からタイトルと permalink を生成する機能を実装する
   - 内部リンクを Docsify 形式から Jekyll 形式に変換する機能を実装する
