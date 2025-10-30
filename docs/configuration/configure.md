@@ -22,7 +22,7 @@ R2OAS.configure do |config|
   config.force_update_schema                = false
   config.use_tag_namespace                  = true
   config.use_schema_namespace               = false
-  config.interval_to_save_edited_tmp_schema = 15
+  config.interval_to_save_edited_tmp_schema = 0.5
   # :dot or :underbar
   config.namespace_type                     = :dot
   config.deploy_dir_path                    = "./deploy_docs"
