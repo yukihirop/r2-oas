@@ -1,6 +1,6 @@
 # 実装計画
 
-- [ ] 1. Jekyll プロジェクトの基盤をセットアップする
+- [x] 1. Jekyll プロジェクトの基盤をセットアップする
   - `docs/` ディレクトリを作成し、Jekyll プロジェクトのルートとして初期化する
   - 標準的な Jekyll ディレクトリ構造を作成する (_layouts/, _includes/, _sass/, assets/)
   - _config.yml を作成し、サイトの基本設定を定義する (title, description, baseurl, url)

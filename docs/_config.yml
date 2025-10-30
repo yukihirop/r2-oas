@@ -1,0 +1,12 @@
+# Jekyll Configuration for R2-OAS Documentation
+
+title: "R2-OAS Documentation"
+description: "OpenAPI documentation generator for Rails"
+baseurl: "/r2-oas"
+url: "https://yukihirop.github.io"
+
+# Theme
+theme: just-the-docs
+
+# Build settings
+markdown: kramdown
