@@ -1,9 +1,19 @@
-# R2-OAS
-
 [![Gem Version](https://badge.fury.io/rb/r2-oas.svg)](https://badge.fury.io/rb/r2-oas)
 [![Build Status](https://travis-ci.org/yukihirop/r2-oas.svg?branch=master)](https://travis-ci.org/yukihirop/r2-oas)
 [![Coverage Status](https://coveralls.io/repos/github/yukihirop/r2-oas/badge.svg)](https://coveralls.io/github/yukihirop/r2-oas)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8c3846f350bb412fd63/maintainability)](https://codeclimate.com/github/yukihirop/r2-oas/maintainability)
+
+
+<p align="center">
+	<img alt="logo" width="196" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/docs/assets/logo.png">
+</p>
+
+<h1 align="center" style="font-family: sans-serif; font-size: 50px; font-weight: 700; background: -webkit-linear-gradient(90deg, #CC342D 20%, #E63D36 60%, #FF5C55 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">R2-OAS</h1>
+
+<p align="center">
+	<a href="https://yukihirop.github.io/r2-oas/" target="_blank">📚 Documentation</a>
+</p>
+
 
 Railsのルーティング情報からOpenAPI形式のドキュメントを生成し、閲覧・編集・管理するためのrakeタスクの提供をします。
 
