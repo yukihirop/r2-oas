@@ -5,6 +5,10 @@ description: "OpenAPI documentation generator for Rails"
 baseurl: "/r2-oas"
 url: "https://yukihirop.github.io"
 
+# Logo and Favicon
+logo: "/r2-oas/assets/logo.png"
+favicon_ico: "/r2-oas/assets/favicon.ico"
+
 # Theme
 theme: just-the-docs
 color_scheme: light
@@ -13,6 +17,23 @@ color_scheme: light
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+
+# SEO and Social Media
+author: "yukihirop"
+twitter:
+  username: yukihirop
+  card: summary_large_image
+social:
+  name: R2-OAS
+  links:
+    - https://github.com/yukihirop/r2-oas
+
+# Open Graph / Social Media defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /r2-oas/assets/og-image.png
 
 # Build settings
 markdown: kramdown
