@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'easy_diff', '~> 1.0', '>= 1.0.0'
   spec.add_runtime_dependency 'key_flatten', '~> 1.0', '>= 1.0.0'
   spec.add_runtime_dependency 'railties', '>= 7.2.0', '< 11.0'
-  spec.add_runtime_dependency 'watir', '~> 6.16', '>= 6.16.5'
+  spec.add_runtime_dependency 'watir', '>= 6.16.5', '< 8.0'
 end
