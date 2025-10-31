@@ -94,15 +94,11 @@ $ bundle exec rake routes:oas:editor
 
 #### Generate docs
 
-<p align="center">
-	<img alt="r2-oas docs demo" width="800" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/demo/oas_docs.mp4">
-</p>
+https://raw.githubusercontent.com/yukihirop/r2-oas/master/demo/oas_docs.mp4
 
 #### Edit docs
 
-<p align="center">
-	<img alt="r2-oas editor demo" width="800" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/demo/oas_editor.mp4">
-</p>
+https://raw.githubusercontent.com/yukihirop/r2-oas/master/demo/oas_editor.mp4
 
 ## Usage
 
