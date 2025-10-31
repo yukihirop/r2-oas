@@ -1,3 +1,11 @@
+---
+layout: default
+title: Use Tag Namespace
+permalink: "/usage/use-tag-namespace/"
+parent: Usage
+nav_order: 13
+---
+
 # Use Tag Namespace
 
 ## Prepare

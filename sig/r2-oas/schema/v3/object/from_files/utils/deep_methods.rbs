@@ -1,0 +1,11 @@
+module R2OAS
+  module Schema
+    module V3
+      module FromFiles
+        module DeepMethods
+          def deep_replace!: (untyped data, untyped target) ?{ (untyped) -> untyped } -> (nil | untyped)
+        end
+      end
+    end
+  end
+end

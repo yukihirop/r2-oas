@@ -1,0 +1,35 @@
+# rubocop:disable all
+class Object
+  def blank?: () -> bool
+  def present?: () -> bool
+  def presence: () -> (self | nil)
+end
+
+class NilClass
+  def blank?: () -> true
+end
+
+class FalseClass
+  def blank?: () -> true
+end
+
+class TrueClass
+  def blank?: () -> false
+end
+
+class Array[unchecked out Elem]
+  alias blank? empty?
+end
+
+class Hash[unchecked out K, unchecked out V] < Object
+  alias blank? empty?
+end
+
+class String
+  BLANK_REGEXP: ::Regexp
+  def blank?: () -> bool
+end
+
+class Numeric
+  def blank?: () -> false
+end

@@ -1,0 +1,34 @@
+# Scope Rails
+module R2OAS
+  module Schema
+    module V3
+      class BaseAnalyzer < Base
+        @type: untyped
+
+        @before_schema_data: untyped
+
+        @after_schema_data: untyped
+
+        include Sortable
+
+        def initialize: (untyped before_schema_data, untyped after_schema_data, ?::Hash[untyped, untyped] options) -> void
+
+        def analyze_docs: () -> untyped
+
+        def generate_from_existing_schema: () -> untyped
+
+        private
+
+        attr_accessor existing_schema_file_path: untyped
+
+        attr_accessor type: untyped
+
+        def create_after_schema_data: () -> untyped
+
+        def create_after_schema_data_when_not_specify_path: () -> untyped
+
+        def create_after_schema_data_when_specify_path: () -> untyped
+      end
+    end
+  end
+end

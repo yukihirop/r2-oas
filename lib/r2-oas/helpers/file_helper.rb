@@ -35,14 +35,14 @@ module R2OAS
   module Helpers
     module FileHelper
       def write_file_or_skip(file_path, data, silent = false)
-        unless FileTest.exists?(file_path)
+        unless FileTest.exist?(file_path)
           File.write(file_path, data)
           puts "#{space}#{bold('create')}\t#{relative(file_path)}" unless silent
         end
       end
 
       def mkdir_p_dir_or_skip(dir_path, silent = false)
-        unless FileTest.exists?(dir_path)
+        unless FileTest.exist?(dir_path)
           FileUtils.mkdir_p(dir_path)
           puts "#{space}#{bold('create')}\t#{relative(dir_path)}" unless silent
         end

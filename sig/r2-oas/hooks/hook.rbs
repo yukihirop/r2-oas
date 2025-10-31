@@ -1,0 +1,32 @@
+module R2OAS
+  module Hooks
+    class Hook
+      self.@repository: untyped
+
+      self.@type: untyped
+
+      self.@hooks: untyped
+
+      include Singleton
+
+      attr_accessor self.repository: untyped
+
+      def self.register: (untyped type, untyped target_class) -> self
+
+      def self.on: (untyped on, untyped callback, untyped target_class, ?bool once) -> untyped
+
+      #  MEMO: Do not Use
+      def self.off: (untyped uid, untyped target_class) -> untyped
+
+      def self.execute_hook: (untyped on, *untyped data, untyped target_class) -> untyped
+
+      def self.has_hook?: (untyped name, untyped target_class) -> untyped
+
+      private
+
+      def self.execute_global_hook: (untyped on, *untyped data, untyped target_class) -> untyped
+
+      def self.get_hook: (untyped name, untyped target_class) -> untyped
+    end
+  end
+end

@@ -1,0 +1,17 @@
+module R2OAS
+  class Deprecation
+    include Singleton
+
+    # Be sure to follow the Singleton module
+    include InstanceDelegator
+
+    include Behavior
+
+    include Reporting
+
+    # The version number in which the deprecated behavior will be removed, by default.
+    attr_accessor deprecation_horizon: untyped
+
+    def initialize: (?::String deprecation_horizon, ?::String gem_name) -> void
+  end
+end

@@ -1,0 +1,21 @@
+module R2OAS
+  module Schema
+    module V3
+      class ComponentsCleaner < BaseCleaner
+        @components_file_paths: untyped
+
+        @security_schemes_paths: untyped
+
+        def initialize: (?::Hash[untyped, untyped] options) -> void
+
+        def clean_docs: () -> untyped
+
+        private
+
+        def clean_target_files: () -> untyped
+
+        def all_file_paths: () -> untyped
+      end
+    end
+  end
+end

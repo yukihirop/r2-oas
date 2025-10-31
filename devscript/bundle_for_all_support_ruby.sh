@@ -10,11 +10,21 @@ for version in $@; do
   if [[ -f $lockfile ]]; then rm $lockfile; fi
   
   # Change Ruby Version
-  echo ${version} > ./.ruby-version && rbenv rehash
+  echo ${version} > ./.ruby-version
   
-  # Bundle install
-  BUNDLE_GEMFILE=./gemfiles/ruby_${version}.gemfile bundle install --path vendor/bundle && report+=("ruby-${version}: $?") 
-  if [ $? -ne 0 ]; then report+=("ruby-${version}: 1 (failed)");fi
+  # Bundle install with mise shell
+  mise shell ruby@${version} -- bash -c "
+    BUNDLE_GEMFILE=./gemfiles/ruby_${version}.gemfile bundle install --path vendor/bundle
+    exit_code=\$?
+    echo \"Bundle install exit code: \$exit_code\"
+    exit \$exit_code
+  "
+  
+  if [ $? -eq 0 ]; then 
+    report+=("ruby-${version}: 0")
+  else 
+    report+=("ruby-${version}: 1 (failed)")
+  fi
 
   echo "== End for Ruby Version: ${version} =="
 done

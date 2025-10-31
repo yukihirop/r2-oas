@@ -1,0 +1,38 @@
+module R2OAS
+  module Schema
+    module V3
+      module FromFiles
+        class PathItemObject < BaseObject
+          @doc: untyped
+
+          @parent_ref: untyped
+
+          include ::R2OAS::Callable
+
+          include DeepMethods
+
+          def initialize: (untyped doc, untyped ref, ?::Hash[untyped, untyped] opts) -> void
+
+          def to_doc: () -> untyped
+
+          # Breaking changes to @doc
+          def resolve_dependencies!: () -> untyped
+
+          def call_ref_path!: () -> untyped
+
+          private
+
+          def ref_dup: () -> untyped
+
+          def resolve_dependencies_at_schema!: (untyped data, untyped verb, untyped data_when_verb, untyped local_ref_hash) -> untyped
+
+          def resolve_dependencies_at_request_body!: (untyped data, untyped verb, untyped data_when_verb, untyped local_ref_hash) -> untyped
+
+          def create_child_schema_ref: (untyped schema_name, untyped local_ref_hash) -> untyped
+
+          def create_child_request_body_ref: (untyped schema_name, untyped local_ref_hash) -> untyped
+        end
+      end
+    end
+  end
+end

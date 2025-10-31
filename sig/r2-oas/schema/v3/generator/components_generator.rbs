@@ -1,0 +1,19 @@
+module R2OAS
+  module Schema
+    module V3
+      class ComponentsGenerator < BaseGenerator
+        @components: untyped
+
+        @options: untyped
+
+        def initialize: (?::Hash[untyped, untyped] schema_data, ?::Hash[untyped, untyped] options) -> void
+
+        def generate_docs: () -> untyped
+
+        private
+
+        def generator_class: (untyped object_name) -> untyped
+      end
+    end
+  end
+end

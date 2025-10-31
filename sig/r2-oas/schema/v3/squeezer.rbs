@@ -1,0 +1,9 @@
+module R2OAS
+  module Schema
+    module V3
+      class Squeezer < BaseSqueezer
+        def squeeze_docs: () -> untyped
+      end
+    end
+  end
+end

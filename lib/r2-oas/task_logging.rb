@@ -3,8 +3,8 @@
 # Scope Rails
 module R2OAS
   module TaskLogging
-    def task(*args, &block)
-      Rake::Task.define_task(*args) do |task|
+    def task(*, &block)
+      Rake::Task.define_task(*) do |task|
         if block_given?
           debug_log task, "[#{task.name}] started"
           begin

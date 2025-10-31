@@ -34,7 +34,7 @@ module R2OAS
         alias output? output
 
         def schema_file_do_not_exists?
-          schema_files_paths.count == 0
+          schema_files_paths.none?
         end
 
         def create_glob_schema_paths

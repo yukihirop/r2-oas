@@ -1,24 +1,32 @@
-# R2-OAS
-
 [![Gem Version](https://badge.fury.io/rb/r2-oas.svg)](https://badge.fury.io/rb/r2-oas)
 [![Build Status](https://travis-ci.org/yukihirop/r2-oas.svg?branch=master)](https://travis-ci.org/yukihirop/r2-oas)
 [![Coverage Status](https://coveralls.io/repos/github/yukihirop/r2-oas/badge.svg)](https://coveralls.io/github/yukihirop/r2-oas)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8c3846f350bb412fd63/maintainability)](https://codeclimate.com/github/yukihirop/r2-oas/maintainability)
+
+<p align="center">
+	<img alt="logo" width="196" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/docs/assets/logo.png">
+</p>
+
+<h1 align="center" style="font-family: sans-serif; font-size: 50px; font-weight: 700; background: -webkit-linear-gradient(90deg, #CC342D 20%, #E63D36 60%, #FF5C55 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">R2-OAS</h1>
+
+<p align="center">
+	<a href="https://yukihirop.github.io/r2-oas/" target="_blank">📚 Documentation</a>
+</p>
 
 Generate api document (OpenAPI) side only from `Rails` routing.
 
 Provides a rake command to help `generate`, `view`, and `edit` OpenAPI documents.
 
 ```bash
-bundle exec rake routes:oas:init    # initialize
-bundle exec rake routes:oas:docs    # generate
-bundle exec rake routes:oas:ui      # view
-bundle exec rake routes:oas:editor  # edit
-bundle exec rake routes:oas:monitor # monitor
-bundle exec rake routes:oas:build   # build
-bundle exec rake routes:oas:clean   # clean
-bundle exec rake routes:oas:analyze # analyze
-bundle exec rake routes:oas:deploy  # deploy
+bundle exec rake routes:oas:init    # r2-oas initialize
+bundle exec rake routes:oas:docs    # generate oas_docs
+bundle exec rake routes:oas:ui      # view at swagger ui
+bundle exec rake routes:oas:editor  # edit at swagger editor
+bundle exec rake routes:oas:monitor # monitor oas_docs and analyze
+bundle exec rake routes:oas:build   # build oas_docs from src
+bundle exec rake routes:oas:clean   # clean unused components
+bundle exec rake routes:oas:analyze # analyze oas_docs and generae src
+bundle exec rake routes:oas:deploy  # deploy oas_docs to deploy_docs
 ```
 
 ## 💎 Installation
@@ -52,7 +60,7 @@ If you do not have it download as below.
 ```
 $ docker pull swaggerapi/swagger-editor:latest
 $ docker pull swaggerapi/swagger-ui:latest
-$ brew cask install chromedriver
+$ brew install chromedriver
 ```
 
 ## 🚀 Tutorial
@@ -79,12 +87,15 @@ $ bundle exec rake routes:oas:editor
 
 #### Generate docs
 
-![oas_docs](https://user-images.githubusercontent.com/11146767/80856236-0b839a80-8c83-11ea-888f-d0e659e0c251.gif)
-
+<p align="center">
+	<img alt="r2-oas docs demo" width="800" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/demo/oas_docs.mp4">
+</p>
 
 #### Edit docs
 
-![oas_editor](https://user-images.githubusercontent.com/11146767/80856240-15a59900-8c83-11ea-9dbd-4382528944f2.gif)
+<p align="center">
+	<img alt="r2-oas editor demo" width="800" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/demo/oas_editor.mp4">
+</p>
 
 ## Usage
 
@@ -160,11 +171,14 @@ Full docs are available at https://yukihirop.github.io/r2-oas
 
 ## ❤️ Support Rails Version
 
-- Rails (>= 4.2.5.1)
+- Rails 7.2.2.2
+- Rails (>= 8.x)
 
 ## ❤️ Support Ruby Version
 
-- Ruby (>= 2.5.0)
+- Ruby 3.2.6
+- Ruby 3.3.6
+- Ruby (>= 3.4.x)
 
 ## ❤️ Support Rouging
 
@@ -196,6 +210,55 @@ All settings are `optional`
 
 Full docs are available at https://yukihirop.github.io/r2-oas/#/setting/configure
 
+## RBS, Steep
+
+```bash
+# Errors here can prevent type information from showing when hovering in the editor
+bundle exec steep stats
+# You can check the error details with this command
+bundle exec steep check
+```
+
+#### steep rake task
+
+```bash
+bundle exec rake steep:ignore:dig | pbcopy
+# =>
+#
+# ignore 'RBS::DuplicatedMethodDefinition'
+# ignore 'Ruby::ArgumentTypeMismatch'
+```
+
+```bash
+bundle exec rake steep:ignore:file | pbcopy
+# =>
+#
+# ignore 'lib/r2-oas.rb'
+# ignore 'lib/r2-oas/app_configuration.rb'
+# ignore 'lib/r2-oas/app_configuration/deprecation.rb'
+```
+
+```bash
+bundle exec rake steep:ignore:preview
+# =>
+# 📄 lib/r2-oas/schema/monitor.rb
+#   Line 50: if current_time - last_check_time >= interval_to_save_edited_tmp_schema
+#               →           if current_time - last_check_time >= interval_to_save_edited_tmp_schema # steep:ignore Ruby::NoMethod
+#   Line 62: analyzer.analyze_docs
+#               →         analyzer.analyze_docs # steep:ignore Ruby::NoMethod
+#   Line 66: YAML.load_file(doc_save_file_path) || @after_schema_data
+#               →         YAML.load_file(doc_save_file_path) || @after_schema_data # steep:ignore Ruby::UnknownConstant
+```
+
+```bash
+bundle exec rake steep:ignore:auto
+# =>
+# Analyzing steep check errors...
+# ✅ Modified: lib/r2-oas/app_configuration/deprecation.rb (2 lines)
+# ✅ Modified: lib/r2-oas/plugin/base.rb (3 lines)
+# ✅ Modified: lib/r2-oas/schema/squeezer.rb (2 lines)
+```
+
 ## Bundle and Rspec with multiple ruby ​​versions
 
 #### Bundle
@@ -206,22 +269,22 @@ Full docs are available at https://yukihirop.github.io/r2-oas/#/setting/configur
 .
 .
 ===== Bundle install for All Support Ruby Result =====
-ruby-2.5.8: 0
-ruby-2.6.6: 0
-ruby-2.7.1: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
+ruby-3.4.7: 0
 ======================================================
 ```
 
-If specify ruby version `2.6.6` and `2.7.1`
+If specify ruby version `3.2.6` and `3.3.6`
 
 ```bash
-/bin/bash devscript/all_support_ruby.sh bundle 2.6.6 2.7.1
+/bin/bash devscript/all_support_ruby.sh bundle 3.2.6 3.3.6
 .
 .
 .
 ===== Bundle install for All Support Ruby Result =====
-ruby-2.6.6: 0
-ruby-2.7.1: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
 ======================================================
 ```
 
@@ -233,22 +296,22 @@ ruby-2.7.1: 0
 .
 .
 ===== Rspec for All Support Ruby Result =====
-ruby-2.5.8: 0
-ruby-2.6.6: 0
-ruby-2.7.1: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
+ruby-3.4.7: 0
 =============================================
 ```
 
-If specify ruby version `2.6.6` and `2.7.1`
+If specify ruby version `3.2.6` and `3.3.6`
 
 ```bash
-/bin/bash devscript/all_support_ruby.sh rspec 2.6.6 2.7.1
+/bin/bash devscript/all_support_ruby.sh rspec 3.2.6 3.3.6
 .
 .
 .
 ===== Rspec for All Support Ruby Result =====
-ruby-2.6.6: 0
-ruby-2.7.1: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
 =============================================
 ```
 

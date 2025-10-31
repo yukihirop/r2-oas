@@ -1,0 +1,56 @@
+module R2OAS
+  module Schema
+    module V3
+      class BaseGenerator < Base
+        @store: untyped
+
+        @glob_schema_paths: untyped
+
+        @many_components_file_paths: untyped
+
+        @cache_docs: untyped
+
+        include Sortable
+
+        def initialize: (?::Hash[untyped, untyped] options) -> void
+
+        private
+
+        attr_accessor unit_paths_file_path: untyped
+
+        attr_accessor skip_load_dot_paths: untyped
+
+        attr_accessor is_create_cache: untyped
+
+        attr_accessor store: untyped
+
+        # Scope Rails
+        def create_docs: () -> untyped
+
+        def create_all_routes: () -> untyped
+
+        def schema_file_do_not_exists?: () -> untyped
+
+        def create_glob_schema_paths: () -> untyped
+
+        def schema_files_paths: () -> untyped
+
+        def many_paths_file_paths: () -> (::Array[untyped] | untyped)
+
+        def many_components_file_paths: () -> untyped
+
+        def exists_paths_files?: () -> untyped
+
+        def cache_docs: () -> untyped
+
+        def exists_cache?: () -> untyped
+
+        def abs_cache_docs_path: () -> untyped
+
+        def relative_cahe_docs_path: () -> ::String
+
+        def unknown_paths_path: () -> ::String
+      end
+    end
+  end
+end

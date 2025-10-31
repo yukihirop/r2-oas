@@ -1,0 +1,15 @@
+module R2OAS
+  module Schema
+    module V3
+      class Builder < BaseBuilder
+        @doc_builder: untyped
+
+        extend Forwardable
+
+        def initialize: (?::Hash[untyped, untyped] options) -> void
+
+        def build_docs: () -> untyped
+      end
+    end
+  end
+end

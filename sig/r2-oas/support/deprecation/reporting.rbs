@@ -1,0 +1,41 @@
+# MEMO:
+# copy from https://github.com/rails/rails/blob/master/activesupport/lib/active_support/deprecation/reporting.rb
+module R2OAS
+  class Deprecation
+    module Reporting
+      attr_accessor silenced: untyped
+
+      attr_accessor gem_name: untyped
+
+      FILE_LINE_METHOD_REGEXP: ::Regexp
+
+      R2OAS_GEM_ROOT: ::String
+
+      def warn: (?untyped? message, ?untyped? callstack) -> (nil | untyped)
+
+      alias will_remove warn
+
+      def silence: () ?{ () -> untyped } -> untyped
+
+      private
+
+      def deprecation_message: (untyped callstack, ?untyped? message) -> ::String
+
+      def deprecation_caller_message: (untyped callstack) -> untyped
+
+      def extract_callstack: (untyped callstack) -> (untyped | ::Array[untyped])
+
+      # e.g.)
+      # callback = /path/to/file.rb:274:in `require'
+      #
+      # file = /path/to/file.rb
+      # line = 274
+      # method = require
+      def _extract_callstack: (untyped _callback) -> untyped
+
+      # MEMO:
+      # see https://docs.ruby-lang.org/ja/latest/class/RbConfig.html#C_-C-O-N-F-I-G
+      def ignored_callstack: (untyped path) -> untyped
+    end
+  end
+end

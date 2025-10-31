@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'r2-oas/routing/parser'
 
 RSpec.describe R2OAS::Routing::Parser do
-  let(:routes) { ::Rails.application.routes.routes }
+  let(:routes) { Rails.application.routes.routes }
   let(:parser) { described_class.new(routes) }
 
   describe '#routes_data' do

@@ -1,0 +1,17 @@
+source "https://rubygems.org"
+
+gem "jekyll", "~> 3.9"
+gem "just-the-docs", "~> 0.10"
+
+# Ruby 3.4+ compatibility
+gem "base64"
+gem "logger"
+gem "bigdecimal"
+
+# Markdown parser
+gem "kramdown-parser-gfm"
+
+group :jekyll_plugins do
+  gem "jekyll-seo-tag"
+  gem "jekyll-sitemap"
+end

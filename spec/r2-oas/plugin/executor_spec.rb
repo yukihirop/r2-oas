@@ -66,7 +66,7 @@ RSpec.describe R2OAS::Plugin::Executor do
       let(:plugins) { ['r2oas-plugin-transform-default'] }
 
       before do
-        class TestDefaultTransform < ::R2OAS::Plugin::Transform
+        class TestDefaultTransform < R2OAS::Plugin::Transform
           self.plugin_name = 'r2oas-plugin-transform-default'
 
           setup do
@@ -88,7 +88,7 @@ RSpec.describe R2OAS::Plugin::Executor do
         let(:plugins) { [[nil, {}]] }
 
         before do
-          class SampleTransform < ::R2OAS::Plugin::Transform
+          class SampleTransform < R2OAS::Plugin::Transform
           end
 
           R2OAS.configure do |config|
@@ -105,7 +105,7 @@ RSpec.describe R2OAS::Plugin::Executor do
         let(:plugins) { [{}, {}] }
 
         before do
-          class TestSample1Transform < ::R2OAS::Plugin::Transform
+          class TestSample1Transform < R2OAS::Plugin::Transform
             self.plugin_name = 'r2oas-plugin-transform-sample'
           end
 
@@ -121,7 +121,7 @@ RSpec.describe R2OAS::Plugin::Executor do
         let(:plugins) { %w[r2oas-plugin-transform-sample r2oas-plugin-transform-sample] }
 
         before do
-          class TestSample2Transform < ::R2OAS::Plugin::Transform
+          class TestSample2Transform < R2OAS::Plugin::Transform
             self.plugin_name = 'r2oas-plugin-transform-sample'
           end
 
@@ -142,7 +142,7 @@ RSpec.describe R2OAS::Plugin::Executor do
         end
 
         before do
-          class TestSample3Transform < ::R2OAS::Plugin::Transform
+          class TestSample3Transform < R2OAS::Plugin::Transform
             self.plugin_name = 'r2oas-plugin-transform-sample-do-not-used'
           end
 

@@ -45,12 +45,10 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject do
           self.plugin_name = 'r2oas-plugin-transform-test-components-request-body'
 
           components_request_body do |doc, ref|
-            if opts[:merged]
-              if ref[:from] == :path_item
-                doc.merge!(
-                  'plugin_key' => "plugin_value.#{ref.type}.#{ref.path}.#{ref.schema_name}.#{ref.tag_name}.#{ref.verb}.#{ref.depth}"
-                )
-              end
+            if opts[:merged] && (ref[:from] == :path_item)
+              doc.merge!(
+                'plugin_key' => "plugin_value.#{ref.type}.#{ref.path}.#{ref.schema_name}.#{ref.tag_name}.#{ref.verb}.#{ref.depth}"
+              )
             end
           end
         end
@@ -82,9 +80,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject do
           self.plugin_name = 'r2oas-plugin-transform-test-components-request-body-name'
 
           components_request_body_name do |ref|
-            if opts[:override]
-              ref[:schema_name] = "#{ref[:type]}.#{ref[:path]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:depth]}" if ref[:from] == :path_item
-            end
+            ref[:schema_name] = "#{ref[:type]}.#{ref[:path]}.#{ref[:tag_name]}.#{ref[:verb]}.#{ref[:depth]}" if opts[:override] && (ref[:from] == :path_item)
           end
         end
 
@@ -112,9 +108,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject do
           self.plugin_name = 'r2oas-plugin-transform-test-components-request-body-name-error-occurs'
 
           components_request_body_name do |ref|
-            if opts[:override]
-              ref[:schema_name] = 'Api_V1_Task_RequestBody_Used' if ref[:from] == :path_item
-            end
+            ref[:schema_name] = 'Api_V1_Task_RequestBody_Used' if opts[:override] && (ref[:from] == :path_item)
           end
         end
 
@@ -126,7 +120,7 @@ RSpec.describe R2OAS::Schema::V3::FromFiles::Components::RequestBodyObject do
       end
 
       it do
-        expect { object.schema_name }.to raise_error(::R2OAS::DepulicateSchemaNameError, "Transformed schema name: 'Api_V1_Task_RequestBody_Used' cannot be used. It already exists.")
+        expect { object.schema_name }.to raise_error(R2OAS::DepulicateSchemaNameError, "Transformed schema name: 'Api_V1_Task_RequestBody_Used' cannot be used. It already exists.")
       end
     end
   end

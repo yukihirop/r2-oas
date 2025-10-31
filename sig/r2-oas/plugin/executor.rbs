@@ -1,0 +1,44 @@
+module R2OAS
+  module Plugin
+    class Executor
+      self.@plugin_map: untyped
+
+      self.@will_plugins: untyped
+
+      @plugins: untyped
+
+      @use_plugin: untyped
+
+      @plugin_map: untyped
+
+      extend ::R2OAS::Plugin::Hookable
+
+      def initialize: (untyped plugins, untyped opts) -> void
+
+      def execute_transform_plugins: (untyped hook_method, *untyped) -> (nil | untyped)
+
+      attr_accessor self.plugin_map: untyped
+
+      def self.execute_transform_plugins: (untyped plugin_map, untyped hook_method, *untyped) -> untyped
+
+      def self.execute_plugins: (untyped plugin_map, untyped type, untyped hook_method, *untyped) -> (nil | untyped)
+
+      # e.g.)
+      # {
+      #   transform: {
+      #     setup: [
+      #       { plugin_name: 'r2oas-transform-plugin-sample1', plugin_klass: Sample1Plugin, hook_method: :setup },
+      #       { plugin_name: 'r2oas-transform-plugin-sample2', plugin_klass: Sample2Plugin, hook_method: :setup },
+      #     ],
+      #     info: [
+      #       { plugin_name: 'r2oas-transform-plugin-sample1', plugin_klass: Sample1Plugin, hook_method: :info },
+      #     ]
+      #   }
+      # }
+      #
+      def self.plugin_map: (untyped plugins) -> untyped
+
+      def self.create_use_plugins_info: (untyped plugins) -> untyped
+    end
+  end
+end

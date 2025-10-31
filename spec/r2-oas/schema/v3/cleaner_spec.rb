@@ -24,8 +24,8 @@ RSpec.describe R2OAS::Schema::V3::Cleaner do
     end
 
     it 'remove unreferenced components files(except securitySchemes files)' do
-      expect(FileTest.exists?("#{components_schemas_path}/dummy.yml")).to eq false
-      expect(FileTest.exists?("#{components_securitySchemes_path}/my_oauth.yml")).to eq true
+      expect(FileTest.exist?("#{components_schemas_path}/dummy.yml")).to eq false
+      expect(FileTest.exist?("#{components_securitySchemes_path}/my_oauth.yml")).to eq true
     end
   end
 end

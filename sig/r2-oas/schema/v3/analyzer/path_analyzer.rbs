@@ -1,0 +1,38 @@
+# Scope Rails
+module R2OAS
+  module Schema
+    module V3
+      class PathAnalyzer < BaseAnalyzer
+        @tags: untyped
+
+        VERB: ::Array["get" | "put" | "post" | "delete" | "options" | "head" | "patch" | "trace"]
+
+        NOT_VERB: ::Array["$ref" | "summary" | "description" | "servers" | "parameters"]
+
+        def initialize: (untyped before_schema_data, untyped after_schema_data, ?::Hash[untyped, untyped] options) -> void
+
+        def analyze_docs: () -> untyped
+
+        private
+
+        def generate_tag_file?: () -> untyped
+
+        def push_tags: (untyped tag_name) -> (untyped | nil)
+
+        def unit_paths_data_group_by_tags: (untyped unit_paths_data) -> untyped
+
+        def group_by_tags_when_verb: (untyped verb, untyped data_when_verb, untyped path, untyped result) -> untyped
+
+        # The following pseudo tag names are after reservation
+        # ・$ref
+        # ・summary
+        # ・description
+        # ・servers
+        # ・parameters
+        def group_by_tags_when_not_verb: (untyped not_verb, untyped data_when_not_verb, untyped path, untyped result) -> untyped
+
+        def save_each_tags: (untyped unit_paths_data) ?{ (untyped) -> untyped } -> untyped
+      end
+    end
+  end
+end

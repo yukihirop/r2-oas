@@ -1,0 +1,17 @@
+module R2OAS
+  module Hooks
+    class GlobalHook
+      attr_accessor callback: untyped
+
+      attr_accessor once: untyped
+
+      attr_accessor uid: untyped
+
+      attr_accessor target: untyped
+
+      def initialize: (untyped callback, untyped once, untyped uid, untyped target) -> void
+
+      def call: (*untyped data) -> untyped
+    end
+  end
+end

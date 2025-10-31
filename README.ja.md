@@ -1,22 +1,32 @@
-# R2-OAS
-
 [![Gem Version](https://badge.fury.io/rb/r2-oas.svg)](https://badge.fury.io/rb/r2-oas)
 [![Build Status](https://travis-ci.org/yukihirop/r2-oas.svg?branch=master)](https://travis-ci.org/yukihirop/r2-oas)
 [![Coverage Status](https://coveralls.io/repos/github/yukihirop/r2-oas/badge.svg)](https://coveralls.io/github/yukihirop/r2-oas)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f8c3846f350bb412fd63/maintainability)](https://codeclimate.com/github/yukihirop/r2-oas/maintainability)
 
+
+<p align="center">
+	<img alt="logo" width="196" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/docs/assets/logo.png">
+</p>
+
+<h1 align="center" style="font-family: sans-serif; font-size: 50px; font-weight: 700; background: -webkit-linear-gradient(90deg, #CC342D 20%, #E63D36 60%, #FF5C55 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">R2-OAS</h1>
+
+<p align="center">
+	<a href="https://yukihirop.github.io/r2-oas/" target="_blank">📚 Documentation</a>
+</p>
+
+
 Railsのルーティング情報からOpenAPI形式のドキュメントを生成し、閲覧・編集・管理するためのrakeタスクの提供をします。
 
 ```bash
-bundle exec rake routes:oas:init    # 初期化
-bundle exec rake routes:oas:docs    # ドキュメント生成
-bundle exec rake routes:oas:ui      # ドキュメント閲覧
-bundle exec rake routes:oas:editor  # ドキュメント編集
-bundle exec rake routes:oas:monitor # ドキュメント監視
-bundle exec rake routes:oas:build   # ドキュメントビルド
-bundle exec rake routes:oas:clean   # ドキュメント清掃
-bundle exec rake routes:oas:analyze # ドキュメント分解・分析
-bundle exec rake routes:oas:deploy  # ドキュメントデプロイ
+bundle exec rake routes:oas:init    # r2-oasを初期化
+bundle exec rake routes:oas:docs    # oas_docsを生成
+bundle exec rake routes:oas:ui      # swagger uiで閲覧
+bundle exec rake routes:oas:editor  # swagger editorで編集
+bundle exec rake routes:oas:monitor # oas_docsを監視・分析
+bundle exec rake routes:oas:build   # srcからoas_docsをビルド
+bundle exec rake routes:oas:clean   # 未使用コンポーネントを削除
+bundle exec rake routes:oas:analyze # oas_docsを分析・srcを生成
+bundle exec rake routes:oas:deploy  # oas_docsをdeploy_docsにデプロイ
 ```
 
 ## 💎 Installation
@@ -42,7 +52,7 @@ end
 ```
 $ docker pull swaggerapi/swagger-editor:latest
 $ docker pull swaggerapi/swagger-ui:latest
-$ brew cask install chromedriver
+$ brew install chromedriver
 ```
 
 ## 🚀 Tutorial
@@ -65,12 +75,15 @@ $ bundle exec rake routes:oas:editor
 
 #### Generate docs
 
-![oas_docs](https://user-images.githubusercontent.com/11146767/80856236-0b839a80-8c83-11ea-888f-d0e659e0c251.gif)
-
+<p align="center">
+	<img alt="r2-oas docs demo" width="800" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/demo/oas_docs.mp4">
+</p>
 
 #### Edit docs
 
-![oas_editor](https://user-images.githubusercontent.com/11146767/80856240-15a59900-8c83-11ea-9dbd-4382528944f2.gif)
+<p align="center">
+	<img alt="r2-oas editor demo" width="800" src="https://raw.githubusercontent.com/yukihirop/r2-oas/master/demo/oas_editor.mp4">
+</p>
 
 ## 📚 Documents
 
@@ -154,11 +167,14 @@ $ OAS_FILE="~/Desktop/swagger.yml" bundle exec rake routes:oas:analyze
 
 ## ❤️ Support Rails Version
 
-- Rails (>= 4.2.5.1)
+- Rails 7.2.2.2
+- Rails (>= 8.x)
 
 ## ❤️ Support Ruby Version
 
-- Ruby (>= 2.5.0)
+- Ruby 3.2.6
+- Ruby 3.3.6
+- Ruby (>= 3.4.x)
 
 ## ❤️ Support Rouging
 
@@ -192,6 +208,55 @@ OpenAPIの3.0.0をサポートしてます。
 
 公式ドキュメントはこちら => https://yukihirop.github.io/r2-oas/#/setting/configure
 
+## RBS, Steep
+
+```bash
+# エラーが出ていたら、エディタでhoverしても型の表示がされない原因になる
+bundle exec steep stats
+# エラーの内容は、こちらのコマンドで知ることができる
+bundle exec steep check
+```
+
+#### steep rake task
+
+```bash
+bundle exec rake steep:ignore:dig | pbcopy
+# =>
+#
+# ignore 'RBS::DuplicatedMethodDefinition'
+# ignore 'Ruby::ArgumentTypeMismatch'
+```
+
+```bash
+bundle exec rake steep:ignore:file | pbcopy
+# =>
+#
+# ignore 'lib/r2-oas.rb'
+# ignore 'lib/r2-oas/app_configuration.rb'
+# ignore 'lib/r2-oas/app_configuration/deprecation.rb'
+```
+
+```bash
+bundle exec rake steep:ignore:preview
+# =>
+# 📄 lib/r2-oas/schema/monitor.rb
+#   Line 50: if current_time - last_check_time >= interval_to_save_edited_tmp_schema
+#               →           if current_time - last_check_time >= interval_to_save_edited_tmp_schema # steep:ignore Ruby::NoMethod
+#   Line 62: analyzer.analyze_docs
+#               →         analyzer.analyze_docs # steep:ignore Ruby::NoMethod
+#   Line 66: YAML.load_file(doc_save_file_path) || @after_schema_data
+#               →         YAML.load_file(doc_save_file_path) || @after_schema_data # steep:ignore Ruby::UnknownConstant
+```
+
+```bash
+bundle exec rake steep:ignore:auto
+# =>
+# Analyzing steep check errors...
+# ✅ Modified: lib/r2-oas/app_configuration/deprecation.rb (2 lines)
+# ✅ Modified: lib/r2-oas/plugin/base.rb (3 lines)
+# ✅ Modified: lib/r2-oas/schema/squeezer.rb (2 lines)
+```
+
 ## Bundle and Rspec with multiple ruby ​​versions
 
 #### Bundle
@@ -202,22 +267,22 @@ OpenAPIの3.0.0をサポートしてます。
 .
 .
 ===== Bundle install for All Support Ruby Result =====
-ruby-2.5.8: 0
-ruby-2.6.6: 0
-ruby-2.7.1: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
+ruby-3.4.7: 0
 ======================================================
 ```
 
-rubyのバージョンを `2.6.6` と `2.7.1`　に指定する場合
+rubyのバージョンを `3.2.6` と `3.3.6`　に指定する場合
 
 ```bash
-/bin/bash devscript/all_support_ruby.sh bundle 2.6.6 2.7.1
+/bin/bash devscript/all_support_ruby.sh bundle 3.2.6 3.3.6
 .
 .
 .
 ===== Bundle install for All Support Ruby Result =====
-ruby-2.6.6: 0
-ruby-2.7.1: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
 ======================================================
 ```
 
@@ -229,22 +294,22 @@ ruby-2.7.1: 0
 .
 .
 ===== Rspec for All Support Ruby Result =====
-ruby-2.5.8: 0
-ruby-2.6.6: 0
-ruby-2.7.1: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
+ruby-3.4.7: 0
 =============================================
 ```
 
-rubyのバージョンを `2.6.6` と `2.7.1`　に指定する場合
+rubyのバージョンを `3.2.6` と `3.3.6`　に指定する場合
 
 ```bash
-/bin/bash devscript/all_support_ruby.sh rspec 2.6.6 2.7.1
+/bin/bash devscript/all_support_ruby.sh rspec 3.2.6 3.3.6
 .
 .
 .
 ===== Rspec for All Support Ruby Result =====
-ruby-2.6.6: 0
-ruby-2.7.1: 0
+ruby-3.2.6: 0
+ruby-3.3.6: 0
 =============================================
 ```
 

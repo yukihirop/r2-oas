@@ -1,0 +1,19 @@
+module R2OAS
+  module AppConfiguration
+    class Server
+      DEFAULT_URL: "http://localhost:3000"
+
+      DEFAULT_DESCRIPTION: "localhost"
+
+      VALID_OPTIONS_KEYS: ::Array[:data]
+
+      def initialize: () -> void
+
+      def configure: () { (untyped) -> untyped } -> untyped
+
+      private
+
+      def set_default: () -> untyped
+    end
+  end
+end

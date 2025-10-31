@@ -1,0 +1,27 @@
+module R2OAS
+  module Schema
+    module V3
+      class BaseHashDiffManager < BaseDiffManager
+        @major_category: untyped
+
+        @middle_category: untyped
+
+        include Sortable
+
+        def initialize: (untyped before_schema_data, untyped after_schema_data) -> void
+
+        def process_by_using_diff_data: () ?{ (untyped, untyped, untyped, untyped, untyped) -> untyped } -> nil
+
+        private
+
+        def normalized: (untyped data) -> (untyped | ::Hash[untyped, ::Hash[untyped, ::Hash[untyped, untyped]]] | ::Hash[untyped, ::Hash[untyped, untyped]])
+
+        def schema_data_at: (untyped data, untyped key) -> (::Hash[untyped, ::Hash[untyped, ::Hash[untyped, untyped]]] | ::Hash[untyped, ::Hash[untyped, untyped]])
+
+        def sorted_target_data: (untyped data) -> untyped
+
+        def to_boolean: (untyped diff, untyped target_name) -> (untyped | false)
+      end
+    end
+  end
+end

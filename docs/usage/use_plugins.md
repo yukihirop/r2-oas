@@ -1,6 +1,15 @@
+---
+layout: default
+title: Use Plugins
+permalink: "/usage/use-plugins/"
+parent: Usage
+nav_order: 1
+---
+
 # 🆕 Use Plugins
 
-?> Starting from `v0.4.0`, you can use plugins.  
+{: .note }
+> Starting from `v0.4.0`, you can use plugins.
 
 You can use plug-ins to transform the API documentation.  
 You can also modify parameters or change the component schema name at once.
@@ -159,9 +168,10 @@ module YourNamespace
 end
 ```
 
-?> ・ In the case of the Transform plugin, be sure to inherit the `R2OAS::Plugin::Transform`  
-   ・There are no rules for plugin names, but you can name them something easy to understand,
-     like it is recommended to use the format `r2oas-plugin-transform-<your_plugin_name>`
+{: .note }
+> ・ In the case of the Transform plugin, be sure to inherit the `R2OAS::Plugin::Transform`
+> ・There are no rules for plugin names, but you can name them something easy to understand,
+>   like it is recommended to use the format `r2oas-plugin-transform-<your_plugin_name>`
 
 ### Load plugin
 
@@ -199,7 +209,8 @@ Set the `OVERRIDE_SRC` environment variable to `true`.
 $ OVERRIDE_SRC=true bundle exec rake routes:oas:build
 ```
 
-!> If the applied plugin is not idempotent, the converted data may be unexpected.
+{: .warning }
+> If the applied plugin is not idempotent, the converted data may be unexpected.
 
 ### Skip plugin apply
 
@@ -212,7 +223,8 @@ $ SKIP_PLUGIN=true bundle exec rake routes:oas:build
 
 ## Important
 
-!> Be sure to write the plugin so that it is idempotent.  
+{: .warning }
+> Be sure to write the plugin so that it is idempotent.
 
 For example, don't write a plugin that translates component schema names like this:
 

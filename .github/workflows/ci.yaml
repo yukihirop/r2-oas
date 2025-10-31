@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master, develop, 'release/*' ]
+  pull_request:
+    branches: [ main, master, develop, 'release/*' ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        ruby-version: ['3.2.6', '3.3.6', '3.4.7']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true
+      
+      - name: Install dependencies
+        run: bundle install
+        
+      - name: Run RuboCop
+        if: matrix.ruby-version >= '3.2.6'
+        run: bundle exec rubocop --fail-level=W
+        continue-on-error: false
+      
+      - name: Run Steep check
+        if: matrix.ruby-version >= '3.2.6'
+        run: bundle exec steep check --with-expectations
+        continue-on-error: false
+      
+      - name: Run RSpec
+        run: bundle exec rspec spec
+

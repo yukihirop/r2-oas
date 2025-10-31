@@ -7,8 +7,9 @@ module R2OAS
   if !defined?(::Rails)
     raise NoImplementError, 'Can not load Rails'
   # support Rails version
-  elsif ::Rails::VERSION::STRING >= '4.2.5.1'
+  elsif ::Rails::VERSION::STRING >= '7.2.2.2'
     extend Configuration
+
     require 'r2-oas/task'
     require 'r2-oas/plugin/public'
     require 'r2-oas/lib/core_ext/all'

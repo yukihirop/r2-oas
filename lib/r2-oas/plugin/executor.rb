@@ -13,23 +13,23 @@ module R2OAS
         @use_plugin = !!opts[:use_plugin]
       end
 
-      def execute_transform_plugins(hook_method, *args)
+      def execute_transform_plugins(hook_method, *)
         return unless @use_plugin
         return unless @plugins.present?
 
         @plugin_map ||= self.class.plugin_map(@plugins)
 
-        self.class.execute_transform_plugins(@plugin_map, hook_method, *args)
+        self.class.execute_transform_plugins(@plugin_map, hook_method, *)
       end
 
       class << self
         attr_accessor :plugin_map
 
-        def execute_transform_plugins(plugin_map, hook_method, *args)
-          execute_plugins(plugin_map, :transform, hook_method, *args)
+        def execute_transform_plugins(plugin_map, hook_method, *)
+          execute_plugins(plugin_map, :transform, hook_method, *)
         end
 
-        def execute_plugins(plugin_map, type, hook_method, *args)
+        def execute_plugins(plugin_map, type, hook_method, *)
           return unless plugin_map.present?
 
           plugins_info = plugin_map[type.to_sym][hook_method.to_sym]
@@ -40,7 +40,7 @@ module R2OAS
             opts = info[:plugin_opts]
             klass = info[:plugin_klass]
             klass.send(:opts=, opts) if opts.present?
-            klass.send(info[:execute_hook_method], *args)
+            klass.send(info[:execute_hook_method], *)
           end
         end
 

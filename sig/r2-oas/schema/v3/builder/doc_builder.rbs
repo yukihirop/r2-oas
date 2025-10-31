@@ -1,0 +1,23 @@
+module R2OAS
+  module Schema
+    module V3
+      class DocBuilder < BaseBuilder
+        @pure_oas_doc: untyped
+
+        @oas_doc: untyped
+
+        attr_accessor oas_doc: untyped
+
+        attr_accessor pure_oas_doc: untyped
+
+        def initialize: (?::Hash[untyped, untyped] opts) -> void
+
+        def build_docs: () -> untyped
+
+        private
+
+        def build_docs_from_schema_files: () -> untyped
+      end
+    end
+  end
+end

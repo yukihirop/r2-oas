@@ -1,3 +1,11 @@
+---
+layout: default
+title: Edit Docs
+permalink: "/usage/edit-docs/"
+parent: Usage
+nav_order: 8
+---
+
 # Edit docs
 
 ## Prepare

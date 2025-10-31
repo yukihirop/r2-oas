@@ -29,25 +29,25 @@ module CreateHelper
   end
 
   def create_components_securitySchemes_file
-    FileUtils.mkdir_p(components_securitySchemes_path) unless FileTest.exists?(components_securitySchemes_path)
+    FileUtils.mkdir_p(components_securitySchemes_path)
     File.write("#{components_securitySchemes_path}/my_oauth.yml", yaml_fixture('src/components/securitySchemes/my_oauth.yml'))
   end
 
   def create_paths_file(file_name = 'dummy.yml', yaml = "---\n")
     dirname = File.dirname("#{paths_path}/#{file_name}")
-    FileUtils.mkdir_p(dirname) unless FileTest.exists?(dirname)
+    FileUtils.mkdir_p(dirname)
     File.write("#{paths_path}/#{file_name}", yaml)
   end
 
   def create_components_schemas_file(file_name = 'dummy.yml', yaml = "---\n")
     dirname = File.dirname("#{components_schemas_path}/#{file_name}")
-    FileUtils.mkdir_p(dirname) unless FileTest.exists?(dirname)
+    FileUtils.mkdir_p(dirname)
     File.write("#{components_schemas_path}/#{file_name}", yaml)
   end
 
   def create_components_request_bodies_file(file_name = 'dummy.yml', yaml = "---\n")
     dirname = File.dirname("#{components_request_bodies_path}/#{file_name}")
-    FileUtils.mkdir_p(dirname) unless FileTest.exists?(dirname)
+    FileUtils.mkdir_p(dirname)
     File.write("#{components_request_bodies_path}/#{file_name}", yaml)
   end
 
@@ -68,7 +68,7 @@ module CreateHelper
   end
 
   def copy_tasks
-    FileUtils.mkdir Rails.root.join(root_dir_path) unless FileTest.exists?(Rails.root.join(root_dir_path))
+    FileUtils.mkdir_p Rails.root.join(root_dir_path)
 
     local_tasks_path = Rails.root.join('tasks')
     FileUtils.cp_r(local_tasks_path, tasks_path)
@@ -81,6 +81,6 @@ module CreateHelper
   end
 
   def create_output_dir
-    FileUtils.mkdir_p(output_dir_path) unless FileTest.exists?(output_dir_path)
+    FileUtils.mkdir_p(output_dir_path)
   end
 end

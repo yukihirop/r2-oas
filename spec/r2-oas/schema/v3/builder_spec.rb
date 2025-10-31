@@ -18,14 +18,14 @@ RSpec.describe R2OAS::Schema::V3::Builder do
 
   shared_examples_for 'Generated file verification test' do |result|
     it 'should build docs' do
-      expect(FileTest.exists?(components_schemas_path)).to eq result
-      expect(FileTest.exists?(components_request_bodies_path)).to eq result
-      expect(FileTest.exists?(paths_path)).to eq result
-      expect(FileTest.exists?(external_docs_path)).to eq result
-      expect(FileTest.exists?(info_path)).to eq result
-      expect(FileTest.exists?(openapi_path)).to eq result
-      expect(FileTest.exists?(servers_path)).to eq result
-      expect(FileTest.exists?(tags_path)).to eq result
+      expect(FileTest.exist?(components_schemas_path)).to eq result
+      expect(FileTest.exist?(components_request_bodies_path)).to eq result
+      expect(FileTest.exist?(paths_path)).to eq result
+      expect(FileTest.exist?(external_docs_path)).to eq result
+      expect(FileTest.exist?(info_path)).to eq result
+      expect(FileTest.exist?(openapi_path)).to eq result
+      expect(FileTest.exist?(servers_path)).to eq result
+      expect(FileTest.exist?(tags_path)).to eq result
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe R2OAS::Schema::V3::Builder do
       end
 
       it_behaves_like 'Generated file verification test', true
-      it { expect(FileTest.exists?(doc_save_file_path)).to eq true }
+      it { expect(FileTest.exist?(doc_save_file_path)).to eq true }
     end
 
     context 'when output is true' do
@@ -48,7 +48,7 @@ RSpec.describe R2OAS::Schema::V3::Builder do
         builder.build_docs
       end
 
-      it { expect(FileTest.exists?(output_path)).to eq true }
+      it { expect(FileTest.exist?(output_path)).to eq true }
     end
   end
 

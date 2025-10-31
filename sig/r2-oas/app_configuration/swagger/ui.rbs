@@ -1,0 +1,29 @@
+module R2OAS
+  module AppConfiguration
+    class Swagger
+      class UI
+        DEFAULT_IMAGE: "swaggerapi/swagger-ui"
+
+        DEFAULT_PORT: "8080"
+
+        DEFAULT_EXPOSED_PORT: "8080/tcp"
+
+        DEFAULT_VOLUME: "/app/swagger.json"
+
+        DEFAULT_HOST: "http://localhost"
+
+        VALID_OPTIONS_KEYS: ::Array[:image | :port | :exposed_port | :volume]
+
+        def initialize: () -> void
+
+        def configure: () { (untyped) -> untyped } -> untyped
+
+        def url: () -> ::String
+
+        private
+
+        def set_default: () -> untyped
+      end
+    end
+  end
+end

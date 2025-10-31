@@ -1,0 +1,16 @@
+# Scope Rails
+module R2OAS
+  module TaskLogging
+    def task: (*untyped) ?{ (?) -> untyped } -> untyped
+
+    private
+
+    def start: (?::String initial) { () -> untyped } -> untyped
+
+    def logger: () -> untyped
+
+    def set_debug_level: () -> untyped
+
+    def debug_log: (untyped task, untyped message) -> (untyped | nil)
+  end
+end

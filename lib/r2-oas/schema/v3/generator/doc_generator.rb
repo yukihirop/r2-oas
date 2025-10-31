@@ -102,7 +102,7 @@ module R2OAS
 
           # Save docs cache
           deflated_cache_docs = Zlib::Deflate.deflate(Marshal.dump(store.data))
-          IO.binwrite(abs_cache_docs_path, deflated_cache_docs)
+          File.binwrite(abs_cache_docs_path, deflated_cache_docs)
           if is_exists_cache
             logger.info "[Generate OAS docs] Update cache at #{relative_cahe_docs_path}"
           else

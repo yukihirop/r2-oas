@@ -1,6 +1,15 @@
+---
+layout: default
+title: Initialize
+permalink: "/usage/initialize/"
+parent: Usage
+nav_order: 5
+---
+
 # Initialize
 
-!> Since `v0.4.1`, rake tasks are not automatically loaded. Please write `R2OAS.load_tasks` in `Rakefile` and load it.
+{: .warning }
+> Since `v0.4.1`, rake tasks are not automatically loaded. Please write `R2OAS.load_tasks` in `Rakefile` and load it.
 
 API document management using r2-oas begins with the execution of this command.
 
@@ -42,8 +51,8 @@ oas_docs
 
 |name|description|remark|
 |----|-----------|------|
-|`.paths`|By writing the path of the yaml file of path item in this file, you can limit the endpoint used in `Swagger UI` and `build` and `deploy`.|[configure#paths](/setting/configure?id=paths)|
-|`plugins`|Storage location for locally defined plugins.|[usage/use_plugins](/usage/use_plugins)|
+|`.paths`|By writing the path of the yaml file of path item in this file, you can limit the endpoint used in `Swagger UI` and `build` and `deploy`.|[configure#paths]({{ site.baseurl }}/setting/configure?id=paths/)|
+|`plugins`|Storage location for locally defined plugins.|[usage/use_plugins]({{ site.baseurl }}/usage/use_plugins/)|
 |`plugins/helpers`|This directory is used to define classes used by plugins.||
-|`tasks`|Storage location for locally defined rake tasks.|[usage/define_tasks](/usage/define_tasks)|
+|`tasks`|Storage location for locally defined rake tasks.|[usage/define_tasks]({{ site.baseurl }}/usage/define_tasks/)|
 |`tasks/helpers`|This directory is for defining classes used in rake tasks.||

@@ -1,7 +1,6 @@
-# frozen_string_literal:true
+# frozen_string_literal: true
 
 require 'docker'
-require 'em/pure_ruby'
 require 'watir'
 require 'forwardable'
 
@@ -16,16 +15,22 @@ module R2OAS
       def initialize(options = {})
         super
         @ui = swagger.ui
+        @running = false
       end
 
       def start
-        EM.run do
-          container.start
-          open_browser
-          puts "\nwait for single trap ..."
-          signal_trap('INT')
-          signal_trap('TERM')
-        end
+        @running = true
+        container.start
+        open_browser
+
+        puts "\nPress Ctrl+C to stop..."
+        setup_signal_traps
+
+        # メインスレッドを待機状態に保つ
+        sleep 0.1 while @running
+
+        # ループを抜けたら安全なコンテキストでクリーンアップ
+        cleanup
       end
 
       private
@@ -33,14 +38,22 @@ module R2OAS
       attr_accessor :unit_paths_file_path
       def_delegators :@ui, :image, :port, :url, :exposed_port, :volume
 
-      def signal_trap(command)
-        Signal.trap(command) do
-          container.stop
-          container.remove
-          logger.info "container id: #{container.id} removed"
-
-          EM.stop
+      def setup_signal_traps
+        %w[INT TERM].each do |signal|
+          Signal.trap(signal) do
+            # シグナルトラップ内では重い処理（ミューテックス等）を行わない
+            # メインループを終了させ、終了後にクリーンアップを行う
+            @running = false
+          end
         end
+      end
+
+      def cleanup
+        @running = false
+        container.stop
+        container.remove
+        logger.info "container id: #{container.id} removed"
+        @browser&.close
       end
 
       def open_browser
@@ -53,8 +66,6 @@ module R2OAS
         Watir::Wait.until { @browser.body.present? }
       end
 
-      # [Reference]
-      # https://www.tomduffield.com/files/presentations/the-nitty-gritty-of-the-docker-api.pdf
       def container
         @container ||= Docker::Container.create(
           'Image' => image,

@@ -26,12 +26,12 @@ module R2OAS
           on(:teardown, callback)
         end
 
-        def execute_setup(*args)
-          execute_hook(:setup, *args)
+        def execute_setup(*)
+          execute_hook(:setup, *)
         end
 
-        def execute_teardown(*args)
-          execute_hook(:teardown, *args)
+        def execute_teardown(*)
+          execute_hook(:teardown, *)
         end
 
         def inherited(base)

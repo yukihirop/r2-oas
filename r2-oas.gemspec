@@ -27,20 +27,11 @@ Gem::Specification.new do |spec|
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 3.2.0')
 
-  spec.add_runtime_dependency 'docker-api', '>= 1.34.2'
-  spec.add_runtime_dependency 'easy_diff', '>= 1.0.0'
-  spec.add_runtime_dependency 'eventmachine', '>= 1.2.0'
-  spec.add_runtime_dependency 'key_flatten', '>= 1.0.0'
-  spec.add_runtime_dependency 'railties', '>= 4.2.5'
-  spec.add_runtime_dependency 'watir', '>= 6.16.5'
-  spec.add_development_dependency 'bundler', '>= 1.17'
-  spec.add_development_dependency 'coveralls'
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'appraisal'
-  spec.add_development_dependency 'activerecord', '>= 4.2.5'
+  spec.add_runtime_dependency 'docker-api', '~> 2.4'
+  spec.add_runtime_dependency 'easy_diff', '~> 1.0', '>= 1.0.0'
+  spec.add_runtime_dependency 'key_flatten', '~> 1.0', '>= 1.0.0'
+  spec.add_runtime_dependency 'railties', '>= 7.2.0', '< 11.0'
+  spec.add_runtime_dependency 'watir', '>= 6.16.5', '< 8.0'
 end

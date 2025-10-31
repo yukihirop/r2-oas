@@ -1,0 +1,18 @@
+# Scope Rails
+module R2OAS
+  module Schema
+    module V3
+      module Components
+        class ObjectAnalyzer < BaseAnalyzer
+          @major_category: untyped
+
+          @middle_category: untyped
+
+          def initialize: (untyped before_schema_data, untyped after_schema_data, ?::Hash[untyped, untyped] options) -> void
+
+          def analyze_docs: () -> untyped
+        end
+      end
+    end
+  end
+end

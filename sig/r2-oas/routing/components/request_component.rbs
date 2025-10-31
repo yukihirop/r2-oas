@@ -1,0 +1,24 @@
+module R2OAS
+  module Routing
+    class RequestComponent < BaseComponent
+      @request: untyped
+
+      @is_route_engine: untyped
+
+      def initialize: (untyped request, untyped is_route_engine) -> void
+
+      # e.x.) "tasks#index" => "task"
+      # e.x.) "RailsAdmin::Engine" => "rails_amin/engine"
+      def to_tag_name: () -> untyped
+
+      def to_schema_name: () -> untyped
+
+      # e.x.) "tasks#index { :format => ":json" }"
+      def to_format_name: () -> untyped
+
+      private
+
+      def adjust_namespace: (untyped namespace) -> untyped
+    end
+  end
+end

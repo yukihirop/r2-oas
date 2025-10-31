@@ -1,0 +1,14 @@
+module R2OAS
+  module Schema
+    module V3
+      module Components
+        class RequestBodyGenerator < ObjectGenerator
+          private
+
+          # override
+          def process_when_generate_docs: () ?{ (untyped) -> untyped } -> untyped
+        end
+      end
+    end
+  end
+end

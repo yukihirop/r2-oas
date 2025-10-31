@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'singleton'
-require_relative './global_hook'
-require_relative './repository'
+require_relative 'global_hook'
+require_relative 'repository'
 
 module R2OAS
   module Hooks

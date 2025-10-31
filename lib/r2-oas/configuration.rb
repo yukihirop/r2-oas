@@ -80,9 +80,9 @@ module R2OAS
       write_file_or_skip(gitkeep_tasks_helpers_path, '')
 
       if $stdout.string.present?
-        STDOUT.puts $stdout.string
+        $stdout.puts $stdout.string
       else
-        STDOUT.puts "Already Initialized existing oas_docs in #{root_dir_path}"
+        $stdout.puts "Already Initialized existing oas_docs in #{root_dir_path}"
       end
 
       $stdout = old_stdout
@@ -96,15 +96,15 @@ module R2OAS
 
     def load_local_tasks
       tasks_path = File.expand_path("#{root_dir_path}/#{local_tasks_dir_name}")
-      Dir.glob("#{tasks_path}/**/*.rake").sort.each do |file|
-        load file if FileTest.exists?(file)
+      Dir.glob("#{tasks_path}/**/*.rake").each do |file|
+        load file if FileTest.exist?(file)
       end
     end
 
     def load_local_plugins
       plugins_path = File.expand_path("#{root_dir_path}/#{local_plugins_dir_name}")
-      Dir.glob("#{plugins_path}/**/*.rb").sort.each do |file|
-        require file if FileTest.exists?(file)
+      Dir.glob("#{plugins_path}/**/*.rb").each do |file|
+        require file if FileTest.exist?(file)
       end
     end
 

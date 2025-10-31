@@ -7,7 +7,7 @@ module R2OAS
         data.each_with_object({}) do |(key, value), result|
           result[key] = if key.eql? target
                           if value.is_a?(Hash)
-                            Hash[value.sort]
+                            value.sort.to_h
                           else
                             value
                                         end

@@ -1,0 +1,27 @@
+module R2OAS
+  module Routing
+    class Adjustor < Base
+      @route_data: untyped
+
+      @route: untyped
+
+      @path_comp: untyped
+
+      @request_comp: untyped
+
+      @verb_comp: untyped
+
+      @verbs: untyped
+
+      VALID_KEYS: ::Array[:route | :name | :verb | :path | :reqs]
+
+      def initialize: (untyped route_data) -> void
+
+      def routes_els: () -> untyped
+
+      private
+
+      def valid_route_data?: (untyped route_data) -> (untyped | nil)
+    end
+  end
+end

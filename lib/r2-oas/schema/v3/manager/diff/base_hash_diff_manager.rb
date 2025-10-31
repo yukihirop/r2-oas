@@ -84,7 +84,7 @@ module R2OAS
 
         def to_boolean(diff, target_name)
           if diff.present?
-            diff.fetch(@major_category, nil)&.fetch(@middle_category, nil)&.fetch(target_name, nil).present?
+            diff.dig(@major_category, @middle_category, target_name).present?
           else
             false
           end

@@ -1,0 +1,24 @@
+module R2OAS
+  module Plugin
+    module Hookable
+      def self.extended: (untyped base) -> untyped
+
+      def hooks_map: () -> untyped
+
+      def hooks: () -> untyped
+
+      def hook_klass=: (untyped klass) -> untyped
+
+      def hook_klass: () -> untyped
+
+      def on: (untyped on, untyped callback, ?bool once) -> untyped
+
+      # MEMO: Do not Use
+      def off: (untyped on, untyped callback, ?bool once) -> untyped
+
+      def execute_hook: (untyped on, *untyped data) -> untyped
+
+      def has_hook?: (untyped name) -> untyped
+    end
+  end
+end

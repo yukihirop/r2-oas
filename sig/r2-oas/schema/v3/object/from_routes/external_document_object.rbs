@@ -1,0 +1,13 @@
+module R2OAS
+  module Schema
+    module V3
+      class ExternalDocumentObject < BaseObject
+        def to_doc: () -> untyped
+
+        private
+
+        def create_doc: () -> untyped
+      end
+    end
+  end
+end

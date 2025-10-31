@@ -1,0 +1,11 @@
+module R2OAS
+  module Plugin
+    module V3
+      module Visitable
+        include R2OAS::Plugin::Hookable
+
+        SCHEMA_OBJECTS: ::Array[:info | :path_item | :external_document | :components_schema | :components_request_body | :components_schema_name | :components_schema_name_at_request_body | :components_request_body_name]
+      end
+    end
+  end
+end

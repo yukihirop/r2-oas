@@ -1,0 +1,6 @@
+module R2OAS
+  extend Configuration
+
+  module Schema
+  end
+end
