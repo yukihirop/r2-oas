@@ -29,20 +29,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = Gem::Requirement.new('>= 3.2.0')
 
-  spec.add_runtime_dependency 'docker-api', '~> 1.34', '>= 1.34.2'
+  spec.add_runtime_dependency 'docker-api', '~> 2.4'
   spec.add_runtime_dependency 'easy_diff', '~> 1.0', '>= 1.0.0'
-  spec.add_runtime_dependency 'eventmachine', '~> 1.2', '>= 1.2.0'
   spec.add_runtime_dependency 'key_flatten', '~> 1.0', '>= 1.0.0'
-  spec.add_runtime_dependency 'railties', '~> 7.2', '>= 7.2.0'
-  spec.add_runtime_dependency 'watir', '~> 6.16', '>= 6.16.5'
-  spec.add_development_dependency 'bundler', '~> 2.0'
-  spec.add_development_dependency 'coveralls', '~> 0.8'
-  spec.add_development_dependency 'pry', '~> 0.14'
-  spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 1.0'
-  spec.add_development_dependency 'appraisal', '~> 2.0'
-  spec.add_development_dependency 'activerecord', '~> 7.2', '>= 7.2.0'
-  spec.add_development_dependency 'sqlite3', '~> 2.0'
-  spec.add_development_dependency 'steep', '~> 1.0'
+  spec.add_runtime_dependency 'railties', '>= 7.2.0', '< 11.0'
+  spec.add_runtime_dependency 'watir', '>= 6.16.5', '< 8.0'
 end
