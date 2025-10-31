@@ -1,0 +1,8 @@
+# Robots.txt for R2-OAS Documentation
+# Allow all crawlers to index all pages
+
+User-agent: *
+Allow: /
+
+# Sitemap location for search engines
+Sitemap: https://yukihirop.github.io/r2-oas/sitemap.xml

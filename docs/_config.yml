@@ -1,0 +1,57 @@
+# Jekyll Configuration for R2-OAS Documentation
+
+title: "R2-OAS"
+description: "OpenAPI documentation generator for Rails"
+baseurl: "/r2-oas"
+url: "https://yukihirop.github.io"
+
+# Favicon (logo is displayed in index.md)
+favicon_ico: "/r2-oas/assets/favicon.ico"
+
+# Theme
+theme: just-the-docs
+color_scheme: light
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# SEO and Social Media
+author: "yukihirop"
+twitter:
+  username: yukihirop
+  card: summary_large_image
+social:
+  name: R2-OAS
+  links:
+    - https://github.com/yukihirop/r2-oas
+
+# Open Graph / Social Media defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /r2-oas/assets/og-image.png
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Search settings
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+
+# Navigation settings
+nav_sort: case_insensitive
+
+# External links
+aux_links:
+  "GitHub Repository":
+    - "https://github.com/yukihirop/r2-oas"

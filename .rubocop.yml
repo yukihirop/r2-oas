@@ -11,3 +11,4 @@ AllCops:
     - "gemfiles/**/*"
     - "Appraisals"
     - "plugin_sample/**/*"
+    - "docs/**/*"

@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.6.0
+
+2025-11-01
+
+- [`EOL`] EOL Ruby `2.x` and Support over Ruby `3.x` ([#184](https://github.com/yukihirop/r2-oas/pull/184))
+- [`EOL`] EOL Rails `6.x ↓` and Support over Rails `7.2.2.2` and Rails `8.x` ([#186](https://github.com/yukihirop/r2-oas/pull/186))
+- [`Feature`] add `rbs` and configure `steep` ([#187](https://github.com/yukihirop/r2-oas/pull/187))
+
+Please see mileston [v0.6.0](https://github.com/yukihirop/r2-oas/milestone/8)
+
 ## v0.5.0
 
 2020-01-29

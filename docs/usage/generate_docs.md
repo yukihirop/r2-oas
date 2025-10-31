@@ -1,3 +1,11 @@
+---
+layout: default
+title: Generate Docs
+permalink: "/usage/generate-docs/"
+parent: Usage
+nav_order: 7
+---
+
 # Generate docs
 
 ## Prepare
