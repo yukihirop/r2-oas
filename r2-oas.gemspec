@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = Gem::Requirement.new('>= 3.2.0')
 
-  spec.add_runtime_dependency 'docker-api', '~> 1.34', '>= 1.34.2'
+  spec.add_runtime_dependency 'docker-api', '~> 2.4'
   spec.add_runtime_dependency 'easy_diff', '~> 1.0', '>= 1.0.0'
   spec.add_runtime_dependency 'key_flatten', '~> 1.0', '>= 1.0.0'
   spec.add_runtime_dependency 'railties', '>= 7.2.0', '< 11.0'
