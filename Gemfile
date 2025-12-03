@@ -10,7 +10,7 @@ gemspec
 group :development do
   gem 'activerecord', '>= 7.2.0', '< 11.0'
   gem 'appraisal', '~> 2.0'
-  gem 'bundler', '~> 2.0'
+  gem 'bundler', '~> 4.0'
   gem 'coveralls', '~> 0.8'
   gem 'pry', '~> 0.14'
   gem 'rake', '~> 13.0'
