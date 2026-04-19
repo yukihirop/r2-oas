@@ -17,5 +17,5 @@ group :development do
   gem 'rspec', '~> 3.0'
   gem 'rubocop', '~> 1.0'
   gem 'sqlite3', '~> 2.0'
-  gem 'steep', '~> 1.0'
+  gem 'steep', '~> 2.0'
 end
