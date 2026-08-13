@@ -72,6 +72,7 @@ module R2OAS
       local_tasks_dir_name
       output_path
       deprecation
+      routes_data
     ].freeze
 
     UNPUBLIC_VALID_OPTIONS_KEYS = %i[
@@ -112,6 +113,7 @@ module R2OAS
       target.local_tasks_dir_name                                 = DEFAULT_LOCAL_TASKS_DIR_NAME
       target.output_path                                          = DEFAULT_OUTPUT_PATH
       target.deprecation                                          = DEFAULT_DEPRECATION
+      target.routes_data                                          = nil
     end
   end
 end
